@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Master Class &mdash; User Guide</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>M365 Copilot &mdash; User Guide</h1>
+            <p class="subtitle">
+                Hands-on exercises covering Copilot across mobile, web, Teams, Researcher,
+                Analyst, Word, PowerPoint, Outlook, Excel, and custom agent building.
+            </p>
+        </header>
+
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#module-mobile">&#128241; Copilot Mobile</a></li>
+                <li><a href="#module-chat">&#128172; Copilot Chat (Web &amp; Work)</a></li>
+                <li><a href="#module-teams">&#128101; Copilot in Teams</a></li>
+                <li><a href="#module-research">&#128300; Researcher &amp; Analyst</a></li>
+                <li><a href="#module-apps">&#128196; M365 Apps</a></li>
+                <li><a href="#module-agent">&#129302; Build a Custom Agent</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+             MODULE 1 — COPILOT MOBILE
+             ============================================================ -->
+        <section id="module-mobile">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128241;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 1 &middot; On the Go</div>
+                    <h2 class="module-title">Copilot Mobile App</h2>
+                </div>
+                <span class="module-time">~10 min</span>
+            </div>
+
+            <p class="module-intro">
+                Use the M365 Copilot mobile app to prepare for your day, catch up on messages,
+                and interact with Copilot via voice.
+            </p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 1.1</span>
+                    <span class="section-card-title">Day Overview &amp; Voice</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open the <strong>M365 mobile app</strong> and sign in with your company credentials.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Type or tap the <strong>Voice</strong> icon and try the prompts below.</span>
+                        </li>
+                    </ol>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">Prep me for my day</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up</div>
+                        <div class="prompt-box">Summarize my Emails, Teams messages and channel messages from the last workday.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        Try Outlook Mobile&rsquo;s built-in prompts: <em>Voice catch-up, triage my inbox, what needs my reply?, get oriented, find quick wins</em>.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MODULE 2 — COPILOT CHAT
+             ============================================================ -->
+        <section id="module-chat">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128172;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 2 &middot; Chat</div>
+                    <h2 class="module-title">Copilot Chat (Web &amp; Work)</h2>
+                </div>
+                <span class="module-time">~25 min</span>
+            </div>
+
+            <p class="module-intro">
+                Use Copilot Chat with web data and your work context. Learn to upload files,
+                personalise Copilot, catch up on communications, and manage your prompts.
+            </p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.1</span>
+                    <span class="section-card-title">Analyse a File in Copilot Chat</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Go to <strong>m365.cloud.microsoft</strong> &rarr; start a <strong>New Chat</strong> &rarr; click the &ldquo;+&rdquo; sign &rarr; &ldquo;file upload&rdquo; and attach a Word or Excel file.</span>
+                        </li>
+                    </ol>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">Analyze Sales by Region (Revenue, Orders, Avg Order) and Top Categories (Revenue, Units Sold). Identify the top 2 regions and top 2 categories by revenue, then explain whether performance is driven by order volume, price/mix (Avg Order), or both. Provide recommended next steps by region. Present in a well-organized summary with tables on a separate sheet. Please add the visual charts for sales team and executive summary.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        After each response, Copilot suggests follow-up prompts. Use them for deeper analysis.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.2</span>
+                    <span class="section-card-title">Memory &amp; Personalisation</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">Teach Copilot about you so responses are tailored to your role and preferences.</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Option 1 &mdash; Direct Memory</div>
+                        <div class="prompt-box">Hey Copilot remember I work in [Your Company Name] [Department Name] department</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Option 2 &mdash; Custom Instructions (Settings &rarr; Personalisation)</div>
+                        <div class="prompt-box">I work for [Company Name] in [department name]. Use [department name] language. Skip acronyms or specialized terms unless the audience is familiar with them. Prefer internal documents, emails, and chats over external sources when answering questions or looking for information.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.3</span>
+                    <span class="section-card-title">Catching Up with Work Mode</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Email Summary</div>
+                        <div class="prompt-box">Summarize my emails from the last week related to [project or customer name].</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Comprehensive Catch-up</div>
+                        <div class="prompt-box">Summarize my emails, Teams meetings and IMs as well as channel messages from the last workday. List action items in a dedicated column. Suggest follow-ups, if possible, in a dedicated column. The table should look like this: Type (Mail/Teams/Channel) | Topic | Summarization | Action item | Follow-up. If I have been directly mentioned, make the font of the topic bold</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Meeting Prep</div>
+                        <div class="prompt-box">Help me prepare for my upcoming meeting about [meeting subject]. Summarize recent emails, chats, and documents related to it.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Calendar Conflicts</div>
+                        <div class="prompt-box">Analyze my calendar for conflicts and recommend how to resolve each conflict</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Work Rhythm</div>
+                        <div class="prompt-box">Look across recent documents, emails, chat activity, and file edits to identify times of day when I do my most focused work, creative work, and reactive work. Create a profile of my natural work rhythm and give suggestions for structuring my days that support energy, boundaries, and recovery. Provide me with a list of M365 Copilot features that would support me at different times of my day.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.4</span>
+                    <span class="section-card-title">Save, Share &amp; Schedule Prompts</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Save:</strong> Hover over a prompt &rarr; &ldquo;Save Prompt&rdquo; &rarr; find it in <strong>Copilot Prompt Gallery &rarr; Your Prompts</strong>.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Share:</strong> Share icon &rarr; &ldquo;Share to team&rdquo;.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Schedule:</strong> &ldquo;Schedule this prompt&rdquo; &rarr; set frequency and delivery.</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.5</span>
+                    <span class="section-card-title">Copilot Search</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">I was on vacation for the past two weeks. Please find the [Project Name] information and related communications.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MODULE 3 — TEAMS
+             ============================================================ -->
+        <section id="module-teams">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128101;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 3 &middot; Meetings</div>
+                    <h2 class="module-title">Copilot in Teams</h2>
+                </div>
+                <span class="module-time">~10 min</span>
+            </div>
+
+            <p class="module-intro">
+                Use Copilot to turn meeting recordings into summaries, action items, and follow-up messages.
+            </p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 3.1</span>
+                    <span class="section-card-title">Meeting Recap &amp; Analysis</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open a recent <strong>recorded Teams meeting</strong> &rarr; <strong>View Recap</strong> &rarr; <strong>Copilot</strong>.</span>
+                        </li>
+                    </ol>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Sales Ops Analysis</div>
+                        <div class="prompt-box">Review the meeting transcript and produce a concise, executive-ready analysis that explains how sales operations changed before and after Copilot adoption across pipeline analysis, deal forecasting, and customer engagement preparation. Clearly connect each improvement to measurable business outcomes and conclude with strategic implications and recommended next steps for sales leadership.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up Draft</div>
+                        <div class="prompt-box">Draft a follow-up message for the executive team that recaps these decisions and next steps, ready to send in Teams &amp; Outlook.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 3.2</span>
+                    <span class="section-card-title">Audio Recap</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open a recorded meeting &rarr; <strong>View Recap</strong> &rarr; <strong>Audio Recap</strong> &rarr; <strong>Notes</strong>.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Review: Decisions, Open questions, Agenda, Meeting notes, Follow-up tasks.</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MODULE 4 — RESEARCHER & ANALYST
+             ============================================================ -->
+        <section id="module-research">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128300;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 4 &middot; Premium</div>
+                    <h2 class="module-title">Researcher &amp; Analyst</h2>
+                </div>
+                <span class="module-time">~15 min</span>
+            </div>
+
+            <p class="module-intro">
+                Researcher produces deep, multi-source reports with citations. Analyst turns your
+                spreadsheets into executive-ready analysis.
+            </p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-advanced">Premium</span>
+                    <span class="section-card-title">Researcher &mdash; Meeting &amp; Competitive Intelligence</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Priority Meeting Brief</div>
+                        <div class="prompt-box">Analyze my calendar for next week [Enter the dates] and identify the top 3 meetings requiring my active participation. Prioritize client engagements, executive reviews, and strategic sessions over routine syncs. For each meeting, provide meeting context, attendee research, key topics, a preparation checklist, and success criteria.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Competitive Intelligence</div>
+                        <div class="prompt-box">Create a competitive sales and market intelligence report tailored for [Your Company Name] Sales department leadership. Summarize key competitor and industry developments from the last 12–18 months. Evaluate across sales performance management, go-to-market strategies, customer acquisition, pricing strategies, sales forecasting, CRM adoption, key account management, and AI/GenAI adoption in sales. Use primary sources and assign confidence ratings (High/Medium/Low) to major conclusions.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        After Researcher generates a report, you can convert it to <strong>Copilot Pages</strong>
+                        and then export to Word or PowerPoint.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-advanced">Premium</span>
+                    <span class="section-card-title">Analyst &mdash; Data Analysis</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Upload a spreadsheet to the <strong>Analyst</strong> agent and try the prompt below.</span>
+                        </li>
+                    </ol>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Sales Performance Analysis</div>
+                        <div class="prompt-box">Analyze the sales performance across all regions and product categories in this workbook. Identify the top 3 strategic opportunities to accelerate revenue growth. Analyze pipeline health, product category performance, and sales rep performance against targets. Create a prioritized action plan with specific recommendations.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MODULE 5 — M365 APPS
+             ============================================================ -->
+        <section id="module-apps">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128196;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 5 &middot; In the Flow</div>
+                    <h2 class="module-title">Copilot in Word, PowerPoint, Outlook &amp; Excel</h2>
+                </div>
+                <span class="module-time">~30 min</span>
+            </div>
+
+            <p class="module-intro">
+                Use Copilot directly inside M365 apps to summarize, draft, create presentations,
+                manage email, and analyse data.
+            </p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <!-- Word -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 5.1</span>
+                    <span class="section-card-title">Copilot in Word</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open a Word document &rarr; click the <strong>Copilot icon</strong> in the ribbon.</span>
+                        </li>
+                    </ol>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Summarize</div>
+                        <div class="prompt-box">Summarize this document in 1 sentence</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Draft a Sales Report</div>
+                        <div class="prompt-box">Draft a professional Q1 FY2026 Sales Performance Summary for [Your company name] intended for executive leadership. Include: (1) executive overview, (2) key sales highlights (bookings, quota attainment, pipeline coverage, win rate, deal size, sales cycle), (3) notable commercial drivers (top segments/regions/products, major wins, partner performance, pricing trends), and (4) Q2 FY2026 outlook (pipeline health, priority plays, risks and mitigations). Use a formal tone and clear section headings.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        Toggle on <strong>&ldquo;Edit with Copilot&rdquo;</strong> to have Copilot modify
+                        the document directly instead of responding in the chat pane.
+                    </div>
+                </div>
+            </article>
+
+            <!-- PowerPoint -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 5.2</span>
+                    <span class="section-card-title">Copilot in PowerPoint</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Create from Prompt</div>
+                        <div class="prompt-box">Develop a presentation about [Your company name]</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        You can also select &ldquo;Create a presentation with a file&rdquo; to generate
+                        slides from a Word document or Excel workbook.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Outlook -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 5.3</span>
+                    <span class="section-card-title">Copilot in Outlook</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Inbox Priority</div>
+                        <div class="prompt-box">Which unread emails are most important? Summarize them, synthesize any related context from my chats and documents, and prioritize the order in which I should respond.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Sales Email Draft</div>
+                        <div class="prompt-box">Draft a professional email to an enterprise prospect outlining our standard engagement approach, including discovery workshops, solution alignment, and proposed onboarding timeline.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Schedule a Meeting</div>
+                        <div class="prompt-box">Schedule a 30-minute Teams meeting with [Name] about the Q1 financial report.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Prompting Best Practices</div>
+                        <strong>Be specific:</strong> &#10060; &ldquo;Help me with my emails&rdquo; &#10004; &ldquo;Summarize emails from vendors about payment terms received this week&rdquo;<br />
+                        <strong>Add context:</strong> &#10060; &ldquo;Draft a response&rdquo; &#10004; &ldquo;Draft a professional response declining this budget request while maintaining positive stakeholder relationships&rdquo;
+                    </div>
+                </div>
+            </article>
+
+            <!-- Excel -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 5.4</span>
+                    <span class="section-card-title">Copilot in Excel &mdash; Analysis Prompts</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open a workbook in Excel &rarr; click <strong>Copilot</strong> &rarr; enable <strong>Edit with Copilot</strong>.</span>
+                        </li>
+                    </ol>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Executive KPI Narrative</div>
+                        <div class="prompt-box">Using the KPIs on this dashboard, write an executive summary that explains what is driving results and what actions the sales team should take next. Include 3 risks and 3 opportunities. Present in a well-organized summary with tables on a separate sheet. Please add the visual charts for sales team and executive summary.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Region &amp; Category Analysis</div>
+                        <div class="prompt-box">Analyze Sales by Region (Revenue, Orders, Avg Order) and Top Categories (Revenue, Units Sold). Identify the top 2 regions and top 2 categories by revenue, then explain whether performance is driven by order volume, price/mix (Avg Order), or both. Provide recommended next steps by region. Present in a well-organized summary with tables on a separate sheet. Please add the visual charts.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Rep Performance</div>
+                        <div class="prompt-box">Analyze Sales Rep performance using Revenue, Profit, Orders, Avg Order Value, and Payment Status. Identify which reps are strongest on profitability vs. volume and highlight coaching opportunities for each rep. Present in a well-organized summary with tables on a separate sheet. Please add the visual charts.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Create PivotTable</div>
+                        <div class="prompt-box">Create a PivotTable from the Sales Data. Rows: Region, Columns: Category, Values: Sum of Total Revenue ($), Sum of Profit ($), Filters: Sales Rep. Format the values as currency and sort Regions by Sum of Total Revenue descending.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        The full Excel prompt library covers 7 categories: Sales Dashboard, Monthly Trends,
+                        Sales Data, Product Catalog, Customers, Sales Reps, and Mixed Analysis.
+                        Combine prompts in sequence for deeper insights.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MODULE 6 — CUSTOM AGENT
+             ============================================================ -->
+        <section id="module-agent">
+
+            <div class="module-header">
+                <div class="module-icon green">&#129302;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 6 &middot; Agent Builder</div>
+                    <h2 class="module-title">Build a Custom Agent</h2>
+                </div>
+                <span class="module-time">~30 min</span>
+            </div>
+
+            <p class="module-intro">
+                Build your own agent powered by your documents. This exercise walks through
+                creating a Product &amp; Pricing Advisor from scratch.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-agent">Agent Mode</span>
+                    <span class="section-card-title">Build a Product &amp; Pricing Advisor</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Organise your product and pricing documents in a folder.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Go to <strong>copilot.microsoft.com</strong> &rarr; &ldquo;New Agent&rdquo; &rarr; &ldquo;Create agent&rdquo;.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Name the agent and add a description, then paste the instructions below.</span>
+                        </li>
+                    </ol>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Agent Instructions</div>
+                        <div class="prompt-box">You are a Product &amp; Pricing Advisor, a specialized assistant designed to help the sales team with accurate product information and pricing guidance.
+
+Core Responsibilities:
+1. Product Information: Provide detailed product specs including SKU numbers, package sizes, case quantities, and flavor profiles.
+2. Pricing Guidance: Provide pricing based on volume tiers. Calculate total costs. Explain volume discount structures. Share current promotional pricing.
+3. Promotional Information: Communicate active promotions with dates and eligibility. Recommend promotional bundles.
+4. Sales Support: Suggest alternatives, recommend complementary products for upselling, and help identify the right product mix by customer type.
+
+Guidelines:
+- Only provide standard pricing from the official price list. For custom pricing, direct to the Pricing Team.
+- Always include SKU numbers and specify unit of measure.
+- Do not process orders, promise delivery dates, or share confidential cost/margin information.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <ol class="steps mt-6">
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Go to <strong>Knowledge</strong> &rarr; upload your documents &rarr; enable <strong>&ldquo;Only use specified sources&rdquo;</strong>.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text">Enable <strong>&ldquo;Create documents, charts, and code&rdquo;</strong> and <strong>&ldquo;Create images&rdquo;</strong>.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text">Test the agent with sample questions about products and pricing.</span>
+                        </li>
+                    </ol>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        Enabling &ldquo;Only use specified sources&rdquo; ensures the agent answers only
+                        from your uploaded documents &mdash; no web guessing.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
