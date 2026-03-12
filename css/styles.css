@@ -1,0 +1,624 @@
+/* ============================================================
+   TRAINING DOCUMENTATION FRAMEWORK — CORE STYLES
+   ============================================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Primary palette */
+    --purple-deep: #3a1d6e;
+    --purple-mid: #5b2d9e;
+    --purple-light: #7c4dca;
+    --purple-bg: #f3eefa;
+
+    /* Accent colours */
+    --green-badge: #1b9e5a;
+    --green-light: #e6f7ee;
+    --orange-step: #e67e22;
+    --blue-step: #3498db;
+    --green-step: #27ae60;
+    --purple-step: #8e44ad;
+    --red-step: #e74c3c;
+    --teal-step: #1abc9c;
+
+    /* Prompt block */
+    --prompt-bg: #4a2545;
+    --prompt-text: #f0d8ec;
+
+    /* Neutrals */
+    --bg-page: #f5f7fa;
+    --bg-card: #ffffff;
+    --text-primary: #2c3e50;
+    --text-secondary: #606c76;
+    --text-muted: #95a5a6;
+    --border-light: #e8ecf1;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, .1);
+
+    /* Typography */
+    --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+
+    /* Spacing scale */
+    --sp-1: .25rem;
+    --sp-2: .5rem;
+    --sp-3: .75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.25rem;
+    --sp-6: 1.5rem;
+    --sp-8: 2rem;
+    --sp-10: 2.5rem;
+    --sp-12: 3rem;
+    --sp-16: 4rem;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    background: var(--bg-page);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--purple-mid);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.page-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--sp-8) var(--sp-6);
+}
+
+/* ============================================================
+   PAGE HEADER / HERO
+   ============================================================ */
+.page-hero {
+    text-align: center;
+    padding: var(--sp-16) var(--sp-4) var(--sp-12);
+}
+
+.page-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--purple-deep);
+    margin-bottom: var(--sp-3);
+}
+
+.page-hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   MODULE HEADER
+   ============================================================ */
+.module-header {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    margin: var(--sp-12) 0 var(--sp-6);
+    padding-bottom: var(--sp-4);
+    border-bottom: 2px solid var(--purple-light);
+}
+
+.module-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.module-icon.purple {
+    background: var(--purple-mid);
+}
+
+.module-icon.green {
+    background: var(--green-badge);
+}
+
+.module-icon.orange {
+    background: var(--orange-step);
+}
+
+.module-icon.blue {
+    background: var(--blue-step);
+}
+
+.module-meta {
+    flex: 1;
+}
+
+.module-label {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: var(--sp-1);
+}
+
+.module-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--purple-deep);
+}
+
+.module-time {
+    font-size: .85rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+/* ============================================================
+   MODULE INTRO TEXT
+   ============================================================ */
+.module-intro {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--sp-8);
+    line-height: 1.75;
+}
+
+/* ============================================================
+   EXPAND / COLLAPSE BAR
+   ============================================================ */
+.toggle-bar {
+    display: flex;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-6);
+}
+
+.toggle-bar button {
+    font-family: var(--font-sans);
+    font-size: .8rem;
+    font-weight: 600;
+    padding: var(--sp-2) var(--sp-4);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background .15s, color .15s;
+}
+
+.toggle-bar button:hover {
+    background: var(--purple-bg);
+    color: var(--purple-mid);
+}
+
+.toggle-bar button::before {
+    margin-right: var(--sp-1);
+}
+
+/* ============================================================
+   SECTION CARD (Exercise / Feature / Demo)
+   ============================================================ */
+.section-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--sp-6);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    transition: box-shadow .2s;
+}
+
+.section-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Card header — clickable to collapse */
+.section-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-5) var(--sp-6);
+    cursor: pointer;
+    user-select: none;
+}
+
+.section-card-header .collapse-arrow {
+    font-size: .75rem;
+    color: var(--text-muted);
+    transition: transform .25s;
+    margin-left: auto;
+}
+
+.section-card.collapsed .collapse-arrow {
+    transform: rotate(-90deg);
+}
+
+.section-card.collapsed .section-card-body {
+    display: none;
+}
+
+/* Card body */
+.section-card-body {
+    padding: 0 var(--sp-6) var(--sp-6);
+}
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: var(--sp-1) var(--sp-3);
+    border-radius: var(--radius-sm);
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.badge-exercise {
+    background: var(--purple-deep);
+    color: #fff;
+}
+
+.badge-agent {
+    background: var(--green-badge);
+    color: #fff;
+}
+
+.badge-tip {
+    background: var(--orange-step);
+    color: #fff;
+}
+
+.badge-new {
+    background: var(--blue-step);
+    color: #fff;
+}
+
+.badge-advanced {
+    background: var(--red-step);
+    color: #fff;
+}
+
+.section-card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ============================================================
+   NUMBERED STEPS
+   ============================================================ */
+.steps {
+    list-style: none;
+    margin: var(--sp-5) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-4);
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Rotating step colours */
+.step:nth-child(6n+1) .step-number {
+    background: var(--orange-step);
+}
+
+.step:nth-child(6n+2) .step-number {
+    background: var(--blue-step);
+}
+
+.step:nth-child(6n+3) .step-number {
+    background: var(--green-step);
+}
+
+.step:nth-child(6n+4) .step-number {
+    background: var(--purple-step);
+}
+
+.step:nth-child(6n+5) .step-number {
+    background: var(--red-step);
+}
+
+.step:nth-child(6n+6) .step-number {
+    background: var(--teal-step);
+}
+
+.step-text {
+    font-size: .95rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding-top: 4px;
+}
+
+.step-text strong,
+.step-text b {
+    color: var(--purple-mid);
+}
+
+/* ============================================================
+   PROMPT BLOCK  ("Try This Prompt")
+   ============================================================ */
+.prompt-block {
+    margin-top: var(--sp-5);
+}
+
+.prompt-label {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: var(--sp-2);
+}
+
+.prompt-box {
+    background: var(--prompt-bg);
+    color: var(--prompt-text);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5) var(--sp-6);
+    font-family: var(--font-mono);
+    font-size: .9rem;
+    line-height: 1.7;
+    position: relative;
+    white-space: pre-wrap;
+}
+
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    margin-top: var(--sp-3);
+    padding: var(--sp-2) var(--sp-4);
+    font-family: var(--font-sans);
+    font-size: .78rem;
+    font-weight: 600;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background .15s;
+}
+
+.copy-btn:hover {
+    background: var(--purple-bg);
+    color: var(--purple-mid);
+}
+
+.copy-btn.copied {
+    background: var(--green-light);
+    color: var(--green-badge);
+    border-color: var(--green-badge);
+}
+
+/* ============================================================
+   POWER MOVE CALLOUT
+   ============================================================ */
+.power-move {
+    background: var(--purple-bg);
+    border-left: 4px solid var(--purple-light);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5) var(--sp-6);
+    margin: var(--sp-6) 0;
+    line-height: 1.75;
+    font-size: .95rem;
+    color: var(--text-primary);
+}
+
+.power-move .pm-icon {
+    margin-right: var(--sp-2);
+}
+
+.power-move strong {
+    color: var(--purple-deep);
+}
+
+/* ============================================================
+   TIP / NOTE / WARNING CALLOUTS
+   ============================================================ */
+.callout {
+    border-radius: var(--radius-md);
+    padding: var(--sp-5) var(--sp-6);
+    margin: var(--sp-5) 0;
+    line-height: 1.7;
+    font-size: .93rem;
+}
+
+.callout-tip {
+    background: #eaf7ee;
+    border-left: 4px solid var(--green-badge);
+}
+
+.callout-note {
+    background: #eaf1fb;
+    border-left: 4px solid var(--blue-step);
+}
+
+.callout-warning {
+    background: #fdf3e7;
+    border-left: 4px solid var(--orange-step);
+}
+
+.callout-title {
+    font-weight: 700;
+    margin-bottom: var(--sp-1);
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS (optional sidebar-style)
+   ============================================================ */
+.toc {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5) var(--sp-6);
+    margin-bottom: var(--sp-8);
+}
+
+.toc-title {
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-muted);
+    margin-bottom: var(--sp-3);
+}
+
+.toc ul {
+    list-style: none;
+}
+
+.toc li {
+    margin-bottom: var(--sp-2);
+}
+
+.toc a {
+    font-size: .9rem;
+    color: var(--purple-mid);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-1) 0;
+}
+
+.toc a:hover {
+    color: var(--purple-deep);
+}
+
+/* ============================================================
+   UTILITY HELPERS
+   ============================================================ */
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-small {
+    font-size: .85rem;
+}
+
+.mt-4 {
+    margin-top: var(--sp-4);
+}
+
+.mt-6 {
+    margin-top: var(--sp-6);
+}
+
+.mt-8 {
+    margin-top: var(--sp-8);
+}
+
+.mb-4 {
+    margin-bottom: var(--sp-4);
+}
+
+.mb-6 {
+    margin-bottom: var(--sp-6);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+    .page-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .module-header {
+        flex-wrap: wrap;
+    }
+
+    .module-time {
+        width: 100%;
+        text-align: right;
+    }
+
+    .section-card-header {
+        padding: var(--sp-4);
+    }
+
+    .section-card-body {
+        padding: 0 var(--sp-4) var(--sp-4);
+    }
+
+    .prompt-box {
+        padding: var(--sp-4);
+        font-size: .82rem;
+    }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+    body {
+        background: #fff;
+    }
+
+    .toggle-bar, .copy-btn, .collapse-arrow {
+        display: none;
+    }
+
+    .section-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+}
