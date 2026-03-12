@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>M365 Copilot Chat &mdash; User Guide</title>
+    <title>Copilot Chat &mdash; User Guide</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +23,7 @@
             All Trainings</a>
 
         <header class="page-hero">
-            <h1>M365 Copilot Chat &mdash; User Guide</h1>
+            <h1>Copilot Chat &mdash; User Guide</h1>
             <p class="subtitle">
                 Hands-on exercises to explore Copilot Chat: web research, brainstorming,
                 file analysis, data visualisation, and image understanding.
@@ -36,7 +36,7 @@
         <nav class="toc">
             <div class="toc-title">Contents</div>
             <ul>
-                <li><a href="#module-research">&#128270; Web Research &amp; Brainstorming</a></li>
+                <li><a href="#module-prompts">&#128270; Web Research &amp; Brainstorming</a></li>
                 <li><a href="#module-files">&#128196; File-Based Analysis</a></li>
                 <li><a href="#module-visuals">&#128202; Data Visualisation</a></li>
                 <li><a href="#module-images">&#128247; Image Analysis</a></li>
@@ -46,7 +46,7 @@
         <!-- ============================================================
              MODULE 1 — WEB RESEARCH & BRAINSTORMING
              ============================================================ -->
-        <section id="module-research">
+        <section id="module-prompts">
 
             <div class="module-header">
                 <div class="module-icon purple">&#128270;</div>
@@ -54,7 +54,7 @@
                     <div class="module-label">Module 1 &middot; Web-Grounded</div>
                     <h2 class="module-title">Web Research &amp; Brainstorming</h2>
                 </div>
-                <span class="module-time">~20 min</span>
+                <span class="module-time">~25 min</span>
             </div>
 
             <p class="module-intro">
@@ -79,68 +79,18 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Try This Prompt</div>
-                        <div class="prompt-box">What have been the emerging trends in the retail industry over the past
-                            4 months? Summarize using recent web articles and analyst reports.</div>
+                        <div class="prompt-box">What have been the emerging trends in the retail industry over the past 4 months? Summarize using recent web articles and analyst reports.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                 </div>
             </article>
 
-            <!-- ── Exercise 1.2: Market Research ── -->
+            <!-- ── Exercise 1.2: Competitor Research ── -->
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Exercise 1.2</span>
-                    <span class="section-card-title">Market Research &mdash; New Product Ideas</span>
-                    <span class="collapse-arrow">&#9660;</span>
-                </div>
-                <div class="section-card-body">
-
-                    <p class="module-intro">
-                        Start with research, then iteratively structure and enrich the output
-                        using follow-up prompts.
-                    </p>
-
-                    <div class="prompt-block">
-                        <div class="prompt-label">Starting Prompt</div>
-                        <div class="prompt-box">Identify trends in consumer preferences for grocery markets and use
-                            these insights to develop ideas for new products for our grocery market chain.</div>
-                        <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                    <div class="prompt-block">
-                        <div class="prompt-label">Follow-up</div>
-                        <div class="prompt-box">Structure those ideas in a table format and for each idea add a column
-                            for the potential target groups and ideas for an advertising campaign.</div>
-                        <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                    <div class="prompt-block">
-                        <div class="prompt-label">Follow-up</div>
-                        <div class="prompt-box">Add a column with the pros and cons of each idea.</div>
-                        <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                    <div class="prompt-block">
-                        <div class="prompt-label">Follow-up</div>
-                        <div class="prompt-box">How can I prioritize these ideas effectively?</div>
-                        <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                    <div class="callout callout-tip">
-                        <div class="callout-title">&#128161; Tip</div>
-                        Each follow-up builds on the previous response &mdash; Copilot remembers context
-                        throughout the conversation, so you don&rsquo;t need to repeat yourself.
-                    </div>
-
-                </div>
-            </article>
-
-            <!-- ── Exercise 1.3: Competitor Research ── -->
-            <article class="section-card">
-                <div class="section-card-header">
-                    <span class="badge badge-exercise">Exercise 1.3</span>
-                    <span class="section-card-title">Competitor Research</span>
+                    <span class="section-card-title">Perform Competitor Research</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
@@ -149,16 +99,14 @@
                         <li class="step">
                             <span class="step-number">1</span>
                             <span class="step-text">
-                                Replace <strong>[Tesla]</strong> with any company you&rsquo;d like to research.
+                                Replace <strong>[company name]</strong> with any company you&rsquo;d like to research.
                             </span>
                         </li>
                     </ol>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Try This Prompt</div>
-                        <div class="prompt-box">I work in marketing and focus on competitor research. Give me a concise
-                            summary of recent news about [Tesla]. Focus on web articles from the last 3 months. Provide
-                            the answer into two to three paragraphs and use a business tone.</div>
+                        <div class="prompt-box">I work in marketing and focus on competitor research. Give me a concise summary of recent news about [company name]. Focus on web articles from the last 3 months. Provide the answer in two to three paragraphs and use a business tone.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -171,10 +119,10 @@
                 </div>
             </article>
 
-            <!-- ── Exercise 1.4: Productivity Coach ── -->
+            <!-- ── Exercise 1.3: Productivity Coach ── -->
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Exercise 1.4</span>
+                    <span class="badge badge-exercise">Exercise 1.3</span>
                     <span class="section-card-title">Daily Productivity Coach</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
@@ -184,46 +132,24 @@
                         <li class="step">
                             <span class="step-number">1</span>
                             <span class="step-text">
-                                Replace <strong>[marketing manager]</strong> with your actual role.
+                                Replace <strong>[insert job title]</strong> with your actual role.
                             </span>
                         </li>
                     </ol>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Try This Prompt</div>
-                        <div class="prompt-box">Pretend you're my productivity coach for the day. What are three things
-                            I should prioritize based on my role as a [marketing manager]?</div>
+                        <div class="prompt-box">Pretend you're my productivity coach for the day. What are three things I should prioritize based on my role as a [insert job title]?</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                 </div>
             </article>
 
-            <!-- ── Exercise 1.5: Prepare for Offsite ── -->
+            <!-- ── Exercise 1.4: Brainstorming ── -->
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Exercise 1.5</span>
-                    <span class="section-card-title">Prepare for a Leadership Offsite</span>
-                    <span class="collapse-arrow">&#9660;</span>
-                </div>
-                <div class="section-card-body">
-
-                    <div class="prompt-block">
-                        <div class="prompt-label">Try This Prompt</div>
-                        <div class="prompt-box">Please help me prepare for a leadership offsite focused on team
-                            alignment and vision setting. I want to bring ideas that foster collaboration and long-term
-                            thinking. Use insights from McKinsey or the Center for Creative Leadership. Summarize 3–5
-                            actionable suggestions I can share with the group.</div>
-                        <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                </div>
-            </article>
-
-            <!-- ── Exercise 1.6: Brainstorming ── -->
-            <article class="section-card">
-                <div class="section-card-header">
-                    <span class="badge badge-exercise">Exercise 1.6</span>
+                    <span class="badge badge-exercise">Exercise 1.4</span>
                     <span class="section-card-title">Creative Campaign Brainstorming</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
@@ -241,27 +167,23 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Starting Prompt</div>
-                        <div class="prompt-box">Generate 10 creative campaign ideas for promoting our new sustainability
-                            initiative. The ideas should be suitable for social media and internal newsletters. Include
-                            a brief description for each.</div>
+                        <div class="prompt-box">Generate 10 creative campaign ideas for promoting our new sustainability initiative. The ideas should be suitable for social media and internal newsletters. Include a brief description for each.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Add Context</div>
-                        <div class="prompt-box">As a retailer, we're trying to reduce our carbon footprint from all
-                            points between design to manufacturing to warehousing to delivery to attract more
-                            eco-conscious customers to our brand.</div>
+                        <div class="prompt-box">As a retailer, we're trying to reduce our carbon footprint from all points between design to manufacturing to warehousing to delivery to attract more eco-conscious customers to our brand.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                 </div>
             </article>
 
-            <!-- ── Exercise 1.7: Thought Partner ── -->
+            <!-- ── Exercise 1.5: Thought Partner ── -->
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Exercise 1.7</span>
+                    <span class="badge badge-exercise">Exercise 1.5</span>
                     <span class="section-card-title">Copilot as a Thought Partner</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
@@ -269,15 +191,13 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Starting Prompt</div>
-                        <div class="prompt-box">Brainstorm ideas for improving employee engagement in remote teams.
-                            Focus on low-cost, high-impact initiatives. Provide a list with short descriptions.</div>
+                        <div class="prompt-box">Brainstorm ideas for improving employee engagement in remote teams. Focus on low-cost, high-impact initiatives. Provide a list with short descriptions.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Add Your Team Context</div>
-                        <div class="prompt-box">Our team consists of around 50 people who work from home in a variety of
-                            cities across the US that extend coast-to-coast.</div>
+                        <div class="prompt-box">Our team consists of around 50 people who work from home in a variety of cities across the US that extend coast-to-coast.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -290,10 +210,10 @@
                 </div>
             </article>
 
-            <!-- ── Exercise 1.8: Customer Response ── -->
+            <!-- ── Exercise 1.6: Customer Response ── -->
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Exercise 1.8</span>
+                    <span class="badge badge-exercise">Exercise 1.6</span>
                     <span class="section-card-title">Respond to a Customer with Empathy</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
@@ -310,29 +230,23 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Instruction</div>
-                        <div class="prompt-box">Write a response to this customer inquiry that is empathetic, clear, and
-                            resolves the issue. Include a greeting and closing.</div>
+                        <div class="prompt-box">Write a response to this customer inquiry that is empathetic, clear, and resolves the issue. Include a greeting and closing.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Example Customer Inquiry</div>
-                        <div class="prompt-box">I really liked the jacket when I first received it. I thought it would
-                            be my best buy ever! Then after a few times wearing it, I noticed that the left-hand pocket
-                            seems shallow and not as deep as the right-hand pocket which seems like a craftsmanship
-                            issue. I also felt a tear in the shallow pocket and now it has expanded to where my
-                            finger-tip fits through it and I'm sure it's going to only get worse to the point that I'll
-                            put something in the pocket and will lose it through the hole!</div>
+                        <div class="prompt-box">I really liked the jacket when I first received it. I thought it would be my best buy ever! Then after a few times wearing it, I noticed that the left-hand pocket seems shallow and not as deep as the right-hand pocket which seems like a craftsmanship issue. I also felt a tear in the shallow pocket and now it has expanded to where my finger-tip fits through it and I'm sure it's going to only get worse to the point that I'll put something in the pocket and will lose it through the hole!</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                 </div>
             </article>
 
-            <!-- ── Exercise 1.9: Meeting Notes ── -->
+            <!-- ── Exercise 1.7: Meeting Notes ── -->
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Exercise 1.9</span>
+                    <span class="badge badge-exercise">Exercise 1.7</span>
                     <span class="section-card-title">Transform Meeting Notes</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
@@ -342,23 +256,20 @@
                         <li class="step">
                             <span class="step-number">1</span>
                             <span class="step-text">
-                                Attach your meeting notes file to the chat, then use the prompt below.
+                                Paste your meeting notes into the chat, then use the prompt below.
                             </span>
                         </li>
                     </ol>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Try This Prompt</div>
-                        <div class="prompt-box">Summarize the attached meeting notes into a concise executive summary.
-                            Focus on key decisions, action items, and any unresolved issues. Format the output with
-                            bullet points and include a section for follow-up questions.</div>
+                        <div class="prompt-box">Summarize the following meeting notes into a concise executive summary. Focus on key decisions, action items, and any unresolved issues. Format the output with bullet points and include a section for follow-up questions.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Follow-up</div>
-                        <div class="prompt-box">Can you help me with the first draft email with a brief executive
-                            summary for leadership?</div>
+                        <div class="prompt-box">Can you help me with the first draft email with a brief executive summary for leadership?</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -378,12 +289,12 @@
                     <div class="module-label">Module 2 &middot; File-Grounded</div>
                     <h2 class="module-title">File-Based Analysis</h2>
                 </div>
-                <span class="module-time">~15 min</span>
+                <span class="module-time">~10 min</span>
             </div>
 
             <p class="module-intro">
                 Copilot Chat can read and analyse files you attach to the conversation.
-                Try these exercises using your own documents or the examples provided.
+                Try these exercises using your own documents.
             </p>
 
             <div class="toggle-bar">
@@ -411,42 +322,8 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Try This Prompt</div>
-                        <div class="prompt-box">Summarize the key points in the attached document.</div>
+                        <div class="prompt-box">Summarize the key points in this file.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                </div>
-            </article>
-
-            <!-- ── Exercise 2.2: Multi-File Analysis ── -->
-            <article class="section-card">
-                <div class="section-card-header">
-                    <span class="badge badge-exercise">Exercise 2.2</span>
-                    <span class="section-card-title">Cross-Reference Multiple Spreadsheets</span>
-                    <span class="collapse-arrow">&#9660;</span>
-                </div>
-                <div class="section-card-body">
-
-                    <p class="module-intro">
-                        Copilot can compare data across multiple attached files to find discrepancies
-                        and generate recommendations. Attach your spreadsheets and try the prompt below.
-                    </p>
-
-                    <div class="prompt-block">
-                        <div class="prompt-label">Try This Prompt</div>
-                        <div class="prompt-box">Using the attached files, compare the invoice data with the contract
-                            data and identify any discrepancies in payment amounts or terms. Highlight any mismatched
-                            fields such as amounts, charges, or due dates. Generate a recommendation column indicating
-                            whether each item is complete and appropriate based on the contract terms. Create two
-                            separate sheets: one listing "Yes" recommendations and another listing "No" recommendations,
-                            including rationale for each decision.</div>
-                        <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                    <div class="callout callout-tip">
-                        <div class="callout-title">&#128161; Tip</div>
-                        This kind of multi-file cross-referencing can save hours of manual comparison.
-                        Attach two or three related spreadsheets and let Copilot find the discrepancies.
                     </div>
 
                 </div>
@@ -489,8 +366,7 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Starting Prompt</div>
-                        <div class="prompt-box">Create a table of the top five countries by GDP from 2019 to 2024. List
-                            each country along with the GDP value for each given year.</div>
+                        <div class="prompt-box">Create a table of the top five countries by GDP from 2019 to 2024. List each country along with the GDP value for each given year.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -502,18 +378,18 @@
 
                     <div class="callout callout-tip">
                         <div class="callout-title">&#128161; Tip</div>
-                        You can go from raw data to a visual in just two prompts &mdash; first ask for
-                        structured data, then ask for a chart.
+                        This two-step sequence shows the progression from structured data to visual
+                        representation &mdash; all within the same conversation.
                     </div>
 
                 </div>
             </article>
 
-            <!-- ── Exercise 3.2: Chart from File ── -->
+            <!-- ── Exercise 3.2: Visualise Sales Data ── -->
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Exercise 3.2</span>
-                    <span class="section-card-title">Visualise Data from an Attached File</span>
+                    <span class="section-card-title">Visualise Data from a Spreadsheet</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
@@ -522,21 +398,20 @@
                         <li class="step">
                             <span class="step-number">1</span>
                             <span class="step-text">
-                                Attach a spreadsheet with sales or numerical data, then use the prompts below.
+                                Attach a spreadsheet to the chat, then try the prompts below.
                             </span>
                         </li>
                     </ol>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Starting Prompt</div>
-                        <div class="prompt-box">Can you create a visual to represent the data in the attached file?
-                        </div>
+                        <div class="prompt-box">Can you create a visual to represent the sales data within this file?</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
-                        <div class="prompt-label">Follow-up Example</div>
-                        <div class="prompt-box">Create a pie chart that shows the distribution across categories.</div>
+                        <div class="prompt-label">Follow-up</div>
+                        <div class="prompt-box">Create a pie chart for the point in time of January 2024 that shows the distribution of sales across categories.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -560,11 +435,10 @@
             </div>
 
             <p class="module-intro">
-                Copilot Chat can analyse images you attach and describe what it sees.
-                Try it with photos, diagrams, or screenshots.
+                Copilot Chat can analyse and describe images you attach to the conversation.
             </p>
 
-            <!-- ── Exercise 4.1: Describe an Image ── -->
+            <!-- ── Exercise 4.1: Image Description ── -->
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Exercise 4.1</span>
@@ -577,7 +451,8 @@
                         <li class="step">
                             <span class="step-number">1</span>
                             <span class="step-text">
-                                Attach any image to the chat &mdash; a photo, diagram, or screenshot.
+                                Attach an image to the chat using file upload or drag-and-drop, then
+                                ask Copilot to describe it.
                             </span>
                         </li>
                     </ol>
@@ -586,13 +461,6 @@
                         <div class="prompt-label">Try This Prompt</div>
                         <div class="prompt-box">Can you please describe this image?</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                    <div class="callout callout-tip">
-                        <div class="callout-title">&#128161; Tip</div>
-                        Try follow-up questions like &ldquo;What products are visible?&rdquo; or
-                        &ldquo;What improvements would you suggest for this store layout?&rdquo;
-                        to explore the image further.
                     </div>
 
                 </div>
