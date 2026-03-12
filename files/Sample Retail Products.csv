@@ -1,0 +1,51 @@
+Product ID,Product Name,Category,Price,Stock Quantity,Supplier,Date Added
+P0001,Product 1,Clothing,168.63,64,Supplier C,12/3/24
+P0002,Product 2,Beauty,453.34,43,Supplier D,8/15/25
+P0003,Product 3,Toys,28.26,43,Supplier C,7/25/25
+P0004,Product 4,Beauty,436.3,21,Supplier C,3/30/25
+P0005,Product 5,Clothing,287.36,87,Supplier B,8/12/25
+P0006,Product 6,Clothing,376.84,18,Supplier A,3/27/25
+P0007,Product 7,Toys,476.71,96,Supplier D,8/21/25
+P0008,Product 8,Sports,492.61,52,Supplier A,9/27/25
+P0009,Product 9,Toys,160.47,98,Supplier A,11/19/24
+P0010,Product 10,Beauty,418.11,8,Supplier A,9/29/25
+P0011,Product 11,Electronics,11.49,50,Supplier A,7/5/25
+P0012,Product 12,Beauty,311.45,65,Supplier A,5/24/25
+P0013,Product 13,Beauty,490.37,34,Supplier C,7/19/25
+P0014,Product 14,Clothing,114.09,15,Supplier B,3/18/25
+P0015,Product 15,Beauty,477.92,23,Supplier A,12/13/24
+P0016,Product 16,Toys,226.79,18,Supplier C,4/26/25
+P0017,Product 17,Beauty,51.73,26,Supplier C,10/5/25
+P0018,Product 18,Electronics,289.09,31,Supplier A,10/11/25
+P0019,Product 19,Electronics,468.78,24,Supplier B,5/26/25
+P0020,Product 20,Beauty,130.42,37,Supplier C,3/8/25
+P0021,Product 21,Books,29.42,39,Supplier B,12/20/24
+P0022,Product 22,Toys,56.85,23,Supplier B,2/5/25
+P0023,Product 23,Home & Kitchen,360.12,67,Supplier D,7/18/25
+P0024,Product 24,Home & Kitchen,219.26,20,Supplier D,7/14/25
+P0025,Product 25,Home & Kitchen,60.93,26,Supplier A,7/11/25
+P0026,Product 26,Electronics,9.94,61,Supplier A,2/7/25
+P0027,Product 27,Home & Kitchen,27.1,16,Supplier B,7/12/25
+P0028,Product 28,Beauty,372.53,41,Supplier A,6/23/25
+P0029,Product 29,Sports,390.03,83,Supplier A,10/16/24
+P0030,Product 30,Home & Kitchen,300.33,45,Supplier D,7/21/25
+P0031,Product 31,Electronics,444.1,63,Supplier C,11/28/24
+P0032,Product 32,Books,268.98,35,Supplier C,6/1/25
+P0033,Product 33,Books,175.62,89,Supplier C,5/13/25
+P0034,Product 34,Electronics,137.57,28,Supplier A,10/17/24
+P0035,Product 35,Home & Kitchen,265.78,73,Supplier B,3/19/25
+P0036,Product 36,Books,227.13,75,Supplier D,7/11/25
+P0037,Product 37,Sports,225.73,8,Supplier C,6/8/25
+P0038,Product 38,Clothing,53.94,80,Supplier A,6/21/25
+P0039,Product 39,Clothing,178.55,15,Supplier A,2/19/25
+P0040,Product 40,Beauty,15.22,54,Supplier C,11/1/24
+P0041,Product 41,Sports,319.79,45,Supplier C,11/6/24
+P0042,Product 42,Books,484.71,30,Supplier B,11/18/24
+P0043,Product 43,Electronics,183.14,1,Supplier C,6/29/25
+P0044,Product 44,Home & Kitchen,413.66,68,Supplier D,8/21/25
+P0045,Product 45,Electronics,163.72,9,Supplier B,12/6/24
+P0046,Product 46,Toys,332.41,28,Supplier D,9/1/25
+P0047,Product 47,Clothing,254.33,76,Supplier A,10/5/25
+P0048,Product 48,Sports,285.38,42,Supplier C,8/3/25
+P0049,Product 49,Clothing,330.32,87,Supplier A,4/28/25
+P0050,Product 50,Electronics,494.71,34,Supplier A,11/27/24

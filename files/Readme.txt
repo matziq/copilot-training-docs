@@ -1,0 +1,1 @@
+This is a demo folder containing various file types for testing purposes.
