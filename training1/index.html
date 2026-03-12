@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Training Documentation Template</title>
+
+    <!-- Google Fonts — Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- Back to menu -->
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <!-- ============================================================
+       PAGE HERO — edit the title & subtitle for your course
+       ============================================================ -->
+        <header class="page-hero">
+            <h1>Your Training Title Here</h1>
+            <p class="subtitle">
+                A short description of the course or documentation purpose.
+                Replace this with your own introductory text.
+            </p>
+        </header>
+
+        <!-- ============================================================
+       TABLE OF CONTENTS (optional)
+       ============================================================ -->
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#module-1">&#9889; Module 1 &mdash; Getting Started</a></li>
+                <li><a href="#module-2">&#128640; Module 2 &mdash; Advanced Workflows</a></li>
+                <!-- Add more TOC entries here -->
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+       MODULE 1
+       ============================================================ -->
+        <section id="module-1">
+
+            <!-- Module header — icon colour classes: purple, green, orange, blue -->
+            <div class="module-header">
+                <div class="module-icon purple">&#9889;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 1 &middot; Fundamentals</div>
+                    <h2 class="module-title">Getting Started</h2>
+                </div>
+                <span class="module-time">~10 min</span>
+            </div>
+
+            <p class="module-intro">
+                Describe what this module covers. Set expectations, prerequisites,
+                and learning objectives here.
+            </p>
+
+            <!-- Expand / Collapse bar -->
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <!-- ----- EXERCISE CARD ----- -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 1.1</span>
+                    <span class="section-card-title">Your Exercise Title</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+
+                    <!-- Numbered steps -->
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">
+                                Open <strong>your application</strong> and navigate to the feature you want to explore.
+                            </span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">
+                                Verify the setup: fonts, colours, and branding are loaded correctly.
+                            </span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">
+                                Click the <strong>Copilot icon</strong> (top-left) &rarr; enter the prompt below.
+                            </span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">
+                                Review the generated output and iterate as needed.
+                            </span>
+                        </li>
+                    </ol>
+
+                    <!-- Prompt block -->
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">Create a 10-slide presentation on your topic. Include: executive
+                            summary, key goals, challenges, solutions, timeline, milestones, community impact, future
+                            commitments, and a call-to-action slide.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- ----- AGENT MODE CARD ----- -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-agent">Agent Mode</span>
+                    <span class="section-card-title">Web Search &amp; Data Enrichment</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">
+                                Open a workbook with a list of company names or product categories.
+                            </span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">
+                                In <strong>Agent Mode</strong>, ask Copilot to pull in web data.
+                            </span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">
+                                Copilot uses <strong>integrated web search</strong> to enrich your spreadsheet with
+                                external data.
+                            </span>
+                        </li>
+                    </ol>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">Look up the current market cap and headquarters city for each company
+                            listed in column A. Add this data as new columns next to the existing data.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <!-- Power Move callout -->
+                    <div class="power-move">
+                        <span class="pm-icon">&#127881;</span>
+                        <strong>Power Move:</strong> Combine multiple capabilities in one workflow.
+                        First, use Agent Mode to clean and organise your data. Then use formulas to
+                        create calculated columns. Finally, ask Copilot to build charts from the results.
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- ----- AGENT MODE — Iterative Refinement CARD ----- -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-agent">Agent Mode</span>
+                    <span class="section-card-title">Iterative Slide Refinement</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+
+                    <div class="power-move">
+                        <span class="pm-icon">&#127881;</span>
+                        <strong>Power Move:</strong> Build a presentation pipeline that starts in one app and
+                        finishes in another. First, create your analysis using Agent Mode. Then use the
+                        "Create from file" feature to generate a branded deck directly from that workbook &mdash;
+                        Copilot pulls charts, data, and key insights automatically. Finally, switch to
+                        <strong>Agent Mode</strong> to refine slide-by-slide: <em>"Add speaker notes to every
+                            slide, reduce text on slide 4 by 50%, and insert a summary slide at the end."</em>
+                        &mdash; You just built a boardroom-ready deck without designing a single slide.
+                    </div>
+
+                </div>
+            </article>
+
+        </section><!-- /module-1 -->
+
+
+        <!-- ============================================================
+       MODULE 2 — Copy this block for each new module
+       ============================================================ -->
+        <section id="module-2">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128640;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 2 &middot; Frontier</div>
+                    <h2 class="module-title">Advanced Workflows</h2>
+                </div>
+                <span class="module-time">~15 min</span>
+            </div>
+
+            <p class="module-intro">
+                Describe the advanced topics covered in this module. Set the stage for
+                more complex exercises and power moves.
+            </p>
+
+            <!-- Example exercise with a TIP callout -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.1</span>
+                    <span class="section-card-title">Your Advanced Exercise</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Navigate to the advanced settings panel.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Configure the parameters described below.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Run the workflow and review the output.</span>
+                        </li>
+                    </ol>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">Your custom prompt goes here. Be specific, include context, and describe
+                            the desired output format.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <!-- Tip callout -->
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        The more context you provide in your prompt, the better the output will be.
+                        Include specifics like audience, tone, length, and format.
+                    </div>
+
+                    <!-- Note callout -->
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Note</div>
+                        This feature requires an active subscription. Check with your administrator
+                        if you don't see the option available.
+                    </div>
+
+                    <!-- Warning callout -->
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Warning</div>
+                        Always review AI-generated content before sharing externally.
+                        Verify facts and figures independently.
+                    </div>
+
+                </div>
+            </article>
+
+        </section><!-- /module-2 -->
+
+    </div><!-- /page-wrapper -->
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
