@@ -414,7 +414,7 @@ img {
     font-size: .9rem;
     line-height: 1.7;
     position: relative;
-    white-space: pre-wrap;
+    white-space: normal;
 }
 
 .copy-btn {
