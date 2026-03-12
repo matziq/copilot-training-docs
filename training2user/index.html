@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RCG Agent Revolution: Copilot Agents &mdash; Demo Walkthrough</title>
+    <title>RCG Copilot Agents &mdash; User Guide</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,9 +23,10 @@
             All Trainings</a>
 
         <header class="page-hero">
-            <h1>RCG Agent Revolution: Copilot Agents</h1>
+            <h1>Copilot Agents &mdash; User Guide</h1>
             <p class="subtitle">
-                Demo Walkthrough &mdash; This document walks through the demo portion of the delivery.
+                Hands-on exercises to explore Copilot Chat agents, build your own custom agents,
+                and leverage premium capabilities like Researcher and Analyst.
             </p>
         </header>
 
@@ -35,110 +36,28 @@
         <nav class="toc">
             <div class="toc-title">Contents</div>
             <ul>
-                <li><a href="#module-setup">&#9881; Demo Setup Instructions</a></li>
-                <li><a href="#module-agents">&#129302; Agent Demos (Unpaid)</a></li>
-                <li><a href="#module-premium">&#128142; Premium Agent Demos</a></li>
+                <li><a href="#module-agents">&#129302; Copilot Chat Agents</a></li>
+                <li><a href="#module-premium">&#128142; Premium Agents</a></li>
             </ul>
         </nav>
 
         <!-- ============================================================
-             MODULE 1 — DEMO SETUP
-             ============================================================ -->
-        <section id="module-setup">
-
-            <div class="module-header">
-                <div class="module-icon orange">&#9881;</div>
-                <div class="module-meta">
-                    <div class="module-label">Module 1 &middot; Preparation</div>
-                    <h2 class="module-title">Demo Setup Instructions</h2>
-                </div>
-                <span class="module-time">~5 min</span>
-            </div>
-
-            <p class="module-intro">
-                Prepare your environment before running the demos. Follow these guidelines to
-                ensure a smooth, consistent experience for attendees.
-            </p>
-
-            <article class="section-card">
-                <div class="section-card-header">
-                    <span class="badge badge-tip">Setup</span>
-                    <span class="section-card-title">Environment &amp; Account Requirements</span>
-                    <span class="collapse-arrow">&#9660;</span>
-                </div>
-                <div class="section-card-body">
-
-                    <ol class="steps">
-                        <li class="step">
-                            <span class="step-number">1</span>
-                            <span class="step-text">
-                                Use <strong>separate Edge browser profiles</strong>, logged in with users from a
-                                CDX tenant (or another test tenant). Demos include examples using both accounts
-                                without and with an M365 Copilot license assigned.
-                            </span>
-                        </li>
-                        <li class="step">
-                            <span class="step-number">2</span>
-                            <span class="step-text">
-                                Use an <strong>unlicensed account</strong> to illustrate the UX, the limits on
-                                Microsoft-provided agents, and the limited knowledge grounding options in
-                                Copilot Studio Lite.
-                            </span>
-                        </li>
-                        <li class="step">
-                            <span class="step-number">3</span>
-                            <span class="step-text">
-                                <strong>Do not</strong> use your production Microsoft account &mdash; new features
-                                available internally first may visually differ or may not be available in customer
-                                tenants.
-                            </span>
-                        </li>
-                        <li class="step">
-                            <span class="step-number">4</span>
-                            <span class="step-text">
-                                The unlicensed user should <strong>not</strong> be associated to a billing plan
-                                (consumptive billing model). An account with consumptive billing access will show
-                                additional grounding options and may cause confusion.
-                            </span>
-                        </li>
-                        <li class="step">
-                            <span class="step-number">5</span>
-                            <span class="step-text">
-                                Due to session time constraints, <strong>pre-run</strong> the Researcher and Analyst
-                                demos and walk through them via the chat/conversation history (go to
-                                &ldquo;All chats&rdquo; and filter by agent name). You can rename your chats
-                                (right-click &rarr; Rename) to make finding them easier.
-                            </span>
-                        </li>
-                    </ol>
-
-                    <div class="callout callout-warning">
-                        <div class="callout-title">&#9888;&#65039; Important</div>
-                        Start off using an account <strong>without</strong> an M365 Copilot license assigned!
-                    </div>
-
-                </div>
-            </article>
-
-        </section>
-
-        <!-- ============================================================
-             MODULE 2 — AGENT DEMOS (Unpaid)
+             MODULE 1 — COPILOT CHAT AGENTS
              ============================================================ -->
         <section id="module-agents">
 
             <div class="module-header">
                 <div class="module-icon purple">&#129302;</div>
                 <div class="module-meta">
-                    <div class="module-label">Module 2 &middot; Copilot Chat Agents</div>
-                    <h2 class="module-title">Agent Demos</h2>
+                    <div class="module-label">Module 1 &middot; Copilot Chat Agents</div>
+                    <h2 class="module-title">Built-in &amp; Custom Agents</h2>
                 </div>
                 <span class="module-time">~20 min</span>
             </div>
 
             <p class="module-intro">
-                Walk through built-in and custom agents in Copilot Chat using an unlicensed account.
-                Each demo builds on the previous one, progressing from simple prompts to full agent creation.
+                Explore built-in and custom agents in Copilot Chat. These exercises progress from
+                using starter prompts to building your own agent from scratch using natural language.
             </p>
 
             <div class="toggle-bar">
@@ -146,43 +65,46 @@
                 <button data-action="collapse-all">&#9650; Collapse All</button>
             </div>
 
-            <!-- ── Demo 2.1: Prompt Coach ── -->
+            <!-- ── Exercise 1.1: Prompt Coach ── -->
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Demo 2.1</span>
-                    <span class="section-card-title">Prompt Coach &mdash; Immersive Example</span>
+                    <span class="badge badge-exercise">Exercise 1.1</span>
+                    <span class="section-card-title">Prompt Coach &mdash; Improve Your Prompts</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
+
+                    <p class="module-intro">
+                        Prompt Coach helps you write better prompts, generate alternatives, and get
+                        feedback on how to improve them. Try the exercises below in the
+                        <strong>immersive agent experience</strong>.
+                    </p>
 
                     <ol class="steps">
                         <li class="step">
                             <span class="step-number">1</span>
                             <span class="step-text">
-                                <strong>Walk through:</strong> Show the agent installation and demonstrate the
-                                <strong>immersive agent experience</strong> (clicking on the agent from the agents
-                                list).
+                                Open the <strong>Prompt Coach</strong> agent from the agents list in Copilot Chat.
                             </span>
                         </li>
                         <li class="step">
                             <span class="step-number">2</span>
                             <span class="step-text">
-                                Use the starter prompt: <strong>&ldquo;Show me 3 good prompt examples.&rdquo;</strong>
+                                Try the starter prompt: <strong>&ldquo;Show me 3 good prompt examples.&rdquo;</strong>
                             </span>
                         </li>
                         <li class="step">
                             <span class="step-number">3</span>
                             <span class="step-text">
-                                Use the starter prompt: <strong>&ldquo;Help me generate a prompt to be used in
-                                    Copilot.&rdquo;</strong>
+                                Try the starter prompt: <strong>&ldquo;Help me generate a prompt to be used in Copilot.&rdquo;</strong>
+                                Then use the follow-up prompts below to refine it iteratively.
                             </span>
                         </li>
                     </ol>
 
                     <div class="prompt-block">
-                        <div class="prompt-label">Prompt Sequence</div>
-                        <div class="prompt-box">I want to get a summary of what's new regarding how AI is being actively
-                            leveraged by Retail and Consumer Goods organizations.</div>
+                        <div class="prompt-label">Starting Prompt</div>
+                        <div class="prompt-box">I want to get a summary of what's new regarding how AI is being actively leveraged by Retail and Consumer Goods organizations.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -208,8 +130,8 @@
                         <li class="step">
                             <span class="step-number">4</span>
                             <span class="step-text">
-                                Use the starter prompt: <strong>&ldquo;Analyze my prompt and provide feedback
-                                    on how I could improve it.&rdquo;</strong>
+                                Now try: <strong>&ldquo;Analyze my prompt and provide feedback on how I
+                                could improve it.&rdquo;</strong> Then enter the prompt below for analysis.
                             </span>
                         </li>
                     </ol>
@@ -220,21 +142,27 @@
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        Notice how Prompt Coach helps you add specificity &mdash; audience, timeframe, sources,
+                        and format &mdash; to transform a vague prompt into a highly targeted one.
+                    </div>
+
                 </div>
             </article>
 
-            <!-- ── Demo 2.2: Idea Coach ── -->
+            <!-- ── Exercise 1.2: Idea Coach ── -->
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Demo 2.2</span>
-                    <span class="section-card-title">Idea Coach &mdash; In-Context Example</span>
+                    <span class="badge badge-exercise">Exercise 1.2</span>
+                    <span class="section-card-title">Idea Coach &mdash; Brainstorming Partner</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
 
                     <p class="module-intro">
-                        Brainstorming / thought-partner example using the in-context (<strong>@mention</strong>)
-                        agent experience.
+                        Use Idea Coach as a brainstorming and thought-partner by <strong>@mentioning</strong>
+                        it in-context from Copilot Chat.
                     </p>
 
                     <ol class="steps">
@@ -248,8 +176,7 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Initial Prompt (Copilot Chat)</div>
-                        <div class="prompt-box">Can you draft an email to my manager about a new idea I'd like to pitch?
-                        </div>
+                        <div class="prompt-box">Can you draft an email to my manager about a new idea I'd like to pitch?</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -257,21 +184,21 @@
                         <li class="step">
                             <span class="step-number">2</span>
                             <span class="step-text">
-                                Then <strong>@mention Idea Coach</strong> to show the in-context experience.
+                                Type <strong>@Idea Coach</strong> to bring it into the conversation,
+                                then work through the following sequence.
                             </span>
                         </li>
                     </ol>
 
                     <div class="prompt-block">
-                        <div class="prompt-label">@Idea Coach &mdash; Prompt Sequence</div>
+                        <div class="prompt-label">@Idea Coach</div>
                         <div class="prompt-box">Help me brainstorm about a specific topic</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Follow-up</div>
-                        <div class="prompt-box">I'd like to brainstorm ideas on how we can encourage retail and consumer
-                            goods customers to use Copilot agents to streamline business workflows</div>
+                        <div class="prompt-box">I'd like to brainstorm ideas on how we can encourage retail and consumer goods customers to use Copilot agents to streamline business workflows</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -293,50 +220,54 @@
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        The @mention pattern lets you bring specialised agents into any ongoing
+                        conversation without leaving your current chat context.
+                    </div>
+
                 </div>
             </article>
 
-            <!-- ── Demo 2.3: Custom Agent in Copilot Chat ── -->
+            <!-- ── Exercise 1.3: Build a Custom Agent ── -->
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-agent">Agent Mode</span>
-                    <span class="section-card-title">Custom Agent in Copilot Chat</span>
+                    <span class="section-card-title">Build a Custom Agent in Copilot Chat</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
 
                     <p class="module-intro">
-                        Agent creation using only natural language in the &ldquo;Describe&rdquo; tab.
+                        Create your own agent using only natural language. No code required &mdash;
+                        just describe what you want and Copilot builds it.
                     </p>
 
                     <ol class="steps">
                         <li class="step">
                             <span class="step-number">1</span>
                             <span class="step-text">
-                                Enter the description prompt below in the <strong>Describe</strong> tab.
+                                Open the agent builder and enter the description below in the <strong>Describe</strong> tab.
                             </span>
                         </li>
                     </ol>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Agent Description</div>
-                        <div class="prompt-box">Create an agent to monitor public notices for consumer-based product
-                            recalls and summarizes "What do I need to know today?" for store ops and merchandising
-                            teams.</div>
+                        <div class="prompt-box">Create an agent to monitor public notices for consumer-based product recalls and summarizes "What do I need to know today?" for store ops and merchandising teams.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="callout callout-note">
                         <div class="callout-title">&#128221; Note</div>
-                        After just the initial guidance, a preview of the agent is already being displayed
-                        in the right-hand test pane.
+                        A preview of the agent appears immediately in the right-hand test pane.
                     </div>
 
                     <ol class="steps mt-6">
                         <li class="step">
                             <span class="step-number">2</span>
                             <span class="step-text">
-                                Name the agent:
+                                Give the agent a name:
                             </span>
                         </li>
                     </ol>
@@ -345,11 +276,6 @@
                         <div class="prompt-label">Name</div>
                         <div class="prompt-box">Please name it "Total Recall"</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
-                    </div>
-
-                    <div class="callout callout-note">
-                        <div class="callout-title">&#128221; Note</div>
-                        The agent is auto-updated in the test pane after each change.
                     </div>
 
                     <ol class="steps mt-6">
@@ -362,24 +288,19 @@
                     </ol>
 
                     <div class="prompt-block">
-                        <div class="prompt-label">Refinement</div>
-                        <div class="prompt-box">The agent should report on and surface recent consumer-based product
-                            recalls within the last 30 days. Please provide details on the recall reasons and
-                            recommended actions consumers should take. And please focus on recalls affecting the NW US
-                            area.</div>
+                        <div class="prompt-label">Scope &amp; Focus</div>
+                        <div class="prompt-box">The agent should report on and surface recent consumer-based product recalls within the last 30 days. Please provide details on the recall reasons and recommended actions consumers should take. And please focus on recalls affecting the NW US area.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Source Guidance</div>
-                        <div class="prompt-box">Primarily use reputable websites like FDA, USDA, and CPSC but also
-                            information provided by affected retailers as well. Do NOT infer anything beyond published
-                            notices.</div>
+                        <div class="prompt-box">Primarily use reputable websites like FDA, USDA, and CPSC but also information provided by affected retailers as well. Do NOT infer anything beyond published notices.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
-                    <div class="callout callout-tip">
-                        <div class="callout-title">&#128161; Presenter Info</div>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Reference</div>
                         FDA = Food and Drug Administration &middot;
                         USDA = United States Department of Agriculture &middot;
                         CPSC = Consumer Product Safety Commission
@@ -389,7 +310,7 @@
                         <li class="step">
                             <span class="step-number">4</span>
                             <span class="step-text">
-                                Perform a couple of tests in the test pane, then add:
+                                Test the agent in the test pane, then add a requirement to cite sources:
                             </span>
                         </li>
                     </ol>
@@ -404,30 +325,30 @@
                         <li class="step">
                             <span class="step-number">5</span>
                             <span class="step-text">
-                                Perform another test, then switch to the <strong>&ldquo;Configure&rdquo;</strong>
-                                tab and review the current configuration and options:
+                                Switch to the <strong>&ldquo;Configure&rdquo;</strong> tab to review
+                                your agent&rsquo;s settings:
                             </span>
                         </li>
                     </ol>
 
                     <div class="callout callout-note">
-                        <div class="callout-title">&#128221; Configure Tab &mdash; Unpaid Copilot Chat</div>
-                        <strong>Knowledge Sources</strong> (web only for unpaid CC without billing plan):<br />
+                        <div class="callout-title">&#128221; Available Configuration Options</div>
+                        <strong>Knowledge Sources:</strong><br />
                         &bull; Add Specific Websites<br />
                         &bull; Search All Websites<br />
                         &bull; Only Use Specified Sources<br /><br />
-                        <strong>Capabilities / Options:</strong><br />
+                        <strong>Capabilities:</strong><br />
                         &bull; Create documents, chats and code (Code interpreter)<br />
                         &bull; Create images<br />
-                        &bull; Review updating suggested prompts
+                        &bull; Suggested prompts
                     </div>
 
                     <ol class="steps mt-6">
                         <li class="step">
                             <span class="step-number">6</span>
                             <span class="step-text">
-                                <strong>Create</strong> the agent and review the <strong>&ldquo;Share&rdquo;</strong>
-                                options.
+                                Click <strong>Create</strong> to publish your agent, then explore the
+                                <strong>Share</strong> options to make it available to your team.
                             </span>
                         </li>
                     </ol>
@@ -438,22 +359,23 @@
         </section>
 
         <!-- ============================================================
-             MODULE 3 — PREMIUM AGENT DEMOS
+             MODULE 2 — PREMIUM AGENTS
              ============================================================ -->
         <section id="module-premium">
 
             <div class="module-header">
                 <div class="module-icon green">&#128142;</div>
                 <div class="module-meta">
-                    <div class="module-label">Module 3 &middot; Premium</div>
-                    <h2 class="module-title">Premium Agent Demos</h2>
+                    <div class="module-label">Module 2 &middot; Premium</div>
+                    <h2 class="module-title">Premium Agent Capabilities</h2>
                 </div>
-                <span class="module-time">~20 min</span>
+                <span class="module-time">~15 min</span>
             </div>
 
             <p class="module-intro">
-                These demos require an M365 Copilot license. Switch to your licensed account
-                before proceeding. Researcher and Analyst should be pre-run and opened from chat history.
+                With an M365 Copilot license, you gain access to powerful agents like Researcher
+                and Analyst, plus expanded knowledge sources and grounding options when building
+                custom agents.
             </p>
 
             <div class="toggle-bar">
@@ -461,30 +383,23 @@
                 <button data-action="collapse-all">&#9650; Collapse All</button>
             </div>
 
-            <!-- ── Demo 3.1: Researcher ── -->
+            <!-- ── Exercise 2.1: Researcher ── -->
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-advanced">Premium</span>
-                    <span class="section-card-title">Researcher</span>
+                    <span class="section-card-title">Researcher &mdash; Deep Research &amp; White Papers</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
 
-                    <div class="callout callout-warning">
-                        <div class="callout-title">&#9888;&#65039; Pre-run Required</div>
-                        This example should be run ahead of time and opened from &ldquo;Chats&rdquo;.
-                    </div>
+                    <p class="module-intro">
+                        Researcher performs deep, multi-source research and produces
+                        comprehensive documents. Try the prompt below to generate a white paper.
+                    </p>
 
                     <div class="prompt-block">
-                        <div class="prompt-label">Researcher Prompt</div>
-                        <div class="prompt-box">Build a white paper to help "early majority" companies create a plan to
-                            scale adoption of generative AI in the workplace via Microsoft 365 Copilot. This white paper
-                            should be written in a way that's easily digestible and practical for IT as well as business
-                            leaders. It should identify and address their fears and concerns, talk through ROI and ways
-                            to rationalize investments, tactical programmatic approaches, and should give very specific
-                            examples that can act as the art of the possible. Use technical press, recent academic
-                            research, analysts reports, and thought leadership written by industry leaders and
-                            management consulting firms.</div>
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">Build a white paper to help "early majority" companies create a plan to scale adoption of generative AI in the workplace via Microsoft 365 Copilot. This white paper should be written in a way that's easily digestible and practical for IT as well as business leaders. It should identify and address their fears and concerns, talk through ROI and ways to rationalize investments, tactical programmatic approaches, and should give very specific examples that can act as the art of the possible. Use technical press, recent academic research, analysts reports, and thought leadership written by industry leaders and management consulting firms.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -494,55 +409,59 @@
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        Researcher can take several minutes for complex topics. It searches multiple
+                        sources, synthesises findings, and produces a structured document with citations.
+                    </div>
+
                 </div>
             </article>
 
-            <!-- ── Demo 3.2: Analyst ── -->
+            <!-- ── Exercise 2.2: Analyst ── -->
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-advanced">Premium</span>
-                    <span class="section-card-title">Analyst</span>
+                    <span class="section-card-title">Analyst &mdash; Data-Driven Insights</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
 
-                    <div class="callout callout-warning">
-                        <div class="callout-title">&#9888;&#65039; Pre-run Required</div>
-                        This example should be run ahead of time and opened from &ldquo;Chats&rdquo;.
-                    </div>
-
                     <p class="module-intro">
-                        Walk through the Analyst agent output from the pre-run chat history.
-                        Highlight the analytical capabilities and data-driven insights generated.
+                        The Analyst agent provides data-driven analysis, generates visualisations,
+                        and surfaces key insights from your data. Explore the agent to see its
+                        analytical capabilities in action.
                     </p>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Note</div>
+                        Analyst requires an M365 Copilot license. Ask the agent to analyse datasets,
+                        create charts, or identify trends in your data.
+                    </div>
 
                 </div>
             </article>
 
-            <!-- ── Demo 3.3: Custom Agent in M365 Copilot (Premium) ── -->
+            <!-- ── Exercise 2.3: Custom Agent (Premium) ── -->
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-agent">Agent Mode</span>
-                    <span class="section-card-title">Custom Agent in M365 Copilot (Premium)</span>
+                    <span class="section-card-title">Build a Custom Agent with Premium Sources</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
 
                     <p class="module-intro">
-                        A more guided build using a description, instructions, and multiple sources for grounding.
+                        With a Copilot license, custom agents can be grounded on SharePoint, Teams,
+                        emails, and more &mdash; not just web sources. Follow along to build an
+                        IT policy assistant.
                     </p>
-
-                    <div class="callout callout-note">
-                        <div class="callout-title">&#128221; Assets Used</div>
-                        TeamSite01:Documents\IT Assets<br />
-                        &bull; IT Policy on Using Unsanctioned AI Tools.docx
-                    </div>
 
                     <ol class="steps">
                         <li class="step">
                             <span class="step-number">1</span>
                             <span class="step-text">
-                                In the <strong>Describe</strong> tab, enter:
+                                Open the agent builder. In the <strong>Describe</strong> tab, enter:
                             </span>
                         </li>
                     </ol>
@@ -579,8 +498,7 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Purpose</div>
-                        <div class="prompt-box">Agent should provide information on published IT policies and
-                            procedures.</div>
+                        <div class="prompt-box">Agent should provide information on published IT policies and procedures.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -588,39 +506,35 @@
                         <li class="step">
                             <span class="step-number">4</span>
                             <span class="step-text">
-                                Switch to the <strong>&ldquo;Configure&rdquo;</strong> tab and review the expanded
-                                options
-                                available with a premium license:
+                                Switch to the <strong>&ldquo;Configure&rdquo;</strong> tab. Notice the expanded
+                                knowledge sources available with a premium license:
                             </span>
                         </li>
                     </ol>
 
                     <div class="callout callout-note">
-                        <div class="callout-title">&#128221; Configure Tab &mdash; Premium M365 Copilot</div>
-                        <strong>Knowledge Source Types:</strong><br />
-                        &bull; Files<br />
-                        &bull; Sites<br />
-                        &bull; Chats<br />
+                        <div class="callout-title">&#128221; Premium Knowledge Sources</div>
+                        <strong>Source Types:</strong><br />
+                        &bull; Files &middot; Sites &middot; Chats<br />
                         &bull; Upload vs. Attach Cloud Files<br />
-                        &bull; My SharePoint files, folders and sites<br />
-                        &bull; My Teams chats and meetings<br />
-                        &bull; My emails<br /><br />
+                        &bull; SharePoint files, folders and sites<br />
+                        &bull; Teams chats and meetings<br />
+                        &bull; Emails<br /><br />
                         <strong>Grounding Options:</strong><br />
                         &bull; Search All Websites<br />
                         &bull; Only use specified sources<br />
                         &bull; Reference People in Organization<br />
-                        &bull; Add Other (Copilot Connector) Data Sources<br /><br />
-                        <strong>Capabilities / Options:</strong><br />
-                        &bull; Create documents, chats and code (Code interpreter)<br />
-                        &bull; Create images<br />
-                        &bull; Review updating suggested prompts
+                        &bull; Add Copilot Connector Data Sources<br /><br />
+                        <strong>Capabilities:</strong><br />
+                        &bull; Create documents, chats and code<br />
+                        &bull; Create images &middot; Suggested prompts
                     </div>
 
                     <ol class="steps mt-6">
                         <li class="step">
                             <span class="step-number">5</span>
                             <span class="step-text">
-                                Now add instructions and knowledge sources:
+                                Add instructions to keep the agent focused:
                             </span>
                         </li>
                     </ol>
@@ -635,23 +549,23 @@
                         <li class="step">
                             <span class="step-number">6</span>
                             <span class="step-text">
-                                Add <strong>knowledge source:</strong> TeamSite01:Documents\IT Assets
+                                Add your SharePoint site or document library as a <strong>knowledge source</strong>.
                             </span>
                         </li>
                         <li class="step">
                             <span class="step-number">7</span>
                             <span class="step-text">
-                                Enable <strong>&ldquo;Only use specified sources&rdquo;</strong>
+                                Enable <strong>&ldquo;Only use specified sources&rdquo;</strong> to ensure the agent
+                                only references your approved content.
                             </span>
                         </li>
                     </ol>
 
-                    <div class="power-move">
-                        <span class="pm-icon">&#127881;</span>
-                        <strong>Power Move:</strong> Compare the Configure tab side-by-side between the
-                        unpaid Copilot Chat agent and this premium M365 Copilot agent to highlight the
-                        expanded knowledge sources, grounding options, and enterprise-grade capabilities
-                        available with a license.
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        Combining &ldquo;Only use specified sources&rdquo; with specific SharePoint
+                        libraries ensures your agent gives answers grounded strictly in your
+                        organisation&rsquo;s published policies &mdash; no hallucination from web sources.
                     </div>
 
                 </div>
