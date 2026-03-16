@@ -1,7 +1,7 @@
 /* ============================================================
-   INTERACTIVE BEHAVIOURS
+   INTERACTIVE BEHAVIOURS  v3
    - Expand / Collapse cards
-   - Copy Prompt to clipboard
+   - Copy Prompt to clipboard (whitespace-normalised)
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
