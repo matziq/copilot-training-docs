@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const promptBox = btn.closest('.prompt-block').querySelector('.prompt-box');
             if (!promptBox) return;
-            const text = promptBox.textContent.trim();
+            const text = promptBox.textContent.replace(/\s+/g, ' ').trim();
             navigator.clipboard.writeText(text).then(() => {
                 btn.classList.add('copied');
                 const original = btn.innerHTML;
