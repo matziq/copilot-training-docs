@@ -26,8 +26,9 @@
         <header class="page-hero">
             <h1>M365 Copilot Hands-on Training for Power Users &mdash; Trainer Guide</h1>
             <p class="subtitle">
-                Trainer Guide &mdash; Hands-on session covering M365 Copilot for power users
-                with demo walkthroughs and guided exercises.
+                Facilitator Script &amp; Prompt Library &mdash; 60-minute hands-on session
+                covering prompting best practices, app-specific tips, four live demo scenarios,
+                best practices playbook, and upcoming Copilot features.
             </p>
         </header>
 
@@ -40,51 +41,126 @@
 
         <div class="callout callout-note">
             <div class="callout-title">&#128221; Session Details</div>
-            <strong>Format:</strong> Hands-on Training<br />
-            <strong>Audience:</strong> Power Users<br />
-            <strong>Materials:</strong> Copilot Demo Guide &amp; Training Deck
+            <strong>Instructor:</strong> John Rea | SR Cloud Solution Architect<br />
+            <strong>Date:</strong> March 24, 2026<br />
+            <strong>Duration:</strong> 60 minutes<br />
+            <strong>Classification:</strong> Confidential / Internal Use Only<br />
+            <strong>Format:</strong> Interactive demos &middot; Q&amp;A throughout
         </div>
 
         <nav class="toc">
             <div class="toc-title">Contents</div>
             <ul>
-                <li><a href="#overview">&#128203; Session Overview</a></li>
-                <li><a href="#demo-guide">&#128196; Demo Guide</a></li>
-                <li><a href="#training-deck">&#128202; Training Deck</a></li>
+                <li><a href="#intro">&#128203; Introduction &amp; Session Context</a></li>
+                <li><a href="#pre-session">&#9989; Before You Begin</a></li>
+                <li><a href="#scenario-overview">&#128218; Scenario Overview</a></li>
+                <li><a href="#scenario1">&#128231; Scenario 1 &mdash; Triage Your Inbox</a></li>
+                <li><a href="#scenario2">&#128197; Scenario 2 &mdash; Prep for a Big Meeting</a></li>
+                <li><a href="#scenario3">&#128196; Scenario 3 &mdash; Draft a Report in Word</a></li>
+                <li><a href="#scenario4">&#128202; Scenario 4 &mdash; Data Insights in Excel</a></li>
+                <li><a href="#prompt-library">&#128218; Prompt Library Quick Reference</a></li>
+                <li><a href="#demo-tips">&#128161; Tips for a Great Demo</a></li>
+                <li><a href="#prompt-principles">&#9997;&#65039; Prompt Crafting Principles</a></li>
             </ul>
         </nav>
 
         <!-- ============================================================
-             SESSION OVERVIEW
+             INTRODUCTION
              ============================================================ -->
-        <section id="overview">
+        <section id="intro">
 
             <div class="module-header">
-                <div class="module-icon orange">&#128203;</div>
+                <div class="module-icon purple">&#128203;</div>
                 <div class="module-meta">
                     <div class="module-label">Overview</div>
-                    <h2 class="module-title">Session Overview</h2>
+                    <h2 class="module-title">Introduction &amp; Session Context</h2>
                 </div>
             </div>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Overview</span>
-                    <span class="section-card-title">Training Materials</span>
+                    <span class="badge badge-exercise">Context</span>
+                    <span class="section-card-title">About This Guide</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <p>This training includes two key resources for trainers:</p>
+                    <p>This guide is for the instructor&rsquo;s use during the DEMO section of the
+                        M365 Copilot training class. Demos run live in real time on your M365
+                        tenant &mdash; participants watch you work through each scenario with real prompts.</p>
+
+                    <table class="data-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Demo Window</strong></td>
+                                <td>0:25 &ndash; 0:40 (15 minutes total)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Estimated Time per Scenario</strong></td>
+                                <td>~3&ndash;4 minutes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Scenarios</strong></td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Format</strong></td>
+                                <td>Live demos on your M365 tenant</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             BEFORE YOU BEGIN
+             ============================================================ -->
+        <section id="pre-session">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9989;</div>
+                <div class="module-meta">
+                    <div class="module-label">Preparation</div>
+                    <h2 class="module-title">Before You Begin</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Checklist</span>
+                    <span class="section-card-title">Pre-Session Checklist</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
                     <ol class="steps">
                         <li class="step">
                             <span class="step-number">1</span>
-                            <span class="step-text"><strong>Copilot Demo Guide</strong> &mdash; Step-by-step
-                                demo walkthrough with prompts, talking points, and setup instructions.</span>
+                            <span class="step-text">Demos are live &mdash; run them in real time on your M365
+                                tenant</span>
                         </li>
                         <li class="step">
                             <span class="step-number">2</span>
-                            <span class="step-text"><strong>Copilot Training Deck</strong> &mdash; Presentation
-                                slides for the hands-on training session.</span>
+                            <span class="step-text">Each scenario includes an exact prompt, expected output,
+                                and fallback notes</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Estimated time: ~3&ndash;4 minutes per scenario</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Review the Facilitator Tips in each scenario to handle
+                                common edge cases</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text">Keep backup screenshots ready in case of connectivity
+                                issues</span>
                         </li>
                     </ol>
                 </div>
@@ -92,59 +168,584 @@
         </section>
 
         <!-- ============================================================
-             DEMO GUIDE
+             SCENARIO OVERVIEW
              ============================================================ -->
-        <section id="demo-guide">
+        <section id="scenario-overview">
 
             <div class="module-header">
-                <div class="module-icon purple">&#128196;</div>
+                <div class="module-icon orange">&#128218;</div>
                 <div class="module-meta">
-                    <div class="module-label">Trainer Resource</div>
-                    <h2 class="module-title">Demo Guide</h2>
+                    <div class="module-label">Agenda</div>
+                    <h2 class="module-title">Scenario Overview</h2>
                 </div>
+                <span class="module-time">~15 min</span>
             </div>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Document</span>
-                    <span class="section-card-title">Copilot Demo Guide</span>
+                    <span class="badge badge-exercise">Overview</span>
+                    <span class="section-card-title">Demo Scenarios</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <p>The demo guide provides detailed walkthroughs, prompts, and presenter notes
-                        for each section of the hands-on training.</p>
-                    <p><a href="../files/Copilot_Demo_Guide.docx"
-                            style="display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--purple-mid);">&#128229;
-                            Download Copilot Demo Guide (.docx)</a></p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Scenario</th>
+                                <th>App</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Triage Your Inbox</td>
+                                <td>Outlook</td>
+                                <td>~3 min</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Prep for a Big Meeting</td>
+                                <td>Teams + Outlook</td>
+                                <td>~4 min</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Draft a Report in Word</td>
+                                <td>Microsoft Word</td>
+                                <td>~4 min</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Data Insights in Excel</td>
+                                <td>Microsoft Excel</td>
+                                <td>~3 min</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </article>
         </section>
 
         <!-- ============================================================
-             TRAINING DECK
+             SCENARIO 1 — TRIAGE YOUR INBOX
              ============================================================ -->
-        <section id="training-deck">
+        <section id="scenario1">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128231;</div>
+                <div class="module-meta">
+                    <div class="module-label">Scenario 1 of 4</div>
+                    <h2 class="module-title">Triage Your Inbox</h2>
+                </div>
+                <span class="module-time">~3 min</span>
+            </div>
+
+            <div class="callout callout-note">
+                <div class="callout-title">&#128221; Setup</div>
+                <strong>App:</strong> Outlook for Web or Desktop<br />
+                <strong>Setup:</strong> Have Outlook open with your inbox visible. Make sure you
+                have at least 10&ndash;15 unread emails from the past 2 days.
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo</span>
+                    <span class="section-card-title">Step-by-Step Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open Outlook and go to your Inbox</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Click the Copilot icon in the toolbar (or press
+                                <strong>Ctrl+Shift+.</strong>)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Type the following prompt:</span>
+                        </li>
+                    </ol>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt to Use</div>
+                        <div class="prompt-box">Summarize my unread emails from the last 48 hours. Highlight
+                            anything that looks urgent, pull out any action items assigned to me, and
+                            tell me what I can probably deprioritize.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <h4>What to Expect</h4>
+                    <ul>
+                        <li>Copilot will return a bulleted summary grouped by urgency</li>
+                        <li>Action items will be called out separately</li>
+                        <li>You can follow up with: &ldquo;Draft a reply to the most urgent email&rdquo;</li>
+                    </ul>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Talking Points</div>
+                        &ldquo;This is what Monday morning looks like &mdash; instead of reading 47 emails, you get this in 10 seconds&rdquo;<br />
+                        &ldquo;Notice how it surfaced the action items automatically &mdash; no more digging&rdquo;<br />
+                        &ldquo;You can ask follow-up questions, it&rsquo;s a conversation&rdquo;
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Facilitator Tips</div>
+                        <ul>
+                            <li>If the inbox is sparse, say: &ldquo;In a real scenario you&rsquo;d have many more emails &mdash; the power scales with volume&rdquo;</li>
+                            <li>If Copilot is slow, keep talking about the use case while it loads</li>
+                            <li>Backup: have a screenshot ready of a sample output</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SCENARIO 2 — PREP FOR A BIG MEETING
+             ============================================================ -->
+        <section id="scenario2">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128197;</div>
+                <div class="module-meta">
+                    <div class="module-label">Scenario 2 of 4</div>
+                    <h2 class="module-title">Prep for a Big Meeting</h2>
+                </div>
+                <span class="module-time">~4 min</span>
+            </div>
+
+            <div class="callout callout-note">
+                <div class="callout-title">&#128221; Setup</div>
+                <strong>App:</strong> Microsoft Teams (Copilot chat or meeting intelligence)<br />
+                <strong>Setup:</strong> Have a meeting on your calendar for &ldquo;tomorrow&rdquo; or today. Ideally, have a few emails related to that meeting topic.
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo</span>
+                    <span class="section-card-title">Step-by-Step Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open Teams and go to the Copilot chat (left sidebar)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Type the following prompt:</span>
+                        </li>
+                    </ol>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt to Use</div>
+                        <div class="prompt-box">I have a QBR with my VP tomorrow morning. Please check my last 5 emails related to our Q1 results, any Teams messages in my project channels from the last week, and my calendar for today and tomorrow. Give me a 5-point briefing I can use to prepare &mdash; include any risks or open questions I should be ready to address.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <h4>What to Expect</h4>
+                    <ul>
+                        <li>Copilot will pull from email + Teams + calendar</li>
+                        <li>Returns a structured briefing with context, key points, and risks</li>
+                        <li>Follow up with: &ldquo;What questions should I be prepared to answer?&rdquo;</li>
+                    </ul>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Talking Points</div>
+                        &ldquo;This replaces 30 minutes of digging through emails and notes&rdquo;<br />
+                        &ldquo;It&rsquo;s grounding the response in YOUR actual data &mdash; emails, chats, calendar&rdquo;<br />
+                        &ldquo;The follow-up prompt is where it gets really powerful&rdquo;
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Facilitator Tips</div>
+                        <ul>
+                            <li>If the results are sparse, say: &ldquo;The richer your data, the better this gets &mdash; over time Copilot learns your work patterns&rdquo;</li>
+                            <li>Show the follow-up prompt to demonstrate the conversational nature</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SCENARIO 3 — DRAFT A REPORT IN WORD
+             ============================================================ -->
+        <section id="scenario3">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128196;</div>
+                <div class="module-meta">
+                    <div class="module-label">Scenario 3 of 4</div>
+                    <h2 class="module-title">Draft a Report in Word</h2>
+                </div>
+                <span class="module-time">~4 min</span>
+            </div>
+
+            <div class="callout callout-note">
+                <div class="callout-title">&#128221; Setup</div>
+                <strong>App:</strong> Microsoft Word (web or desktop)<br />
+                <strong>Setup:</strong> Have a blank Word document open. Optionally: have a related document in OneDrive to reference.
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo</span>
+                    <span class="section-card-title">Step-by-Step Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open a new Word document</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Click <strong>Draft with Copilot</strong> (appears at the top of a blank doc)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Type the following prompt:</span>
+                        </li>
+                    </ol>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt to Use</div>
+                        <div class="prompt-box">Draft a one-page project status report for the Azure Migration project. Write it for a VP-level audience &mdash; clear, concise, executive tone. Include three sections: (1) Current Status &mdash; on track with Phase 1 complete, Phase 2 delayed 2 days due to vendor issue; (2) Key Risks &mdash; vendor dependency, team bandwidth; (3) Next Steps &mdash; Phase 2 completion by March 28, stakeholder review scheduled for March 30.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <h4>What to Expect</h4>
+                    <ul>
+                        <li>Copilot generates a full structured document</li>
+                        <li>Formatted with headings, bullet points, professional tone</li>
+                        <li>You can then ask: &ldquo;Make the risks section more specific and add a recommended mitigation for each&rdquo;</li>
+                    </ul>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Talking Points</div>
+                        &ldquo;This took about 30 seconds &mdash; a report that might have taken an hour&rdquo;<br />
+                        &ldquo;You gave it the facts &mdash; it handled the structure, format, and language&rdquo;<br />
+                        &ldquo;Notice the tone is exactly VP-level &mdash; that&rsquo;s the &lsquo;audience&rsquo; instruction working&rdquo;
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Facilitator Tips</div>
+                        <ul>
+                            <li>If the output is too long, show the follow-up: &ldquo;Make this more concise &mdash; cut it to half the length&rdquo;</li>
+                            <li>Use the Rewrite feature to show inline editing if time permits</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SCENARIO 4 — DATA INSIGHTS IN EXCEL
+             ============================================================ -->
+        <section id="scenario4">
 
             <div class="module-header">
                 <div class="module-icon green">&#128202;</div>
                 <div class="module-meta">
-                    <div class="module-label">Trainer Resource</div>
-                    <h2 class="module-title">Training Deck</h2>
+                    <div class="module-label">Scenario 4 of 4</div>
+                    <h2 class="module-title">Data Insights in Excel</h2>
+                </div>
+                <span class="module-time">~3 min</span>
+            </div>
+
+            <div class="callout callout-note">
+                <div class="callout-title">&#128221; Setup</div>
+                <strong>App:</strong> Microsoft Excel (desktop or web, with Copilot enabled)<br />
+                <strong>Setup:</strong> Have a spreadsheet open with at least 20&ndash;30 rows of sales or project data. Columns should include: Region, Month, Revenue, Target, Prior Year.
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo</span>
+                    <span class="section-card-title">Step-by-Step Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open your Excel file</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Click <strong>Copilot</strong> in the Home ribbon</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Type the following prompt:</span>
+                        </li>
+                    </ol>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt to Use</div>
+                        <div class="prompt-box">Analyze this sales data and tell me: which 3 regions had the biggest gap between actual and target, what's the overall month-over-month trend, and which chart type would best communicate this to a senior leadership audience?</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <h4>What to Expect</h4>
+                    <ul>
+                        <li>Copilot returns a narrative summary of the analysis</li>
+                        <li>Identifies underperformers with specific numbers</li>
+                        <li>Recommends chart type with reasoning</li>
+                        <li>Follow up: &ldquo;Create that chart and highlight the underperforming regions in red&rdquo;</li>
+                    </ul>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Talking Points</div>
+                        &ldquo;No formulas written, no pivot tables built &mdash; just a question&rdquo;<br />
+                        &ldquo;It&rsquo;s not just showing you the answer, it&rsquo;s explaining the insight&rdquo;<br />
+                        &ldquo;The chart recommendation with &lsquo;why&rsquo; is what used to require a data analyst&rdquo;
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Facilitator Tips</div>
+                        <ul>
+                            <li>If Copilot can&rsquo;t analyze (no table formatted data), say: &ldquo;Make sure your data is in a table format &mdash; Copilot needs structured data to work with&rdquo;</li>
+                            <li>Show the formula suggestion feature as a quick bonus: &ldquo;Write a formula that calculates the % gap between actual and target for each row&rdquo;</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             PROMPT LIBRARY QUICK REFERENCE
+             ============================================================ -->
+        <section id="prompt-library">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128218;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Prompt Library Quick Reference</h2>
                 </div>
             </div>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Presentation</span>
-                    <span class="section-card-title">Copilot Training Deck</span>
+                    <span class="badge badge-exercise">Library</span>
+                    <span class="section-card-title">Full Prompt Table</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <p>The training deck contains the presentation slides to accompany the
-                        hands-on training session.</p>
-                    <p><a href="../files/Copilot_Training_Deck.pptx"
-                            style="display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--purple-mid);">&#128229;
-                            Download Copilot Training Deck (.pptx)</a></p>
+                    <p>Use this table as a reference during the demo or share it with participants as a take-home resource.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>App</th>
+                                <th>Scenario</th>
+                                <th>Prompt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Outlook</td>
+                                <td>Inbox triage</td>
+                                <td>&ldquo;Summarize my unread emails from the last 48 hours. Highlight anything urgent, pull out action items, and tell me what I can deprioritize.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Outlook</td>
+                                <td>Draft reply</td>
+                                <td>&ldquo;Draft a reply to [sender] that acknowledges their concern about [topic] and lets them know I&rsquo;ll follow up by [date].&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Outlook</td>
+                                <td>Email coach</td>
+                                <td>&ldquo;Review this email for tone and clarity before I send it. Flag anything that could come across as aggressive or unclear.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Teams</td>
+                                <td>Meeting prep</td>
+                                <td>&ldquo;Brief me on my [meeting name] &mdash; pull from recent emails, Teams messages, and my calendar.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Teams</td>
+                                <td>Meeting recap</td>
+                                <td>&ldquo;Summarize this meeting. What were the key decisions, action items, and who is responsible for each?&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Teams</td>
+                                <td>Catch up</td>
+                                <td>&ldquo;I missed the last 2 days of messages in the [channel] channel. What did I miss? Any action items for me?&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Word</td>
+                                <td>First draft</td>
+                                <td>&ldquo;Draft a [document type] for [audience] that covers: [topic 1], [topic 2], [topic 3]. Tone: [formal/casual/executive].&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Word</td>
+                                <td>Rewrite</td>
+                                <td>&ldquo;Rewrite this section to be more concise and targeted for a VP audience. Max 3 sentences.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>PowerPoint</td>
+                                <td>New deck</td>
+                                <td>&ldquo;Create a 6-slide deck about [topic]. Audience: [audience]. Include an agenda, 3 content slides, a summary, and a Q&amp;A slide.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Excel</td>
+                                <td>Data insight</td>
+                                <td>&ldquo;What are the top 3 trends in this data? Explain each trend in plain language.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Excel</td>
+                                <td>Formula help</td>
+                                <td>&ldquo;Write a formula that [describes what you need]. Explain each part of the formula.&rdquo;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             TIPS FOR A GREAT DEMO
+             ============================================================ -->
+        <section id="demo-tips">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128161;</div>
+                <div class="module-meta">
+                    <div class="module-label">Best Practices</div>
+                    <h2 class="module-title">Tips for a Great Demo</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tips</span>
+                    <span class="section-card-title">General Delivery</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Always have a backup screenshot in case of connectivity issues</li>
+                        <li>Slow is smooth, smooth is fast &mdash; don&rsquo;t rush through prompts</li>
+                        <li>Encourage participants to try prompts on their own devices during the demo</li>
+                        <li>When something doesn&rsquo;t work perfectly, say &ldquo;This is where you&rsquo;d refine the prompt&rdquo; &mdash; model the iteration behavior</li>
+                        <li>Leave 2 minutes at the end for &ldquo;your turn&rdquo; &mdash; give them 1 prompt to try themselves</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Troubleshooting</span>
+                    <span class="section-card-title">Handling Common Issues</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Situation</th>
+                                <th>What to Do</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Copilot is slow to respond</td>
+                                <td>Keep talking &mdash; explain what Copilot is doing and why it matters. Don&rsquo;t let silence fill the room.</td>
+                            </tr>
+                            <tr>
+                                <td>Output isn&rsquo;t what you expected</td>
+                                <td>Say &ldquo;This is a great example of iterating a prompt&rdquo; &mdash; then refine and re-run.</td>
+                            </tr>
+                            <tr>
+                                <td>Connectivity drops</td>
+                                <td>Switch to your backup screenshot. Narrate what you&rsquo;d have shown.</td>
+                            </tr>
+                            <tr>
+                                <td>Inbox / data is sparse</td>
+                                <td>Acknowledge it: &ldquo;In production you&rsquo;d have much richer data &mdash; the results scale with volume.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Participants get ahead of you</td>
+                                <td>Encourage it! Ask them to share what they tried and what happened.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             PROMPT CRAFTING PRINCIPLES
+             ============================================================ -->
+        <section id="prompt-principles">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9997;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Prompt Crafting Principles</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Principles</span>
+                    <span class="section-card-title">Key Techniques</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Be specific about audience:</strong> &ldquo;Write this for a VP&rdquo; or &ldquo;&hellip;for a technical team&rdquo;</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Specify format:</strong> &ldquo;Use bullet points&rdquo;, &ldquo;Keep it to one page&rdquo;, &ldquo;Write in table format&rdquo;</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Give context:</strong> The more background you give, the better the output</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Iterate:</strong> Show that refining prompts is normal &mdash; not a failure</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Use follow-up prompts:</strong> Show Copilot as a conversation, not a one-shot tool</span>
+                        </li>
+                    </ol>
                 </div>
             </article>
         </section>
