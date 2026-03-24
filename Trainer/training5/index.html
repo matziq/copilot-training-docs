@@ -61,6 +61,8 @@
                 <li><a href="#prompt-library">&#128218; Prompt Library Quick Reference</a></li>
                 <li><a href="#demo-tips">&#128161; Tips for a Great Demo</a></li>
                 <li><a href="#prompt-principles">&#9997;&#65039; Prompt Crafting Principles</a></li>
+                <li><a href="#memory">&#129504; Memory &amp; Custom Instructions</a></li>
+                <li><a href="#useful-prompts">&#128172; Additional Useful Prompts</a></li>
             </ul>
         </nav>
 
@@ -793,6 +795,206 @@
                                 conversation, not a one-shot tool</span>
                         </li>
                     </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MEMORY & CUSTOM INSTRUCTIONS
+             ============================================================ -->
+        <section id="memory">
+
+            <div class="module-header">
+                <div class="module-icon green">&#129504;</div>
+                <div class="module-meta">
+                    <div class="module-label">Personalization</div>
+                    <h2 class="module-title">Memory &amp; Custom Instructions</h2>
+                </div>
+            </div>
+
+            <div class="callout callout-note">
+                <div class="callout-title">&#128221; Presenter Note</div>
+                Walk participants through <strong>Settings &rarr; Personalization &rarr; Custom Instructions</strong>.
+                This is where Copilot learns their preferences and applies them to every response.
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Guide</span>
+                    <span class="section-card-title">Custom Instructions Content</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <h4>Core Principles</h4>
+                    <ul>
+                        <li>Copilot prioritizes accuracy, clarity, and trust</li>
+                        <li>Always distinguish verified facts from inferred reasoning</li>
+                        <li>Never present assumptions or context-based reasoning as fact</li>
+                        <li>Avoid cascade errors by rechecking each step before responding</li>
+                        <li>Think deeply before answering</li>
+                        <li>When uncertain, ask clarifying questions or present 2&ndash;3 vetted options with pros and cons</li>
+                    </ul>
+
+                    <h4>Tone by Audience</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Audience</th>
+                                <th>Tone</th>
+                                <th>Example Language</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Internal / Collaborative</td>
+                                <td>Collaborative, slightly informal, pragmatic</td>
+                                <td>&ldquo;Thanks for sharing.&rdquo; &ldquo;Would it work to proceed this way?&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>Customer / External</td>
+                                <td>Professional, courteous, reassuring</td>
+                                <td>&ldquo;Looking forward to discussing the way forward.&rdquo; &ldquo;Sounds like a great opportunity.&rdquo;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Content Labels</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Label</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>[Verified]</strong></td>
+                                <td>Facts confirmed by authoritative sources</td>
+                            </tr>
+                            <tr>
+                                <td><strong>[Inference]</strong></td>
+                                <td>Logical conclusions based on context</td>
+                            </tr>
+                            <tr>
+                                <td><strong>[Confidence]</strong></td>
+                                <td>Confidence cues: &ldquo;Likely&rdquo;, &ldquo;Based on observed patterns&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>[Unverified]</strong></td>
+                                <td>Claims not yet confirmed</td>
+                            </tr>
+                            <tr>
+                                <td><strong>[Glossary]</strong></td>
+                                <td>Acronyms clarified on first use</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Output Guidelines</h4>
+                    <ul>
+                        <li>Always include a <strong>TLDR</strong> at the top of emails and documents</li>
+                        <li>Present information in logical order: verified facts first, inferences second, recommendations last</li>
+                        <li>Use clear section headings</li>
+                        <li>Be concise while preserving precision</li>
+                        <li>Never guess or fill gaps with plausible language &mdash; state clearly when information is missing</li>
+                        <li>Search enterprise content first: files, emails, chats, meetings, transcripts</li>
+                        <li>For legal or regulatory topics: verify jurisdiction and effective dates</li>
+                        <li>For time-sensitive topics: check date stamps and warn about staleness</li>
+                    </ul>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Talking Point</div>
+                        &ldquo;Custom instructions are like training Copilot to think the way you do.
+                        Set them once, and every response reflects your standards.&rdquo;
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             ADDITIONAL USEFUL PROMPTS
+             ============================================================ -->
+        <section id="useful-prompts">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128172;</div>
+                <div class="module-meta">
+                    <div class="module-label">Power Tips</div>
+                    <h2 class="module-title">Additional Useful Prompts</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Plain Text Output</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>When you want the output to be just a block of text (no formatting):</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Output the results only as a block of plain text. Do not include any other text. Always treat the block of plain text as a block of code that uses text as the code language. Always include a copy button to copy the contents of the box. Do not include sources.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Talking Point</div>
+                        &ldquo;This is great when you need clean output you can paste directly into
+                        an email or document &mdash; no extra formatting to strip out.&rdquo;
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Get the Resultant Prompt</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Useful when running out of iterations (maximum of 30 iterations per chat).
+                        Get the prompt that got you to the current result so you can continue in a new chat:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">What is the resultant prompt so far?</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Talking Point</div>
+                        &ldquo;If you hit the 30-iteration limit, use this to capture your work.
+                        Paste it into a new chat and pick up right where you left off.&rdquo;
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Blocking Off Calendar</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Quickly block time on your calendar without switching apps:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Place the following hold on my calendar. Call it 'HOLD: Important Meeting' No agenda, no attendees. Just trying to block time that I offered for a QBR. All day event. The date is 6/15/2026.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Talking Point</div>
+                        &ldquo;This is a quick win &mdash; block calendar time without
+                        leaving the Copilot chat. Customize the title, date, and type as needed.&rdquo;
+                    </div>
                 </div>
             </article>
         </section>
