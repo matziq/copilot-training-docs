@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copilot Chat Training &mdash; User Guide</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-t6u.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>Copilot Chat Training &mdash; User Guide</h1>
+            <p class="subtitle">
+                Your Practical Quick-Start Guide to Microsoft 365 Copilot Chat.
+            </p>
+        </header>
+
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#access">&#128272; Access Copilot Chat</a></li>
+                <li><a href="#ingredients">&#9997;&#65039; The 4 Ingredients of a Great Prompt</a></li>
+                <li><a href="#try-today">&#128640; Try These Prompts Today</a></li>
+                <li><a href="#cheat-sheet">&#128196; Prompt Cheat Sheet</a></li>
+                <li><a href="#personalization">&#129504; Make Copilot Smarter Over Time</a></li>
+                <li><a href="#more-prompts">&#128218; Find More Prompts</a></li>
+                <li><a href="#tips">&#128161; Tips to Build the Habit</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+             ACCESS COPILOT CHAT
+             ============================================================ -->
+        <section id="access">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128272;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 1</div>
+                    <h2 class="module-title">Access Copilot Chat</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Setup</span>
+                    <span class="section-card-title">Getting Started</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Navigate to <strong>m365copilot.com</strong> and sign in with
+                                your work account.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Look for the <strong>EDP Shield</strong> &mdash; this confirms
+                                your conversations are protected by Enterprise Data Protection. Your company data
+                                is never used to train the AI model.</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             THE 4 INGREDIENTS
+             ============================================================ -->
+        <section id="ingredients">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#9997;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 2</div>
+                    <h2 class="module-title">The 4 Ingredients of a Great Prompt</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Framework</span>
+                    <span class="section-card-title">Prompt Ingredients</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>A good prompt includes four elements:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>What it means</th>
+                                <th>Quick example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Goal</strong></td>
+                                <td>What do you want Copilot to do?</td>
+                                <td>&ldquo;Write a summary&hellip;&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Context</strong></td>
+                                <td>Why, for whom, what&rsquo;s the background?</td>
+                                <td>&ldquo;&hellip;for my manager who missed the meeting&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Source</strong></td>
+                                <td>What data should Copilot reference?</td>
+                                <td>&ldquo;&hellip;based on the attached file&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Expectations</strong></td>
+                                <td>Format, tone, length</td>
+                                <td>&ldquo;&hellip;in 3 bullets, professional tone, under 100 words&rdquo;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Example</span>
+                    <span class="section-card-title">Weak vs. Strong Prompt</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Weak Prompt</div>
+                        <div class="prompt-box">Summarize news about our company.</div>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Strong Prompt</div>
+                        <div class="prompt-box">Summarize the key business risks in the attached Q3 report. Write 5
+                            bullet points for an executive audience. Keep it under 150 words.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             TRY THESE PROMPTS TODAY
+             ============================================================ -->
+        <section id="try-today">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128640;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 3</div>
+                    <h2 class="module-title">Try These Prompts Today</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Email Help</span>
+                    <span class="section-card-title">Email Subject Lines</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Suggest 5 compelling subject lines for the following email. Make them
+                            stand out and use a professional but energetic tone. [paste email body]</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Brainstorming</span>
+                    <span class="section-card-title">Campaign Ideas</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Generate 10 creative campaign ideas for promoting our new sustainability
+                            initiative to employees. Consider digital, in-person, and social formats.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Meeting Summary</span>
+                    <span class="section-card-title">Summarize Meeting Notes (attach a file)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Summarize the attached meeting notes into a concise executive summary.
+                            List: Decisions Made, Action Items (with owner if mentioned), Open Questions.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Writing</span>
+                    <span class="section-card-title">LinkedIn Post</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Write a LinkedIn post about [topic]. Audience: industry peers and
+                            partners. Tone: confident and forward-looking. Max 100 words, lead with a bold opening
+                            statement.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Image</span>
+                    <span class="section-card-title">Image Generation</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Create a vibrant, professional image representing sustainability and
+                            innovation in the beverage industry. Style: modern, optimistic, suitable for a PowerPoint
+                            presentation.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             PROMPT CHEAT SHEET
+             ============================================================ -->
+        <section id="cheat-sheet">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128196;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 4</div>
+                    <h2 class="module-title">Prompt Cheat Sheet</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Cheat Sheet</span>
+                    <span class="section-card-title">Quick-Start Prompts by Task</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Starter Prompt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Summarize a document</td>
+                                <td>Summarize the attached [doc] in 5 bullets for [audience]. Focus on [key areas].</td>
+                            </tr>
+                            <tr>
+                                <td>Draft an email</td>
+                                <td>Draft an email to [recipient] about [topic]. Tone: [professional/casual]. Length:
+                                    [short/medium].</td>
+                            </tr>
+                            <tr>
+                                <td>Brainstorm ideas</td>
+                                <td>Generate 10 ideas for [goal]. Consider [constraints or context].</td>
+                            </tr>
+                            <tr>
+                                <td>Edit/improve writing</td>
+                                <td>Rewrite the following to be more [concise/persuasive/clear]: [paste text]</td>
+                            </tr>
+                            <tr>
+                                <td>Create an image</td>
+                                <td>Create an image of [description]. Style: [modern/vibrant/minimal]. Use for
+                                    [purpose].</td>
+                            </tr>
+                            <tr>
+                                <td>Meeting recap</td>
+                                <td>Summarize these meeting notes. List: Decisions, Action Items (with owner), Open
+                                    Questions.</td>
+                            </tr>
+                            <tr>
+                                <td>LinkedIn post</td>
+                                <td>Write a LinkedIn post about [topic]. Audience: [who]. Tone: [tone]. Max [X] words.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MAKE COPILOT SMARTER OVER TIME
+             ============================================================ -->
+        <section id="personalization">
+
+            <div class="module-header">
+                <div class="module-icon green">&#129504;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 5</div>
+                    <h2 class="module-title">Make Copilot Smarter Over Time</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Setup</span>
+                    <span class="section-card-title">Custom Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Go to <strong>Settings &rarr; Work Profile / Custom Instructions</strong> in Copilot Chat
+                        and tell Copilot about yourself:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions Example</div>
+                        <div class="prompt-box">I am a [your role] at [your company]. I prefer concise, plain-language
+                            responses. When writing emails or communications for me, always match a professional but
+                            approachable tone. Avoid jargon.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <p>You only need to set this once &mdash; Copilot will apply it to all future responses
+                        automatically.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             FIND MORE PROMPTS
+             ============================================================ -->
+        <section id="more-prompts">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128218;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 6</div>
+                    <h2 class="module-title">Find More Prompts</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Resources</span>
+                    <span class="section-card-title">Prompt Gallery</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Visit <strong>aka.ms/Prompts</strong> to browse Microsoft&rsquo;s Prompt Gallery &mdash;
+                        searchable by role, task, and app. Save your favorites and share them with your team
+                        directly in Copilot Chat.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             TIPS TO BUILD THE HABIT
+             ============================================================ -->
+        <section id="tips">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128161;</div>
+                <div class="module-meta">
+                    <div class="module-label">Getting Started</div>
+                    <h2 class="module-title">Tips to Build the Habit</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tips</span>
+                    <span class="section-card-title">Daily Habits</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step"><span class="step-number">1</span><span class="step-text"><strong>Start
+                                    small:</strong> use Copilot for one task per day</span></li>
+                        <li class="step"><span class="step-number">2</span><span
+                                class="step-text"><strong>Iterate:</strong>
+                                ask follow-up questions to refine the response</span></li>
+                        <li class="step"><span class="step-number">3</span><span class="step-text">Try <strong>Work
+                                    mode</strong> for internal tasks and <strong>Web mode</strong> for general
+                                research</span></li>
+                        <li class="step"><span class="step-number">4</span><span class="step-text"><strong>Share
+                                    prompts</strong> that work well with your colleagues</span></li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../js/main.v3.js"></script>
+
+</body>
+
+</html>
