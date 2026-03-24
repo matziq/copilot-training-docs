@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agents Immersion Workshop &mdash; User Guide</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-t7u.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>AI Agents Immersion Workshop &mdash; User Guide</h1>
+            <p class="subtitle">
+                Your hands-on guide to building AI agents with Microsoft Copilot Studio.
+                Learn what agents are, how to build one, and compete in the hackathon challenge.
+            </p>
+        </header>
+
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#objectives">&#127919; Training Objectives</a></li>
+                <li><a href="#prerequisites">&#128272; Prerequisites &amp; Setup</a></li>
+                <li><a href="#what-are-agents">&#129302; What Are AI Agents?</a></li>
+                <li><a href="#landscape">&#127758; The Microsoft AI Agent Landscape</a></li>
+                <li><a href="#how-agents-work">&#9881;&#65039; How Agents Work</a></li>
+                <li><a href="#copilot-studio">&#128736;&#65039; Building with Copilot Studio</a></li>
+                <li><a href="#hackathon">&#127942; Hackathon Challenge</a></li>
+                <li><a href="#use-cases">&#128161; Use Case Ideas</a></li>
+                <li><a href="#demo-day">&#127908; Demo Day</a></li>
+                <li><a href="#resources">&#128218; Resources &amp; Next Steps</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+             TRAINING OBJECTIVES
+             ============================================================ -->
+        <section id="objectives">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#127919;</div>
+                <div class="module-meta">
+                    <div class="module-label">Overview</div>
+                    <h2 class="module-title">Training Objectives</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Objectives</span>
+                    <span class="section-card-title">By the End of This Workshop You Will&hellip;</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Explain</strong> what AI agents are and how they differ from traditional automation</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Identify</strong> high-value AI agent use cases specific to your organization</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Build</strong> a functional agent using Microsoft Copilot Studio (no-code/low-code)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Connect</strong> an agent to at least one real enterprise data source or action</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Present</strong> a live agent demo with a clear business impact statement</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             PREREQUISITES & SETUP
+             ============================================================ -->
+        <section id="prerequisites">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128272;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 1</div>
+                    <h2 class="module-title">Prerequisites &amp; Setup</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Setup</span>
+                    <span class="section-card-title">What You Need</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>No coding experience required</strong> &mdash; this workshop is designed for business and IT teams</li>
+                        <li>A <strong>Microsoft 365 account</strong></li>
+                        <li>Access to <strong>Copilot Studio</strong> (environments will be provisioned for you)</li>
+                        <li>Log in at <strong><a href="https://make.powerapps.com" target="_blank" rel="noopener">make.powerapps.com</a></strong></li>
+                    </ul>
+                    <p><strong>Team Size:</strong> Groups of 3&ndash;5 participants per hackathon team</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             WHAT ARE AI AGENTS?
+             ============================================================ -->
+        <section id="what-are-agents">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#129302;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 2</div>
+                    <h2 class="module-title">What Are AI Agents?</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Concept</span>
+                    <span class="section-card-title">AI Agents Defined</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>AI Agents are <strong>autonomous systems that perceive their environment, make decisions,
+                            and take action</strong> to achieve goals. They go beyond simple chatbots by being able to
+                        reason, plan, use tools, and even collaborate with other agents.</p>
+                    <p><strong>Core capabilities:</strong></p>
+                    <ul>
+                        <li><strong>Reasoning &amp; Planning</strong> &mdash; Can break down complex tasks into steps</li>
+                        <li><strong>Tool Use</strong> &mdash; Call APIs, run workflows, search knowledge bases</li>
+                        <li><strong>Multi-Agent Collaboration</strong> &mdash; Agents can work together on complex problems</li>
+                        <li><strong>Memory</strong> &mdash; Remember context within a conversation and access enterprise data</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Concept</span>
+                    <span class="section-card-title">Three Types of AI Agents</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>How It Works</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Declarative Agents</strong></td>
+                                <td>Structured, rule-based responses</td>
+                                <td>FAQs, guided processes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Custom Engine Agents</strong></td>
+                                <td>Business-logic-driven workflows</td>
+                                <td>Approvals, data processing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Autonomous Agents</strong></td>
+                                <td>Self-directed, goal-oriented action</td>
+                                <td>Complex multi-step tasks</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             THE MICROSOFT AI AGENT LANDSCAPE
+             ============================================================ -->
+        <section id="landscape">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#127758;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 3</div>
+                    <h2 class="module-title">The Microsoft AI Agent Landscape</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Overview</span>
+                    <span class="section-card-title">Three Platforms for Building Agents</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>What It Does</th>
+                                <th>Who It&rsquo;s For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Microsoft 365 Copilot</strong></td>
+                                <td>Your everyday AI assistant across Word, Excel, Teams, and Outlook</td>
+                                <td>All users</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Copilot Studio</strong></td>
+                                <td>Low-code/no-code builder with 1,000+ data-source connectors</td>
+                                <td>Business &amp; IT teams</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Azure AI Foundry</strong></td>
+                                <td>Full-stack development with multi-agent orchestration and advanced customization</td>
+                                <td>Technical / Dev teams</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             HOW AGENTS WORK
+             ============================================================ -->
+        <section id="how-agents-work">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#9881;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 4</div>
+                    <h2 class="module-title">How Agents Work &mdash; Under the Hood</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Concept</span>
+                    <span class="section-card-title">The Agent Processing Loop</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Trigger</strong> &mdash; A user message, event, or scheduled task kicks things off</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Reasoning</strong> &mdash; The LLM interprets the request, selects tools, and plans steps</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Tools &amp; Actions</strong> &mdash; The agent calls APIs, searches knowledge bases, or runs Power Automate flows</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Memory</strong> &mdash; Short-term context (conversation) + long-term storage (SharePoint, Dataverse)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Output</strong> &mdash; The agent responds, takes action, or hands off to a human</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text"><strong>Human-in-the-Loop</strong> &mdash; Approval gates and escalation paths keep humans in control</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             BUILDING WITH COPILOT STUDIO
+             ============================================================ -->
+        <section id="copilot-studio">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128736;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 5</div>
+                    <h2 class="module-title">Building with Copilot Studio</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Overview</span>
+                    <span class="section-card-title">What Copilot Studio Offers</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>3 Ways to Build</strong></td>
+                                <td>From a topic, from a template, or by describing with natural language</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Knowledge Sources</strong></td>
+                                <td>SharePoint, web URLs, uploaded files</td>
+                            </tr>
+                            <tr>
+                                <td><strong>1,000+ Connectors</strong></td>
+                                <td>Connect to data sources via connectors and Microsoft Graph</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Publish Anywhere</strong></td>
+                                <td>Deploy to Teams, SharePoint, websites, and custom apps</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Enterprise Security</strong></td>
+                                <td>Built-in safety, compliance, and enterprise security controls</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Built-in Analytics</strong></td>
+                                <td>Monitor performance with analytics and conversation logs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Hands-On</span>
+                    <span class="section-card-title">Build Your First Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Log in to Copilot Studio at <strong><a href="https://make.powerapps.com" target="_blank" rel="noopener">make.powerapps.com</a></strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Create a new agent</strong> and define its purpose (e.g., &ldquo;HR onboarding assistant&rdquo;)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Add a knowledge source</strong> &mdash; a SharePoint site or upload a document</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Add one action</strong> using a Power Automate connector</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Test</strong> in the built-in chat canvas</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text"><strong>Refine and iterate</strong> based on test results</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             HACKATHON CHALLENGE
+             ============================================================ -->
+        <section id="hackathon">
+
+            <div class="module-header">
+                <div class="module-icon red">&#127942;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 6</div>
+                    <h2 class="module-title">Hackathon Challenge</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Challenge</span>
+                    <span class="section-card-title">Your Mission</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">The Challenge</div>
+                        <div class="prompt-box">Build an AI Agent that solves a real business problem at your organization.</div>
+                    </div>
+                    <p><strong>Ground Rules:</strong></p>
+                    <ul>
+                        <li>Teams of 3&ndash;5 people</li>
+                        <li>Use Microsoft Copilot Studio (environments provided)</li>
+                        <li>Your agent must connect to at least <strong>one real data source or action</strong></li>
+                        <li>Demo must be <strong>live and working</strong> &mdash; no slides-only submissions</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             USE CASE IDEAS
+             ============================================================ -->
+        <section id="use-cases">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#128161;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 7</div>
+                    <h2 class="module-title">Use Case Ideas</h2>
+                </div>
+            </div>
+
+            <p>Choose from or be inspired by these enterprise use case categories:</p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Ideas</span>
+                    <span class="section-card-title">Use Cases by Department</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Example Use Cases</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Operations</strong></td>
+                                <td>Automated scheduling, inventory alerts, compliance monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Customer Experience</strong></td>
+                                <td>Loyalty agent, personalized offers, feedback triage &amp; routing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supply Chain</strong></td>
+                                <td>Supplier tracking, demand forecasting, disruption alerts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HR &amp; Training</strong></td>
+                                <td>Onboarding agent, policy Q&amp;A bot, knowledge base search</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Finance</strong></td>
+                                <td>Invoice processing, budget variance alerts, reconciliation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Marketing</strong></td>
+                                <td>Campaign brief generation, content approval workflows</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMO DAY
+             ============================================================ -->
+        <section id="demo-day">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#127908;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 8</div>
+                    <h2 class="module-title">Demo Day &mdash; How It Works</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Format</span>
+                    <span class="section-card-title">5 Minutes Per Team</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Problem Statement (1 min)</strong> &mdash; What challenge
+                                did your team choose? Why does it matter?</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Live Demo (3 min)</strong> &mdash; Show your agent in
+                                action &mdash; real data, real actions, real output</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Impact Statement (1 min)</strong> &mdash; Measurable
+                                business value: time saved, errors reduced, revenue protected</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Criteria</span>
+                    <span class="section-card-title">How You&rsquo;ll Be Judged</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Criterion</th>
+                                <th>Weight</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Business Impact</td>
+                                <td>30%</td>
+                            </tr>
+                            <tr>
+                                <td>Creativity &amp; Innovation</td>
+                                <td>25%</td>
+                            </tr>
+                            <tr>
+                                <td>Technical Execution</td>
+                                <td>25%</td>
+                            </tr>
+                            <tr>
+                                <td>Demo Quality</td>
+                                <td>20%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:var(--sp-4);"><strong>Prizes:</strong> Microsoft swag + leadership recognition!</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             RESOURCES & NEXT STEPS
+             ============================================================ -->
+        <section id="resources">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128218;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Resources &amp; Next Steps</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Links</span>
+                    <span class="section-card-title">Helpful Resources</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Copilot Studio:</strong> <a href="https://make.powerapps.com" target="_blank" rel="noopener">make.powerapps.com</a></li>
+                        <li><strong>Microsoft Learn:</strong> <a href="https://learn.microsoft.com/copilot-studio" target="_blank" rel="noopener">learn.microsoft.com/copilot-studio</a></li>
+                        <li><strong>Workshop Guides:</strong> Shared on SharePoint</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Next Steps</span>
+                    <span class="section-card-title">After the Workshop</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Winning agents will be considered for a <strong>production pilot</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>FastTrack support</strong> is available for deployment</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Join monthly <strong>AI Office Hours</strong> with your Microsoft account team</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Join the <strong>Microsoft AI Champion</strong> program</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../js/main.v3.js"></script>
+
+</body>
+
+</html>
