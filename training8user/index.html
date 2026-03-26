@@ -40,6 +40,8 @@
                 <li><a href="#quick-start">&#128640; Quick-Start Prompts</a></li>
                 <li><a href="#files">&#128206; Working with Files</a></li>
                 <li><a href="#tips">&#128161; Top 10 Power User Tips</a></li>
+                <li><a href="#advanced-tips">&#128640; Advanced Prompt Tips</a></li>
+                <li><a href="#custom-instructions">&#9881;&#65039; Memory &amp; Custom Instructions</a></li>
                 <li><a href="#demo-prompts">&#127916; Demo Prompts to Try Today</a></li>
                 <li><a href="#resources">&#128218; Resources</a></li>
             </ul>
@@ -105,12 +107,14 @@
                         </li>
                         <li class="step">
                             <span class="step-number">2</span>
-                            <span class="step-text"><strong>M365:</strong> Visit <strong>m365.cloud.microsoft</strong> &rarr;
+                            <span class="step-text"><strong>M365:</strong> Visit <strong>m365.cloud.microsoft</strong>
+                                &rarr;
                                 then click Copilot from the navigation</span>
                         </li>
                         <li class="step">
                             <span class="step-number">3</span>
-                            <span class="step-text"><strong>Copilot App:</strong> Visit <strong>copilot.cloud.microsoft</strong>
+                            <span class="step-text"><strong>Copilot App:</strong> Visit
+                                <strong>copilot.cloud.microsoft</strong>
                                 and sign in with your work account</span>
                         </li>
                     </ol>
@@ -246,7 +250,8 @@
                 <div class="section-card-body">
                     <div class="prompt-block">
                         <div class="prompt-label">Prompt</div>
-                        <div class="prompt-box">Summarize my emails from the last 3 days and flag any urgent items.</div>
+                        <div class="prompt-box">Summarize my emails from the last 3 days and flag any urgent items.
+                        </div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                     <div class="prompt-block">
@@ -471,6 +476,139 @@
         </section>
 
         <!-- ============================================================
+             ADVANCED PROMPT TIPS
+             ============================================================ -->
+        <section id="advanced-tips">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128640;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 6</div>
+                    <h2 class="module-title">Advanced Prompt Tips</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tip 1</span>
+                    <span class="section-card-title">Force Plain Text Output</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>When you want clean, copy-ready output, add this to the end of your prompt:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt Suffix</div>
+                        <div class="prompt-box">Output the results only as a block of plain text. Do not include any other text. Always treat the block of plain text as a block of code that uses text as the code language. Always include a copy button to copy the contents of the box. Do not include sources.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tip 2</span>
+                    <span class="section-card-title">Retrieve Your Resultant Prompt</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Running out of iterations (max 30 per chat)? Ask Copilot for the cumulative prompt
+                        so you can continue in a new chat:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">What is the resultant prompt so far?</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <p>Copilot will output a consolidated version of everything you&rsquo;ve asked for.
+                        Copy it, start a new chat, paste the resultant prompt, and continue where you
+                        left off.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MEMORY & CUSTOM INSTRUCTIONS
+             ============================================================ -->
+        <section id="custom-instructions">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9881;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Step 7</div>
+                    <h2 class="module-title">Memory &amp; Custom Instructions</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Overview</span>
+                    <span class="section-card-title">What Are Custom Instructions?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Custom Instructions let you set persistent preferences that shape every Copilot
+                        response &mdash; without repeating yourself each time. Access them via
+                        <strong>Settings &rarr; Personalization</strong> in Copilot Chat.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Sample</span>
+                    <span class="section-card-title">Sample Custom Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Copy any or all of these sections into your Copilot Custom Instructions
+                        (<strong>Settings &rarr; Personalization</strong>):</p>
+
+                    <h4 style="margin-top:var(--sp-6);">General Behavior</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; General</div>
+                        <div class="prompt-box">Copilot prioritizes accuracy, clarity, and trust.
+Always distinguish verified facts from inferred reasoning.
+Never present assumptions or context-based reasoning as fact.
+Avoid cascade errors by rechecking each step before responding.
+Think deeply before answering. When uncertain, ask clarifying questions or present 2&ndash;3 vetted options with pros and cons.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Internal / Collaborative Audience</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; Internal Tone</div>
+                        <div class="prompt-box">Collaborative and supportive. Slightly informal and pragmatic.
+Quick confirmations and concise language. Use only when the audience is clearly internal.
+Example: &ldquo;Thanks for sharing.&rdquo; &ldquo;Would it work to proceed this way?&rdquo; &ldquo;Appreciate your support.&rdquo;</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Customer / External Audience</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; External Tone</div>
+                        <div class="prompt-box">Professional, courteous, and reassuring. Formal greetings and closings.
+Avoid jargon unless contextually relevant and explained. No slang or overly casual language.
+Provide clear next steps and timelines.
+Example: &ldquo;Looking forward to discussing the way forward.&rdquo; &ldquo;Sounds like a great opportunity.&rdquo;</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Content Labels</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; Labels</div>
+                        <div class="prompt-box">Use explicit labels consistently:
+[Verified] facts confirmed by authoritative sources
+[Inference] logical conclusions based on context
+[Confidence] cues like &ldquo;Likely&rdquo; or &ldquo;Based on observed patterns,&rdquo;
+[Unverified] claims not yet confirmed
+[Glossary] acronyms clarified on first use.
+When mixing content, present verified facts first, then clearly disclose inferred content with:
+&ldquo;The following points are inferred based on available context and may require validation.&rdquo;</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
              DEMO PROMPTS TO TRY TODAY
              ============================================================ -->
         <section id="demo-prompts">
@@ -478,7 +616,7 @@
             <div class="module-header">
                 <div class="module-icon orange">&#127916;</div>
                 <div class="module-meta">
-                    <div class="module-label">Step 6</div>
+                    <div class="module-label">Step 8</div>
                     <h2 class="module-title">Demo Prompts to Try Today</h2>
                 </div>
             </div>
