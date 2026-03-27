@@ -26,9 +26,10 @@
         <header class="page-hero">
             <h1>AI Agents Immersion Workshop &mdash; Trainer Guide</h1>
             <p class="subtitle">
-                Full-Day Facilitator Script &mdash; Conceptual learning, hands-on building
-                with Microsoft Copilot Studio, and a live hackathon challenge. Participants
-                leave with a working AI agent prototype and a clear path to production.
+                Full-Day Facilitator Script &mdash; Intermediate (200-level) workshop covering
+                AI agent education, hands-on exercises with pre-built and declarative agents,
+                and a live hackathon challenge. Participants leave with a working AI agent
+                prototype and a clear path to pilot deployment.
             </p>
         </header>
 
@@ -41,10 +42,12 @@
 
         <div class="callout callout-note">
             <div class="callout-title">&#128221; Session Details</div>
-            <strong>Duration:</strong> Full day (8:00 AM &ndash; 1:30 PM)<br />
-            <strong>Format:</strong> Lecture &middot; Demos &middot; Hands-on Lab &middot; Hackathon &middot;
-            Presentations<br />
-            <strong>Classification:</strong> Trainer Version &mdash; Internal Use Only
+            <strong>Duration:</strong> Full day (8:30 AM &ndash; 5:00 PM)<br />
+            <strong>Level:</strong> Intermediate (200)<br />
+            <strong>Format:</strong> Education &middot; Hands-On Exercises &middot; Hackathon &middot;
+            Team Demos &middot; Q&amp;A<br />
+            <strong>Classification:</strong> Trainer Version &mdash; For Trainer Use Only, Not for Distribution to
+            Participants
         </div>
 
         <nav class="toc">
@@ -52,11 +55,12 @@
             <ul>
                 <li><a href="#pre-session">&#9989; Pre-Session Setup</a></li>
                 <li><a href="#agenda">&#128197; Workshop Agenda</a></li>
-                <li><a href="#mod1">&#129302; Module 1 &mdash; What Are AI Agents?</a></li>
-                <li><a href="#mod2">&#128736;&#65039; Module 2 &mdash; Copilot Studio Hands-On</a></li>
-                <li><a href="#mod3">&#127942; Module 3 &mdash; Hackathon Challenge</a></li>
-                <li><a href="#use-cases">&#128161; Use Case Library</a></li>
-                <li><a href="#judging">&#128203; Judging &amp; Demo Day</a></li>
+                <li><a href="#mod1">&#129302; Module 1 &mdash; AI Agents in Microsoft 365</a></li>
+                <li><a href="#mod2">&#128736;&#65039; Module 2 &mdash; Hands-On Exercises</a></li>
+                <li><a href="#mod3">&#127942; Module 3 &mdash; Hackathon</a></li>
+                <li><a href="#scenarios">&#128161; Scenario Starter Pack</a></li>
+                <li><a href="#build-tips">&#128296; Build Tips &amp; Best Practices</a></li>
+                <li><a href="#judging">&#128203; Demos &amp; Judging</a></li>
                 <li><a href="#resources">&#128218; Resources &amp; Next Steps</a></li>
             </ul>
         </nav>
@@ -84,26 +88,38 @@
                     <ol class="steps">
                         <li class="step">
                             <span class="step-number">1</span>
-                            <span class="step-text">Provision Copilot Studio environments for all
-                                participants &mdash; confirm at <strong>make.powerapps.com</strong></span>
+                            <span class="step-text">Provision <strong>Copilot Studio</strong> environments and
+                                <strong>Copilot licenses</strong> for all participants</span>
                         </li>
                         <li class="step">
                             <span class="step-number">2</span>
-                            <span class="step-text">Share workshop guides on SharePoint or Teams channel</span>
+                            <span class="step-text">Share participant workbooks and sample documents on SharePoint or
+                                Teams channel</span>
                         </li>
                         <li class="step">
                             <span class="step-number">3</span>
-                            <span class="step-text">Confirm final attendee list and team assignments (3&ndash;5 people
-                                per team)</span>
+                            <span class="step-text">Confirm final attendee list and team assignments (3&ndash;4 people
+                                per team, mix roles)</span>
                         </li>
                         <li class="step">
                             <span class="step-number">4</span>
-                            <span class="step-text">Verify AV setup, projector, and reliable Wi-Fi at the venue</span>
+                            <span class="step-text">Verify AV setup, projector, reliable Wi-Fi, and table
+                                help-flags</span>
                         </li>
                         <li class="step">
                             <span class="step-number">5</span>
-                            <span class="step-text">Prepare printed hackathon challenge briefs and judging
+                            <span class="step-text">Print hackathon scenario briefs, design canvases, and judging
                                 scorecards</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text">Prepare a sample SharePoint site with knowledge content for
+                                Exercise 2</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">7</span>
+                            <span class="step-text">Prepare sample weekly sales data table for the Analyst Agent
+                                exercise</span>
                         </li>
                     </ol>
                 </div>
@@ -140,38 +156,53 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>8:00 &ndash; 8:30 AM</td>
-                                <td>Welcome &amp; Introductions</td>
+                                <td>8:30 &ndash; 9:00 AM</td>
+                                <td>Registration</td>
+                                <td>Check-in</td>
+                            </tr>
+                            <tr>
+                                <td>9:00 &ndash; 9:30 AM</td>
+                                <td>Welcome, Goals &amp; Housekeeping</td>
                                 <td>Plenary</td>
                             </tr>
                             <tr>
-                                <td>8:30 &ndash; 9:30 AM</td>
-                                <td>AI Agents: Concepts &amp; Capabilities</td>
+                                <td>9:30 &ndash; 11:00 AM</td>
+                                <td>AI Agents Education (200-level)</td>
                                 <td>Lecture + Q&amp;A</td>
                             </tr>
                             <tr>
-                                <td>9:30 &ndash; 10:30 AM</td>
-                                <td>Microsoft Copilot Studio Hands-On Overview</td>
-                                <td>Demo + Lab</td>
+                                <td>11:00 &ndash; 11:15 AM</td>
+                                <td>Break</td>
+                                <td>&mdash;</td>
                             </tr>
                             <tr>
-                                <td>10:30 &ndash; 11:00 AM</td>
-                                <td>Hackathon Challenge Kickoff</td>
+                                <td>11:15 AM &ndash; 12:30 PM</td>
+                                <td>Hands-On Exercises</td>
+                                <td>Lab</td>
+                            </tr>
+                            <tr>
+                                <td>12:30 &ndash; 1:15 PM</td>
+                                <td>Debrief Discussion &amp; Lunch</td>
+                                <td>Working Lunch</td>
+                            </tr>
+                            <tr>
+                                <td>1:15 &ndash; 1:30 PM</td>
+                                <td>Hackathon Kickoff &amp; Team Formation</td>
                                 <td>Briefing</td>
                             </tr>
                             <tr>
-                                <td>11:00 AM &ndash; 1:00 PM</td>
-                                <td>Team Build Time</td>
-                                <td>Hackathon</td>
+                                <td>1:30 &ndash; 4:00 PM</td>
+                                <td>Build Phase (Hackathon)</td>
+                                <td>Teams Build</td>
                             </tr>
                             <tr>
-                                <td>1:00 &ndash; 1:30 PM</td>
-                                <td>Agent Demos &amp; Judging</td>
+                                <td>4:00 &ndash; 4:45 PM</td>
+                                <td>Team Demos &amp; Judging</td>
                                 <td>Presentations</td>
                             </tr>
                             <tr>
-                                <td>1:30 PM</td>
-                                <td>Winner Announcement &amp; Closing</td>
+                                <td>4:45 &ndash; 5:00 PM</td>
+                                <td>Awards, Next Steps &amp; Close</td>
                                 <td>Plenary</td>
                             </tr>
                         </tbody>
@@ -181,21 +212,22 @@
         </section>
 
         <!-- ============================================================
-             MODULE 1 — WHAT ARE AI AGENTS?
+             MODULE 1 — AI AGENTS IN MICROSOFT 365
              ============================================================ -->
         <section id="mod1">
 
             <div class="module-header">
                 <div class="module-icon orange">&#129302;</div>
                 <div class="module-meta">
-                    <div class="module-label">Module 1 &mdash; 8:30&ndash;9:30 AM</div>
-                    <h2 class="module-title">What Are AI Agents?</h2>
+                    <div class="module-label">Module 1 &mdash; 9:30&ndash;11:00 AM</div>
+                    <h2 class="module-title">AI Agents in Microsoft 365</h2>
                 </div>
             </div>
 
             <div class="callout callout-note">
                 <div class="callout-title">&#127919; Learning Outcomes</div>
-                Understand agent fundamentals, types, and the Microsoft AI agent landscape.
+                Understand agent fundamentals, the agent spectrum, pre-built vs. declarative
+                vs. custom agents, agent architecture, and real-world business value.
             </div>
 
             <div class="toggle-bar">
@@ -206,85 +238,215 @@
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Concept</span>
-                    <span class="section-card-title">AI Agents Defined</span>
+                    <span class="section-card-title">What Are AI Agents?</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <p>AI Agents are <strong>autonomous systems that perceive their environment, make decisions,
-                            and take action</strong> to achieve goals. They are built on large language models (LLMs)
-                        with enterprise data access.</p>
-                    <p><strong>Core capabilities:</strong></p>
-                    <ul>
-                        <li>Reasoning and planning</li>
-                        <li>Tool use (APIs, connectors, workflows)</li>
-                        <li>Multi-agent collaboration</li>
-                        <li>Memory (short-term conversation + long-term knowledge)</li>
-                    </ul>
+                    <p>An AI Agent is software that <strong>perceives its environment, reasons about a goal,
+                            and takes actions</strong> &mdash; autonomously or with human guidance &mdash; to achieve
+                        a defined outcome.</p>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">P</span>
+                            <span class="step-text"><strong>Perceive</strong> &mdash; Reads data from email, SharePoint,
+                                Teams, databases, or external systems</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">R</span>
+                            <span class="step-text"><strong>Reason</strong> &mdash; Uses an LLM to interpret
+                                instructions, context, and goals</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">A</span>
+                            <span class="step-text"><strong>Act</strong> &mdash; Sends messages, updates records, calls
+                                APIs, generates documents</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">L</span>
+                            <span class="step-text"><strong>Learn</strong> &mdash; Improves with feedback, memory, and
+                                grounding in your knowledge</span>
+                        </li>
+                    </ol>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Note</div>
+                        Emphasize the difference between agents and standard Copilot Chat:
+                        agents are <em>goal-oriented systems</em> that can take actions, not just
+                        answer questions. Use the PRAL framework to make it memorable.
+                    </div>
                 </div>
             </article>
 
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Concept</span>
-                    <span class="section-card-title">Three Agent Types</span>
+                    <span class="section-card-title">The Agent Spectrum &mdash; Low to High Complexity</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Type</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Declarative Agents</strong></td>
-                                <td>Structured, rule-based responses</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Custom Engine Agents</strong></td>
-                                <td>Business-logic-driven workflows</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Autonomous Agents</strong></td>
-                                <td>Self-directed, goal-oriented action</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-
-            <article class="section-card">
-                <div class="section-card-header">
-                    <span class="badge badge-exercise">Concept</span>
-                    <span class="section-card-title">The Microsoft AI Agent Landscape</span>
-                    <span class="collapse-arrow">&#9660;</span>
-                </div>
-                <div class="section-card-body">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
+                                <th>Complexity</th>
+                                <th>Agent Type</th>
                                 <th>Platform</th>
-                                <th>Description</th>
-                                <th>Audience</th>
+                                <th>Key Capabilities</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Microsoft 365 Copilot</strong></td>
-                                <td>Everyday AI assistant across Word, Excel, Teams, Outlook</td>
-                                <td>All users</td>
+                                <td><strong>Low</strong></td>
+                                <td>Pre-Built Agents</td>
+                                <td>Microsoft 365</td>
+                                <td>Copilot Chat, Researcher, Analyst, SharePoint Agents, Facilitator Agent &mdash;
+                                    zero configuration</td>
                             </tr>
                             <tr>
-                                <td><strong>Copilot Studio</strong></td>
-                                <td>Low-code/no-code builder with 1,000+ data-source connectors</td>
-                                <td>Business &amp; IT teams</td>
+                                <td><strong>Medium</strong></td>
+                                <td>Declarative Agents</td>
+                                <td>Copilot Studio Lite / SharePoint</td>
+                                <td>Custom persona &amp; tone, scoped knowledge sources, no-code configuration,
+                                    controlled topic scope</td>
                             </tr>
                             <tr>
-                                <td><strong>Azure AI Foundry</strong></td>
-                                <td>Full-stack development with multi-agent orchestration</td>
-                                <td>Technical teams</td>
+                                <td><strong>High</strong></td>
+                                <td>Custom &amp; Autonomous Agents</td>
+                                <td>Copilot Studio</td>
+                                <td>Autonomous workflows, multi-step reasoning, external connectors, API calls,
+                                    approval &amp; escalation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Pre-Built Agents in Microsoft 365</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Ready to use today &mdash; no configuration required. Available in Copilot Chat,
+                        Teams, and Microsoft 365 apps.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Agent</th>
+                                <th>What It Does</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Copilot Chat</strong></td>
+                                <td>General-purpose AI assistant across Microsoft 365. Search, summarize, draft,
+                                    and analyze across your org&rsquo;s data.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Researcher</strong></td>
+                                <td>Deep-dive research on any topic using web and organizational content. Ideal
+                                    for market analysis or competitive intel.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analyst</strong></td>
+                                <td>Data analysis and visualization. Connect to datasets and get instant charts,
+                                    summaries, and insights via Python.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SharePoint Agents</strong></td>
+                                <td>Ask questions about any SharePoint site or document library. Great for SOPs,
+                                    policy docs, and training materials.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Facilitator Agent</strong></td>
+                                <td>Works live during meetings to capture notes, track action items, and generate
+                                    follow-up tasks in Planner from Teams calls.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PowerPoint Agent</strong></td>
+                                <td>Creates and refines slide decks through natural conversation. Useful for
+                                    reporting and exec communications.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Declarative Agents &mdash; Copilot Studio Lite &amp;
+                        SharePoint</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>What Are Declarative Agents?</strong></p>
+                    <ul>
+                        <li>Custom Copilot persona with a specific name, role, and tone</li>
+                        <li>Scoped to specific knowledge sources (SharePoint, files, URLs)</li>
+                        <li>Built in minutes using Copilot Studio Lite &mdash; no coding required</li>
+                        <li>Deployed in Microsoft Teams, SharePoint, or Copilot Chat</li>
+                        <li>Configured via natural language instructions</li>
+                    </ul>
+                    <p><strong>When to Use:</strong></p>
+                    <ul>
+                        <li>You have docs/SOPs that employees constantly ask about</li>
+                        <li>You want a scoped Q&amp;A bot without coding</li>
+                        <li>HR policy, training materials, compliance guides</li>
+                    </ul>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Note</div>
+                        Use a concrete example: a &ldquo;Franchise Ops Assistant&rdquo; scoped to
+                        a SharePoint site that answers questions about brand standards, equipment
+                        specs, and operational checklists. Deployed in Teams for all field staff.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Custom &amp; Autonomous Agents &mdash; Copilot Studio</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Copilot Studio enables fully custom agents that can take actions, call APIs,
+                        run workflows, and operate autonomously &mdash; with or without human approval.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Capability</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Triggers</strong></td>
+                                <td>Scheduled runs, Teams messages, form submissions, SharePoint events, Power
+                                    Automate flows</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Actions</strong></td>
+                                <td>Send emails, update Dataverse records, call REST APIs, generate documents,
+                                    create tickets</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Knowledge</strong></td>
+                                <td>Grounded in SharePoint, files, URLs, SQL databases, or custom connectors</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AI Reasoning</strong></td>
+                                <td>Multi-step reasoning, topic branching, adaptive responses, and generative
+                                    answers</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Governance</strong></td>
+                                <td>DLP policies, admin controls, analytics, usage monitoring, and approval
+                                    gates</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Integrations</strong></td>
+                                <td>1,000+ connectors via Power Platform: SAP, Salesforce, ServiceNow, custom
+                                    APIs</td>
                             </tr>
                         </tbody>
                     </table>
@@ -294,62 +456,157 @@
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Concept</span>
-                    <span class="section-card-title">How Agents Work &mdash; Under the Hood</span>
+                    <span class="section-card-title">Agent Architecture &mdash; Key Building Blocks</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
                     <ol class="steps">
                         <li class="step">
                             <span class="step-number">1</span>
-                            <span class="step-text"><strong>Trigger</strong> &mdash; User message, event, or scheduled
-                                task initiates the agent</span>
+                            <span class="step-text"><strong>Instructions</strong> &mdash; System prompt, persona, scope,
+                                tone, guardrails</span>
                         </li>
                         <li class="step">
                             <span class="step-number">2</span>
-                            <span class="step-text"><strong>Reasoning</strong> &mdash; The LLM interprets the request,
-                                selects tools, and plans steps</span>
+                            <span class="step-text"><strong>Knowledge</strong> &mdash; SharePoint, files, URLs,
+                                Dataverse, web search</span>
                         </li>
                         <li class="step">
                             <span class="step-number">3</span>
-                            <span class="step-text"><strong>Tools &amp; Actions</strong> &mdash; Agent calls APIs,
-                                searches knowledge bases, runs Power Automate flows</span>
+                            <span class="step-text"><strong>Tools &amp; Actions</strong> &mdash; Send email, update
+                                records, call APIs, create tasks</span>
                         </li>
                         <li class="step">
                             <span class="step-number">4</span>
-                            <span class="step-text"><strong>Memory</strong> &mdash; Short-term context (conversation) +
-                                long-term (SharePoint, Dataverse)</span>
+                            <span class="step-text"><strong>Connectors</strong> &mdash; Power Platform, Microsoft Graph,
+                                custom REST APIs</span>
                         </li>
                         <li class="step">
                             <span class="step-number">5</span>
-                            <span class="step-text"><strong>Output</strong> &mdash; Agent responds, takes action, or
-                                hands off to a human</span>
-                        </li>
-                        <li class="step">
-                            <span class="step-number">6</span>
-                            <span class="step-text"><strong>Human-in-the-Loop</strong> &mdash; Approval gates and
-                                escalation paths keep humans in control</span>
+                            <span class="step-text"><strong>Triggers</strong> &mdash; User message, schedule, event,
+                                form, workflow</span>
                         </li>
                     </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Business Value of AI Agents</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Area</th>
+                                <th>Agent Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Guest Experience</strong></td>
+                                <td>AI agents that personalize loyalty offers, handle order inquiries, respond
+                                    to reviews, and surface upsell recommendations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Franchise Ops</strong></td>
+                                <td>Automate audit prep, brand compliance checks, royalty reporting, and
+                                    coaching workflows. Reduce time-to-answer for franchisees.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HR &amp; Onboarding</strong></td>
+                                <td>Onboarding agent: answers policy questions, guides paperwork, schedules
+                                    training, and reduces manager overhead for new hires</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supply Chain</strong></td>
+                                <td>Monitor inventory levels, flag supplier alerts, assist with demand
+                                    forecasting, and route procurement queries</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Marketing</strong></td>
+                                <td>Generate brand-compliant campaign copy, localize promotions by region,
+                                    and summarize A/B test results across brands</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Examples</span>
+                    <span class="section-card-title">Real-World Agent Scenarios</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Agent Type</th>
+                                <th>Business Outcome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Crew Onboarding Agent</strong></td>
+                                <td>Copilot Studio (Custom)</td>
+                                <td>50% reduction in manager time spent answering new hire questions. Agent
+                                    guides crew through paperwork, policy, uniform standards, and first-week
+                                    schedule.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Franchise Compliance Bot</strong></td>
+                                <td>Declarative Agent</td>
+                                <td>Business consultants query brand standards 24/7. Agent grounded in the
+                                    Brand Standards SharePoint library and escalates gaps.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Daily Sales Flash Analyzer</strong></td>
+                                <td>Analyst Agent (Pre-Built)</td>
+                                <td>GMs paste daily sales data into Copilot Chat. Analyst agent generates
+                                    variance analysis, flags underperforming dayparts, and drafts action plans
+                                    automatically.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supplier Escalation Agent</strong></td>
+                                <td>Copilot Studio (Autonomous)</td>
+                                <td>Monitors inventory feeds. When stock drops below par, agent automatically
+                                    emails suppliers, creates a purchase order draft, and alerts the ops manager
+                                    via Teams.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Note</div>
+                        Walk through each scenario and ask participants which resonates most
+                        with their daily work. These examples set up the hackathon ideation later.
+                    </div>
                 </div>
             </article>
         </section>
 
         <!-- ============================================================
-             MODULE 2 — COPILOT STUDIO HANDS-ON
+             MODULE 2 — HANDS-ON EXERCISES
              ============================================================ -->
         <section id="mod2">
 
             <div class="module-header">
                 <div class="module-icon blue">&#128736;&#65039;</div>
                 <div class="module-meta">
-                    <div class="module-label">Module 2 &mdash; 9:30&ndash;10:30 AM</div>
-                    <h2 class="module-title">Copilot Studio Hands-On</h2>
+                    <div class="module-label">Module 2 &mdash; 11:15 AM&ndash;12:30 PM</div>
+                    <h2 class="module-title">Hands-On Exercises</h2>
                 </div>
             </div>
 
             <div class="callout callout-note">
                 <div class="callout-title">&#127919; Learning Outcomes</div>
-                Navigate Copilot Studio and build a basic agent end-to-end.
+                Explore pre-built agents in Microsoft 365 and build a declarative agent using
+                Copilot Studio Lite. Two structured exercises to build confidence before the
+                hackathon.
             </div>
 
             <div class="toggle-bar">
@@ -359,111 +616,158 @@
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Overview</span>
-                    <span class="section-card-title">Copilot Studio Capabilities</span>
+                    <span class="badge badge-exercise">Exercise 1</span>
+                    <span class="section-card-title">Explore Pre-Built Agents (~30 min)</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>3 Ways to Build</strong></td>
-                                <td>From a topic, from a template, or by describing with natural language</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Knowledge Sources</strong></td>
-                                <td>SharePoint, web URLs, uploaded files</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Actions</strong></td>
-                                <td>Power Automate connectors (1,000+ available)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Testing</strong></td>
-                                <td>Built-in chat canvas for live testing</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Publishing</strong></td>
-                                <td>Teams, SharePoint, websites, and custom apps</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Security</strong></td>
-                                <td>Built-in safety, compliance, and enterprise security controls</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Analytics</strong></td>
-                                <td>Monitor with analytics and conversation logs</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p><strong>Goal:</strong> Experience how pre-built agents handle real tasks &mdash;
+                        no setup required.</p>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Sign In</strong> &mdash; Go to
+                                <strong>m365.cloud.microsoft/chat</strong> and sign in with your Microsoft 365
+                                account</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Try Copilot Chat</strong> &mdash; Ask it to summarize a
+                                document, then ask it to draft an agenda for a performance review meeting</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Open Researcher Agent</strong> &mdash; In the left panel,
+                                click Agents &rarr; Researcher. Prompt: &ldquo;Research trends in drive-thru technology
+                                for 2025&ndash;2026.&rdquo;</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Try the Analyst Agent</strong> &mdash; Click Agents &rarr;
+                                Analyst. Paste in the sample weekly sales table (provided). Ask for a daypart breakdown
+                                and chart.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Explore SharePoint Agent</strong> &mdash; Navigate to the
+                                sample SharePoint site, click the Copilot icon, and ask a question about the content.
+                            </span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text"><strong>Reflection</strong> &mdash; Note what impressed you and
+                                where you see gaps. Each participant shares 1 insight in the debrief.</span>
+                        </li>
+                    </ol>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Note</div>
+                        Walk through Step 2 live on the projector, then let participants proceed
+                        independently through Steps 3&ndash;6. Circulate to help anyone who
+                        can&rsquo;t find the Agents panel. Have the sample sales data ready to
+                        share via Teams chat.
+                    </div>
                 </div>
             </article>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Lab</span>
-                    <span class="section-card-title">Hands-On: Build Your First Agent</span>
+                    <span class="badge badge-exercise">Exercise 2</span>
+                    <span class="section-card-title">Build a Declarative Agent (~45 min)</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <div class="callout callout-note">
-                        <div class="callout-title">&#128221; Trainer Tip</div>
-                        Walk through each step live on the projector. Pause after each step to let
-                        participants catch up. Have a co-facilitator roam the room to assist.
-                    </div>
+                    <p><strong>Goal:</strong> Build a scoped Copilot agent grounded in your organization&rsquo;s
+                        knowledge &mdash; in under 45 minutes.</p>
                     <ol class="steps">
                         <li class="step">
                             <span class="step-number">1</span>
-                            <span class="step-text">Log in to Copilot Studio at
-                                <strong>make.powerapps.com</strong></span>
+                            <span class="step-text"><strong>Open Copilot Studio</strong> &mdash; Go to
+                                <strong>copilotstudio.microsoft.com</strong>. Click Create &rarr; New Agent. Select
+                                &ldquo;Copilot Studio Lite&rdquo; (no-code).</span>
                         </li>
                         <li class="step">
                             <span class="step-number">2</span>
-                            <span class="step-text">Create a new agent and define its purpose</span>
+                            <span class="step-text"><strong>Name &amp; Describe</strong> &mdash; Name your agent
+                                (e.g., &ldquo;Ops Assistant&rdquo;) and write a short description of what it
+                                does.</span>
                         </li>
                         <li class="step">
                             <span class="step-number">3</span>
-                            <span class="step-text">Add a knowledge source (SharePoint site or uploaded document)</span>
+                            <span class="step-text"><strong>Write Instructions</strong> &mdash; System prompt example:
+                                &ldquo;You are a helpful assistant for operations. Answer questions about brand
+                                standards, policies, and operational procedures. Keep responses concise and
+                                professional.&rdquo;</span>
                         </li>
                         <li class="step">
                             <span class="step-number">4</span>
-                            <span class="step-text">Add one action using a Power Automate connector</span>
+                            <span class="step-text"><strong>Add Knowledge Source</strong> &mdash; Click Add knowledge
+                                &rarr; SharePoint. Paste the sample SharePoint URL provided. Wait for indexing to
+                                complete (2&ndash;3 min).</span>
                         </li>
                         <li class="step">
                             <span class="step-number">5</span>
-                            <span class="step-text">Test in the built-in chat canvas</span>
+                            <span class="step-text"><strong>Test Your Agent</strong> &mdash; Use the test panel on the
+                                right. Ask real questions a user would ask. Refine instructions based on the
+                                response.</span>
                         </li>
                         <li class="step">
                             <span class="step-number">6</span>
-                            <span class="step-text">Refine and iterate based on test results</span>
+                            <span class="step-text"><strong>Optional: Publish to Teams</strong> &mdash; Click Publish
+                                &rarr; Microsoft Teams. Share the link with a colleague to test cross-device.</span>
                         </li>
                     </ol>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Note</div>
+                        Walk through Steps 1&ndash;3 live before letting participants proceed.
+                        Emphasize that the <em>system prompt is the soul of the agent</em> &mdash;
+                        spend time helping participants write clear, specific instructions.
+                        Share the sample SharePoint URL in Teams chat for easy copy-paste.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Debrief</span>
+                    <span class="section-card-title">Exercise Debrief &amp; Discussion</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Discussion Questions:</strong></p>
+                    <ol>
+                        <li>What surprised you most about the pre-built agents?</li>
+                        <li>Where did you see the biggest potential for your organization?</li>
+                        <li>What limitations or gaps did you notice?</li>
+                        <li>Which agent felt most relevant to your day-to-day work?</li>
+                        <li>What questions do you have before the Hackathon?</li>
+                    </ol>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Note</div>
+                        Ask each table to share one insight. Capture key themes on the
+                        whiteboard &mdash; these feed directly into Hackathon ideation.
+                        Transition to lunch and let them know the Hackathon starts at 1:15 PM.
+                    </div>
                 </div>
             </article>
         </section>
 
         <!-- ============================================================
-             MODULE 3 — HACKATHON CHALLENGE
+             MODULE 3 — HACKATHON
              ============================================================ -->
         <section id="mod3">
 
             <div class="module-header">
                 <div class="module-icon red">&#127942;</div>
                 <div class="module-meta">
-                    <div class="module-label">Module 3 &mdash; 10:30 AM&ndash;1:30 PM</div>
-                    <h2 class="module-title">Hackathon Challenge</h2>
+                    <div class="module-label">Module 3 &mdash; 1:15&ndash;4:00 PM</div>
+                    <h2 class="module-title">Hackathon</h2>
                 </div>
             </div>
 
             <div class="callout callout-note">
                 <div class="callout-title">&#127919; Learning Outcomes</div>
-                Apply agent-building skills to a real business problem using Microsoft Copilot Studio.
+                Ideate, build, and demo a working AI agent prototype that solves a real
+                business problem.
             </div>
 
             <div class="toggle-bar">
@@ -474,48 +778,213 @@
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Briefing</span>
-                    <span class="section-card-title">Challenge Brief &amp; Ground Rules</span>
+                    <span class="section-card-title">Hackathon Kickoff</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <div class="prompt-block">
-                        <div class="prompt-label">The Challenge</div>
-                        <div class="prompt-box">Build an AI Agent that solves a real business problem at your
-                            organization.</div>
-                    </div>
-                    <p><strong>Ground Rules:</strong></p>
-                    <ul>
-                        <li>Teams of 3&ndash;5 people</li>
-                        <li>Use Microsoft Copilot Studio (environments provided)</li>
-                        <li>Agent must connect to at least one real data source or action</li>
-                        <li>Demo must be live and working &mdash; no slides-only submissions</li>
-                    </ul>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Teams</strong></td>
+                                <td>3&ndash;4 people per team. Mix roles &mdash; bring ops, tech, and business
+                                    perspectives.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Scenario</strong></td>
+                                <td>Choose from the Scenario Starter Pack or propose your own (must be approved
+                                    by facilitator).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Build</strong></td>
+                                <td>Use Copilot Studio Lite, Copilot Studio, or M365 pre-built agents.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Demo</strong></td>
+                                <td>5-minute demo at 4:00 PM. Show the agent working + explain the business
+                                    value.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Judging</strong></td>
+                                <td>Scored on: Business Value, Feasibility, Creativity, and Completeness.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Help</strong></td>
+                                <td>Facilitators circulate throughout. Raise your hand or use the help flag at
+                                    your table.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
 
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Framework</span>
+                    <span class="section-card-title">Ideation Framework &mdash; Find Your Best Agent Scenario</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Use this 3-step thinking process to identify a high-value agent scenario:</p>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Pain Point</strong> &mdash; What frustrates your team daily?
+                                Same questions repeated, reports that take hours, new hires who can&rsquo;t find
+                                policies, complaints not routed consistently.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Process</strong> &mdash; What repeatable process underlies
+                                it? Q&amp;A lookup &rarr; knowledge base. Data aggregation &rarr; reporting.
+                                Document search &rarr; onboarding. Intake &amp; routing &rarr; resolution.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Agent Type</strong> &mdash; Which agent fits? Q&amp;A &rarr;
+                                Declarative Agent. Data analysis &rarr; Analyst Agent. Searching docs &rarr; SharePoint
+                                Agent. Multi-step workflows &rarr; Copilot Studio.</span>
+                        </li>
+                    </ol>
+                    <p style="margin-top:var(--sp-4);"><strong>TIP:</strong> The best scenarios have a clear
+                        before/after &mdash; pick something where the agent saves real time or reduces errors.</p>
                     <div class="callout callout-note">
-                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        <div class="callout-title">&#128221; Trainer Note</div>
+                        Give teams 15 minutes for ideation. Circulate and help them narrow down
+                        to one scenario. Approve any custom scenarios before build starts.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Canvas</span>
+                    <span class="section-card-title">Agent Design Canvas &mdash; Plan Before You Build</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Teams should complete this canvas before starting to build. Share with your
+                        facilitator for feedback.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Questions to Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Scenario Name</strong></td>
+                                <td>What is your agent called? What does it do in one sentence?</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agent Type</strong></td>
+                                <td>Pre-Built / Declarative / Custom (Copilot Studio)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Target User</strong></td>
+                                <td>Who uses this agent? (GM, crew member, manager, corporate team)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trigger / Entry Point</strong></td>
+                                <td>How is the agent activated? (message, schedule, event, form)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Knowledge Sources</strong></td>
+                                <td>SharePoint site, files, URLs, database, API</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Key Actions</strong></td>
+                                <td>What does it DO? (answer, create, send, update, escalate)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Expected Outcome</strong></td>
+                                <td>What changes for the user? Time saved? Errors reduced? Better
+                                    experience?</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Success Metric</strong></td>
+                                <td>How will you know it worked? (# questions handled, time saved, %
+                                    reduction in escalations)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Risks / Guardrails</strong></td>
+                                <td>What could go wrong? What topics should it avoid? What needs human
+                                    approval?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Timeline</span>
+                    <span class="section-card-title">Build Phase Timeline</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Milestone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1:30 PM</td>
+                                <td>Kickoff &mdash; begin building</td>
+                            </tr>
+                            <tr>
+                                <td>2:15 PM</td>
+                                <td>Check-in &mdash; facilitators circulate</td>
+                            </tr>
+                            <tr>
+                                <td>3:00 PM</td>
+                                <td>Mid-point &mdash; progress check</td>
+                            </tr>
+                            <tr>
+                                <td>3:45 PM</td>
+                                <td>Final review &mdash; prepare demo script</td>
+                            </tr>
+                            <tr>
+                                <td>4:00 PM</td>
+                                <td>Demos start</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Note</div>
                         Circulate between teams every 15&ndash;20 minutes. Help unblock technical
-                        issues early. Remind teams to focus on a working demo rather than a
-                        feature-complete product.
+                        issues early. At the 3:00 PM mid-point, remind teams to focus on a
+                        working demo rather than a feature-complete product. At 3:45, ensure
+                        every team has a demo script ready.
                     </div>
                 </div>
             </article>
         </section>
 
         <!-- ============================================================
-             USE CASE LIBRARY
+             SCENARIO STARTER PACK
              ============================================================ -->
-        <section id="use-cases">
+        <section id="scenarios">
 
             <div class="module-header">
                 <div class="module-icon teal">&#128161;</div>
                 <div class="module-meta">
                     <div class="module-label">Reference</div>
-                    <h2 class="module-title">Use Case Library</h2>
+                    <h2 class="module-title">Scenario Starter Pack</h2>
                 </div>
             </div>
 
-            <p>Teams may choose from (or be inspired by) the following use cases tailored to common
-                enterprise scenarios:</p>
+            <p>Teams may choose from these scenarios or propose their own (facilitator must approve
+                custom scenarios). Each maps to a real business problem.</p>
 
             <div class="toggle-bar">
                 <button data-action="expand-all">&#9660; Expand All</button>
@@ -524,100 +993,173 @@
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Operations</span>
-                    <span class="section-card-title">Operations Use Cases</span>
+                    <span class="badge badge-exercise">Scenario A</span>
+                    <span class="section-card-title">Crew Member Onboarding Bot</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <ul>
-                        <li>Automated scheduling and shift management</li>
-                        <li>Inventory alert agent with threshold-based notifications</li>
-                        <li>Franchise compliance monitoring and reporting</li>
-                    </ul>
+                    <p><strong>Agent Type:</strong> Copilot Studio (Custom)<br />
+                        <strong>Applicable to:</strong> All Brands</p>
+                    <p>Agent guides new crew through first-day paperwork, uniform standards, food
+                        safety certification steps, and schedule questions. Reduces manager onboarding
+                        time.</p>
                 </div>
             </article>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">CX</span>
-                    <span class="section-card-title">Customer Experience Use Cases</span>
+                    <span class="badge badge-exercise">Scenario B</span>
+                    <span class="section-card-title">Franchise Ops Q&amp;A Assistant</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <ul>
-                        <li>AI-powered loyalty agent with personalized offer recommendations</li>
-                        <li>Customer feedback triage and routing agent</li>
-                    </ul>
+                    <p><strong>Agent Type:</strong> Declarative Agent<br />
+                        <strong>Applicable to:</strong> All Brands</p>
+                    <p>Answers franchisee questions about royalties, brand standards, marketing fund
+                        contributions, and equipment specs. Grounded in the Franchise Ops SharePoint
+                        site.</p>
                 </div>
             </article>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Supply Chain</span>
-                    <span class="section-card-title">Supply Chain Use Cases</span>
+                    <span class="badge badge-exercise">Scenario C</span>
+                    <span class="section-card-title">Daily Sales Flash Summarizer</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <ul>
-                        <li>Supplier order tracking and status agent</li>
-                        <li>Demand forecasting alerts and disruption notifications</li>
-                    </ul>
+                    <p><strong>Agent Type:</strong> Analyst / Copilot Studio<br />
+                        <strong>Applicable to:</strong> All Brands</p>
+                    <p>Ingests daily sales export, compares to budget and prior week, highlights
+                        variance by daypart and channel, and drafts a GM action summary.</p>
                 </div>
             </article>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">HR</span>
-                    <span class="section-card-title">HR &amp; Training Use Cases</span>
+                    <span class="badge badge-exercise">Scenario D</span>
+                    <span class="section-card-title">Guest Complaint Routing Agent</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <ul>
-                        <li>Onboarding agent for new staff</li>
-                        <li>Policy Q&amp;A bot connected to HR knowledge base</li>
-                    </ul>
+                    <p><strong>Agent Type:</strong> Copilot Studio (Custom)<br />
+                        <strong>Applicable to:</strong> All Brands</p>
+                    <p>Triages incoming guest feedback (email/form), classifies complaint type, routes
+                        to the correct team (ops/marketing/legal), and auto-drafts a response.</p>
                 </div>
             </article>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Finance</span>
-                    <span class="section-card-title">Finance Use Cases</span>
+                    <span class="badge badge-exercise">Scenario E</span>
+                    <span class="section-card-title">New Menu Item Launch Prep Agent</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <ul>
-                        <li>Invoice processing and approval workflow agent</li>
-                        <li>Royalty reconciliation and budget variance alerts</li>
-                    </ul>
+                    <p><strong>Agent Type:</strong> Declarative Agent<br />
+                        <strong>Applicable to:</strong> All Brands</p>
+                    <p>Guides store teams through menu launch checklist: training materials, POS update
+                        steps, supply confirmation, and marketing asset location in SharePoint.</p>
                 </div>
             </article>
 
             <article class="section-card">
                 <div class="section-card-header">
-                    <span class="badge badge-exercise">Marketing</span>
-                    <span class="section-card-title">Marketing Use Cases</span>
+                    <span class="badge badge-exercise">Scenario F</span>
+                    <span class="section-card-title">Vendor Escalation &amp; PO Agent</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <ul>
-                        <li>Campaign brief generation agent</li>
-                        <li>Content approval workflow automation</li>
-                    </ul>
+                    <p><strong>Agent Type:</strong> Copilot Studio (Autonomous)<br />
+                        <strong>Applicable to:</strong> Supply Chain</p>
+                    <p>Monitors inventory levels from the supply system. When stock drops below par,
+                        triggers supplier outreach, creates a draft PO, and alerts the ops manager.</p>
                 </div>
             </article>
         </section>
 
         <!-- ============================================================
-             JUDGING & DEMO DAY
+             BUILD TIPS & BEST PRACTICES
+             ============================================================ -->
+        <section id="build-tips">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128296;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Build Tips &amp; Best Practices</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tips</span>
+                    <span class="section-card-title">8 Tips for Building Great Agents</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">S</span>
+                            <span class="step-text"><strong>Start Simple</strong> &mdash; Build the smallest version
+                                first. A working MVP beats an unfinished complex agent every time.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">I</span>
+                            <span class="step-text"><strong>Instructions Matter</strong> &mdash; Spend time on your
+                                system prompt. Be specific about persona, tone, scope, and what to avoid.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">K</span>
+                            <span class="step-text"><strong>Quality Knowledge</strong> &mdash; Garbage in, garbage
+                                out. Use clean, well-structured SharePoint docs or files as your knowledge
+                                source.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">T</span>
+                            <span class="step-text"><strong>Test Adversarially</strong> &mdash; Ask your agent
+                                off-topic questions and edge cases. Make sure it stays in scope and fails
+                                gracefully.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">B</span>
+                            <span class="step-text"><strong>Business Value First</strong> &mdash; Always tie your
+                                agent to a real outcome: time saved, errors reduced, experience improved.
+                                Quantify if possible.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">D</span>
+                            <span class="step-text"><strong>Document As You Go</strong> &mdash; Note your design
+                                decisions, what worked, and what you&rsquo;d change. This helps during the demo
+                                and pilot phase.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">G</span>
+                            <span class="step-text"><strong>Think About Guardrails</strong> &mdash; What should the
+                                agent NOT do? Define restrictions in your system prompt to prevent scope creep
+                                and misuse.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">C</span>
+                            <span class="step-text"><strong>Collaborate</strong> &mdash; Mix roles in your team. Ops
+                                people know the pain points; tech people know the tools. Both perspectives
+                                matter.</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMOS & JUDGING
              ============================================================ -->
         <section id="judging">
 
             <div class="module-header">
                 <div class="module-icon purple">&#128203;</div>
                 <div class="module-meta">
-                    <div class="module-label">Demo Day</div>
-                    <h2 class="module-title">Judging &amp; Demo Day</h2>
+                    <div class="module-label">Demo Day &mdash; 4:00 PM</div>
+                    <h2 class="module-title">Demos &amp; Judging</h2>
                 </div>
             </div>
 
@@ -629,65 +1171,95 @@
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Format</span>
-                    <span class="section-card-title">Demo Format (5 min per team)</span>
+                    <span class="section-card-title">5-Minute Demo Script</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
                     <ol class="steps">
                         <li class="step">
-                            <span class="step-number">1</span>
-                            <span class="step-text"><strong>Problem Statement (1 min)</strong> &mdash; What challenge
-                                did your team choose? Why does it matter to the organization?</span>
+                            <span class="step-number">0:00</span>
+                            <span class="step-text"><strong>The Problem (30 sec)</strong> &mdash; State the pain point
+                                in one sentence. Who feels it? How often?</span>
                         </li>
                         <li class="step">
-                            <span class="step-number">2</span>
-                            <span class="step-text"><strong>Live Demo (3 min)</strong> &mdash; Show your agent in
-                                action &mdash; real data, real actions, real output</span>
+                            <span class="step-number">0:30</span>
+                            <span class="step-text"><strong>Meet Your Agent (1 min)</strong> &mdash; Show the agent
+                                name, type, and knowledge sources. Explain your system prompt in plain
+                                language.</span>
                         </li>
                         <li class="step">
-                            <span class="step-number">3</span>
-                            <span class="step-text"><strong>Impact Statement (1 min)</strong> &mdash; Measurable
-                                business value: time saved, errors reduced, revenue protected</span>
+                            <span class="step-number">1:30</span>
+                            <span class="step-text"><strong>Live Demo (2 min)</strong> &mdash; Show 2&ndash;3 real
+                                interactions. Narrate what the agent is doing and why.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3:30</span>
+                            <span class="step-text"><strong>Business Value (1 min)</strong> &mdash; Quantify the
+                                impact: time saved, errors reduced, or experience improved.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4:30</span>
+                            <span class="step-text"><strong>What&rsquo;s Next (30 sec)</strong> &mdash; If you had
+                                more time or resources, what would you add or improve?</span>
                         </li>
                     </ol>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Pro Tips</div>
+                        <ul>
+                            <li>Have a backup screenshot in case of tech issues</li>
+                            <li>Demo with real-sounding questions, not generic ones</li>
+                            <li>Speak to the specific business use case</li>
+                            <li>It&rsquo;s OK if it&rsquo;s not perfect &mdash; show the potential</li>
+                        </ul>
+                    </div>
                 </div>
             </article>
 
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Criteria</span>
-                    <span class="section-card-title">Judging Criteria</span>
+                    <span class="section-card-title">Judging Scorecard (100 Points Total)</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Criterion</th>
-                                <th>Weight</th>
+                                <th>Criterion (25 pts each)</th>
+                                <th>21&ndash;25</th>
+                                <th>11&ndash;20</th>
+                                <th>0&ndash;10</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Business Impact</td>
-                                <td>30%</td>
+                                <td><strong>Business Value</strong></td>
+                                <td>Clear business case, quantified impact, leadership-ready</td>
+                                <td>Good idea, some value articulated, needs refinement</td>
+                                <td>Unclear value or not tied to operations</td>
                             </tr>
                             <tr>
-                                <td>Creativity &amp; Innovation</td>
-                                <td>25%</td>
+                                <td><strong>Technical Feasibility</strong></td>
+                                <td>Solid architecture, correct agent type, deployment-ready</td>
+                                <td>Works in demo, some gaps in production readiness</td>
+                                <td>Significant technical issues or wrong tool choice</td>
                             </tr>
                             <tr>
-                                <td>Technical Execution</td>
-                                <td>25%</td>
+                                <td><strong>Creativity &amp; Innovation</strong></td>
+                                <td>Unexpected, inspiring, opens new possibilities</td>
+                                <td>Solid idea, some creative elements</td>
+                                <td>Expected or derivative solution</td>
                             </tr>
                             <tr>
-                                <td>Demo Quality</td>
-                                <td>20%</td>
+                                <td><strong>Demo Completeness</strong></td>
+                                <td>Well-rehearsed, clear narrative, compelling live demo</td>
+                                <td>Good demo, some rough edges</td>
+                                <td>Incomplete or unclear presentation</td>
                             </tr>
                         </tbody>
                     </table>
                     <p style="margin-top:var(--sp-4);"><strong>Prizes:</strong> Microsoft swag + leadership recognition.
-                        Winner announcement at 1:30 PM.</p>
+                        Winner announcement at 4:45 PM.</p>
                 </div>
             </article>
         </section>
@@ -713,17 +1285,55 @@
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Resources</span>
-                    <span class="section-card-title">During the Workshop</span>
+                    <span class="section-card-title">Key Links</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <ul>
-                        <li><strong>Microsoft Copilot Studio:</strong> <a href="https://make.powerapps.com"
-                                target="_blank" rel="noopener">make.powerapps.com</a></li>
-                        <li><strong>Microsoft Learn:</strong> <a href="https://learn.microsoft.com/copilot-studio"
-                                target="_blank" rel="noopener">learn.microsoft.com/copilot-studio</a></li>
-                        <li><strong>Workshop Guides:</strong> Shared on SharePoint</li>
-                    </ul>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Resource</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Microsoft Copilot Studio</td>
+                                <td><a href="https://copilotstudio.microsoft.com" target="_blank"
+                                        rel="noopener">copilotstudio.microsoft.com</a></td>
+                            </tr>
+                            <tr>
+                                <td>Agent Builder (M365 Copilot)</td>
+                                <td><a href="https://m365.cloud.microsoft/chat" target="_blank"
+                                        rel="noopener">m365.cloud.microsoft/chat</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft Learn &mdash; Copilot Studio</td>
+                                <td><a href="https://learn.microsoft.com/copilot-studio" target="_blank"
+                                        rel="noopener">learn.microsoft.com/copilot-studio</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft Copilot Adoption Hub</td>
+                                <td><a href="https://adoption.microsoft.com/copilot" target="_blank"
+                                        rel="noopener">adoption.microsoft.com/copilot</a></td>
+                            </tr>
+                            <tr>
+                                <td>Copilot Studio Samples</td>
+                                <td><a href="https://aka.ms/CopilotStudioSamples" target="_blank"
+                                        rel="noopener">aka.ms/CopilotStudioSamples</a></td>
+                            </tr>
+                            <tr>
+                                <td>AI Skills Navigator</td>
+                                <td><a href="https://learn.microsoft.com/training/ai" target="_blank"
+                                        rel="noopener">learn.microsoft.com/training/ai</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft FastTrack</td>
+                                <td><a href="https://fasttrack.microsoft.com" target="_blank"
+                                        rel="noopener">fasttrack.microsoft.com</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </article>
 
@@ -737,29 +1347,60 @@
                     <ol class="steps">
                         <li class="step">
                             <span class="step-number">1</span>
-                            <span class="step-text">Winning agent candidates considered for <strong>production
-                                    pilot</strong></span>
+                            <span class="step-text"><strong>This week:</strong> Share your Agent Design Canvas with
+                                your manager and identify your top scenario for pilot.</span>
                         </li>
                         <li class="step">
                             <span class="step-number">2</span>
-                            <span class="step-text">Microsoft <strong>FastTrack support</strong> available for
-                                deployment</span>
+                            <span class="step-text"><strong>Next 2 weeks:</strong> Schedule a follow-up with your
+                                Microsoft CSA to discuss pilot feasibility and licensing.</span>
                         </li>
                         <li class="step">
                             <span class="step-number">3</span>
-                            <span class="step-text">Monthly <strong>AI Office Hours</strong> with your Microsoft account
-                                team</span>
+                            <span class="step-text"><strong>Month 1&ndash;2:</strong> Engage Microsoft FastTrack or
+                                CSAM for a Copilot Studio governance review.</span>
                         </li>
                         <li class="step">
                             <span class="step-number">4</span>
-                            <span class="step-text">Join the <strong>Microsoft AI Champion</strong> program</span>
+                            <span class="step-text"><strong>Month 2&ndash;3:</strong> Run a 30-day pilot with 5&ndash;10
+                                users. Measure baseline vs. post-agent time-on-task.</span>
                         </li>
                         <li class="step">
                             <span class="step-number">5</span>
-                            <span class="step-text">Schedule <strong>pilot deployment review</strong> within 2
-                                weeks</span>
+                            <span class="step-text"><strong>Ongoing:</strong> Join the Copilot Champions community to
+                                share learnings across the organization.</span>
                         </li>
                     </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Post-Event</span>
+                    <span class="section-card-title">What Comes After This Hackathon</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <h4>AI Agents Pilot Program (30&ndash;60 Days)</h4>
+                    <ul>
+                        <li>Select 1&ndash;2 agents from today&rsquo;s hackathon</li>
+                        <li>Define pilot scope: brand, region, or team</li>
+                        <li>Set baseline metrics before launch</li>
+                        <li>Deploy to 5&ndash;25 pilot users with feedback loop</li>
+                        <li>Weekly check-in with Microsoft CSAM</li>
+                        <li>30-day readout: ROI, adoption, issues</li>
+                        <li>Decision gate: expand, iterate, or stop</li>
+                    </ul>
+                    <h4 style="margin-top:var(--sp-6);">AI Governance Workshop (Half-Day)</h4>
+                    <ul>
+                        <li>Define your AI usage policy</li>
+                        <li>Data classification &amp; agent permissions</li>
+                        <li>DLP policies for Copilot Studio</li>
+                        <li>Agent approval and publishing process</li>
+                        <li>Admin controls in Microsoft 365 Admin</li>
+                        <li>Monitoring, analytics &amp; audit logs</li>
+                        <li>User training &amp; adoption plan</li>
+                    </ul>
                 </div>
             </article>
         </section>
