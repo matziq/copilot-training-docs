@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copilot Agents Hack-a-Thon &mdash; Participant Workbook</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-t9u.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>Copilot Agents Hack-a-Thon &mdash; Participant Workbook</h1>
+            <p class="subtitle">
+                Your hands-on guide for the full-day hackathon &mdash; agenda, design canvas,
+                scenario reference, build guides, and demo prep worksheet.
+            </p>
+        </header>
+
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#agenda">&#128197; Day at a Glance</a></li>
+                <li><a href="#canvas">&#127912; Agent Design Canvas</a></li>
+                <li><a href="#scenarios">&#129302; Scenario Quick Reference</a></li>
+                <li><a href="#build-guide">&#128295; Quick Build Guide</a></li>
+                <li><a href="#tips">&#128161; Tips for Better Agents</a></li>
+                <li><a href="#demo-prep">&#127916; Demo Prep Worksheet</a></li>
+                <li><a href="#judging">&#127942; Judging Criteria</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+             DAY AT A GLANCE
+             ============================================================ -->
+        <section id="agenda">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128197;</div>
+                <div class="module-meta">
+                    <div class="module-label">Overview</div>
+                    <h2 class="module-title">Day at a Glance</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Schedule</span>
+                    <span class="section-card-title">Full-Day Agenda</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>8:30 &ndash; 9:00 AM</td><td>Registration &amp; Networking</td></tr>
+                            <tr><td>9:00 &ndash; 9:30 AM</td><td>Welcome &amp; Scene Setting</td></tr>
+                            <tr><td>9:30 &ndash; 10:30 AM</td><td>Educational Session &mdash; AI Agents in Microsoft 365</td></tr>
+                            <tr><td>10:30 &ndash; 10:45 AM</td><td>Break</td></tr>
+                            <tr><td>10:45 &ndash; 11:45 AM</td><td>Hands-On Exercises</td></tr>
+                            <tr><td>11:45 AM &ndash; 12:30 PM</td><td>Lunch</td></tr>
+                            <tr><td>12:30 &ndash; 1:00 PM</td><td>Hackathon Kickoff &amp; Team Formation</td></tr>
+                            <tr><td>1:00 &ndash; 3:30 PM</td><td><strong>BUILD PHASE</strong> &mdash; Create Your Agent</td></tr>
+                            <tr><td>3:30 &ndash; 3:45 PM</td><td>Break</td></tr>
+                            <tr><td>3:45 &ndash; 4:30 PM</td><td>Team Demos &amp; Showcase</td></tr>
+                            <tr><td>4:30 &ndash; 5:00 PM</td><td>Wrap-Up &amp; Next Steps</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             AGENT DESIGN CANVAS
+             ============================================================ -->
+        <section id="canvas">
+
+            <div class="module-header">
+                <div class="module-icon green">&#127912;</div>
+                <div class="module-meta">
+                    <div class="module-label">Planning</div>
+                    <h2 class="module-title">Agent Design Canvas</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Worksheet</span>
+                    <span class="section-card-title">Complete This BEFORE You Open a Browser</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Why Plan First?</div>
+                        Teams that plan for 10 minutes build faster and demo better.
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Your Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>BUSINESS PROBLEM</strong> &mdash; What specific pain point are you solving?</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>USER PERSONA</strong> &mdash; Who will use this agent? What is their role?</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AGENT TYPE</strong> &mdash; Pre-Built / Declarative / Custom (Copilot Studio)</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>KNOWLEDGE SOURCES</strong> &mdash; What documents, SharePoint sites, or systems does the agent need?</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>KEY ACTIONS</strong> &mdash; What will the agent actually DO when a user starts a conversation?</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SUCCESS METRIC</strong> &mdash; How will you know this is working?</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SCENARIO QUICK REFERENCE
+             ============================================================ -->
+        <section id="scenarios">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#129302;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Scenario Quick Reference</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Scenarios</span>
+                    <span class="section-card-title">Pick One and Narrow It Down</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Pick one scenario and narrow it down to a specific user and use case before you start building.</p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>What It Does</th>
+                                <th>Level</th>
+                                <th>Agent Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Daily Ops</td>
+                                <td>Daily ops briefings for managers &mdash; KPIs, compliance, open items</td>
+                                <td>Easy</td>
+                                <td>Declarative (Agent Builder)</td>
+                            </tr>
+                            <tr>
+                                <td>Customer Recovery</td>
+                                <td>Route and respond to customer complaints; suggest recovery actions</td>
+                                <td>Medium</td>
+                                <td>Custom (Copilot Studio)</td>
+                            </tr>
+                            <tr>
+                                <td>New Hire Onboarding</td>
+                                <td>Answer HR questions: policies, benefits, first-week tasks</td>
+                                <td>Easy</td>
+                                <td>Declarative (Agent Builder)</td>
+                            </tr>
+                            <tr>
+                                <td>Inventory Reorder</td>
+                                <td>Monitor stock levels; recommend reorders; draft vendor emails</td>
+                                <td>Medium</td>
+                                <td>Custom (Copilot Studio)</td>
+                            </tr>
+                            <tr>
+                                <td>Campaign Content</td>
+                                <td>Generate social and in-store content per brand voice</td>
+                                <td>Easy</td>
+                                <td>Declarative (Agent Builder)</td>
+                            </tr>
+                            <tr>
+                                <td>Safety Audit</td>
+                                <td>Guide audit prep checklist; flag open items; generate summary</td>
+                                <td>Hard</td>
+                                <td>Custom (Copilot Studio)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             QUICK BUILD GUIDE
+             ============================================================ -->
+        <section id="build-guide">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128295;</div>
+                <div class="module-meta">
+                    <div class="module-label">Build</div>
+                    <h2 class="module-title">Quick Build Guide</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Guide</span>
+                    <span class="section-card-title">Building a Declarative Agent (Agent Builder)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Go to <strong>microsoft365.com</strong> &rarr; Copilot &rarr; Agent Builder</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Give your agent a <strong>name, role, and short description</strong> of its purpose</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Write <strong>2&ndash;3 instructions</strong>: what it should do and what it should NOT do</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Add a <strong>knowledge source</strong>: upload a file or connect to a SharePoint site</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Test it</strong> &mdash; ask it questions and refine your instructions based on answers</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Guide</span>
+                    <span class="section-card-title">Building a Custom Agent (Copilot Studio)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Go to <strong>copilotstudio.microsoft.com</strong> &mdash; sign in with your Microsoft 365 account</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Create a <strong>new agent</strong> &mdash; give it a clear name and purpose</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Add a <strong>topic</strong>: set trigger phrases (what users will say to start a conversation)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Add an <strong>action</strong>: send a message, look up information, or call an API</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Test</strong> in the built-in chat canvas &mdash; iterate until it responds correctly</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             TIPS FOR BETTER AGENTS
+             ============================================================ -->
+        <section id="tips">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128161;</div>
+                <div class="module-meta">
+                    <div class="module-label">Best Practices</div>
+                    <h2 class="module-title">Tips for Better Agents</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tips</span>
+                    <span class="section-card-title">Four Keys to Success</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Be specific in your instructions:</strong> &ldquo;Answer only questions about
+                            operations&rdquo; beats &ldquo;help the user&rdquo;</li>
+                        <li><strong>Narrow the scope:</strong> one persona, one problem, one agent</li>
+                        <li><strong>Test early and often:</strong> ask questions your real user would ask, then refine</li>
+                        <li><strong>If it gives wrong answers, improve the instructions</strong> &mdash; don&rsquo;t
+                            rebuild from scratch</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMO PREP WORKSHEET
+             ============================================================ -->
+        <section id="demo-prep">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127916;</div>
+                <div class="module-meta">
+                    <div class="module-label">Prepare</div>
+                    <h2 class="module-title">Demo Prep Worksheet</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Worksheet</span>
+                    <span class="section-card-title">Prepare Your 5-Minute Demo</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Use this worksheet to prepare your 5-minute demo. Practice it at least once before presenting.</p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Section (Time)</th>
+                                <th>Your Plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>THE PROBLEM</strong> (0:30) &mdash; What business challenge did you choose? Who experiences it?</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LIVE DEMO SCRIPT</strong> (1:00) &mdash; What will you type or say to demonstrate the agent? Write out the exact conversation flow.</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BUSINESS IMPACT</strong> (1:00) &mdash; Quantify the value: time saved, errors reduced, experience improved. Be specific.</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PATH TO PRODUCTION</strong> (1:00) &mdash; What would it take to go from POC to production? Who would own it?</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Checklist</span>
+                    <span class="section-card-title">Demo Checklist</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>&#9744; Tested the demo flow at least 2 times before presenting</li>
+                        <li>&#9744; Live demo only &mdash; no screenshots or pre-recorded video</li>
+                        <li>&#9744; Business impact is quantified (time, cost, frequency)</li>
+                        <li>&#9744; Know who in the room would own next steps</li>
+                        <li>&#9744; Practiced staying within 5 minutes</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             JUDGING CRITERIA
+             ============================================================ -->
+        <section id="judging">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#127942;</div>
+                <div class="module-meta">
+                    <div class="module-label">Evaluation</div>
+                    <h2 class="module-title">Judging Criteria</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Criteria</span>
+                    <span class="section-card-title">What the Judges Are Looking For</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th>Weight</th>
+                                <th>What the Judges Are Looking For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Business Value</strong></td>
+                                <td>30%</td>
+                                <td>Clear ROI tied to a real business challenge with quantifiable impact</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Creativity</strong></td>
+                                <td>20%</td>
+                                <td>Novel problem choice, fresh approach, or unexpected use case</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Technical Execution</strong></td>
+                                <td>30%</td>
+                                <td>Agent works in the demo; right type chosen; knowledge sources connected</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Demo Quality</strong></td>
+                                <td>20%</td>
+                                <td>Clear story, compelling pitch, confident delivery within 5 minutes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../js/main.v3.js"></script>
+
+</body>
+
+</html>

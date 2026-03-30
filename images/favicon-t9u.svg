@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#fab1a0"/>
+            <stop offset="100%" stop-color="#e17055"/>
+        </linearGradient>
+    </defs>
+    <rect width="32" height="32" rx="6" fill="url(#g)"/>
+    <!-- Rocket / hackathon icon -->
+    <path d="M16 5c-2 3-3 7-3 11h6c0-4-1-8-3-11z" fill="#fff"/>
+    <rect x="11" y="16" width="10" height="4" rx="1" fill="#fff"/>
+    <polygon points="13,20 11,25 14,22" fill="#fff"/>
+    <polygon points="19,20 21,25 18,22" fill="#fff"/>
+    <circle cx="16" cy="13" r="1.5" fill="#e17055"/>
+</svg>

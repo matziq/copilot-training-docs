@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copilot Agents Hack-a-Thon &mdash; Facilitator Guide</title>
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon-t9.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../../trainerdocs.html"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>Copilot Agents Hack-a-Thon &mdash; Facilitator Guide</h1>
+            <p class="subtitle">
+                Full-Day Facilitated Hackathon Script &mdash; Introduction to AI Agents,
+                hands-on exercises, team build phase, live demos, and post-event follow-up.
+            </p>
+        </header>
+
+        <div class="callout callout-warning">
+            <div class="callout-title">&#9888;&#65039; Disclaimer</div>
+            All prompts, scenarios, examples, and referenced entities are fictional and provided
+            only for training and demonstration purposes. Do not use this material for
+            decision-making, reporting, or external distribution.
+        </div>
+
+        <div class="callout callout-note">
+            <div class="callout-title">&#128221; How to Use This Guide</div>
+            Read this guide end-to-end before the event.<br />
+            Bring a printed copy on the day and keep it next to your laptop during the build phase.<br />
+            Priority sections: <strong>Section 4 (Run of Show)</strong> and <strong>Section 5 (Build Phase Coaching)</strong>.
+        </div>
+
+        <div class="callout callout-note">
+            <div class="callout-title">&#128221; Session Details</div>
+            <strong>Duration:</strong> Full Day (8:30 AM &ndash; 5:00 PM)<br />
+            <strong>Format:</strong> Educational session &middot; Hands-on exercises &middot; Team hackathon &middot; Demos<br />
+            <strong>Level:</strong> 200-Level Intermediate<br />
+            <strong>Classification:</strong> Facilitator Version &mdash; For Facilitator Use Only, Not for Distribution to
+            Participants
+        </div>
+
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#sec1">&#127919; Section 1 &mdash; Event Overview</a></li>
+                <li><a href="#sec2">&#9989; Section 2 &mdash; Pre-Event Checklist</a></li>
+                <li><a href="#sec3">&#128295; Section 3 &mdash; Day-of Logistics</a></li>
+                <li><a href="#sec4">&#9202; Section 4 &mdash; Run of Show</a></li>
+                <li><a href="#sec5">&#128172; Section 5 &mdash; Build Phase Coaching</a></li>
+                <li><a href="#sec6">&#129302; Section 6 &mdash; Agent Scenarios</a></li>
+                <li><a href="#sec7">&#128295; Section 7 &mdash; FAQ &amp; Troubleshooting</a></li>
+                <li><a href="#sec8">&#128231; Section 8 &mdash; Post-Event Follow-Up</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+             SECTION 1: EVENT OVERVIEW
+             ============================================================ -->
+        <section id="sec1">
+
+            <div class="module-header">
+                <div class="module-icon green">&#127919;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 1</div>
+                    <h2 class="module-title">Event Overview</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Overview</span>
+                    <span class="section-card-title">What Success Looks Like</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>This document is your complete guide for facilitating the Copilot Agents Hack-a-Thon.
+                        It is designed for a first-time facilitator delivering this engagement.</p>
+                    <ul>
+                        <li>Every attendee has hands-on experience building a Microsoft 365 Copilot agent</li>
+                        <li>Every team demos a working proof-of-concept by 4:30 PM</li>
+                        <li>The organization leaves with 2&ndash;3 specific agent scenarios ready to pilot</li>
+                        <li>You have a clear next-step proposal within 48 hours</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Details</span>
+                    <span class="section-card-title">Attendee Profile</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Expected roles</td>
+                                <td>IT leaders, business analysts, operations, marketing, HR</td>
+                            </tr>
+                            <tr>
+                                <td>Technical level</td>
+                                <td>Mixed &mdash; some very technical (IT/dev), most business users</td>
+                            </tr>
+                            <tr>
+                                <td>Expected headcount</td>
+                                <td>10&ndash;20 attendees (optimal for hackathon format)</td>
+                            </tr>
+                            <tr>
+                                <td>License requirement</td>
+                                <td>Every attendee MUST have a Microsoft 365 Copilot license</td>
+                            </tr>
+                            <tr>
+                                <td>Event format</td>
+                                <td>200-level intermediate, guided, hands-on, full day on-site</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 2: PRE-EVENT CHECKLIST
+             ============================================================ -->
+        <section id="sec2">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#9989;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 2</div>
+                    <h2 class="module-title">Pre-Event Checklist</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Checklist</span>
+                    <span class="section-card-title">2 Weeks Before</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Confirm all attendees have Microsoft 365 Copilot licenses</td>
+                                <td>Facilitator + Customer IT</td>
+                            </tr>
+                            <tr>
+                                <td>Confirm Copilot Studio access is enabled for attendees (included with M365 Copilot license &mdash; no separate trial needed)</td>
+                                <td>Customer IT</td>
+                            </tr>
+                            <tr>
+                                <td>Send attendee pre-read: <em>What are AI Agents in M365?</em> (Microsoft Learn)</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Confirm room: full-day, team pod seating for 4&ndash;5 per table</td>
+                                <td>Customer</td>
+                            </tr>
+                            <tr>
+                                <td>Confirm AV: projector/screen, HDMI or USB-C adapters</td>
+                                <td>Customer</td>
+                            </tr>
+                            <tr>
+                                <td>Request strong WiFi credentials (full M365 access, not guest)</td>
+                                <td>Customer IT</td>
+                            </tr>
+                            <tr>
+                                <td>Plan backup connectivity: personal hotspot as failover</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Print participant workbooks (1 per attendee)</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Prepare sample SharePoint site with customer docs for Exercise 2</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Pre-load Agent Builder and Copilot Studio in browser tabs and test login</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Confirm catering: breakfast, lunch, afternoon snacks</td>
+                                <td>Customer</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Checklist</span>
+                    <span class="section-card-title">1 Week Before</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Send calendar invite: address, parking, WiFi info, agenda</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Test full exercise flow on your own laptop end-to-end</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Prepare 2&ndash;3 sample starter agents for teams who get stuck</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Test Copilot Studio loads correctly with attendee tenant (not your own)</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Prepare post-event follow-up email (template in Section 8)</td>
+                                <td>Facilitator</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Checklist</span>
+                    <span class="section-card-title">Day Before</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Confirm room setup time &mdash; plan to arrive 45 minutes before attendees</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Charge devices; pack USB-C hub, power brick, presentation clicker</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Pre-download: slide deck, workbooks, facilitator guide (offline backup)</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Print WiFi credentials sheet (one per table)</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Test laptop connectivity to room AV system</td>
+                                <td>Facilitator</td>
+                            </tr>
+                            <tr>
+                                <td>Pack printed workbooks, whiteboard markers, sticky notes</td>
+                                <td>Facilitator</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 3: DAY-OF LOGISTICS
+             ============================================================ -->
+        <section id="sec3">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128295;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 3</div>
+                    <h2 class="module-title">Day-of Logistics</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Setup</span>
+                    <span class="section-card-title">Room Setup (Arrive by 8:00 AM)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Tables in pods of 4&ndash;5 chairs each &mdash; team-based seating, not classroom rows</li>
+                        <li>Facilitator station at front: laptop + projector + whiteboard access</li>
+                        <li>Each table: printed workbooks, sticky notes, markers, WiFi credentials card</li>
+                        <li>Power strips under or near each table if possible</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Setup</span>
+                    <span class="section-card-title">AV Setup</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Connect laptop to projector &mdash; test HDMI and USB-C dongle</li>
+                        <li>Pre-advance slides to Slide 2 (Agenda) as welcome screen while people arrive</li>
+                        <li>Backup plan: if projector fails, share deck link so attendees view on laptops</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Setup</span>
+                    <span class="section-card-title">Technical Setup &mdash; Your Laptop</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Browser tabs pre-loaded: microsoft365.com, copilotstudio.microsoft.com, Agent Builder</li>
+                        <li>Slide deck open in Presenter Mode (notes visible only on your screen)</li>
+                        <li>This facilitator guide open in a second window</li>
+                        <li>Backup: deck saved to OneDrive AND downloaded locally</li>
+                    </ul>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; WiFi Warning</div>
+                        <strong>Critical:</strong> Verify you can access microsoft365.com and copilotstudio.microsoft.com
+                        on the room WiFi BEFORE attendees arrive.<br />
+                        If guest WiFi blocks Microsoft 365, escalate to customer IT immediately &mdash; this is a day-of blocker.<br />
+                        Switch to personal hotspot without hesitation if needed. Test it in advance.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 4: RUN OF SHOW
+             ============================================================ -->
+        <section id="sec4">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#9202;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 4</div>
+                    <h2 class="module-title">Run of Show &mdash; Minute by Minute</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Schedule</span>
+                    <span class="section-card-title">Full-Day Timeline</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Dur.</th>
+                                <th>Activity</th>
+                                <th>Facilitator Actions &amp; Talking Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>8:30&ndash;9:00 AM</td>
+                                <td>30 min</td>
+                                <td>Registration &amp; Networking</td>
+                                <td>Welcome attendees personally at the door. Ask: &ldquo;What is your role?&rdquo;
+                                    Icebreaker optional: sticky note with one task that wastes your time.
+                                    Keep energy warm: &ldquo;Today is hands-on and fun.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>9:00&ndash;9:30 AM</td>
+                                <td>30 min</td>
+                                <td>Welcome &amp; Scene Setting (Slides 1&ndash;3)</td>
+                                <td>Intro: name, role, organization. Cover agenda &mdash; emphasize 2.5 hrs building
+                                    time. Share 3 outcomes. Quick intros: name + role + one word describing what they
+                                    hope to build. &ldquo;Safe space. No wrong answers. We learn by building.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>9:30&ndash;10:30 AM</td>
+                                <td>60 min</td>
+                                <td>Educational Session (Slides 4&ndash;8)</td>
+                                <td>Slide 4: A chatbot answers questions, an agent <em>takes action</em>.
+                                    Slide 5: Most teams use Declarative column.
+                                    Slide 6: Tie value to the organization.
+                                    Slide 7: Raise hand for scenario keeping you up at night.
+                                    Slide 8: M365 security boundary.</td>
+                            </tr>
+                            <tr>
+                                <td>10:30&ndash;10:45 AM</td>
+                                <td>15 min</td>
+                                <td>Break</td>
+                                <td>Circulate. Ask informally: &ldquo;What scenario are you leaning toward?&rdquo;
+                                    Note teams needing extra hackathon support.</td>
+                            </tr>
+                            <tr>
+                                <td>10:45&ndash;11:45 AM</td>
+                                <td>60 min</td>
+                                <td>Hands-On Exercises (Slides 9&ndash;12)</td>
+                                <td>Ex 1 (15 min): Pre-built agent in Teams.
+                                    Ex 2 (30 min): Declarative agent in Agent Builder &mdash; live-demo UI for 3 min first.
+                                    Ex 3 (20 min): Orient in Copilot Studio.
+                                    Walk the room constantly. Ask: &ldquo;What are you trying to build?&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td>11:45 AM&ndash;12:30 PM</td>
+                                <td>45 min</td>
+                                <td>Lunch</td>
+                                <td>Plant hackathon seeds. Ask each table: which scenario resonates?
+                                    Ensure teams are naturally forming before lunch ends.
+                                    Quietly introduce anyone without a team.</td>
+                            </tr>
+                            <tr>
+                                <td>12:30&ndash;1:00 PM</td>
+                                <td>30 min</td>
+                                <td>Hackathon Kickoff (Slides 13&ndash;16)</td>
+                                <td>High energy: Hackathon starts now. Rules: every team demos, live only, 5 min.
+                                    Teams claim a scenario. Show Design Canvas &mdash; 10 min to fill out BEFORE building.
+                                    Circulate and review each canvas.
+                                    RED FLAG: team still arguing about scenario at 12:55 PM &mdash; assign one.</td>
+                            </tr>
+                            <tr>
+                                <td>1:00&ndash;3:30 PM</td>
+                                <td>150 min</td>
+                                <td>Build Phase</td>
+                                <td>Check in at 1:10, 1:30, 2:15, 3:00.
+                                    Ask: &ldquo;What is your agent doing right now?&rdquo;
+                                    At 3:00 PM: STOP building, prepare demo.
+                                    See Section 5 for coaching prompts.</td>
+                            </tr>
+                            <tr>
+                                <td>3:30&ndash;3:45 PM</td>
+                                <td>15 min</td>
+                                <td>Break</td>
+                                <td>Remind teams: Demo in 15 minutes. Practice 30-second intro.
+                                    Help any team in crisis with their demo flow.</td>
+                            </tr>
+                            <tr>
+                                <td>3:45&ndash;4:30 PM</td>
+                                <td>45 min</td>
+                                <td>Team Demos (Slides 17&ndash;19)</td>
+                                <td>Use visible 5-min timer. Most confident team volunteers first.
+                                    After each: &ldquo;One thing you liked?&rdquo;
+                                    Keep Q&amp;A under 90 sec. Group vote for favorite after all demos.
+                                    Recognize winner.</td>
+                            </tr>
+                            <tr>
+                                <td>4:30&ndash;5:00 PM</td>
+                                <td>30 min</td>
+                                <td>Wrap-Up &amp; Next Steps (Slides 20&ndash;21)</td>
+                                <td>Recap top 2&ndash;3 scenarios. Present specific next-step recommendation.
+                                    Get a named owner for follow-up. Capture whiteboard photos.
+                                    Exchange contact info.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 5: BUILD PHASE COACHING
+             ============================================================ -->
+        <section id="sec5">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128172;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 5</div>
+                    <h2 class="module-title">Build Phase Coaching Guide</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Schedule</span>
+                    <span class="section-card-title">Check-in Schedule</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Check-in Goal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1:10 PM</td>
+                                <td>Quick round &mdash; every team has a finalized canvas (not still planning)</td>
+                            </tr>
+                            <tr>
+                                <td>1:30 PM</td>
+                                <td>Deeper check-in: &ldquo;What is your agent doing right now?&rdquo; (not &ldquo;How are you doing?&rdquo;)</td>
+                            </tr>
+                            <tr>
+                                <td>2:15 PM</td>
+                                <td>&ldquo;Are you on track for a demo at 3:45?&rdquo; Nudge any team to narrow scope if needed</td>
+                            </tr>
+                            <tr>
+                                <td>3:00 PM</td>
+                                <td>&ldquo;Stop building. Start preparing your demo.&rdquo; Enforce this firmly.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Coaching</span>
+                    <span class="section-card-title">Coaching Prompts</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <h4>When a team is stuck</h4>
+                    <ul>
+                        <li>&ldquo;If I were the user, what would I type to start a conversation with your agent?&rdquo;</li>
+                        <li>&ldquo;What is ONE thing your agent absolutely must do? Just build that first.&rdquo;</li>
+                        <li>&ldquo;What is the simplest version of this that still demonstrates value?&rdquo;</li>
+                    </ul>
+
+                    <h4>When a team is overcomplicating</h4>
+                    <ul>
+                        <li>&ldquo;What if your agent only did one specific action? Would that still be useful?&rdquo;</li>
+                        <li>&ldquo;A narrow scenario done well is worth more than an ambitious one half-built.&rdquo;</li>
+                    </ul>
+
+                    <h4>When a team finishes early</h4>
+                    <ul>
+                        <li>&ldquo;Can you add a second knowledge source to improve accuracy?&rdquo;</li>
+                        <li>&ldquo;What questions is your agent getting wrong? Fix that with better instructions.&rdquo;</li>
+                        <li>&ldquo;Can you improve the demo flow so value is obvious in the first 30 seconds?&rdquo;</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Troubleshooting</span>
+                    <span class="section-card-title">Common Technical Issues</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Likely Cause</th>
+                                <th>Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Agent Builder not loading</td>
+                                <td>License not provisioned or wrong tenant</td>
+                                <td>Check microsoft365.com/admin; try Edge browser</td>
+                            </tr>
+                            <tr>
+                                <td>Knowledge source not returning results</td>
+                                <td>Still indexing (2&ndash;5 min)</td>
+                                <td>Wait and retry; have a fallback document ready</td>
+                            </tr>
+                            <tr>
+                                <td>Copilot Studio loading slowly</td>
+                                <td>Browser cache or VPN</td>
+                                <td>Clear cache, disable VPN, try incognito mode</td>
+                            </tr>
+                            <tr>
+                                <td>Agent giving wrong answers</td>
+                                <td>Instructions too vague</td>
+                                <td>Help refine system prompt to be more specific</td>
+                            </tr>
+                            <tr>
+                                <td>Cannot log into Copilot Studio</td>
+                                <td>Wrong tenant or no license</td>
+                                <td>Confirm tenant URL; check license in M365 Admin</td>
+                            </tr>
+                            <tr>
+                                <td>WiFi dropping</td>
+                                <td>Guest network blocking M365</td>
+                                <td>Switch to personal hotspot immediately</td>
+                            </tr>
+                            <tr>
+                                <td>Team completely stuck</td>
+                                <td>Scope too broad, no clear user</td>
+                                <td>Name ONE user with ONE problem. Build for that person only.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Most Common Hackathon Failure Mode</div>
+                        The most common reason teams fail to demo is <strong>trying to build too much</strong>.<br />
+                        A working agent that does ONE thing well beats a broken agent that tries everything.<br />
+                        If a team has more than 3 topics in Copilot Studio at 2:00 PM, intervene.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 6: AGENT SCENARIOS
+             ============================================================ -->
+        <section id="sec6">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#129302;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 6</div>
+                    <h2 class="module-title">Agent Scenarios</h2>
+                </div>
+            </div>
+
+            <p>Use this section as your reference when coaching teams during the hackathon.
+                Each scenario includes a build guide with specific starting instructions.</p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Easy</span>
+                    <span class="section-card-title">Scenario 1 &mdash; Daily Ops Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Attribute</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Difficulty</td><td>Easy</td></tr>
+                            <tr><td>Agent Type</td><td>Declarative Agent (Agent Builder)</td></tr>
+                            <tr><td>User Persona</td><td>Regional manager overseeing 8&ndash;15 locations</td></tr>
+                            <tr><td>Knowledge Sources</td><td>SharePoint with daily ops reports, brand standards, compliance checklists</td></tr>
+                            <tr><td>Key Actions</td><td>Answer KPI questions, surface compliance gaps, list open items by location</td></tr>
+                            <tr><td>Expected Outcome</td><td>Save managers 3&ndash;4 hrs/week; improve response to underperforming locations</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Build Guide</div>
+                        System prompt: &ldquo;You are an operations assistant. Use the provided documents to answer
+                        questions about daily performance. Be concise and direct.&rdquo;
+                        Add a SharePoint knowledge source. Test with: &ldquo;Which locations had the lowest scores
+                        yesterday?&rdquo; and &ldquo;What are the top compliance issues this week?&rdquo;
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Medium</span>
+                    <span class="section-card-title">Scenario 2 &mdash; Customer Recovery Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Attribute</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Difficulty</td><td>Medium</td></tr>
+                            <tr><td>Agent Type</td><td>Custom Agent (Copilot Studio)</td></tr>
+                            <tr><td>User Persona</td><td>Customer relations specialist or location manager</td></tr>
+                            <tr><td>Knowledge Sources</td><td>Recovery policy, response guidelines, escalation matrix</td></tr>
+                            <tr><td>Key Actions</td><td>Classify complaint type, suggest recovery action, flag escalations, draft response</td></tr>
+                            <tr><td>Expected Outcome</td><td>Reduce complaint-to-resolution time from 48 hours to 4 hours</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Build Guide</div>
+                        Create Copilot Studio agent with topics for each complaint category (quality, service, wait time,
+                        order error). Each topic suggests a recovery action from policy and offers to draft a response.
+                        Advanced: connect to feedback API.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Easy</span>
+                    <span class="section-card-title">Scenario 3 &mdash; New Hire Onboarding Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Attribute</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Difficulty</td><td>Easy</td></tr>
+                            <tr><td>Agent Type</td><td>Declarative Agent (Agent Builder)</td></tr>
+                            <tr><td>User Persona</td><td>New employee (hourly or corporate)</td></tr>
+                            <tr><td>Knowledge Sources</td><td>Employee handbook (SharePoint), benefits guide, first-week task checklist</td></tr>
+                            <tr><td>Key Actions</td><td>Answer policy questions, surface required forms, first-week step-by-step guidance</td></tr>
+                            <tr><td>Expected Outcome</td><td>Reduce HR onboarding support tickets by 40%; improve new hire retention</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Build Guide</div>
+                        System prompt: &ldquo;You help new employees navigate their first 30 days. Answer only using
+                        the provided documents. Always be encouraging and clear.&rdquo;
+                        Test with: &ldquo;What do I need to do on my first day?&rdquo; and &ldquo;How do I enroll in benefits?&rdquo;
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Medium</span>
+                    <span class="section-card-title">Scenario 4 &mdash; Inventory Reorder Alert Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Attribute</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Difficulty</td><td>Medium</td></tr>
+                            <tr><td>Agent Type</td><td>Custom Agent (Copilot Studio)</td></tr>
+                            <tr><td>User Persona</td><td>Location manager or supply chain coordinator</td></tr>
+                            <tr><td>Knowledge Sources</td><td>Vendor contact list, par-level thresholds document, order form templates</td></tr>
+                            <tr><td>Key Actions</td><td>Recommend reorder quantities based on par levels, draft reorder email to vendor</td></tr>
+                            <tr><td>Expected Outcome</td><td>Reduce out-of-stock incidents by 25%; save 2 hrs per location per week</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Build Guide</div>
+                        Start declarative: upload vendor contact list and par-level doc. Instructions: recommend reorder
+                        when item is mentioned as low. Advanced: connect to inventory management API via Copilot Studio action.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Easy</span>
+                    <span class="section-card-title">Scenario 5 &mdash; Campaign Content Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Attribute</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Difficulty</td><td>Easy</td></tr>
+                            <tr><td>Agent Type</td><td>Declarative Agent (Agent Builder)</td></tr>
+                            <tr><td>User Persona</td><td>Marketing coordinator</td></tr>
+                            <tr><td>Knowledge Sources</td><td>Brand guidelines, campaign examples, tone-of-voice documents</td></tr>
+                            <tr><td>Key Actions</td><td>Generate social captions, promo email subject lines, in-store copy per brand voice</td></tr>
+                            <tr><td>Expected Outcome</td><td>Reduce content creation time from 3 hours to 30 minutes per campaign</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Build Guide</div>
+                        Instructions: &ldquo;When the user specifies a brand, follow that brand&rsquo;s tone-of-voice
+                        guidelines exactly. Always present 3 options for the user to choose from.&rdquo;
+                        Create one knowledge source per brand or one document with brand sections.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Hard</span>
+                    <span class="section-card-title">Scenario 6 &mdash; Safety Audit Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Attribute</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Difficulty</td><td>Hard</td></tr>
+                            <tr><td>Agent Type</td><td>Custom Agent (Copilot Studio)</td></tr>
+                            <tr><td>User Persona</td><td>Safety manager or compliance officer</td></tr>
+                            <tr><td>Knowledge Sources</td><td>Safety guidelines, audit checklists, corrective action templates, incident logs</td></tr>
+                            <tr><td>Key Actions</td><td>Walk through audit prep checklist, surface open corrective actions, generate summary report</td></tr>
+                            <tr><td>Expected Outcome</td><td>Reduce audit prep time from 8 hours to 2 hours; reduce findings through proactive documentation</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Build Guide</div>
+                        Requires Copilot Studio for multi-step workflow. Create an agent that guides through a checklist
+                        where each item is a topic. Generate a summary report at the end.
+                        Ambitious for 2.5 hours &mdash; recommend for technically strong teams only.
+                    </div>
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Facilitator Note</div>
+                        Only assign this to teams with at least one technically strong person.
+                        It requires Copilot Studio actions and multi-topic flow design.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 7: FAQ & TROUBLESHOOTING
+             ============================================================ -->
+        <section id="sec7">
+
+            <div class="module-header">
+                <div class="module-icon red">&#128295;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 7</div>
+                    <h2 class="module-title">FAQ &amp; Troubleshooting</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">FAQ</span>
+                    <span class="section-card-title">What if an attendee does not have a Microsoft 365 Copilot license?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>They can participate in Copilot Studio exercises (which has a trial) and team up with a
+                        licensed colleague for Agent Builder. Pair them intentionally at team formation so they
+                        are never blocked.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">FAQ</span>
+                    <span class="section-card-title">What if Copilot Studio is slow or unresponsive?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Usually a browser issue. Try: (1) clear browser cache, (2) use incognito/private mode,
+                        (3) switch from Chrome to Edge, (4) disable VPN. Edge is the most reliable browser for M365 tools.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">FAQ</span>
+                    <span class="section-card-title">What if a team finishes building before 3:00 PM?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Use coaching prompts: add a second knowledge source, improve instruction quality,
+                        practice and tighten the demo flow, or begin drafting a production deployment plan.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">FAQ</span>
+                    <span class="section-card-title">What if a team is completely stuck?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Scope is too broad. Walk them through this: &ldquo;Name one person. Name one thing that
+                        person asks repeatedly. Build an agent that answers only that one thing.&rdquo;
+                        This always unlocks them.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">FAQ</span>
+                    <span class="section-card-title">What if attendees are skeptical about AI?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Do not argue. Say: &ldquo;Your skepticism is healthy &mdash; we are going to let the demo
+                        speak for itself. Try building one thing, and then tell me what you think.&rdquo;
+                        Skeptics who build something often become the loudest advocates.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">FAQ</span>
+                    <span class="section-card-title">What if the WiFi fails completely?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Switch to personal hotspot immediately. If all connectivity fails: pause the build phase,
+                        run group paper-based scenario planning using the canvas, and reschedule the actual build
+                        as a virtual session within 2 weeks.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">FAQ</span>
+                    <span class="section-card-title">What if no one wants to go first in demos?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Prep a volunteer in advance &mdash; briefly ask one confident attendee over lunch if they
+                        will present first. A strong opening demo sets the tone and encourages everyone else.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">FAQ</span>
+                    <span class="section-card-title">What if a team&rsquo;s agent does not work during the demo?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Normalize it: &ldquo;This is exactly what happens in real pilots, and it is why we demo early.&rdquo;
+                        Ask them to walk through what the agent is supposed to do and what they would fix.
+                        Intent and design are as valuable as a working demo in this context.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 8: POST-EVENT FOLLOW-UP
+             ============================================================ -->
+        <section id="sec8">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#128231;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 8</div>
+                    <h2 class="module-title">Post-Event Follow-Up</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Action Items</span>
+                    <span class="section-card-title">Within 24 Hours</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Capture notes: top 2&ndash;3 scenarios built, team contacts, specific pain points raised</li>
+                        <li>Take photos of the whiteboard and any team canvases left behind</li>
+                        <li>Note any technical blockers for future event prep improvements</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Template</span>
+                    <span class="section-card-title">Within 48 Hours &mdash; Follow-Up Email Template</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-box">
+                        <strong>Subject:</strong> Your Copilot Agents Hack-a-Thon &mdash; Recap &amp; Next Steps<br /><br />
+                        Hi [Name],<br /><br />
+                        Thank you for an energizing day at the Copilot Agents Hack-a-Thon. What your teams built
+                        in 2.5 hours was genuinely impressive, and I left with a clear sense of how AI agents can
+                        create real value for your organization.<br /><br />
+                        Key highlights from the day:<br />
+                        &bull; [Insert 2&ndash;3 bullet points: scenarios built, standout demos, key themes]<br /><br />
+                        Based on today&rsquo;s demos, my recommended next step is:<br />
+                        &bull; [e.g., &ldquo;AI Agents Pilot &mdash; Workforce Productivity, starting with the Daily Ops Agent&rdquo;]<br /><br />
+                        I&rsquo;d like to schedule a 30-minute call this week. Are you available [day] or [day]?
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Logging</span>
+                    <span class="section-card-title">Engagement Logging</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Customer</td>
+                                <td>[Customer Name]</td>
+                            </tr>
+                            <tr>
+                                <td>Engagement type</td>
+                                <td>AI Agents Hack-a-Thon (200-level)</td>
+                            </tr>
+                            <tr>
+                                <td>Outcomes to capture</td>
+                                <td>Number of POC agents built, scenarios identified, next step proposed</td>
+                            </tr>
+                            <tr>
+                                <td>CRM update</td>
+                                <td>Update opportunity with next step engagement and follow-up date</td>
+                            </tr>
+                            <tr>
+                                <td>Manager update</td>
+                                <td>Send brief email to manager: top 3 outcomes + recommended next engagement</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Most Important Reminder</div>
+                        Follow up within 48 hours. Hackathon momentum is powerful but fragile.<br />
+                        Worst outcome: great demos, no follow-up, and the customer moves on without a next step.<br />
+                        Have a specific pilot recommendation ready BEFORE you leave the room at 5:00 PM.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../../js/main.v3.js"></script>
+
+</body>
+
+</html>
