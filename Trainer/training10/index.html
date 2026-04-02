@@ -26,10 +26,11 @@
         <header class="page-hero">
             <h1>Copilot Prompt-a-thon Masterclass &mdash; Trainer Guide</h1>
             <p class="subtitle">
-                John Rea &nbsp;|&nbsp; Sr CSA &ndash; Copilot &nbsp;|&nbsp; Microsoft
-                &nbsp;|&nbsp; April 2, 2026<br />
+                Kwik Trip &nbsp;|&nbsp; April 2, 2026<br />
+                John Rea &nbsp;|&nbsp; Sr CSA &ndash; Copilot &nbsp;|&nbsp; Microsoft<br />
                 Interactive workshop covering the art of prompting, the GCSE framework,
-                iterating &amp; expanding prompts, conversational prompting, and best practices.
+                iterating &amp; expanding prompts, conversational prompting, best practices,
+                and introduction to Copilot agents.
             </p>
         </header>
 
@@ -42,7 +43,7 @@
 
         <div class="callout callout-note">
             <div class="callout-title">&#128221; Session Details</div>
-            <strong>Duration:</strong> ~60 minutes<br />
+            <strong>Duration:</strong> ~70 minutes<br />
             <strong>Format:</strong> Presentation &middot; Live demos &middot; Hands-on exercises &middot; Q&amp;A<br />
             <strong>Level:</strong> 200-Level Intermediate<br />
             <strong>Classification:</strong> Trainer Version &mdash; For Trainer Use Only, Not for Distribution to
@@ -58,8 +59,10 @@
                 <li><a href="#sec3">&#128260; Section 3 &mdash; Iterating &amp; Expanding Your Prompts</a></li>
                 <li><a href="#sec4">&#128172; Section 4 &mdash; Conversational Prompting</a></li>
                 <li><a href="#sec5">&#128161; Section 5 &mdash; Prompting Best Practices</a></li>
-                <li><a href="#sec6">&#127916; Section 6 &mdash; Demo</a></li>
-                <li><a href="#sec7">&#10067; Section 7 &mdash; Q&amp;A</a></li>
+                <li><a href="#sec6">&#129302; Section 6 &mdash; What Are Agents?</a></li>
+                <li><a href="#sec7">&#128295; Section 7 &mdash; Writing Agent Instructions</a></li>
+                <li><a href="#sec8">&#127916; Section 8 &mdash; Demo</a></li>
+                <li><a href="#sec9">&#10067; Section 9 &mdash; Q&amp;A</a></li>
             </ul>
         </nav>
 
@@ -112,6 +115,10 @@
                                 <td>5 min</td>
                             </tr>
                             <tr>
+                                <td>What Are Agents? &amp; Writing Instructions</td>
+                                <td>10 min</td>
+                            </tr>
+                            <tr>
                                 <td>Demo</td>
                                 <td>10 min</td>
                             </tr>
@@ -121,7 +128,7 @@
                             </tr>
                             <tr>
                                 <td><strong>TOTAL</strong></td>
-                                <td><strong>~60 minutes</strong></td>
+                                <td><strong>~70 minutes</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -825,14 +832,172 @@
         </section>
 
         <!-- ============================================================
-             SECTION 6: DEMO
+             SECTION 6: WHAT ARE AGENTS?
              ============================================================ -->
         <section id="sec6">
 
             <div class="module-header">
+                <div class="module-icon orange">&#129302;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 6 &mdash; 5 min</div>
+                    <h2 class="module-title">What Are Agents?</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Copilot vs. Agents</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>While <strong>every employee has a Copilot</strong> to transform individual
+                        productivity, <strong>every business process can be transformed by agents</strong>.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Copilot</th>
+                                <th>Agents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Personal AI assistant for every employee</td>
+                                <td>Purpose-built AI that automates business processes</td>
+                            </tr>
+                            <tr>
+                                <td>Responds to your prompts in real time</td>
+                                <td>Follows defined instructions, knowledge, and actions</td>
+                            </tr>
+                            <tr>
+                                <td>General-purpose across M365 apps</td>
+                                <td>Tailored to a specific role, task, or workflow</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Bridge from the prompting content: &ldquo;Everything we&rsquo;ve learned about
+                        writing great prompts applies directly to writing agent instructions. The GCSE
+                        framework is the foundation for configuring agents.&rdquo;
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Components of an Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Instructions define the agent and tailor its experience to business requirements
+                        and expected outcomes. Not every skill can be fully described in instructions;
+                        some will require you to configure knowledge sources and actions.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>What It Does</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Purpose</strong></td>
+                                <td>What this agent is and its goals</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guidelines</strong></td>
+                                <td>General directions, tone, rules and restrictions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Skills</strong></td>
+                                <td>Granular tasks with step-by-step workflow, handled by the LLM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 7: WRITING AGENT INSTRUCTIONS
+             ============================================================ -->
+        <section id="sec7">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128295;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 7 &mdash; 5 min</div>
+                    <h2 class="module-title">Writing Agent Instructions</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Example</span>
+                    <span class="section-card-title">Corporate Q&amp;A Agent &ndash; Instruction Breakdown</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>To get the best user experience, provide as many details as needed to minimise
+                        the user&rsquo;s effort in prompting your agent. Here is an example using the
+                        same three components:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Example Instruction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Purpose</strong></td>
+                                <td>You are Corporate Q&amp;A agent that helps to share corporate knowledge.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guidelines</strong></td>
+                                <td>You answer user&rsquo;s questions using only Contoso knowledge base and public
+                                    documentation. Say &ldquo;I do not know&rdquo; if there are no relevant
+                                    results.<br />
+                                    Be nice and polite.<br />
+                                    Acronym CE means Contoso Electronics.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Skills</strong></td>
+                                <td>You should answer the questions in the following format:<br />
+                                    Question: <strong>inferred user question in bold</strong><br />
+                                    Answer: results rephrased to be more relevant for user query</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Notice how <strong>Guidelines</strong> define restrictions, tone, and glossary,
+                        while <strong>Skills</strong> formalise the answer format. This maps directly
+                        to GCSE: Purpose = Goal, Guidelines = Context + Expectations,
+                        Skills = Source + Expectations.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 8: DEMO
+             ============================================================ -->
+        <section id="sec8">
+
+            <div class="module-header">
                 <div class="module-icon purple">&#127916;</div>
                 <div class="module-meta">
-                    <div class="module-label">Section 6 &mdash; 10 min</div>
+                    <div class="module-label">Section 8 &mdash; 10 min</div>
                     <h2 class="module-title">Demo</h2>
                 </div>
             </div>
@@ -907,14 +1072,14 @@
         </section>
 
         <!-- ============================================================
-             SECTION 7: Q&A
+             SECTION 9: Q&A
              ============================================================ -->
-        <section id="sec7">
+        <section id="sec9">
 
             <div class="module-header">
                 <div class="module-icon green">&#10067;</div>
                 <div class="module-meta">
-                    <div class="module-label">Section 7 &mdash; 5 min</div>
+                    <div class="module-label">Section 9 &mdash; 5 min</div>
                     <h2 class="module-title">Q&amp;A</h2>
                 </div>
             </div>
