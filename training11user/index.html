@@ -32,6 +32,20 @@
             </p>
         </header>
 
+        <div class="callout callout-note">
+            <div class="callout-title">&#128221; About This Guide</div>
+            <strong>Level:</strong> 200-Level &mdash; Advanced<br />
+            <strong>Audience:</strong> Users who want to master advanced prompting, create agents, and leverage the full
+            M365 Copilot experience.<br />
+            <strong>License key:</strong>
+            <span
+                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Chat
+                Basic</span> = available to all M365 users &nbsp;&bull;&nbsp;
+            <span
+                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">M365
+                Copilot Premium</span> = requires M365 Copilot license
+        </div>
+
         <nav class="toc">
             <div class="toc-title">Contents</div>
             <ul>
@@ -262,6 +276,7 @@
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Exercise</span>
                     <span class="section-card-title">GCSE in Practice &ndash; Job Description</span>
+                    <span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;margin-left:4px;">Chat Basic</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
@@ -453,6 +468,7 @@
                     <span class="badge badge-exercise">Exercise</span>
                     <span class="section-card-title">Extending the Prompt&rsquo;s Purpose &ndash; Meeting
                         Follow-Up</span>
+                    <span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;margin-left:4px;">M365 Copilot Premium</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
@@ -587,6 +603,7 @@
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Exercise</span>
                     <span class="section-card-title">Practice &ndash; Conversational Refinement</span>
+                    <span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;margin-left:4px;">Chat Basic</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
@@ -644,6 +661,8 @@
                     <h2 class="module-title">What Are Agents?</h2>
                 </div>
             </div>
+
+            <p class="module-intro" style="font-size:.85rem;color:var(--text-muted);"><span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">M365 Copilot Premium</span> &mdash; Agents require an M365 Copilot license to create and use.</p>
 
             <div class="toggle-bar">
                 <button data-action="expand-all">&#9660; Expand All</button>
@@ -979,6 +998,7 @@
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Reference</span>
                     <span class="section-card-title">Copilot Chat (Basic)</span>
+                    <span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;margin-left:4px;">Chat Basic</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
@@ -1025,6 +1045,8 @@
                 </div>
             </div>
 
+            <p class="module-intro" style="font-size:.85rem;color:var(--text-muted);"><span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Chat Basic</span> &mdash; File upload works in Copilot Chat. <span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">M365 Copilot Premium</span> adds direct file referencing from OneDrive/SharePoint via the <code>/</code> command.</p>
+
             <div class="toggle-bar">
                 <button data-action="expand-all">&#9660; Expand All</button>
                 <button data-action="collapse-all">&#9650; Collapse All</button>
@@ -1062,8 +1084,9 @@
                         <strong>Supported types:</strong> Word (.docx) &bull; PDF (.pdf) &bull;
                         PowerPoint (.pptx) &bull; Excel (.xlsx) &bull; Plain text (.txt) &bull;
                         Images (.png, .jpeg) &bull; Data files (.csv, .json, .md)<br />
-                        <strong>File size limit:</strong> Up to 50 MB per file (512 MB for licensed users).
-                        Files stored in OneDrive or SharePoint can be referenced directly.
+                        <strong>File size limit:</strong> Up to 50 MB per file upload (Copilot Chat).
+                        M365 Copilot (Premium) users can reference files directly from OneDrive or SharePoint without
+                        uploading.
                     </p>
                 </div>
             </article>
@@ -1236,7 +1259,7 @@
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <p>Running out of iterations (max 30 per chat)? Ask Copilot for the cumulative prompt
+                    <p>Running out of turns in a conversation? Ask Copilot for the cumulative prompt
                         so you can continue in a new chat:</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Prompt</div>
@@ -1262,6 +1285,8 @@
                     <h2 class="module-title">Memory &amp; Custom Instructions</h2>
                 </div>
             </div>
+
+            <p class="module-intro" style="font-size:.85rem;color:var(--text-muted);"><span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Chat Basic</span> &mdash; Memory and Custom Instructions are available in Copilot Chat for all M365 users.</p>
 
             <article class="section-card">
                 <div class="section-card-header">
@@ -1415,30 +1440,30 @@
              KEY TAKEAWAYS
              ============================================================ -->
         <section id="takeaways">
-            </div>
+    </div>
 
-            <article class="section-card">
-                <div class="section-card-header">
-                    <span class="badge badge-exercise">Summary</span>
-                    <span class="section-card-title">What to Remember</span>
-                    <span class="collapse-arrow">&#9660;</span>
-                </div>
-                <div class="section-card-body">
-                    <ul>
-                        <li><strong>Use GCSE</strong> &mdash; Goal, Context, Source, Expectations &mdash; every time you
-                            write a prompt</li>
-                        <li><strong>Iterate</strong> &mdash; your first prompt is a starting point, not the final
-                            answer</li>
-                        <li><strong>Keep it conversational</strong> &mdash; follow up, refine, and build on
-                            responses</li>
-                        <li><strong>Think bigger</strong> &mdash; extend the prompt&rsquo;s purpose to automate entire
-                            workflows</li>
-                        <li><strong>Experiment</strong> &mdash; the best way to learn is to try different
-                            approaches</li>
-                    </ul>
-                </div>
-            </article>
-        </section>
+    <article class="section-card">
+        <div class="section-card-header">
+            <span class="badge badge-exercise">Summary</span>
+            <span class="section-card-title">What to Remember</span>
+            <span class="collapse-arrow">&#9660;</span>
+        </div>
+        <div class="section-card-body">
+            <ul>
+                <li><strong>Use GCSE</strong> &mdash; Goal, Context, Source, Expectations &mdash; every time you
+                    write a prompt</li>
+                <li><strong>Iterate</strong> &mdash; your first prompt is a starting point, not the final
+                    answer</li>
+                <li><strong>Keep it conversational</strong> &mdash; follow up, refine, and build on
+                    responses</li>
+                <li><strong>Think bigger</strong> &mdash; extend the prompt&rsquo;s purpose to automate entire
+                    workflows</li>
+                <li><strong>Experiment</strong> &mdash; the best way to learn is to try different
+                    approaches</li>
+            </ul>
+        </div>
+    </article>
+    </section>
 
     </div>
 
