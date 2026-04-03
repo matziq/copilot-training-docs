@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M365 Copilot Promptathon &mdash; Standard &mdash; User Guide</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>M365 Copilot Promptathon &mdash; Standard &mdash; User Guide</h1>
+            <p class="subtitle">
+                Hands-on exercises covering the art of prompting, the GCSE framework,
+                iterating &amp; expanding prompts, conversational prompting, using templates,
+                agents, prompt sharing, and best practices.
+            </p>
+        </header>
+
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#sec1">&#127912; The Art of Prompting</a></li>
+                <li><a href="#sec2">&#127891; Prompt Ingredients &ndash; GCSE</a></li>
+                <li><a href="#sec3">&#128260; Iterating &amp; Expanding Your Prompts</a></li>
+                <li><a href="#sec4">&#128172; Conversational Prompting</a></li>
+                <li><a href="#sec5">&#128196; Use Existing Materials as Templates</a></li>
+                <li><a href="#sec6">&#129302; What Are Agents?</a></li>
+                <li><a href="#sec7">&#128230; Sharing Your Prompts</a></li>
+                <li><a href="#sec8">&#128161; Prompting Best Practices</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+             SECTION 1: THE ART OF PROMPTING
+             ============================================================ -->
+        <section id="sec1">
+
+            <div class="module-header">
+                <div class="module-icon green">&#127912;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 1</div>
+                    <h2 class="module-title">The Art of Prompting</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Key Concept</span>
+                    <span class="section-card-title">What Is a Prompt?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Prompts are how you ask Copilot to do something for you &mdash; like creating,
+                        summarizing, editing, or transforming content. Think about prompting like having a
+                        conversation. Use plain but clear language and provide context, just as you would
+                        with a human assistant.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Key Concept</span>
+                    <span class="section-card-title">1. Tell Copilot What You Need</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>The first step is simply telling Copilot what you need. Here are six common use cases:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Use Case</th>
+                                <th>Example Prompt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Learn about projects &amp; concepts</strong></td>
+                                <td>&ldquo;What are the main considerations for a new system launch?&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Edit text</strong></td>
+                                <td>&ldquo;Check this product launch rationale for inconsistencies.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transform documents</strong></td>
+                                <td>&ldquo;Transform this FAQ doc into a 10-slide onboarding guide.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Summarize information</strong></td>
+                                <td>&ldquo;Write a session abstract of this [uploaded presentation].&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Create engaging content</strong></td>
+                                <td>&ldquo;Create a value proposition for a new product.&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Catch up on missed items</strong></td>
+                                <td>&ldquo;Provide a summary of the latest product announcements for Copilot.&rdquo;
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 2: PROMPT INGREDIENTS – GCSE
+             ============================================================ -->
+        <section id="sec2">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127891;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 2</div>
+                    <h2 class="module-title">Prompt Ingredients &ndash; GCSE</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Framework</span>
+                    <span class="section-card-title">The GCSE Framework</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>To get the best response, focus on four key elements when phrasing your prompts:</p>
+
+                    <a href="../images/gcse-prompt-ingredients.png" target="_blank">
+                        <img src="../images/gcse-prompt-ingredients.png"
+                            alt="Giraffes Can See Everything — Goal, Context, Source, and Expectations"
+                            style="max-width:180px;border-radius:var(--radius-md);margin:var(--sp-4) 0;cursor:pointer;box-shadow:var(--shadow-sm);transition:transform .15s;" />
+                    </a>
+                    <p style="font-size:.8rem;color:var(--text-muted);margin-top:0;">Here is a mnemonic to help you
+                        remember the four elements.</p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>What It Means</th>
+                                <th>Question to Ask</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong><strong>G</strong>oal</strong></td>
+                                <td>What response do you want from Copilot?</td>
+                                <td>&ldquo;What do I need?&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong><strong>C</strong>ontext</strong></td>
+                                <td>Why do you need it and who is involved?</td>
+                                <td>&ldquo;What&rsquo;s the background?&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong><strong>S</strong>ource</strong></td>
+                                <td>Which information sources or samples should Copilot use?</td>
+                                <td>&ldquo;What data should it reference?&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong><strong>E</strong>xpectations</strong></td>
+                                <td>How should Copilot respond to best meet your expectations?</td>
+                                <td>&ldquo;What format, length, or tone?&rdquo;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Example</span>
+                    <span class="section-card-title">GCSE Building Blocks &ndash; Progressive Example</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Watch how each GCSE element improves the prompt:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Elements Used</th>
+                                <th>Prompt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>G</strong> only</td>
+                                <td>Generate 3&ndash;5 bullet points</td>
+                            </tr>
+                            <tr>
+                                <td><strong>G + C</strong></td>
+                                <td>Generate 3&ndash;5 bullet points to prepare me for a meeting with Client X to
+                                    discuss their Copilot launch.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>G + C + S</strong></td>
+                                <td>Generate 3&ndash;5 bullet points to prepare me for a meeting with Client X to
+                                    discuss their Copilot launch. Use best practice guidance from the Microsoft
+                                    Adoption site.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>G + C + S + E</strong></td>
+                                <td>Generate 3&ndash;5 bullet points to prepare me for a meeting with Client X to
+                                    discuss their Copilot launch. Use best practice guidance from the Microsoft
+                                    Adoption site. Please use simple language so I can get up to speed quickly.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">GCSE in Practice &ndash; Job Description</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Try the following two prompts using Copilot Chat and compare the responses you get:</p>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt 1 &ndash; Goal Only</div>
+                        <div class="prompt-box">Write a job description for a senior project manager</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt 2 &ndash; Full GCSE</div>
+                        <div class="prompt-box">Generate a comprehensive job description for a senior project manager
+                            focused on technical project management for consumer electronic hardware. This role is
+                            urgent,
+                            and the candidate will join a dynamic team. Reference our company&rsquo;s standard specs and
+                            industry norms. The description should be concise, max two pages, including
+                            responsibilities,
+                            qualifications.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <table class="data-table" style="margin-top:var(--sp-4);">
+                        <thead>
+                            <tr>
+                                <th>GCSE Element</th>
+                                <th>Prompt 2 Mapping</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Goal</strong></td>
+                                <td>Generate a comprehensive job description for a senior project manager</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Context</strong></td>
+                                <td>Focused on technical project management for consumer electronic hardware; urgent
+                                    role, dynamic team</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Source</strong></td>
+                                <td>Reference our company&rsquo;s standard specs and industry norms</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Expectations</strong></td>
+                                <td>Concise, max two pages, including responsibilities and qualifications</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="margin-top:var(--sp-4);"><strong>What differences do you notice?</strong> How does
+                        specificity change the quality of the output?</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 3: ITERATING & EXPANDING YOUR PROMPTS
+             ============================================================ -->
+        <section id="sec3">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128260;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 3</div>
+                    <h2 class="module-title">Iterating &amp; Expanding Your Prompts</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Example</span>
+                    <span class="section-card-title">Good &rarr; Better &rarr; Best</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> You are an HR Manager who needs to prep for an upcoming
+                        candidate interview for a new AI Engineer position within the IT department.</p>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Good</div>
+                        <div class="prompt-box">Help me prepare for an upcoming candidate interview for a new AI
+                            Engineer
+                            role in our IT department by creating a list of questions</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Better</div>
+                        <div class="prompt-box">I&rsquo;m an HR Manager who needs to prepare for a candidate interview
+                            for
+                            our new AI Engineer role in IT. Please prepare a list of appropriate questions for the
+                            candidate, so that I look prepared during the interview</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Best</div>
+                        <div class="prompt-box">I&rsquo;m an HR Manager who needs to prepare for a candidate interview
+                            for
+                            our new AI Engineer role in IT. Please review the candidate&rsquo;s resume here: /[resume
+                            file]
+                            and the position detail here: /[position doc] and provide me a comprehensive list of
+                            questions
+                            that I can use to determine the candidate&rsquo;s fit against the position</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <table class="data-table" style="margin-top:var(--sp-4);">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>GCSE Elements Present</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Good</strong></td>
+                                <td><strong>G</strong>oal only</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Better</strong></td>
+                                <td><strong>G</strong>oal + <strong>C</strong>ontext + <strong>E</strong>xpectations
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best</strong></td>
+                                <td><strong>G</strong>oal + <strong>C</strong>ontext + <strong>S</strong>ource +
+                                    <strong>E</strong>xpectations
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Key Insight</div>
+                        Notice that &ldquo;Best&rdquo; adds <strong>Source</strong> &mdash; the game-changer
+                        that grounds Copilot in your real data rather than generic knowledge.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Key Concept</span>
+                    <span class="section-card-title">Expand the Purpose of the Prompt</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Make your prompts more impactful by thinking about how Copilot fits into your
+                        <strong>entire workflow</strong>, not just a single task.
+                    </p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Question to Ask Yourself</th>
+                                <th>What It Means</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Why am I using this prompt?</strong></td>
+                                <td>Understand the context for this task</td>
+                            </tr>
+                            <tr>
+                                <td><strong>What will I do with the output?</strong></td>
+                                <td>Will I send it to someone? Transform it? Feed it into another step?</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Can I extend Copilot&rsquo;s remit?</strong></td>
+                                <td>Can I ask Copilot to do a bigger task to automate more work?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">Extending the Prompt&rsquo;s Purpose &ndash; Meeting
+                        Follow-Up</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>We&rsquo;re all familiar with creating a list of actions from Teams meetings &mdash;
+                        but <em>why</em> are you doing it? If it&rsquo;s to send to someone else, why not get
+                        Copilot to write the email too?</p>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This &ndash; Single Task</div>
+                        <div class="prompt-box">Recap the /[Meeting Name] meeting creating a table
+                            for action items, owners and due dates.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This &ndash; Extended Purpose</div>
+                        <div class="prompt-box">Write a follow up email to the attendees of the /[Meeting Name]
+                            meeting with a table showing decisions made, another showing actions and owners
+                            and lastly a list of considerations for the next meeting</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Key Insight</div>
+                        Don&rsquo;t just ask Copilot for the intermediate step. Ask it for the
+                        <em>end product</em> you actually need.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">Practice &ndash; Provide Specific Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Copilot is built to take action, so telling Copilot what &ldquo;to do&rdquo; or
+                        what &ldquo;not to do&rdquo; can be very effective.</p>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This &ndash; Simple</div>
+                        <div class="prompt-box">Write an overview of how Microsoft 365 Copilot can help improve
+                            productivity in enterprises. Generate 3 bullet points.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This &ndash; Specific Instructions</div>
+                        <div class="prompt-box">Summarize the latest Microsoft AI announcements for a keynote speech
+                            on stage at Ignite, Microsoft&rsquo;s annual conference. Do not include any announcements
+                            from before January 2025 and ensure to highlight the impact of these innovations.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 4: CONVERSATIONAL PROMPTING
+             ============================================================ -->
+        <section id="sec4">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#128172;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 4</div>
+                    <h2 class="module-title">Conversational Prompting</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Key Concept</span>
+                    <span class="section-card-title">Keep the Conversation Going</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Following up on your prompts helps you collaborate with Copilot to gain more useful,
+                        tailored responses. You don&rsquo;t need to get it perfect on the first try &mdash;
+                        <strong>iterate</strong>.
+                    </p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Use Case</th>
+                                <th>How to Keep the Conversation Going</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Generating content ideas</strong></td>
+                                <td>Lead with broader requests, then give specific details about the content</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Enabling insightful meetings</strong></td>
+                                <td>Request a meeting recap, then ask for more information about what you should know
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Storytelling assistance</strong></td>
+                                <td>Ask Copilot to write a story, then guide it with more specific, relevant details
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gaining insights</strong></td>
+                                <td>Ask for a summary of a specific file, then ask relevant questions for deeper
+                                    insights</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Translating languages</strong></td>
+                                <td>Ask Copilot to translate a sentence, then ask for more context or a regional
+                                    dialect</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Solving technical problems</strong></td>
+                                <td>Present a technical problem, then narrow it down or ask for step-by-step
+                                    guidance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">Practice &ndash; Conversational Refinement</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Let&rsquo;s refine the output with a conversational approach.</p>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Starting Prompt</div>
+                        <div class="prompt-box">Write an overview of how Microsoft 365 Copilot can help improve
+                            productivity in enterprises. Generate 3 bullet points.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p style="margin-top:var(--sp-4);"><strong>Now refine it!</strong> Try follow-up prompts like:</p>
+                    <ul>
+                        <li>&ldquo;Make these more specific to finance teams&rdquo;</li>
+                        <li>&ldquo;Add a real-world example for each bullet&rdquo;</li>
+                        <li>&ldquo;Rewrite in a more executive-friendly tone&rdquo;</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 5: USE EXISTING MATERIALS AS TEMPLATES
+             ============================================================ -->
+        <section id="sec5">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128196;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 5</div>
+                    <h2 class="module-title">Use Existing Materials as Templates</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Key Concept</span>
+                    <span class="section-card-title">Give Copilot Examples of Good</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Providing a sample sentence, paragraph, or existing document to Copilot offers a
+                        guideline and enhances the quality of the output. This ensures the result is formatted
+                        in a familiar and ideal way, minimising the time you need to spend reviewing and editing.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">Practice &ndash; Using a Template Document</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">Create me a proposal for my upcoming sales call with my customer,
+                            using /[Business Proposal Template.docx] as a template</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Key Insight</div>
+                        Referencing an existing document as a template is one of the most powerful
+                        &ldquo;Source&rdquo; techniques in the GCSE framework. It gives Copilot a
+                        concrete example of what &ldquo;good&rdquo; looks like.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 6: WHAT ARE AGENTS?
+             ============================================================ -->
+        <section id="sec6">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#129302;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 6</div>
+                    <h2 class="module-title">What Are Agents?</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Key Concept</span>
+                    <span class="section-card-title">Copilot vs. Agents</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>While <strong>every employee has a Copilot</strong> to transform individual
+                        productivity, <strong>every business process can be transformed by agents</strong>.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Copilot</th>
+                                <th>Agents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Personal AI assistant for every employee</td>
+                                <td>Purpose-built AI that automates business processes</td>
+                            </tr>
+                            <tr>
+                                <td>Responds to your prompts in real time</td>
+                                <td>Follows defined instructions, knowledge, and actions</td>
+                            </tr>
+                            <tr>
+                                <td>General-purpose across M365 apps</td>
+                                <td>Tailored to a specific role, task, or workflow</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Key Insight</div>
+                        Everything you&rsquo;ve learned about writing great prompts applies directly
+                        to writing agent instructions. The GCSE framework is the foundation for
+                        configuring agents.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Key Concept</span>
+                    <span class="section-card-title">Components of an Agent</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Instructions define the agent and tailor its experience to business requirements
+                        and expected outcomes.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>What It Does</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Purpose</strong></td>
+                                <td>What this agent is and its goals</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guidelines</strong></td>
+                                <td>General directions, tone, rules and restrictions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Skills</strong></td>
+                                <td>Granular tasks with step-by-step workflow, handled by the LLM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Example</span>
+                    <span class="section-card-title">Corporate Q&amp;A Agent &ndash; Instruction Breakdown</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>To get the best user experience, provide as many details as needed to minimise
+                        the user&rsquo;s effort in prompting your agent:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Example Instruction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Purpose</strong></td>
+                                <td>You are Corporate Q&amp;A agent that helps to share corporate knowledge.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guidelines</strong></td>
+                                <td>You answer user&rsquo;s questions using only the company knowledge base and public
+                                    documentation. Say &ldquo;I do not know&rdquo; if there are no relevant
+                                    results.<br />
+                                    Be nice and polite.<br />
+                                    Acronym CE means [Company Electronics].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Skills</strong></td>
+                                <td>You should answer the questions in the following format:<br />
+                                    Question: <strong>inferred user question in bold</strong><br />
+                                    Answer: results rephrased to be more relevant for user query</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Key Insight</div>
+                        This maps to GCSE: Purpose = Goal, Guidelines = Context + Expectations,
+                        Skills = Source + Expectations.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 7: SHARING YOUR PROMPTS
+             ============================================================ -->
+        <section id="sec7">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128230;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 7</div>
+                    <h2 class="module-title">Sharing Your Prompts</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Reference</span>
+                    <span class="section-card-title">Copilot Prompt Gallery</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Boost AI confidence and success through prompting with the Copilot Prompt Gallery.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>What It Does</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Inspirational Prompt Collections</strong></td>
+                                <td>Explore prompts tailored to a variety of roles, industries, or scenarios</td>
+                            </tr>
+                            <tr>
+                                <td><strong>In-App Prompt Ideas &amp; Suggestions</strong></td>
+                                <td>Find and use prompts directly in Microsoft 365 Copilot, Copilot Chat, and
+                                    agents</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Viral Prompt Sharing &amp; Discovery</strong></td>
+                                <td>Save and share your own prompts and learn from others</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 8: PROMPTING BEST PRACTICES
+             ============================================================ -->
+        <section id="sec8">
+
+            <div class="module-header">
+                <div class="module-icon red">&#128161;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 8</div>
+                    <h2 class="module-title">Prompting Best Practices</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Reference</span>
+                    <span class="section-card-title">7 Prompting Best Practices</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Best Practice</th>
+                                <th>What It Means</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>Prompt length and clarity matters</td>
+                                <td>Be specific but concise. Aim for 25&ndash;30 words instead of the average
+                                    7&ndash;9.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>Break down complex problems</td>
+                                <td>Don&rsquo;t cram everything into one prompt. Use a step-by-step approach for
+                                    clarity and depth.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>Use persona-based prompting</td>
+                                <td>Ask Copilot to &ldquo;act as&rdquo; a specific role for tailored guidance.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>Ask Copilot what it needs</td>
+                                <td>Instead of guessing, ask Copilot what information you should provide.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>Take a holistic approach</td>
+                                <td>Think about entire processes, not just individual tasks.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6</strong></td>
+                                <td>Be curious</td>
+                                <td>Experiment with different prompt structures and approaches.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7</strong></td>
+                                <td>Test and refine</td>
+                                <td>Iterate based on results. Small tweaks can make a big difference.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">Try: Ask Copilot What It Needs</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This Prompt</div>
+                        <div class="prompt-box">Copilot, what specific details or context do you need from me to create
+                            an effective strategy for improving customer satisfaction in our services?</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             KEY TAKEAWAYS
+             ============================================================ -->
+        <section id="takeaways">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#10067;</div>
+                <div class="module-meta">
+                    <div class="module-label">Wrap-Up</div>
+                    <h2 class="module-title">Key Takeaways</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Summary</span>
+                    <span class="section-card-title">What to Remember</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Use GCSE</strong> &mdash; Goal, Context, Source, Expectations &mdash; every time you
+                            write a prompt</li>
+                        <li><strong>Iterate</strong> &mdash; your first prompt is a starting point, not the final
+                            answer</li>
+                        <li><strong>Keep it conversational</strong> &mdash; follow up, refine, and build on
+                            responses</li>
+                        <li><strong>Use templates</strong> &mdash; reference existing documents for consistent,
+                            high-quality output</li>
+                        <li><strong>Share what works</strong> &mdash; use the Prompt Gallery to save and share
+                            prompts with your team</li>
+                        <li><strong>Experiment</strong> &mdash; the best way to learn is to try different
+                            approaches</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../js/main.v3.js"></script>
+
+</body>
+
+</html>
