@@ -26,7 +26,7 @@
         <header class="page-hero">
             <h1>Copilot Agents Hack-a-Thon &mdash; Participant Workbook</h1>
             <p class="subtitle">
-                Inspire Brands &nbsp;|&nbsp; March 31, 2026
+                Copilot Agents Hack-a-Thon &mdash; Participant Workbook
             </p>
         </header>
 
@@ -36,6 +36,8 @@
                 <li><a href="#agenda">&#128197; Day at a Glance</a></li>
                 <li><a href="#canvas">&#127912; Agent Design Canvas</a></li>
                 <li><a href="#scenarios">&#129302; Scenario Quick Reference</a></li>
+                <li><a href="#demos">&#127916; Demos &amp; Exercises to Try</a></li>
+                <li><a href="#judging">&#127942; Judging Criteria</a></li>
                 <li><a href="#build-guide">&#128295; Quick Build Guide</a></li>
                 <li><a href="#tips">&#128161; Tips for Better Agents</a></li>
                 <li><a href="#demo-prep">&#127916; Demo Prep Worksheet</a></li>
@@ -176,8 +178,7 @@
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td><strong>SUCCESS METRIC</strong> &mdash; How will you know this is working at Inspire
-                                    Brands?</td>
+                                <td><strong>SUCCESS METRIC</strong> &mdash; How will you know this is working at your organization?</td>
                                 <td>&nbsp;</td>
                             </tr>
                         </tbody>
@@ -254,6 +255,155 @@
                                 <td>Guide audit prep checklist; flag open items; generate summary</td>
                                 <td>Hard</td>
                                 <td>Custom (Copilot Studio)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMOS & EXERCISES TO TRY
+             ============================================================ -->
+        <section id="demos">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#127916;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Demos &amp; Exercises to Try</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">Prompt Coach</span>
+                    <span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;margin-left:4px;">Chat Basic</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Access via <strong>Agents &rarr; Prompt Coach</strong> in Copilot Chat.</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This</div>
+                        <div class="prompt-box">Analyze my prompt and provide feedback on how I could improve it. &ldquo;Generate 3&ndash;4 creative campaign slogans.&rdquo;</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">Idea Coach</span>
+                    <span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;margin-left:4px;">Chat Basic</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Try This</div>
+                        <div class="prompt-box">Help me brainstorm ideas on how we can encourage employees to use Copilot agents to streamline business workflows.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise</span>
+                    <span class="section-card-title">Build an Agent in Agent Builder</span>
+                    <span style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;margin-left:4px;">M365 Copilot Premium</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Go to <strong>microsoft365.com &rarr; New agent</strong> and follow these steps:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Step 1 &ndash; Describe</div>
+                        <div class="prompt-box">Create an agent to monitor public notices for consumer-based product recalls and summarize &ldquo;What do I need to know today?&rdquo; for store ops and merchandising teams.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Step 2 &ndash; Name It</div>
+                        <div class="prompt-box">Please name it &ldquo;Total Recall&rdquo;</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Step 3 &ndash; Refine Instructions</div>
+                        <div class="prompt-box">The agent should report on and surface recent consumer-based product recalls within the last 30 days. Please provide details on the recall reasons and recommended actions consumers should take. And please focus on recalls affecting the NE US area. Primarily use reputable websites like FDA, USDA, and CPSC but also information provided by affected retailers as well. Do NOT infer anything beyond published notices.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Step 4 &ndash; Test It</div>
+                        <div class="prompt-box">What do I need to know today?</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Step 5 &ndash; Refine</div>
+                        <div class="prompt-box">Make sure the Agent cites all sources.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             JUDGING CRITERIA
+             ============================================================ -->
+        <section id="judging">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127942;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Judging Criteria</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Scoring</span>
+                    <span class="section-card-title">How Teams Will Be Evaluated</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th>Weight</th>
+                                <th>What We&rsquo;re Looking For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Business Value</strong></td>
+                                <td>30%</td>
+                                <td>Clear ROI, tied to a real business challenge with quantifiable impact</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Creativity</strong></td>
+                                <td>20%</td>
+                                <td>Novel problem choice, fresh approach, or unexpected application of agents</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Technical Execution</strong></td>
+                                <td>30%</td>
+                                <td>Agent works in demo, right type chosen, knowledge sources properly connected</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Demo Quality</strong></td>
+                                <td>20%</td>
+                                <td>Clear story, compelling pitch, confident delivery within 5 minutes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td><strong>100%</strong></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -420,7 +570,7 @@
                         <tbody>
                             <tr>
                                 <td><strong>THE PROBLEM</strong> (0:30) &mdash; What business challenge did you choose?
-                                    Who experiences it at Inspire Brands?</td>
+                                    Who experiences it at your organization?</td>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
