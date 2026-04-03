@@ -43,6 +43,11 @@
                 <li><a href="#sec6">&#128295; Writing Agent Instructions</a></li>
                 <li><a href="#sec7">&#128161; Prompting Best Practices</a></li>
                 <li><a href="#sec8">&#128187; Copilot Interface</a></li>
+                <li><a href="#files">&#128206; Working with Files</a></li>
+                <li><a href="#tips">&#128161; Top 10 Power User Tips</a></li>
+                <li><a href="#advanced-tips">&#128640; Advanced Prompt Tips</a></li>
+                <li><a href="#custom-instructions">&#9881;&#65039; Memory &amp; Custom Instructions</a></li>
+                <li><a href="#demo-prompts">&#127916; Demo Prompts to Try Today</a></li>
             </ul>
         </nav>
 
@@ -1008,16 +1013,408 @@
         </section>
 
         <!-- ============================================================
+             WORKING WITH FILES
+             ============================================================ -->
+        <section id="files">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#128206;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Working with Files</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">How-To</span>
+                    <span class="section-card-title">How to Attach a File</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Click the <strong>+ (plus) icon</strong> in the Copilot Chat prompt
+                                bar</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Browse <strong>OneDrive</strong>, <strong>SharePoint</strong>,
+                                or <strong>upload from your device</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Select your file &mdash; it appears as a chip/badge above the prompt
+                                bar</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Type your question and press <strong>Enter</strong></span>
+                        </li>
+                    </ol>
+                    <p style="margin-top:var(--sp-4);font-size:.85rem;color:var(--text-muted);">
+                        <strong>Supported types:</strong> Word (.docx) &bull; PDF (.pdf) &bull;
+                        PowerPoint (.pptx) &bull; Excel (.xlsx) &bull; Plain text (.txt) &bull;
+                        Images (.png, .jpeg) &bull; Data files (.csv, .json, .md)<br />
+                        <strong>File size limit:</strong> Up to 50 MB per file (512 MB for licensed users).
+                        Files stored in OneDrive or SharePoint can be referenced directly.
+                    </p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Cheat Sheet</span>
+                    <span class="section-card-title">File Prompts Cheat Sheet</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table" style="table-layout:fixed;">
+                        <thead>
+                            <tr>
+                                <th style="width:30%;">What You Want</th>
+                                <th style="width:70%;">Try This Prompt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Summarize a document</td>
+                                <td>&ldquo;Summarize this in 5 key points&rdquo; [attach file]</td>
+                            </tr>
+                            <tr>
+                                <td>Find action items</td>
+                                <td>&ldquo;What are all the action items and who owns them?&rdquo; [attach file]</td>
+                            </tr>
+                            <tr>
+                                <td>Compare two docs</td>
+                                <td>&ldquo;Compare these two documents and list the key differences&rdquo; [attach 2
+                                    files]</td>
+                            </tr>
+                            <tr>
+                                <td>Draft from a file</td>
+                                <td>&ldquo;Based on this brief, draft a client-facing overview in 3 paragraphs&rdquo;
+                                    [attach file]</td>
+                            </tr>
+                            <tr>
+                                <td>Extract data</td>
+                                <td>&ldquo;List all dates, deadlines, and milestones from this document&rdquo; [attach
+                                    file]</td>
+                            </tr>
+                            <tr>
+                                <td>Analyze a spreadsheet</td>
+                                <td>&ldquo;Summarize this data and tell me the top 3 trends&rdquo; [attach Excel]</td>
+                            </tr>
+                            <tr>
+                                <td>Rewrite in a new tone</td>
+                                <td>&ldquo;Rewrite this content for a non-technical executive audience&rdquo; [attach
+                                    file]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             TOP 10 POWER USER TIPS
+             ============================================================ -->
+        <section id="tips">
+
+            <div class="module-header">
+                <div class="module-icon red">&#128161;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Top 10 Power User Tips</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tips</span>
+                    <span class="section-card-title">Become a Power User</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Be specific</strong> &mdash; include audience, tone, and
+                                format in your prompt</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Iterate</strong> &mdash; if the first response isn&rsquo;t
+                                right, refine it (&ldquo;Make it shorter,&rdquo; &ldquo;Use a table&rdquo;)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Always review</strong> &mdash; verify facts before sending
+                                or acting on Copilot output</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Use follow-up questions</strong> &mdash; Copilot remembers
+                                context within a session</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Try &ldquo;What else?&rdquo;</strong> &mdash; ask Copilot to
+                                expand, add examples, or suggest alternatives</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text"><strong>Name your audience</strong> &mdash; &ldquo;Write this for a
+                                non-technical executive&rdquo; changes everything</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">7</span>
+                            <span class="step-text"><strong>Ask for options</strong> &mdash; &ldquo;Give me 3 different
+                                versions of this email&rdquo;</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">8</span>
+                            <span class="step-text"><strong>Use it for brainstorming</strong> &mdash; &ldquo;Give me 10
+                                ideas for&hellip;&rdquo;</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">9</span>
+                            <span class="step-text"><strong>Check privacy</strong> &mdash; follow your
+                                organization&rsquo;s AI usage policy for sensitive content</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">10</span>
+                            <span class="step-text"><strong>Share what works</strong> &mdash; contribute your best
+                                prompts to your team&rsquo;s shared library</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             ADVANCED PROMPT TIPS
+             ============================================================ -->
+        <section id="advanced-tips">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128640;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Advanced Prompt Tips</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tip 1</span>
+                    <span class="section-card-title">Force Plain Text Output</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>When you want clean, copy-ready output, add this to the end of your prompt:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt Suffix</div>
+                        <div class="prompt-box">Output the results only as a block of plain text. Do not include any
+                            other text. Always treat the block of plain text as a block of code that uses text as the
+                            code language. Always include a copy button to copy the contents of the box. Do not include
+                            sources.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tip 2</span>
+                    <span class="section-card-title">Retrieve Your Resultant Prompt</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Running out of iterations (max 30 per chat)? Ask Copilot for the cumulative prompt
+                        so you can continue in a new chat:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">What is the resultant prompt so far?</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <p>Copilot will output a consolidated version of everything you&rsquo;ve asked for.
+                        Copy it, start a new chat, paste the resultant prompt, and continue where you
+                        left off.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MEMORY & CUSTOM INSTRUCTIONS
+             ============================================================ -->
+        <section id="custom-instructions">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9881;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Memory &amp; Custom Instructions</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Overview</span>
+                    <span class="section-card-title">What Are Custom Instructions?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Custom Instructions let you set persistent preferences that shape every Copilot
+                        response &mdash; without repeating yourself each time. Access them via
+                        <strong>Settings &rarr; Personalization</strong> in Copilot Chat.
+                    </p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Sample</span>
+                    <span class="section-card-title">Sample Custom Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Copy any or all of these sections into your Copilot Custom Instructions
+                        (<strong>Settings &rarr; Personalization</strong>):</p>
+
+                    <h4 style="margin-top:var(--sp-6);">General Behavior</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; General</div>
+                        <div class="prompt-box">Copilot prioritizes accuracy, clarity, and trust.
+                            Always distinguish verified facts from inferred reasoning.
+                            Never present assumptions or context-based reasoning as fact.
+                            Avoid cascade errors by rechecking each step before responding.
+                            Think deeply before answering. When uncertain, ask clarifying questions or present 2&ndash;3
+                            vetted options with pros and cons.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Internal / Collaborative Audience</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; Internal Tone</div>
+                        <div class="prompt-box">Collaborative and supportive. Slightly informal and pragmatic.
+                            Quick confirmations and concise language. Use only when the audience is clearly internal.
+                            Example: &ldquo;Thanks for sharing.&rdquo; &ldquo;Would it work to proceed this way?&rdquo;
+                            &ldquo;Appreciate your support.&rdquo;</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Customer / External Audience</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; External Tone</div>
+                        <div class="prompt-box">Professional, courteous, and reassuring. Formal greetings and closings.
+                            Avoid jargon unless contextually relevant and explained. No slang or overly casual language.
+                            Provide clear next steps and timelines.
+                            Example: &ldquo;Looking forward to discussing the way forward.&rdquo; &ldquo;Sounds like a
+                            great opportunity.&rdquo;</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Content Labels</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; Labels</div>
+                        <div class="prompt-box">Use explicit labels consistently:
+                            [Verified] facts confirmed by authoritative sources
+                            [Inference] logical conclusions based on context
+                            [Confidence] cues like &ldquo;Likely&rdquo; or &ldquo;Based on observed patterns,&rdquo;
+                            [Unverified] claims not yet confirmed
+                            [Glossary] acronyms clarified on first use.
+                            When mixing content, present verified facts first, then clearly disclose inferred content
+                            with:
+                            &ldquo;The following points are inferred based on available context and may require
+                            validation.&rdquo;</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMO PROMPTS TO TRY TODAY
+             ============================================================ -->
+        <section id="demo-prompts">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127916;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Demo Prompts to Try Today</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Try These</span>
+                    <span class="section-card-title">Ready-to-Use Prompts</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.25rem;">&#128206; <strong>Attach a
+                            file</strong> using the <strong>+</strong> icon before sending this prompt.</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Summarize</div>
+                        <div class="prompt-box">Summarize this document in 5 bullet points highlighting the key
+                            decisions.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.25rem;">&#128206; <strong>Attach a
+                            file</strong> using the <strong>+</strong> icon before sending this prompt.</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Action Items</div>
+                        <div class="prompt-box">What are the action items from this document and who owns each one?
+                        </div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.25rem;">&#128206; <strong>Attach
+                            two files</strong> using the <strong>+</strong> icon before sending this prompt.</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Compare</div>
+                        <div class="prompt-box">Compare these two documents and list the top 5 differences.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Draft Email</div>
+                        <div class="prompt-box">Draft a professional email to my team summarizing today's progress and
+                            next steps.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.25rem;">&#9997;&#65039;
+                        <strong>Paste the paragraph</strong> you want rewritten directly into this prompt.
+                    </p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Simplify</div>
+                        <div class="prompt-box">Rewrite this paragraph for a non-technical audience in plain English.
+                        </div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Meeting Prep</div>
+                        <div class="prompt-box">Create a 5-item agenda for a 30-minute project status meeting.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
              KEY TAKEAWAYS
              ============================================================ -->
         <section id="takeaways">
-
-            <div class="module-header">
-                <div class="module-icon teal">&#10067;</div>
-                <div class="module-meta">
-                    <div class="module-label">Wrap-Up</div>
-                    <h2 class="module-title">Key Takeaways</h2>
-                </div>
             </div>
 
             <article class="section-card">
