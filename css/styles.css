@@ -16,7 +16,7 @@
     --purple-light: #7c4dca;
     --purple-bg: #f3eefa;
 
-    /* Accent colours */
+    /* Accent colors */
     --green-badge: #1b9e5a;
     --green-light: #e6f7ee;
     --orange-step: #e67e22;
@@ -352,7 +352,7 @@ img {
     margin-top: 2px;
 }
 
-/* Rotating step colours */
+/* Rotating step colors */
 .step:nth-child(6n+1) .step-number {
     background: var(--orange-step);
 }

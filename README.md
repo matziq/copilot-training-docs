@@ -1,12 +1,12 @@
 # Training Documentation Framework
 
-A plug-and-play HTML/CSS/JS documentation template inspired by modern training course designs — featuring collapsible exercise cards, colour-coded numbered steps, copy-able prompt blocks, power-move callouts, and module headers with time estimates.
+A plug-and-play HTML/CSS/JS documentation template inspired by modern training course designs — featuring collapsible exercise cards, color-coded numbered steps, copy-able prompt blocks, power-move callouts, and module headers with time estimates.
 
 ## Quick Start
 
 1. Open `index.html` in a browser — it works with no build step.
 2. Edit the HTML directly to plug in your own content.
-3. Customise colours in `css/styles.css` via CSS custom properties at the top.
+3. Customize colors in `css/styles.css` via CSS custom properties at the top.
 
 ## File Structure
 
@@ -26,7 +26,7 @@ copilot_training_docs/
 
 ```html
 <div class="module-header">
-  <div class="module-icon purple">⚡</div>   <!-- colour: purple | green | orange | blue -->
+  <div class="module-icon purple">⚡</div>   <!-- color: purple | green | orange | blue -->
   <div class="module-meta">
     <div class="module-label">Module 1 · Fundamentals</div>
     <h2 class="module-title">Getting Started</h2>
@@ -54,7 +54,7 @@ Cards are collapsible. Click the header to toggle.
 
 ### Badge Variants
 
-| Class             | Colour  | Use for                  |
+| Class             | Color  | Use for                  |
 |--------------------|---------|--------------------------|
 | `badge-exercise`   | Purple  | Exercises / labs         |
 | `badge-agent`      | Green   | Agent Mode features      |
@@ -64,7 +64,7 @@ Cards are collapsible. Click the header to toggle.
 
 ### Numbered Steps
 
-Colours rotate automatically (orange → blue → green → purple → red → teal).
+Colors rotate automatically (orange → blue → green → purple → red → teal).
 
 ```html
 <ol class="steps">
@@ -125,11 +125,11 @@ Place this bar above a group of cards:
 </div>
 ```
 
-## Customisation
+## Customization
 
-### Colours
+### Colors
 
-All colours live as CSS custom properties in `:root` at the top of `css/styles.css`. Change them once and the whole theme updates:
+All colors live as CSS custom properties in `:root` at the top of `css/styles.css`. Change them once and the whole theme updates:
 
 ```css
 --purple-deep:  #3a1d6e;   /* headings, deep accents */
