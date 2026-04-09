@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copilot Chat &mdash; Your IT Superpower &mdash; Trainer Guide</title>
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon-t13.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../../trainerdocs.html"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>Copilot Chat &mdash; Your IT Superpower &mdash; Trainer Guide</h1>
+            <p class="subtitle">
+                Trainer Guide &mdash; IT-focused Copilot Chat session covering the interface, the GCSE
+                prompting framework, nine live demos across scripting, troubleshooting, KQL, security
+                review, incident management, regex, Bicep, change requests, and on-call scenarios,
+                plus tips &amp; tricks and custom instructions.
+            </p>
+        </header>
+
+        <div class="callout callout-warning">
+            <div class="callout-title">&#9888;&#65039; Disclaimer</div>
+            All prompts, scenarios, examples, and referenced entities are fictional and provided
+            only for training and demonstration purposes. Do not use this material for
+            decision-making, reporting, or external distribution.
+        </div>
+
+        <div class="callout callout-note">
+            <div class="callout-title">&#128221; Session Details</div>
+            <strong>Duration:</strong> ~60 minutes<br />
+            <strong>Format:</strong> Presentation &middot; Live demos &middot; Q&amp;A<br />
+            <strong>Level:</strong> 100-Level &mdash; IT Focused<br />
+            <strong>Audience:</strong> IT professionals who want to apply Copilot Chat to real-world IT tasks &mdash;
+            scripting, troubleshooting, security review, KQL, infrastructure, incident management, and more.<br />
+            <strong>License key:</strong>
+            <span
+                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Chat
+                Basic</span> = available to all M365 users &nbsp;&bull;&nbsp;
+            <span
+                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">M365
+                Copilot Premium</span> = requires M365 Copilot license<br />
+            <strong>Classification:</strong> Trainer Version &mdash; For Trainer Use Only, Not for Distribution to
+            Participants
+        </div>
+
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#timing">&#9202; Session Timing Breakdown</a></li>
+                <li><a href="#sec1">&#128202; Section 1 &mdash; The Numbers &amp; What Is Copilot Chat?</a></li>
+                <li><a href="#sec2">&#128640; Section 2 &mdash; What&rsquo;s New in Copilot Chat</a></li>
+                <li><a href="#sec3">&#128187; Section 3 &mdash; Know Your Interface</a></li>
+                <li><a href="#sec4">&#127891; Section 4 &mdash; The GCSE Framework</a></li>
+                <li><a href="#sec5">&#128295; Section 5 &mdash; What You Already Have</a></li>
+                <li><a href="#sec6">&#127916; Section 6 &mdash; Nine Live Demos</a></li>
+                <li><a href="#sec7">&#128161; Section 7 &mdash; Tips &amp; Tricks the Pros Use</a></li>
+                <li><a href="#sec8">&#9881;&#65039; Section 8 &mdash; Copilot Custom Instructions</a></li>
+                <li><a href="#sec9">&#10067; Section 9 &mdash; Q&amp;A</a></li>
+                <li><a href="#files">&#128206; Working with Files</a></li>
+                <li><a href="#tips">&#128161; Top 10 Power User Tips</a></li>
+                <li><a href="#advanced-tips">&#128640; Advanced Prompt Tips</a></li>
+                <li><a href="#custom-instructions">&#9881;&#65039; Memory &amp; Custom Instructions</a></li>
+                <li><a href="#demo-prompts">&#127916; Demo Prompts to Try Today</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+             SESSION TIMING BREAKDOWN
+             ============================================================ -->
+        <section id="timing">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#9202;</div>
+                <div class="module-meta">
+                    <div class="module-label">Overview</div>
+                    <h2 class="module-title">Session Timing Breakdown</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Timing</span>
+                    <span class="section-card-title">Session Plan (~60 minutes)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Section</th>
+                                <th>Format</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0:00 &ndash; 0:05</td>
+                                <td>The Numbers &amp; What Is Copilot Chat?</td>
+                                <td>Presentation</td>
+                            </tr>
+                            <tr>
+                                <td>0:05 &ndash; 0:10</td>
+                                <td>What&rsquo;s New &amp; Know Your Interface</td>
+                                <td>Presentation &middot; Live walkthrough</td>
+                            </tr>
+                            <tr>
+                                <td>0:10 &ndash; 0:15</td>
+                                <td>GCSE Framework &amp; What You Already Have</td>
+                                <td>Presentation</td>
+                            </tr>
+                            <tr>
+                                <td>0:15 &ndash; 0:50</td>
+                                <td>Nine Live Demos</td>
+                                <td>Live demos</td>
+                            </tr>
+                            <tr>
+                                <td>0:50 &ndash; 0:55</td>
+                                <td>Tips &amp; Tricks + Custom Instructions</td>
+                                <td>Presentation</td>
+                            </tr>
+                            <tr>
+                                <td>0:55 &ndash; 1:00</td>
+                                <td>Q&amp;A</td>
+                                <td>Open discussion</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        The nine demos are the heart of this session. Each demo is self-contained &mdash;
+                        if you need to cut for time, skip Demo 6 (Regex) and Demo 7 (Bicep) as they tend to
+                        be more niche. Demos 1, 2, 4, 5, and 9 resonate most broadly with IT audiences.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 1: THE NUMBERS & WHAT IS COPILOT CHAT?
+             ============================================================ -->
+        <section id="sec1">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128202;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 1</div>
+                    <h2 class="module-title">The Numbers &amp; What Is Copilot Chat?</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">The Numbers Don&rsquo;t Lie</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Open with these Microsoft Work Trend Index statistics to anchor the value:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Stat</th>
+                                <th>What It Means for IT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1.2 hours saved per person per day</strong></td>
+                                <td>That&rsquo;s 6+ hours per week back in every IT team member&rsquo;s schedule</td>
+                            </tr>
+                            <tr>
+                                <td><strong>70% faster first drafts</strong></td>
+                                <td>Incident reports, change requests, runbooks &mdash; faster every time</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4x faster data analysis</strong></td>
+                                <td>Log analysis, KQL queries, security reviews</td>
+                            </tr>
+                            <tr>
+                                <td><strong>85% say it helps get to a good first draft</strong></td>
+                                <td>Especially powerful for documentation, RCAs, and communications</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Open with: &ldquo;How many of you have used Copilot Chat this week?&rdquo;
+                        Then: &ldquo;By the end of this session, you&rsquo;ll have 27 IT-specific prompts
+                        you can use immediately.&rdquo; Build anticipation before diving into the
+                        product overview.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">The Free Version &mdash; Already Yours</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Copilot Chat (Basic) is included with every Microsoft 365 subscription at no extra cost:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Model</strong></td>
+                                <td>GPT-5 with Smart Mode (as of April 2026)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Access</strong></td>
+                                <td><strong>m365.cloud.microsoft</strong> &mdash; sign in with your work account</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Web search</strong></td>
+                                <td>Real-time information and web-grounded answers</td>
+                            </tr>
+                            <tr>
+                                <td><strong>File upload</strong></td>
+                                <td>PDF, DOCX, XLSX, PPTX, CSV, JSON, LOG, HTML &mdash; up to 50 MB each, 3 at a time
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Enterprise Data Protection</strong></td>
+                                <td>Your data is not used for training; stays within your tenant boundary</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Outlook &amp; Calendar</strong></td>
+                                <td>Access to inbox and calendar context (not files or Teams without the premium
+                                    license)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Emphasize: <strong>&ldquo;No setup. No license. No excuses.&rdquo;</strong> Every person in this
+                        room can open Copilot Chat at <strong>m365.cloud.microsoft</strong> right now. The Premium
+                        license upgrades the experience but the fundamentals are already available.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 2: WHAT'S NEW IN COPILOT CHAT
+             ============================================================ -->
+        <section id="sec2">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128640;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 2</div>
+                    <h2 class="module-title">What&rsquo;s New in Copilot Chat</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Recent Copilot Chat Updates</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Status</th>
+                                <th>What It Means</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>GPT-5 with Smart Mode</strong></td>
+                                <td><span
+                                        style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Live</span>
+                                </td>
+                                <td>Dynamic routing between quick answers and deep reasoning &mdash; automatically
+                                    selected</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Memory &amp; Work IQ</strong></td>
+                                <td><span
+                                        style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Live</span>
+                                </td>
+                                <td>Copilot remembers your working preferences and style across sessions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>In-App in Word, Excel, PPT</strong></td>
+                                <td><span
+                                        style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Live</span>
+                                </td>
+                                <td>Copilot Chat side pane embedded directly inside Office apps</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Edit in Copilot</strong></td>
+                                <td><span
+                                        style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">Licensed</span>
+                                </td>
+                                <td>Specialized agents for Word, Excel, and PowerPoint editing tasks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Video Meeting Recaps</strong></td>
+                                <td><span
+                                        style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">Licensed</span>
+                                </td>
+                                <td>Narrated highlight reels from recorded meetings</td>
+                            </tr>
+                            <tr>
+                                <td><strong>In-App Access Changes (Apr 15 2026)</strong></td>
+                                <td><span
+                                        style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#fdecea;color:#b71c1c;font-weight:600;">Apr
+                                        15 2026</span></td>
+                                <td>In-app Copilot for unlicensed users being adjusted &mdash; web app remains available
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Highlight the April 15 change if relevant to the audience. Unlicensed users should bookmark
+                        <strong>m365.cloud.microsoft</strong> now if they rely on in-app access in Teams or Office.
+                        Point out that the web app always remains available.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 3: KNOW YOUR INTERFACE
+             ============================================================ -->
+        <section id="sec3">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128187;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 3</div>
+                    <h2 class="module-title">Know Your Interface</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Copilot Chat Interface Elements</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Control</th>
+                                <th>What It Does</th>
+                                <th>IT Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>+ (Add Content)</strong></td>
+                                <td>Upload up to 3 files (50 MB each &mdash; PDF/DOCX/XLSX/PPTX/CSV/JSON/LOG/HTML)</td>
+                                <td>Upload a log file, config JSON, or CSV of alerts for analysis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>/ (Reference Files)</strong></td>
+                                <td>Pull in SharePoint/OneDrive files without leaving the app</td>
+                                <td>Reference the runbook or change request template directly
+                                    <span
+                                        style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">Licensed</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>@ (Invoke Agents)</strong></td>
+                                <td>Access specialized agents</td>
+                                <td>Use @Interpreter for data analysis, @Planner for task management</td>
+                            </tr>
+                            <tr>
+                                <td><strong>&#127908; (Voice &amp; Read Aloud)</strong></td>
+                                <td>Dictate prompts and listen to responses</td>
+                                <td>Useful on-call when hands are busy at a keyboard</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Model Chooser</strong></td>
+                                <td>Switch between Auto, GPT-5, and other models</td>
+                                <td>Auto is usually best; switch to GPT-5 for complex code generation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>New &amp; Temporary Chat</strong></td>
+                                <td>Start fresh or create a private session with no history saved</td>
+                                <td>Use Temporary Chat when working with sensitive incident data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prompt Gallery</strong></td>
+                                <td>Browse and re-use saved prompts</td>
+                                <td>Save your best IT prompts for the team to share</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Facilitator Instructions</div>
+                        Open Copilot Chat at <strong>m365.cloud.microsoft</strong> and walk through the interface live.
+                        Point to each element as you describe it. Upload a sample log file to demonstrate the
+                        <strong>+</strong> button. Type <strong>/</strong> to show the file picker.
+                        Type <strong>@</strong> to show available agents.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 4: THE GCSE FRAMEWORK
+             ============================================================ -->
+        <section id="sec4">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127891;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 4</div>
+                    <h2 class="module-title">The GCSE Framework</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Framework</span>
+                    <span class="section-card-title">Goal &middot; Context &middot; Source &middot; Expectations</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>The <strong>GCSE</strong> framework is the 4-part prompt structure that changes everything:</p>
+
+                    <a href="../../images/gcse-prompt-ingredients.png" target="_blank">
+                        <img src="../../images/gcse-prompt-ingredients.png"
+                            alt="Giraffes Can See Everything — Goal, Context, Source, and Expectations"
+                            style="max-width:180px;border-radius:var(--radius-md);margin:var(--sp-4) 0;cursor:pointer;box-shadow:var(--shadow-sm);transition:transform .15s;" />
+                    </a>
+                    <p style="font-size:.8rem;color:var(--text-muted);margin-top:0;">Mnemonic: <em>Giraffes Can See
+                            Everything</em></p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>What It Means</th>
+                                <th>IT Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>G</strong>oal</td>
+                                <td>What you want Copilot to do. Use action verbs: write, explain, review, generate.
+                                </td>
+                                <td>&ldquo;Write a PowerShell script&hellip;&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>C</strong>ontext</td>
+                                <td>Background: audience, purpose, constraints, environment</td>
+                                <td>&ldquo;&hellip;for auditing inactive AD accounts in a corporate environment&hellip;&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>S</strong>ource</td>
+                                <td>Where to pull data from: a file, URL, error message, or pasted config</td>
+                                <td>&ldquo;&hellip;using this Terraform config: [paste]&hellip;&rdquo;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>E</strong>xpectations</td>
+                                <td>Format, tone, length, output style</td>
+                                <td>&ldquo;&hellip;as a numbered checklist with comments explaining each step.&rdquo;
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Show the GCSE slide and build the IT example live in Copilot Chat. Start with just
+                        the Goal (weak result), add Context (better), add Source (much better), add
+                        Expectations (best). The transformation is dramatic and memorable.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">IT Example</span>
+                    <span class="section-card-title">GCSE Applied to an IT Scenario</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Elements Used</th>
+                                <th>Prompt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>G</strong> only</td>
+                                <td>Write a KQL query</td>
+                            </tr>
+                            <tr>
+                                <td><strong>G + C</strong></td>
+                                <td>Write a KQL query for Microsoft Sentinel to find suspicious sign-in activity</td>
+                            </tr>
+                            <tr>
+                                <td><strong>G + C + S</strong></td>
+                                <td>Write a KQL query for Microsoft Sentinel to find suspicious sign-in activity. Use
+                                    the <em>SigninLogs</em> table and focus on sign-ins from outside the US in the last
+                                    24 hours</td>
+                            </tr>
+                            <tr>
+                                <td><strong>G + C + S + E</strong></td>
+                                <td>Write a KQL query for Microsoft Sentinel to find suspicious sign-in activity. Use
+                                    the SigninLogs table, focus on sign-ins from outside the US in the last 24 hours,
+                                    and include username, IP address, location, failure reason, and timestamp. Add
+                                    comments explaining each clause.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 5: WHAT YOU ALREADY HAVE
+             ============================================================ -->
+        <section id="sec5">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128295;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 5</div>
+                    <h2 class="module-title">What You Already Have</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">IT Capabilities Available Right Now</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>What Copilot Can Do for IT</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Code Generation</strong></td>
+                                <td>Write, review, explain, and debug code</td>
+                                <td>PowerShell, KQL, Python, ARM templates, Bicep, Terraform, bash</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Troubleshooting</strong></td>
+                                <td>Analyze error messages, parse logs, identify root cause</td>
+                                <td>Azure errors, Event Viewer outputs, application logs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Documentation</strong></td>
+                                <td>Summarize, explain, and translate technical docs</td>
+                                <td>Runbooks, architecture docs, KB articles, release notes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Communications</strong></td>
+                                <td>Draft audience-appropriate communications fast</td>
+                                <td>Incident reports, change requests, team updates, RCA templates</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Bridge to the demos: &ldquo;Each of those four capabilities maps directly to one or
+                        more of the nine demos you&rsquo;re about to see. Everything I&rsquo;m showing today
+                        is available to you right now, no additional license required.&rdquo;
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 6: NINE LIVE DEMOS
+             ============================================================ -->
+        <section id="sec6">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#127916;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 6</div>
+                    <h2 class="module-title">Nine Live Demos</h2>
+                </div>
+            </div>
+
+            <p class="module-intro">Use the <a href="../../Copilot-Chat-IT-Superpower-MolsonCoors.html" target="_blank" style="color:var(--blue-step);font-weight:600;">Demo Prompts companion page</a>
+                to copy each prompt and paste it directly into Copilot Chat. Each demo is designed as a
+                3-prompt chain that builds progressively.</p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <!-- DEMO 1 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 1</span>
+                    <span class="section-card-title">The Script Wizard &mdash; PowerShell AD Audit</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Generate a PowerShell script to audit inactive Active Directory
+                        accounts older than 90 days, export to CSV, and send an email alert.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Write a script to find AD accounts inactive 90+ days with last logon, dept, and
+                                    manager &mdash; export to CSV</td>
+                                <td>Full PS script with Get-ADUser, correct date math, Export-CSV</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Add error handling, try/catch, verbose logging, and a configurable -InactiveDays
+                                    parameter</td>
+                                <td>Properly structured functions, parameter block at top</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Add HTML email notification with summary table, top 10 longest-inactive accounts,
+                                    department breakdown</td>
+                                <td>Send-MailMessage or Send-MgUserMail, inline HTML, formatted table</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        This demo lands well because every IT admin has done this manually with ADUC or a basic
+                        Get-ADUser. The key moment is Prompt 1 producing a complete, commented script in seconds.
+                        Prompt 3 always gets a reaction &mdash; HTML email with a nicely formatted table is
+                        something people would have spent an hour on before.
+                        <br /><br />
+                        <strong>With a Premium license:</strong> You could pull your AD structure context from
+                        a SharePoint site or email thread documenting your OU layout.
+                    </div>
+                </div>
+            </article>
+
+            <!-- DEMO 2 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 2</span>
+                    <span class="section-card-title">The Troubleshoot Master &mdash; Azure RBAC Error</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Paste a cryptic Azure AuthorizationFailed error and watch Copilot
+                        diagnose, explain, and fix it step-by-step.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Explain this Azure error: [paste AuthorizationFailed message with object ID,
+                                    action, and scope]</td>
+                                <td>Clear plain-English explanation: who, what resource, what action was blocked</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>What&rsquo;s the minimum RBAC role to fix this? Compare built-in roles,
+                                    recommend least-privilege</td>
+                                <td>Comparison table of Contributor vs. Virtual Machine Contributor vs. custom</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Write the exact Azure CLI commands to assign that role, verify it, and retry the
+                                    failed operation</td>
+                                <td>az role assignment create with correct scope, az role assignment list to verify</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Paste the error message from the Demo Prompts page. The audience immediately recognizes
+                        this pattern &mdash; an opaque error they&rsquo;ve wasted 30 minutes Googling. The fact that
+                        Copilot goes from error to CLI fix in under 60 seconds is the moment to highlight.
+                        <br /><br />
+                        <strong>With a Premium license:</strong> Copilot can read your incident emails and Teams
+                        threads to understand prior context around the same error.
+                    </div>
+                </div>
+            </article>
+
+            <!-- DEMO 3 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 3</span>
+                    <span class="section-card-title">The KQL Query Builder &mdash; Sentinel Queries</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Build complex Sentinel and Log Analytics KQL queries from plain
+                        English.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Write KQL to find failed sign-ins from outside the US in the last 24 hours with
+                                    username, IP, location, failure reason, timestamp</td>
+                                <td>SigninLogs table, where clause with CountryOrRegion != &ldquo;US&rdquo;, correct
+                                    time filter</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Add a bar chart summarization by country and hour, with a threshold line at 10
+                                    attempts</td>
+                                <td>summarize count() by bin(TimeGenerated, 1h), render barchart</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Correlate suspicious IPs with successful logins to find password-spraying that
+                                    succeeded</td>
+                                <td>join between failed and successful signin tables on IPAddress</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        KQL is notoriously hard to write from memory. The audience is usually impressed that
+                        Copilot gets the table names, project columns, and time-series syntax right. Prompt 3
+                        (the correlation join) is the most technically impressive. Even experienced Sentinel users
+                        find this saves significant time.
+                    </div>
+                </div>
+            </article>
+
+            <!-- DEMO 4 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 4</span>
+                    <span class="section-card-title">The Security Reviewer &mdash; Terraform Config Review</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Paste a Terraform configuration and get a security review with CIS
+                        benchmark mapping and remediated code.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Review this Terraform config [NSG with AllowAll + Storage with TLS1_0] for security
+                                    vulnerabilities</td>
+                                <td>Identifies: any-to-any NSG rule, TLS 1.0 (deprecated), missing blob_public_access =
+                                    false, missing HTTPS-only</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Which CIS Azure benchmarks does this violate? List each with control number</td>
+                                <td>CIS 6.x (network), CIS 3.x (storage) with specific control IDs</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Rewrite both resources following least-privilege and CIS compliance, with comments
+                                    explaining each security decision</td>
+                                <td>Specific rules replacing AllowAll, min_tls_version = &ldquo;TLS1_2&rdquo;,
+                                    enable_https_traffic_only, inline comments</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        The Terraform config is pre-loaded on the Demo Prompts page with correct indentation &mdash;
+                        copy the prompt text exactly, which includes the code block. This demo resonates strongly with
+                        security and cloud teams. The &ldquo;it caught things I didn&rsquo;t notice&rdquo; reaction
+                        is common. Emphasize that Copilot not only finds issues but explains <em>why</em> each one matters.
+                    </div>
+                </div>
+            </article>
+
+            <!-- DEMO 5 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 5</span>
+                    <span class="section-card-title">The Incident Commander &mdash; P2 Outage Communications</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Feed raw incident details and produce executive, customer-facing,
+                        and RCA communications in minutes.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Draft a P2 incident notification email for internal stakeholders [paste: 503
+                                    errors, connection pool, ~45 min ETA]</td>
+                                <td>Professional email with subject, impact summary, status, ETA, point of contact</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Write the customer-facing version &mdash; non-technical, no jargon, no internal
+                                    details</td>
+                                <td>Clean language, no mention of connection pools or backend, clear ETA</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Generate an RCA template pre-filled with what we know: timeline, root cause,
+                                    impact, action items with owners and due dates, lessons learned</td>
+                                <td>Structured RCA document with sections and action item table</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        This is one of the most universally relevant demos. Ask: &ldquo;How many of you have had to
+                        write an incident email at 2 AM while also fighting the incident?&rdquo; The three outputs
+                        from the same set of facts (internal, customer-facing, RCA) in three prompts always
+                        resonates. Emphasize that the <em>quality of the output</em> is what saves time &mdash; you
+                        still review and edit, but you start from an 80% complete draft.
+                    </div>
+                </div>
+            </article>
+
+            <!-- DEMO 6 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 6</span>
+                    <span class="section-card-title">The Regex Whisperer &mdash; Azure Resource ID + Log Parsing</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Describe what you need to match in plain English and Copilot
+                        generates, explains, and tests the regex pattern.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Write a regex to validate Azure resource IDs in the format
+                                    /subscriptions/{guid}/resourceGroups/{name}/providers/{namespace}/{type}/{name}
+                                    &mdash; explain each part in plain English</td>
+                                <td>Named groups, GUID pattern, alphanumeric+dash for names, inline explanation</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Write a regex to parse log entries [paste sample log line] extracting timestamp,
+                                    severity, source, and message into named capture groups</td>
+                                <td>Named captures: (?P&lt;timestamp&gt;...), (?P&lt;severity&gt;...) etc.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Give 5 matching and 5 non-matching test strings; write a PowerShell one-liner to
+                                    parse a log file and output only ERROR entries from the last hour as a formatted
+                                    table</td>
+                                <td>Test strings, Select-String with the regex, calculated where clause for timestamp
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        This demo is most impactful for DevOps and SecOps audiences. The key selling point:
+                        regex that would take 20 minutes of trial-and-error is generated in seconds,
+                        <em>with an explanation everyone can understand</em>. The test strings in Prompt 3 show
+                        Copilot thinking through edge cases.
+                    </div>
+                </div>
+            </article>
+
+            <!-- DEMO 7 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 7</span>
+                    <span class="section-card-title">The Bicep Builder &mdash; Azure Infrastructure as Code</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Describe your Azure infrastructure in plain English and receive
+                        production-ready Bicep with best practices built in.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Write Bicep for a VNet with 3 subnets, App Service P1v3, Web App with managed
+                                    identity, Key Vault (Web App only), Azure SQL &mdash; security best practices
+                                    throughout</td>
+                                <td>Correct resource types, managed identity blocks, Key Vault RBAC vs. access
+                                    policies, parameterization</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Add diagnostic logging to Log Analytics + private endpoint for SQL with private DNS
+                                    zones</td>
+                                <td>diagnosticSettings resource, privateDnsZones, virtualNetworkLinks</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Generate az CLI deployment commands including resource group creation, parameter
+                                    files for dev/staging/prod, and a what-if dry run</td>
+                                <td>az deployment group create --what-if, separate .bicepparam files per environment
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Most impactful for cloud and infrastructure engineers. The Bicep module produced in Prompt 1
+                        is typically 150&ndash;200 lines of correct, commented code. Point out that Copilot includes
+                        secure defaults (e.g., no public access on SQL, HTTPS-only on Web App) without being asked.
+                        Prompt 3 closing with what-if makes it deployment-safe.
+                    </div>
+                </div>
+            </article>
+
+            <!-- DEMO 8 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 8</span>
+                    <span class="section-card-title">The Change Request Machine &mdash; Exchange Migration</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Feed bullet-point facts and receive a full CAB-ready change request,
+                        three email templates, and a printable migration runbook.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Draft a CAB change request for Exchange 2019 &rarr; Exchange Online migration [500
+                                    users, maintenance window, risks &mdash; paste details]</td>
+                                <td>All required CAB sections: description, business justification, risk assessment,
+                                    rollback, testing, communications, approvals</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Write three email templates: (1) 1 week pre-notice, (2) day-before reminder with
+                                    instructions, (3) post-migration all-clear</td>
+                                <td>Tone-appropriate emails &mdash; informative but not alarming, actionable</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Create a numbered checklist runbook for migration night: pre-flight checks,
+                                    commands, validation steps, go/no-go checkpoints, rollback procedure</td>
+                                <td>Numbered checklist format the team can print and work through; rollback clearly
+                                    separated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        ITSM and change management personas love Demo 8. The key insight: you provide one set of
+                        facts and get back a change request document, three stakeholder communications, and an
+                        operational runbook. Emphasize that Copilot keeps each audience in mind &mdash; the CAB
+                        document is formal, the user email is reassuring, the runbook is operational.
+                    </div>
+                </div>
+            </article>
+
+            <!-- DEMO 9 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 9</span>
+                    <span class="section-card-title">The On-Call Companion &mdash; 2 AM Alert Triage</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Scenario:</strong> Paste simultaneous Azure Monitor alerts and get a structured triage
+                        plan at 2 AM.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prompt Summary</th>
+                                <th>What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>I just got paged with 4 simultaneous alerts [paste: CPU 95%, Memory 92%, 5xx spike
+                                    15%, response time 4500ms, no recent deployments]. Triage this &mdash; what do I
+                                    check first?</td>
+                                <td>Ranked triage order, specific CLI/PS commands to investigate each symptom</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Found a runaway SQL query causing table locks and connection pool exhaustion.
+                                    Give me commands to (1) kill blocking sessions, (2) scale up app servers, (3)
+                                    create an alert rule for this pattern</td>
+                                <td>KILL SPID for SQL, az appservice plan update --sku, az monitor alert commands</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>It&rsquo;s 3:30 AM and resolved. Write: (1) Teams message for #incidents, (2)
+                                    morning handoff note for the day team, (3) Jira ticket for the devs to fix the
+                                    runaway query</td>
+                                <td>Three distinct audience voices: brief Teams update, detailed handoff, actionable
+                                    dev ticket</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Save Demo 9 for last &mdash; it&rsquo;s the most emotionally resonant. Every on-call engineer
+                        has been in this exact situation. Prompt 1 especially lands hard: four alerts firing at 2 AM
+                        and Copilot producing a ranked triage with specific CLI commands in 10 seconds.
+                        Demo 9 is often where the room shifts from &ldquo;interesting&rdquo; to &ldquo;I need this
+                        now.&rdquo; Close on this demo if you&rsquo;re short on time.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 7: TIPS & TRICKS THE PROS USE
+             ============================================================ -->
+        <section id="sec7">
+
+            <div class="module-header">
+                <div class="module-icon red">&#128161;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 7</div>
+                    <h2 class="module-title">Tips &amp; Tricks the Pros Use</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tips</span>
+                    <span class="section-card-title">Seven Power-User Secrets</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tip</th>
+                                <th>Why It Matters for IT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td><strong>Start new chats for new topics</strong></td>
+                                <td>Copilot uses the full conversation as context. A stale context can confuse Copilot
+                                    when switching from scripting to incident response</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td><strong>Assign Copilot a role</strong></td>
+                                <td>&ldquo;Act as a senior Azure security engineer reviewing this for a junior
+                                    team member&rdquo; dramatically changes depth and tone</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td><strong>Use / to reference files (Premium)</strong></td>
+                                <td>Pull in your org&rsquo;s Bicep naming standard doc or change request template
+                                    without uploading every time</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td><strong>Refine, don&rsquo;t just create</strong></td>
+                                <td>&ldquo;Simplify this for a non-technical manager&rdquo; or &ldquo;Rewrite
+                                    this as a bulleted runbook&rdquo; transforms existing output fast</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td><strong>Build a team prompt library</strong></td>
+                                <td>Adoption skyrockets when prompting is a team sport. Save IT-specific prompts to
+                                    the Prompt Gallery and share with colleagues</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6</strong></td>
+                                <td><strong>Use GCSE on every prompt</strong></td>
+                                <td>Even adding one GCSE element (Context or Expectations) dramatically improves
+                                    output quality for technical prompts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7</strong></td>
+                                <td><strong>Stay close to the roadmap</strong></td>
+                                <td>Microsoft ships Copilot updates monthly. Nominate someone on the IT team to
+                                    track what&rsquo;s new at <a href="https://aka.ms/CopilotBlog" target="_blank"
+                                        style="color:var(--blue-step);">aka.ms/CopilotBlog</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Demo Tip 2 live: take the last result from your final demo and say &ldquo;Let&rsquo;s
+                        refine this for a different audience&rdquo; &mdash; show how one follow-up prompt transforms
+                        a technical output into an executive summary. This ties tips directly to what they just saw.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 8: COPILOT CUSTOM INSTRUCTIONS
+             ============================================================ -->
+        <section id="sec8">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9881;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 8</div>
+                    <h2 class="module-title">Copilot Custom Instructions</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">What Are Custom Instructions?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Custom Instructions let you set persistent preferences that shape every Copilot response &mdash;
+                        without repeating yourself each time. Access them via <strong>Settings &rarr;
+                            Personalization</strong> in Copilot Chat.</p>
+                    <p>The instructions from the session are organized into five categories:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>What It Does</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Thinking Style</strong></td>
+                                <td>Think deeply, verify facts, avoid cascade errors, ask when uncertain</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Source Discipline</strong></td>
+                                <td>Cite sources, flag unverified claims, never fabricate, add freshness disclaimers
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Formatting</strong></td>
+                                <td>Labels: [Verified], [Inference], [Confidence], [Sources], [Glossary]</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tone</strong></td>
+                                <td>Professional, action-oriented, empathetic, clear; adapts internal vs. external
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shortcuts</strong></td>
+                                <td>#e = English, #i = Improve, #s = Summarize, #f = French, #esp = Spanish</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Facilitator Instructions</div>
+                        Navigate live to <strong>Settings &rarr; Personalization</strong> in Copilot Chat.
+                        Paste the Thinking Style block as a live demo. Then type <strong>#s</strong> followed by
+                        some text to show shortcuts working immediately. The audience always wants the shortcut
+                        list &mdash; point them to the User Guide to copy the full set.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 9: Q&A
+             ============================================================ -->
+        <section id="sec9">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#10067;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 9</div>
+                    <h2 class="module-title">Q&amp;A</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">Wrap-Up &amp; Questions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>Key Takeaways:</strong></p>
+                    <ul>
+                        <li><strong>You already have this</strong> &mdash; Copilot Chat (Basic) is included with your
+                            M365 subscription, no additional license needed</li>
+                        <li><strong>Use GCSE</strong> &mdash; Goal, Context, Source, Expectations &mdash; every time
+                            you write an IT prompt</li>
+                        <li><strong>Chain your prompts</strong> &mdash; each follow-up builds on the last; start simple
+                            and iterate</li>
+                        <li><strong>Upload files</strong> &mdash; paste logs, configs, and scripts directly into
+                            Copilot for instant analysis</li>
+                        <li><strong>Share what works</strong> &mdash; the best IT prompts spread fast when teams share
+                            them in the Prompt Gallery</li>
+                        <li><strong>Start today</strong> &mdash; open <strong>m365.cloud.microsoft</strong> and try one
+                            prompt from today&rsquo;s session</li>
+                    </ul>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Facilitator Instructions</div>
+                        Open the floor for questions. If the room is quiet, use these conversation starters:
+                        <ul>
+                            <li>&ldquo;Which demo was most relevant to your day-to-day work?&rdquo;</li>
+                            <li>&ldquo;What task are you going to try this in first?&rdquo;</li>
+                            <li>&ldquo;What was the most surprising thing Copilot did today?&rdquo;</li>
+                        </ul>
+                        Close by pointing to the <strong>Demo Prompts companion page</strong> and the
+                        <strong>User Guide</strong> so participants have all 27 prompts to take home.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             WORKING WITH FILES
+             ============================================================ -->
+        <section id="files">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#128206;</div>
+                <div class="module-meta">
+                    <div class="module-label">Bonus Material</div>
+                    <h2 class="module-title">Working with Files</h2>
+                </div>
+            </div>
+
+            <p class="module-intro" style="font-size:.85rem;color:var(--text-muted);"><span
+                    style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Chat
+                    Basic</span> &mdash; File upload works in Copilot Chat. <span
+                    style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">M365
+                    Copilot Premium</span> adds direct file referencing from OneDrive/SharePoint via the <code>/</code>
+                command.</p>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talking Points</span>
+                    <span class="section-card-title">How to Attach a File</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Click the <strong>+ (plus) icon</strong> in the Copilot Chat prompt
+                                bar</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Browse <strong>OneDrive</strong>, <strong>SharePoint</strong>, or
+                                <strong>upload from your device</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Select your file &mdash; it appears as a chip/badge above the prompt
+                                bar</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Type your question and press <strong>Enter</strong></span>
+                        </li>
+                    </ol>
+                    <p style="margin-top:var(--sp-4);font-size:.85rem;color:var(--text-muted);">
+                        <strong>Supported types:</strong> Word (.docx) &bull; PDF (.pdf) &bull; PowerPoint (.pptx)
+                        &bull; Excel (.xlsx) &bull; Plain text (.txt) &bull; Images (.png, .jpeg) &bull; Data files
+                        (.csv, .json, .md) &bull; Log files (.log) &bull; HTML (.html)<br />
+                        <strong>File size limit:</strong> Up to 50 MB per file upload, 3 files at a time.
+                    </p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Cheat Sheet</span>
+                    <span class="section-card-title">IT File Prompts Cheat Sheet</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table" style="table-layout:fixed;">
+                        <thead>
+                            <tr>
+                                <th style="width:30%;">What You Want</th>
+                                <th style="width:70%;">Try This Prompt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Analyze a log file</td>
+                                <td>&ldquo;Analyze this log file. Summarize the top 5 errors and suggest a root
+                                    cause for each.&rdquo; [attach .log]</td>
+                            </tr>
+                            <tr>
+                                <td>Review a config</td>
+                                <td>&ldquo;Review this configuration file for security misconfigurations and
+                                    best practice violations.&rdquo; [attach .json or .tf]</td>
+                            </tr>
+                            <tr>
+                                <td>Explain a script</td>
+                                <td>&ldquo;Explain what this PowerShell script does, line by line, in plain
+                                    English.&rdquo; [attach .ps1]</td>
+                            </tr>
+                            <tr>
+                                <td>Parse CSV data</td>
+                                <td>&ldquo;Summarize this data, identify trends, and flag any anomalies.&rdquo;
+                                    [attach .csv]</td>
+                            </tr>
+                            <tr>
+                                <td>Compare two configs</td>
+                                <td>&ldquo;Compare these two configuration files and list every difference that
+                                    could affect security or performance.&rdquo; [attach 2 files]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        For a great live demo: upload the sample <code>Log.txt</code> file from the training
+                        files folder and use the log analysis prompt above. The instant summary of errors
+                        and root cause suggestions always impresses.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             TOP 10 POWER USER TIPS
+             ============================================================ -->
+        <section id="tips">
+
+            <div class="module-header">
+                <div class="module-icon red">&#128161;</div>
+                <div class="module-meta">
+                    <div class="module-label">Bonus Material</div>
+                    <h2 class="module-title">Top 10 Power User Tips</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tips</span>
+                    <span class="section-card-title">Become a Power User</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step"><span class="step-number">1</span><span class="step-text"><strong>Be
+                                    specific</strong> &mdash; include audience, tone, and format in your prompt</span>
+                        </li>
+                        <li class="step"><span class="step-number">2</span><span
+                                class="step-text"><strong>Iterate</strong> &mdash; if the first response isn&rsquo;t
+                                right, refine it</span></li>
+                        <li class="step"><span class="step-number">3</span><span class="step-text"><strong>Always
+                                    review</strong> &mdash; verify code and facts before running or distributing
+                                Copilot output</span></li>
+                        <li class="step"><span class="step-number">4</span><span class="step-text"><strong>Use follow-up
+                                    questions</strong> &mdash; Copilot remembers context within a session</span></li>
+                        <li class="step"><span class="step-number">5</span><span class="step-text"><strong>Try
+                                    &ldquo;What else?&rdquo;</strong> &mdash; ask Copilot to expand, add edge cases, or
+                                suggest error handling</span></li>
+                        <li class="step"><span class="step-number">6</span><span class="step-text"><strong>Name your
+                                    audience</strong> &mdash; &ldquo;Write this for a non-technical CIO&rdquo; changes
+                                everything</span></li>
+                        <li class="step"><span class="step-number">7</span><span class="step-text"><strong>Ask for
+                                    options</strong> &mdash; &ldquo;Give me 3 approaches to fixing this with
+                                trade-offs&rdquo;</span></li>
+                        <li class="step"><span class="step-number">8</span><span class="step-text"><strong>Use it for
+                                    brainstorming</strong> &mdash; &ldquo;What are 10 ways to harden this
+                                configuration?&rdquo;</span></li>
+                        <li class="step"><span class="step-number">9</span><span class="step-text"><strong>Check
+                                    privacy</strong> &mdash; follow your organization&rsquo;s AI usage policy for
+                                sensitive data and credentials</span></li>
+                        <li class="step"><span class="step-number">10</span><span class="step-text"><strong>Share what
+                                    works</strong> &mdash; contribute your best IT prompts to a shared team
+                                library</span></li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             ADVANCED PROMPT TIPS
+             ============================================================ -->
+        <section id="advanced-tips">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128640;</div>
+                <div class="module-meta">
+                    <div class="module-label">Bonus Material</div>
+                    <h2 class="module-title">Advanced Prompt Tips</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tip 1</span>
+                    <span class="section-card-title">Force Plain Text / Code Block Output</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>When you want clean, copy-ready output (great for scripts and code), add this to the end of your
+                        prompt:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt Suffix</div>
+                        <div class="prompt-box">Output the results only as a block of plain text. Do not include any
+                            other text. Always treat the block of plain text as a block of code that uses text as the
+                            code language. Always include a copy button to copy the contents of the box. Do not include
+                            sources.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tip 2</span>
+                    <span class="section-card-title">Retrieve Your Resultant Prompt</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Running out of turns in a conversation? Ask Copilot for the cumulative prompt so you can
+                        continue in a new chat:</p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">What is the resultant prompt so far?</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <p>Copilot will output a consolidated version of everything you&rsquo;ve asked for. Copy it, start a
+                        new chat, and continue where you left off.</p>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        This is a great power-user trick for long script-building sessions. Demonstrate with
+                        the Script Wizard demo chain &mdash; after 3 prompts, ask &ldquo;What is the resultant
+                        prompt so far?&rdquo; and show how Copilot consolidates hours of iteration.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MEMORY & CUSTOM INSTRUCTIONS (FULL BLOCKS)
+             ============================================================ -->
+        <section id="custom-instructions">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9881;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Bonus Material</div>
+                    <h2 class="module-title">Memory &amp; Custom Instructions</h2>
+                </div>
+            </div>
+
+            <p class="module-intro" style="font-size:.85rem;color:var(--text-muted);"><span
+                    style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Chat
+                    Basic</span> &mdash; Memory and Custom Instructions are available in Copilot Chat for all M365
+                users.</p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Sample</span>
+                    <span class="section-card-title">Sample Custom Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Copy any or all of these sections into your Copilot Custom Instructions (<strong>Settings &rarr;
+                            Personalization</strong>):</p>
+
+                    <h4 style="margin-top:var(--sp-6);">Thinking Style</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; General Behavior</div>
+                        <div class="prompt-box">Copilot prioritizes accuracy, clarity, and trust.
+                            Always distinguish verified facts from inferred reasoning.
+                            Never present assumptions or context-based reasoning as fact.
+                            Avoid cascade errors by rechecking each step before responding.
+                            Think deeply before answering. When uncertain, ask clarifying questions or provide 2&ndash;3 vetted
+                            options with pros and cons.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Source Discipline</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; Source Discipline</div>
+                        <div class="prompt-box">Search enterprise content first (files, emails, chats, meetings, transcripts).
+                            Resolve contradictions before responding.
+                            Preserve critical qualifiers in summaries.
+                            Cite specific identifiers for sources and flag unverified claims [Unverified].
+                            Never fabricate citations, quotes, or references.
+                            If confidence is low, outline what is known, unknown, and next steps.
+                            Verify jurisdiction and effective dates for legal content.
+                            For time-sensitive topics, check date stamps and warn about staleness.
+                            Add freshness disclaimers for outdated data.
+                            If no authoritative source exists, state this and offer to search the web.
+                            When confidence is low, search for additional sources and facts internally and externally.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Tone</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; Tone</div>
+                        <div class="prompt-box">Professional yet approachable.
+                            Action-oriented and outcome-focused.
+                            Empathetic and appreciative.
+                            Direct and clear, avoiding ambiguity.
+                            Balanced warmth: friendly without being overly informal.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Customer / External Audience</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; External Tone</div>
+                        <div class="prompt-box">Professional, courteous, and reassuring.
+                            Formal greetings and closings.
+                            Avoid jargon unless contextually relevant.
+                            Provide clear next steps and timelines.
+                            Examples:
+                            &ldquo;Looking forward to discussing the way forward.&rdquo;
+                            &ldquo;We completely understand the need to&hellip;&rdquo;
+                            &ldquo;Sounds like a great opportunity.&rdquo;
+                            Maintain professionalism, clarity, and reassurance. Avoid slang or overly casual language.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Formatting &amp; Content Labels</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; Formatting</div>
+                        <div class="prompt-box">Do not use characters like &ldquo;-&rdquo; when writing text.
+
+                            Use clear labels such as:
+                            [Verified] for facts from authoritative sources
+                            [Inference] for logical assumptions or context-based reasoning
+                            [Confidence] Provide confidence cues for inferred content (e.g., &ldquo;Likely,&rdquo; &ldquo;Based
+                            on observed patterns&rdquo;)
+                            [Sources] Sources section with live links or identifiers
+                            [Glossary] Acronyms used with clarification of the acronym
+
+                            Avoid cascade errors; recheck each step.
+                            Present verified facts first, then present inferences with a disclaimer like:
+                            &ldquo;The following points are inferred based on available context and may require
+                            validation.&rdquo;
+
+                            If no source exists, state: &ldquo;No authoritative source found&rdquo; and propose next steps.
+                            Avoid presenting inferences as facts.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Quick Shortcuts</h4>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Custom Instructions &mdash; Shortcuts</div>
+                        <div class="prompt-box">#e = Translate this text to English
+                            #f = Traduire le r&eacute;sultat en fran&ccedil;ais
+                            #i = Improve this text
+                            #s = Summarize this text
+                            #esp = Traduce el texto a castellano</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Walk through setting up Custom Instructions live. Show how to navigate to Settings &rarr;
+                        Personalization. Start with the General Behavior block and Source Discipline,
+                        then layer in tone. The Quick Shortcuts section is a great crowd-pleaser &mdash;
+                        demonstrate #s or #i live on a recent output.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMO PROMPTS
+             ============================================================ -->
+        <section id="demo-prompts">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127916;</div>
+                <div class="module-meta">
+                    <div class="module-label">Bonus Material</div>
+                    <h2 class="module-title">Demo Prompts to Try Today</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Try These</span>
+                    <span class="section-card-title">IT Quick-Start Prompts</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Open <strong>m365.cloud.microsoft</strong> and try these now:</p>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Script Wizard</div>
+                        <div class="prompt-box">Write a PowerShell script to find all Active Directory accounts that have been inactive for more than 90 days, including their last logon date, department, and manager. Export the results to a CSV file.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Troubleshoot</div>
+                        <div class="prompt-box">Explain this Azure error and tell me exactly what went wrong: 'The client with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/write' over scope '/subscriptions/xxxxxxxx/resourceGroups/Production-RG/providers/Microsoft.Compute/virtualMachines/WebServer-01' or the scope is invalid.'</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">KQL Builder</div>
+                        <div class="prompt-box">Write a KQL query for Microsoft Sentinel that finds all failed sign-in attempts from IP addresses outside the United States in the last 24 hours. Include the username, IP address, location, failure reason, and timestamp.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">On-Call Triage</div>
+                        <div class="prompt-box">I just got paged at 2 AM with these Azure Monitor alerts firing simultaneously:
+- High CPU (95%) on 3 of 5 app servers in the web-prod pool
+- Memory utilization at 92% on the same servers
+- HTTP 5xx error rate spiked to 15% (normal is &lt;0.5%)
+- Average response time jumped from 200ms to 4500ms
+- No recent deployments in the last 48 hours
+
+What's most likely going on? Walk me through a triage process — what should I check first, second, third? Give me the specific Azure CLI or PowerShell commands to investigate each step.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        Point participants to the full <a href="../../Copilot-Chat-IT-Superpower-MolsonCoors.html" target="_blank"
+                            style="color:var(--blue-step);font-weight:600;">Demo Prompts companion page</a> for all
+                        27 prompts (9 demos &times; 3 prompts each) in a copyable, well-formatted interface.
+                        Encourage everyone to bookmark it.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../../js/main.v3.js"></script>
+
+</body>
+
+</html>
