@@ -103,7 +103,7 @@
                         <tbody>
                             <tr>
                                 <td><strong>Access</strong></td>
-                                <td><strong>m365.cloud.microsoft</strong> &mdash; sign in with your work account</td>
+                                <td><strong>m365copilot.com</strong> &mdash; sign in with your work account</td>
                             </tr>
                             <tr>
                                 <td><strong>Model</strong></td>
@@ -233,7 +233,8 @@
                                         style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:#fdecea;color:#b71c1c;font-weight:600;">Apr
                                         15 2026</span></td>
                                 <td>In-app Copilot for unlicensed users being adjusted. Bookmark
-                                    <strong>m365.cloud.microsoft</strong> &mdash; always available</td>
+                                    <strong>m365copilot.com</strong> &mdash; always available
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -365,7 +366,8 @@
                             <tr>
                                 <td><strong>C</strong>ontext</td>
                                 <td>Background, audience, environment</td>
-                                <td>&ldquo;&hellip;to audit inactive AD accounts in a corporate environment&hellip;&rdquo;</td>
+                                <td>&ldquo;&hellip;to audit inactive AD accounts in a corporate
+                                    environment&hellip;&rdquo;</td>
                             </tr>
                             <tr>
                                 <td><strong>S</strong>ource</td>
@@ -399,7 +401,10 @@
 
                     <div class="prompt-block">
                         <div class="prompt-label">Prompt 2 &mdash; Full GCSE</div>
-                        <div class="prompt-box">Write a KQL query for Microsoft Sentinel that finds all failed sign-in attempts from IP addresses outside the United States in the last 24 hours. Use the SigninLogs table and include the username, IP address, country, failure reason, and timestamp. Add comments explaining each clause.</div>
+                        <div class="prompt-box">Write a KQL query for Microsoft Sentinel that finds all failed sign-in
+                            attempts from IP addresses outside the United States in the last 24 hours. Use the
+                            SigninLogs table and include the username, IP address, country, failure reason, and
+                            timestamp. Add comments explaining each clause.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
@@ -509,7 +514,8 @@
             <p class="module-intro">All 27 prompts (9 demos &times; 3 each) are available on the
                 <a href="../Copilot-Chat-IT-Superpower-MolsonCoors.html" target="_blank"
                     style="color:var(--blue-step);font-weight:600;">Demo Prompts companion page</a>.
-                Click COPY and paste directly into Copilot Chat.</p>
+                Click COPY and paste directly into Copilot Chat.
+            </p>
 
             <div class="toggle-bar">
                 <button data-action="expand-all">&#9660; Expand All</button>
@@ -527,7 +533,9 @@
                         handling, and send an HTML email summary alert.</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Try This (Prompt 1 of 3)</div>
-                        <div class="prompt-box">Write a PowerShell script to find all Active Directory accounts that have been inactive for more than 90 days, including their last logon date, department, and manager. Export the results to a CSV file.</div>
+                        <div class="prompt-box">Write a PowerShell script to find all Active Directory accounts that
+                            have been inactive for more than 90 days, including their last logon date, department, and
+                            manager. Export the results to a CSV file.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                     <p style="font-size:.85rem;color:var(--text-muted);margin-top:var(--sp-3);">
@@ -548,7 +556,11 @@
                         RBAC role comparison, and exact CLI fix commands &mdash; in under 60 seconds.</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Try This (Prompt 1 of 3)</div>
-                        <div class="prompt-box">Explain this Azure error and tell me exactly what went wrong: 'The client with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/write' over scope '/subscriptions/xxxxxxxx/resourceGroups/Production-RG/providers/Microsoft.Compute/virtualMachines/WebServer-01' or the scope is invalid.'</div>
+                        <div class="prompt-box">Explain this Azure error and tell me exactly what went wrong: 'The
+                            client with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to
+                            perform action 'Microsoft.Compute/virtualMachines/write' over scope
+                            '/subscriptions/xxxxxxxx/resourceGroups/Production-RG/providers/Microsoft.Compute/virtualMachines/WebServer-01'
+                            or the scope is invalid.'</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                     <p style="font-size:.85rem;color:var(--text-muted);margin-top:var(--sp-3);">
@@ -569,7 +581,9 @@
                         time-series analysis and cross-table correlation for password-spray detection.</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Try This (Prompt 1 of 3)</div>
-                        <div class="prompt-box">Write a KQL query for Microsoft Sentinel that finds all failed sign-in attempts from IP addresses outside the United States in the last 24 hours. Include the username, IP address, location, failure reason, and timestamp.</div>
+                        <div class="prompt-box">Write a KQL query for Microsoft Sentinel that finds all failed sign-in
+                            attempts from IP addresses outside the United States in the last 24 hours. Include the
+                            username, IP address, location, failure reason, and timestamp.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                 </div>
@@ -603,13 +617,14 @@
                         outputs: internal stakeholder email, customer-facing update, and an RCA template.</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Try This (Prompt 1 of 3)</div>
-                        <div class="prompt-box">Draft a P2 incident notification email for internal stakeholders. Here are the raw details:
-- Started: 2:47 PM MST today
-- Service: Customer portal (portal.contoso.com)
-- Impact: ~30% of users getting 503 errors on login
-- Cause: Connection pool exhaustion on backend API servers
-- Mitigation: Team is scaling up API server instances
-- ETA: 45 minutes to full resolution</div>
+                        <div class="prompt-box">Draft a P2 incident notification email for internal stakeholders. Here
+                            are the raw details:
+                            - Started: 2:47 PM MST today
+                            - Service: Customer portal (portal.contoso.com)
+                            - Impact: ~30% of users getting 503 errors on login
+                            - Cause: Connection pool exhaustion on backend API servers
+                            - Mitigation: Team is scaling up API server instances
+                            - ETA: 45 minutes to full resolution</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                 </div>
@@ -618,7 +633,8 @@
             <article class="section-card">
                 <div class="section-card-header">
                     <span class="badge badge-exercise">Demo 6</span>
-                    <span class="section-card-title">The Regex Whisperer &mdash; Azure Resource ID &amp; Log Parsing</span>
+                    <span class="section-card-title">The Regex Whisperer &mdash; Azure Resource ID &amp; Log
+                        Parsing</span>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
@@ -626,7 +642,10 @@
                         explains, provides test strings, and writes a PowerShell one-liner to use it.</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Try This (Prompt 1 of 3)</div>
-                        <div class="prompt-box">Write a regex pattern that validates Azure resource IDs. It should match the format: /subscriptions/{guid}/resourceGroups/{name}/providers/{namespace}/{type}/{name} — and explain each part of the pattern in plain English so a junior admin can understand it.</div>
+                        <div class="prompt-box">Write a regex pattern that validates Azure resource IDs. It should match
+                            the format: /subscriptions/{guid}/resourceGroups/{name}/providers/{namespace}/{type}/{name}
+                            — and explain each part of the pattern in plain English so a junior admin can understand it.
+                        </div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                 </div>
@@ -644,7 +663,10 @@
                         and deployment commands.</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Try This (Prompt 1 of 3)</div>
-                        <div class="prompt-box">Write an Azure Bicep template that deploys a secure web application environment with: a VNet with 3 subnets (web, app, data), an App Service Plan on P1v3, a Web App with managed identity enabled, a Key Vault that only the Web App can access, and an Azure SQL database. Follow security best practices throughout.</div>
+                        <div class="prompt-box">Write an Azure Bicep template that deploys a secure web application
+                            environment with: a VNet with 3 subnets (web, app, data), an App Service Plan on P1v3, a Web
+                            App with managed identity enabled, a Key Vault that only the Web App can access, and an
+                            Azure SQL database. Follow security best practices throughout.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                 </div>
@@ -661,14 +683,16 @@
                         document, three stakeholder email templates, and a printable migration night runbook.</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Try This (Prompt 1 of 3)</div>
-                        <div class="prompt-box">Draft a formal IT change request for our Change Advisory Board. Here are the details:
-- What: Migrate on-prem Exchange 2019 mailboxes to Exchange Online
-- Who: 500 users in the Sales and Marketing departments
-- When: Saturday April 19, 10 PM — Sunday April 20, 6 AM MST
-- Why: End of extended support, reduce infrastructure costs
-- Risk: Email downtime during migration window, possible Outlook profile reconfiguration
+                        <div class="prompt-box">Draft a formal IT change request for our Change Advisory Board. Here are
+                            the details:
+                            - What: Migrate on-prem Exchange 2019 mailboxes to Exchange Online
+                            - Who: 500 users in the Sales and Marketing departments
+                            - When: Saturday April 19, 10 PM — Sunday April 20, 6 AM MST
+                            - Why: End of extended support, reduce infrastructure costs
+                            - Risk: Email downtime during migration window, possible Outlook profile reconfiguration
 
-Include sections for: description, business justification, risk assessment, rollback plan, testing plan, communication plan, and approval signatures.</div>
+                            Include sections for: description, business justification, risk assessment, rollback plan,
+                            testing plan, communication plan, and approval signatures.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                 </div>
@@ -685,14 +709,17 @@ Include sections for: description, business justification, risk assessment, roll
                         triage plan with CLI commands, remediation steps, and post-incident communications.</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Try This (Prompt 1 of 3)</div>
-                        <div class="prompt-box">I just got paged at 2 AM with these Azure Monitor alerts firing simultaneously:
-- High CPU (95%) on 3 of 5 app servers in the web-prod pool
-- Memory utilization at 92% on the same servers
-- HTTP 5xx error rate spiked to 15% (normal is &lt;0.5%)
-- Average response time jumped from 200ms to 4500ms
-- No recent deployments in the last 48 hours
+                        <div class="prompt-box">I just got paged at 2 AM with these Azure Monitor alerts firing
+                            simultaneously:
+                            - High CPU (95%) on 3 of 5 app servers in the web-prod pool
+                            - Memory utilization at 92% on the same servers
+                            - HTTP 5xx error rate spiked to 15% (normal is &lt;0.5%)
+                            - Average response time jumped from 200ms to 4500ms
+                            - No recent deployments in the last 48 hours
 
-What's most likely going on? Walk me through a triage process — what should I check first, second, third? Give me the specific Azure CLI or PowerShell commands to investigate each step.</div>
+                            What's most likely going on? Walk me through a triage process — what should I check first,
+                            second, third? Give me the specific Azure CLI or PowerShell commands to investigate each
+                            step.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                     <p style="font-size:.85rem;color:var(--text-muted);margin-top:var(--sp-3);">
@@ -788,7 +815,8 @@ What's most likely going on? Walk me through a triage process — what should I 
                 <div class="section-card-body">
                     <p>Custom Instructions are persistent preferences that shape <em>every</em> Copilot response &mdash;
                         you set them once and never repeat yourself. Access them via
-                        <strong>Settings &rarr; Personalization</strong>.</p>
+                        <strong>Settings &rarr; Personalization</strong>.
+                    </p>
                     <table class="data-table">
                         <thead>
                             <tr>
@@ -818,7 +846,8 @@ What's most likely going on? Walk me through a triage process — what should I 
                                 <td><strong>#s</strong> = Summarize &nbsp;&bull;&nbsp; <strong>#i</strong> = Improve
                                     &nbsp;&bull;&nbsp; <strong>#e</strong> = Translate to English &nbsp;&bull;&nbsp;
                                     <strong>#f</strong> = Translate to French &nbsp;&bull;&nbsp; <strong>#esp</strong>
-                                    = Translate to Spanish</td>
+                                    = Translate to Spanish
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -1014,7 +1043,10 @@ What's most likely going on? Walk me through a triage process — what should I 
                     <p>Add this to the end of any script prompt for clean, copy-ready output:</p>
                     <div class="prompt-block">
                         <div class="prompt-label">Prompt Suffix</div>
-                        <div class="prompt-box">Output the results only as a block of plain text. Do not include any other text. Always treat the block of plain text as a block of code that uses text as the code language. Always include a copy button to copy the contents of the box. Do not include sources.</div>
+                        <div class="prompt-box">Output the results only as a block of plain text. Do not include any
+                            other text. Always treat the block of plain text as a block of code that uses text as the
+                            code language. Always include a copy button to copy the contents of the box. Do not include
+                            sources.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
                 </div>
@@ -1069,27 +1101,30 @@ What's most likely going on? Walk me through a triage process — what should I 
                     <div class="prompt-block">
                         <div class="prompt-label">Custom Instructions &mdash; General Behavior</div>
                         <div class="prompt-box">Copilot prioritizes accuracy, clarity, and trust.
-Always distinguish verified facts from inferred reasoning.
-Never present assumptions or context-based reasoning as fact.
-Avoid cascade errors by rechecking each step before responding.
-Think deeply before answering. When uncertain, ask clarifying questions or provide 2-3 vetted options with pros and cons.</div>
+                            Always distinguish verified facts from inferred reasoning.
+                            Never present assumptions or context-based reasoning as fact.
+                            Avoid cascade errors by rechecking each step before responding.
+                            Think deeply before answering. When uncertain, ask clarifying questions or provide 2-3
+                            vetted options with pros and cons.</div>
                         <button class="copy-btn">&#128203; Copy</button>
                     </div>
 
                     <h4 style="margin-top:var(--sp-6);">Source Discipline</h4>
                     <div class="prompt-block">
                         <div class="prompt-label">Custom Instructions &mdash; Source Discipline</div>
-                        <div class="prompt-box">Search enterprise content first (files, emails, chats, meetings, transcripts).
-Resolve contradictions before responding.
-Preserve critical qualifiers in summaries.
-Cite specific identifiers for sources and flag unverified claims [Unverified].
-Never fabricate citations, quotes, or references.
-If confidence is low, outline what is known, unknown, and next steps.
-Verify jurisdiction and effective dates for legal content.
-For time-sensitive topics, check date stamps and warn about staleness.
-Add freshness disclaimers for outdated data.
-If no authoritative source exists, state this and offer to search the web.
-When confidence is low, search for additional sources and facts internally and externally.</div>
+                        <div class="prompt-box">Search enterprise content first (files, emails, chats, meetings,
+                            transcripts).
+                            Resolve contradictions before responding.
+                            Preserve critical qualifiers in summaries.
+                            Cite specific identifiers for sources and flag unverified claims [Unverified].
+                            Never fabricate citations, quotes, or references.
+                            If confidence is low, outline what is known, unknown, and next steps.
+                            Verify jurisdiction and effective dates for legal content.
+                            For time-sensitive topics, check date stamps and warn about staleness.
+                            Add freshness disclaimers for outdated data.
+                            If no authoritative source exists, state this and offer to search the web.
+                            When confidence is low, search for additional sources and facts internally and externally.
+                        </div>
                         <button class="copy-btn">&#128203; Copy</button>
                     </div>
 
@@ -1097,10 +1132,10 @@ When confidence is low, search for additional sources and facts internally and e
                     <div class="prompt-block">
                         <div class="prompt-label">Custom Instructions &mdash; Tone</div>
                         <div class="prompt-box">Professional yet approachable.
-Action-oriented and outcome-focused.
-Empathetic and appreciative.
-Direct and clear, avoiding ambiguity.
-Balanced warmth: friendly without being overly informal.</div>
+                            Action-oriented and outcome-focused.
+                            Empathetic and appreciative.
+                            Direct and clear, avoiding ambiguity.
+                            Balanced warmth: friendly without being overly informal.</div>
                         <button class="copy-btn">&#128203; Copy</button>
                     </div>
 
@@ -1109,17 +1144,18 @@ Balanced warmth: friendly without being overly informal.</div>
                         <div class="prompt-label">Custom Instructions &mdash; Formatting</div>
                         <div class="prompt-box">Do not use characters like "-" when writing text.
 
-Use clear labels such as:
-[Verified] for facts from authoritative sources
-[Inference] for logical assumptions or context-based reasoning
-[Confidence] Provide confidence cues for inferred content (e.g., "Likely," "Based on observed patterns")
-[Sources] Sources section with live links or identifiers
-[Glossary] Acronyms used with clarification of the acronym
+                            Use clear labels such as:
+                            [Verified] for facts from authoritative sources
+                            [Inference] for logical assumptions or context-based reasoning
+                            [Confidence] Provide confidence cues for inferred content (e.g., "Likely," "Based on
+                            observed patterns")
+                            [Sources] Sources section with live links or identifiers
+                            [Glossary] Acronyms used with clarification of the acronym
 
-Avoid cascade errors; recheck each step.
-Present verified facts first, then present inferences with a disclaimer.
-If no source exists, state "No authoritative source found" and propose next steps.
-Avoid presenting inferences as facts.</div>
+                            Avoid cascade errors; recheck each step.
+                            Present verified facts first, then present inferences with a disclaimer.
+                            If no source exists, state "No authoritative source found" and propose next steps.
+                            Avoid presenting inferences as facts.</div>
                         <button class="copy-btn">&#128203; Copy</button>
                     </div>
 
@@ -1127,10 +1163,10 @@ Avoid presenting inferences as facts.</div>
                     <div class="prompt-block">
                         <div class="prompt-label">Custom Instructions &mdash; Shortcuts</div>
                         <div class="prompt-box">#e = Translate this text to English
-#f = Traduire le r&eacute;sultat en fran&ccedil;ais
-#i = Improve this text
-#s = Summarize this text
-#esp = Traduce el texto a castellano</div>
+                            #f = Traduire le r&eacute;sultat en fran&ccedil;ais
+                            #i = Improve this text
+                            #s = Summarize this text
+                            #esp = Traduce el texto a castellano</div>
                         <button class="copy-btn">&#128203; Copy</button>
                     </div>
                 </div>
@@ -1157,36 +1193,47 @@ Avoid presenting inferences as facts.</div>
                     <span class="collapse-arrow">&#9660;</span>
                 </div>
                 <div class="section-card-body">
-                    <p>Open <strong>m365.cloud.microsoft</strong> and try these right now:</p>
+                    <p>Open <strong>m365copilot.com</strong> and try these right now:</p>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Script Wizard</div>
-                        <div class="prompt-box">Write a PowerShell script to find all Active Directory accounts that have been inactive for more than 90 days, including their last logon date, department, and manager. Export the results to a CSV file.</div>
+                        <div class="prompt-box">Write a PowerShell script to find all Active Directory accounts that
+                            have been inactive for more than 90 days, including their last logon date, department, and
+                            manager. Export the results to a CSV file.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">Troubleshoot</div>
-                        <div class="prompt-box">Explain this Azure error and tell me exactly what went wrong: 'The client with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/write' over scope '/subscriptions/xxxxxxxx/resourceGroups/Production-RG/providers/Microsoft.Compute/virtualMachines/WebServer-01' or the scope is invalid.'</div>
+                        <div class="prompt-box">Explain this Azure error and tell me exactly what went wrong: 'The
+                            client with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to
+                            perform action 'Microsoft.Compute/virtualMachines/write' over scope
+                            '/subscriptions/xxxxxxxx/resourceGroups/Production-RG/providers/Microsoft.Compute/virtualMachines/WebServer-01'
+                            or the scope is invalid.'</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">KQL Builder</div>
-                        <div class="prompt-box">Write a KQL query for Microsoft Sentinel that finds all failed sign-in attempts from IP addresses outside the United States in the last 24 hours. Include the username, IP address, location, failure reason, and timestamp.</div>
+                        <div class="prompt-box">Write a KQL query for Microsoft Sentinel that finds all failed sign-in
+                            attempts from IP addresses outside the United States in the last 24 hours. Include the
+                            username, IP address, location, failure reason, and timestamp.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
                     <div class="prompt-block">
                         <div class="prompt-label">On-Call Triage</div>
-                        <div class="prompt-box">I just got paged at 2 AM with these Azure Monitor alerts firing simultaneously:
-- High CPU (95%) on 3 of 5 app servers in the web-prod pool
-- Memory utilization at 92% on the same servers
-- HTTP 5xx error rate spiked to 15% (normal is &lt;0.5%)
-- Average response time jumped from 200ms to 4500ms
-- No recent deployments in the last 48 hours
+                        <div class="prompt-box">I just got paged at 2 AM with these Azure Monitor alerts firing
+                            simultaneously:
+                            - High CPU (95%) on 3 of 5 app servers in the web-prod pool
+                            - Memory utilization at 92% on the same servers
+                            - HTTP 5xx error rate spiked to 15% (normal is &lt;0.5%)
+                            - Average response time jumped from 200ms to 4500ms
+                            - No recent deployments in the last 48 hours
 
-What's most likely going on? Walk me through a triage process — what should I check first, second, third? Give me the specific Azure CLI or PowerShell commands to investigate each step.</div>
+                            What's most likely going on? Walk me through a triage process — what should I check first,
+                            second, third? Give me the specific Azure CLI or PowerShell commands to investigate each
+                            step.</div>
                         <button class="copy-btn">&#128203; Copy Prompt</button>
                     </div>
 
