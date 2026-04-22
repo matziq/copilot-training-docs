@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Low Code, Big Results — Contoso Demo Prompts</title>
+<style>
+  :root {
+    --brand: #0F6CBD;
+    --brand-dark: #0A4B82;
+    --accent: #E8A33D;
+    --ink: #1F2328;
+    --muted: #586069;
+    --light: #EEF4FB;
+    --code-bg: #F6F8FA;
+    --border: #D0D7DE;
+    --success: #2DA44E;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: #FAFBFC;
+    line-height: 1.55;
+  }
+  header {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+    color: white;
+    padding: 48px 32px 40px;
+  }
+  header .wrap { max-width: 960px; margin: 0 auto; }
+  header h1 { margin: 0 0 8px; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.01em; }
+  header .subtitle { font-size: 1.15rem; opacity: 0.92; margin: 0 0 20px; }
+  header .meta { font-size: 0.95rem; opacity: 0.85; }
+  header .meta span { margin-right: 18px; }
+  nav.toc {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  nav.toc .wrap { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+  nav.toc a {
+    color: var(--brand-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.92rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  nav.toc a:hover { background: var(--light); }
+  main { max-width: 960px; margin: 0 auto; padding: 32px; }
+  section { margin-bottom: 56px; }
+  h2 {
+    font-size: 1.7rem;
+    color: var(--brand-dark);
+    border-bottom: 3px solid var(--brand);
+    padding-bottom: 10px;
+    margin-top: 0;
+  }
+  h3 {
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    color: var(--brand-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 22px;
+    margin-bottom: 10px;
+  }
+  .demo-header {
+    background: var(--light);
+    border-left: 5px solid var(--brand);
+    padding: 18px 24px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+  }
+  .demo-header .story {
+    font-style: italic;
+    color: var(--ink);
+    margin: 8px 0 0;
+  }
+  .demo-header .meta { font-size: 0.88rem; color: var(--muted); margin-top: 4px; }
+  .prompt-block {
+    position: relative;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 48px 18px 20px;
+    margin: 10px 0 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .prompt-block pre {
+    margin: 0;
+    font-family: "Cascadia Code", "Consolas", "SF Mono", Menlo, monospace;
+    font-size: 0.93rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .prompt-block .label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-dark);
+    background: white;
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: white;
+    color: var(--brand-dark);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .copy-btn:hover { background: var(--brand); color: white; border-color: var(--brand); }
+  .copy-btn.copied { background: var(--success); color: white; border-color: var(--success); }
+  .copy-btn svg { width: 14px; height: 14px; }
+  ol.steps, ul.tips {
+    padding-left: 24px;
+    margin: 10px 0 18px;
+  }
+  ol.steps li, ul.tips li { margin: 6px 0; }
+  .tip {
+    background: #FFF8E6;
+    border-left: 4px solid var(--accent);
+    padding: 12px 18px;
+    border-radius: 0 6px 6px 0;
+    margin: 16px 0;
+    font-size: 0.95rem;
+  }
+  .tip strong { color: #A6620B; }
+  .wow {
+    background: linear-gradient(135deg, #FFF4E0, #FFE8C2);
+    border: 1px solid #E8A33D;
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 18px 0;
+  }
+  .wow .label { font-weight: 700; color: #8A5A10; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.8rem; }
+  .wow p { margin: 6px 0 0; font-style: italic; }
+  .prereq {
+    background: #F0F9FF;
+    border: 1px solid #BAE0FD;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin: 12px 0 18px;
+  }
+  .prereq strong { color: var(--brand-dark); }
+  footer {
+    text-align: center;
+    padding: 28px 16px 48px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--success);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .badge-easy { background: #E6F4EA; color: #1E7E34; }
+  .badge-medium { background: #FFF4E0; color: #A6620B; }
+  .badge-wow { background: #FDE7F3; color: #B02A80; }
+  @media (max-width: 640px) {
+    header { padding: 32px 20px; }
+    main { padding: 20px; }
+    nav.toc { padding: 12px 16px; }
+    .prompt-block { padding: 16px 16px 16px 18px; }
+    .copy-btn { position: static; margin-top: 10px; display: inline-flex; }
+  }
+  @media print {
+    nav.toc, .copy-btn, .toast { display: none; }
+    body { background: white; }
+    .prompt-block { page-break-inside: avoid; }
+    section { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Low Code, Big Results</h1>
+    <p class="subtitle">Build Copilot Studio Agents in Minutes — Demo Prompts & Instructions</p>
+    <div class="meta">
+      <span><strong>Duration:</strong> 60 minutes</span>
+      <span><strong>Demo org:</strong> Contoso</span>
+      <span><strong>Instructor:</strong> John Rea</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#overview">Overview</a>
+    <a href="#prereqs">Prereqs</a>
+    <a href="#demo1">Demo 1 · Concierge</a>
+    <a href="#demo2">Demo 2 · Service Hero</a>
+    <a href="#demo3">Demo 3 · Deal Desk</a>
+    <a href="#closing">Close</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="overview">
+  <h2>Using this handout</h2>
+  <p>Every blue-accented block below is a <strong>copy-paste prompt or instruction</strong> used during the class. Click <em>Copy</em> on any block to drop it into Copilot Studio, Power Automate, Outlook, or Teams. The blocks are sequenced in the exact order they're used in class — follow top-to-bottom for a clean run.</p>
+  <p><strong>The three demos:</strong></p>
+  <ul class="tips">
+    <li><span class="badge badge-easy">Easy</span> <strong>Contoso Concierge</strong> — declarative agent, grounded knowledge, published to Teams.</li>
+    <li><span class="badge badge-medium">Intermediate</span> <strong>Contoso Service Hero</strong> — custom topic + Power Automate action that files a real ticket.</li>
+    <li><span class="badge badge-wow">Wow</span> <strong>Contoso Deal Desk</strong> — autonomous agent with generative orchestration, triggered by email, posts to Teams.</li>
+  </ul>
+</section>
+
+<section id="prereqs">
+  <h2>Pre-class prereqs (stage the day before)</h2>
+
+  <h3>Accounts &amp; licenses</h3>
+  <ul class="tips">
+    <li>Microsoft 365 tenant with Copilot Studio license on the demo account.</li>
+    <li>Power Automate premium (for the Demo 2 action).</li>
+    <li>Permission to publish agents to Teams in the demo tenant.</li>
+  </ul>
+
+  <h3>Content to stage in the tenant</h3>
+  <ul class="tips">
+    <li><strong>Contoso Employee Handbook</strong> (PDF, 10–40 pages) — fictional or anonymized.</li>
+    <li><strong>Contoso HQ</strong> SharePoint site with the handbook uploaded.</li>
+    <li><strong>Contoso Orbit Product FAQ</strong> (DOCX or PDF).</li>
+    <li><strong>Contoso Rate Card</strong> Excel file on SharePoint — columns: Product, List Price, Floor Price.</li>
+    <li><strong>deals@contoso.com</strong> (or any test mailbox you control) for Demo 3's trigger.</li>
+    <li>A Teams channel named <strong>Contoso – Deal Desk</strong>.</li>
+    <li>A Power Automate flow named <strong>Create Contoso Ticket</strong> (see Demo 2).</li>
+  </ul>
+
+  <div class="tip"><strong>Tip:</strong> Record a 90-second screen capture of each demo the night before. If the tenant hiccups, you narrate over the clip and keep the energy up.</div>
+</section>
+
+<!-- =========================== DEMO 1 =========================== -->
+<section id="demo1">
+  <h2>Demo 1 · Contoso Concierge <span class="badge badge-easy">Declarative agent</span></h2>
+
+  <div class="demo-header">
+    <p class="meta"><strong>Type:</strong> Declarative agent &middot; <strong>Build time:</strong> 8 minutes &middot; <strong>Publish surface:</strong> Microsoft Teams</p>
+    <p class="story">"Contoso just rolled out a new employee handbook, and HR is drowning in 'where do I find the PTO policy' emails. Let's build them a concierge."</p>
+  </div>
+
+  <div class="prereq"><strong>You'll need:</strong> Contoso Employee Handbook PDF + the Contoso HQ SharePoint site URL.</div>
+
+  <h3>Step-by-step</h3>
+  <ol class="steps">
+    <li>Go to <strong>https://copilotstudio.microsoft.com</strong> → <strong>Create</strong> → <strong>New agent</strong>.</li>
+    <li>Switch to the <strong>Describe</strong> tab and paste the agent description below.</li>
+    <li>Let Copilot Studio auto-generate name, description, and instructions.</li>
+    <li>Go to <strong>Knowledge</strong> → <strong>Add knowledge</strong> → <strong>Files</strong>. Upload the Employee Handbook PDF.</li>
+    <li>Add knowledge again → <strong>SharePoint</strong> → paste the Contoso HQ site URL.</li>
+    <li>Go to <strong>Starter prompts</strong> and replace defaults with the four below.</li>
+    <li>Click <strong>Test</strong> in the right pane. Run the live test prompts in order. Point out the citations.</li>
+    <li><strong>Publish</strong> → <strong>Channels</strong> → <strong>Microsoft Teams</strong>. Install and open live.</li>
+  </ol>
+
+  <h3>Copy-paste prompts</h3>
+
+  <div class="prompt-block">
+    <span class="label">Agent description prompt</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>Build me an internal employee assistant for Contoso called "Contoso Concierge". Its personality is warm, concise, and never corporate. It helps Contoso employees with HR policies, benefits, time off, IT basics, and finding the right person to talk to. It always cites the policy page it's quoting from. If it doesn't know the answer, it offers to open a ticket with HR and never guesses.</pre>
+  </div>
+
+  <div class="prompt-block">
+    <span class="label">Starter prompts (one per line)</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>How much PTO do I get as a new Contoso employee?
+What's Contoso's policy on remote work?
+Who do I contact about parental leave?
+Summarize the Contoso code of conduct in 5 bullets.</pre>
+  </div>
+
+  <div class="prompt-block">
+    <span class="label">Live test prompts (run in this order)</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>How much PTO do I get as a new Contoso employee?
+What about after 5 years?
+Who do I contact about parental leave?
+What if I still need help?</pre>
+  </div>
+
+  <div class="wow">
+    <span class="label">Wow moment</span>
+    <p>"Notice what just happened: no training data, no prompt engineering degree, no code. I described what I wanted in plain English, dropped in a PDF, and 90 seconds later Contoso has a concierge that cites its own handbook. This is what Microsoft means by low-code AI."</p>
+  </div>
+
+  <div class="tip"><strong>If something goes sideways:</strong> If indexing is slow, flip to your pre-built backup agent. If an answer is off, ask "Find me the exact policy number and page" — models recover well on the second turn. If Teams publish prompts for admin consent, stay in the web test pane; the demo still lands.</div>
+</section>
+
+<!-- =========================== DEMO 2 =========================== -->
+<section id="demo2">
+  <h2>Demo 2 · Contoso Service Hero <span class="badge badge-medium">Topics + Action</span></h2>
+
+  <div class="demo-header">
+    <p class="meta"><strong>Type:</strong> Full Copilot Studio agent &middot; <strong>Build time:</strong> 13 minutes &middot; <strong>Publish surface:</strong> Teams + Web</p>
+    <p class="story">"Concierge is great for 'what's the policy' questions, but the real business magic is when the agent <em>does</em> something. Contoso's support team gets 400 tickets a week — let's teach Service Hero to take the ticket itself."</p>
+  </div>
+
+  <div class="prereq">
+    <strong>You'll need:</strong>
+    <ul class="tips" style="margin-top:8px;">
+      <li>A Power Automate flow <strong>Create Contoso Ticket</strong> with inputs <code>customerName</code>, <code>productName</code>, <code>severity</code>, <code>description</code> → creates a row in a SharePoint list or Dataverse table and returns a ticket number.</li>
+      <li>A SharePoint list <strong>Contoso Tickets</strong> (Title, Customer, Product, Severity, Description, Status).</li>
+      <li>The <strong>Contoso Orbit Product FAQ</strong> file ready to upload.</li>
+    </ul>
+  </div>
+
+  <h3>Step-by-step</h3>
+  <ol class="steps">
+    <li>From Copilot Studio home → <strong>Create</strong> → <strong>New agent</strong>. Paste the agent description.</li>
+    <li>Add three knowledge sources: <strong>Contoso Orbit Product FAQ</strong> (file), Contoso support website (URL), <strong>Contoso HQ</strong> SharePoint site.</li>
+    <li>Go to <strong>Topics</strong> → <strong>+ Add a topic</strong> → <strong>Create from description with Copilot</strong>. Paste the topic generation prompt.</li>
+    <li>Review the auto-generated topic canvas. Point out trigger phrases, Question nodes, and the action placeholder.</li>
+    <li>Click the action placeholder → <strong>Add an action</strong> → <strong>Choose an existing Power Automate flow</strong> → pick <strong>Create Contoso Ticket</strong>. Map topic variables to flow inputs.</li>
+    <li>Back in Overview → update the agent Instructions with the text below.</li>
+    <li>Open the <strong>Test</strong> pane. Run the three live test prompts in order. The third triggers the topic and files a live ticket.</li>
+    <li>Open the SharePoint list live to show the row the agent just created.</li>
+    <li><strong>Publish</strong> → <strong>Channels</strong> → enable <strong>Microsoft Teams</strong> and <strong>Demo website</strong>. Drop the web chat URL in the class chat.</li>
+  </ol>
+
+  <h3>Copy-paste prompts</h3>
+
+  <div class="prompt-block">
+    <span class="label">Agent description prompt</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>Build me a customer support agent for Contoso called "Contoso Service Hero". It helps customers troubleshoot the Contoso Orbit product line and, when it can't solve the issue in chat, creates a support ticket on their behalf. It is patient, asks one question at a time, always confirms before filing anything, and always returns a ticket number the customer can reference.</pre>
+  </div>
+
+  <div class="prompt-block">
+    <span class="label">Topic generation prompt ("Create from description with Copilot")</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>Create a topic called "File a Support Ticket" that triggers when a customer says they want to open a ticket, log an issue, report a problem, escalate, or talk to a human. The topic should collect the customer's name, the product name (default to Contoso Orbit), the severity (Low, Medium, High, Critical), and a description of the issue. Confirm the details back to the customer, then call the action "Create Contoso Ticket" to file it. Return the ticket number in the confirmation message and offer to email the customer a copy.</pre>
+  </div>
+
+  <div class="prompt-block">
+    <span class="label">Agent instructions</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>You are Contoso Service Hero, a friendly product support specialist. Always try to solve the issue in chat first using your knowledge sources. If the customer explicitly asks to open a ticket, or you've tried two approaches and haven't resolved it, use the File a Support Ticket topic. Never make up a ticket number — always use the one returned by the action. When you file a ticket, restate the ticket number clearly and give the customer a realistic expectation of response time based on severity (Critical: 1 hour, High: 4 hours, Medium: next business day, Low: 3 business days).</pre>
+  </div>
+
+  <div class="prompt-block">
+    <span class="label">Live test prompts (run in this order)</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>My Contoso Orbit won't connect to Wi-Fi after the latest firmware update.
+
+I tried that. It still won't connect. I need someone to help me.
+
+Yes, please open a ticket. My name is Priya Desai, the severity is High, and the issue is: Orbit unit #A47 will not associate with the corporate SSID after firmware 4.2.</pre>
+  </div>
+
+  <div class="wow">
+    <span class="label">Wow moment (say this after the ticket appears)</span>
+    <p>"Pause on this for a second. A business user just built, in twelve minutes, an agent that understands a product catalog, troubleshoots in natural language, collects structured data, calls a business system, and returns a real ticket number. No C# developer was harmed in the making of this demo. <strong>This</strong> is what Copilot Studio unlocks that Agent Builder can't."</p>
+  </div>
+
+  <div class="tip"><strong>If something goes sideways:</strong> If the Power Automate action errors, switch to a mocked action that returns a hard-coded ticket number. If slot-filling trips, finish the slots manually in the test pane. Keep a screenshot of a successful SharePoint row on your desktop — ultimate fallback.</div>
+</section>
+
+<!-- =========================== DEMO 3 =========================== -->
+<section id="demo3">
+  <h2>Demo 3 · Contoso Deal Desk <span class="badge badge-wow">Autonomous</span></h2>
+
+  <div class="demo-header">
+    <p class="meta"><strong>Type:</strong> Autonomous agent · generative orchestration · email trigger &middot; <strong>Build time:</strong> 10 minutes (mostly show, some build) &middot; <strong>Publish surface:</strong> Teams channel</p>
+    <p class="story">"Contoso reps get deal requests emailed to deals@contoso.com. Today, a human spends 15 minutes on each — summarizing, pricing, posting to Teams, flagging for approval. Watch what happens when we hand that off."</p>
+  </div>
+
+  <div class="prereq">
+    <strong>You'll need:</strong>
+    <ul class="tips" style="margin-top:8px;">
+      <li>A mailbox <strong>deals@contoso.com</strong> (or any test mailbox you own) as the trigger.</li>
+      <li>A <strong>Contoso Rate Card</strong> Excel file on SharePoint (Product, List Price, Floor Price).</li>
+      <li>A Teams channel <strong>Contoso – Deal Desk</strong>.</li>
+      <li>A second mailbox (Gmail or a separate tenant user) to send the live trigger email.</li>
+      <li><strong>Pre-build the skeleton</strong> — only finish the last few steps live. This is a showcase demo, not a from-scratch build.</li>
+    </ul>
+  </div>
+
+  <h3>Step-by-step</h3>
+  <ol class="steps">
+    <li>In Copilot Studio, <strong>Create</strong> a new agent. Switch orchestration to <strong>Generative (use generative AI to orchestrate)</strong>.</li>
+    <li>Paste the agent description below.</li>
+    <li>Add the <strong>tools</strong> listed below — show the class these are tools, not topics. The agent will pick which to call.</li>
+    <li>Set the <strong>trigger</strong>: When a new email arrives in <strong>deals@contoso.com</strong>.</li>
+    <li>Paste the agent instructions into the Instructions field.</li>
+    <li>From a second mailbox, send the trigger email below.</li>
+    <li>Switch to Teams and wait for the Adaptive Card to post in the Deal Desk channel.</li>
+  </ol>
+
+  <h3>Copy-paste prompts</h3>
+
+  <div class="prompt-block">
+    <span class="label">Agent description prompt</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>Build an autonomous agent for Contoso called "Contoso Deal Desk". Its job is to process incoming sales deal requests end-to-end without a human in the loop, until approval is required. When a new deal-request email arrives at deals@contoso.com, it reads the email, extracts the customer name, the requested products, quantities, and any discount asks. It looks up list and floor pricing from the Contoso Rate Card. It drafts a deal summary. It posts an Adaptive Card to the "Contoso – Deal Desk" Teams channel with the summary and an Approve/Reject button. If the deal value is over $50,000 or the discount is deeper than the floor, it flags the card as Requires Approval. It never quotes below floor. It is precise, neutral, and short — sales leaders don't want fluff.</pre>
+  </div>
+
+  <div class="prompt-block">
+    <span class="label">Tools to add</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>- Get a new email from the deals@contoso.com mailbox (Outlook connector)
+- Read an Excel file on SharePoint — Contoso Rate Card (Excel connector)
+- Post an Adaptive Card to a Teams channel (Teams connector)
+- Create an approval (Approvals connector, optional)</pre>
+  </div>
+
+  <div class="prompt-block">
+    <span class="label">Agent instructions</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>When a new email arrives at deals@contoso.com:
+1. Read the email body and extract: customer name, requested products (as a list), quantities, and any discount asks.
+2. For each requested product, look up List Price and Floor Price from the Contoso Rate Card.
+3. Compute: subtotal at list, subtotal at requested price, and total discount %.
+4. Draft a 4-line deal summary: customer, products, total value, discount %.
+5. Post an Adaptive Card to the "Contoso – Deal Desk" Teams channel with the summary, a Details expander containing the line items, and an Approve/Reject action.
+6. If total value > $50,000 OR any line is below Floor Price, tag the card "Requires Approval" and @mention the Deal Desk Lead.
+7. Never quote below Floor Price. If asked to, post the card with "Blocked — below floor" and stop.
+8. Reply to the original email with "Your request is with our deal desk, reference: <Teams post link>".</pre>
+  </div>
+
+  <div class="prompt-block">
+    <span class="label">Live trigger email (send from a second mailbox to deals@contoso.com)</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>To: deals@contoso.com
+Subject: Deal request — Northwind Traders
+
+Hi Contoso team,
+
+Northwind Traders would like to purchase the following:
+  - 250 × Contoso Orbit Pro units
+  - 250 × Contoso Orbit Care — 3-year support
+
+They're asking for a 22% discount off list across the bundle. Need to close by end of quarter.
+
+Thanks,
+Alex</pre>
+  </div>
+
+  <div class="wow">
+    <span class="label">Wow moment (narrate while Teams is loading)</span>
+    <p>"I never told it to read an email first, then look up the rate card, then post to Teams. I gave it a goal and a toolbox. The agent decided the sequence. That is <strong>generative orchestration</strong> — and that is something you cannot do in Agent Builder."</p>
+  </div>
+
+  <div class="tip"><strong>If something goes sideways:</strong> Autonomous triggers can take 30–90 seconds. Use the wait as narration time. If the trigger hasn't fired in 2 minutes, switch to the pre-recorded screen capture. If the Adaptive Card is plain, show the run history — point to each tool invocation and say "the agent chose to do this."</div>
+</section>
+
+<!-- =========================== CLOSING =========================== -->
+<section id="closing">
+  <h2>Closing &amp; the ask</h2>
+  <div class="prompt-block">
+    <span class="label">Close the class with this</span>
+    <button class="copy-btn" onclick="copyBlock(this)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>Copy</button>
+<pre>Before you leave this session, write down the name of ONE workflow at Contoso where people spend 15 minutes on something that should take 15 seconds. That's your first agent. Ping me on Teams this week and I'll help you scope it.</pre>
+  </div>
+
+  <h3>Resources to drop in the class chat</h3>
+  <ul class="tips">
+    <li>Copilot Studio home: <strong>https://copilotstudio.microsoft.com</strong></li>
+    <li>Microsoft Learn — Copilot Studio learning path</li>
+    <li>Power Automate connectors reference</li>
+    <li>This handout (send the file)</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Low Code, Big Results — Demo Prompts Handout · Contoso demo org · Instructor: John Rea
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+  function copyBlock(btn) {
+    const block = btn.closest('.prompt-block');
+    const text = block.querySelector('pre').innerText;
+    const doDone = () => {
+      const original = btn.innerHTML;
+      btn.classList.add('copied');
+      btn.innerHTML = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>Copied';
+      showToast();
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = original;
+      }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(doDone).catch(() => fallbackCopy(text, doDone));
+    } else {
+      fallbackCopy(text, doDone);
+    }
+  }
+  function fallbackCopy(text, onDone) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.top = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    onDone();
+  }
+  let toastTimer;
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 1500);
+  }
+</script>
+
+</body>
+</html>

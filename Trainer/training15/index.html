@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copilot Studio Training &mdash; Trainer Guide</title>
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon-t15.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../../trainerdocs.html"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>Copilot Studio Training &mdash; Trainer Guide</h1>
+            <p class="subtitle">
+                <strong>Low Code, Big Results &mdash; Build Copilot Studio Agents in Minutes.</strong>
+                A 60-minute, demo-heavy tour of Copilot Studio for low-code makers. Three live agent builds
+                of increasing sophistication &mdash; declarative, topics + actions, and autonomous &mdash;
+                each a &ldquo;wow&rdquo; moment, each reproducible on the attendee&rsquo;s own tenant tomorrow.
+            </p>
+        </header>
+
+        <div class="callout callout-warning">
+            <div class="callout-title">&#9888;&#65039; Disclaimer</div>
+            All prompts, scenarios, examples, and referenced entities (Contoso, Northwind, Contoso Orbit,
+            etc.) are fictional and provided only for training and demonstration purposes. Do not use this
+            material for decision-making, reporting, or external distribution.
+        </div>
+
+        <div class="callout callout-note">
+            <div class="callout-title">&#128221; Session Details</div>
+            <strong>Duration:</strong> ~60 minutes<br />
+            <strong>Format:</strong> Presentation &middot; 3 live demos &middot; Copy-paste prompt handout<br />
+            <strong>Level:</strong> 200-Level &mdash; Low-Code Makers &amp; Power Users<br />
+            <strong>Audience:</strong> Low-code makers, power users, and curious IT pros who want to build
+            Copilot Studio agents without writing code.<br />
+            <strong>License key:</strong>
+            <span
+                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Copilot
+                Studio</span> = requires Copilot Studio capacity &nbsp;&bull;&nbsp;
+            <span
+                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">M365
+                Copilot Premium</span> = required for Agent Builder segment &nbsp;&bull;&nbsp;
+            <span
+                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#fff3e0;color:#e65100;font-weight:600;">Power
+                Automate Premium</span> = required for Demo 2 action<br />
+            <strong>Classification:</strong> Trainer Version &mdash; For Trainer Use Only, Not for Distribution
+            to Participants
+        </div>
+
+        <nav class="toc">
+            <div class="toc-title">Contents</div>
+            <ul>
+                <li><a href="#timing">&#9202; Session Timing Breakdown</a></li>
+                <li><a href="#prereqs">&#9989; Pre-Class Setup Checklist</a></li>
+                <li><a href="#sec1">&#128640; Section 1 &mdash; Welcome &amp; The Big Idea</a></li>
+                <li><a href="#sec2">&#9878; Section 2 &mdash; Agent Builder vs. Copilot Studio</a></li>
+                <li><a href="#sec3">&#127775; Section 3 &mdash; Demo 1: Contoso Concierge</a></li>
+                <li><a href="#sec4">&#128295; Section 4 &mdash; Demo 2: Contoso Service Hero</a></li>
+                <li><a href="#sec5">&#129302; Section 5 &mdash; Demo 3: Contoso Deal Desk</a></li>
+                <li><a href="#sec6">&#127919; Section 6 &mdash; Wrap-Up &amp; Call to Action</a></li>
+                <li><a href="#qa">&#128172; Anticipated Q&amp;A</a></li>
+                <li><a href="#files">&#128206; Resources</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================================
+             SESSION TIMING BREAKDOWN
+             ============================================================ -->
+        <section id="timing">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#9202;</div>
+                <div class="module-meta">
+                    <div class="module-label">Overview</div>
+                    <h2 class="module-title">Session Timing Breakdown</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Run of Show</span>
+                    <span class="section-card-title">60-Minute Plan</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Segment</th>
+                                <th>What success looks like</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0:00 &ndash; 0:05</td>
+                                <td>Welcome &amp; the big idea</td>
+                                <td>Frame why agents matter NOW and why low-code changes the game.</td>
+                            </tr>
+                            <tr>
+                                <td>0:05 &ndash; 0:15</td>
+                                <td>Agent Builder vs. Copilot Studio</td>
+                                <td>Attendees can explain when to reach for each tool.</td>
+                            </tr>
+                            <tr>
+                                <td>0:15 &ndash; 0:28</td>
+                                <td>Demo 1 &mdash; Contoso Concierge</td>
+                                <td>Declarative agent built live, grounded on uploaded content.</td>
+                            </tr>
+                            <tr>
+                                <td>0:28 &ndash; 0:43</td>
+                                <td>Demo 2 &mdash; Contoso Service Hero</td>
+                                <td>Topics + actions; agent files a real ticket via Power Automate.</td>
+                            </tr>
+                            <tr>
+                                <td>0:43 &ndash; 0:55</td>
+                                <td>Demo 3 &mdash; Contoso Deal Desk</td>
+                                <td>Autonomous agent; generative orchestration posts to Teams.</td>
+                            </tr>
+                            <tr>
+                                <td>0:55 &ndash; 1:00</td>
+                                <td>Wrap-up, resources, call to action</td>
+                                <td>Attendees commit to an agent idea before leaving.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        The class lives or dies on pacing. If Demo 1 runs long, compress Demo 2&rsquo;s
+                        build-from-scratch portion by starting from a partially-staged agent. Never sacrifice
+                        Demo 3 &mdash; the autonomous agent is the mic-drop moment attendees will remember.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             PRE-CLASS SETUP
+             ============================================================ -->
+        <section id="prereqs">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9989;</div>
+                <div class="module-meta">
+                    <div class="module-label">Day Before</div>
+                    <h2 class="module-title">Pre-Class Setup Checklist</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Accounts &amp; Access</span>
+                    <span class="section-card-title">Licenses &amp; Permissions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>A Microsoft 365 tenant with a <strong>Copilot Studio</strong> license assigned to
+                            your demo account.</li>
+                        <li>An <strong>M365 Copilot</strong> license for the Agent Builder segment (optional
+                            &mdash; you can do the whole class inside Copilot Studio).</li>
+                        <li>A <strong>Power Automate premium</strong> license (for the custom connector/action
+                            in Demo 2).</li>
+                        <li>Permission to <strong>publish agents to Teams</strong> in your demo tenant.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Content to Stage</span>
+                    <span class="section-card-title">Files, Sites, Mailboxes, Channels</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Contoso Employee Handbook</strong> (PDF, 10&ndash;40 pages) &mdash; fabricate
+                            or anonymize. Put on a SharePoint site called &ldquo;Contoso HQ&rdquo;.</li>
+                        <li><strong>Contoso Product FAQ</strong> (DOCX or PDF) &mdash; 2&ndash;3 pages covering
+                            the fictional &ldquo;Contoso Orbit&rdquo; product line.</li>
+                        <li>A public website for use as a knowledge source (e.g., contoso.com or your tenant&rsquo;s
+                            demo site).</li>
+                        <li>A shared mailbox <strong>deals@contoso.com</strong> (or any test mailbox you control)
+                            for Demo 3&rsquo;s trigger.</li>
+                        <li>A Teams channel named <strong>&ldquo;Contoso &ndash; Deal Desk&rdquo;</strong> where
+                            the autonomous agent will post.</li>
+                        <li>A Power Automate flow named <strong>&ldquo;Create Contoso Ticket&rdquo;</strong>
+                            with inputs: customerName, productName, severity, description. Returns a ticket number.</li>
+                        <li>A SharePoint list called <strong>&ldquo;Contoso Tickets&rdquo;</strong> with columns
+                            Title, Customer, Product, Severity, Description, Status.</li>
+                        <li>A <strong>Contoso Rate Card</strong> Excel file on SharePoint with columns
+                            Product, List Price, Floor Price.</li>
+                        <li>A sample deal-request email drafted and ready to send from a second mailbox during
+                            Demo 3.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Browser &amp; Screen</span>
+                    <span class="section-card-title">Presentation Setup</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Sign in to <a href="https://copilotstudio.microsoft.com" target="_blank"
+                                style="color:var(--blue-step);font-weight:600;">copilotstudio.microsoft.com</a>
+                            in a clean browser profile.</li>
+                        <li>Pin these tabs, in order: Copilot Studio home &rarr; Contoso HQ SharePoint &rarr;
+                            Power Automate &rarr; Teams.</li>
+                        <li>Zoom browser to <strong>125%</strong>. Hide the bookmarks bar. Turn on Do Not Disturb.</li>
+                        <li>Have the <strong>HTML demo prompts handout</strong> open in a second window for
+                            quick copy-paste.</li>
+                    </ul>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip &mdash; Fallbacks</div>
+                        Record a <strong>90-second screen capture</strong> of each demo the night before. If
+                        the tenant hiccups, narrate over the clip and keep the energy up. Also bookmark the
+                        <strong>final published agents</strong> &mdash; if you need to abandon a live build you
+                        can still show the working result.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 1: WELCOME
+             ============================================================ -->
+        <section id="sec1">
+
+            <div class="module-header">
+                <div class="module-icon red">&#128640;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 1 &middot; 0:00&ndash;0:05</div>
+                    <h2 class="module-title">Welcome &amp; The Big Idea</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talk Track</span>
+                    <span class="section-card-title">Opening Hook</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Say this</div>
+                        <div class="prompt-box">Raise your hand if in the last month you&rsquo;ve said:
+                            &ldquo;I wish I had a bot that could&hellip;&rdquo; Now keep it up if you&rsquo;ve
+                            thought: &ldquo;but I&rsquo;m not a developer.&rdquo; Today we&rsquo;re going to
+                            fix that &mdash; together, live, in this hour you&rsquo;ll see three agents get built.
+                            The first one takes less than five minutes. The last one would have been a six-month
+                            project two years ago. And you&rsquo;re going to leave with the exact prompts and
+                            steps to rebuild them on your own tenant.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <h4 style="margin-top:var(--sp-6);">Points to land</h4>
+                    <ul>
+                        <li>Agents are the next phase of Copilot &mdash; they don&rsquo;t just answer, they <strong>act</strong>.</li>
+                        <li>Low-code means <strong>business users build</strong>, not just IT.</li>
+                        <li>Every demo today uses the name &ldquo;Contoso&rdquo; so attendees can mentally swap in
+                            their own org.</li>
+                    </ul>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip &mdash; Energy Cue</div>
+                        Start <strong>standing</strong>. Open on a question, not a slide. Don&rsquo;t introduce
+                        yourself until minute 2 &mdash; <em>the promise first, the credentials later.</em>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 2: AGENT BUILDER vs COPILOT STUDIO
+             ============================================================ -->
+        <section id="sec2">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#9878;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 2 &middot; 0:05&ndash;0:15</div>
+                    <h2 class="module-title">Agent Builder vs. Copilot Studio</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Talk Track</span>
+                    <span class="section-card-title">Two Entry Points</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Say this</div>
+                        <div class="prompt-box">Microsoft gives you two entry points. If you live inside
+                            Microsoft 365 Copilot, Agent Builder lets you spin up a declarative agent in seconds
+                            &mdash; no new app to learn. When you need to go further &mdash; custom topics,
+                            connectors, multi-channel publish, autonomous triggers &mdash; you step up to
+                            Copilot Studio. Same family, bigger canvas.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Reference</span>
+                    <span class="section-card-title">Capability Comparison</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Capability</th>
+                                <th>Agent Builder (in M365 Copilot)</th>
+                                <th>Copilot Studio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Authoring model</td>
+                                <td>Natural-language, in Copilot</td>
+                                <td>Natural-language + pro-code canvas</td>
+                            </tr>
+                            <tr>
+                                <td>Knowledge sources</td>
+                                <td>Files, SharePoint, web</td>
+                                <td>Everything above + Dataverse, enterprise connectors, custom APIs</td>
+                            </tr>
+                            <tr>
+                                <td>Custom topics</td>
+                                <td>Limited</td>
+                                <td>Full topic designer with triggers, variables, conditions</td>
+                            </tr>
+                            <tr>
+                                <td>Actions / tools</td>
+                                <td>A small, curated set</td>
+                                <td>1,400+ connectors, custom connectors, Power Automate flows, MCP tools</td>
+                            </tr>
+                            <tr>
+                                <td>Publish surfaces</td>
+                                <td>Inside M365 Copilot</td>
+                                <td>Teams, web, custom apps, M365 Copilot, embedded</td>
+                            </tr>
+                            <tr>
+                                <td>Generative orchestration</td>
+                                <td>&mdash;</td>
+                                <td>Yes &mdash; agent reasons over tools on the fly</td>
+                            </tr>
+                            <tr>
+                                <td>Autonomous triggers</td>
+                                <td>&mdash;</td>
+                                <td>Yes &mdash; email arrival, record changes, schedule</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-success">
+                        <div class="callout-title">&#127919; One-Line Takeaway</div>
+                        <strong>Agent Builder</strong> = fastest path to a grounded assistant inside Copilot.<br />
+                        <strong>Copilot Studio</strong> = everything Agent Builder does, plus the muscle to
+                        automate real business processes.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 3: DEMO 1 - CONTOSO CONCIERGE
+             ============================================================ -->
+        <section id="sec3">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#127775;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 3 &middot; Demo 1 &middot; 0:15&ndash;0:28</div>
+                    <h2 class="module-title">Contoso Concierge &mdash; Declarative Agent</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">The Story</span>
+                    <span class="section-card-title">Set the Scene</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><em>&ldquo;Contoso just rolled out a new employee handbook, and HR is drowning in
+                        &lsquo;where do I find the PTO policy&rsquo; emails. Let&rsquo;s build them a
+                        concierge.&rdquo;</em></p>
+                    <p><strong>What this demo shows:</strong> describe-it-to-build-it authoring, grounding on
+                        an uploaded PDF plus a SharePoint site, one-click publish to Teams.</p>
+                    <p><strong>Pre-stage:</strong> Contoso Employee Handbook PDF on desktop &middot; Contoso HQ
+                        SharePoint URL copied.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Live Build &middot; 8 min</span>
+                    <span class="section-card-title">Step-by-Step</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol>
+                        <li>Open Copilot Studio &rarr; <strong>Create</strong> &rarr; <strong>New agent</strong>.</li>
+                        <li>Switch to the <strong>Describe</strong> tab (not Configure). Paste the description prompt below.</li>
+                        <li>Let Copilot Studio generate the name, description, and instructions. Show the class
+                            how it auto-fills.</li>
+                        <li>Go to <strong>Knowledge</strong> &rarr; Add knowledge &rarr; <strong>Files</strong>.
+                            Upload the Contoso Employee Handbook PDF.</li>
+                        <li>Add knowledge again &rarr; <strong>SharePoint</strong> &rarr; paste the Contoso HQ
+                            site URL.</li>
+                        <li>Go to <strong>Starter prompts</strong> and replace the defaults with the four below.</li>
+                        <li>Click <strong>Test</strong> in the right-hand pane. Ask the first prompt live.
+                            Point out the citation.</li>
+                        <li>Click <strong>Publish</strong> &rarr; <strong>Channels</strong> &rarr;
+                            <strong>Microsoft Teams</strong>. Install to Teams and open it live.</li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Agent Description</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Paste into the Describe tab</div>
+                        <div class="prompt-box">Build an internal employee assistant for Contoso called
+                            &ldquo;Contoso Concierge&rdquo;. Its personality is warm, concise, and never corporate.
+                            It helps Contoso employees with HR policies, benefits, time off, IT basics, and
+                            finding the right person to talk to. It always cites the policy page it&rsquo;s
+                            quoting from. If it doesn&rsquo;t know the answer, it offers to open a ticket with
+                            HR and never guesses.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Starter Prompts (replace defaults)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Four starter prompts</div>
+                        <div class="prompt-box">How much PTO do I get as a new Contoso employee?
+What's Contoso's policy on remote work?
+Who do I contact about parental leave?
+Summarize the Contoso code of conduct in 5 bullets.</div>
+                        <button class="copy-btn">&#128203; Copy Prompts</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Live Test &mdash; Run These In Order</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Test sequence</div>
+                        <div class="prompt-box">How much PTO do I get as a new Contoso employee?
+What about after 5 years?
+Who do I contact about parental leave?
+What if I still need help?</div>
+                        <button class="copy-btn">&#128203; Copy Prompts</button>
+                    </div>
+                    <div class="callout callout-success">
+                        <div class="callout-title">&#127775; Wow Moment &mdash; Say This When It Answers</div>
+                        <em>&ldquo;Notice what just happened: no training data, no prompt engineering degree,
+                        no code. I described what I wanted in plain English, dropped in a PDF, and 90 seconds
+                        later Contoso has a concierge that cites its own handbook. This is what Microsoft
+                        means by low-code AI.&rdquo;</em>
+                    </div>
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#128680; If Something Goes Sideways</div>
+                        <ul style="margin:0;">
+                            <li>If knowledge indexing is slow &rarr; flip to the pre-built backup agent. Don&rsquo;t stall.</li>
+                            <li>If the first answer is off &rarr; ask &ldquo;Find me the exact policy number and
+                                page.&rdquo; Models recover well on the second turn.</li>
+                            <li>If Teams publish prompts for admin consent &rarr; stay in the web test pane &mdash;
+                                the demo still lands.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 4: DEMO 2 - CONTOSO SERVICE HERO
+             ============================================================ -->
+        <section id="sec4">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128295;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 4 &middot; Demo 2 &middot; 0:28&ndash;0:43</div>
+                    <h2 class="module-title">Contoso Service Hero &mdash; Topics + Action</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">The Story</span>
+                    <span class="section-card-title">Set the Scene</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><em>&ldquo;Concierge is great for &lsquo;what&rsquo;s the policy&rsquo; questions, but
+                        the real business magic is when the agent <strong>does something</strong>. Contoso&rsquo;s
+                        product support team gets 400 tickets a week &mdash; a huge chunk of them low-complexity.
+                        Let&rsquo;s teach Contoso Service Hero to take the ticket itself.&rdquo;</em></p>
+
+                    <h4>What&rsquo;s new vs. Demo 1</h4>
+                    <ul>
+                        <li>A <strong>custom authored topic</strong> &mdash; deterministic behavior for a known process.</li>
+                        <li><strong>Entities and slot-filling</strong> &mdash; collecting structured info from conversation.</li>
+                        <li>A <strong>Power Automate action</strong> that actually creates a record.</li>
+                        <li>Publishing to <strong>multiple channels</strong> from one agent.</li>
+                    </ul>
+
+                    <p><strong>Pre-stage:</strong> Power Automate flow &ldquo;Create Contoso Ticket&rdquo; &middot;
+                        SharePoint list &ldquo;Contoso Tickets&rdquo; &middot; Contoso Orbit Product FAQ uploaded.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Live Build &middot; 13 min</span>
+                    <span class="section-card-title">Step-by-Step</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol>
+                        <li>From Copilot Studio home, create a new agent and paste the <strong>Agent description</strong>
+                            below.</li>
+                        <li>Add three knowledge sources: Contoso Orbit Product FAQ (file), the Contoso support
+                            website (URL), and Contoso HQ SharePoint site.</li>
+                        <li>Go to <strong>Topics</strong> &rarr; <strong>+ Add a topic</strong> &rarr;
+                            <strong>Create from description with Copilot</strong>. Paste the
+                            <strong>Topic generation</strong> prompt below.</li>
+                        <li>Let Copilot Studio scaffold the topic. Walk the class through the visual canvas &mdash;
+                            point out the trigger phrases, the Question nodes, and the placeholder for the action.</li>
+                        <li>Click the action placeholder &rarr; <strong>Add an action</strong> &rarr;
+                            <strong>Choose an existing Power Automate flow</strong> &rarr; select
+                            &ldquo;Create Contoso Ticket&rdquo;. Map the topic variables to the flow inputs.</li>
+                        <li>Back in the Overview, update the <strong>Instructions</strong> with the text below.</li>
+                        <li>Open the Test pane. Run the three test prompts in order &mdash; the last one triggers
+                            the topic and files a live ticket.</li>
+                        <li>Open the SharePoint list in a new tab &mdash; show the live row the agent just created.
+                            This is the &ldquo;no way&rdquo; moment.</li>
+                        <li>Publish &rarr; Channels &rarr; enable <strong>Microsoft Teams</strong> and
+                            <strong>Demo website</strong>. Drop the web chat URL in the class chat.</li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Agent Description</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Paste into the Describe tab</div>
+                        <div class="prompt-box">Build me a customer support agent for Contoso called
+                            &ldquo;Contoso Service Hero&rdquo;. It helps customers troubleshoot the Contoso
+                            Orbit product line and, when it can&rsquo;t solve the issue in chat, creates a
+                            support ticket on their behalf. It is patient, asks one question at a time,
+                            always confirms before filing anything, and always returns a ticket number the
+                            customer can reference.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Topic Generation &mdash; &ldquo;File a Support Ticket&rdquo;</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Paste into Create from description with Copilot</div>
+                        <div class="prompt-box">Create a topic called &ldquo;File a Support Ticket&rdquo; that
+                            triggers when a customer says they want to open a ticket, log an issue, report a
+                            problem, escalate, or talk to a human. The topic should collect the customer&rsquo;s
+                            name, the product name (default to Contoso Orbit), the severity (Low, Medium, High,
+                            Critical), and a description of the issue. Confirm the details back to the customer,
+                            then call the action &ldquo;Create Contoso Ticket&rdquo; to file it. Return the
+                            ticket number in the confirmation message and offer to email the customer a copy.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Agent Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Paste into Instructions</div>
+                        <div class="prompt-box">You are Contoso Service Hero, a friendly product support
+                            specialist. Always try to solve the issue in chat first using your knowledge sources.
+                            If the customer explicitly asks to open a ticket, or you&rsquo;ve tried two approaches
+                            and haven&rsquo;t resolved it, use the File a Support Ticket topic. Never make up a
+                            ticket number &mdash; always use the one returned by the action. When you file a
+                            ticket, restate the ticket number clearly and give the customer a realistic expectation
+                            of response time based on severity (Critical: 1 hour, High: 4 hours, Medium: next
+                            business day, Low: 3 business days).</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Live Test &mdash; Run These In Order</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Test sequence (three turns)</div>
+                        <div class="prompt-box">My Contoso Orbit won't connect to Wi-Fi after the latest firmware update.
+
+I tried that. It still won't connect. I need someone to help me.
+
+Yes, please open a ticket. My name is Priya Desai, the severity is High, and the issue is: Orbit unit #A47 will not associate with the corporate SSID after firmware 4.2.</div>
+                        <button class="copy-btn">&#128203; Copy Prompts</button>
+                    </div>
+                    <div class="callout callout-success">
+                        <div class="callout-title">&#127775; Wow Moment &mdash; Say This After the Ticket Appears</div>
+                        <em>&ldquo;Pause on this for a second. A business user just built, in twelve minutes,
+                        an agent that understands a product catalog, troubleshoots in natural language, collects
+                        structured data, calls a business system, and returns a real ticket number. No C# developer
+                        was harmed in the making of this demo. THIS is what Copilot Studio unlocks that Agent
+                        Builder can&rsquo;t.&rdquo;</em>
+                    </div>
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#128680; If Something Goes Sideways</div>
+                        <ul style="margin:0;">
+                            <li>If the Power Automate action errors &rarr; switch to a mocked action that returns
+                                a hard-coded ticket number. The narrative still lands.</li>
+                            <li>If slot-filling trips &rarr; finish the slots manually in the test pane; the class
+                                learns more from you narrating the debug.</li>
+                            <li>Keep a <strong>screenshot of a successful SharePoint list row</strong> on your
+                                desktop &mdash; ultimate fallback.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 5: DEMO 3 - CONTOSO DEAL DESK
+             ============================================================ -->
+        <section id="sec5">
+
+            <div class="module-header">
+                <div class="module-icon green">&#129302;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 5 &middot; Demo 3 &middot; 0:43&ndash;0:55</div>
+                    <h2 class="module-title">Contoso Deal Desk &mdash; The Autonomous Agent</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">The Story</span>
+                    <span class="section-card-title">Why This Is the Mic Drop</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Demos 1 and 2 respond to a human in a chat window. <strong>This one doesn&rsquo;t need
+                        a human at all.</strong> It wakes up when an event happens, reasons over a set of tools,
+                        and completes a business outcome on its own. This is agent-as-employee, not chatbot.</p>
+                    <p><em>&ldquo;Contoso sales reps get deal requests emailed to deals@contoso.com. Every request
+                        needs to be summarized, priced against the rate card, posted to the deal-desk Teams channel,
+                        and flagged for approval if over $50k. Today, a human spends 15 minutes on each one. Watch
+                        what happens when we hand that off.&rdquo;</em></p>
+                    <p><strong>Pre-stage:</strong> deals@contoso.com mailbox &middot; Contoso Rate Card Excel on
+                        SharePoint &middot; &ldquo;Contoso &ndash; Deal Desk&rdquo; Teams channel &middot; sample
+                        deal email ready to send from a second mailbox.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Live Build &middot; 10 min (mostly show)</span>
+                    <span class="section-card-title">Step-by-Step</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Trainer Tip</div>
+                        <strong>Pre-build the agent&rsquo;s skeleton</strong> so you only need to finish the
+                        last 2&ndash;3 steps live. This is a showcase demo, not a from-scratch build.
+                    </div>
+                    <ol>
+                        <li>In Copilot Studio, create a new agent. Switch the <strong>orchestration setting</strong>
+                            to <strong>Generative</strong> (use generative AI to orchestrate).</li>
+                        <li>Paste the <strong>Agent description</strong> below.</li>
+                        <li>Add <strong>tools</strong> (not topics &mdash; tools). Show the class that generative
+                            orchestration lets the agent pick which tool to use.</li>
+                        <li>Set the <strong>trigger</strong>: when a new email arrives in deals@contoso.com.</li>
+                        <li>Paste the <strong>Agent instructions</strong> into the agent.</li>
+                        <li>From a second mailbox, send the <strong>test email</strong> below to deals@contoso.com.
+                            Then switch to Teams and wait for the Adaptive Card to appear.</li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Agent Description</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Paste into the Describe tab</div>
+                        <div class="prompt-box">Build an autonomous agent for Contoso called &ldquo;Contoso Deal
+                            Desk&rdquo;. Its job is to process incoming sales deal requests end-to-end without a
+                            human in the loop, until approval is required. When a new deal-request email arrives
+                            at deals@contoso.com, it reads the email, extracts the customer name, the requested
+                            products, quantities, and any discount asks. It looks up list and floor pricing from
+                            the Contoso Rate Card. It drafts a deal summary. It posts an Adaptive Card to the
+                            &ldquo;Contoso &ndash; Deal Desk&rdquo; Teams channel with the summary and an
+                            Approve/Reject button. If the deal value is over $50,000 or the discount is deeper
+                            than the floor, it flags the card as Requires Approval. It never quotes below floor.
+                            It is precise, neutral, and short &mdash; sales leaders don&rsquo;t want fluff.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Reference</span>
+                    <span class="section-card-title">Tools to Add</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Add these tools to the agent</div>
+                        <div class="prompt-box">- Get a new email from the deals@contoso.com mailbox (Outlook connector)
+- Read an Excel file on SharePoint — Contoso Rate Card (Excel connector)
+- Post an Adaptive Card to a Teams channel (Teams connector)
+- Create an approval (Approvals connector, optional)</div>
+                        <button class="copy-btn">&#128203; Copy List</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prompt</span>
+                    <span class="section-card-title">Agent Instructions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Paste into Instructions</div>
+                        <div class="prompt-box">When a new email arrives at deals@contoso.com:
+1. Read the email body and extract: customer name, requested products (as a list), quantities, and any discount asks.
+2. For each requested product, look up List Price and Floor Price from the Contoso Rate Card.
+3. Compute: subtotal at list, subtotal at requested price, and total discount %.
+4. Draft a 4-line deal summary: customer, products, total value, discount %.
+5. Post an Adaptive Card to the "Contoso – Deal Desk" Teams channel with the summary, a Details expander containing the line items, and an Approve/Reject action.
+6. If total value > $50,000 OR any line is below Floor Price, tag the card "Requires Approval" and @mention the Deal Desk Lead.
+7. Never quote below Floor Price. If asked to, post the card with "Blocked — below floor" and stop.
+8. Reply to the original email with "Your request is with our deal desk, reference: &lt;Teams post link&gt;".</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Trigger Email</span>
+                    <span class="section-card-title">Live Demo Email &mdash; Send from a Second Mailbox</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Send to deals@contoso.com</div>
+                        <div class="prompt-box">To: deals@contoso.com
+Subject: Deal request — Northwind Traders
+
+Hi Contoso team,
+
+Northwind Traders would like to purchase the following:
+  - 250 × Contoso Orbit Pro units
+  - 250 × Contoso Orbit Care — 3-year support
+
+They're asking for a 22% discount off list across the bundle. Need to close by end of quarter.
+
+Thanks,
+Alex</div>
+                        <button class="copy-btn">&#128203; Copy Email</button>
+                    </div>
+                    <div class="callout callout-success">
+                        <div class="callout-title">&#127775; Wow Moment &mdash; Say This While Teams Is Loading</div>
+                        <em>&ldquo;I never told it to read an email first, then look up the rate card, then
+                        post to Teams. I gave it a <strong>goal</strong> and a <strong>toolbox</strong>. The
+                        agent decided the sequence. That is <strong>generative orchestration</strong> &mdash;
+                        and that is something you cannot do in Agent Builder.&rdquo;</em>
+                    </div>
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#128680; If Something Goes Sideways</div>
+                        <ul style="margin:0;">
+                            <li>Autonomous triggers can take 30&ndash;90 seconds. Use the wait as narration time
+                                &mdash; walk the class through what the agent is doing right now.</li>
+                            <li>If the trigger hasn&rsquo;t fired in 2 minutes &rarr; switch to the pre-recorded
+                                screen capture and narrate.</li>
+                            <li>If the Adaptive Card is plain &rarr; show the Power Automate run history. Point
+                                to each tool invocation and say &ldquo;the agent chose to do this.&rdquo;</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SECTION 6: WRAP-UP
+             ============================================================ -->
+        <section id="sec6">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#127919;</div>
+                <div class="module-meta">
+                    <div class="module-label">Section 6 &middot; 0:55&ndash;1:00</div>
+                    <h2 class="module-title">Wrap-Up &amp; Call to Action</h2>
+                </div>
+            </div>
+
+            <div class="toggle-bar">
+                <button data-action="expand-all">&#9660; Expand All</button>
+                <button data-action="collapse-all">&#9650; Collapse All</button>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Recap</span>
+                    <span class="section-card-title">Three Demos, Three Sentences</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Contoso Concierge</strong> &mdash; describe it, ground it, publish it. Five
+                            minutes to a real assistant.</li>
+                        <li><strong>Contoso Service Hero</strong> &mdash; topics + actions let your agent
+                            <em>do</em> the work, not just answer.</li>
+                        <li><strong>Contoso Deal Desk</strong> &mdash; give the agent a goal and a toolbox,
+                            and it runs the process itself.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">The Ask</span>
+                    <span class="section-card-title">Closing Line</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-label">Say this</div>
+                        <div class="prompt-box">Before you leave this session, write down the name of ONE workflow
+                            at your company where people spend 15 minutes on something that should take 15 seconds.
+                            That&rsquo;s your first agent. Ping me on Teams this week and I&rsquo;ll help you scope it.</div>
+                        <button class="copy-btn">&#128203; Copy</button>
+                    </div>
+
+                    <div class="callout callout-success">
+                        <div class="callout-title">&#127919; Final Thought for the Close</div>
+                        <em>&ldquo;The question isn&rsquo;t whether your team will build agents. It&rsquo;s
+                        whether they&rsquo;ll build them now or after a competitor does. See you on Teams.&rdquo;</em>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             ANTICIPATED Q&A
+             ============================================================ -->
+        <section id="qa">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128172;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Anticipated Q&amp;A</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Prep</span>
+                    <span class="section-card-title">Common Questions &amp; Short Answers</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Short Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Do I need a Copilot license for every user of my agent?</td>
+                                <td>Depends on the publish surface. Agents published inside M365 Copilot require
+                                    the M365 Copilot license. Agents published to Teams or web typically meter
+                                    usage against the maker&rsquo;s Copilot Studio capacity.</td>
+                            </tr>
+                            <tr>
+                                <td>Is the data from my agent used to train public models?</td>
+                                <td>No. Tenant data stays in your tenant. Copilot Studio honors your existing
+                                    M365 data boundaries.</td>
+                            </tr>
+                            <tr>
+                                <td>What&rsquo;s the difference between a topic and a tool?</td>
+                                <td>A <strong>topic</strong> is a deterministic conversation flow you author. A
+                                    <strong>tool</strong> is a capability (connector, flow, API) the agent can
+                                    choose to call. Generative orchestration means the agent reasons over tools
+                                    on the fly.</td>
+                            </tr>
+                            <tr>
+                                <td>Can autonomous agents run without anyone logged in?</td>
+                                <td>Yes. They run under a maker-configured service identity on their configured
+                                    trigger (email arrival, schedule, record change, etc.).</td>
+                            </tr>
+                            <tr>
+                                <td>How do I govern who can build agents?</td>
+                                <td>Through Power Platform admin center &mdash; environments, DLP policies, and
+                                    managed environments. Your IT admin can share guardrails before you scale.</td>
+                            </tr>
+                            <tr>
+                                <td>Can I move an Agent Builder agent into Copilot Studio?</td>
+                                <td>Yes &mdash; agents you start in Agent Builder can be opened and extended in
+                                    Copilot Studio when you outgrow the Agent Builder surface.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             RESOURCES
+             ============================================================ -->
+        <section id="files">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#128206;</div>
+                <div class="module-meta">
+                    <div class="module-label">Resources</div>
+                    <h2 class="module-title">Resources to Share in the Class Chat</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Links</span>
+                    <span class="section-card-title">Drop These in Chat</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Copilot Studio home:
+                            <a href="https://copilotstudio.microsoft.com" target="_blank"
+                                style="color:var(--blue-step);font-weight:600;">copilotstudio.microsoft.com</a>
+                        </li>
+                        <li>Microsoft Learn &mdash;
+                            <a href="https://learn.microsoft.com/training/paths/power-virtual-agents-workshop/"
+                                target="_blank"
+                                style="color:var(--blue-step);font-weight:600;">Copilot Studio learning path</a>
+                        </li>
+                        <li>
+                            <a href="https://learn.microsoft.com/connectors/connector-reference/"
+                                target="_blank"
+                                style="color:var(--blue-step);font-weight:600;">Power Automate connectors reference</a>
+                        </li>
+                        <li>The <strong>User Guide HTML handout</strong> with every prompt from today&rsquo;s class &mdash;
+                            <a href="../../training15user/"
+                                style="color:var(--blue-step);font-weight:600;">open user guide</a>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../../js/main.v3.js"></script>
+</body>
+
+</html>

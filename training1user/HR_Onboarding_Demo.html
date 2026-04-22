@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>HR Onboarding Demo Prompts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fb;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 40px;
+    }
+
+    .prompt-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .prompt-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #2563eb;
+      margin-bottom: 12px;
+    }
+
+    .prompt-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 16px;
+      white-space: pre-wrap;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .copy-btn {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .copy-btn:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>HR Onboarding Copilot Demo</h1>
+    <p class="subtitle">
+      Sample prompts and files for demonstrating Copilot value during employee onboarding at Contoso.
+    </p>
+
+    <div class="prompt-card">
+      <div class="prompt-label">Prompt 1 – Getting Started</div>
+      <div class="prompt-box">
+        Create a friendly welcome message for a new employee joining Contoso on their first day.
+        Include a brief overview of what their first week will look like.
+      </div>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-label">Prompt 2 – Policy Understanding</div>
+      <div class="prompt-box">
+        Summarize the key HR policies a new hire at Contoso should understand in their first 30 days.
+        Focus on attendance, security, and professional conduct.
+      </div>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-label">Prompt 3 – Using a File</div>
+      <div class="prompt-box">
+        Using the attached file “Contoso_HR_Onboarding_Tracker.xlsx”, identify which onboarding tasks
+        are still pending and group them by department.
+      </div>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-label">Prompt 4 – Manager Insight</div>
+      <div class="prompt-box">
+        Based on the onboarding tracker, draft a short status update that a manager could send
+        to HR summarizing onboarding progress and potential risks.
+      </div>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-label">Prompt 5 – Advanced Scenario</div>
+      <div class="prompt-box">
+        Act as an HR business partner at Contoso.
+        Using onboarding trends from the tracker, recommend three improvements to streamline
+        the onboarding experience for future hires.
+      </div>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    </div>
+  </div>
+
+  <script>
+    function copyPrompt(button) {
+      const promptBox = button.previousElementSibling;
+      const text = promptBox.innerText;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.innerText;
+        button.innerText = "Copied!";
+        setTimeout(() => {
+          button.innerText = originalText;
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+
+</html>
