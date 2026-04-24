@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AB-730 Practice Exam &mdash; AI Business Professional</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-exam730.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+        /* ── Exam chrome ── */
+        .exam-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-6);
+        }
+
+        .exam-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .35rem .9rem;
+            background: var(--purple-bg);
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 700;
+            color: var(--purple-mid);
+        }
+
+        .exam-timer {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* ── Progress ── */
+        .progress-row {
+            display: flex;
+            align-items: center;
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-6);
+            font-size: .85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .progress-bar-track {
+            flex: 1;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--purple-mid);
+            border-radius: 3px;
+            transition: width .3s;
+        }
+
+        /* ── Question card ── */
+        .question-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-8);
+            margin-bottom: var(--sp-6);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .question-domain {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--purple-mid);
+            margin-bottom: var(--sp-2);
+        }
+
+        .question-number {
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: var(--sp-4);
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--purple-deep);
+            line-height: 1.5;
+            margin-bottom: var(--sp-6);
+        }
+
+        /* ── Answer options ── */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-3);
+        }
+
+        .option-btn {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-3);
+            padding: var(--sp-4) var(--sp-5);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            cursor: pointer;
+            transition: all .2s;
+            text-align: left;
+            font-size: .95rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+        }
+
+        .option-btn:hover:not(.locked) {
+            border-color: var(--purple-mid);
+            background: var(--purple-bg);
+        }
+
+        .option-btn.selected {
+            border-color: var(--purple-mid);
+            background: var(--purple-bg);
+        }
+
+        .option-btn.locked {
+            cursor: default;
+        }
+
+        .option-btn.correct {
+            border-color: var(--green-badge);
+            background: var(--green-light);
+        }
+
+        .option-btn.incorrect {
+            border-color: var(--red-step);
+            background: #fdecea;
+        }
+
+        .option-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--border-light);
+            font-weight: 700;
+            font-size: .8rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .option-btn.selected .option-letter {
+            background: var(--purple-mid);
+            color: #fff;
+        }
+
+        .option-btn.correct .option-letter {
+            background: var(--green-badge);
+            color: #fff;
+        }
+
+        .option-btn.incorrect .option-letter {
+            background: var(--red-step);
+            color: #fff;
+        }
+
+        .option-text {
+            padding-top: 2px;
+        }
+
+        /* ── Explanation ── */
+        .explanation {
+            margin-top: var(--sp-4);
+            padding: var(--sp-4) var(--sp-5);
+            background: #f0f7ff;
+            border-left: 4px solid var(--blue-step);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: .88rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .explanation.visible {
+            display: block;
+        }
+
+        /* ── Nav buttons ── */
+        .nav-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-8);
+        }
+
+        .nav-btn {
+            padding: .6rem 1.5rem;
+            border: 2px solid var(--purple-mid);
+            border-radius: var(--radius-md);
+            background: transparent;
+            color: var(--purple-mid);
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--purple-mid);
+            color: #fff;
+        }
+
+        .nav-btn:disabled {
+            opacity: .35;
+            cursor: not-allowed;
+        }
+
+        .nav-btn.submit {
+            border-color: var(--green-badge);
+            color: var(--green-badge);
+        }
+
+        .nav-btn.submit:hover:not(:disabled) {
+            background: var(--green-badge);
+            color: #fff;
+        }
+
+        /* ── Question map ── */
+        .qmap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: var(--sp-6);
+        }
+
+        .qmap-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 1.5px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all .15s;
+            background: var(--bg-card);
+        }
+
+        .qmap-dot:hover {
+            border-color: var(--purple-mid);
+        }
+
+        .qmap-dot.answered {
+            background: var(--purple-bg);
+            border-color: var(--purple-mid);
+            color: var(--purple-mid);
+        }
+
+        .qmap-dot.current {
+            background: var(--purple-mid);
+            color: #fff;
+            border-color: var(--purple-mid);
+        }
+
+        .qmap-dot.correct-dot {
+            background: var(--green-light);
+            border-color: var(--green-badge);
+            color: var(--green-badge);
+        }
+
+        .qmap-dot.incorrect-dot {
+            background: #fdecea;
+            border-color: var(--red-step);
+            color: var(--red-step);
+        }
+
+        /* ── Results ── */
+        .results-panel {
+            display: none;
+        }
+
+        .results-panel.visible {
+            display: block;
+        }
+
+        .score-hero {
+            text-align: center;
+            padding: var(--sp-10) var(--sp-8);
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--sp-6);
+            box-shadow: var(--shadow-md);
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: var(--sp-2);
+        }
+
+        .score-number.pass {
+            color: var(--green-badge);
+        }
+
+        .score-number.fail {
+            color: var(--red-step);
+        }
+
+        .score-label {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: var(--sp-4);
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: .4rem 1.2rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: .9rem;
+        }
+
+        .score-badge.pass {
+            background: var(--green-light);
+            color: var(--green-badge);
+        }
+
+        .score-badge.fail {
+            background: #fdecea;
+            color: var(--red-step);
+        }
+
+        .score-subtitle {
+            margin-top: var(--sp-4);
+            font-size: .85rem;
+            color: var(--text-muted);
+        }
+
+        /* Domain breakdown */
+        .domain-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-6);
+        }
+
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-5);
+        }
+
+        .domain-card-title {
+            font-size: .78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--text-muted);
+            margin-bottom: var(--sp-3);
+        }
+
+        .domain-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: var(--sp-2);
+        }
+
+        .domain-score.pass {
+            color: var(--green-badge);
+        }
+
+        .domain-score.fail {
+            color: var(--red-step);
+        }
+
+        .domain-detail {
+            font-size: .82rem;
+            color: var(--text-secondary);
+        }
+
+        .domain-bar-track {
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            margin-top: var(--sp-3);
+            overflow: hidden;
+        }
+
+        .domain-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width .5s;
+        }
+
+        .domain-bar-fill.pass {
+            background: var(--green-badge);
+        }
+
+        .domain-bar-fill.fail {
+            background: var(--red-step);
+        }
+
+        /* Missed questions */
+        .missed-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-6);
+            margin-bottom: var(--sp-6);
+        }
+
+        .missed-section h3 {
+            font-size: 1rem;
+            color: var(--purple-deep);
+            margin-bottom: var(--sp-4);
+        }
+
+        .missed-item {
+            padding: var(--sp-3) 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: .88rem;
+        }
+
+        .missed-item:last-child {
+            border-bottom: none;
+        }
+
+        .missed-q {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--sp-1);
+        }
+
+        .missed-your {
+            color: var(--red-step);
+            font-size: .82rem;
+        }
+
+        .missed-correct {
+            color: var(--green-badge);
+            font-size: .82rem;
+        }
+
+        .all-correct-msg {
+            color: var(--green-badge);
+            font-weight: 600;
+            font-size: .95rem;
+        }
+
+        /* Retake */
+        .retake-row {
+            text-align: center;
+            margin-bottom: var(--sp-8);
+        }
+
+        .retake-btn {
+            padding: .7rem 2rem;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--purple-mid);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .retake-btn:hover {
+            background: var(--purple-deep);
+        }
+
+        /* ── Hide exam while showing results ── */
+        .exam-panel.hidden {
+            display: none;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .question-card {
+                padding: var(--sp-5);
+            }
+
+            .score-number {
+                font-size: 3rem;
+            }
+
+            .qmap-dot {
+                width: 28px;
+                height: 28px;
+                font-size: .65rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>AB-730 Practice Exam</h1>
+            <p class="subtitle">
+                AI Business Professional &mdash; 40 multiple-choice questions across 3 domains.
+                Passing score: 700 / 1000.
+            </p>
+        </header>
+
+        <!-- ── Exam panel ── -->
+        <div class="exam-panel" id="examPanel">
+
+            <div class="exam-header">
+                <span class="exam-badge">&#128220; Question <span id="qNum">1</span> of 40</span>
+                <span class="exam-timer" id="examTimer">00:00</span>
+            </div>
+
+            <div class="progress-row">
+                <span id="progressLabel">0% complete</span>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+                </div>
+            </div>
+
+            <!-- Question map -->
+            <div class="qmap" id="qmap"></div>
+
+            <!-- Question -->
+            <div class="question-card" id="questionCard">
+                <div class="question-domain" id="qDomain"></div>
+                <div class="question-number" id="qNumLabel"></div>
+                <div class="question-text" id="qText"></div>
+                <div class="options-list" id="optionsList"></div>
+                <div class="explanation" id="explanation"></div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-row">
+                <button class="nav-btn" id="prevBtn" disabled>&#9664; Previous</button>
+                <button class="nav-btn" id="nextBtn">Next &#9654;</button>
+                <button class="nav-btn submit" id="submitBtn" style="display:none">&#9989; Submit Exam</button>
+            </div>
+        </div>
+
+        <!-- ── Results panel ── -->
+        <div class="results-panel" id="resultsPanel">
+            <div class="score-hero">
+                <div class="score-number" id="scoreNumber"></div>
+                <div class="score-label">out of 1000</div>
+                <div id="scoreBadge"></div>
+                <div class="score-subtitle" id="scoreSubtitle"></div>
+            </div>
+
+            <h3 style="margin-bottom:var(--sp-4);color:var(--purple-deep);">Domain Breakdown</h3>
+            <div class="domain-breakdown" id="domainBreakdown"></div>
+
+            <div class="missed-section" id="missedSection">
+                <h3>&#10060; Missed Questions</h3>
+                <div id="missedList"></div>
+            </div>
+
+            <!-- Question map in results (color-coded) -->
+            <h3 style="margin-bottom:var(--sp-4);color:var(--purple-deep);">Answer Map</h3>
+            <div class="qmap" id="qmapResults"></div>
+
+            <div class="retake-row" style="margin-top:var(--sp-6);">
+                <button class="retake-btn" id="retakeBtn">&#128260; Retake Exam</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* ============================================================
+           EXAM DATA — AB-730
+           ============================================================ */
+        const QUESTIONS = [
+            { id:1, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"What is generative AI?", correct:"AI that produces new content — text, images, summaries, code — from a prompt, rather than simply retrieving existing information.", wrong:["AI that searches the internet and returns links to relevant web pages.","AI that organizes files into folders based on their file type and creation date.","AI that monitors network traffic to detect and block cybersecurity threats."] },
+            { id:2, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"What is Microsoft 365 Copilot?", correct:"Microsoft's AI assistant embedded across M365 apps (Word, Excel, PowerPoint, Outlook, Teams). It uses large language models grounded in your work data via Microsoft Graph.", wrong:["A standalone desktop application that requires a separate installation and only works offline.","A browser extension exclusively for Microsoft Edge that provides web search enhancements.","A developer IDE for building and deploying Azure cloud applications."] },
+            { id:3, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"How does Copilot keep your organization's data private?", correct:"Prompts and responses stay in your M365 tenant, are NOT used to train foundation models, and respect existing file permissions, sensitivity labels, and DLP policies.", wrong:["Copilot encrypts all data using a customer-managed key stored on a USB device connected to the admin's PC.","Copilot does not access any organizational data — it only uses public web information for all responses.","All Copilot conversations are reviewed by a Microsoft employee before being returned to the user."] },
+            { id:4, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"Name the three types of context that shape a Copilot response.", correct:"Work files (via Microsoft Graph), web data (public web, when enabled), and host app (the document, spreadsheet, or meeting you're in).", wrong:["CPU speed, RAM capacity, and internet bandwidth of the user's device.","User's age, job title, and years of experience at the company.","Time of day, geographic location, and operating system version."] },
+            { id:5, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"What is the difference between a Copilot chat experience and an agent experience?", correct:"Chat = general-purpose, ad-hoc Q&A using broad context. Agent = purpose-built for a specific scenario, scoped to curated knowledge sources with custom instructions.", wrong:["Chat is free while agents always require a premium license upgrade.","Chat only works on mobile devices while agents only work on desktop.","Chat is for IT administrators while agents are designed exclusively for end users."] },
+            { id:6, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"When is creating your own agent a better choice than using Copilot Chat?", correct:"When you have a repeatable task with stable reference material (e.g., HR policy Q&A), need consistent answers across users, and want to scope responses to specific sources.", wrong:["Whenever you want faster response times — agents are always faster than Copilot Chat.","Only when you have more than 1,000 employees who need access to AI features.","When you want to generate images — Copilot Chat cannot generate images but agents can."] },
+            { id:7, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"What are fabrications (hallucinations) in generative AI?", correct:"Plausible-sounding but incorrect outputs. Always verify facts, names, and numbers — especially statistics and citations.", wrong:["Visual glitches that appear when AI-generated images have low resolution settings.","Error messages that the AI displays when it cannot connect to the internet.","Deliberately misleading outputs that the AI creates to test user vigilance."] },
+            { id:8, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"What is prompt injection?", correct:"A risk where hidden or malicious instructions in referenced content (e.g., a pasted document) hijack the AI's behavior. Avoid running untrusted content through prompts.", wrong:["A technique for speeding up AI responses by pre-loading prompts into memory cache.","A method of injecting additional compute resources to make the model run faster.","A standard API feature for batching multiple prompts into a single request to save tokens."] },
+            { id:9, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"What does 'over-reliance' on AI mean?", correct:"Accepting AI-generated output without human review. Treat every Copilot output as a first draft, not the final word.", wrong:["Using AI more than three times per day, which exceeds recommended usage limits.","Paying for a premium AI subscription when a free tier would be sufficient.","Asking AI to perform tasks that a human could complete faster without assistance."] },
+            { id:10, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"How do you verify a statistic that Copilot included in a summary?", correct:"Follow the citation link to the original source document and confirm the number there. Re-asking Copilot 'Are you sure?' is NOT verification.", wrong:["Ask Copilot the same question again — if it gives the same answer twice, it's accurate.","Check whether the number looks reasonable based on your general knowledge.","Forward the response to your manager for approval since they have final authority."] },
+            { id:11, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"How does data protection restrict Copilot results?", correct:"Copilot inherits sensitivity labels, DLP policies, and access controls. It never surfaces content the user doesn't already have permission to see.", wrong:["Copilot blocks all results containing numbers to protect financial data from exposure.","Admins must manually approve every Copilot response before it is shown to the user.","Copilot automatically redacts all proper nouns to prevent personally identifiable information leaks."] },
+            { id:12, domain:"domain1", domainLabel:"Domain 1 — Understand Generative AI Fundamentals", q:"How do Copilot features differ across M365 apps?", correct:"Word: draft/rewrite/summarize. Excel: formulas/analysis. PowerPoint: create decks. Outlook: thread summary/draft. Teams: meeting recap/catch-up. Each surface has app-specific capabilities.", wrong:["Copilot has identical features in every M365 app — the experience is exactly the same everywhere.","Copilot only works in Word and Outlook; other apps require third-party AI plugins.","Excel is the only app where Copilot can analyze data; all other apps only support text generation."] },
+            { id:13, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What are the four components of an effective Copilot prompt?", correct:"Goal (what you want), Context (audience, situation), Source (specific files, emails, meetings via /), and Expectation (format, length, tone).", wrong:["Subject, Body, Signature, and Attachment — the same structure as an email.","Input, Processing, Output, and Storage — the four stages of data handling.","Title, Description, Priority, and Assignee — the same fields as a work ticket."] },
+            { id:14, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What does the / (slash) menu do in a Copilot prompt?", correct:"It lets you reference specific resources — files, emails, meetings, or people — to ground the response in precise sources instead of broad data.", wrong:["It activates command-line mode where you can type PowerShell or Bash commands.","It opens the emoji picker so you can add emoji reactions to your prompt.","It toggles between light mode and dark mode in the Copilot interface."] },
+            { id:15, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"How do you save a prompt for reuse?", correct:"Pin it to the Prompt Gallery. You can also star prompts as favorites for one-click access from the Copilot home.", wrong:["Copy the prompt text into a Word document and save it to your OneDrive manually.","There is no way to save prompts — you must retype them each time you need them.","Email the prompt to yourself so you can find it later in your Outlook inbox."] },
+            { id:16, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What does scheduling a prompt do?", correct:"Runs the prompt automatically on a recurring cadence (daily, weekly, etc.). Output is delivered to chat or email without manual effort.", wrong:["It delays the prompt execution until a specific future date but only runs it once.","It distributes the prompt to all users in your organization for them to answer.","It queues the prompt to run during off-peak hours to reduce server load."] },
+            { id:17, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"How can you share a prompt with your team?", correct:"Publish it to the team Prompt Gallery or share via a direct link. This ensures consistent, reusable prompts across the team.", wrong:["Prompts cannot be shared — each user must create their own prompts independently.","Screenshot the prompt and attach it to a Teams message for others to manually retype.","Submit a support ticket to Microsoft and they will distribute the prompt to your tenant."] },
+            { id:18, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"How do you find a previous Copilot conversation?", correct:"Open chat history in Copilot and scroll or search by title. You can rename chats to make them easier to find later.", wrong:["Previous conversations are automatically deleted after 24 hours and cannot be retrieved.","Search your email inbox — Copilot sends a transcript of every conversation via email.","Contact your IT admin who can retrieve conversation logs from the Azure portal."] },
+            { id:19, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What happens when you delete a Copilot chat?", correct:"The conversation is permanently removed from your chat history. Use this for hygiene and to declutter.", wrong:["The chat is moved to a Recycle Bin where it stays for 90 days before permanent deletion.","The chat is hidden from your view but remains accessible to your organization's admin.","Deleting a chat also deletes any files or documents that were referenced in that conversation."] },
+            { id:20, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What is a Copilot Notebook?", correct:"A focused workspace grounded in chosen sources (files, chats, pages). Copilot answers inside a Notebook are scoped to that knowledge, keeping context tight.", wrong:["A physical notebook sold by Microsoft with QR codes that link to Copilot prompts.","A Jupyter Notebook integration that lets you run Python code inside Copilot Chat.","A OneNote template that automatically formats meeting notes taken during Teams calls."] },
+            { id:21, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What is the Agent Store?", correct:"A catalog of pre-built agents for common tasks (Researcher, Analyst, HR, IT, etc.). Always check here first before building a custom agent.", wrong:["An e-commerce marketplace where you can purchase third-party AI models and datasets.","A directory of human AI consultants available for hire on a contract basis.","A hardware store within Azure that sells GPU servers for on-premises AI deployment."] },
+            { id:22, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"When should you create a custom agent versus using the Agent Store?", correct:"When no pre-built agent fits your scenario and you need a scoped assistant with your own knowledge sources, instructions, and capabilities.", wrong:["Always create a custom agent — the pre-built agents in the Agent Store are only for demo purposes.","Only when your organization has a dedicated AI team with machine learning expertise.","Custom agents are only needed when you want to process more than 1 million tokens per day."] },
+            { id:23, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"How do you create an agent from a template?", correct:"Pick a template (FAQ bot, doc Q&A, concierge, etc.), add knowledge sources, set instructions and capabilities, then share with your team.", wrong:["Write Python code to define the agent's behavior, then deploy it to Azure Functions.","Submit a request to Microsoft support, who will build and configure the agent for you.","Install a Visual Studio Code extension and define the agent using YAML configuration files."] },
+            { id:24, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What types of knowledge can you add to an agent?", correct:"SharePoint sites, uploaded files (PDF, Word), web URLs, and data connectors (Dataverse, etc.).", wrong:["Only plain text files — agents cannot process PDFs, images, or structured data formats.","Only data from Microsoft Azure SQL databases using a required ODBC connection string.","Agents can only use knowledge from public Wikipedia articles and no proprietary data sources."] },
+            { id:25, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What are agent 'settings' (as distinct from knowledge)?", correct:"Instructions (system prompt, tone, guardrails), capabilities (image gen, code interpreter, web search), and suggested prompts (starter questions for users).", wrong:["Network settings like bandwidth limits, timeout thresholds, and proxy server configuration.","Display settings including font size, color theme, and chat window dimensions.","Billing settings such as cost caps, payment methods, and invoice frequency."] },
+            { id:26, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What are suggested prompts on an agent?", correct:"Starter questions displayed to users when they open the agent. They reduce onboarding friction by showing what the agent can do.", wrong:["Prompts that the agent suggests to the admin to improve the agent's training data.","Automated prompts that the agent sends to users via email on a scheduled basis.","Debug prompts used by developers to test the agent's responses during development."] },
+            { id:27, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"How do you share an agent with your team?", correct:"Via a direct link, the Agent catalog (org-wide discovery), or by embedding in a Teams channel. Users only see answers from content they're authorized to access.", wrong:["Export the agent as a ZIP file and email it to each team member for manual import.","Agents cannot be shared — each user must build their own copy from scratch.","Publish the agent to the Microsoft Store where anyone in the world can download it."] },
+            { id:28, domain:"domain2", domainLabel:"Domain 2 — Manage Prompts and Conversations by Using AI", q:"What governance controls exist for agents?", correct:"Admins can govern agent creation, restrict connectors, and audit usage. Shared agents inherit knowledge-source permissions — users can't see unauthorized content.", wrong:["There are no governance controls — anyone can create and share agents without restrictions.","Governance is handled entirely by the AI model itself, with no admin controls available.","Only Microsoft employees can configure governance policies for agents in customer tenants."] },
+            { id:29, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"What are the three ways to draft a document with Copilot in Word?", correct:"From a prompt ('Draft with Copilot'), from an existing document (rewrite or re-format), or as a management summary (one-page exec summary for a specific audience).", wrong:["Voice dictation, handwriting recognition, and scanning a printed document.","Copy-paste from the web, import from Excel, and convert from PowerPoint slides.","Using a Word template, merging mail merge fields, and inserting AI-generated images."] },
+            { id:30, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"How do you generate a management summary of a long document?", correct:"Ask Copilot in Word: 'Create a 1-page executive summary for [audience]' while referencing the source document.", wrong:["Print the document and manually highlight the key sentences with a yellow marker.","Use the AutoSummarize feature from Word 2003, which was removed in newer versions.","Forward the document to your manager and ask them to write the summary themselves."] },
+            { id:31, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"How do you turn a Word document into a PowerPoint deck?", correct:"In PowerPoint, use Copilot: 'Create a presentation from this document' and reference the Word file. Copilot generates a draft deck.", wrong:["Copy each paragraph from Word and paste it into individual PowerPoint slides manually.","Export the Word document as a PDF, then import the PDF into PowerPoint using a plugin.","This is not possible — Word and PowerPoint do not share any data or integration features."] },
+            { id:32, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"Name three ways to move data between M365 apps using Copilot.", correct:"Word → PowerPoint (doc to deck), Excel → Word/PPT (tables/insights), and Meeting recap → Outlook (follow-up email with action items).", wrong:["All data movement requires manual copy-paste — Copilot cannot transfer data between apps.","USB drive, email attachment, and printing then rescanning are the only supported methods.","FTP upload, REST API calls, and SQL database queries are required for cross-app data movement."] },
+            { id:33, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"What does 'catch-up' mean in Copilot for Teams meetings?", correct:"A quick summary of what you missed if you joined a meeting late. It lets you jump in without asking 'What did I miss?'", wrong:["A feature that fast-forwards the meeting recording at 2x speed so you can watch it quickly.","A notification sent to attendees who haven't responded to the meeting invite yet.","A post-meeting survey that asks participants to rate the meeting's effectiveness."] },
+            { id:34, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"What information does a Copilot meeting recap include?", correct:"Key points, decisions made, action items with owners, and an overall summary. Intelligent recap (Copilot license) goes deeper.", wrong:["Only the meeting duration and list of attendees — no content summary is provided.","A full word-for-word transcript with no summarization or organization of key points.","Only a link to the meeting recording — the recap does not include any text summary."] },
+            { id:35, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"How can you find out who said what in a meeting?", correct:"Ask Copilot to search the transcript and attribute statements to specific participants — during or after the meeting.", wrong:["Review the meeting chat messages — Copilot cannot access the spoken audio transcript.","This feature requires a separate third-party transcription service not included with M365.","You must manually take notes during the meeting — there is no automated attribution feature."] },
+            { id:36, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"What is a Copilot Page?", correct:"A persistent, co-editable canvas built from a Copilot answer. Multiple people can edit in real time. Saved to OneDrive and shareable like any M365 file.", wrong:["A static PDF export of a Copilot conversation that cannot be edited after creation.","A web page on Microsoft.com that documents Copilot features and release notes.","A OneNote section that is automatically created for each Teams channel in your organization."] },
+            { id:37, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"How is a Copilot Page different from a chat response?", correct:"A chat response is temporary and single-user. A Page is persistent, shareable, and co-editable — designed for collaborative work.", wrong:["There is no difference — Pages and chat responses are the same thing with different names.","Chat responses use GPT-4 while Pages use a smaller, faster model for quicker rendering.","Pages require a separate license while chat responses are included in the base M365 subscription."] },
+            { id:38, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"What is Copilot memory?", correct:"An opt-in feature where Copilot recalls your preferences across chats (e.g., your role, team, preferred tone). You can review, edit, or clear memory at any time.", wrong:["The amount of RAM allocated to Copilot on the server, which determines response speed.","A cache of your last 10 conversations that is automatically cleared every 24 hours.","A mandatory feature that records all user interactions and sends them to Microsoft for analysis."] },
+            { id:39, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"What are Copilot custom instructions?", correct:"Defaults you set that Copilot applies to every prompt — like 'always use British English' or 'I manage the retail portfolio'. Managed in Copilot settings.", wrong:["A set of pre-written prompts created by Microsoft that cannot be modified by users.","Custom error messages that administrators configure for when Copilot encounters rate limits.","API endpoints that developers use to send custom HTTP requests to the Copilot service."] },
+            { id:40, domain:"domain3", domainLabel:"Domain 3 — Draft and Analyze Business Content", q:"Which Copilot feature is best for a recurring weekly status email?", correct:"A scheduled prompt. Save the prompt, set it to run weekly, and have the output delivered to chat or email automatically.", wrong:["An Outlook rule that automatically forwards all emails received during the week to your manager.","A Power Automate flow that copies your calendar events into a Word document every Friday.","A Teams bot that sends a reminder to manually write the status email each Monday morning."] }
+        ];
+
+        const DOMAINS = {
+            domain1: { label: "Domain 1 — Understand Generative AI Fundamentals", weight: "25–30%" },
+            domain2: { label: "Domain 2 — Manage Prompts and Conversations by Using AI", weight: "35–40%" },
+            domain3: { label: "Domain 3 — Draft and Analyze Business Content", weight: "25–30%" }
+        };
+
+        /* ============================================================
+           STATE
+           ============================================================ */
+        let currentQ = 0;
+        let answers = new Array(QUESTIONS.length).fill(null);
+        let shuffledOptions = [];
+        let correctIndices = [];
+        let examStartTime = Date.now();
+        let timerInterval = null;
+        let submitted = false;
+
+        /* ── DOM ── */
+        const examPanel = document.getElementById("examPanel");
+        const resultsPanel = document.getElementById("resultsPanel");
+        const qNum = document.getElementById("qNum");
+        const qDomain = document.getElementById("qDomain");
+        const qNumLabel = document.getElementById("qNumLabel");
+        const qText = document.getElementById("qText");
+        const optionsList = document.getElementById("optionsList");
+        const explanation = document.getElementById("explanation");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const submitBtn = document.getElementById("submitBtn");
+        const progressLabel = document.getElementById("progressLabel");
+        const progressFill = document.getElementById("progressFill");
+        const qmap = document.getElementById("qmap");
+        const examTimer = document.getElementById("examTimer");
+
+        /* ============================================================
+           INIT
+           ============================================================ */
+        function initExam() {
+            shuffledOptions = [];
+            correctIndices = [];
+            answers = new Array(QUESTIONS.length).fill(null);
+            currentQ = 0;
+            submitted = false;
+            examStartTime = Date.now();
+
+            QUESTIONS.forEach((q) => {
+                const opts = [q.correct, ...q.wrong];
+                for (let i = opts.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [opts[i], opts[j]] = [opts[j], opts[i]];
+                }
+                shuffledOptions.push(opts);
+                correctIndices.push(opts.indexOf(q.correct));
+            });
+
+            buildQMap();
+            renderQuestion();
+            startTimer();
+
+            examPanel.classList.remove("hidden");
+            resultsPanel.classList.remove("visible");
+        }
+
+        /* ============================================================
+           TIMER
+           ============================================================ */
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - examStartTime) / 1000);
+                const m = String(Math.floor(elapsed / 60)).padStart(2, "0");
+                const s = String(elapsed % 60).padStart(2, "0");
+                examTimer.textContent = `${m}:${s}`;
+            }, 1000);
+        }
+
+        /* ============================================================
+           QUESTION MAP
+           ============================================================ */
+        function buildQMap() {
+            qmap.innerHTML = QUESTIONS.map((_, i) =>
+                `<div class="qmap-dot" data-qi="${i}">${i + 1}</div>`
+            ).join("");
+            qmap.querySelectorAll(".qmap-dot").forEach(dot => {
+                dot.addEventListener("click", () => {
+                    currentQ = parseInt(dot.dataset.qi);
+                    renderQuestion();
+                });
+            });
+        }
+
+        function updateQMap() {
+            qmap.querySelectorAll(".qmap-dot").forEach((dot, i) => {
+                dot.classList.remove("current", "answered");
+                if (i === currentQ) dot.classList.add("current");
+                else if (answers[i] !== null) dot.classList.add("answered");
+            });
+        }
+
+        /* ============================================================
+           RENDER QUESTION
+           ============================================================ */
+        function renderQuestion() {
+            const q = QUESTIONS[currentQ];
+            const opts = shuffledOptions[currentQ];
+            const letters = ["A", "B", "C", "D"];
+
+            qNum.textContent = currentQ + 1;
+            qDomain.textContent = q.domainLabel;
+            qNumLabel.textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+            qText.textContent = q.q;
+
+            const answeredIdx = answers[currentQ];
+
+            optionsList.innerHTML = opts.map((opt, i) => {
+                let cls = "option-btn";
+                if (submitted) {
+                    cls += " locked";
+                    if (i === correctIndices[currentQ]) cls += " correct";
+                    else if (i === answeredIdx && i !== correctIndices[currentQ]) cls += " incorrect";
+                } else if (i === answeredIdx) {
+                    cls += " selected";
+                }
+                return `<button class="${cls}" data-oi="${i}">
+                    <span class="option-letter">${letters[i]}</span>
+                    <span class="option-text">${opt}</span>
+                </button>`;
+            }).join("");
+
+            if (!submitted) {
+                optionsList.querySelectorAll(".option-btn").forEach(btn => {
+                    btn.addEventListener("click", () => selectOption(parseInt(btn.dataset.oi)));
+                });
+            }
+
+            if (submitted) {
+                explanation.textContent = `Correct answer: ${q.correct}`;
+                explanation.classList.add("visible");
+            } else {
+                explanation.classList.remove("visible");
+            }
+
+            const answered = answers.filter(a => a !== null).length;
+            const pct = Math.round((answered / QUESTIONS.length) * 100);
+            progressLabel.textContent = `${pct}% complete (${answered}/${QUESTIONS.length} answered)`;
+            progressFill.style.width = `${pct}%`;
+
+            prevBtn.disabled = currentQ === 0;
+            if (submitted) {
+                nextBtn.style.display = currentQ < QUESTIONS.length - 1 ? "" : "none";
+                submitBtn.style.display = "none";
+            } else {
+                nextBtn.style.display = currentQ < QUESTIONS.length - 1 ? "" : "none";
+                submitBtn.style.display = answered === QUESTIONS.length ? "" : "none";
+            }
+
+            updateQMap();
+        }
+
+        function selectOption(idx) {
+            if (submitted) return;
+            answers[currentQ] = idx;
+            renderQuestion();
+        }
+
+        /* ============================================================
+           SUBMIT
+           ============================================================ */
+        function submitExam() {
+            if (!confirm("Submit your exam? You won't be able to change answers.")) return;
+            submitted = true;
+            if (timerInterval) clearInterval(timerInterval);
+            showResults();
+        }
+
+        function showResults() {
+            examPanel.classList.add("hidden");
+            resultsPanel.classList.add("visible");
+
+            let totalCorrect = 0;
+            const domainStats = {};
+            const missed = [];
+
+            QUESTIONS.forEach((q, i) => {
+                if (!domainStats[q.domain]) domainStats[q.domain] = { total: 0, correct: 0 };
+                domainStats[q.domain].total++;
+                if (answers[i] === correctIndices[i]) {
+                    totalCorrect++;
+                    domainStats[q.domain].correct++;
+                } else {
+                    missed.push({
+                        id: q.id,
+                        question: q.q,
+                        domain: q.domainLabel,
+                        yourAnswer: answers[i] !== null ? shuffledOptions[i][answers[i]] : "(unanswered)",
+                        correctAnswer: q.correct
+                    });
+                }
+            });
+
+            const score = Math.round((totalCorrect / QUESTIONS.length) * 1000);
+            const passed = score >= 700;
+
+            const scoreNumber = document.getElementById("scoreNumber");
+            scoreNumber.textContent = score;
+            scoreNumber.className = "score-number " + (passed ? "pass" : "fail");
+
+            const scoreBadge = document.getElementById("scoreBadge");
+            scoreBadge.innerHTML = `<span class="score-badge ${passed ? "pass" : "fail"}">${passed ? "PASS ✓" : "FAIL ✗"}</span>`;
+
+            document.getElementById("scoreSubtitle").textContent =
+                `${totalCorrect} of ${QUESTIONS.length} correct · Passing: 700 · Time: ${examTimer.textContent}`;
+
+            const domainBreakdown = document.getElementById("domainBreakdown");
+            domainBreakdown.innerHTML = Object.entries(DOMAINS).map(([key, d]) => {
+                const s = domainStats[key] || { total: 0, correct: 0 };
+                const pct = s.total ? Math.round((s.correct / s.total) * 100) : 0;
+                const dp = pct >= 70;
+                return `<div class="domain-card">
+                    <div class="domain-card-title">${d.label} <span style="opacity:.5">(${d.weight})</span></div>
+                    <div class="domain-score ${dp ? "pass" : "fail"}">${pct}%</div>
+                    <div class="domain-detail">${s.correct} / ${s.total} correct</div>
+                    <div class="domain-bar-track"><div class="domain-bar-fill ${dp ? "pass" : "fail"}" style="width:${pct}%"></div></div>
+                </div>`;
+            }).join("");
+
+            const missedList = document.getElementById("missedList");
+            if (missed.length === 0) {
+                missedList.innerHTML = '<div class="all-correct-msg">Perfect score! You answered every question correctly.</div>';
+            } else {
+                missedList.innerHTML = missed.map(m =>
+                    `<div class="missed-item">
+                        <div class="missed-q">Q${String(m.id).padStart(2,"0")}: ${m.question}</div>
+                        <div class="missed-your">Your answer: ${m.yourAnswer}</div>
+                        <div class="missed-correct">Correct: ${m.correctAnswer}</div>
+                    </div>`
+                ).join("");
+            }
+
+            const qmapResults = document.getElementById("qmapResults");
+            qmapResults.innerHTML = QUESTIONS.map((_, i) => {
+                const isCorrect = answers[i] === correctIndices[i];
+                return `<div class="qmap-dot ${isCorrect ? "correct-dot" : "incorrect-dot"}" data-qi="${i}" title="Q${i+1}">${i + 1}</div>`;
+            }).join("");
+            qmapResults.querySelectorAll(".qmap-dot").forEach(dot => {
+                dot.addEventListener("click", () => {
+                    currentQ = parseInt(dot.dataset.qi);
+                    examPanel.classList.remove("hidden");
+                    resultsPanel.classList.remove("visible");
+                    renderQuestion();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            });
+        }
+
+        /* ============================================================
+           EVENT LISTENERS
+           ============================================================ */
+        prevBtn.addEventListener("click", () => { if (currentQ > 0) { currentQ--; renderQuestion(); } });
+        nextBtn.addEventListener("click", () => { if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); } });
+        submitBtn.addEventListener("click", submitExam);
+        document.getElementById("retakeBtn").addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            initExam();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+            if (submitted && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
+                e.preventDefault();
+                if (e.key === "ArrowRight" && currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); }
+                if (e.key === "ArrowLeft" && currentQ > 0) { currentQ--; renderQuestion(); }
+                return;
+            }
+            if (submitted) return;
+            switch (e.key) {
+                case "ArrowRight": e.preventDefault(); if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); } break;
+                case "ArrowLeft": e.preventDefault(); if (currentQ > 0) { currentQ--; renderQuestion(); } break;
+                case "a": case "A": e.preventDefault(); selectOption(0); break;
+                case "b": case "B": e.preventDefault(); selectOption(1); break;
+                case "c": case "C": e.preventDefault(); selectOption(2); break;
+                case "d": case "D": e.preventDefault(); selectOption(3); break;
+            }
+        });
+
+        /* ============================================================
+           INIT
+           ============================================================ */
+        initExam();
+    </script>
+
+</body>
+
+</html>

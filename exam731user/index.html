@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AB-731 Practice Exam &mdash; AI Transformation Leader</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-exam731.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+        /* ── Exam chrome ── */
+        .exam-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-6);
+        }
+
+        .exam-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .35rem .9rem;
+            background: var(--purple-bg);
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 700;
+            color: var(--purple-mid);
+        }
+
+        .exam-timer {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* ── Progress ── */
+        .progress-row {
+            display: flex;
+            align-items: center;
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-6);
+            font-size: .85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .progress-bar-track {
+            flex: 1;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--purple-mid);
+            border-radius: 3px;
+            transition: width .3s;
+        }
+
+        /* ── Question card ── */
+        .question-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-8);
+            margin-bottom: var(--sp-6);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .question-domain {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--purple-mid);
+            margin-bottom: var(--sp-2);
+        }
+
+        .question-number {
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: var(--sp-4);
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--purple-deep);
+            line-height: 1.5;
+            margin-bottom: var(--sp-6);
+        }
+
+        /* ── Answer options ── */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-3);
+        }
+
+        .option-btn {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-3);
+            padding: var(--sp-4) var(--sp-5);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            cursor: pointer;
+            transition: all .2s;
+            text-align: left;
+            font-size: .95rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+        }
+
+        .option-btn:hover:not(.locked) {
+            border-color: var(--purple-mid);
+            background: var(--purple-bg);
+        }
+
+        .option-btn.selected {
+            border-color: var(--purple-mid);
+            background: var(--purple-bg);
+        }
+
+        .option-btn.locked {
+            cursor: default;
+        }
+
+        .option-btn.correct {
+            border-color: var(--green-badge);
+            background: var(--green-light);
+        }
+
+        .option-btn.incorrect {
+            border-color: var(--red-step);
+            background: #fdecea;
+        }
+
+        .option-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--border-light);
+            font-weight: 700;
+            font-size: .8rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .option-btn.selected .option-letter {
+            background: var(--purple-mid);
+            color: #fff;
+        }
+
+        .option-btn.correct .option-letter {
+            background: var(--green-badge);
+            color: #fff;
+        }
+
+        .option-btn.incorrect .option-letter {
+            background: var(--red-step);
+            color: #fff;
+        }
+
+        .option-text {
+            padding-top: 2px;
+        }
+
+        /* ── Explanation ── */
+        .explanation {
+            margin-top: var(--sp-4);
+            padding: var(--sp-4) var(--sp-5);
+            background: #f0f7ff;
+            border-left: 4px solid var(--blue-step);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: .88rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .explanation.visible {
+            display: block;
+        }
+
+        /* ── Nav buttons ── */
+        .nav-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-8);
+        }
+
+        .nav-btn {
+            padding: .6rem 1.5rem;
+            border: 2px solid var(--purple-mid);
+            border-radius: var(--radius-md);
+            background: transparent;
+            color: var(--purple-mid);
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--purple-mid);
+            color: #fff;
+        }
+
+        .nav-btn:disabled {
+            opacity: .35;
+            cursor: not-allowed;
+        }
+
+        .nav-btn.submit {
+            border-color: var(--green-badge);
+            color: var(--green-badge);
+        }
+
+        .nav-btn.submit:hover:not(:disabled) {
+            background: var(--green-badge);
+            color: #fff;
+        }
+
+        /* ── Question map ── */
+        .qmap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: var(--sp-6);
+        }
+
+        .qmap-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 1.5px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all .15s;
+            background: var(--bg-card);
+        }
+
+        .qmap-dot:hover {
+            border-color: var(--purple-mid);
+        }
+
+        .qmap-dot.answered {
+            background: var(--purple-bg);
+            border-color: var(--purple-mid);
+            color: var(--purple-mid);
+        }
+
+        .qmap-dot.current {
+            background: var(--purple-mid);
+            color: #fff;
+            border-color: var(--purple-mid);
+        }
+
+        .qmap-dot.correct-dot {
+            background: var(--green-light);
+            border-color: var(--green-badge);
+            color: var(--green-badge);
+        }
+
+        .qmap-dot.incorrect-dot {
+            background: #fdecea;
+            border-color: var(--red-step);
+            color: var(--red-step);
+        }
+
+        /* ── Results ── */
+        .results-panel {
+            display: none;
+        }
+
+        .results-panel.visible {
+            display: block;
+        }
+
+        .score-hero {
+            text-align: center;
+            padding: var(--sp-10) var(--sp-8);
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--sp-6);
+            box-shadow: var(--shadow-md);
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: var(--sp-2);
+        }
+
+        .score-number.pass {
+            color: var(--green-badge);
+        }
+
+        .score-number.fail {
+            color: var(--red-step);
+        }
+
+        .score-label {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: var(--sp-4);
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: .4rem 1.2rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: .9rem;
+        }
+
+        .score-badge.pass {
+            background: var(--green-light);
+            color: var(--green-badge);
+        }
+
+        .score-badge.fail {
+            background: #fdecea;
+            color: var(--red-step);
+        }
+
+        .score-subtitle {
+            margin-top: var(--sp-4);
+            font-size: .85rem;
+            color: var(--text-muted);
+        }
+
+        /* Domain breakdown */
+        .domain-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-6);
+        }
+
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-5);
+        }
+
+        .domain-card-title {
+            font-size: .78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--text-muted);
+            margin-bottom: var(--sp-3);
+        }
+
+        .domain-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: var(--sp-2);
+        }
+
+        .domain-score.pass {
+            color: var(--green-badge);
+        }
+
+        .domain-score.fail {
+            color: var(--red-step);
+        }
+
+        .domain-detail {
+            font-size: .82rem;
+            color: var(--text-secondary);
+        }
+
+        .domain-bar-track {
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            margin-top: var(--sp-3);
+            overflow: hidden;
+        }
+
+        .domain-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width .5s;
+        }
+
+        .domain-bar-fill.pass {
+            background: var(--green-badge);
+        }
+
+        .domain-bar-fill.fail {
+            background: var(--red-step);
+        }
+
+        /* Missed questions */
+        .missed-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-6);
+            margin-bottom: var(--sp-6);
+        }
+
+        .missed-section h3 {
+            font-size: 1rem;
+            color: var(--purple-deep);
+            margin-bottom: var(--sp-4);
+        }
+
+        .missed-item {
+            padding: var(--sp-3) 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: .88rem;
+        }
+
+        .missed-item:last-child {
+            border-bottom: none;
+        }
+
+        .missed-q {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--sp-1);
+        }
+
+        .missed-your {
+            color: var(--red-step);
+            font-size: .82rem;
+        }
+
+        .missed-correct {
+            color: var(--green-badge);
+            font-size: .82rem;
+        }
+
+        .all-correct-msg {
+            color: var(--green-badge);
+            font-weight: 600;
+            font-size: .95rem;
+        }
+
+        /* Retake */
+        .retake-row {
+            text-align: center;
+            margin-bottom: var(--sp-8);
+        }
+
+        .retake-btn {
+            padding: .7rem 2rem;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--purple-mid);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .retake-btn:hover {
+            background: var(--purple-deep);
+        }
+
+        /* ── Hide exam while showing results ── */
+        .exam-panel.hidden {
+            display: none;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .question-card {
+                padding: var(--sp-5);
+            }
+
+            .score-number {
+                font-size: 3rem;
+            }
+
+            .qmap-dot {
+                width: 28px;
+                height: 28px;
+                font-size: .65rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>AB-731 Practice Exam</h1>
+            <p class="subtitle">
+                AI Transformation Leader &mdash; 40 multiple-choice questions across 3 domains.
+                Passing score: 700 / 1000.
+            </p>
+        </header>
+
+        <!-- ── Exam panel ── -->
+        <div class="exam-panel" id="examPanel">
+
+            <div class="exam-header">
+                <span class="exam-badge">&#128220; Question <span id="qNum">1</span> of 40</span>
+                <span class="exam-timer" id="examTimer">00:00</span>
+            </div>
+
+            <div class="progress-row">
+                <span id="progressLabel">0% complete</span>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+                </div>
+            </div>
+
+            <!-- Question map -->
+            <div class="qmap" id="qmap"></div>
+
+            <!-- Question -->
+            <div class="question-card" id="questionCard">
+                <div class="question-domain" id="qDomain"></div>
+                <div class="question-number" id="qNumLabel"></div>
+                <div class="question-text" id="qText"></div>
+                <div class="options-list" id="optionsList"></div>
+                <div class="explanation" id="explanation"></div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-row">
+                <button class="nav-btn" id="prevBtn" disabled>&#9664; Previous</button>
+                <button class="nav-btn" id="nextBtn">Next &#9654;</button>
+                <button class="nav-btn submit" id="submitBtn" style="display:none">&#9989; Submit Exam</button>
+            </div>
+        </div>
+
+        <!-- ── Results panel ── -->
+        <div class="results-panel" id="resultsPanel">
+            <div class="score-hero">
+                <div class="score-number" id="scoreNumber"></div>
+                <div class="score-label">out of 1000</div>
+                <div id="scoreBadge"></div>
+                <div class="score-subtitle" id="scoreSubtitle"></div>
+            </div>
+
+            <h3 style="margin-bottom:var(--sp-4);color:var(--purple-deep);">Domain Breakdown</h3>
+            <div class="domain-breakdown" id="domainBreakdown"></div>
+
+            <div class="missed-section" id="missedSection">
+                <h3>&#10060; Missed Questions</h3>
+                <div id="missedList"></div>
+            </div>
+
+            <!-- Question map in results (color-coded) -->
+            <h3 style="margin-bottom:var(--sp-4);color:var(--purple-deep);">Answer Map</h3>
+            <div class="qmap" id="qmapResults"></div>
+
+            <div class="retake-row" style="margin-top:var(--sp-6);">
+                <button class="retake-btn" id="retakeBtn">&#128260; Retake Exam</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* ============================================================
+           EXAM DATA — AB-731
+           Each question has: id, domain, domainLabel, q, correct, wrong[3]
+           ============================================================ */
+        const QUESTIONS = [
+            { id:1, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What is generative AI?", correct:"AI that creates new content (text, images, code, audio) by predicting the next token based on patterns learned from large datasets.", wrong:["AI that classifies existing data into predefined categories using supervised learning techniques.","AI that retrieves stored documents from a database and returns them verbatim to the user.","AI that automates robotic process workflows by recording and replaying user actions."] },
+            { id:2, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"How does generative AI differ from discriminative AI?", correct:"Generative AI creates new content; discriminative AI classifies or categorizes existing data.", wrong:["Generative AI requires labeled training data; discriminative AI learns from unlabeled data only.","Generative AI runs only on GPUs; discriminative AI runs only on CPUs.","Generative AI is used for security; discriminative AI is used for content creation."] },
+            { id:3, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What is a pretrained model?", correct:"A model trained on broad general data (e.g., GPT-4) that can perform many tasks without additional training.", wrong:["A model that has been specifically fine-tuned on a single company's proprietary data before release.","A model that requires retraining from scratch for every new task it encounters.","A model that only works offline and cannot be accessed via cloud APIs."] },
+            { id:4, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"When should you fine-tune a model?", correct:"When you need specialized vocabulary, consistent tone, or higher domain accuracy — and prompting alone isn't enough.", wrong:["Whenever you want to reduce inference costs, since fine-tuned models always use fewer tokens.","Only when the base model has never been trained on any text data before.","When you need the model to perform basic Q&A — fine-tuning is always required for this."] },
+            { id:5, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What is prompt engineering?", correct:"The practice of crafting inputs to guide AI toward better outputs — without retraining the model.", wrong:["The process of retraining a model's weights using new labeled datasets.","A method of compressing models to reduce their file size for deployment.","The practice of building custom neural network architectures from scratch."] },
+            { id:6, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"Name 3 prompt engineering techniques.", correct:"Zero-shot (no examples), few-shot (include examples), and chain-of-thought (step-by-step reasoning).", wrong:["Backpropagation, gradient descent, and weight initialization.","Data labeling, feature extraction, and model pruning.","Tokenization, embedding, and vector quantization."] },
+            { id:7, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What is RAG (Retrieval-Augmented Generation)?", correct:"Retrieves relevant documents and uses them to ground the AI's response — reducing hallucinations and improving accuracy.", wrong:["A technique that permanently adds new knowledge to a model's weights through continuous training.","A method of compressing AI models to run on edge devices with limited memory.","A security protocol that restricts which users can access an AI model's API endpoints."] },
+            { id:8, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What is a token?", correct:"The basic unit AI models process (~¾ of a word). AI pricing is based on tokens consumed (input + output).", wrong:["A security credential used to authenticate API requests to cloud services.","A complete sentence that the model processes as a single unit of meaning.","A unique identifier assigned to each user session in a chat application."] },
+            { id:9, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What are the main GenAI cost drivers?", correct:"Token usage, model size/capability, frequency of use, and compute resources.", wrong:["Only the number of users who have access to the model determines cost.","Storage costs for the training data — inference is always free.","The programming language used to call the API is the primary cost factor."] },
+            { id:10, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What is an AI hallucination?", correct:"When AI generates a confident but factually incorrect or fabricated response. Mitigated by RAG, grounding, and human review.", wrong:["When an AI model crashes due to insufficient GPU memory during inference.","When users imagine capabilities that the AI doesn't actually have.","When the AI intentionally provides wrong answers to test the user's knowledge."] },
+            { id:11, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What is bias in AI?", correct:"Systematic unfairness in outputs from biased training data, which can lead to discriminatory or unrepresentative results.", wrong:["A deliberate feature that makes AI prefer shorter responses over longer ones.","A technical limitation that prevents AI from processing non-English languages.","The tendency of AI to always agree with the user's stated opinion."] },
+            { id:12, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"Why does data quality matter?", correct:"\u201cGarbage in, garbage out.\u201d Poor or biased data leads to unreliable AI outputs. Clean, representative data is essential.", wrong:["Data quality only matters during fine-tuning — pretrained models are unaffected by input data quality.","High-quality data is only needed for image models; text models work equally well with any data.","Data quality is irrelevant because modern AI models automatically correct any errors in training data."] },
+            { id:13, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What are key AI security concerns?", correct:"Application security, data security, authentication/access control, and protection against prompt injection.", wrong:["Only physical server security matters — software-level threats don't apply to AI.","The main concern is preventing users from asking too many questions per day.","AI security is handled entirely by the cloud provider with no customer responsibility."] },
+            { id:14, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"When does GenAI add the MOST value?", correct:"Repetitive text tasks, summarization, drafting, Q&A over large documents, and code assistance.", wrong:["Tasks requiring exact mathematical calculations with zero margin of error.","Real-time stock trading decisions where microsecond accuracy is critical.","Regulatory compliance decisions that require legally binding determinations."] },
+            { id:15, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"When does GenAI add LESS value?", correct:"Precise calculations, real-time data without grounding, tasks requiring 100% accuracy, and highly regulated decisions.", wrong:["Drafting email responses, summarizing documents, and brainstorming ideas.","Creating first drafts of marketing copy and blog content.","Answering common customer service questions from a knowledge base."] },
+            { id:16, domain:"domain1", domainLabel:"Domain 1 — Business Value of Generative AI", q:"What are the stages of the ML lifecycle?", correct:"Data Collection → Preparation → Model Training → Evaluation → Deployment → Monitoring.", wrong:["Design → Code → Test → Ship — the same as traditional software development.","Prompt → Response → Accept — a three-step cycle repeated indefinitely.","Purchase → Install → Configure — identical to standard SaaS onboarding."] },
+            { id:17, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is Microsoft 365 Copilot?", correct:"An AI assistant embedded in M365 apps (Word, Excel, PowerPoint, Outlook, Teams) powered by org data via Microsoft Graph.", wrong:["A standalone desktop application that must be installed separately from Microsoft 365.","A browser extension that only works in Microsoft Edge for web searches.","A command-line tool for IT administrators to manage Azure resources."] },
+            { id:18, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is Copilot Chat?", correct:"A standalone Copilot experience (web + mobile) using web data or — in Work mode — your org's emails, files, and meetings.", wrong:["A feature exclusive to Microsoft Teams that only works during active meetings.","A paid add-on for Outlook that summarizes email threads automatically.","A developer-only tool for debugging code in Visual Studio."] },
+            { id:19, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What can Copilot do in Word?", correct:"Draft documents, rewrite content, summarize long documents, and adjust tone.", wrong:["Only check spelling and grammar — it cannot generate new content in Word.","Create spreadsheets and pivot tables directly inside Word documents.","Automatically publish Word documents to SharePoint without user action."] },
+            { id:20, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What can Copilot do in Excel?", correct:"Analyze data, generate formulas, create charts, highlight trends, and answer natural language questions.", wrong:["Only format cells and change colors — it cannot write formulas or analyze data.","Replace Excel with a completely different AI-powered spreadsheet application.","Automatically connect to external databases and import data without configuration."] },
+            { id:21, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What can Copilot do in Teams?", correct:"Summarize meetings, generate recaps and action items, catch up on missed discussions, and draft messages.", wrong:["Only schedule meetings — it cannot summarize or recap meeting content.","Replace the meeting organizer and run meetings autonomously.","Automatically record and transcribe all meetings without user consent."] },
+            { id:22, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is the Researcher agent?", correct:"A deep research Copilot agent performing multi-step reasoning across web and org data — ideal for competitive analysis.", wrong:["A basic search engine that returns a list of web links without any analysis.","A Teams bot that only answers questions about Microsoft documentation.","An Excel add-in that visualizes data from SharePoint lists."] },
+            { id:23, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is the Analyst agent?", correct:"A Copilot agent with a code interpreter that processes data, runs calculations, and generates visualizations from files.", wrong:["A human business analyst who reviews Copilot outputs for accuracy.","A PowerPoint template generator that creates slide decks from outlines.","A security scanner that analyzes code repositories for vulnerabilities."] },
+            { id:24, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is Microsoft Copilot Studio?", correct:"A low-code platform for building custom AI agents and chatbots that connect to external data and integrate with M365.", wrong:["A video editing application included with Microsoft 365 Enterprise licenses.","A code editor similar to Visual Studio Code but exclusively for Python development.","A monitoring dashboard that tracks Copilot usage metrics across the organization."] },
+            { id:25, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is Microsoft Graph?", correct:"The API that connects Copilot to org data — emails, files, calendar, Teams chats — enabling grounded responses.", wrong:["A charting library used to create bar graphs and pie charts in Excel.","A social networking feature within Microsoft Teams for employee profiles.","A diagramming tool similar to Visio for creating flowcharts."] },
+            { id:26, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"Explain Buy vs. Extend vs. Build.", correct:"Buy = M365 Copilot as-is (fastest). Extend = customize via Copilot Studio. Build = custom apps via Azure AI / Foundry (most flexible).", wrong:["Buy = purchase hardware. Extend = add more RAM. Build = assemble servers from components.","Buy = Azure subscription. Extend = upgrade to E5. Build = create a new Microsoft tenant.","Buy = hire consultants. Extend = train employees. Build = outsource development offshore."] },
+            { id:27, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is Microsoft Foundry?", correct:"Microsoft's enterprise AI platform for building, deploying, and managing custom AI — includes model catalog, Azure AI Search, and safety tools.", wrong:["A hardware manufacturing division that produces Surface devices and Xbox consoles.","A project management tool similar to Microsoft Project but focused on AI development.","A certification program for IT professionals who want to learn about AI."] },
+            { id:28, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is Azure AI Search?", correct:"A cloud service with vector and semantic search used to retrieve relevant content for RAG-based AI solutions.", wrong:["A consumer search engine designed to compete with Google Search.","A file explorer tool that searches for documents on local hard drives only.","A DNS lookup service that resolves domain names to IP addresses."] },
+            { id:29, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is Azure OpenAI Service?", correct:"A managed Azure service providing enterprise access to OpenAI models (GPT-4, DALL-E) with built-in security and compliance.", wrong:["A free, open-source version of ChatGPT that anyone can download and run locally.","A service that only provides image generation — it does not support text models.","A consumer chatbot app available in the Microsoft Store with no enterprise features."] },
+            { id:30, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"When would you choose Copilot Studio over M365 Copilot?", correct:"When you need custom workflows, external data connections (CRM, ERP), or tailored conversational experiences.", wrong:["When you only need basic email summarization in Outlook.","When you want to use Copilot features that are already built into Word and Excel.","When your organization has fewer than 10 users and doesn't need customization."] },
+            { id:31, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"What is Azure AI Vision used for?", correct:"Image analysis, object detection, OCR (optical character recognition), and visual content processing at scale.", wrong:["Only converting text documents to PDF format in bulk.","Scheduling video meetings and managing webcam settings in Teams.","Creating 3D models and animations for game development."] },
+            { id:32, domain:"domain2", domainLabel:"Domain 2 — Microsoft AI Apps & Services", q:"Match AI solution to business need.", correct:"Summarize docs → M365 Copilot. Custom chatbot → Copilot Studio. Process images → Azure AI Vision. Search knowledge base → Azure AI Search. Custom enterprise AI → Microsoft Foundry.", wrong:["Summarize docs → Azure DevOps. Custom chatbot → Excel. Process images → Outlook. Search knowledge base → PowerPoint. Custom enterprise AI → OneDrive.","All business needs should use a single solution: Microsoft Foundry handles everything.","Summarize docs → Azure AI Vision. Custom chatbot → Azure AI Search. Process images → M365 Copilot."] },
+            { id:33, domain:"domain3", domainLabel:"Domain 3 — Implementation & Adoption", q:"What are the 6 Responsible AI principles?", correct:"Fairness, Reliability & Safety, Privacy & Security, Inclusiveness, Transparency, and Accountability.", wrong:["Speed, Cost-efficiency, Scalability, Profitability, Automation, and Market Share.","Accuracy, Precision, Recall, F1-Score, AUC, and Specificity.","Authentication, Authorization, Encryption, Firewalls, Patching, and Logging."] },
+            { id:34, domain:"domain3", domainLabel:"Domain 3 — Implementation & Adoption", q:"Define Fairness in Responsible AI.", correct:"AI systems treat all people equitably — avoiding differential impact based on race, gender, age, or other protected characteristics.", wrong:["AI systems always produce the same output regardless of the input provided.","AI systems give equal compute resources to every user request in the queue.","AI systems charge the same price to all customers regardless of usage volume."] },
+            { id:35, domain:"domain3", domainLabel:"Domain 3 — Implementation & Adoption", q:"Define Transparency in Responsible AI.", correct:"People should understand how AI makes decisions — through explainability, clear documentation, and disclosure of AI use.", wrong:["All AI source code must be published as open source for public inspection.","AI systems must display their internal weight matrices to end users on every response.","Transparency means the AI reveals all training data sources in every output it generates."] },
+            { id:36, domain:"domain3", domainLabel:"Domain 3 — Implementation & Adoption", q:"Define Accountability in Responsible AI.", correct:"People are responsible for AI systems — with clear governance, oversight mechanisms, and ways to address harm.", wrong:["Only the AI model itself is responsible for any errors it produces.","Accountability means the cloud provider assumes all legal liability for AI outputs.","AI systems must self-correct all mistakes without any human intervention."] },
+            { id:37, domain:"domain3", domainLabel:"Domain 3 — Implementation & Adoption", q:"What is an AI Council?", correct:"A cross-functional body (IT, legal, HR, business) that guides AI strategy, sets policies, and ensures responsible deployment.", wrong:["A government regulatory agency that approves all AI models before they can be sold.","A team of data scientists who build and train all AI models for the organization.","A vendor certification program that rates AI products on a five-star scale."] },
+            { id:38, domain:"domain3", domainLabel:"Domain 3 — Implementation & Adoption", q:"What are common barriers to AI adoption?", correct:"Resistance to change, lack of training, unclear ROI, data quality concerns, security fears, and no executive sponsorship.", wrong:["The only barrier is cost — once budget is approved, adoption happens automatically.","AI adoption has no barriers; organizations simply need to install the software.","Slow internet speed is the sole barrier, as AI works perfectly once connectivity is fast."] },
+            { id:39, domain:"domain3", domainLabel:"Domain 3 — Implementation & Adoption", q:"What is an AI Champions program?", correct:"A network of early adopters who model AI use, train peers, surface feedback, and drive grassroots adoption across the org.", wrong:["A competitive hackathon where teams build AI models to win prize money.","A vendor-run marketing campaign to promote AI product sales to enterprises.","A mandatory training course that all employees must pass to keep their jobs."] },
+            { id:40, domain:"domain3", domainLabel:"Domain 3 — Implementation & Adoption", q:"What are M365 Copilot licensing models?", correct:"Included with certain M365 SKUs, monthly per-user subscription, or pay-as-you-go. Azure AI uses per-API-call or prepaid commitment pricing.", wrong:["M365 Copilot is completely free for all Microsoft 365 users with no additional licensing required.","A one-time perpetual license purchase with no recurring fees or usage limits.","Copilot is only available through enterprise agreements of 10,000+ seats minimum."] }
+        ];
+
+        const DOMAINS = {
+            domain1: { label: "Domain 1 — Business Value of Generative AI", weight: "35–40%" },
+            domain2: { label: "Domain 2 — Microsoft AI Apps & Services", weight: "35–40%" },
+            domain3: { label: "Domain 3 — Implementation & Adoption", weight: "20–25%" }
+        };
+
+        /* ============================================================
+           STATE
+           ============================================================ */
+        let currentQ = 0;
+        let answers = new Array(QUESTIONS.length).fill(null); // index of chosen option
+        let shuffledOptions = [];   // per-question shuffled options
+        let correctIndices = [];    // per-question index of correct answer in shuffled list
+        let examStartTime = Date.now();
+        let timerInterval = null;
+        let submitted = false;
+
+        /* ── DOM ── */
+        const examPanel = document.getElementById("examPanel");
+        const resultsPanel = document.getElementById("resultsPanel");
+        const qNum = document.getElementById("qNum");
+        const qDomain = document.getElementById("qDomain");
+        const qNumLabel = document.getElementById("qNumLabel");
+        const qText = document.getElementById("qText");
+        const optionsList = document.getElementById("optionsList");
+        const explanation = document.getElementById("explanation");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const submitBtn = document.getElementById("submitBtn");
+        const progressLabel = document.getElementById("progressLabel");
+        const progressFill = document.getElementById("progressFill");
+        const qmap = document.getElementById("qmap");
+        const examTimer = document.getElementById("examTimer");
+
+        /* ============================================================
+           INIT — shuffle options for each question
+           ============================================================ */
+        function initExam() {
+            shuffledOptions = [];
+            correctIndices = [];
+            answers = new Array(QUESTIONS.length).fill(null);
+            currentQ = 0;
+            submitted = false;
+            examStartTime = Date.now();
+
+            QUESTIONS.forEach((q) => {
+                const opts = [q.correct, ...q.wrong];
+                // Fisher–Yates
+                for (let i = opts.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [opts[i], opts[j]] = [opts[j], opts[i]];
+                }
+                shuffledOptions.push(opts);
+                correctIndices.push(opts.indexOf(q.correct));
+            });
+
+            buildQMap();
+            renderQuestion();
+            startTimer();
+
+            examPanel.classList.remove("hidden");
+            resultsPanel.classList.remove("visible");
+        }
+
+        /* ============================================================
+           TIMER
+           ============================================================ */
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - examStartTime) / 1000);
+                const m = String(Math.floor(elapsed / 60)).padStart(2, "0");
+                const s = String(elapsed % 60).padStart(2, "0");
+                examTimer.textContent = `${m}:${s}`;
+            }, 1000);
+        }
+
+        /* ============================================================
+           QUESTION MAP
+           ============================================================ */
+        function buildQMap() {
+            qmap.innerHTML = QUESTIONS.map((_, i) =>
+                `<div class="qmap-dot" data-qi="${i}">${i + 1}</div>`
+            ).join("");
+            qmap.querySelectorAll(".qmap-dot").forEach(dot => {
+                dot.addEventListener("click", () => {
+                    currentQ = parseInt(dot.dataset.qi);
+                    renderQuestion();
+                });
+            });
+        }
+
+        function updateQMap() {
+            qmap.querySelectorAll(".qmap-dot").forEach((dot, i) => {
+                dot.classList.remove("current", "answered");
+                if (i === currentQ) dot.classList.add("current");
+                else if (answers[i] !== null) dot.classList.add("answered");
+            });
+        }
+
+        /* ============================================================
+           RENDER QUESTION
+           ============================================================ */
+        function renderQuestion() {
+            const q = QUESTIONS[currentQ];
+            const opts = shuffledOptions[currentQ];
+            const letters = ["A", "B", "C", "D"];
+
+            qNum.textContent = currentQ + 1;
+            qDomain.textContent = q.domainLabel;
+            qNumLabel.textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+            qText.textContent = q.q;
+
+            const answeredIdx = answers[currentQ];
+
+            optionsList.innerHTML = opts.map((opt, i) => {
+                let cls = "option-btn";
+                if (submitted) {
+                    cls += " locked";
+                    if (i === correctIndices[currentQ]) cls += " correct";
+                    else if (i === answeredIdx && i !== correctIndices[currentQ]) cls += " incorrect";
+                } else if (i === answeredIdx) {
+                    cls += " selected";
+                }
+                return `<button class="${cls}" data-oi="${i}">
+                    <span class="option-letter">${letters[i]}</span>
+                    <span class="option-text">${opt}</span>
+                </button>`;
+            }).join("");
+
+            if (!submitted) {
+                optionsList.querySelectorAll(".option-btn").forEach(btn => {
+                    btn.addEventListener("click", () => selectOption(parseInt(btn.dataset.oi)));
+                });
+            }
+
+            // Explanation after submit
+            if (submitted) {
+                explanation.textContent = `Correct answer: ${q.correct}`;
+                explanation.classList.add("visible");
+            } else {
+                explanation.classList.remove("visible");
+            }
+
+            // Progress
+            const answered = answers.filter(a => a !== null).length;
+            const pct = Math.round((answered / QUESTIONS.length) * 100);
+            progressLabel.textContent = `${pct}% complete (${answered}/${QUESTIONS.length} answered)`;
+            progressFill.style.width = `${pct}%`;
+
+            // Nav buttons
+            prevBtn.disabled = currentQ === 0;
+            if (submitted) {
+                nextBtn.style.display = currentQ < QUESTIONS.length - 1 ? "" : "none";
+                submitBtn.style.display = "none";
+            } else {
+                nextBtn.style.display = currentQ < QUESTIONS.length - 1 ? "" : "none";
+                submitBtn.style.display = answered === QUESTIONS.length ? "" : "none";
+            }
+
+            updateQMap();
+        }
+
+        function selectOption(idx) {
+            if (submitted) return;
+            answers[currentQ] = idx;
+            renderQuestion();
+        }
+
+        /* ============================================================
+           SUBMIT
+           ============================================================ */
+        function submitExam() {
+            if (!confirm("Submit your exam? You won't be able to change answers.")) return;
+            submitted = true;
+            if (timerInterval) clearInterval(timerInterval);
+            showResults();
+        }
+
+        function showResults() {
+            examPanel.classList.add("hidden");
+            resultsPanel.classList.add("visible");
+
+            let totalCorrect = 0;
+            const domainStats = {};
+            const missed = [];
+
+            QUESTIONS.forEach((q, i) => {
+                if (!domainStats[q.domain]) domainStats[q.domain] = { total: 0, correct: 0 };
+                domainStats[q.domain].total++;
+                if (answers[i] === correctIndices[i]) {
+                    totalCorrect++;
+                    domainStats[q.domain].correct++;
+                } else {
+                    missed.push({
+                        id: q.id,
+                        question: q.q,
+                        domain: q.domainLabel,
+                        yourAnswer: answers[i] !== null ? shuffledOptions[i][answers[i]] : "(unanswered)",
+                        correctAnswer: q.correct
+                    });
+                }
+            });
+
+            const score = Math.round((totalCorrect / QUESTIONS.length) * 1000);
+            const passed = score >= 700;
+
+            // Score hero
+            const scoreNumber = document.getElementById("scoreNumber");
+            scoreNumber.textContent = score;
+            scoreNumber.className = "score-number " + (passed ? "pass" : "fail");
+
+            const scoreBadge = document.getElementById("scoreBadge");
+            scoreBadge.innerHTML = `<span class="score-badge ${passed ? "pass" : "fail"}">${passed ? "PASS ✓" : "FAIL ✗"}</span>`;
+
+            document.getElementById("scoreSubtitle").textContent =
+                `${totalCorrect} of ${QUESTIONS.length} correct · Passing: 700 · Time: ${examTimer.textContent}`;
+
+            // Domain breakdown
+            const domainBreakdown = document.getElementById("domainBreakdown");
+            domainBreakdown.innerHTML = Object.entries(DOMAINS).map(([key, d]) => {
+                const s = domainStats[key] || { total: 0, correct: 0 };
+                const pct = s.total ? Math.round((s.correct / s.total) * 100) : 0;
+                const dp = pct >= 70;
+                return `<div class="domain-card">
+                    <div class="domain-card-title">${d.label} <span style="opacity:.5">(${d.weight})</span></div>
+                    <div class="domain-score ${dp ? "pass" : "fail"}">${pct}%</div>
+                    <div class="domain-detail">${s.correct} / ${s.total} correct</div>
+                    <div class="domain-bar-track"><div class="domain-bar-fill ${dp ? "pass" : "fail"}" style="width:${pct}%"></div></div>
+                </div>`;
+            }).join("");
+
+            // Missed questions
+            const missedList = document.getElementById("missedList");
+            if (missed.length === 0) {
+                missedList.innerHTML = '<div class="all-correct-msg">Perfect score! You answered every question correctly.</div>';
+            } else {
+                missedList.innerHTML = missed.map(m =>
+                    `<div class="missed-item">
+                        <div class="missed-q">Q${String(m.id).padStart(2,"0")}: ${m.question}</div>
+                        <div class="missed-your">Your answer: ${m.yourAnswer}</div>
+                        <div class="missed-correct">Correct: ${m.correctAnswer}</div>
+                    </div>`
+                ).join("");
+            }
+
+            // Results question map
+            const qmapResults = document.getElementById("qmapResults");
+            qmapResults.innerHTML = QUESTIONS.map((_, i) => {
+                const isCorrect = answers[i] === correctIndices[i];
+                return `<div class="qmap-dot ${isCorrect ? "correct-dot" : "incorrect-dot"}" data-qi="${i}" title="Q${i+1}">${i + 1}</div>`;
+            }).join("");
+            qmapResults.querySelectorAll(".qmap-dot").forEach(dot => {
+                dot.addEventListener("click", () => {
+                    currentQ = parseInt(dot.dataset.qi);
+                    examPanel.classList.remove("hidden");
+                    resultsPanel.classList.remove("visible");
+                    renderQuestion();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            });
+        }
+
+        /* ============================================================
+           EVENT LISTENERS
+           ============================================================ */
+        prevBtn.addEventListener("click", () => { if (currentQ > 0) { currentQ--; renderQuestion(); } });
+        nextBtn.addEventListener("click", () => { if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); } });
+        submitBtn.addEventListener("click", submitExam);
+        document.getElementById("retakeBtn").addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            initExam();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+            if (submitted && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
+                e.preventDefault();
+                if (e.key === "ArrowRight" && currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); }
+                if (e.key === "ArrowLeft" && currentQ > 0) { currentQ--; renderQuestion(); }
+                return;
+            }
+            if (submitted) return;
+            switch (e.key) {
+                case "ArrowRight": e.preventDefault(); if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); } break;
+                case "ArrowLeft": e.preventDefault(); if (currentQ > 0) { currentQ--; renderQuestion(); } break;
+                case "a": case "A": e.preventDefault(); selectOption(0); break;
+                case "b": case "B": e.preventDefault(); selectOption(1); break;
+                case "c": case "C": e.preventDefault(); selectOption(2); break;
+                case "d": case "D": e.preventDefault(); selectOption(3); break;
+            }
+        });
+
+        /* ============================================================
+           INIT
+           ============================================================ */
+        initExam();
+    </script>
+
+</body>
+
+</html>
