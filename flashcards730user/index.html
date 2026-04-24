@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AB-731 Flashcards &mdash; AI Transformation Leader Exam Prep</title>
-    <link rel="icon" type="image/svg+xml" href="../images/favicon-flashcards.svg" />
+    <title>AB-730 Flashcards &mdash; AI Business Professional Exam Prep</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-flashcards730.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -381,9 +381,9 @@
             All Trainings</a>
 
         <header class="page-hero">
-            <h1>AB-731 Flashcards</h1>
+            <h1>AB-730 Flashcards</h1>
             <p class="subtitle">
-                AI Transformation Leader Exam Prep &mdash; 40 flashcards across 3 domains.
+                AI Business Professional Exam Prep &mdash; 40 flashcards across 3 domains.
                 Flip to reveal answers, tag cards to revisit, and track your progress.
             </p>
         </header>
@@ -398,12 +398,12 @@
         <!-- Category pills (shown in category mode) -->
         <div class="category-bar" id="categoryBar" style="display:none;">
             <button class="cat-pill active" data-cat="all">All <span class="pill-count">(40)</span></button>
-            <button class="cat-pill" data-cat="domain1">Domain 1: Business Value <span
+            <button class="cat-pill" data-cat="domain1">Domain 1: AI Fundamentals <span
+                    class="pill-count">(12)</span></button>
+            <button class="cat-pill" data-cat="domain2">Domain 2: Prompts &amp; Conversations <span
                     class="pill-count">(16)</span></button>
-            <button class="cat-pill" data-cat="domain2">Domain 2: AI Apps &amp; Services <span
-                    class="pill-count">(16)</span></button>
-            <button class="cat-pill" data-cat="domain3">Domain 3: Implementation <span
-                    class="pill-count">(8)</span></button>
+            <button class="cat-pill" data-cat="domain3">Domain 3: Draft &amp; Analyze <span
+                    class="pill-count">(12)</span></button>
         </div>
 
         <!-- Progress -->
@@ -461,56 +461,56 @@
            FLASHCARD DATA
            ============================================================ */
         const FLASHCARDS = [
-            { id: 1, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is generative AI?", a: "AI that creates new content (text, images, code, audio) by predicting the next token based on patterns learned from large datasets." },
-            { id: 2, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "How does generative AI differ from discriminative AI?", a: "Generative AI creates new content.\nDiscriminative AI classifies or categorizes existing data." },
-            { id: 3, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is a pretrained model?", a: "A model trained on broad general data (e.g., GPT-4) that can perform many tasks without additional training." },
-            { id: 4, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "When should you fine-tune a model?", a: "When you need specialized vocabulary, consistent tone, or higher domain accuracy — and prompting alone isn't enough." },
-            { id: 5, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is prompt engineering?", a: "The practice of crafting inputs to guide AI toward better outputs — without retraining the model." },
-            { id: 6, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "Name 3 prompt engineering techniques.", a: "Zero-shot — no examples provided\nFew-shot — include example prompts\nChain-of-thought — step-by-step reasoning" },
-            { id: 7, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is RAG (Retrieval-Augmented Generation)?", a: "Retrieves relevant documents and uses them to ground the AI's response — reducing hallucinations and improving accuracy." },
-            { id: 8, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is a token?", a: "The basic unit AI models process (~¾ of a word).\nAI pricing is based on tokens consumed (input + output)." },
-            { id: 9, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What are the main GenAI cost drivers?", a: "Token usage, model size/capability, frequency of use, and compute resources." },
-            { id: 10, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is an AI hallucination?", a: "When AI generates a confident but factually incorrect or fabricated response.\nMitigated by RAG, grounding, and human review." },
-            { id: 11, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is bias in AI?", a: "Systematic unfairness in outputs from biased training data.\nCan lead to discriminatory or unrepresentative results." },
-            { id: 12, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "Why does data quality matter?", a: "\u201cGarbage in, garbage out.\u201d\nPoor or biased data leads to unreliable AI outputs. Clean, representative data is essential." },
-            { id: 13, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What are key AI security concerns?", a: "Application security, data security, authentication/access control, and protection against prompt injection." },
-            { id: 14, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "When does GenAI add the MOST value?", a: "Repetitive text tasks, summarization, drafting, Q&A over large documents, and code assistance." },
-            { id: 15, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "When does GenAI add LESS value?", a: "Precise calculations, real-time data without grounding, tasks requiring 100% accuracy, and highly regulated decisions." },
-            { id: 16, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What are the stages of the ML lifecycle?", a: "Data Collection → Preparation → Model Training → Evaluation → Deployment → Monitoring" },
-            { id: 17, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Microsoft 365 Copilot?", a: "An AI assistant embedded in M365 apps (Word, Excel, PowerPoint, Outlook, Teams) powered by org data via Microsoft Graph." },
-            { id: 18, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Copilot Chat?", a: "A standalone Copilot experience (web + mobile) using web data or — in Work mode — your org's emails, files, and meetings." },
-            { id: 19, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What can Copilot do in Word?", a: "Draft documents, rewrite content, summarize long documents, and adjust tone." },
-            { id: 20, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What can Copilot do in Excel?", a: "Analyze data, generate formulas, create charts, highlight trends, and answer natural language questions." },
-            { id: 21, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What can Copilot do in Teams?", a: "Summarize meetings, generate recaps and action items, catch up on missed discussions, and draft messages." },
-            { id: 22, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is the Researcher agent?", a: "A deep research Copilot agent performing multi-step reasoning across web and org data — ideal for competitive analysis." },
-            { id: 23, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is the Analyst agent?", a: "A Copilot agent with a code interpreter that processes data, runs calculations, and generates visualizations from files." },
-            { id: 24, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Microsoft Copilot Studio?", a: "A low-code platform for building custom AI agents and chatbots that connect to external data and integrate with M365." },
-            { id: 25, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Microsoft Graph?", a: "The API that connects Copilot to org data — emails, files, calendar, Teams chats — enabling grounded responses." },
-            { id: 26, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "Explain Buy vs. Extend vs. Build.", a: "Buy = M365 Copilot as-is (fastest time to value)\nExtend = customize via Copilot Studio\nBuild = custom apps via Azure AI / Foundry (most flexible)" },
-            { id: 27, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Microsoft Foundry?", a: "Microsoft's enterprise AI platform for building, deploying, and managing custom AI — includes model catalog, Azure AI Search, and safety tools." },
-            { id: 28, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Azure AI Search?", a: "A cloud service with vector and semantic search used to retrieve relevant content for RAG-based AI solutions." },
-            { id: 29, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Azure OpenAI Service?", a: "A managed Azure service providing enterprise access to OpenAI models (GPT-4, DALL-E) with built-in security and compliance." },
-            { id: 30, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "When would you choose Copilot Studio over M365 Copilot?", a: "When you need custom workflows, external data connections (CRM, ERP), or tailored conversational experiences." },
-            { id: 31, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Azure AI Vision used for?", a: "Image analysis, object detection, OCR (optical character recognition), and visual content processing at scale." },
-            { id: 32, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "Match AI solution to business need.", a: "Summarize docs → M365 Copilot\nCustom chatbot → Copilot Studio\nProcess images → Azure AI Vision\nSearch knowledge base → Azure AI Search\nCustom enterprise AI → Microsoft Foundry" },
-            { id: 33, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What are the 6 Responsible AI principles?", a: "Fairness | Reliability & Safety | Privacy & Security\nInclusiveness | Transparency | Accountability" },
-            { id: 34, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "Define Fairness.", a: "AI systems treat all people equitably — avoiding differential impact based on race, gender, age, or other protected characteristics." },
-            { id: 35, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "Define Transparency.", a: "People should understand how AI makes decisions — through explainability, clear documentation, and disclosure of AI use." },
-            { id: 36, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "Define Accountability.", a: "People are responsible for AI systems — with clear governance, oversight mechanisms, and ways to address harm." },
-            { id: 37, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What is an AI Council?", a: "A cross-functional body (IT, legal, HR, business) that guides AI strategy, sets policies, and ensures responsible deployment." },
-            { id: 38, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What are common barriers to AI adoption?", a: "Resistance to change, lack of training, unclear ROI, data quality concerns, security fears, and no executive sponsorship." },
-            { id: 39, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What is an AI Champions program?", a: "A network of early adopters who model AI use, train peers, surface feedback, and drive grassroots adoption across the org." },
-            { id: 40, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What are M365 Copilot licensing models?", a: "Included with certain M365 SKUs, monthly per-user subscription, or pay-as-you-go.\nAzure AI uses per-API-call or prepaid commitment pricing." }
+            { id: 1, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "What is generative AI?", a: "AI that produces new content — text, images, summaries, code — from a prompt, rather than simply retrieving existing information." },
+            { id: 2, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "What is Microsoft 365 Copilot?", a: "Microsoft's AI assistant embedded across M365 apps (Word, Excel, PowerPoint, Outlook, Teams). It uses large language models grounded in your work data via Microsoft Graph." },
+            { id: 3, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "How does Copilot keep your organization's data private?", a: "Prompts and responses stay in your M365 tenant, are NOT used to train foundation models, and respect existing file permissions, sensitivity labels, and DLP policies." },
+            { id: 4, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "Name the three types of context that shape a Copilot response.", a: "1. Work files (accessed via Microsoft Graph)\n2. Web data (public web, when enabled)\n3. Host app (the document, spreadsheet, or meeting you're in)" },
+            { id: 5, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "What is the difference between a Copilot chat experience and an agent experience?", a: "Chat = general-purpose, ad-hoc Q&A using broad context.\nAgent = purpose-built for a specific scenario, scoped to curated knowledge sources with custom instructions." },
+            { id: 6, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "When is creating your own agent a better choice than using Copilot Chat?", a: "When you have a repeatable task with stable reference material (e.g., HR policy Q&A), need consistent answers across users, and want to scope responses to specific sources." },
+            { id: 7, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "What are fabrications (hallucinations) in generative AI?", a: "Plausible-sounding but incorrect outputs. Always verify facts, names, and numbers — especially statistics and citations." },
+            { id: 8, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "What is prompt injection?", a: "A risk where hidden or malicious instructions in referenced content (e.g., a pasted document) hijack the AI's behavior. Avoid running untrusted content through prompts." },
+            { id: 9, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "What does 'over-reliance' on AI mean?", a: "Accepting AI-generated output without human review. Treat every Copilot output as a first draft, not the final word." },
+            { id: 10, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "How do you verify a statistic that Copilot included in a summary?", a: "Follow the citation link to the original source document and confirm the number there. Re-asking Copilot 'Are you sure?' is NOT verification." },
+            { id: 11, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "How does data protection restrict Copilot results?", a: "Copilot inherits sensitivity labels, DLP policies, and access controls. It never surfaces content the user doesn't already have permission to see." },
+            { id: 12, domain: "domain1", domainLabel: "Domain 1 — Understand Generative AI Fundamentals", q: "How do Copilot features differ across M365 apps?", a: "Word: draft/rewrite/summarize. Excel: formulas/analysis. PowerPoint: create decks. Outlook: thread summary/draft. Teams: meeting recap/catch-up. Each surface has app-specific capabilities." },
+            { id: 13, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What are the four components of an effective Copilot prompt?", a: "1. Goal — what you want\n2. Context — audience, situation\n3. Source — specific files, emails, meetings via /\n4. Expectation — format, length, tone" },
+            { id: 14, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What does the / (slash) menu do in a Copilot prompt?", a: "It lets you reference specific resources — files, emails, meetings, or people — to ground the response in precise sources instead of broad data." },
+            { id: 15, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "How do you save a prompt for reuse?", a: "Pin it to the Prompt Gallery. You can also star prompts as favorites for one-click access from the Copilot home." },
+            { id: 16, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What does scheduling a prompt do?", a: "Runs the prompt automatically on a recurring cadence (daily, weekly, etc.). Output is delivered to chat or email without manual effort." },
+            { id: 17, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "How can you share a prompt with your team?", a: "Publish it to the team Prompt Gallery or share via a direct link. This ensures consistent, reusable prompts across the team." },
+            { id: 18, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "How do you find a previous Copilot conversation?", a: "Open chat history in Copilot and scroll or search by title. You can rename chats to make them easier to find later." },
+            { id: 19, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What happens when you delete a Copilot chat?", a: "The conversation is permanently removed from your chat history. Use this for hygiene and to declutter." },
+            { id: 20, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What is a Copilot Notebook?", a: "A focused workspace grounded in chosen sources (files, chats, pages). Copilot answers inside a Notebook are scoped to that knowledge, keeping context tight." },
+            { id: 21, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What is the Agent Store?", a: "A catalog of pre-built agents for common tasks (Researcher, Analyst, HR, IT, etc.). Always check here first before building a custom agent." },
+            { id: 22, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "When should you create a custom agent versus using the Agent Store?", a: "When no pre-built agent fits your scenario and you need a scoped assistant with your own knowledge sources, instructions, and capabilities." },
+            { id: 23, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "How do you create an agent from a template?", a: "1. Pick a template (FAQ bot, doc Q&A, concierge, etc.)\n2. Add knowledge sources\n3. Set instructions and capabilities\n4. Share with your team" },
+            { id: 24, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What types of knowledge can you add to an agent?", a: "SharePoint sites, uploaded files (PDF, Word), web URLs, and data connectors (Dataverse, etc.)." },
+            { id: 25, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What are agent 'settings' (as distinct from knowledge)?", a: "Instructions (system prompt, tone, guardrails), capabilities (image gen, code interpreter, web search), and suggested prompts (starter questions for users)." },
+            { id: 26, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What are suggested prompts on an agent?", a: "Starter questions displayed to users when they open the agent. They reduce onboarding friction by showing what the agent can do." },
+            { id: 27, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "How do you share an agent with your team?", a: "Via a direct link, the Agent catalog (org-wide discovery), or by embedding in a Teams channel. Users only see answers from content they're authorized to access." },
+            { id: 28, domain: "domain2", domainLabel: "Domain 2 — Manage Prompts and Conversations by Using AI", q: "What governance controls exist for agents?", a: "Admins can govern agent creation, restrict connectors, and audit usage. Shared agents inherit knowledge-source permissions — users can't see unauthorized content." },
+            { id: 29, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "What are the three ways to draft a document with Copilot in Word?", a: "1. From a prompt ('Draft with Copilot' — describe audience, tone, length)\n2. From an existing document (rewrite or re-format)\n3. Management summary (one-page exec summary for a specific audience)" },
+            { id: 30, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "How do you generate a management summary of a long document?", a: "Ask Copilot in Word: 'Create a 1-page executive summary for [audience]' while referencing the source document." },
+            { id: 31, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "How do you turn a Word document into a PowerPoint deck?", a: "In PowerPoint, use Copilot: 'Create a presentation from this document' and reference the Word file. Copilot generates a draft deck." },
+            { id: 32, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "Name three ways to move data between M365 apps using Copilot.", a: "1. Word → PowerPoint (doc to deck)\n2. Excel → Word/PPT (tables/insights)\n3. Meeting recap → Outlook (follow-up email with action items)" },
+            { id: 33, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "What does 'catch-up' mean in Copilot for Teams meetings?", a: "A quick summary of what you missed if you joined a meeting late. It lets you jump in without asking 'What did I miss?'" },
+            { id: 34, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "What information does a Copilot meeting recap include?", a: "Key points, decisions made, action items with owners, and an overall summary. Intelligent recap (Copilot license) goes deeper." },
+            { id: 35, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "How can you find out who said what in a meeting?", a: "Ask Copilot to search the transcript and attribute statements to specific participants — during or after the meeting." },
+            { id: 36, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "What is a Copilot Page?", a: "A persistent, co-editable canvas built from a Copilot answer. Multiple people can edit in real time. Saved to OneDrive and shareable like any M365 file." },
+            { id: 37, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "How is a Copilot Page different from a chat response?", a: "A chat response is temporary and single-user. A Page is persistent, shareable, and co-editable — designed for collaborative work." },
+            { id: 38, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "What is Copilot memory?", a: "An opt-in feature where Copilot recalls your preferences across chats (e.g., your role, team, preferred tone). You can review, edit, or clear memory at any time." },
+            { id: 39, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "What are Copilot custom instructions?", a: "Defaults you set that Copilot applies to every prompt — like 'always use British English' or 'I manage the retail portfolio'. Managed in Copilot settings." },
+            { id: 40, domain: "domain3", domainLabel: "Domain 3 — Draft and Analyze Business Content", q: "Which Copilot feature is best for a recurring weekly status email?", a: "A scheduled prompt. Save the prompt, set it to run weekly, and have the output delivered to chat or email automatically." }
         ];
 
         /* ============================================================
            STATE
            ============================================================ */
-        const STORAGE_KEY = "ab731-tagged";
+        const STORAGE_KEY = "ab730-tagged";
         let tagged = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
-        let mode = "random";          // random | category | tagged
+        let mode = "random";
         let activeCat = "all";
-        let deck = [];                // current working deck (indices into FLASHCARDS)
+        let deck = [];
         let deckPos = 0;
         let isFlipped = false;
 
@@ -549,7 +549,6 @@
             }
 
             if (mode === "random") {
-                // Fisher–Yates shuffle
                 for (let i = indices.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [indices[i], indices[j]] = [indices[j], indices[i]];
@@ -587,7 +586,6 @@
             numberFront.textContent = "Q" + String(card.id).padStart(2, "0");
             numberBack.textContent = "A" + String(card.id).padStart(2, "0");
 
-            // Reset flip
             isFlipped = false;
             flashcard.classList.remove("flipped");
 
@@ -690,7 +688,6 @@
         }
 
         function jumpToCard(id) {
-            // Find card in current deck
             const idx = deck.indexOf(id - 1);
             if (idx >= 0) {
                 deckPos = idx;
@@ -698,7 +695,6 @@
                 flashcardContainer.scrollIntoView({ behavior: "smooth", block: "center" });
                 return;
             }
-            // If not in current deck, switch to 'all' category mode
             mode = "category";
             activeCat = "all";
             setModeUI();
@@ -718,23 +714,18 @@
         /* ============================================================
            EVENT LISTENERS
            ============================================================ */
-
-        // Flip on card click
         flashcardContainer.addEventListener("click", (e) => {
             if (e.target.classList.contains("flashcard-tag-icon")) return;
             flipCard();
         });
 
-        // Tag icons on card
         tagIconFront.addEventListener("click", (e) => { e.stopPropagation(); toggleTag(); });
         tagIconBack.addEventListener("click", (e) => { e.stopPropagation(); toggleTag(); });
 
-        // Control buttons
         prevBtn.addEventListener("click", goPrev);
         nextBtn.addEventListener("click", goNext);
         tagBtn.addEventListener("click", toggleTag);
 
-        // Mode buttons
         document.querySelectorAll(".mode-btn").forEach(btn => {
             btn.addEventListener("click", () => {
                 mode = btn.dataset.mode;
@@ -745,7 +736,6 @@
             });
         });
 
-        // Category pills
         document.querySelectorAll(".cat-pill").forEach(pill => {
             pill.addEventListener("click", () => {
                 activeCat = pill.dataset.cat;
@@ -756,7 +746,6 @@
             });
         });
 
-        // Tagged list clicks
         taggedList.addEventListener("click", (e) => {
             const removeBtn = e.target.closest("[data-remove]");
             if (removeBtn) {
@@ -766,7 +755,6 @@
                 renderTaggedList();
                 updateTagIcon();
                 updateControls();
-                // If in tagged mode, rebuild deck
                 if (mode === "tagged") {
                     buildDeck();
                     if (deckPos >= deck.length) deckPos = Math.max(0, deck.length - 1);
@@ -780,7 +768,6 @@
             }
         });
 
-        // Keyboard shortcuts
         document.addEventListener("keydown", (e) => {
             if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
             switch (e.key) {
