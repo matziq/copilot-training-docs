@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AB-731 Flashcards &mdash; AI Transformation Leader Exam Prep</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-flashcards.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+        /* ── Mode selector ── */
+        .mode-bar {
+            display: flex;
+            gap: var(--sp-3);
+            flex-wrap: wrap;
+            margin-bottom: var(--sp-6);
+        }
+
+        .mode-btn {
+            padding: .6rem 1.2rem;
+            border: 2px solid var(--purple-mid);
+            border-radius: var(--radius-md);
+            background: transparent;
+            color: var(--purple-mid);
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .mode-btn:hover {
+            background: var(--purple-bg);
+        }
+
+        .mode-btn.active {
+            background: var(--purple-mid);
+            color: #fff;
+        }
+
+        /* ── Category pills ── */
+        .category-bar {
+            display: flex;
+            gap: var(--sp-2);
+            flex-wrap: wrap;
+            margin-bottom: var(--sp-6);
+        }
+
+        .cat-pill {
+            padding: .45rem 1rem;
+            border: 1.5px solid var(--border-light);
+            border-radius: 999px;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: .82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .cat-pill:hover {
+            border-color: var(--purple-mid);
+            color: var(--purple-mid);
+        }
+
+        .cat-pill.active {
+            background: var(--purple-mid);
+            color: #fff;
+            border-color: var(--purple-mid);
+        }
+
+        .cat-pill .pill-count {
+            display: inline-block;
+            margin-left: .3rem;
+            font-size: .72rem;
+            opacity: .7;
+        }
+
+        /* ── Progress ── */
+        .progress-row {
+            display: flex;
+            align-items: center;
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-6);
+            font-size: .85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .progress-bar-track {
+            flex: 1;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--purple-mid);
+            border-radius: 3px;
+            transition: width .3s;
+        }
+
+        /* ── Flashcard ── */
+        .flashcard-container {
+            perspective: 1200px;
+            margin: 0 auto var(--sp-6);
+            max-width: 640px;
+            min-height: 320px;
+            cursor: pointer;
+        }
+
+        .flashcard {
+            position: relative;
+            width: 100%;
+            min-height: 320px;
+            transform-style: preserve-3d;
+            transition: transform .55s cubic-bezier(.4, .0, .2, 1);
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-10) var(--sp-8);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .flashcard-front {
+            background: var(--bg-card);
+        }
+
+        .flashcard-back {
+            background: var(--purple-deep);
+            color: #fff;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-domain {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: var(--sp-3);
+            opacity: .6;
+        }
+
+        .flashcard-front .flashcard-domain {
+            color: var(--purple-mid);
+        }
+
+        .flashcard-number {
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: var(--sp-4);
+            opacity: .5;
+        }
+
+        .flashcard-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .flashcard-back .flashcard-text {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .flashcard-hint {
+            position: absolute;
+            bottom: var(--sp-4);
+            font-size: .72rem;
+            opacity: .45;
+            font-weight: 500;
+        }
+
+        .flashcard-tag-icon {
+            position: absolute;
+            top: var(--sp-4);
+            right: var(--sp-4);
+            font-size: 1.3rem;
+            opacity: .25;
+            transition: opacity .2s;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .flashcard-tag-icon.tagged {
+            opacity: 1;
+            color: var(--orange-step);
+        }
+
+        .flashcard-back .flashcard-tag-icon.tagged {
+            color: #f7c948;
+        }
+
+        /* ── Controls ── */
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--sp-4);
+            margin-bottom: var(--sp-6);
+        }
+
+        .ctrl-btn {
+            padding: .55rem 1.3rem;
+            border: 2px solid var(--purple-mid);
+            border-radius: var(--radius-md);
+            background: transparent;
+            color: var(--purple-mid);
+            font-weight: 600;
+            font-size: .88rem;
+            cursor: pointer;
+            transition: all .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        .ctrl-btn:hover:not(:disabled) {
+            background: var(--purple-mid);
+            color: #fff;
+        }
+
+        .ctrl-btn:disabled {
+            opacity: .35;
+            cursor: not-allowed;
+        }
+
+        .ctrl-btn.tag-btn {
+            border-color: var(--orange-step);
+            color: var(--orange-step);
+        }
+
+        .ctrl-btn.tag-btn:hover:not(:disabled) {
+            background: var(--orange-step);
+            color: #fff;
+        }
+
+        .ctrl-btn.tag-btn.tagged {
+            background: var(--orange-step);
+            color: #fff;
+        }
+
+        /* ── Tagged list ── */
+        .tagged-section {
+            margin-top: var(--sp-8);
+            padding: var(--sp-6);
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+        }
+
+        .tagged-section h3 {
+            font-size: 1rem;
+            color: var(--purple-deep);
+            margin-bottom: var(--sp-4);
+        }
+
+        .tagged-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-2);
+        }
+
+        .tagged-item {
+            display: flex;
+            align-items: center;
+            gap: var(--sp-3);
+            padding: var(--sp-3) var(--sp-4);
+            background: var(--purple-bg);
+            border-radius: var(--radius-sm);
+            font-size: .88rem;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .tagged-item:hover {
+            background: #e4d5f7;
+        }
+
+        .tagged-item-num {
+            font-weight: 700;
+            color: var(--purple-mid);
+            min-width: 2rem;
+        }
+
+        .tagged-item-text {
+            flex: 1;
+            color: var(--text-primary);
+        }
+
+        .tagged-item-remove {
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0 .3rem;
+            transition: color .15s;
+        }
+
+        .tagged-item-remove:hover {
+            color: var(--red-step);
+        }
+
+        .empty-tagged {
+            color: var(--text-muted);
+            font-size: .85rem;
+            font-style: italic;
+        }
+
+        /* ── Keyboard shortcut hints ── */
+        .keyboard-hints {
+            text-align: center;
+            margin-top: var(--sp-4);
+            font-size: .75rem;
+            color: var(--text-muted);
+        }
+
+        .keyboard-hints kbd {
+            display: inline-block;
+            padding: .1rem .45rem;
+            background: var(--border-light);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: .72rem;
+            margin: 0 .15rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .flashcard-container {
+                min-height: 280px;
+            }
+
+            .flashcard {
+                min-height: 280px;
+            }
+
+            .flashcard-text {
+                font-size: 1.05rem;
+            }
+
+            .flashcard-back .flashcard-text {
+                font-size: .95rem;
+            }
+
+            .controls-row {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>AB-731 Flashcards</h1>
+            <p class="subtitle">
+                AI Transformation Leader Exam Prep &mdash; 40 flashcards across 3 domains.
+                Flip to reveal answers, tag cards to revisit, and track your progress.
+            </p>
+        </header>
+
+        <!-- Mode selector -->
+        <div class="mode-bar">
+            <button class="mode-btn active" data-mode="random">&#127922; Random</button>
+            <button class="mode-btn" data-mode="category">&#128193; By Category</button>
+            <button class="mode-btn" data-mode="tagged">&#128278; Tagged Only</button>
+        </div>
+
+        <!-- Category pills (shown in category mode) -->
+        <div class="category-bar" id="categoryBar" style="display:none;">
+            <button class="cat-pill active" data-cat="all">All <span class="pill-count">(40)</span></button>
+            <button class="cat-pill" data-cat="domain1">Domain 1: Business Value <span class="pill-count">(16)</span></button>
+            <button class="cat-pill" data-cat="domain2">Domain 2: AI Apps &amp; Services <span class="pill-count">(16)</span></button>
+            <button class="cat-pill" data-cat="domain3">Domain 3: Implementation <span class="pill-count">(8)</span></button>
+        </div>
+
+        <!-- Progress -->
+        <div class="progress-row">
+            <span id="progressLabel">1 / 40</span>
+            <div class="progress-bar-track">
+                <div class="progress-bar-fill" id="progressFill" style="width:2.5%"></div>
+            </div>
+        </div>
+
+        <!-- Flashcard -->
+        <div class="flashcard-container" id="flashcardContainer">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-face flashcard-front">
+                    <span class="flashcard-tag-icon" id="tagIconFront" title="Tag this card">&#128278;</span>
+                    <div class="flashcard-domain" id="domainFront"></div>
+                    <div class="flashcard-number" id="numberFront"></div>
+                    <div class="flashcard-text" id="questionText"></div>
+                    <div class="flashcard-hint">Click or press Space to flip</div>
+                </div>
+                <div class="flashcard-face flashcard-back">
+                    <span class="flashcard-tag-icon" id="tagIconBack" title="Tag this card">&#128278;</span>
+                    <div class="flashcard-domain" id="domainBack"></div>
+                    <div class="flashcard-number" id="numberBack"></div>
+                    <div class="flashcard-text" id="answerText"></div>
+                    <div class="flashcard-hint">Click or press Space for next card</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-row">
+            <button class="ctrl-btn" id="prevBtn">&#9664; Previous</button>
+            <button class="ctrl-btn tag-btn" id="tagBtn">&#128278; Tag</button>
+            <button class="ctrl-btn" id="nextBtn">Next &#9654;</button>
+        </div>
+
+        <div class="keyboard-hints">
+            <kbd>&larr;</kbd> Previous &nbsp; <kbd>Space</kbd> Flip &nbsp;
+            <kbd>&rarr;</kbd> Next &nbsp; <kbd>T</kbd> Tag
+        </div>
+
+        <!-- Tagged cards list -->
+        <div class="tagged-section" id="taggedSection">
+            <h3>&#128278; Tagged Cards</h3>
+            <ul class="tagged-list" id="taggedList">
+                <li class="empty-tagged">No cards tagged yet. Tag cards you want to revisit.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        /* ============================================================
+           FLASHCARD DATA
+           ============================================================ */
+        const FLASHCARDS = [
+            { id: 1, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is generative AI?", a: "AI that creates new content (text, images, code, audio) by predicting the next token based on patterns learned from large datasets." },
+            { id: 2, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "How does generative AI differ from discriminative AI?", a: "Generative AI creates new content.\nDiscriminative AI classifies or categorizes existing data." },
+            { id: 3, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is a pretrained model?", a: "A model trained on broad general data (e.g., GPT-4) that can perform many tasks without additional training." },
+            { id: 4, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "When should you fine-tune a model?", a: "When you need specialized vocabulary, consistent tone, or higher domain accuracy — and prompting alone isn't enough." },
+            { id: 5, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is prompt engineering?", a: "The practice of crafting inputs to guide AI toward better outputs — without retraining the model." },
+            { id: 6, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "Name 3 prompt engineering techniques.", a: "Zero-shot — no examples provided\nFew-shot — include example prompts\nChain-of-thought — step-by-step reasoning" },
+            { id: 7, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is RAG (Retrieval-Augmented Generation)?", a: "Retrieves relevant documents and uses them to ground the AI's response — reducing hallucinations and improving accuracy." },
+            { id: 8, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is a token?", a: "The basic unit AI models process (~¾ of a word).\nAI pricing is based on tokens consumed (input + output)." },
+            { id: 9, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What are the main GenAI cost drivers?", a: "Token usage, model size/capability, frequency of use, and compute resources." },
+            { id: 10, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is an AI hallucination?", a: "When AI generates a confident but factually incorrect or fabricated response.\nMitigated by RAG, grounding, and human review." },
+            { id: 11, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What is bias in AI?", a: "Systematic unfairness in outputs from biased training data.\nCan lead to discriminatory or unrepresentative results." },
+            { id: 12, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "Why does data quality matter?", a: "\u201cGarbage in, garbage out.\u201d\nPoor or biased data leads to unreliable AI outputs. Clean, representative data is essential." },
+            { id: 13, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What are key AI security concerns?", a: "Application security, data security, authentication/access control, and protection against prompt injection." },
+            { id: 14, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "When does GenAI add the MOST value?", a: "Repetitive text tasks, summarization, drafting, Q&A over large documents, and code assistance." },
+            { id: 15, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "When does GenAI add LESS value?", a: "Precise calculations, real-time data without grounding, tasks requiring 100% accuracy, and highly regulated decisions." },
+            { id: 16, domain: "domain1", domainLabel: "Domain 1 — Business Value of Generative AI", q: "What are the stages of the ML lifecycle?", a: "Data Collection → Preparation → Model Training → Evaluation → Deployment → Monitoring" },
+            { id: 17, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Microsoft 365 Copilot?", a: "An AI assistant embedded in M365 apps (Word, Excel, PowerPoint, Outlook, Teams) powered by org data via Microsoft Graph." },
+            { id: 18, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Copilot Chat?", a: "A standalone Copilot experience (web + mobile) using web data or — in Work mode — your org's emails, files, and meetings." },
+            { id: 19, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What can Copilot do in Word?", a: "Draft documents, rewrite content, summarize long documents, and adjust tone." },
+            { id: 20, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What can Copilot do in Excel?", a: "Analyze data, generate formulas, create charts, highlight trends, and answer natural language questions." },
+            { id: 21, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What can Copilot do in Teams?", a: "Summarize meetings, generate recaps and action items, catch up on missed discussions, and draft messages." },
+            { id: 22, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is the Researcher agent?", a: "A deep research Copilot agent performing multi-step reasoning across web and org data — ideal for competitive analysis." },
+            { id: 23, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is the Analyst agent?", a: "A Copilot agent with a code interpreter that processes data, runs calculations, and generates visualizations from files." },
+            { id: 24, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Microsoft Copilot Studio?", a: "A low-code platform for building custom AI agents and chatbots that connect to external data and integrate with M365." },
+            { id: 25, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Microsoft Graph?", a: "The API that connects Copilot to org data — emails, files, calendar, Teams chats — enabling grounded responses." },
+            { id: 26, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "Explain Buy vs. Extend vs. Build.", a: "Buy = M365 Copilot as-is (fastest time to value)\nExtend = customize via Copilot Studio\nBuild = custom apps via Azure AI / Foundry (most flexible)" },
+            { id: 27, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Microsoft Foundry?", a: "Microsoft's enterprise AI platform for building, deploying, and managing custom AI — includes model catalog, Azure AI Search, and safety tools." },
+            { id: 28, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Azure AI Search?", a: "A cloud service with vector and semantic search used to retrieve relevant content for RAG-based AI solutions." },
+            { id: 29, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Azure OpenAI Service?", a: "A managed Azure service providing enterprise access to OpenAI models (GPT-4, DALL-E) with built-in security and compliance." },
+            { id: 30, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "When would you choose Copilot Studio over M365 Copilot?", a: "When you need custom workflows, external data connections (CRM, ERP), or tailored conversational experiences." },
+            { id: 31, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "What is Azure AI Vision used for?", a: "Image analysis, object detection, OCR (optical character recognition), and visual content processing at scale." },
+            { id: 32, domain: "domain2", domainLabel: "Domain 2 — Microsoft AI Apps & Services", q: "Match AI solution to business need.", a: "Summarize docs → M365 Copilot\nCustom chatbot → Copilot Studio\nProcess images → Azure AI Vision\nSearch knowledge base → Azure AI Search\nCustom enterprise AI → Microsoft Foundry" },
+            { id: 33, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What are the 6 Responsible AI principles?", a: "Fairness | Reliability & Safety | Privacy & Security\nInclusiveness | Transparency | Accountability" },
+            { id: 34, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "Define Fairness.", a: "AI systems treat all people equitably — avoiding differential impact based on race, gender, age, or other protected characteristics." },
+            { id: 35, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "Define Transparency.", a: "People should understand how AI makes decisions — through explainability, clear documentation, and disclosure of AI use." },
+            { id: 36, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "Define Accountability.", a: "People are responsible for AI systems — with clear governance, oversight mechanisms, and ways to address harm." },
+            { id: 37, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What is an AI Council?", a: "A cross-functional body (IT, legal, HR, business) that guides AI strategy, sets policies, and ensures responsible deployment." },
+            { id: 38, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What are common barriers to AI adoption?", a: "Resistance to change, lack of training, unclear ROI, data quality concerns, security fears, and no executive sponsorship." },
+            { id: 39, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What is an AI Champions program?", a: "A network of early adopters who model AI use, train peers, surface feedback, and drive grassroots adoption across the org." },
+            { id: 40, domain: "domain3", domainLabel: "Domain 3 — Implementation & Adoption", q: "What are M365 Copilot licensing models?", a: "Included with certain M365 SKUs, monthly per-user subscription, or pay-as-you-go.\nAzure AI uses per-API-call or prepaid commitment pricing." }
+        ];
+
+        /* ============================================================
+           STATE
+           ============================================================ */
+        const STORAGE_KEY = "ab731-tagged";
+        let tagged = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
+        let mode = "random";          // random | category | tagged
+        let activeCat = "all";
+        let deck = [];                // current working deck (indices into FLASHCARDS)
+        let deckPos = 0;
+        let isFlipped = false;
+
+        /* ── DOM refs ── */
+        const flashcard = document.getElementById("flashcard");
+        const flashcardContainer = document.getElementById("flashcardContainer");
+        const questionText = document.getElementById("questionText");
+        const answerText = document.getElementById("answerText");
+        const domainFront = document.getElementById("domainFront");
+        const domainBack = document.getElementById("domainBack");
+        const numberFront = document.getElementById("numberFront");
+        const numberBack = document.getElementById("numberBack");
+        const tagIconFront = document.getElementById("tagIconFront");
+        const tagIconBack = document.getElementById("tagIconBack");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const tagBtn = document.getElementById("tagBtn");
+        const progressLabel = document.getElementById("progressLabel");
+        const progressFill = document.getElementById("progressFill");
+        const categoryBar = document.getElementById("categoryBar");
+        const taggedList = document.getElementById("taggedList");
+
+        /* ============================================================
+           DECK BUILDING
+           ============================================================ */
+        function buildDeck() {
+            let indices;
+            if (mode === "tagged") {
+                indices = [...tagged].sort((a, b) => a - b).map(id => id - 1);
+            } else if (mode === "category" && activeCat !== "all") {
+                indices = FLASHCARDS
+                    .map((c, i) => c.domain === activeCat ? i : -1)
+                    .filter(i => i >= 0);
+            } else {
+                indices = FLASHCARDS.map((_, i) => i);
+            }
+
+            if (mode === "random") {
+                // Fisher–Yates shuffle
+                for (let i = indices.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [indices[i], indices[j]] = [indices[j], indices[i]];
+                }
+            }
+
+            deck = indices;
+            deckPos = 0;
+        }
+
+        /* ============================================================
+           RENDER
+           ============================================================ */
+        function renderCard() {
+            if (deck.length === 0) {
+                questionText.textContent = mode === "tagged"
+                    ? "No tagged cards. Tag some cards first!"
+                    : "No cards in this category.";
+                answerText.textContent = "";
+                domainFront.textContent = "";
+                domainBack.textContent = "";
+                numberFront.textContent = "";
+                numberBack.textContent = "";
+                updateTagIcon();
+                updateProgress();
+                updateControls();
+                return;
+            }
+
+            const card = FLASHCARDS[deck[deckPos]];
+            questionText.textContent = card.q;
+            answerText.innerHTML = card.a.replace(/\n/g, "<br>");
+            domainFront.textContent = card.domainLabel;
+            domainBack.textContent = card.domainLabel;
+            numberFront.textContent = "Q" + String(card.id).padStart(2, "0");
+            numberBack.textContent = "A" + String(card.id).padStart(2, "0");
+
+            // Reset flip
+            isFlipped = false;
+            flashcard.classList.remove("flipped");
+
+            updateTagIcon();
+            updateProgress();
+            updateControls();
+        }
+
+        function updateProgress() {
+            if (deck.length === 0) {
+                progressLabel.textContent = "0 / 0";
+                progressFill.style.width = "0%";
+                return;
+            }
+            progressLabel.textContent = `${deckPos + 1} / ${deck.length}`;
+            progressFill.style.width = `${((deckPos + 1) / deck.length) * 100}%`;
+        }
+
+        function updateControls() {
+            prevBtn.disabled = deckPos <= 0 || deck.length === 0;
+            nextBtn.disabled = deckPos >= deck.length - 1 || deck.length === 0;
+            if (deck.length === 0) {
+                tagBtn.disabled = true;
+                return;
+            }
+            tagBtn.disabled = false;
+            const card = FLASHCARDS[deck[deckPos]];
+            const isTagged = tagged.has(card.id);
+            tagBtn.classList.toggle("tagged", isTagged);
+            tagBtn.innerHTML = isTagged ? "&#128278; Untagged" : "&#128278; Tag";
+        }
+
+        function updateTagIcon() {
+            if (deck.length === 0) {
+                tagIconFront.classList.remove("tagged");
+                tagIconBack.classList.remove("tagged");
+                return;
+            }
+            const card = FLASHCARDS[deck[deckPos]];
+            const isTagged = tagged.has(card.id);
+            tagIconFront.classList.toggle("tagged", isTagged);
+            tagIconBack.classList.toggle("tagged", isTagged);
+        }
+
+        function saveTagged() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify([...tagged]));
+        }
+
+        function renderTaggedList() {
+            if (tagged.size === 0) {
+                taggedList.innerHTML = '<li class="empty-tagged">No cards tagged yet. Tag cards you want to revisit.</li>';
+                return;
+            }
+            const sorted = [...tagged].sort((a, b) => a - b);
+            taggedList.innerHTML = sorted.map(id => {
+                const card = FLASHCARDS[id - 1];
+                return `<li class="tagged-item" data-id="${id}">
+                    <span class="tagged-item-num">Q${String(id).padStart(2, "0")}</span>
+                    <span class="tagged-item-text">${card.q}</span>
+                    <span class="tagged-item-remove" data-remove="${id}" title="Remove tag">&times;</span>
+                </li>`;
+            }).join("");
+        }
+
+        /* ============================================================
+           ACTIONS
+           ============================================================ */
+        function flipCard() {
+            if (deck.length === 0) return;
+            isFlipped = !isFlipped;
+            flashcard.classList.toggle("flipped", isFlipped);
+        }
+
+        function goNext() {
+            if (deckPos < deck.length - 1) {
+                deckPos++;
+                renderCard();
+            }
+        }
+
+        function goPrev() {
+            if (deckPos > 0) {
+                deckPos--;
+                renderCard();
+            }
+        }
+
+        function toggleTag() {
+            if (deck.length === 0) return;
+            const card = FLASHCARDS[deck[deckPos]];
+            if (tagged.has(card.id)) {
+                tagged.delete(card.id);
+            } else {
+                tagged.add(card.id);
+            }
+            saveTagged();
+            updateTagIcon();
+            updateControls();
+            renderTaggedList();
+        }
+
+        function jumpToCard(id) {
+            // Find card in current deck
+            const idx = deck.indexOf(id - 1);
+            if (idx >= 0) {
+                deckPos = idx;
+                renderCard();
+                flashcardContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+                return;
+            }
+            // If not in current deck, switch to 'all' category mode
+            mode = "category";
+            activeCat = "all";
+            setModeUI();
+            buildDeck();
+            const newIdx = deck.indexOf(id - 1);
+            if (newIdx >= 0) deckPos = newIdx;
+            renderCard();
+            flashcardContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        function setModeUI() {
+            document.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
+            document.querySelector(`[data-mode="${mode}"]`).classList.add("active");
+            categoryBar.style.display = mode === "category" ? "flex" : "none";
+        }
+
+        /* ============================================================
+           EVENT LISTENERS
+           ============================================================ */
+
+        // Flip on card click
+        flashcardContainer.addEventListener("click", (e) => {
+            if (e.target.classList.contains("flashcard-tag-icon")) return;
+            flipCard();
+        });
+
+        // Tag icons on card
+        tagIconFront.addEventListener("click", (e) => { e.stopPropagation(); toggleTag(); });
+        tagIconBack.addEventListener("click", (e) => { e.stopPropagation(); toggleTag(); });
+
+        // Control buttons
+        prevBtn.addEventListener("click", goPrev);
+        nextBtn.addEventListener("click", goNext);
+        tagBtn.addEventListener("click", toggleTag);
+
+        // Mode buttons
+        document.querySelectorAll(".mode-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                mode = btn.dataset.mode;
+                setModeUI();
+                buildDeck();
+                renderCard();
+                renderTaggedList();
+            });
+        });
+
+        // Category pills
+        document.querySelectorAll(".cat-pill").forEach(pill => {
+            pill.addEventListener("click", () => {
+                activeCat = pill.dataset.cat;
+                document.querySelectorAll(".cat-pill").forEach(p => p.classList.remove("active"));
+                pill.classList.add("active");
+                buildDeck();
+                renderCard();
+            });
+        });
+
+        // Tagged list clicks
+        taggedList.addEventListener("click", (e) => {
+            const removeBtn = e.target.closest("[data-remove]");
+            if (removeBtn) {
+                const id = parseInt(removeBtn.dataset.remove);
+                tagged.delete(id);
+                saveTagged();
+                renderTaggedList();
+                updateTagIcon();
+                updateControls();
+                // If in tagged mode, rebuild deck
+                if (mode === "tagged") {
+                    buildDeck();
+                    if (deckPos >= deck.length) deckPos = Math.max(0, deck.length - 1);
+                    renderCard();
+                }
+                return;
+            }
+            const item = e.target.closest(".tagged-item");
+            if (item) {
+                jumpToCard(parseInt(item.dataset.id));
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener("keydown", (e) => {
+            if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+            switch (e.key) {
+                case " ":
+                    e.preventDefault();
+                    if (isFlipped && deckPos < deck.length - 1) {
+                        goNext();
+                    } else {
+                        flipCard();
+                    }
+                    break;
+                case "ArrowRight":
+                    e.preventDefault();
+                    goNext();
+                    break;
+                case "ArrowLeft":
+                    e.preventDefault();
+                    goPrev();
+                    break;
+                case "t":
+                case "T":
+                    e.preventDefault();
+                    toggleTag();
+                    break;
+            }
+        });
+
+        /* ============================================================
+           INIT
+           ============================================================ */
+        buildDeck();
+        renderCard();
+        renderTaggedList();
+    </script>
+
+</body>
+
+</html>
