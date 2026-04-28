@@ -576,7 +576,7 @@ img {
 }
 
 /* ============================================================
-   TABLE OF CONTENTS (optional sidebar-style)
+   TABLE OF CONTENTS (legacy — kept for pages that still use it)
    ============================================================ */
 .toc {
     background: var(--bg-card);
@@ -614,6 +614,63 @@ img {
 
 .toc a:hover {
     color: var(--purple-deep);
+}
+
+/* ============================================================
+   STICKY QUICK-NAV BAR
+   ============================================================ */
+.quick-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-light);
+    padding: var(--sp-3) var(--sp-4);
+    margin: 0 calc(-1 * var(--sp-6));
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.quick-nav a {
+    font-size: .78rem;
+    padding: var(--sp-1) var(--sp-3);
+    border-radius: 12px;
+    background: var(--bg-page);
+    color: var(--purple-deep);
+    text-decoration: none;
+    border: 1px solid var(--border-light);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.quick-nav a:hover {
+    background: var(--purple-mid);
+    color: #fff;
+    border-color: var(--purple-mid);
+    text-decoration: none;
+}
+
+.quick-nav .nav-spacer {
+    flex: 1;
+}
+
+.quick-nav button {
+    font-size: .75rem;
+    padding: var(--sp-1) var(--sp-3);
+    border-radius: 12px;
+    background: var(--purple-deep);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: var(--font-sans);
+}
+
+.quick-nav button:hover {
+    background: var(--purple-mid);
 }
 
 /* ============================================================
@@ -690,9 +747,18 @@ img {
         display: none;
     }
 
+    .quick-nav {
+        position: static;
+        display: none;
+    }
+
     .section-card {
         box-shadow: none;
         border: 1px solid #ccc;
         break-inside: avoid;
+    }
+
+    .section-card.collapsed .section-card-body {
+        display: block !important;
     }
 }

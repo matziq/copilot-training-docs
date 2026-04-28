@@ -2,6 +2,7 @@
    INTERACTIVE BEHAVIORS  v3
    - Expand / Collapse cards
    - Copy Prompt to clipboard (whitespace-normalized)
+   - Sticky quick-nav: auto-expand target section on click
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-action="collapse-all"]').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.section-card').forEach(c => c.classList.add('collapsed'));
+        });
+    });
+
+    /* ---- Quick-nav: auto-expand target section on click ---- */
+    document.querySelectorAll('.quick-nav a').forEach(a => {
+        a.addEventListener('click', () => {
+            const id = a.getAttribute('href');
+            if (!id || !id.startsWith('#')) return;
+            const target = document.getElementById(id.slice(1));
+            if (!target) return;
+            // Expand all collapsed section-cards within the target
+            target.querySelectorAll('.section-card.collapsed').forEach(c => c.classList.remove('collapsed'));
+            // If the target itself is a section-card, expand it
+            if (target.classList.contains('section-card') && target.classList.contains('collapsed')) {
+                target.classList.remove('collapsed');
+            }
         });
     });
 
