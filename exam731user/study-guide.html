@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AB-731 Study Guide &mdash; AI Transformation Leader</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-exam731.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <header class="page-hero">
+            <h1>AB-731 Study Guide</h1>
+            <p class="subtitle">
+                AI Transformation Leader &mdash; Strategic preparation tips, service mappings,
+                decision frameworks, and last-minute revision checklists.
+            </p>
+        </header>
+
+        <nav class="quick-nav" id="quick-nav">
+            <a href="#mindset">Mindset</a>
+            <a href="#foundry">Foundry Services</a>
+            <a href="#outcomes">Outcome-First</a>
+            <a href="#boundaries">Copilot vs Azure AI</a>
+            <a href="#prebuilt-custom">Prebuilt vs Custom</a>
+            <a href="#cost">Cost Models</a>
+            <a href="#scale">Scale AI</a>
+            <a href="#readiness">Readiness Drivers</a>
+            <a href="#responsible-ai">Responsible AI</a>
+            <a href="#traps">Top Traps</a>
+            <a href="#checklist">48-Hr Checklist</a>
+            <a href="#decision-tree">Decision Tree</a>
+            <a href="#final">Final Reminders</a>
+            <span class="nav-spacer"></span>
+            <button type="button" data-action="expand-all">Expand all</button>
+            <button type="button" data-action="collapse-all">Collapse all</button>
+        </nav>
+
+        <!-- ============================================================
+             MINDSET RESET
+             ============================================================ -->
+        <section id="mindset">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#129504;</div>
+                <div class="module-meta">
+                    <div class="module-label">Foundation</div>
+                    <h2 class="module-title">Reset Your Expectations</h2>
+                </div>
+            </div>
+
+            <p class="module-intro">
+                AB-731 isn't a memorization test. It's a <strong>judgment test</strong> about
+                deploying AI responsibly at scale. If you prepare outcome-first and understand
+                tool boundaries clearly, you'll walk in calm.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-tip">Key Insight</span>
+                    <span class="section-card-title">What This Exam Actually Tests</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>The AI Transformation Leader (AB-731) is positioned as a business-leader
+                        certification. There's no coding required. But don't mistake "no coding"
+                        for "lightweight."</p>
+
+                    <p class="mt-4"><strong>This exam tests whether you can:</strong></p>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Translate strategy into <strong>measurable AI outcomes</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Choose the <strong>right Microsoft AI tool</strong> for the right scenario</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Build <strong>governance</strong> into deployment decisions</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Understand <strong>cost tradeoffs</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text">Design <strong>operating structures</strong> that actually scale</span>
+                        </li>
+                    </ol>
+
+                    <div class="power-move">
+                        <span class="pm-icon">&#128161;</span>
+                        <strong>Bottom line:</strong> It rewards <em>operational maturity</em>,
+                        not feature memorization. Prepare like someone who will actually own AI
+                        rollout in an enterprise — that's the right mindset.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             AZURE AI FOUNDRY
+             ============================================================ -->
+        <section id="foundry">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#9881;</div>
+                <div class="module-meta">
+                    <div class="module-label">Service Mapping</div>
+                    <h2 class="module-title">The Azure AI Foundry Reality</h2>
+                </div>
+            </div>
+
+            <p class="module-intro">
+                Azure AI Foundry appears frequently enough that treating it as optional would be
+                a mistake. You should be comfortable mapping scenarios to services quickly.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Reference</span>
+                    <span class="section-card-title">Service &rarr; Scenario Mapping</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>What It Does</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Document Intelligence</strong></td>
+                                <td>Structured extraction from forms and PDFs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vision</strong></td>
+                                <td>Image and video analysis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Speech</strong></td>
+                                <td>Transcription and voice interfaces</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Content Safety</strong></td>
+                                <td>Moderation and risk filtering</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Azure AI Search</strong></td>
+                                <td>Enterprise search over internal data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Language Services</strong></td>
+                                <td>NLP, sentiment, classification</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Translator</strong></td>
+                                <td>Multilingual support</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-tip">Tip</span>
+                    <span class="section-card-title">Trigger Phrases to Watch For</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>If You See&hellip;</th>
+                                <th>Think&hellip;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>"Unstructured documents"</td>
+                                <td>Document Intelligence</td>
+                            </tr>
+                            <tr>
+                                <td>"Visual inspection"</td>
+                                <td>Vision</td>
+                            </tr>
+                            <tr>
+                                <td>"Call center transcription"</td>
+                                <td>Speech</td>
+                            </tr>
+                            <tr>
+                                <td>"Content moderation"</td>
+                                <td>Content Safety</td>
+                            </tr>
+                            <tr>
+                                <td>"Enterprise search"</td>
+                                <td>Azure AI Search</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="power-move">
+                        <span class="pm-icon">&#9889;</span>
+                        <strong>Drill these mappings until they feel automatic.</strong>
+                        If you hesitate between services, it costs time and confidence.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             OUTCOME-FIRST THINKING
+             ============================================================ -->
+        <section id="outcomes">
+
+            <div class="module-header">
+                <div class="module-icon green">&#127919;</div>
+                <div class="module-meta">
+                    <div class="module-label">Mental Model</div>
+                    <h2 class="module-title">Outcome-First Thinking</h2>
+                </div>
+            </div>
+
+            <p class="module-intro">
+                The most helpful shift you can make: <strong>stop starting with tools.
+                Start with outcomes.</strong>
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Framework</span>
+                    <span class="section-card-title">The Sequence the Exam Favors</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Business outcome</strong> &mdash; What's the measurable goal?</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Use case</strong> &mdash; What scenario supports that goal?</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Tool</strong> &mdash; Which Microsoft AI service fits?</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Governance</strong> &mdash; What guardrails are needed?</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Adoption</strong> &mdash; How will people actually use it?</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text"><strong>Measurement</strong> &mdash; How will you prove value?</span>
+                        </li>
+                    </ol>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">Example</div>
+                        If a question says <em>"Reduce resolution time by 30% while maintaining
+                        compliance"</em> &mdash; your brain should map:<br>
+                        <strong>Clear measurable outcome</strong> &rarr; Compliance constraint &rarr;
+                        Appropriate tool &rarr; Governance guardrails &rarr; Defined KPIs
+                    </div>
+
+                    <div class="power-move">
+                        <span class="pm-icon">&#128161;</span>
+                        The strongest answers are rarely the most technically ambitious.
+                        They are the most <strong>operationally responsible</strong>.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             COPILOT VS AZURE AI
+             ============================================================ -->
+        <section id="boundaries">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128736;</div>
+                <div class="module-meta">
+                    <div class="module-label">Know the Boundaries</div>
+                    <h2 class="module-title">Copilot vs Azure AI</h2>
+                </div>
+            </div>
+
+            <p class="module-intro">
+                This is one of the biggest clarity areas. Know which product family handles which job.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Reference</span>
+                    <span class="section-card-title">The Clean Mental Map</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>What It's For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Microsoft 365 Copilot</strong></td>
+                                <td>Productivity inside Word, Excel, Outlook, Teams</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dynamics 365 Copilot</strong></td>
+                                <td>CRM / ERP workflows</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GitHub Copilot</strong></td>
+                                <td>Developer productivity</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Power Platform Copilot</strong></td>
+                                <td>Low-code automation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Copilot Studio</strong></td>
+                                <td>Custom agents without heavy development</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Azure AI / Azure OpenAI / Foundry</strong></td>
+                                <td>Custom enterprise AI applications</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-tip">Tip</span>
+                    <span class="section-card-title">Trigger Phrases &mdash; Which Direction?</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);">
+                        <div class="callout callout-note" style="margin:0;">
+                            <div class="callout-title">&#8594; Pushes Toward Azure AI</div>
+                            <ul style="list-style:none;padding:0;margin:var(--sp-2) 0 0;">
+                                <li>&#9654; "Strict compliance requirements"</li>
+                                <li>&#9654; "Proprietary systems"</li>
+                                <li>&#9654; "Advanced customization"</li>
+                                <li>&#9654; "Full control over deployment"</li>
+                            </ul>
+                        </div>
+                        <div class="callout callout-tip" style="margin:0;">
+                            <div class="callout-title">&#8594; Pushes Toward M365 Copilot</div>
+                            <ul style="list-style:none;padding:0;margin:var(--sp-2) 0 0;">
+                                <li>&#9654; "Embedded in Office workflow"</li>
+                                <li>&#9654; "Rapid productivity improvement"</li>
+                                <li>&#9654; "Broad employee adoption"</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="power-move mt-6">
+                        <span class="pm-icon">&#128161;</span>
+                        When in doubt, choose the solution that aligns best with the
+                        <strong>business context</strong> &mdash; not the most powerful tool.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             PREBUILT VS CUSTOM
+             ============================================================ -->
+        <section id="prebuilt-custom">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#9878;</div>
+                <div class="module-meta">
+                    <div class="module-label">Judgment Call</div>
+                    <h2 class="module-title">Prebuilt vs Custom</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Comparison</span>
+                    <span class="section-card-title">When to Use Which</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);">
+                        <div>
+                            <p><strong>Prebuilt (e.g., M365 Copilot)</strong></p>
+                            <ul style="list-style:disc;padding-left:1.2rem;margin-top:var(--sp-2);">
+                                <li>Faster deployment</li>
+                                <li>Lower operational burden</li>
+                                <li>Standard governance</li>
+                                <li>Good for broad productivity</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>Custom (Azure AI)</strong></p>
+                            <ul style="list-style:disc;padding-left:1.2rem;margin-top:var(--sp-2);">
+                                <li>Greater control</li>
+                                <li>Better for unique processes</li>
+                                <li>Required for strict compliance</li>
+                                <li>Higher operational complexity</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="callout callout-warning mt-6">
+                        <div class="callout-title">&#9888;&#65039; Common Mistake</div>
+                        Assuming custom is "better." The exam often favors
+                        <strong>quick wins first</strong> &mdash; then scaling strategically.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             COST MODELS
+             ============================================================ -->
+        <section id="cost">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128176;</div>
+                <div class="module-meta">
+                    <div class="module-label">Don't Mix These Up</div>
+                    <h2 class="module-title">Cost Models</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Comparison</span>
+                    <span class="section-card-title">Subscription vs Consumption</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>M365 Copilot</th>
+                                <th>Azure AI / Azure OpenAI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Billing</strong></td>
+                                <td>Subscription-based per user</td>
+                                <td>Consumption-based</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cost Pattern</strong></td>
+                                <td>Predictable monthly cost</td>
+                                <td>Variable &mdash; token-driven (input + output)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Inference</strong></td>
+                                <td>Bundled</td>
+                                <td>Pay per use</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Infrastructure</strong></td>
+                                <td>Microsoft-managed</td>
+                                <td>Customer-managed integration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-tip mt-4">
+                        <div class="callout-title">Quick Rule</div>
+                        <strong>Predictable budgeting</strong> &rarr; think subscription.<br>
+                        <strong>Pay-for-what-you-use / variable scaling</strong> &rarr; think consumption.
+                    </div>
+
+                    <div class="callout callout-note mt-4">
+                        <div class="callout-title">About Fine-Tuning</div>
+                        Fine-tuning can significantly increase cost due to training compute and
+                        ongoing maintenance. It's not automatically "the most expensive," but it
+                        introduces additional complexity and spend.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             SCALE AI FRAMEWORK
+             ============================================================ -->
+        <section id="scale">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128200;</div>
+                <div class="module-meta">
+                    <div class="module-label">Order Matters</div>
+                    <h2 class="module-title">Scale AI Framework</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Sequence</span>
+                    <span class="section-card-title">The Progression You Must Know</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Educate</strong> and align leadership</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Assess</strong> AI readiness</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Design</strong> operating model (CoE, guardrails, landing zones)</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Prioritize and scale</strong> use cases</span>
+                        </li>
+                    </ol>
+
+                    <div class="callout callout-warning mt-4">
+                        <div class="callout-title">&#9888;&#65039; Common Trap</div>
+                        Designing operating models <strong>before</strong> assessing readiness.
+                        Always assess maturity before architecture.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             AI READINESS DRIVERS
+             ============================================================ -->
+        <section id="readiness">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128270;</div>
+                <div class="module-meta">
+                    <div class="module-label">Five Drivers</div>
+                    <h2 class="module-title">AI Readiness Drivers</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Memorize</span>
+                    <span class="section-card-title">The Five Drivers</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Business Strategy</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Technology &amp; Data Strategy</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>AI Strategy &amp; Experience</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Organization &amp; Culture</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>AI Governance</strong></span>
+                        </li>
+                    </ol>
+
+                    <div class="power-move mt-4">
+                        <span class="pm-icon">&#128161;</span>
+                        The exam <strong>strongly favors starting with business alignment</strong>
+                        &mdash; not tools.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             RESPONSIBLE AI
+             ============================================================ -->
+        <section id="responsible-ai">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128737;</div>
+                <div class="module-meta">
+                    <div class="module-label">Non-Negotiable</div>
+                    <h2 class="module-title">Responsible AI</h2>
+                </div>
+            </div>
+
+            <p class="module-intro">
+                Know the six principles &mdash; but more importantly, recognize when
+                human oversight is required.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Principles</span>
+                    <span class="section-card-title">The Six Responsible AI Principles</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Fairness</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Reliability &amp; Safety</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Privacy &amp; Security</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Inclusiveness</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text"><strong>Transparency</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text"><strong>Accountability</strong></span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-advanced">Critical</span>
+                    <span class="section-card-title">When Human Oversight Is Required</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>If the question involves any of these, human oversight is required:</strong></p>
+                    <ul style="list-style:disc;padding-left:1.4rem;margin:var(--sp-4) 0;line-height:2;">
+                        <li>Loan approvals</li>
+                        <li>Healthcare decisions</li>
+                        <li>Hiring</li>
+                        <li>Education access</li>
+                        <li>Law enforcement</li>
+                        <li>Denial of services</li>
+                    </ul>
+
+                    <p class="mt-4"><strong>Strong answers include:</strong></p>
+                    <ul style="list-style:disc;padding-left:1.4rem;margin:var(--sp-2) 0;line-height:2;">
+                        <li>Continuous monitoring</li>
+                        <li>Clear RACI</li>
+                        <li>Documented mitigations</li>
+                        <li>Escalation processes</li>
+                        <li>Feedback loops</li>
+                    </ul>
+
+                    <div class="power-move mt-4">
+                        <span class="pm-icon">&#128161;</span>
+                        Responsible AI is <strong>embedded governance</strong> &mdash; not a
+                        one-time checkbox.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             TOP TRAPS
+             ============================================================ -->
+        <section id="traps">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9888;</div>
+                <div class="module-meta">
+                    <div class="module-label">Avoid These</div>
+                    <h2 class="module-title">Top Traps</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-advanced">Warning</span>
+                    <span class="section-card-title">Common Mistakes on the Exam</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul style="list-style:none;padding:0;margin:0;">
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#10060; Jumping to tools before defining outcomes
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#10060; Confusing Copilot Studio with Azure AI
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#10060; Mixing subscription and token pricing
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#10060; Skipping readiness assessment
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#10060; Ignoring governance in high-risk scenarios
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#10060; Assuming AI is owned by IT alone
+                        </li>
+                        <li style="padding:var(--sp-3) 0;font-size:.95rem;">
+                            &#10060; Forgetting KPI baselines
+                        </li>
+                    </ul>
+
+                    <div class="callout callout-tip mt-6">
+                        <div class="callout-title">When Unsure, Prefer Answers That Include</div>
+                        <strong>Governance</strong> &bull; <strong>Measurement</strong> &bull;
+                        <strong>Cross-functional ownership</strong><br>
+                        These patterns appear consistently strong.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             48-HOUR CHECKLIST
+             ============================================================ -->
+        <section id="checklist">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128203;</div>
+                <div class="module-meta">
+                    <div class="module-label">Last-Minute</div>
+                    <h2 class="module-title">48-Hour Revision Checklist</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Checklist</span>
+                    <span class="section-card-title">Focus On These Before Exam Day</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul style="list-style:none;padding:0;margin:0;">
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#9745; Foundry service mapping (Document Intelligence, Vision, Speech, Content Safety, Search, Language, Translator)
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#9745; Copilot vs Azure AI boundaries
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#9745; Subscription vs consumption differences
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#9745; Scale AI sequence (Educate &rarr; Assess &rarr; Design &rarr; Build)
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#9745; Five readiness drivers
+                        </li>
+                        <li style="padding:var(--sp-3) 0;border-bottom:1px solid var(--border-light);font-size:.95rem;">
+                            &#9745; Responsible AI trigger scenarios
+                        </li>
+                        <li style="padding:var(--sp-3) 0;font-size:.95rem;">
+                            &#9745; Outcome-first thinking
+                        </li>
+                    </ul>
+
+                    <div class="callout callout-warning mt-4">
+                        <div class="callout-title">&#9888;&#65039; Don't Over-Study</div>
+                        Avoid going too deep into technical internals. This exam tests
+                        <strong>judgment</strong>, not architecture detail.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DECISION TREE
+             ============================================================ -->
+        <section id="decision-tree">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#128736;</div>
+                <div class="module-meta">
+                    <div class="module-label">When You Feel Stuck</div>
+                    <h2 class="module-title">Simple Decision Tree</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-tip">Quick Ref</span>
+                    <span class="section-card-title">Ask Yourself These Questions</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>If the scenario is about&hellip;</th>
+                                <th>Think&hellip;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Office productivity?</td>
+                                <td><strong>Microsoft 365 Copilot</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Custom apps or strict compliance?</td>
+                                <td><strong>Azure AI</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Document extraction?</td>
+                                <td><strong>Document Intelligence</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Image / video?</td>
+                                <td><strong>Vision</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Speech / voice?</td>
+                                <td><strong>Speech</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Ethics or sensitive decisions?</td>
+                                <td><strong>Add human oversight</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Scaling?</td>
+                                <td><strong>Think CoE and governance</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="power-move mt-4">
+                        <span class="pm-icon">&#128161;</span>
+                        And always: <strong>start with outcomes</strong>.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             FINAL REMINDERS
+             ============================================================ -->
+        <section id="final">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#127942;</div>
+                <div class="module-meta">
+                    <div class="module-label">Walk-In Ready</div>
+                    <h2 class="module-title">Final Reminders</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">60-Second</span>
+                    <span class="section-card-title">Quick-Fire Reference Card</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Remember</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Foundry</strong></td>
+                                <td>Documents, Vision, Speech, Safety, Search, Language</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Scale AI</strong></td>
+                                <td>Educate &rarr; Assess &rarr; Design &rarr; Build</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5 Drivers</strong></td>
+                                <td>Business &rarr; Tech &rarr; AI &rarr; Org &rarr; Governance</td>
+                            </tr>
+                            <tr>
+                                <td><strong>M365</strong></td>
+                                <td>Subscription productivity</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Azure AI</strong></td>
+                                <td>Custom + consumption</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sensitive use</strong></td>
+                                <td>Human oversight &mdash; always</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-tip">Mantra</span>
+                    <span class="section-card-title">One Sentence to Carry Into the Exam</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="prompt-block">
+                        <div class="prompt-box" style="text-align:center;font-size:1.05rem;">
+                            "If it's Office, think Copilot. If it's custom or compliance-heavy,
+                            think Azure AI. Always start with business outcomes. Always include governance."
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-agent">&#127808; Good Luck</span>
+                    <span class="section-card-title">Walk In With an Executive Mindset</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Start with the business outcome, define the measurable KPI, and then
+                        work forward to the right tool, the right governance guardrails, and a
+                        realistic adoption path.</p>
+
+                    <div class="power-move mt-4">
+                        <span class="pm-icon">&#128161;</span>
+                        If you're stuck between two answers, choose the one that is most
+                        <strong>operational and responsible</strong> &mdash; clear value,
+                        clear ownership, clear controls, and clear measurement.
+                    </div>
+
+                    <p class="mt-6" style="font-style:italic;color:var(--text-muted);">
+                        You've done the preparation. Now it's about staying calm, reading each
+                        scenario slowly, and selecting the "most correct" leadership move.
+                    </p>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../js/main.v3.js"></script>
+
+</body>
+
+</html>
