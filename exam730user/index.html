@@ -293,6 +293,74 @@
             color: var(--red-step);
         }
 
+        /* ── Mark for review ── */
+        .qmap-dot.flagged {
+            border-color: var(--orange-step);
+            position: relative;
+        }
+
+        .qmap-dot.flagged::after {
+            content: "\25B2";
+            position: absolute;
+            top: -6px;
+            right: -4px;
+            font-size: 8px;
+            color: var(--orange-step);
+            line-height: 1;
+        }
+
+        .mark-review-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .45rem 1rem;
+            border: 2px solid var(--orange-step);
+            border-radius: var(--radius-md);
+            background: transparent;
+            color: var(--orange-step);
+            font-weight: 600;
+            font-size: .85rem;
+            cursor: pointer;
+            transition: all .2s;
+            font-family: var(--font-sans);
+        }
+
+        .mark-review-btn:hover {
+            background: #fdf3e7;
+        }
+
+        .mark-review-btn.flagged {
+            background: var(--orange-step);
+            color: #fff;
+        }
+
+        .mark-review-btn.flagged:hover {
+            background: #cf6d11;
+        }
+
+        .flagged-summary {
+            font-size: .82rem;
+            color: var(--orange-step);
+            font-weight: 600;
+            cursor: pointer;
+            padding: .3rem .6rem;
+            border-radius: var(--radius-sm);
+            transition: background .15s;
+        }
+
+        .flagged-summary:hover {
+            background: #fdf3e7;
+        }
+
+        .flagged-summary .flag-count {
+            background: var(--orange-step);
+            color: #fff;
+            padding: 1px 6px;
+            border-radius: 8px;
+            font-size: .72rem;
+            margin-left: 4px;
+        }
+
         /* ── Results ── */
         .results-panel {
             display: none;
@@ -519,7 +587,7 @@
 <body>
 
     <div class="page-wrapper">
-<header class="page-hero">
+        <header class="page-hero">
             <h1>AB-730 Practice Exam</h1>
             <p class="subtitle">
                 AI Business Professional &mdash; 40 multiple-choice questions across 3 domains.
@@ -557,6 +625,8 @@
             <!-- Navigation -->
             <div class="nav-row">
                 <button class="nav-btn" id="prevBtn" disabled>&#9664; Previous</button>
+                <button class="mark-review-btn" id="markReviewBtn" title="Flag this question to revisit before submitting">&#9873; Mark for Review</button>
+                <span class="flagged-summary" id="flaggedSummary" style="display:none" title="Click to jump to next flagged question">&#9873; Flagged: <span class="flag-count" id="flagCount">0</span></span>
                 <button class="nav-btn" id="nextBtn">Next &#9654;</button>
                 <button class="nav-btn submit" id="submitBtn" style="display:none">&#9989; Submit Exam</button>
             </div>
@@ -648,6 +718,7 @@
            ============================================================ */
         let currentQ = 0;
         let answers = new Array(QUESTIONS.length).fill(null);
+        let flagged = new Array(QUESTIONS.length).fill(false);
         let shuffledOptions = [];
         let correctIndices = [];
         let examStartTime = Date.now();
@@ -670,6 +741,9 @@
         const progressFill = document.getElementById("progressFill");
         const qmap = document.getElementById("qmap");
         const examTimer = document.getElementById("examTimer");
+        const markReviewBtn = document.getElementById("markReviewBtn");
+        const flaggedSummary = document.getElementById("flaggedSummary");
+        const flagCount = document.getElementById("flagCount");
 
         /* ============================================================
            INIT
@@ -678,6 +752,7 @@
             shuffledOptions = [];
             correctIndices = [];
             answers = new Array(QUESTIONS.length).fill(null);
+            flagged = new Array(QUESTIONS.length).fill(false);
             currentQ = 0;
             submitted = false;
             examStartTime = Date.now();
@@ -734,9 +809,10 @@
 
         function updateQMap() {
             qmap.querySelectorAll(".qmap-dot").forEach((dot, i) => {
-                dot.classList.remove("current", "answered");
+                dot.classList.remove("current", "answered", "flagged");
                 if (i === currentQ) dot.classList.add("current");
                 else if (answers[i] !== null) dot.classList.add("answered");
+                if (flagged[i]) dot.classList.add("flagged");
             });
         }
 
@@ -792,9 +868,12 @@
             if (submitted) {
                 nextBtn.style.display = currentQ < QUESTIONS.length - 1 ? "" : "none";
                 submitBtn.style.display = "none";
+                markReviewBtn.style.display = "none";
+                flaggedSummary.style.display = "none";
             } else {
                 nextBtn.style.display = currentQ < QUESTIONS.length - 1 ? "" : "none";
                 submitBtn.style.display = answered === QUESTIONS.length ? "" : "none";
+                updateFlagUI();
             }
 
             updateQMap();
@@ -804,6 +883,45 @@
             if (submitted) return;
             answers[currentQ] = idx;
             renderQuestion();
+        }
+
+        /* ============================================================
+           MARK FOR REVIEW
+           ============================================================ */
+        function toggleFlag() {
+            if (submitted) return;
+            flagged[currentQ] = !flagged[currentQ];
+            updateFlagUI();
+            updateQMap();
+        }
+
+        function updateFlagUI() {
+            const isFlagged = flagged[currentQ];
+            markReviewBtn.classList.toggle("flagged", isFlagged);
+            markReviewBtn.innerHTML = isFlagged ? "&#9873; Marked" : "&#9873; Mark for Review";
+            markReviewBtn.style.display = "";
+
+            const total = flagged.filter(Boolean).length;
+            if (total > 0) {
+                flaggedSummary.style.display = "";
+                flagCount.textContent = total;
+            } else {
+                flaggedSummary.style.display = "none";
+            }
+        }
+
+        function jumpToNextFlagged() {
+            const total = flagged.filter(Boolean).length;
+            if (total === 0) return;
+            // Search forward from current, wrapping around
+            for (let offset = 1; offset <= QUESTIONS.length; offset++) {
+                const idx = (currentQ + offset) % QUESTIONS.length;
+                if (flagged[idx]) {
+                    currentQ = idx;
+                    renderQuestion();
+                    return;
+                }
+            }
         }
 
         /* ============================================================
@@ -901,6 +1019,8 @@
            ============================================================ */
         prevBtn.addEventListener("click", () => { if (currentQ > 0) { currentQ--; renderQuestion(); } });
         nextBtn.addEventListener("click", () => { if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); } });
+        markReviewBtn.addEventListener("click", toggleFlag);
+        flaggedSummary.addEventListener("click", jumpToNextFlagged);
         submitBtn.addEventListener("click", submitExam);
         document.getElementById("retakeBtn").addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -923,6 +1043,7 @@
                 case "b": case "B": e.preventDefault(); selectOption(1); break;
                 case "c": case "C": e.preventDefault(); selectOption(2); break;
                 case "d": case "D": e.preventDefault(); selectOption(3); break;
+                case "m": case "M": e.preventDefault(); toggleFlag(); break;
             }
         });
 
