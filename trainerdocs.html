@@ -150,6 +150,43 @@
             align-items: center;
             gap: var(--sp-1);
         }
+
+        /* ── Category filter bar ── */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--sp-2);
+            margin-top: var(--sp-6);
+            justify-content: center;
+        }
+
+        .filter-pill {
+            padding: .4rem 1rem;
+            border-radius: 999px;
+            border: 1.5px solid var(--border-light);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: .82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .15s;
+            font-family: var(--font-sans);
+        }
+
+        .filter-pill:hover {
+            border-color: var(--purple-mid);
+            color: var(--purple-mid);
+        }
+
+        .filter-pill.active {
+            background: var(--purple-mid);
+            border-color: var(--purple-mid);
+            color: #fff;
+        }
+
+        .training-card.hidden-by-filter {
+            display: none;
+        }
     </style>
 </head>
 
@@ -165,10 +202,18 @@
             </p>
         </header>
 
-        <div class="training-grid">
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="copilot-chat">Copilot Chat</button>
+            <button class="filter-pill" data-filter="agents">Agents</button>
+            <button class="filter-pill" data-filter="prompting">Prompting</button>
+            <button class="filter-pill" data-filter="m365-copilot">M365 Copilot</button>
+        </div>
+
+        <div class="training-grid" id="trainingGrid">
 
             <!-- ── Training 1 (Trainer) ── -->
-            <a href="Trainer/training1/" class="training-card purple">
+            <a href="Trainer/training1/" class="training-card purple" data-category="m365-copilot">
                 <div class="training-card-icon">&#128188;</div>
                 <span class="training-card-label">Training 1 &middot; Trainer</span>
                 <div class="training-card-title">Sales Master Class &mdash; Trainer Guide</div>
@@ -183,7 +228,7 @@
             </a>
 
             <!-- ── Training 2 (Trainer) ── -->
-            <a href="Trainer/training2/" class="training-card green">
+            <a href="Trainer/training2/" class="training-card green" data-category="agents">
                 <div class="training-card-icon">&#129302;</div>
                 <span class="training-card-label">Training 2 &middot; Trainer</span>
                 <div class="training-card-title">Agent Revolution &mdash; Trainer Guide</div>
@@ -198,7 +243,7 @@
             </a>
 
             <!-- ── Training 3 (Trainer) ── -->
-            <a href="Trainer/training3/" class="training-card orange">
+            <a href="Trainer/training3/" class="training-card orange" data-category="copilot-chat">
                 <div class="training-card-icon">&#128172;</div>
                 <span class="training-card-label">Training 3 &middot; Trainer</span>
                 <div class="training-card-title">Copilot Chat for All &mdash; Trainer Guide</div>
@@ -213,7 +258,7 @@
             </a>
 
             <!-- ── Training 4 (Trainer) ── -->
-            <a href="Trainer/training4/" class="training-card red">
+            <a href="Trainer/training4/" class="training-card red" data-category="m365-copilot">
                 <div class="training-card-icon">&#128227;</div>
                 <span class="training-card-label">Training 4 &middot; Trainer</span>
                 <div class="training-card-title">Marketing AI Workshop &mdash; Trainer Guide</div>
@@ -229,7 +274,7 @@
             </a>
 
             <!-- ── Training 5 (Trainer) ── -->
-            <a href="Trainer/training5/" class="training-card orange">
+            <a href="Trainer/training5/" class="training-card orange" data-category="m365-copilot">
                 <div class="training-card-icon">&#9889;</div>
                 <span class="training-card-label">Training 5 &middot; Trainer</span>
                 <div class="training-card-title">M365 Copilot Hands-on Training for Power Users &mdash; Trainer Guide
@@ -245,7 +290,7 @@
             </a>
 
             <!-- ── Training 6 (Trainer) ── -->
-            <a href="Trainer/training6/" class="training-card teal">
+            <a href="Trainer/training6/" class="training-card teal" data-category="copilot-chat">
                 <div class="training-card-icon">&#128172;</div>
                 <span class="training-card-label">Training 6 &middot; Trainer</span>
                 <div class="training-card-title">Copilot Chat Training &mdash; Trainer Guide</div>
@@ -261,7 +306,7 @@
             </a>
 
             <!-- ── Training 7 (Trainer) ── -->
-            <a href="Trainer/training7/" class="training-card green">
+            <a href="Trainer/training7/" class="training-card green" data-category="agents">
                 <div class="training-card-icon">&#129302;</div>
                 <span class="training-card-label">Training 7 &middot; Trainer</span>
                 <div class="training-card-title">AI Agents Immersion Workshop &mdash; Trainer Guide</div>
@@ -276,7 +321,7 @@
             </a>
 
             <!-- ── Training 8 (Trainer) ── -->
-            <a href="Trainer/training8/" class="training-card purple">
+            <a href="Trainer/training8/" class="training-card purple" data-category="copilot-chat">
                 <div class="training-card-icon">&#128172;</div>
                 <span class="training-card-label">Training 8 &middot; Trainer</span>
                 <div class="training-card-title">Copilot Chat Training &mdash; Trainer Guide</div>
@@ -292,7 +337,7 @@
             </a>
 
             <!-- ── Training 9 (Trainer) ── -->
-            <a href="Trainer/training9/" class="training-card red">
+            <a href="Trainer/training9/" class="training-card red" data-category="agents">
                 <div class="training-card-icon">&#128640;</div>
                 <span class="training-card-label">Training 9 &middot; Trainer</span>
                 <div class="training-card-title">Copilot Agents Hack-a-Thon &mdash; Facilitator Guide</div>
@@ -308,7 +353,7 @@
             </a>
 
             <!-- ── Training 10 (Trainer) ── -->
-            <a href="Trainer/training10/" class="training-card purple">
+            <a href="Trainer/training10/" class="training-card purple" data-category="prompting">
                 <div class="training-card-icon">&#10024;</div>
                 <span class="training-card-label">Training 10 &middot; Trainer</span>
                 <div class="training-card-title">Copilot Prompt-a-thon Masterclass &mdash; Trainer Guide</div>
@@ -324,7 +369,7 @@
             </a>
 
             <!-- ── Training 11 (Trainer) ── -->
-            <a href="Trainer/training11/" class="training-card green">
+            <a href="Trainer/training11/" class="training-card green" data-category="prompting">
                 <div class="training-card-icon">&#10024;</div>
                 <span class="training-card-label">Training 11 &middot; Trainer</span>
                 <div class="training-card-title">M365 Copilot Promptathon &mdash; Advanced &mdash; Trainer Guide</div>
@@ -340,7 +385,7 @@
             </a>
 
             <!-- ── Training 12 (Trainer) ── -->
-            <a href="Trainer/training12/" class="training-card orange">
+            <a href="Trainer/training12/" class="training-card orange" data-category="prompting">
                 <div class="training-card-icon">&#10024;</div>
                 <span class="training-card-label">Training 12 &middot; Trainer</span>
                 <div class="training-card-title">M365 Copilot Promptathon &mdash; Standard &mdash; Trainer Guide</div>
@@ -356,7 +401,7 @@
             </a>
 
             <!-- ── Training 13 (Trainer) ── -->
-            <a href="Trainer/training13/" class="training-card blue">
+            <a href="Trainer/training13/" class="training-card blue" data-category="copilot-chat">
                 <div class="training-card-icon">&#9889;</div>
                 <span class="training-card-label">Training 13 &middot; Trainer</span>
                 <div class="training-card-title">Copilot Chat &mdash; Your IT Superpower &mdash; Trainer Guide</div>
@@ -373,7 +418,7 @@
             </a>
 
             <!-- ── Training 14 (Trainer) ── -->
-            <a href="Trainer/training14/" class="training-card purple">
+            <a href="Trainer/training14/" class="training-card purple" data-category="m365-copilot">
                 <div class="training-card-icon">&#9878;</div>
                 <span class="training-card-label">Training 14 &middot; Trainer</span>
                 <div class="training-card-title">Copilot Immersion &mdash; Legal &mdash; Trainer Guide</div>
@@ -389,7 +434,7 @@
             </a>
 
             <!-- ── Training 15 (Trainer) ── -->
-            <a href="Trainer/training15/" class="training-card teal">
+            <a href="Trainer/training15/" class="training-card teal" data-category="agents">
                 <div class="training-card-icon">&#129302;</div>
                 <span class="training-card-label">Training 15 &middot; Trainer</span>
                 <div class="training-card-title">Copilot Studio Training &mdash; Trainer Guide</div>
@@ -408,6 +453,23 @@
         </div>
 
     </div>
+
+    <script>
+        document.getElementById('filterBar').addEventListener('click', function (e) {
+            var pill = e.target.closest('.filter-pill');
+            if (!pill) return;
+            var filter = pill.dataset.filter;
+            document.querySelectorAll('.filter-pill').forEach(function (p) { p.classList.remove('active'); });
+            pill.classList.add('active');
+            document.querySelectorAll('.training-card').forEach(function (card) {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden-by-filter');
+                } else {
+                    card.classList.add('hidden-by-filter');
+                }
+            });
+        });
+    </script>
 
 </body>
 

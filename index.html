@@ -150,6 +150,43 @@
             align-items: center;
             gap: var(--sp-1);
         }
+
+        /* ── Category filter bar ── */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--sp-2);
+            margin-top: var(--sp-6);
+            justify-content: center;
+        }
+
+        .filter-pill {
+            padding: .4rem 1rem;
+            border-radius: 999px;
+            border: 1.5px solid var(--border-light);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: .82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .15s;
+            font-family: var(--font-sans);
+        }
+
+        .filter-pill:hover {
+            border-color: var(--purple-mid);
+            color: var(--purple-mid);
+        }
+
+        .filter-pill.active {
+            background: var(--purple-mid);
+            border-color: var(--purple-mid);
+            color: #fff;
+        }
+
+        .training-card.hidden-by-filter {
+            display: none;
+        }
     </style>
 </head>
 
@@ -165,10 +202,19 @@
             </p>
         </header>
 
-        <div class="training-grid">
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="copilot-chat">Copilot Chat</button>
+            <button class="filter-pill" data-filter="agents">Agents</button>
+            <button class="filter-pill" data-filter="prompting">Prompting</button>
+            <button class="filter-pill" data-filter="m365-copilot">M365 Copilot</button>
+            <button class="filter-pill" data-filter="exam-prep">Exam Prep</button>
+        </div>
+
+        <div class="training-grid" id="trainingGrid">
 
             <!-- ── Training 1 (User) ── -->
-            <a href="training1user/" class="training-card blue">
+            <a href="training1user/" class="training-card blue" data-category="m365-copilot">
                 <div class="training-card-icon">&#128100;</div>
                 <span class="training-card-label">Training 1 &middot; User Guide</span>
                 <div class="training-card-title">Sales Master Class &mdash; User Guide</div>
@@ -183,7 +229,7 @@
             </a>
 
             <!-- ── Training 2 (User) ── -->
-            <a href="training2user/" class="training-card blue">
+            <a href="training2user/" class="training-card blue" data-category="agents">
                 <div class="training-card-icon">&#128100;</div>
                 <span class="training-card-label">Training 2 &middot; User Guide</span>
                 <div class="training-card-title">Agent Revolution &mdash; User Guide</div>
@@ -198,7 +244,7 @@
             </a>
 
             <!-- ── Training 3 (User) ── -->
-            <a href="training3user/" class="training-card teal">
+            <a href="training3user/" class="training-card teal" data-category="copilot-chat">
                 <div class="training-card-icon">&#128100;</div>
                 <span class="training-card-label">Training 3 &middot; User Guide</span>
                 <div class="training-card-title">Copilot Chat for All &mdash; User Guide</div>
@@ -213,7 +259,7 @@
             </a>
 
             <!-- ── Training 5 (User) ── -->
-            <a href="training5user/" class="training-card blue">
+            <a href="training5user/" class="training-card blue" data-category="m365-copilot">
                 <div class="training-card-icon">&#128100;</div>
                 <span class="training-card-label">Training 5 &middot; User Guide</span>
                 <div class="training-card-title">M365 Copilot Hands-on Training for Power Users &mdash; User Guide</div>
@@ -228,7 +274,7 @@
             </a>
 
             <!-- ── Training 6 (User) ── -->
-            <a href="training6user/" class="training-card teal">
+            <a href="training6user/" class="training-card teal" data-category="copilot-chat">
                 <div class="training-card-icon">&#128172;</div>
                 <span class="training-card-label">Training 6 &middot; User Guide</span>
                 <div class="training-card-title">Copilot Chat Training &mdash; User Guide</div>
@@ -244,7 +290,7 @@
             </a>
 
             <!-- ── Training 7 (User) ── -->
-            <a href="training7user/" class="training-card green">
+            <a href="training7user/" class="training-card green" data-category="agents">
                 <div class="training-card-icon">&#129302;</div>
                 <span class="training-card-label">Training 7 &middot; User Guide</span>
                 <div class="training-card-title">AI Agents Immersion Workshop &mdash; User Guide</div>
@@ -260,7 +306,7 @@
             </a>
 
             <!-- ── Training 8 (User) ── -->
-            <a href="training8user/" class="training-card purple">
+            <a href="training8user/" class="training-card purple" data-category="copilot-chat">
                 <div class="training-card-icon">&#128172;</div>
                 <span class="training-card-label">Training 8 &middot; User Guide</span>
                 <div class="training-card-title">Copilot Chat Training &mdash; User Guide</div>
@@ -276,7 +322,7 @@
             </a>
 
             <!-- ── Training 9 (User) ── -->
-            <a href="training9user/" class="training-card red">
+            <a href="training9user/" class="training-card red" data-category="agents">
                 <div class="training-card-icon">&#128640;</div>
                 <span class="training-card-label">Training 9 &middot; User Guide</span>
                 <div class="training-card-title">Copilot Agents Hack-a-Thon &mdash; Participant Workbook</div>
@@ -292,7 +338,7 @@
             </a>
 
             <!-- ── Training 11 (User) ── -->
-            <a href="training11user/" class="training-card green">
+            <a href="training11user/" class="training-card green" data-category="prompting">
                 <div class="training-card-icon">&#10024;</div>
                 <span class="training-card-label">Training 11 &middot; User Guide</span>
                 <div class="training-card-title">M365 Copilot Promptathon &mdash; Advanced &mdash; User Guide</div>
@@ -308,7 +354,7 @@
             </a>
 
             <!-- ── Training 12 (User) ── -->
-            <a href="training12user/" class="training-card orange">
+            <a href="training12user/" class="training-card orange" data-category="prompting">
                 <div class="training-card-icon">&#10024;</div>
                 <span class="training-card-label">Training 12 &middot; User Guide</span>
                 <div class="training-card-title">M365 Copilot Promptathon &mdash; Standard &mdash; User Guide</div>
@@ -324,7 +370,7 @@
             </a>
 
             <!-- ── Training 13 (User) ── -->
-            <a href="training13user/" class="training-card blue">
+            <a href="training13user/" class="training-card blue" data-category="copilot-chat">
                 <div class="training-card-icon">&#9889;</div>
                 <span class="training-card-label">Training 13 &middot; User Guide</span>
                 <div class="training-card-title">Copilot Chat &mdash; Your IT Superpower &mdash; User Guide</div>
@@ -341,7 +387,7 @@
             </a>
 
             <!-- ── Training 14 (User) ── -->
-            <a href="training14user/" class="training-card purple">
+            <a href="training14user/" class="training-card purple" data-category="m365-copilot">
                 <div class="training-card-icon">&#9878;</div>
                 <span class="training-card-label">Training 14 &middot; User Guide</span>
                 <div class="training-card-title">Copilot Immersion &mdash; Legal &mdash; User Guide</div>
@@ -357,7 +403,7 @@
             </a>
 
             <!-- ── Training 15 (User) ── -->
-            <a href="training15user/" class="training-card teal">
+            <a href="training15user/" class="training-card teal" data-category="agents">
                 <div class="training-card-icon">&#129302;</div>
                 <span class="training-card-label">Training 15 &middot; User Guide</span>
                 <div class="training-card-title">Copilot Studio Training &mdash; User Guide</div>
@@ -373,7 +419,7 @@
             </a>
 
             <!-- ── Flashcards AB-731 (User) ── -->
-            <a href="flashcards731user/" class="training-card orange">
+            <a href="flashcards731user/" class="training-card orange" data-category="exam-prep">
                 <div class="training-card-icon">&#127183;</div>
                 <span class="training-card-label">AB-731 &middot; Exam Prep</span>
                 <div class="training-card-title">AI Transformation Leader &mdash; Flashcards</div>
@@ -389,7 +435,7 @@
             </a>
 
             <!-- ── Flashcards AB-730 (User) ── -->
-            <a href="flashcards730user/" class="training-card blue">
+            <a href="flashcards730user/" class="training-card blue" data-category="exam-prep">
                 <div class="training-card-icon">&#127183;</div>
                 <span class="training-card-label">AB-730 &middot; Exam Prep</span>
                 <div class="training-card-title">AI Business Professional &mdash; Flashcards</div>
@@ -405,7 +451,7 @@
             </a>
 
             <!-- ── Practice Exam AB-731 ── -->
-            <a href="exam731user/" class="training-card red">
+            <a href="exam731user/" class="training-card red" data-category="exam-prep">
                 <div class="training-card-icon">&#128220;</div>
                 <span class="training-card-label">AB-731 &middot; Practice Exam</span>
                 <div class="training-card-title">AI Transformation Leader &mdash; Practice Exam</div>
@@ -421,7 +467,7 @@
             </a>
 
             <!-- ── Practice Exam AB-730 ── -->
-            <a href="exam730user/" class="training-card green">
+            <a href="exam730user/" class="training-card green" data-category="exam-prep">
                 <div class="training-card-icon">&#128220;</div>
                 <span class="training-card-label">AB-730 &middot; Practice Exam</span>
                 <div class="training-card-title">AI Business Professional &mdash; Practice Exam</div>
@@ -437,3 +483,26 @@
             </a>
 
         </div>
+
+    </div>
+
+    <script>
+        document.getElementById('filterBar').addEventListener('click', function (e) {
+            var pill = e.target.closest('.filter-pill');
+            if (!pill) return;
+            var filter = pill.dataset.filter;
+            document.querySelectorAll('.filter-pill').forEach(function (p) { p.classList.remove('active'); });
+            pill.classList.add('active');
+            document.querySelectorAll('.training-card').forEach(function (card) {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden-by-filter');
+                } else {
+                    card.classList.add('hidden-by-filter');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
