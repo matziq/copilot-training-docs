@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Agent Revolution — Demo Pack (Copilot Chat, Non-Licensed)</title>
+  <style>
+    :root {
+      --ms-blue: #0078D4;
+      --ms-dark: #243A5E;
+      --ms-purple: #5C2D91;
+      --ms-bg: #F3F2F1;
+      --ms-card: #FFFFFF;
+      --ms-text: #201F1E;
+      --ms-muted: #605E5C;
+      --ms-border: #EDEBE9;
+      --ms-success: #107C10;
+      --ms-warn: #C19C00;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--ms-bg);
+      color: var(--ms-text);
+      line-height: 1.5;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--ms-dark) 0%, var(--ms-blue) 100%);
+      color: white;
+      padding: 32px 40px;
+    }
+
+    header h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-top: 10px;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 24px 60px;
+    }
+
+    .toc {
+      background: var(--ms-card);
+      border: 1px solid var(--ms-border);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin: 24px 0;
+    }
+
+    .toc h2 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--ms-dark);
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .toc a {
+      color: var(--ms-blue);
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    .agenda {
+      background: #FFF8E7;
+      border-left: 4px solid var(--ms-warn);
+      padding: 14px 18px;
+      border-radius: 4px;
+      margin: 16px 0;
+    }
+
+    .alert {
+      background: #FFF4CE;
+      border-left: 4px solid var(--ms-warn);
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    section {
+      background: var(--ms-card);
+      border: 1px solid var(--ms-border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+
+    section h2 {
+      margin: 0 0 4px;
+      color: var(--ms-dark);
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section .lede {
+      color: var(--ms-muted);
+      margin: 0 0 18px;
+      font-size: 14px;
+    }
+
+    .demo {
+      border: 1px solid var(--ms-border);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin: 14px 0;
+      background: #FAFAFA;
+    }
+
+    .demo h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      color: var(--ms-purple);
+    }
+
+    .demo .scenario {
+      color: var(--ms-muted);
+      font-size: 13px;
+      margin: 0 0 10px;
+    }
+
+    .prompt-wrap {
+      position: relative;
+      margin: 8px 0;
+    }
+
+    .prompt-block {
+      background: #FFFFFF;
+      border: 1px solid var(--ms-border);
+      border-radius: 4px;
+      padding: 14px 100px 14px 16px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 13.5px;
+      white-space: pre-wrap;
+      color: #1B1A19;
+      min-height: 44px;
+    }
+
+    .prompt-block pre {
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--ms-blue);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+    }
+
+    .copy-btn:hover {
+      background: #106EBE;
+    }
+
+    .copy-btn.copied {
+      background: var(--ms-success);
+    }
+
+    .talking-points {
+      background: #EFF6FC;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: var(--ms-dark);
+    }
+
+    .talking-points strong {
+      color: var(--ms-blue);
+    }
+
+    .build-step {
+      border-left: 3px solid var(--ms-blue);
+      padding: 4px 0 4px 14px;
+      margin: 14px 0;
+    }
+
+    .build-step h4 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      color: var(--ms-dark);
+    }
+
+    .field-label {
+      font-weight: 600;
+      color: var(--ms-dark);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 12px 0 4px;
+    }
+
+    ul.checklist {
+      padding-left: 20px;
+      margin: 6px 0;
+    }
+
+    ul.checklist li {
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    .pill-free {
+      background: #DFF6DD;
+      color: var(--ms-success);
+    }
+
+    .pill-license {
+      background: #FED9CC;
+      color: #A4262C;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--ms-muted);
+      font-size: 12px;
+      padding: 20px;
+    }
+
+    @media print {
+      .copy-btn {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      section,
+      .toc {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+
+      .prompt-block {
+        padding-right: 16px;
+      }
+
+      /* Always expand sections when printing */
+      section.collapsed .section-body {
+        display: block !important;
+      }
+
+      .quick-nav {
+        position: static !important;
+      }
+    }
+
+    /* ============ Sticky quick-jump nav ============ */
+    .quick-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--ms-card);
+      border-bottom: 1px solid var(--ms-border);
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .quick-nav a {
+      font-size: 12.5px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: var(--ms-bg);
+      color: var(--ms-dark);
+      text-decoration: none;
+      border: 1px solid var(--ms-border);
+    }
+
+    .quick-nav a:hover {
+      background: var(--ms-blue);
+      color: white;
+      border-color: var(--ms-blue);
+    }
+
+    .quick-nav .nav-spacer {
+      flex: 1;
+    }
+
+    .quick-nav button {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: var(--ms-dark);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .quick-nav button:hover {
+      background: var(--ms-blue);
+    }
+
+    /* ============ Collapsible sections ============ */
+    section>h2 {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    section>h2::before {
+      content: "▾";
+      display: inline-block;
+      margin-right: 8px;
+      transition: transform 0.15s;
+      color: var(--ms-blue);
+      font-size: 16px;
+    }
+
+    section.collapsed>h2::before {
+      transform: rotate(-90deg);
+    }
+
+    section.collapsed>h2 {
+      margin-bottom: 0;
+    }
+
+    section.collapsed .section-body {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Agent Revolution: Elevate Your Productivity with Copilot Agents</h1>
+    <p>Demo Pack for Non-Licensed Copilot Chat (Basic) Users — Retail &amp; CPG Audience</p>
+    <span class="badge">100 attendees</span>
+    <span class="badge">60 minutes</span>
+    <span class="badge">No Microsoft 365 Copilot license required</span>
+    <span class="badge">Verified April 28, 2026</span>
+  </header>
+
+  <nav class="quick-nav" id="quick-nav">
+    <a href="#agenda">Agenda</a>
+    <a href="#context">Context</a>
+    <a href="#prompt-coach">Prompt Coach</a>
+    <a href="#idea-coach">Idea Coach</a>
+    <a href="#build-agent">Build Agent</a>
+    <a href="#test-agent">Test Prompts</a>
+    <a href="#wrap">Wrap-Up</a>
+    <span class="nav-spacer"></span>
+    <button type="button" id="expand-all">Expand all</button>
+    <button type="button" id="collapse-all">Collapse all</button>
+  </nav>
+
+  <main>
+
+    <div class="toc">
+      <h2>Session Contents</h2>
+      <ol>
+        <li><a href="#agenda">60-Minute Agenda</a></li>
+        <li><a href="#context">Quick Context: Copilot Chat (Basic) vs. M365 Copilot (Premium)</a></li>
+        <li><a href="#prompt-coach">Demo Block 1 — Prompt Coach (4 demos)</a></li>
+        <li><a href="#idea-coach">Demo Block 2 — Idea Coach (4 demos)</a></li>
+        <li><a href="#build-agent">Demo Block 3 — Build &quot;The Hype Lab&quot; Declarative Agent</a></li>
+        <li><a href="#test-agent">Test Prompts for The Hype Lab</a></li>
+        <li><a href="#wrap">Wrap-Up Talking Points</a></li>
+      </ol>
+    </div>
+
+    <div class="alert">
+      <strong>Heads up to share with the class:</strong> On <strong>May 16, 2026</strong>, Microsoft is removing or
+      throttling Copilot Chat (Basic) inside Word, Excel, PowerPoint, and OneNote for unlicensed users (full removal in
+      tenants over 300 users; throttled "standard access" in tenants under 300). <strong>copilot.microsoft.com and
+        microsoft365.com/chat remain fully available</strong> for the agent experiences in this training.
+    </div>
+
+    <section id="agenda">
+      <h2>60-Minute Agenda</h2>
+      <div class="agenda">
+        <strong>0:00 – 0:05 (5 min)</strong> &mdash; Welcome &amp; framing: "Agents = AI on a job description"<br>
+        <strong>0:05 – 0:10 (5 min)</strong> &mdash; The free landscape: Copilot Chat (Basic), Agent Store, what's free
+        vs. licensed<br>
+        <strong>0:10 – 0:25 (15 min)</strong> &mdash; <strong>Prompt Coach</strong> live demos (×4) + GCES framework<br>
+        <strong>0:25 – 0:40 (15 min)</strong> &mdash; <strong>Idea Coach</strong> live demos (×4) for retail/CPG
+        scenarios<br>
+        <strong>0:40 – 0:55 (15 min)</strong> &mdash; Build &quot;The Hype Lab&quot; declarative agent live in Agent
+        Builder<br>
+        <strong>0:55 – 1:00 (5 min)</strong> &mdash; Q&amp;A, share your agent, what to try Monday morning
+      </div>
+    </section>
+
+    <section id="context">
+      <h2>Quick Context for the Class (Slide 2 / 3)</h2>
+      <p class="lede">Set this foundation before any demo &mdash; it eliminates the #1 question: "Can I do this without
+        paying $30/mo?"</p>
+
+      <div class="field-label">Where to go (no license)</div>
+      <ul class="checklist">
+        <li><strong>copilot.microsoft.com</strong> &mdash; sign in with your work account, click <strong>Agents</strong>
+          in the left rail</li>
+        <li><strong>microsoft365.com/chat</strong> &mdash; same experience inside the M365 home</li>
+      </ul>
+
+      <div class="field-label">What's free in Copilot Chat (Basic)</div>
+      <ul class="checklist">
+        <li><span class="pill pill-free">FREE</span> Microsoft-built agents: <strong>Prompt Coach</strong>, <strong>Idea
+            Coach</strong>, Researcher (preview), Writing Coach, Learning Coach, and others in the Agent Store</li>
+        <li><span class="pill pill-free">FREE</span> Build your own declarative agent in <strong>Agent Builder</strong>
+        </li>
+        <li><span class="pill pill-free">FREE</span> Knowledge: web search, scoped web search (up to 4 public URLs)</li>
+        <li><span class="pill pill-free">FREE</span> Capabilities: Code Interpreter, Image Generator</li>
+      </ul>
+
+      <div class="field-label">What requires a Microsoft 365 Copilot license</div>
+      <ul class="checklist">
+        <li><span class="pill pill-license">LICENSE</span> Grounding on your SharePoint, OneDrive, email, calendar,
+          Teams chats, and people directory</li>
+        <li><span class="pill pill-license">LICENSE</span> Embedded file content as agent knowledge</li>
+        <li><span class="pill pill-license">LICENSE</span> Copilot connectors to line-of-business systems</li>
+      </ul>
+    </section>
+
+    <!-- ============================== PROMPT COACH ============================== -->
+    <section id="prompt-coach">
+      <h2>Demo Block 1 &mdash; Prompt Coach <span class="pill pill-free">FREE</span></h2>
+      <p class="lede">Open Copilot Chat → <strong>Agents</strong> → search "Prompt Coach" (built by Microsoft). Teach
+        the GCES recipe: <strong>G</strong>oal · <strong>C</strong>ontext · <strong>E</strong>xpectations ·
+        <strong>S</strong>ources.
+      </p>
+
+      <!-- Demo 1.1 -->
+      <div class="demo">
+        <h3>Demo 1.1 &mdash; Rescue a vague prompt (category manager scenario)</h3>
+        <p class="scenario">Show the class a "before" everyone has written. Prompt Coach diagnoses what's missing and
+          rewrites it.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="p1">Copy</button>
+          <div class="prompt-block" id="p1">
+            <pre>Analyze my prompt and tell me what's missing, then rewrite it using best practices.
+
+My prompt: "Write a launch email for our new private-label snack."</pre>
+          </div>
+        </div>
+        <div class="talking-points">
+          <strong>What to point out live:</strong> Prompt Coach will flag missing audience, tone, length, channel, and
+          call-to-action. The rewritten version is what the class should screenshot &mdash; this <em>is</em> the
+          takeaway.
+        </div>
+      </div>
+
+      <!-- Demo 1.2 -->
+      <div class="demo">
+        <h3>Demo 1.2 &mdash; Build a prompt from scratch with GCES (CPG brand-team style)</h3>
+        <p class="scenario">Useful when the user has no draft yet. Coach builds the prompt with them.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="p2">Copy</button>
+          <div class="prompt-block" id="p2">
+            <pre>Help me build a high-quality prompt from scratch using the Goal, Context, Expectations, Sources framework.
+
+Job to be done: I need to summarize 30 customer-feedback comments about a new beverage flavor into themes, sentiment, and three recommended actions for the brand team.
+
+Walk me through each section, ask me what's missing, then give me the final prompt I can copy and paste into Copilot Chat.</pre>
+          </div>
+        </div>
+        <div class="talking-points">
+          <strong>Teaching moment:</strong> Coach will <em>interview</em> them. Tell the class to expect that &mdash;
+          it's the feature, not friction.
+        </div>
+      </div>
+
+      <!-- Demo 1.3 -->
+      <div class="demo">
+        <h3>Demo 1.3 &mdash; Compliance &amp; fairness check (competitive-claim scenario)</h3>
+        <p class="scenario">Demonstrates Prompt Coach's responsible-AI guardrail review &mdash; especially relevant in
+          regulated CPG categories.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="p3">Copy</button>
+          <div class="prompt-block" id="p3">
+            <pre>Review the prompt below for clarity, fairness, and responsible-AI concerns. Flag any wording that could lead to biased, misleading, or non-compliant output, and rewrite it to be neutral and evidence-based.
+
+Prompt to review: "Compare our running shoe to the top three competitors and explain why ours is the best choice for serious runners."</pre>
+          </div>
+        </div>
+        <div class="talking-points">
+          <strong>Why retail/CPG cares:</strong> Marketing copy and competitive claims are legal-review hot zones.
+          Prompt Coach catches superlatives and unsupported claims before they reach a draft.
+        </div>
+      </div>
+
+      <!-- Demo 1.4 -->
+      <div class="demo">
+        <h3>Demo 1.4 &mdash; Tailor a prompt to a retail role (everyone in the room)</h3>
+        <p class="scenario">Lets every attendee personalize what they just learned. Run this last so they leave with
+          their own custom prompt.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="p4">Copy</button>
+          <div class="prompt-block" id="p4">
+            <pre>Create three reusable prompts I can save and reuse weekly in my role as a [store ops manager].
+
+For each prompt:
+1. Name the use case in plain English
+2. Show the prompt in copy-paste form
+3. Note one thing I should swap out each time I use it
+
+Use the GCES framework. Make tone professional and concise.</pre>
+          </div>
+        </div>
+        <div class="talking-points">
+          <strong>Class activity:</strong> Give attendees 60 seconds to swap in their own role and run it. Ask 2&ndash;3
+          to share what came back.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== IDEA COACH ============================== -->
+    <section id="idea-coach">
+      <h2>Demo Block 2 &mdash; Idea Coach <span class="pill pill-free">FREE</span></h2>
+      <p class="lede">Open Copilot Chat → <strong>Agents</strong> → search "Idea Coach" (built by Microsoft). Frame it
+        as the <em>thinking partner</em> &mdash; it challenges ideas, not just generates them.</p>
+
+      <!-- Demo 2.1 -->
+      <div class="demo">
+        <h3>Demo 2.1 &mdash; Generate concepts (beverage flavor innovation)</h3>
+        <p class="scenario">Classic "I have a blank page" scenario. Idea Coach delivers structured concept lists, not
+          just a brain-dump.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="i1">Copy</button>
+          <div class="prompt-block" id="i1">
+            <pre>I'm planning summer 2026 limited-edition product concepts for a beverage brand targeting Gen Z and younger millennials in the U.S. market.
+
+Generate 8 concept directions. For each one, give me:
+- A working product name
+- The flavor or product hook in one sentence
+- The cultural trend or insight it's tapping into
+- One risk to watch for
+
+Then ask me which two I want to develop further.</pre>
+          </div>
+        </div>
+        <div class="talking-points">
+          <strong>Demo tip:</strong> Pick the most outlandish concept on purpose &mdash; show the class that the next
+          turn ("develop concept #4") goes deeper, not just longer.
+        </div>
+      </div>
+
+      <!-- Demo 2.2 -->
+      <div class="demo">
+        <h3>Demo 2.2 &mdash; Plan a brainstorming session (footwear merchandising team)</h3>
+        <p class="scenario">Idea Coach also designs the meeting itself &mdash; agenda, exercises, prompts.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="i2">Copy</button>
+          <div class="prompt-block" id="i2">
+            <pre>Plan a 45-minute team brainstorm for 6 people on the topic: "How do we redesign the in-store back-to-school footwear display to reduce clutter and improve sell-through?"
+
+Give me:
+- A minute-by-minute agenda
+- One creative warm-up exercise that takes under 5 minutes
+- Three open-ended brainstorming prompts to use in the session
+- A simple voting method to land on the top 3 ideas at the end</pre>
+          </div>
+        </div>
+        <div class="talking-points">
+          <strong>Why this lands:</strong> Most retail managers run brainstorms badly. This is an immediate,
+          copy-paste-into-Outlook win.
+        </div>
+      </div>
+
+      <!-- Demo 2.3 -->
+      <div class="demo">
+        <h3>Demo 2.3 &mdash; Stress-test an idea with SWOT &amp; pre-mortem</h3>
+        <p class="scenario">Shows Idea Coach as a critical thinking partner, not a yes-man. Use a real-sounding retail
+          pitch.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="i3">Copy</button>
+          <div class="prompt-block" id="i3">
+            <pre>I'm considering this idea: "Launch a private-label premium coffee line in 1,200 of our supercenter stores starting Q4, priced 15% under the leading national brand, with a sustainability-forward story on the packaging."
+
+Stress-test it for me. Run:
+1. A SWOT analysis (be specific, not generic)
+2. A pre-mortem: assume this fails 12 months in — what are the three most likely reasons?
+3. Three killer questions I should be able to answer before pitching to leadership</pre>
+          </div>
+        </div>
+        <div class="talking-points">
+          <strong>Punchline:</strong> "Idea Coach didn't validate the idea &mdash; it interrogated it. That's the
+          value."
+        </div>
+      </div>
+
+      <!-- Demo 2.4 -->
+      <div class="demo">
+        <h3>Demo 2.4 &mdash; Reframe for an executive audience</h3>
+        <p class="scenario">Take a working idea and make it boardroom-ready. Common ask across every retail org.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="i4">Copy</button>
+          <div class="prompt-block" id="i4">
+            <pre>Help me reframe this rough idea so I can pitch it to our retail executive committee in under 90 seconds.
+
+Rough idea: "We should add QR codes on our shelf tags that link shoppers to short product videos so they get the info they'd normally get from an associate."
+
+Give me:
+- A one-sentence headline
+- Three benefits stated as outcomes (not features)
+- The one-number business case I should anchor to
+- A snappy closing line that asks for the decision I need</pre>
+          </div>
+        </div>
+        <div class="talking-points">
+          <strong>Bridge to next section:</strong> "Notice we keep going back to Idea Coach for the same kind of task.
+          That's a perfect signal it's time to <em>build our own agent</em>."
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== BUILD THE HYPE LAB ============================== -->
+    <section id="build-agent">
+      <h2>Demo Block 3 &mdash; Build &quot;The Hype Lab&quot; <span class="pill pill-free">FREE — No license
+          needed</span></h2>
+      <p class="lede">A fun, retail-relevant declarative agent that <em>any unlicensed Copilot Chat user can build and
+          run</em>. Uses only capabilities and knowledge sources that are free for non-licensed users.</p>
+
+      <div class="field-label">What is The Hype Lab?</div>
+      <p>A playful product- and campaign-concept generator for retail and CPG. You give it a category (snacks, footwear,
+        beverages, household, apparel...) and a target shopper. It invents three wild new product concepts, generates a
+        packaging mockup image for your favorite, and writes a launch tagline + a 7-day social teaser plan.</p>
+
+      <div class="field-label">Why this works for non-licensed users</div>
+      <ul class="checklist">
+        <li><span class="pill pill-free">FREE</span> Uses <strong>Image Generator</strong> capability (no license
+          required)</li>
+        <li><span class="pill pill-free">FREE</span> Uses <strong>scoped web search</strong> on public retail-trend
+          sites (no license required)</li>
+        <li><span class="pill pill-free">FREE</span> Uses <strong>Code Interpreter</strong> for any quick math (e.g.,
+          margin or media-spend estimates)</li>
+        <li>No SharePoint, OneDrive, email, or Teams data &mdash; so it works with zero license</li>
+      </ul>
+
+      <div class="field-label">How to start the build</div>
+      <p>Open <strong>copilot.microsoft.com</strong> → click <strong>Agents</strong> in the left rail → click
+        <strong>Create agent</strong> → choose the <strong>Describe</strong> tab.
+      </p>
+
+      <!-- DESCRIBE -->
+      <div class="build-step">
+        <h4>Step 1 &mdash; Paste this into the &quot;Describe&quot; box</h4>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="b1">Copy</button>
+          <div class="prompt-block" id="b1">
+            <pre>Build me an agent called "The Hype Lab."
+
+It is a fun, energetic product and campaign concept generator for people who work in retail, consumer goods, footwear, beverages, snacks, apparel, or household categories. The user tells it a product category and a target shopper. The agent invents three bold new product concepts, lets the user pick one, generates a packaging or product mockup image, then writes a launch tagline and a seven-day social teaser plan.
+
+The tone is upbeat, witty, and brand-savvy — think creative agency strategist meets stand-up comedian, never corporate. The agent always asks clarifying questions before inventing concepts. It uses public retail and consumer trend information from the web to keep ideas current. It uses the image generator to create the packaging or product mockup. It uses code interpreter for any quick numbers like price points or social-reach estimates.
+
+The agent is private to me unless I share it later.</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- INSTRUCTIONS -->
+      <div class="build-step">
+        <h4>Step 2 &mdash; Switch to the &quot;Configure&quot; tab and replace the Instructions field with this</h4>
+        <p style="font-size:13px;color:var(--ms-muted);margin:0 0 6px;">Tell the class: this is the agent's "personality
+          and rules." This is where customization lives.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="b2">Copy</button>
+          <div class="prompt-block" id="b2">
+            <pre>You are The Hype Lab — a high-energy, witty product and campaign concept generator for retail and consumer goods professionals. Your job is to make brainstorming feel like the best meeting of the user's week.
+
+How you behave:
+1. Greet the user with a quick, playful one-liner. Then ask three short questions before inventing anything:
+   a. What product category? (e.g., savory snacks, energy drinks, running shoes, household cleaners)
+   b. Who's the target shopper? (one sentence is fine)
+   c. What's the vibe? (mass-market, premium, limited-edition drop, sustainability-forward, nostalgia, bold flavor, etc.)
+
+2. Once you have answers, do a quick web search for current trends in that category and audience. Pull from public retail-trade and consumer-trend sources only.
+
+3. Invent three bold concepts. For each one, give:
+   - A working product name (memorable, ownable, easy to say out loud)
+   - One-sentence concept hook
+   - The cultural or shopper insight it taps into
+   - The fun factor — why it makes people stop scrolling
+   - One risk or watch-out
+
+4. Ask the user which concept to bring to life. Then:
+   - Use the image generator to create a packaging or product mockup. Describe what you're making in one sentence before you generate the image.
+   - Write a punchy launch tagline (under 8 words).
+   - Write a 7-day social teaser plan: one short post idea per day, each labeled by platform (TikTok, Instagram, X, in-store sign).
+
+5. Close with one provocative "what if we pushed it further" question to keep the user iterating.
+
+Hard rules:
+- Never make negative comparisons to specific competitor brands by name.
+- Never invent statistics or claim to know real sales numbers — if you estimate, say "rough estimate."
+- Keep it fun and on-brand for marketing teams. No jargon-heavy paragraphs.
+- If the user asks for help with anything outside product/campaign concepting, politely redirect them back to the brainstorm.</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- KNOWLEDGE -->
+      <div class="build-step">
+        <h4>Step 3 &mdash; Add knowledge: scoped web search</h4>
+        <p style="font-size:13px;color:var(--ms-muted);margin:0 0 8px;">In the Configure tab, scroll to
+          <strong>Knowledge</strong>. Make sure <strong>Web search</strong> is toggled on. Add up to 4 public URLs to
+          scope it. Suggested public retail-trend sources (no license, no login required):
+        </p>
+        <ul class="checklist">
+          <li>retaildive.com</li>
+          <li>nrf.com</li>
+          <li>trendhunter.com</li>
+          <li>thedrum.com</li>
+        </ul>
+        <p style="font-size:13px;color:var(--ms-muted);margin:6px 0 0;">Tell the class they can swap in their own
+          &mdash; e.g., a beverage team might use bevnet.com instead of nrf.com. Max four URLs.</p>
+      </div>
+
+      <!-- CAPABILITIES -->
+      <div class="build-step">
+        <h4>Step 4 &mdash; Turn on capabilities</h4>
+        <p style="font-size:13px;color:var(--ms-muted);margin:0 0 6px;">In the Configure tab, under
+          <strong>Capabilities</strong>, toggle ON:
+        </p>
+        <ul class="checklist">
+          <li><strong>Image Generator</strong> &mdash; for packaging and product mockups</li>
+          <li><strong>Code Interpreter</strong> &mdash; for quick math (price points, reach estimates)</li>
+        </ul>
+      </div>
+
+      <!-- STARTERS -->
+      <div class="build-step">
+        <h4>Step 5 &mdash; Add four starter prompts</h4>
+        <p style="font-size:13px;color:var(--ms-muted);margin:0 0 6px;">Starter prompts appear as buttons on the agent's
+          welcome screen. Paste these one at a time into the four starter-prompt slots:</p>
+
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="s1">Copy</button>
+          <div class="prompt-block" id="s1">
+            <pre>Invent three new snack concepts for Gen Z shoppers who care about bold flavor and sustainability.</pre>
+          </div>
+        </div>
+
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="s2">Copy</button>
+          <div class="prompt-block" id="s2">
+            <pre>Help me brainstorm a limited-edition holiday beverage line for a mass-market retailer.</pre>
+          </div>
+        </div>
+
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="s3">Copy</button>
+          <div class="prompt-block" id="s3">
+            <pre>Pitch me three premium private-label household cleaner concepts with packaging mockups.</pre>
+          </div>
+        </div>
+
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="s4">Copy</button>
+          <div class="prompt-block" id="s4">
+            <pre>Create a 7-day social teaser plan for a new running-shoe drop targeting weekend runners.</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAME / DESCRIPTION -->
+      <div class="build-step">
+        <h4>Step 6 &mdash; Name and description</h4>
+        <p style="font-size:13px;color:var(--ms-muted);margin:0 0 6px;">Confirm the name <strong>The Hype Lab</strong>.
+          For the user-facing description, paste:</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="b6">Copy</button>
+          <div class="prompt-block" id="b6">
+            <pre>Your high-energy brainstorm partner for new product and campaign concepts in retail and consumer goods. Tell me a category and a shopper — I'll pitch you three bold ideas, mock up the packaging, and hand you a 7-day social teaser plan.</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <h4>Step 7 &mdash; Click &quot;Create&quot; and try it live</h4>
+        <p style="font-size:14px;margin:0;">The agent appears in your <strong>Agents</strong> list, ready to use. Use
+          the test prompts below to demo it to the class.</p>
+      </div>
+    </section>
+
+    <!-- ============================== TEST AGENT ============================== -->
+    <section id="test-agent">
+      <h2>Test Prompts for The Hype Lab</h2>
+      <p class="lede">Use one or two of these live with the class. The image generation moment is the "wow" &mdash;
+        build to it.</p>
+
+      <div class="demo">
+        <h3>Test 1 &mdash; The crowd-pleaser (snacks)</h3>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="t1">Copy</button>
+          <div class="prompt-block" id="t1">
+            <pre>Let's invent something for the chip aisle. Target shopper: late-twenties professionals who snack at their desk and care about better-for-you ingredients but won't compromise on flavor. Vibe: premium and a little bit weird.</pre>
+          </div>
+        </div>
+        <div class="talking-points"><strong>Live demo flow:</strong> Run this, pick concept #2 or #3 (usually the
+          wildest), and let the class see the packaging mockup render. That's the applause moment.</div>
+      </div>
+
+      <div class="demo">
+        <h3>Test 2 &mdash; Beverage drop</h3>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="t2">Copy</button>
+          <div class="prompt-block" id="t2">
+            <pre>Brainstorm three limited-edition summer beverage concepts. Target shopper: Gen Z and younger millennials buying at convenience and grocery. Vibe: bold flavor, shareable on TikTok.</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo">
+        <h3>Test 3 &mdash; Footwear</h3>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="t3">Copy</button>
+          <div class="prompt-block" id="t3">
+            <pre>Pitch three new performance running shoe concepts. Target shopper: weekend half-marathon runners aged 30-50 who want gear that performs but doesn't shout. Vibe: understated and premium.</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo">
+        <h3>Test 4 &mdash; Mass-retail private label</h3>
+        <div class="prompt-wrap">
+          <button class="copy-btn" data-target="t4">Copy</button>
+          <div class="prompt-block" id="t4">
+            <pre>Help me develop three private-label household cleaner concepts that could sit in a mass-market retailer's home aisle and feel premium. Vibe: clean, confident, sustainability-forward.</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== WRAP ============================== -->
+    <section id="wrap">
+      <h2>Wrap-Up Talking Points (5 min)</h2>
+
+      <div class="field-label">The three things every attendee should leave with</div>
+      <ul class="checklist">
+        <li><strong>Better prompts in 60 seconds</strong> &mdash; Prompt Coach + the GCES recipe</li>
+        <li><strong>A thinking partner, not a yes-man</strong> &mdash; Idea Coach for stress-testing and reframing</li>
+        <li><strong>An agent you built yourself</strong> &mdash; Agent Builder + Image Generator + scoped web search,
+          all free</li>
+      </ul>
+
+      <div class="field-label">What to try Monday morning</div>
+      <ul class="checklist">
+        <li>Build a personal &quot;Meeting Prep Coach&quot; that turns a calendar invite + a topic into an agenda + 3
+          questions</li>
+        <li>Build a &quot;Customer Email Translator&quot; scoped to your own brand voice guidelines (paste them into
+          Instructions)</li>
+        <li>Share The Hype Lab with one teammate and add it to a brand-team channel</li>
+      </ul>
+
+      <div class="field-label">Friendly reminder</div>
+      <p style="font-size:14px;">Everything in this session works with <strong>no Microsoft 365 Copilot
+          license</strong>. The moment they want their agent to read their SharePoint, email, or Teams &mdash;
+        <em>that's</em> when the paid license unlocks the next level.
+      </p>
+    </section>
+
+    <footer>
+      Demo pack prepared for "Agent Revolution: Elevate Your Productivity with Copilot Agents" &mdash; verified against
+      Microsoft Learn, Agent Builder docs, and Microsoft 365 Copilot extensibility documentation as of April 28, 2026.
+    </footer>
+
+  </main>
+
+  <script>
+    // ===== Collapsible sections + quick nav =====
+    (function () {
+      var sections = document.querySelectorAll('main > section');
+      sections.forEach(function (sec) {
+        var h2 = sec.querySelector(':scope > h2');
+        if (!h2) return;
+        // Wrap everything after h2 in .section-body
+        var body = document.createElement('div');
+        body.className = 'section-body';
+        var node = h2.nextSibling;
+        while (node) {
+          var next = node.nextSibling;
+          body.appendChild(node);
+          node = next;
+        }
+        sec.appendChild(body);
+        h2.addEventListener('click', function () {
+          sec.classList.toggle('collapsed');
+        });
+      });
+
+      var expandAll = document.getElementById('expand-all');
+      var collapseAll = document.getElementById('collapse-all');
+      if (expandAll) expandAll.addEventListener('click', function () {
+        sections.forEach(function (s) { s.classList.remove('collapsed'); });
+      });
+      if (collapseAll) collapseAll.addEventListener('click', function () {
+        sections.forEach(function (s) { s.classList.add('collapsed'); });
+      });
+
+      // When a quick-nav link is clicked, ensure the target section is expanded
+      document.querySelectorAll('.quick-nav a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var id = a.getAttribute('href').slice(1);
+          var target = document.getElementById(id);
+          if (target && target.classList.contains('collapsed')) {
+            target.classList.remove('collapsed');
+          }
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var targetId = btn.getAttribute('data-target');
+        var el = document.getElementById(targetId);
+        if (!el) return;
+        // Prefer the inner <pre> content (no surrounding HTML whitespace)
+        var pre = el.querySelector('pre');
+        var text = pre ? pre.textContent : el.innerText;
+        var done = function () {
+          var original = btn.dataset.original || 'Copy';
+          btn.dataset.original = original;
+          btn.innerText = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(function () {
+            btn.innerText = original;
+            btn.classList.remove('copied');
+          }, 1400);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(done).catch(function () {
+            fallbackCopy(text, done);
+          });
+        } else {
+          fallbackCopy(text, done);
+        }
+      });
+    });
+    function fallbackCopy(text, done) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { /* noop */ }
+      document.body.removeChild(ta);
+    }
+  </script>
+
+</body>
+
+</html>

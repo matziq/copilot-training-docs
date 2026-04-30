@@ -13,9 +13,105 @@
         rel="stylesheet" />
 
     <link rel="stylesheet" href="../../css/styles.css" />
+
+    <style>
+        /* ============================================================
+           DARK MODE OVERRIDES
+           ============================================================ */
+        body.dark {
+            --bg-page: #1a1d21;
+            --bg-card: #262a30;
+            --text-primary: #e6e6e6;
+            --text-secondary: #c0c4ca;
+            --text-muted: #9aa0a6;
+            --border-light: #3a3f46;
+            --purple-bg: #2d2540;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, .4);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, .55);
+        }
+
+        body.dark .page-hero h1,
+        body.dark .module-title {
+            color: #c9b3ec;
+        }
+
+        body.dark a {
+            color: #b39ddb;
+        }
+
+        body.dark .quick-nav a {
+            color: #c9b3ec;
+        }
+
+        body.dark .quick-nav a:hover {
+            color: #fff;
+        }
+
+        body.dark .data-table thead th {
+            background: #2d2540;
+            color: #c9b3ec;
+        }
+
+        body.dark .data-table tbody tr:hover {
+            background: #2d3138;
+        }
+
+        body.dark .callout-tip {
+            background: #1f3a2c;
+        }
+
+        body.dark .callout-note {
+            background: #1f2c3f;
+        }
+
+        body.dark .callout-warning {
+            background: #3a2c18;
+        }
+
+        body.dark .copy-btn {
+            background: #2d3138;
+            color: #c0c4ca;
+            border-color: #3a3f46;
+        }
+
+        body.dark .copy-btn:hover {
+            background: #2d2540;
+            color: #c9b3ec;
+        }
+
+        /* Theme toggle button */
+        #theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            font-family: var(--font-sans);
+            font-size: .8rem;
+            font-weight: 600;
+            padding: .4rem .8rem;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        #theme-toggle:hover {
+            background: var(--purple-bg);
+            color: var(--purple-mid);
+        }
+
+        body.dark #theme-toggle:hover {
+            color: #c9b3ec;
+        }
+    </style>
 </head>
 
 <body>
+
+    <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
+        title="Toggle dark mode">&#127769; Dark</button>
 
     <div class="page-wrapper">
 
@@ -26,42 +122,12 @@
         <header class="page-hero">
             <h1>Copilot Chat for Marketing &mdash; Trainer Guide</h1>
             <p class="subtitle">
-                <strong>Beverage Industry Demo Prompts &mdash; Trainer&rsquo;s Edition.</strong>
-                A ~40-minute, demo-heavy run through Copilot Chat (Basic) for marketing teams. Ten copy-paste
-                demos &mdash; warm-ups, content creation, file analysis, Outlook reasoning, memory, and an
-                image bonus &mdash; with trainer notes that frame the &ldquo;why&rdquo; before each prompt.
+                A ~40-minute, demo-heavy run through Copilot Chat (Basic) for marketing teams. Ten
+                copy-paste demos &mdash; warm-ups, content creation, file analysis, Outlook reasoning,
+                memory, and an image bonus &mdash; with trainer notes that frame the &ldquo;why&rdquo;
+                before each prompt.
             </p>
         </header>
-
-        <div class="callout callout-warning">
-            <div class="callout-title">&#9888;&#65039; Disclaimer</div>
-            All prompts, scenarios, brands, and example data (Glasshouse, Contoso, the Q1 performance file,
-            the customer survey responses, etc.) are fictional and provided only for training and
-            demonstration purposes. Do not use this material for decision-making, reporting, or external
-            distribution.
-        </div>
-
-        <div class="callout callout-note">
-            <div class="callout-title">&#128221; Session Details</div>
-            <strong>Duration:</strong> ~40 minutes (10 demos, ~3&ndash;6 min each)<br />
-            <strong>Format:</strong> Live demos &middot; Copy-paste prompt handout &middot; No slides
-            required<br />
-            <strong>Level:</strong> 100&ndash;200 &mdash; Marketing professionals new to Copilot Chat<br />
-            <strong>Audience:</strong> Marketers, brand managers, content creators, and comms teams &mdash;
-            including non-licensed users.<br />
-            <strong>License key:</strong>
-            <span
-                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#e8f5e9;color:#2e7d32;font-weight:600;">Copilot
-                Chat (Basic)</span> = no paid license required &nbsp;&bull;&nbsp;
-            <span
-                style="font-size:.75rem;padding:2px 8px;border-radius:4px;background:#e3f2fd;color:#1565c0;font-weight:600;">Outlook</span>
-            = the one app where Copilot Chat stays for non-licensed enterprise users<br />
-            <strong>Where to run:</strong> <a href="https://copilot.microsoft.com" target="_blank"
-                style="color:var(--blue-step);font-weight:600;">copilot.microsoft.com</a> (signed in with the
-            work account), Copilot Chat in the Edge sidebar, or Outlook.<br />
-            <strong>Classification:</strong> Trainer Version &mdash; For Trainer Use Only, Not for
-            Distribution to Participants
-        </div>
 
         <nav class="quick-nav" id="quick-nav">
             <a href="#timing">&#9202; Run of Show</a>
@@ -107,16 +173,66 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Warm-up</td><td>1. Beverage trend briefing</td><td>5 min</td><td>Web grounding, citations</td></tr>
-                            <tr><td>Warm-up</td><td>2. Buyer persona</td><td>5 min</td><td>Iterative prompting</td></tr>
-                            <tr><td>Content</td><td>3. Multi-channel campaign</td><td>6 min</td><td>Channel-specific tone</td></tr>
-                            <tr><td>Content</td><td>4. Competitive teardown</td><td>6 min</td><td>Structured competitive analysis</td></tr>
-                            <tr><td>Content</td><td>5. Press release &amp; pivots</td><td>6 min</td><td>Audience adaptation</td></tr>
-                            <tr><td>Files</td><td>6. Q1 performance analysis</td><td>6 min</td><td>File grounding (xlsx)</td></tr>
-                            <tr><td>Files</td><td>7. Customer survey VoC</td><td>5 min</td><td>Theme extraction (docx)</td></tr>
-                            <tr><td>Outlook</td><td>8. Marketing inbox triage</td><td>5 min</td><td>Inbox &amp; calendar reasoning</td></tr>
-                            <tr><td>Memory</td><td>9. Personalize Copilot</td><td>4 min</td><td>Saved memories</td></tr>
-                            <tr><td>Bonus</td><td>10. Image concepts</td><td>3 min</td><td>Image generation</td></tr>
+                            <tr>
+                                <td>Warm-up</td>
+                                <td>1. Beverage trend briefing</td>
+                                <td>5 min</td>
+                                <td>Web grounding, citations</td>
+                            </tr>
+                            <tr>
+                                <td>Warm-up</td>
+                                <td>2. Buyer persona</td>
+                                <td>5 min</td>
+                                <td>Iterative prompting</td>
+                            </tr>
+                            <tr>
+                                <td>Content</td>
+                                <td>3. Multi-channel campaign</td>
+                                <td>6 min</td>
+                                <td>Channel-specific tone</td>
+                            </tr>
+                            <tr>
+                                <td>Content</td>
+                                <td>4. Competitive teardown</td>
+                                <td>6 min</td>
+                                <td>Structured competitive analysis</td>
+                            </tr>
+                            <tr>
+                                <td>Content</td>
+                                <td>5. Press release &amp; pivots</td>
+                                <td>6 min</td>
+                                <td>Audience adaptation</td>
+                            </tr>
+                            <tr>
+                                <td>Files</td>
+                                <td>6. Q1 performance analysis</td>
+                                <td>6 min</td>
+                                <td>File grounding (xlsx)</td>
+                            </tr>
+                            <tr>
+                                <td>Files</td>
+                                <td>7. Customer survey VoC</td>
+                                <td>5 min</td>
+                                <td>Theme extraction (docx)</td>
+                            </tr>
+                            <tr>
+                                <td>Outlook</td>
+                                <td>8. Marketing inbox triage</td>
+                                <td>5 min</td>
+                                <td>Inbox &amp; calendar reasoning</td>
+                            </tr>
+                            <tr>
+                                <td>Memory</td>
+                                <td>9. Personalize Copilot</td>
+                                <td>4 min</td>
+                                <td>Saved memories</td>
+                            </tr>
+                            <tr>
+                                <td>Bonus</td>
+                                <td>10. Image concepts</td>
+                                <td>3 min</td>
+                                <td>Image generation</td>
+                            </tr>
                         </tbody>
                     </table>
                     <p>Drop the bonus, Demo 4, or Demo 7 first if running short. Demos 1, 3, 6, and 8 are the
@@ -848,6 +964,24 @@
     </div>
 
     <script src="../../js/main.v3.js"></script>
+    <script>
+        (function () {
+            var btn = document.getElementById('theme-toggle');
+            if (!btn) return;
+            function setTheme(dark) {
+                document.body.classList.toggle('dark', dark);
+                btn.textContent = dark ? '\u2600 Light' : '\ud83c\udf19 Dark';
+                try { localStorage.setItem('t16-theme', dark ? 'dark' : 'light'); } catch (e) { }
+            }
+            var saved = null;
+            try { saved = localStorage.getItem('t16-theme'); } catch (e) { }
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(saved ? saved === 'dark' : prefersDark);
+            btn.addEventListener('click', function () {
+                setTheme(!document.body.classList.contains('dark'));
+            });
+        })();
+    </script>
 </body>
 
 </html>

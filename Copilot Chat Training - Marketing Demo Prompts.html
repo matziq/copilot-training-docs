@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<title>Copilot Chat Training — Marketing Demo Prompts</title>
+
+<style>
+    body {
+        background-color: #202124;
+        color: #f9fbfd;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 950px;
+        margin: auto;
+    }
+
+    .header {
+        text-align: center;
+        padding: 1.5rem 1rem 2rem;
+        border-bottom: 2px solid #1c64f2;
+        margin-bottom: 2rem;
+    }
+
+    .header h1 {
+        font-size: 2.2rem;
+        margin: 0 0 0.5rem;
+        color: #f9fbfd;
+    }
+
+    .header .subtitle {
+        font-size: 1.1rem;
+        color: #b0b6be;
+        margin: 0;
+    }
+
+    .header .badge {
+        display: inline-block;
+        background: #1c64f2;
+        color: #f9fbfd;
+        padding: 0.25rem 0.7rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        margin-top: 0.6rem;
+        letter-spacing: 0.5px;
+    }
+
+    .intro {
+        background: #1a2230;
+        border-left: 4px solid #1c64f2;
+        padding: 1rem 1.25rem;
+        margin-bottom: 2rem;
+        border-radius: 6px;
+        font-size: 1.05rem;
+    }
+
+    .intro strong {
+        color: #7ab8ff;
+    }
+
+    details {
+        background: #23252a;
+        margin-bottom: 1.5rem;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        border: 1px solid #2d3748;
+    }
+
+    details[open] {
+        background: #23252a;
+        border-color: #1c64f2;
+    }
+
+    summary {
+        font-size: 1.4rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+        list-style: none;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+
+    summary::before {
+        content: '▶';
+        position: absolute;
+        left: 0;
+        transition: transform 0.2s;
+        color: #1c64f2;
+    }
+
+    details[open] summary::before {
+        transform: rotate(90deg);
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .demo-meta {
+        background: #1a1d23;
+        padding: 0.7rem 1rem;
+        border-radius: 6px;
+        margin: 0.75rem 0 1rem;
+        font-size: 0.95rem;
+        color: #c5cad3;
+    }
+
+    .demo-meta .meta-label {
+        color: #7ab8ff;
+        font-weight: 600;
+        margin-right: 0.4rem;
+    }
+
+    .paren {
+        color: #b0b6be;
+        font-style: italic;
+        margin-left: 0;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .paragraph-row {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        gap: 0.5rem;
+    }
+
+    .copy-btn {
+        background: #2d3748;
+        color: #f9fbfd;
+        border: none;
+        border-radius: 5px;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: background 0.2s;
+        flex-shrink: 0;
+        font-weight: 600;
+    }
+
+    .copy-btn:hover {
+        background: #3d4858;
+    }
+
+    .copy-btn.copied {
+        background: #28a745;
+        color: #fff;
+    }
+
+    .paragraph-text {
+        flex: 1;
+        text-indent: 0;
+    }
+
+    .prompt-label {
+        font-size: 1.05rem;
+        font-weight: bold;
+        color: #7ab8ff;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.85rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #f9fbfd;
+        margin: 0;
+        display: inline;
+    }
+
+    .filename-tag {
+        display: inline-block;
+        background: #1c64f2;
+        color: #f9fbfd;
+        padding: 0.15rem 0.5rem;
+        border-radius: 6px;
+        font-family: "Segoe UI", sans-serif;
+        font-size: 0.95rem;
+        margin: 0 0.2rem;
+    }
+
+    .talking-point {
+        background: #1f2a36;
+        border-left: 3px solid #28a745;
+        padding: 0.6rem 1rem;
+        margin: 0.75rem 0;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #d8e1eb;
+    }
+
+    .talking-point::before {
+        content: '💡 Trainer note: ';
+        font-weight: bold;
+        color: #6dd28a;
+    }
+
+    .section-divider {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #7ab8ff;
+        margin: 2.5rem 0 1rem;
+        padding: 0.6rem 0;
+        border-top: 1px solid #2d3748;
+        border-bottom: 1px solid #2d3748;
+        letter-spacing: 2px;
+    }
+</style>
+</head>
+<body>
+<div class='container'>
+
+<div class='header'>
+    <h1>Copilot Chat — Marketing Training</h1>
+    <p class='subtitle'>Trainer's Guide &amp; Demo Prompts | Beverage Industry Focus</p>
+    <span class='badge'>Copilot Chat (Basic) — Non-licensed Users</span>
+</div>
+
+<div class='intro'>
+    <strong>How to use this guide:</strong> Each section is a live demo. Click any section to expand it. Use the <strong>Copy</strong> button next to each prompt to paste into Copilot Chat at <strong>copilot.microsoft.com</strong> (signed in with the work account). Demos are designed to flow from quick wins to richer agent-driven experiences. Total demo time target: ~40 minutes.
+</div>
+
+<div class='section-divider'>WARM-UP DEMOS</div>
+
+<details open>
+<summary><h2>Demo 1: Beverage Industry Trend Briefing (Web Reasoning)</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>5 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Web grounding, structured output &nbsp;|&nbsp;
+    <span class='meta-label'>Files needed:</span>None
+</div>
+
+<div class='talking-point'>Open with this — it's fast, impressive, and shows that Copilot Chat (Basic) gives you fresh, cited web data without any uploads. Perfect ice-breaker for marketers who want to know "what's hot right now."</div>
+
+<div class='prompt-label'>Prompt 1 — Quick trend scan</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Act as a senior marketing strategist for a non-alcoholic beverage company. Give me the top 5 consumer trends shaping the beverage industry right now — functional ingredients, premium positioning, sustainability, gen-Z preferences, and anything else that's gaining momentum. For each trend include a one-sentence "why it matters for marketing" implication. Keep it concise and use bullet points.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Drill in</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Take the top trend you just listed and expand it. What is the size of the opportunity, who are 3 brands leading the trend, what messaging themes are working, and what is one risk a marketer should plan around? Cite your sources.</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — Make it actionable</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Now turn this into a 90-second talking-points memo I could read aloud at a Monday marketing stand-up. Lead with the headline, give 3 supporting facts, and end with one decision I want the team to make this week.</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary><h2>Demo 2: Build a Buyer Persona for a New Sparkling Beverage</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>5 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Iterative prompting, role framing &nbsp;|&nbsp;
+    <span class='meta-label'>Files needed:</span>None
+</div>
+
+<div class='talking-point'>This shows the value of layered prompting — start broad, refine, then push for an output you can actually use. Marketers love personas; this one builds in 60 seconds.</div>
+
+<div class='prompt-label'>Prompt 1 — Frame the persona</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>I'm launching a new line of premium sparkling water with adaptogens (think mood-and-focus benefits) priced 30% above mainstream sparkling water. Build a primary buyer persona for this product. Include: name, age range, occupation, lifestyle, motivations, where they hang out online, the brands they already trust, and 3 emotional triggers a marketer can pull. Make it feel like a real person, not a stat sheet.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Add the secondary persona</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Now create a contrasting secondary persona who would also buy this product but for very different reasons. Highlight where the messaging needs to flex between the two personas.</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — Stress-test the persona</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Pressure-test the primary persona. Where is it weak or potentially stereotypical? What 3 questions should I validate with real customer research before I bet a campaign budget on this profile?</div>
+</div>
+
+</div>
+</details>
+
+<div class='section-divider'>CONTENT CREATION DEMOS</div>
+
+<details>
+<summary><h2>Demo 3: Multi-Channel Campaign for a Craft Soda Launch</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>6 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Channel-specific tone, copy generation &nbsp;|&nbsp;
+    <span class='meta-label'>Files needed:</span>None
+</div>
+
+<div class='talking-point'>This is the big "wow" for any marketing audience. One prompt produces a full content set across channels — the time savings story sells itself. Encourage trainees to copy/paste the outputs into a Word doc afterwards.</div>
+
+<div class='prompt-label'>Prompt 1 — The launch announcement</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>I'm launching a craft soda called "Glasshouse" — a small-batch botanical soda with hibiscus, ginger, and a touch of cane sugar. Target audience is 25–40 year olds who care about real ingredients and design-forward brands. Write a 90-word launch announcement that I can use as the press-release lead paragraph. Make it confident, sensory, and avoid clichés like "shake up the industry."</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — The content stack</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Now adapt the same launch into 4 different formats: (1) an Instagram caption with 5 relevant hashtags, (2) a 2-line LinkedIn post for our founder, (3) a 280-character X post with strong hook, (4) a 4-line headline-and-subhead for a paid Meta ad. Keep brand voice consistent across all four.</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — The retailer pitch email</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Draft a 150-word email from our brand manager to a regional grocery chain's beverage buyer, pitching Glasshouse for a 90-day pilot in 25 stores. Lead with what's in it for them (margin, foot traffic, demographic fit), not a feature list. Include a clear next-step ask.</div>
+</div>
+
+<div class='prompt-label'>Prompt 4 — The 6-week activation plan</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Build a 6-week launch activation plan as a week-by-week table. Columns: Week, Theme, Owner, Channels, Key Asset, Success Metric. Make Week 1 a teaser, Weeks 2–3 the launch peak, Weeks 4–5 momentum, and Week 6 a community/UGC push.</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary><h2>Demo 4: Competitive Brand Teardown</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>6 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Web grounding, structured competitive analysis &nbsp;|&nbsp;
+    <span class='meta-label'>Files needed:</span>None — pure web grounding
+</div>
+
+<div class='talking-point'>Pure web-grounded reasoning, no uploads required — perfect for non-licensed Copilot Chat. Show how iterative prompting turns a generic competitor scan into a sharp strategic teardown. Emphasize the citations: marketers can verify every claim before a leadership meeting.</div>
+
+<div class='prompt-label'>Prompt 1 — Map the competitive field</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Map the top 5 premium hard-seltzer brands competing for 25–45 year-old drinkers right now. For each: positioning line, hero flavor, channel mix (DTC, retail, on-premise), and one signature campaign in the last 12 months with what made it work. Cite sources for any specific claim.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Find the white space</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Where are all 5 starting to sound the same? Identify three positioning gaps that none of them are owning, and for each gap describe the underlying audience tension it would solve. Be specific — "wellness" is not a gap; "low-effort hydration that still feels celebratory" is.</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — Stress-test the angle</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Pick the most defensible gap from the previous answer. Give me three reasons it could fail, three early signals we'd watch in market, and one cheap pilot we could run in 30 days to validate or kill the idea before committing real budget.</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary><h2>Demo 5: Press Release & Stakeholder Talking Points</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>6 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Long-form writing, audience adaptation, tone control &nbsp;|&nbsp;
+    <span class='meta-label'>Files needed:</span>None
+</div>
+
+<div class='talking-point'>Show how one core story becomes four very different pieces of content for four very different audiences. The point isn't the press release — it's the speed of the audience pivots. Marketers usually do these one at a time over half a day; Copilot does them in 4 minutes.</div>
+
+<div class='prompt-label'>Prompt 1 — Draft the press release</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Write a 300-word press release announcing "Glasshouse" — a small-batch botanical soda made with hibiscus, ginger, and cane sugar, launching summer 2026 in 25 markets. Include a quote from the founder, a sensory product description, and a clear news hook. Tone: confident, journalistic, no marketing-speak.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Internal sales rally email</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Now rewrite the same story as a 200-word internal email to the field sales team. Energetic and direct. Focus on what's in it for them: margin expectations, demo support available, launch incentives. Bullet the top three "how to sell it" moves they can use this week.</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — Retail buyer one-pager</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Convert the same story into a one-page retailer pitch for a national grocery buyer. Lead with category data and consumer trend tailwinds, then shelf positioning, then a 90-day pilot ask in 25 stores. Tone: numbers-first, confident, no fluff. End with a clear yes/no decision the buyer can make.</div>
+</div>
+
+<div class='prompt-label'>Prompt 4 — Social caption set</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Finally, write five social captions about the launch — 2 Instagram, 2 LinkedIn, 1 TikTok hook. Each one ≤180 characters, no hashtag soup, and each one a distinct angle: heritage, ritual, ingredients, taste, craft. Don't repeat phrases across captions.</div>
+</div>
+
+</div>
+</details>
+
+<div class='section-divider'>FILE-GROUNDED DEMOS</div>
+
+<details>
+<summary><h2>Demo 6: Analyze Uploaded Marketing Performance Data</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>6 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>File grounding (uploaded files), reasoning over data &nbsp;|&nbsp;
+    <span class='meta-label'>Files needed:</span><span class='filename-tag'>Beverage_Q1_Campaign_Performance.xlsx</span> (sample provided in trainer's pack)
+</div>
+
+<div class='talking-point'>Important framing: with Copilot Chat (Basic), uploaded files ARE supported — that's the work-data substitute for non-licensed users. Tell them: drag a file into the chat, and Copilot reasons over it. Don't mention "Analyst agent" — that's a licensed-only feature.</div>
+
+<div class='prompt-label'>Prompt 1 — Read the file</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>I've uploaded a Q1 marketing performance file for a beverage brand. Read every tab. Give me a 6-bullet executive summary: total spend, total revenue attributed, blended ROAS, top-performing channel, weakest-performing channel, and the single biggest surprise in the data.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Find the story</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Now go deeper. Compare campaigns by channel and audience segment. Where are we overspending relative to revenue returned? Where do we have hidden upside — campaigns with weak spend but strong conversion? Give me 3 specific reallocation moves I should make next quarter, each with the rationale grounded in numbers from the file.</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — Build the executive narrative</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Turn your analysis into a 200-word executive narrative I can paste into a quarterly review email to my CMO. Lead with the headline result, support it with 3 numbers, and end with the recommended decision and what we need approval on.</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary><h2>Demo 7: Customer Survey &amp; Voice-of-Customer Insights</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>5 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Unstructured text reasoning, theme extraction &nbsp;|&nbsp;
+    <span class='meta-label'>Files needed:</span><span class='filename-tag'>Beverage_Customer_Survey_Responses.docx</span> (sample provided)
+</div>
+
+<div class='talking-point'>This one always lands. Marketers spend hours reading verbatims. This demo shows Copilot doing it in 30 seconds — and pulling out signals a human reader would miss.</div>
+
+<div class='prompt-label'>Prompt 1 — Find the themes</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>I've uploaded open-ended survey responses from beverage customers. Identify the top 5 recurring themes. For each theme, give me: a name, a one-sentence summary, the approximate share of responses that mention it, and one direct quote that captures the sentiment best.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Find what's surprising</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>What did customers say that we were NOT expecting? Look for unusual mentions — packaging complaints, surprising use occasions, unexpected emotional language, or themes that contradict our usual assumptions about beverage buyers. Be specific and quote them.</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — Convert to creative inspiration</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Now turn those themes into 3 creative campaign concepts a creative team could brief out. For each concept, give it a name, a one-line idea, the core insight from the survey it's built on, and the headline tagline.</div>
+</div>
+
+</div>
+</details>
+
+<div class='section-divider'>OUTLOOK &amp; MEMORY DEMOS</div>
+
+<details>
+<summary><h2>Demo 8: Copilot Chat in Outlook — Manage the Marketing Inbox</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>5 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Outlook reasoning over inbox &amp; calendar (non-licensed) &nbsp;|&nbsp;
+    <span class='meta-label'>Where to run:</span>Outlook web, new Outlook Windows, Mac, or mobile
+</div>
+
+<div class='talking-point'>This is THE killer demo for non-licensed users. As of early 2026, Copilot Chat in Outlook reasons over the entire inbox, calendar, and meetings — even without a paid license. And per Microsoft's May 16, 2026 changes, Outlook is the ONE app where Copilot Chat stays even for enterprise non-licensed users. Lean into this.</div>
+
+<div class='prompt-label'>Prompt 1 — Catch up on the morning</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Summarize my unread emails from the last 24 hours by priority. Group them into: (1) needs a reply today, (2) FYI / no action needed, (3) can be archived. For each item in group 1, give me a one-sentence reply suggestion I could send.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Pull marketing-specific signals</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Across my inbox, find anything related to our upcoming product launch. Pull out: open questions waiting on me, decisions that have been made, deadlines mentioned, and anyone who looks blocked. Format as a one-page status digest.</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — Calendar prep</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Look at my calendar for tomorrow. For each meeting, tell me: who's in it, what it's about based on related emails, what I should prepare, and one smart question I could ask to add value.</div>
+</div>
+
+<div class='prompt-label'>Prompt 4 — Draft a follow-up</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Find the most recent thread about our packaging redesign. Draft a follow-up email summarizing what was decided, listing open items, and proposing a 30-minute working session next week to close the remaining questions. Match the tone of the previous emails in the thread.</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary><h2>Demo 9: Copilot Memory — Personalize Your Marketing Assistant</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>4 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Saved memories, custom instructions &nbsp;|&nbsp;
+    <span class='meta-label'>Where:</span>Copilot Chat → Settings → Personalization
+</div>
+
+<div class='talking-point'>Memory is available to ALL Copilot Chat users — licensed and non-licensed alike. Walk through the Settings → Personalization page first, then run these prompts. Memories are stored in the user's own Exchange mailbox in a hidden folder, so they follow standard enterprise data protection.</div>
+
+<div class='prompt-label'>Prompt 1 — Teach Copilot about your role</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Please remember the following about my role so future answers fit my context: I work in marketing for a beverage company. My audience is mostly 25–45 year-old consumers. I write for an internal CMO audience and external trade press. I prefer outputs in concise bullets, with a one-line "headline" before any list, and I always want a clear "what to decide" at the end.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Teach it your brand voice</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Remember our brand voice rules: confident but never cocky, sensory and specific over abstract, no buzzwords like "synergy" or "leverage," prefer active verbs, and always avoid clichés like "game-changer" or "shake up the industry."</div>
+</div>
+
+<div class='prompt-label'>Prompt 3 — Test the memory</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Now, draft a 60-word internal note announcing that we're launching a new low-sugar variant of our top-selling juice. Use what you know about my role and our brand voice.</div>
+</div>
+
+<div class='prompt-label'>Prompt 4 — Manage the memories</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>What do you currently remember about me? List everything in your memory so I can review and clean it up.</div>
+</div>
+
+</div>
+</details>
+
+<div class='section-divider'>STRETCH / BONUS DEMO</div>
+
+<details>
+<summary><h2>Demo 10 (Bonus): Image Concept Generation for a Beverage Campaign</h2></summary>
+<div class='section-content'>
+
+<div class='demo-meta'>
+    <span class='meta-label'>Time:</span>3 min &nbsp;|&nbsp;
+    <span class='meta-label'>Skill shown:</span>Image generation in Copilot Chat &nbsp;|&nbsp;
+    <span class='meta-label'>Note:</span>Image generation is included in Copilot Chat (Basic)
+</div>
+
+<div class='talking-point'>Use this if you have time at the end. Marketers love seeing visual output. Remind them generated images are for ideation only — final creative needs the agency or in-house design team.</div>
+
+<div class='prompt-label'>Prompt 1 — Set the visual mood</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Generate three early concept visuals for a summer campaign for a premium sparkling water brand. Concept A: minimalist, editorial, lots of negative space. Concept B: vibrant, playful, mid-century pop art. Concept C: cinematic, golden-hour, lifestyle. No people in any of the images — just product, environment, and mood.</div>
+</div>
+
+<div class='prompt-label'>Prompt 2 — Iterate on the winner</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Take Concept B and produce three variations: one for a Times Square billboard, one for an Instagram square post, and one for a vertical mobile story. Keep the visual identity consistent.</div>
+</div>
+
+</div>
+</details>
+
+<div class='section-divider'>WRAP-UP</div>
+
+<details>
+<summary><h2>Closing Talk Track &amp; Resources</h2></summary>
+<div class='section-content'>
+
+<div class='talking-point'>End on the "what to do Monday morning" message. Give them one prompt, one habit, one resource.</div>
+
+<div class='prompt-label'>Self-prompt for trainees to try first</div>
+<div class='paragraph-row'>
+<button class='copy-btn' onclick='copyText(this)'>Copy</button>
+<div class='paragraph-text'>Act as my marketing thinking partner. Look at my calendar for the next 5 business days, find my biggest meeting, and help me prepare for it: who's there, what's at stake, what I should bring, and 3 questions I should be ready to answer. Then save my preference for how I like meeting prep formatted so you can do this every Monday going forward.</div>
+</div>
+
+<p style='margin-top: 1.5rem;'><strong>Key resources to share with class:</strong></p>
+<ul>
+    <li><strong>copilot.microsoft.com</strong> — Copilot Chat on the web (sign in with work account)</li>
+    <li><strong>Settings → Personalization</strong> — manage saved memories, custom instructions, chat history</li>
+    <li><strong>Image generation in chat</strong> — type "create an image of…" directly in Copilot Chat for concept visuals</li>
+    <li><strong>Outlook (web, Windows, Mac, mobile)</strong> — the one app where Copilot Chat stays for non-licensed enterprise users after May 16, 2026</li>
+</ul>
+
+</div>
+</details>
+
+</div>
+
+<script>
+function copyText(btn) {
+    let target = btn.nextElementSibling;
+    while (target && !target.classList.contains('paragraph-text')) {
+        target = target.nextElementSibling;
+    }
+    if (!target) return;
+    const text = target.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.classList.add('copied');
+        btn.textContent = '✓ Copied';
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = original;
+        }, 1200);
+    });
+}
+</script>
+
+</body>
+</html>
