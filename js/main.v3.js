@@ -3,7 +3,20 @@
    - Expand / Collapse cards
    - Copy Prompt to clipboard (whitespace-normalized)
    - Sticky quick-nav: auto-expand target section on click
+   - Dark / Light theme toggle (persisted in localStorage)
    ============================================================ */
+
+/* ---- Theme: applied as early as possible to limit FOUC ---- */
+(function applyStoredTheme() {
+    try {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+        /* localStorage may be unavailable (e.g. file://); fall back silently */
+    }
+})();
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -60,4 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* ---- Theme toggle (floating button) ---- */
+    if (!document.querySelector('.theme-toggle')) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'theme-toggle';
+        btn.setAttribute('aria-label', 'Toggle dark mode');
+        btn.setAttribute('title', 'Toggle dark mode');
+        btn.innerHTML = '<span class="icon-moon" aria-hidden="true">&#9790;</span><span class="icon-sun" aria-hidden="true">&#9728;</span>';
+        btn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) { /* ignore */ }
+        });
+        document.body.appendChild(btn);
+    }
+
 });
+

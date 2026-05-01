@@ -59,6 +59,64 @@
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 14px;
+
+    /* Theme-tunable surfaces (overridden in dark mode) */
+    --table-row-hover: #f8f9fb;
+    --callout-tip-bg: #eaf7ee;
+    --callout-note-bg: #eaf1fb;
+    --callout-warning-bg: #fdf3e7;
+    --code-bg: #f4f4f7;
+    --code-text: #2c3e50;
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+:root[data-theme="dark"] {
+    --purple-deep: #c9b3ff;
+    --purple-mid: #b59bff;
+    --purple-light: #8a6ed8;
+    --purple-bg: #2a1f4a;
+
+    --green-badge: #2ecc71;
+    --green-light: #1e3a2c;
+
+    --prompt-bg: #2a1530;
+    --prompt-text: #f3d6ee;
+
+    --bg-page: #14141b;
+    --bg-card: #1e1e28;
+    --text-primary: #e6e6ec;
+    --text-secondary: #b0b3bd;
+    --text-muted: #80848f;
+    --border-light: #2e2e3c;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .5);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, .6);
+
+    --table-row-hover: #25252f;
+    --callout-tip-bg: #1c3328;
+    --callout-note-bg: #1b2740;
+    --callout-warning-bg: #3a2a18;
+    --code-bg: #25252f;
+    --code-text: #e6e6ec;
+
+    color-scheme: dark;
+}
+
+:root[data-theme="dark"] img {
+    /* Slightly tone down bright screenshots in dark mode */
+    filter: brightness(.92);
+}
+
+/* Adjust badge text contrast in dark mode (badges keep colored backgrounds) */
+:root[data-theme="dark"] .badge-exercise {
+    background: #5b3aa8;
+}
+
+:root[data-theme="dark"] .data-table thead th {
+    background: #2a1f4a;
+    color: #d8c8ff;
+    border-bottom-color: var(--purple-light);
 }
 
 html {
@@ -517,17 +575,17 @@ img {
 }
 
 .callout-tip {
-    background: #eaf7ee;
+    background: var(--callout-tip-bg);
     border-left: 4px solid var(--green-badge);
 }
 
 .callout-note {
-    background: #eaf1fb;
+    background: var(--callout-note-bg);
     border-left: 4px solid var(--blue-step);
 }
 
 .callout-warning {
-    background: #fdf3e7;
+    background: var(--callout-warning-bg);
     border-left: 4px solid var(--orange-step);
 }
 
@@ -568,7 +626,7 @@ img {
 }
 
 .data-table tbody tr:hover {
-    background: #f8f9fb;
+    background: var(--table-row-hover);
 }
 
 .data-table tbody tr:last-child td {
@@ -702,6 +760,62 @@ img {
 
 .mb-6 {
     margin-bottom: var(--sp-6);
+}
+
+/* ============================================================
+   THEME TOGGLE BUTTON  (injected by main.v3.js)
+   ============================================================ */
+.theme-toggle {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card);
+    color: var(--purple-mid);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    line-height: 1;
+    z-index: 100;
+    transition: background .15s, color .15s, transform .15s;
+}
+
+.theme-toggle:hover {
+    background: var(--purple-bg);
+    transform: translateY(-2px);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--purple-mid);
+    outline-offset: 2px;
+}
+
+.theme-toggle .icon-sun {
+    display: none;
+}
+
+.theme-toggle .icon-moon {
+    display: inline;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+    display: inline;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+    display: none;
+}
+
+@media print {
+    .theme-toggle {
+        display: none;
+    }
 }
 
 /* ============================================================
