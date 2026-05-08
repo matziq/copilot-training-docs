@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
-    <link rel="apple-touch-icon" href="../../favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="apple-touch-icon" href="../../favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Microsoft Copilot Cowork — Demo Prompts</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -28,8 +35,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     }
+
     header .brand {
       display: flex;
       align-items: center;
@@ -37,14 +45,26 @@
       font-size: 1.05rem;
       font-weight: 700;
     }
+
     header .brand .logo-mark {
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       background: #0078D4;
       border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; font-weight: 800; color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
     }
-    header .subtitle { font-size: 0.78rem; color: #A8C4E8; margin-top: 1px; }
+
+    header .subtitle {
+      font-size: 0.78rem;
+      color: #A8C4E8;
+      margin-top: 1px;
+    }
+
     .badge {
       background: #00B7C3;
       color: #fff;
@@ -68,6 +88,7 @@
       top: 56px;
       z-index: 90;
     }
+
     .jumpcats a {
       text-decoration: none;
       font-size: 0.78rem;
@@ -78,7 +99,11 @@
       padding: 3px 12px;
       transition: background 0.15s, color 0.15s;
     }
-    .jumpcats a:hover { background: #0078D4; color: #fff; }
+
+    .jumpcats a:hover {
+      background: #0078D4;
+      color: #fff;
+    }
 
     /* ── MAIN LAYOUT ── */
     main {
@@ -95,12 +120,22 @@
       padding: 1.5rem 2rem;
       margin-bottom: 2.5rem;
     }
-    .intro h1 { font-size: 1.5rem; margin-bottom: 0.4rem; }
-    .intro p  { font-size: 0.9rem; color: #A8C4E8; line-height: 1.6; }
+
+    .intro h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .intro p {
+      font-size: 0.9rem;
+      color: #A8C4E8;
+      line-height: 1.6;
+    }
+
     .intro .tip {
       margin-top: 1rem;
       font-size: 0.82rem;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       border-left: 3px solid #50E6FF;
       padding: 0.6rem 0.9rem;
       border-radius: 0 6px 6px 0;
@@ -108,7 +143,10 @@
     }
 
     /* ── CATEGORY SECTION ── */
-    .category-section { margin-bottom: 3rem; }
+    .category-section {
+      margin-bottom: 3rem;
+    }
+
     .category-header {
       display: flex;
       align-items: center;
@@ -117,13 +155,22 @@
       padding-bottom: 0.6rem;
       border-bottom: 3px solid;
     }
+
     .category-header .cat-icon {
-      width: 36px; height: 36px;
+      width: 36px;
+      height: 36px;
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.1rem;
     }
-    .category-header h2 { font-size: 1.2rem; font-weight: 700; }
+
+    .category-header h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
     .category-header .cat-count {
       margin-left: auto;
       font-size: 0.75rem;
@@ -140,7 +187,10 @@
       overflow: hidden;
       transition: box-shadow 0.15s;
     }
-    .prompt-card:hover { box-shadow: 0 4px 16px rgba(0,120,212,0.12); }
+
+    .prompt-card:hover {
+      box-shadow: 0 4px 16px rgba(0, 120, 212, 0.12);
+    }
 
     .card-meta {
       display: flex;
@@ -151,12 +201,14 @@
       border-bottom: 1px solid #e5e7eb;
       font-size: 0.75rem;
     }
+
     .card-meta .prompt-label {
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: #6B7A99;
     }
+
     .card-meta .prompt-tag {
       background: #EBF4FF;
       color: #0078D4;
@@ -165,6 +217,7 @@
       font-size: 0.7rem;
       font-weight: 600;
     }
+
     .card-meta .demo-badge {
       background: #FFF3CD;
       color: #DC6803;
@@ -178,10 +231,12 @@
       display: flex;
       align-items: stretch;
     }
+
     .prompt-text-wrap {
       flex: 1;
       padding: 1rem 1.2rem;
     }
+
     .prompt-text {
       font-family: "Consolas", "Courier New", monospace;
       font-size: 0.97rem;
@@ -190,6 +245,7 @@
       white-space: pre-wrap;
       word-break: break-word;
     }
+
     .prompt-note {
       font-size: 0.8rem;
       color: #6B7A99;
@@ -217,10 +273,25 @@
       transition: background 0.15s;
       padding: 0.5rem;
     }
-    .copy-btn:hover  { background: #005BA1; }
-    .copy-btn.copied { background: #107C41; }
-    .copy-btn svg    { width: 18px; height: 18px; fill: currentColor; }
-    .copy-btn span   { font-size: 0.72rem; letter-spacing: 0.3px; }
+
+    .copy-btn:hover {
+      background: #005BA1;
+    }
+
+    .copy-btn.copied {
+      background: #107C41;
+    }
+
+    .copy-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .copy-btn span {
+      font-size: 0.72rem;
+      letter-spacing: 0.3px;
+    }
 
     /* ── TIPS SECTION ── */
     .tips-grid {
@@ -229,14 +300,25 @@
       gap: 1rem;
       margin-top: 1.5rem;
     }
+
     .tip-card {
       background: #fff;
       border: 1.5px solid #e5e7eb;
       border-radius: 10px;
       padding: 1rem 1.2rem;
     }
-    .tip-card h3 { font-size: 0.9rem; color: #1B3A6B; margin-bottom: 0.4rem; }
-    .tip-card p  { font-size: 0.82rem; color: #6B7A99; line-height: 1.55; }
+
+    .tip-card h3 {
+      font-size: 0.9rem;
+      color: #1B3A6B;
+      margin-bottom: 0.4rem;
+    }
+
+    .tip-card p {
+      font-size: 0.82rem;
+      color: #6B7A99;
+      line-height: 1.55;
+    }
 
     /* ── TOAST ── */
     #toast {
@@ -249,710 +331,1026 @@
       font-weight: 600;
       padding: 0.7rem 1.2rem;
       border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 0.2s, transform 0.2s;
       pointer-events: none;
       z-index: 999;
     }
-    #toast.show { opacity: 1; transform: translateY(0); }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      .copy-btn { width: 76px; font-size: 0.72rem; }
-      .prompt-text { font-size: 0.87rem; }
+      .copy-btn {
+        width: 76px;
+        font-size: 0.72rem;
+      }
+
+      .prompt-text {
+        font-size: 0.87rem;
+      }
+    }
+
+    /* ── Dark mode ── */
+    :root[data-theme="dark"] body {
+      background: #1a1d21;
+      color: #e6e6e6;
+    }
+
+    :root[data-theme="dark"] header {
+      background: #0f1a2e;
+    }
+
+    :root[data-theme="dark"] .jumpcats {
+      background: #262a30;
+      border-bottom-color: #3a3f46;
+    }
+
+    :root[data-theme="dark"] .jumpcats a {
+      color: #7cb3f0;
+      border-color: #4a5058;
+    }
+
+    :root[data-theme="dark"] .jumpcats a:hover {
+      background: #0078D4;
+      color: #fff;
+    }
+
+    :root[data-theme="dark"] .intro {
+      background: #0f1a2e;
+    }
+
+    :root[data-theme="dark"] .prompt-card {
+      background: #262a30;
+      border-color: #3a3f46;
+    }
+
+    :root[data-theme="dark"] .prompt-card:hover {
+      box-shadow: 0 4px 16px rgba(0, 120, 212, 0.25);
+    }
+
+    :root[data-theme="dark"] .card-meta {
+      background: #1e2228;
+      border-bottom-color: #3a3f46;
+    }
+
+    :root[data-theme="dark"] .card-meta .prompt-label {
+      color: #9aa0a6;
+    }
+
+    :root[data-theme="dark"] .card-meta .prompt-tag {
+      background: #1f3a5a;
+      color: #7cb3f0;
+    }
+
+    :root[data-theme="dark"] .prompt-text {
+      color: #c0c4ca;
+    }
+
+    :root[data-theme="dark"] .prompt-note {
+      color: #9aa0a6;
+    }
+
+    :root[data-theme="dark"] .tip-card {
+      background: #262a30;
+      border-color: #3a3f46;
+    }
+
+    :root[data-theme="dark"] .tip-card h3 {
+      color: #7cb3f0;
+    }
+
+    :root[data-theme="dark"] .tip-card p {
+      color: #9aa0a6;
+    }
+
+    :root[data-theme="dark"] .category-header .cat-count {
+      color: #9aa0a6;
+    }
+
+    :root[data-theme="dark"] .copy-btn {
+      background: #1a5a9e;
+    }
+
+    :root[data-theme="dark"] .copy-btn:hover {
+      background: #0078D4;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 200;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+      transition: all .2s
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1)
+    }
+
+    :root[data-theme="dark"] .theme-toggle {
+      background: #262a30;
+      border-color: #4a5058;
+      color: #e6e6e6
+    }
+
+    .theme-toggle .icon-sun {
+      display: none
+    }
+
+    :root[data-theme="dark"] .theme-toggle .icon-moon {
+      display: none
+    }
+
+    :root[data-theme="dark"] .theme-toggle .icon-sun {
+      display: inline
     }
   </style>
 </head>
+
 <body>
 
-<!-- TOP NAV -->
-<header>
-  <div class="brand">
-    <div class="logo-mark">M</div>
-    <div>
-      <div>Microsoft Copilot Cowork</div>
-      <div class="subtitle">Demo Prompt Library</div>
+  <!-- TOP NAV -->
+  <header>
+    <div class="brand">
+      <div class="logo-mark">M</div>
+      <div>
+        <div>Microsoft Copilot Cowork</div>
+        <div class="subtitle">Demo Prompt Library</div>
+      </div>
     </div>
-  </div>
-  <div class="badge">Live Demo</div>
-</header>
+    <div class="badge">Live Demo</div>
+  </header>
 
-<!-- JUMP NAV -->
-<nav class="jumpcats">
-  <a href="#briefing">Morning Briefing</a>
-  <a href="#email">Email</a>
-  <a href="#calendar">Calendar</a>
-  <a href="#meetings">Meetings</a>
-  <a href="#documents">Documents</a>
-  <a href="#teams">Teams</a>
-  <a href="#skills">Skills &amp; Scheduling</a>
-</nav>
+  <!-- JUMP NAV -->
+  <nav class="jumpcats">
+    <a href="#briefing">Morning Briefing</a>
+    <a href="#email">Email</a>
+    <a href="#calendar">Calendar</a>
+    <a href="#meetings">Meetings</a>
+    <a href="#documents">Documents</a>
+    <a href="#teams">Teams</a>
+    <a href="#skills">Skills &amp; Scheduling</a>
+  </nav>
 
-<main>
+  <main>
 
-  <!-- INTRO -->
-  <div class="intro">
-    <h1>Cowork Demo Prompt Library</h1>
-    <p>Click <strong>Copy</strong> on any prompt, paste it directly into Cowork, and adjust names or details to fit your tenant. Pre-filled with demo-friendly examples that work with minimal Graph data.</p>
-    <div class="tip">
-      <strong>Tip for trainers:</strong> Open this page on your demo laptop. Use the jump links above to navigate quickly between sections without scrolling.
-      Prompts use example names (Alex Johnson, Sam Rivera, Jordan Lee) and topics — swap them for real tenant users if you prefer.
+    <!-- INTRO -->
+    <div class="intro">
+      <h1>Cowork Demo Prompt Library</h1>
+      <p>Click <strong>Copy</strong> on any prompt, paste it directly into Cowork, and adjust names or details to fit
+        your tenant. Pre-filled with demo-friendly examples that work with minimal Graph data.</p>
+      <div class="tip">
+        <strong>Tip for trainers:</strong> Open this page on your demo laptop. Use the jump links above to navigate
+        quickly between sections without scrolling.
+        Prompts use example names (Alex Johnson, Sam Rivera, Jordan Lee) and topics — swap them for real tenant users if
+        you prefer.
+      </div>
     </div>
-  </div>
 
-  <!-- ═══════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════
        MORNING BRIEFING
   ══════════════════════════════════════════════════ -->
-  <section class="category-section" id="briefing">
-    <div class="category-header" style="border-color:#0078D4;">
-      <div class="cat-icon" style="background:#EBF4FF; color:#0078D4;">☀️</div>
-      <h2 style="color:#1B3A6B;">Morning Briefing</h2>
-      <span class="cat-count">3 prompts</span>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Briefing</span>
-        <span class="demo-badge">⭐ DEMO STARTER</span>
+    <section class="category-section" id="briefing">
+      <div class="category-header" style="border-color:#0078D4;">
+        <div class="cat-icon" style="background:#EBF4FF; color:#0078D4;">☀️</div>
+        <h2 style="color:#1B3A6B;">Morning Briefing</h2>
+        <span class="cat-count">3 prompts</span>
       </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Give me a morning briefing for today. Summarize my meetings, tell me which emails need my attention, and list any outstanding action items.</div>
-          <div class="prompt-note">Best opening demo prompt — shows immediate, high-value output. Expect: today's schedule, priority inbox items, and action item list.</div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Briefing</span>
+          <span class="demo-badge">⭐ DEMO STARTER</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Give me a morning briefing for today. Summarize my meetings, tell me which emails need my attention, and list any outstanding action items.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Briefing</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">What did I miss while I was out? Give me a summary of important emails, Teams messages, and calendar events from the last 2 days.</div>
-          <div class="prompt-note">Great for return-from-PTO scenario. Adjust the time period if needed.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Give me a morning briefing for today. Summarize my meetings, tell me which emails
+              need my attention, and list any outstanding action items.</div>
+            <div class="prompt-note">Best opening demo prompt — shows immediate, high-value output. Expect: today's
+              schedule, priority inbox items, and action item list.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Give me a morning briefing for today. Summarize my meetings, tell me which emails need my attention, and list any outstanding action items.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'What did I miss while I was out? Give me a summary of important emails, Teams messages, and calendar events from the last 2 days.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Briefing</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">What's the most important thing I should focus on today based on my calendar and inbox?</div>
-          <div class="prompt-note">Shows Cowork's ability to prioritize across data sources — good for demonstrating AI judgment.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Briefing</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'What\'s the most important thing I should focus on today based on my calendar and inbox?')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">What did I miss while I was out? Give me a summary of important emails, Teams
+              messages, and calendar events from the last 2 days.</div>
+            <div class="prompt-note">Great for return-from-PTO scenario. Adjust the time period if needed.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'What did I miss while I was out? Give me a summary of important emails, Teams messages, and calendar events from the last 2 days.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Briefing</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">What's the most important thing I should focus on today based on my calendar and
+              inbox?</div>
+            <div class="prompt-note">Shows Cowork's ability to prioritize across data sources — good for demonstrating
+              AI judgment.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'What\'s the most important thing I should focus on today based on my calendar and inbox?')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
        EMAIL
   ══════════════════════════════════════════════════ -->
-  <section class="category-section" id="email">
-    <div class="category-header" style="border-color:#1B3A6B;">
-      <div class="cat-icon" style="background:#EBF4FF; color:#1B3A6B;">✉️</div>
-      <h2 style="color:#1B3A6B;">Email Management</h2>
-      <span class="cat-count">5 prompts</span>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Email</span>
-        <span class="demo-badge">⭐ DEMO PROMPT</span>
+    <section class="category-section" id="email">
+      <div class="category-header" style="border-color:#1B3A6B;">
+        <div class="cat-icon" style="background:#EBF4FF; color:#1B3A6B;">✉️</div>
+        <h2 style="color:#1B3A6B;">Email Management</h2>
+        <span class="cat-count">5 prompts</span>
       </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Find an urgent email in my inbox that needs a response and draft a professional reply for me.</div>
-          <div class="prompt-note">Trainer tip: This will use your live inbox. Pick a real email ahead of time if you want a predictable demo result.</div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Email</span>
+          <span class="demo-badge">⭐ DEMO PROMPT</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Find an urgent email in my inbox that needs a response and draft a professional reply for me.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Email</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Summarize my last 10 unread emails and tell me which ones I must respond to today.</div>
-          <div class="prompt-note">Demonstrates inbox triage capability. Works best when you have a realistic volume of unread messages.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Find an urgent email in my inbox that needs a response and draft a professional
+              reply for me.</div>
+            <div class="prompt-note">Trainer tip: This will use your live inbox. Pick a real email ahead of time if you
+              want a predictable demo result.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Find an urgent email in my inbox that needs a response and draft a professional reply for me.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Summarize my last 10 unread emails and tell me which ones I must respond to today.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Email</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Draft an email to Alex Johnson asking for their availability for a 30-minute check-in next week. Keep it short and professional.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Email</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Draft an email to Alex Johnson asking for their availability for a 30-minute check-in next week. Keep it short and professional.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Email</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Find all emails from Contoso in the last two weeks and summarize what we've been discussing.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Summarize my last 10 unread emails and tell me which ones I must respond to today.
+            </div>
+            <div class="prompt-note">Demonstrates inbox triage capability. Works best when you have a realistic volume
+              of unread messages.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Summarize my last 10 unread emails and tell me which ones I must respond to today.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Find all emails from Contoso in the last two weeks and summarize what we\'ve been discussing.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Email</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Send Alex Johnson an email letting them know I'll be late to today's project sync call by about 10 minutes.</div>
-          <div class="prompt-note">Shows action-taking — Cowork will draft and send with your approval. Good for showing the approval flow.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Email</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Send Alex Johnson an email letting them know I\'ll be late to today\'s project sync call by about 10 minutes.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Draft an email to Alex Johnson asking for their availability for a 30-minute
+              check-in next week. Keep it short and professional.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Draft an email to Alex Johnson asking for their availability for a 30-minute check-in next week. Keep it short and professional.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Email</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Find all emails from Contoso in the last two weeks and summarize what we've been
+              discussing.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Find all emails from Contoso in the last two weeks and summarize what we\'ve been discussing.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Email</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Send Alex Johnson an email letting them know I'll be late to today's project sync
+              call by about 10 minutes.</div>
+            <div class="prompt-note">Shows action-taking — Cowork will draft and send with your approval. Good for
+              showing the approval flow.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Send Alex Johnson an email letting them know I\'ll be late to today\'s project sync call by about 10 minutes.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
        CALENDAR
   ══════════════════════════════════════════════════ -->
-  <section class="category-section" id="calendar">
-    <div class="category-header" style="border-color:#00B7C3;">
-      <div class="cat-icon" style="background:#E8FFF9; color:#00B7C3;">📅</div>
-      <h2 style="color:#1B3A6B;">Calendar &amp; Scheduling</h2>
-      <span class="cat-count">4 prompts</span>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Calendar</span>
-        <span class="demo-badge">⭐ DEMO PROMPT</span>
+    <section class="category-section" id="calendar">
+      <div class="category-header" style="border-color:#00B7C3;">
+        <div class="cat-icon" style="background:#E8FFF9; color:#00B7C3;">📅</div>
+        <h2 style="color:#1B3A6B;">Calendar &amp; Scheduling</h2>
+        <span class="cat-count">4 prompts</span>
       </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Schedule a 30-minute meeting with Alex Johnson next week. Find a time that works for both of us and send an invite.</div>
-          <div class="prompt-note">Trainer tip: Use a colleague from the demo tenant. Show Cowork finding available slots. Cancel at the confirmation step unless you want to actually book it.</div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Calendar</span>
+          <span class="demo-badge">⭐ DEMO PROMPT</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Schedule a 30-minute meeting with Alex Johnson next week. Find a time that works for both of us and send an invite.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Calendar</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Find a time when Alex Johnson, Sam Rivera, and Jordan Lee are all free next week for a 45-minute call about the Q3 product launch. Schedule it and send invites to everyone.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Schedule a 30-minute meeting with Alex Johnson next week. Find a time that works
+              for both of us and send an invite.</div>
+            <div class="prompt-note">Trainer tip: Use a colleague from the demo tenant. Show Cowork finding available
+              slots. Cancel at the confirmation step unless you want to actually book it.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Schedule a 30-minute meeting with Alex Johnson next week. Find a time that works for both of us and send an invite.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Find a time when Alex Johnson, Sam Rivera, and Jordan Lee are all free next week for a 45-minute call about the Q3 product launch. Schedule it and send invites to everyone.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Calendar</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Block 2 hours every morning this week for focused work. Mark the time as busy so people don't schedule over it.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Calendar</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Block 2 hours every morning this week for focused work. Mark the time as busy so people don\'t schedule over it.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Calendar</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Is my week too packed? Review my calendar and tell me which meetings I could decline or reschedule to create more focus time.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Find a time when Alex Johnson, Sam Rivera, and Jordan Lee are all free next week
+              for a 45-minute call about the Q3 product launch. Schedule it and send invites to everyone.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Find a time when Alex Johnson, Sam Rivera, and Jordan Lee are all free next week for a 45-minute call about the Q3 product launch. Schedule it and send invites to everyone.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Is my week too packed? Review my calendar and tell me which meetings I could decline or reschedule to create more focus time.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Calendar</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Block 2 hours every morning this week for focused work. Mark the time as busy so
+              people don't schedule over it.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Block 2 hours every morning this week for focused work. Mark the time as busy so people don\'t schedule over it.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Calendar</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Is my week too packed? Review my calendar and tell me which meetings I could
+              decline or reschedule to create more focus time.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Is my week too packed? Review my calendar and tell me which meetings I could decline or reschedule to create more focus time.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
        MEETINGS
   ══════════════════════════════════════════════════ -->
-  <section class="category-section" id="meetings">
-    <div class="category-header" style="border-color:#065A82;">
-      <div class="cat-icon" style="background:#EBF4FF; color:#065A82;">🎙️</div>
-      <h2 style="color:#1B3A6B;">Meeting Intelligence</h2>
-      <span class="cat-count">4 prompts</span>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Meetings</span>
-        <span class="demo-badge">⭐ DEMO PROMPT</span>
+    <section class="category-section" id="meetings">
+      <div class="category-header" style="border-color:#065A82;">
+        <div class="cat-icon" style="background:#EBF4FF; color:#065A82;">🎙️</div>
+        <h2 style="color:#1B3A6B;">Meeting Intelligence</h2>
+        <span class="cat-count">4 prompts</span>
       </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Summarize the last meeting I attended and list the key decisions and action items, including who owns each one.</div>
-          <div class="prompt-note">Works best if you have a recent meeting with a transcript. Shows structured, actionable output.</div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Meetings</span>
+          <span class="demo-badge">⭐ DEMO PROMPT</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Summarize the last meeting I attended and list the key decisions and action items, including who owns each one.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Meetings</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Prep me for my 2pm meeting with Contoso. Give me a brief on who I'm meeting with, what we've discussed before, and key topics I should be ready for.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Summarize the last meeting I attended and list the key decisions and action items,
+              including who owns each one.</div>
+            <div class="prompt-note">Works best if you have a recent meeting with a transcript. Shows structured,
+              actionable output.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Summarize the last meeting I attended and list the key decisions and action items, including who owns each one.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Prep me for my 2pm meeting with Contoso. Give me a brief on who I\'m meeting with, what we\'ve discussed before, and key topics I should be ready for.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Meetings</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Draft a follow-up email to the attendees of my last project sync meeting. Recap the key decisions and list everyone's action items.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Meetings</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Draft a follow-up email to the attendees of my last project sync meeting. Recap the key decisions and list everyone\'s action items.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Meetings</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">How many meetings do I have this week? Which ones are optional that I could skip to free up time?</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Prep me for my 2pm meeting with Contoso. Give me a brief on who I'm meeting with,
+              what we've discussed before, and key topics I should be ready for.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Prep me for my 2pm meeting with Contoso. Give me a brief on who I\'m meeting with, what we\'ve discussed before, and key topics I should be ready for.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'How many meetings do I have this week? Which ones are optional that I could skip to free up time?')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Meetings</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Draft a follow-up email to the attendees of my last project sync meeting. Recap the
+              key decisions and list everyone's action items.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Draft a follow-up email to the attendees of my last project sync meeting. Recap the key decisions and list everyone\'s action items.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Meetings</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">How many meetings do I have this week? Which ones are optional that I could skip to
+              free up time?</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'How many meetings do I have this week? Which ones are optional that I could skip to free up time?')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
        DOCUMENTS
   ══════════════════════════════════════════════════ -->
-  <section class="category-section" id="documents">
-    <div class="category-header" style="border-color:#107C41;">
-      <div class="cat-icon" style="background:#F0FDF4; color:#107C41;">📄</div>
-      <h2 style="color:#1B3A6B;">Document Creation</h2>
-      <span class="cat-count">5 prompts</span>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Documents</span>
-        <span class="demo-badge">⭐ DEMO PROMPT</span>
+    <section class="category-section" id="documents">
+      <div class="category-header" style="border-color:#107C41;">
+        <div class="cat-icon" style="background:#F0FDF4; color:#107C41;">📄</div>
+        <h2 style="color:#1B3A6B;">Document Creation</h2>
+        <span class="cat-count">5 prompts</span>
       </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Create a Word document summarizing the key themes and action items from my meetings today. Format it with clear headings and a bulleted action item list at the end.</div>
-          <div class="prompt-note">Shows end-to-end document creation. The file will be available to download after Cowork generates it.</div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Documents</span>
+          <span class="demo-badge">⭐ DEMO PROMPT</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Create a Word document summarizing the key themes and action items from my meetings today. Format it with clear headings and a bulleted action item list at the end.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Documents</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Create a 6-slide PowerPoint presentation on improving customer onboarding for the leadership team. Include an agenda slide, key findings, and a recommendations slide.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Create a Word document summarizing the key themes and action items from my meetings
+              today. Format it with clear headings and a bulleted action item list at the end.</div>
+            <div class="prompt-note">Shows end-to-end document creation. The file will be available to download after
+              Cowork generates it.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Create a Word document summarizing the key themes and action items from my meetings today. Format it with clear headings and a bulleted action item list at the end.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Create a 6-slide PowerPoint presentation on improving customer onboarding for the leadership team. Include an agenda slide, key findings, and a recommendations slide.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Documents</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Build an Excel spreadsheet to track the Q3 Product Launch. Include columns for task name, owner, due date, status, and notes. Format it professionally.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Documents</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Build an Excel spreadsheet to track the Q3 Product Launch. Include columns for task name, owner, due date, status, and notes. Format it professionally.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Documents</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Write a professional status update email to my manager summarizing my key wins, blockers, and priorities for this week. Keep it to one page.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Create a 6-slide PowerPoint presentation on improving customer onboarding for the
+              leadership team. Include an agenda slide, key findings, and a recommendations slide.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Create a 6-slide PowerPoint presentation on improving customer onboarding for the leadership team. Include an agenda slide, key findings, and a recommendations slide.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Write a professional status update email to my manager summarizing my key wins, blockers, and priorities for this week. Keep it to one page.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Documents</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Create a PDF one-pager summarizing our new hybrid work policy that I can share with all people managers. Use clear headers and keep it visually clean.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Documents</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Create a PDF one-pager summarizing our new hybrid work policy that I can share with all people managers. Use clear headers and keep it visually clean.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Build an Excel spreadsheet to track the Q3 Product Launch. Include columns for task
+              name, owner, due date, status, and notes. Format it professionally.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Build an Excel spreadsheet to track the Q3 Product Launch. Include columns for task name, owner, due date, status, and notes. Format it professionally.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Documents</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Write a professional status update email to my manager summarizing my key wins,
+              blockers, and priorities for this week. Keep it to one page.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Write a professional status update email to my manager summarizing my key wins, blockers, and priorities for this week. Keep it to one page.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Documents</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Create a PDF one-pager summarizing our new hybrid work policy that I can share with
+              all people managers. Use clear headers and keep it visually clean.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Create a PDF one-pager summarizing our new hybrid work policy that I can share with all people managers. Use clear headers and keep it visually clean.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
        TEAMS
   ══════════════════════════════════════════════════ -->
-  <section class="category-section" id="teams">
-    <div class="category-header" style="border-color:#5C2D91;">
-      <div class="cat-icon" style="background:#F3EFF9; color:#5C2D91;">💬</div>
-      <h2 style="color:#1B3A6B;">Teams &amp; Collaboration</h2>
-      <span class="cat-count">5 prompts</span>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Teams</span>
-        <span class="demo-badge">⭐ DEMO PROMPT</span>
+    <section class="category-section" id="teams">
+      <div class="category-header" style="border-color:#5C2D91;">
+        <div class="cat-icon" style="background:#F3EFF9; color:#5C2D91;">💬</div>
+        <h2 style="color:#1B3A6B;">Teams &amp; Collaboration</h2>
+        <span class="cat-count">5 prompts</span>
       </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Post a message to the General channel letting the team know about the updated meeting room booking process starting next Monday.</div>
-          <div class="prompt-note">Trainer tip: Use a test channel or a channel where a test message is welcome. Show the draft before confirming.</div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Teams</span>
+          <span class="demo-badge">⭐ DEMO PROMPT</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Post a message to the General channel letting the team know about the updated meeting room booking process starting next Monday.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Teams</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">What are the most important messages in the General channel from the past 3 days that I should know about?</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Post a message to the General channel letting the team know about the updated
+              meeting room booking process starting next Monday.</div>
+            <div class="prompt-note">Trainer tip: Use a test channel or a channel where a test message is welcome. Show
+              the draft before confirming.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Post a message to the General channel letting the team know about the updated meeting room booking process starting next Monday.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'What are the most important messages in the General channel from the past 3 days that I should know about?')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Teams</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Start a group chat with Alex Johnson, Sam Rivera, and Jordan Lee about planning the team offsite in June and send a message introducing the conversation.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Teams</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Start a group chat with Alex Johnson, Sam Rivera, and Jordan Lee about planning the team offsite in June and send a message introducing the conversation.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Teams</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Find the conversation where the new expense report process was discussed in Teams and summarize what was decided.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">What are the most important messages in the General channel from the past 3 days
+              that I should know about?</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'What are the most important messages in the General channel from the past 3 days that I should know about?')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Find the conversation where the new expense report process was discussed in Teams and summarize what was decided.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Teams</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Send my manager a quick Teams message with a status update on the website redesign project this week.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Teams</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Send my manager a quick Teams message with a status update on the website redesign project this week.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Start a group chat with Alex Johnson, Sam Rivera, and Jordan Lee about planning the
+              team offsite in June and send a message introducing the conversation.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Start a group chat with Alex Johnson, Sam Rivera, and Jordan Lee about planning the team offsite in June and send a message introducing the conversation.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Teams</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Find the conversation where the new expense report process was discussed in Teams
+              and summarize what was decided.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Find the conversation where the new expense report process was discussed in Teams and summarize what was decided.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Teams</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Send my manager a quick Teams message with a status update on the website redesign
+              project this week.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Send my manager a quick Teams message with a status update on the website redesign project this week.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
        SKILLS & SCHEDULING
   ══════════════════════════════════════════════════ -->
-  <section class="category-section" id="skills">
-    <div class="category-header" style="border-color:#DC6803;">
-      <div class="cat-icon" style="background:#FFFBEB; color:#DC6803;">⚡</div>
-      <h2 style="color:#1B3A6B;">Custom Skills &amp; Scheduled Tasks</h2>
-      <span class="cat-count">4 prompts</span>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Skills</span>
-        <span class="demo-badge">⭐ DEMO PROMPT</span>
+    <section class="category-section" id="skills">
+      <div class="category-header" style="border-color:#DC6803;">
+        <div class="cat-icon" style="background:#FFFBEB; color:#DC6803;">⚡</div>
+        <h2 style="color:#1B3A6B;">Custom Skills &amp; Scheduled Tasks</h2>
+        <span class="cat-count">4 prompts</span>
       </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Create a skill called "Weekly Status" that generates a formatted status update for my manager every time I say "Write my weekly status." It should pull my wins, blockers, and key priorities from the week.</div>
-          <div class="prompt-note">Shows skill creation — Cowork will save this as a reusable skill in your OneDrive. Demonstrate by triggering it afterward with "Write my weekly status."</div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Skills</span>
+          <span class="demo-badge">⭐ DEMO PROMPT</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Create a skill called &quot;Weekly Status&quot; that generates a formatted status update for my manager every time I say &quot;Write my weekly status.&quot; It should pull my wins, blockers, and key priorities from the week.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Skills</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Create a skill that generates a customer meeting summary in our standard format whenever I say "Create a meeting summary for Contoso." Include: attendees, topics discussed, decisions made, and next steps.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Create a skill called "Weekly Status" that generates a formatted status update for
+              my manager every time I say "Write my weekly status." It should pull my wins, blockers, and key priorities
+              from the week.</div>
+            <div class="prompt-note">Shows skill creation — Cowork will save this as a reusable skill in your OneDrive.
+              Demonstrate by triggering it afterward with "Write my weekly status."</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Create a skill called &quot;Weekly Status&quot; that generates a formatted status update for my manager every time I say &quot;Write my weekly status.&quot; It should pull my wins, blockers, and key priorities from the week.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Create a skill that generates a customer meeting summary in our standard format whenever I say &quot;Create a meeting summary for Contoso.&quot; Include: attendees, topics discussed, decisions made, and next steps.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
 
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Scheduling</span>
-        <span class="demo-badge">⭐ DEMO PROMPT</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Every morning at 8am, send me a briefing with today's meetings, my top 3 priority emails, and any action items that are overdue.</div>
-          <div class="prompt-note">Sets up a recurring scheduled task. Show the confirmation that it's been saved and will run automatically.</div>
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Skills</span>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Every morning at 8am, send me a briefing with today\'s meetings, my top 3 priority emails, and any action items that are overdue.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="card-meta">
-        <span class="prompt-label">Prompt</span>
-        <span class="prompt-tag">Scheduling</span>
-      </div>
-      <div class="prompt-body">
-        <div class="prompt-text-wrap">
-          <div class="prompt-text">Every Friday at 4pm, look at my week and draft a status update for my manager covering my key wins, any blockers I hit, and my priorities for next week.</div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Create a skill that generates a customer meeting summary in our standard format
+              whenever I say "Create a meeting summary for Contoso." Include: attendees, topics discussed, decisions
+              made, and next steps.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Create a skill that generates a customer meeting summary in our standard format whenever I say &quot;Create a meeting summary for Contoso.&quot; Include: attendees, topics discussed, decisions made, and next steps.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyPrompt(this, 'Every Friday at 4pm, look at my week and draft a status update for my manager covering my key wins, any blockers I hit, and my priorities for next week.')">
-          <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          <span>Copy</span>
-        </button>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Scheduling</span>
+          <span class="demo-badge">⭐ DEMO PROMPT</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Every morning at 8am, send me a briefing with today's meetings, my top 3 priority
+              emails, and any action items that are overdue.</div>
+            <div class="prompt-note">Sets up a recurring scheduled task. Show the confirmation that it's been saved and
+              will run automatically.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Every morning at 8am, send me a briefing with today\'s meetings, my top 3 priority emails, and any action items that are overdue.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="card-meta">
+          <span class="prompt-label">Prompt</span>
+          <span class="prompt-tag">Scheduling</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text-wrap">
+            <div class="prompt-text">Every Friday at 4pm, look at my week and draft a status update for my manager
+              covering my key wins, any blockers I hit, and my priorities for next week.</div>
+          </div>
+          <button class="copy-btn"
+            onclick="copyPrompt(this, 'Every Friday at 4pm, look at my week and draft a status update for my manager covering my key wins, any blockers I hit, and my priorities for next week.')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
        TIPS
   ══════════════════════════════════════════════════ -->
-  <section class="category-section">
-    <div class="category-header" style="border-color:#6B7A99;">
-      <div class="cat-icon" style="background:#F3F4F6; color:#6B7A99;">💡</div>
-      <h2 style="color:#1B3A6B;">Trainer Tips</h2>
-    </div>
-    <div class="tips-grid">
-      <div class="tip-card">
-        <h3>Swap names if needed</h3>
-        <p>Prompts use demo names like Alex Johnson and Contoso. Replace with real tenant users for more personalized demos.</p>
+    <section class="category-section">
+      <div class="category-header" style="border-color:#6B7A99;">
+        <div class="cat-icon" style="background:#F3F4F6; color:#6B7A99;">💡</div>
+        <h2 style="color:#1B3A6B;">Trainer Tips</h2>
       </div>
-      <div class="tip-card">
-        <h3>Starred prompts are demo-ready</h3>
-        <p>Prompts marked ⭐ DEMO PROMPT are tested, high-impact, and reliably produce impressive output. Lead with these.</p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3>Swap names if needed</h3>
+          <p>Prompts use demo names like Alex Johnson and Contoso. Replace with real tenant users for more personalized
+            demos.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Starred prompts are demo-ready</h3>
+          <p>Prompts marked ⭐ DEMO PROMPT are tested, high-impact, and reliably produce impressive output. Lead with
+            these.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Cancel before confirming</h3>
+          <p>For scheduling and sending demos, Cowork shows a preview before taking action. Decline at the confirmation
+            step to avoid live sends during demos.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Iterate live</h3>
+          <p>After any output, show iteration: "Make it shorter." or "Add a note about the budget." This demonstrates
+            Cowork's conversational memory.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Test your connection first</h3>
+          <p>Verify Cowork access the morning of the training. Have screenshots of expected output ready as a backup in
+            case of connectivity issues.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Use real data</h3>
+          <p>Your actual inbox and calendar make demos far more compelling than fabricated examples. Participants see
+            real, personalized results instantly.</p>
+        </div>
       </div>
-      <div class="tip-card">
-        <h3>Cancel before confirming</h3>
-        <p>For scheduling and sending demos, Cowork shows a preview before taking action. Decline at the confirmation step to avoid live sends during demos.</p>
-      </div>
-      <div class="tip-card">
-        <h3>Iterate live</h3>
-        <p>After any output, show iteration: "Make it shorter." or "Add a note about the budget." This demonstrates Cowork's conversational memory.</p>
-      </div>
-      <div class="tip-card">
-        <h3>Test your connection first</h3>
-        <p>Verify Cowork access the morning of the training. Have screenshots of expected output ready as a backup in case of connectivity issues.</p>
-      </div>
-      <div class="tip-card">
-        <h3>Use real data</h3>
-        <p>Your actual inbox and calendar make demos far more compelling than fabricated examples. Participants see real, personalized results instantly.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+  </main>
 
-<!-- TOAST -->
-<div id="toast">Copied to clipboard</div>
+  <!-- TOAST -->
+  <div id="toast">Copied to clipboard</div>
 
-<script>
-  function copyPrompt(btn, text) {
-    navigator.clipboard.writeText(text).then(() => {
-      btn.classList.add('copied');
-      btn.querySelector('span').textContent = 'Copied!';
-      setTimeout(() => {
-        btn.classList.remove('copied');
-        btn.querySelector('span').textContent = 'Copy';
-      }, 2000);
+  <script>
+    function copyPrompt(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('copied');
+        btn.querySelector('span').textContent = 'Copied!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.querySelector('span').textContent = 'Copy';
+        }, 2000);
 
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2000);
-    }).catch(() => {
-      // Fallback for non-secure contexts
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2000);
+      }).catch(() => {
+        // Fallback for non-secure contexts
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
 
-      btn.classList.add('copied');
-      btn.querySelector('span').textContent = 'Copied!';
-      setTimeout(() => {
-        btn.classList.remove('copied');
-        btn.querySelector('span').textContent = 'Copy';
-      }, 2000);
-    });
-  }
-</script>
+        btn.classList.add('copied');
+        btn.querySelector('span').textContent = 'Copied!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.querySelector('span').textContent = 'Copy';
+        }, 2000);
+      });
+    }
+  </script>
+
+  <script>
+    (function () { try { var s = localStorage.getItem('theme'); var p = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches; document.documentElement.setAttribute('data-theme', s || (p ? 'dark' : 'light')); } catch (e) { } })();
+    if (!document.querySelector('.theme-toggle')) { var b = document.createElement('button'); b.type = 'button'; b.className = 'theme-toggle'; b.title = 'Toggle dark mode'; b.innerHTML = '<span class="icon-moon">&#9790;</span><span class="icon-sun">&#9728;</span>'; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', c); try { localStorage.setItem('theme', c); } catch (e) { } }); document.body.appendChild(b); }
+  </script>
 
 </body>
+
 </html>
