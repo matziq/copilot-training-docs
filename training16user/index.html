@@ -18,7 +18,7 @@
         /* ============================================================
            DARK MODE OVERRIDES
            ============================================================ */
-        body.dark {
+        :root[data-theme="dark"] {
             --bg-page: #1a1d21;
             --bg-card: #262a30;
             --text-primary: #e6e6e6;
@@ -30,88 +30,58 @@
             --shadow-md: 0 4px 12px rgba(0, 0, 0, .55);
         }
 
-        body.dark .page-hero h1,
-        body.dark .module-title {
+        :root[data-theme="dark"] .page-hero h1,
+        :root[data-theme="dark"] .module-title {
             color: #c9b3ec;
         }
 
-        body.dark a {
+        :root[data-theme="dark"] a {
             color: #b39ddb;
         }
 
-        body.dark .quick-nav a {
+        :root[data-theme="dark"] .quick-nav a {
             color: #c9b3ec;
         }
 
-        body.dark .quick-nav a:hover {
+        :root[data-theme="dark"] .quick-nav a:hover {
             color: #fff;
         }
 
-        body.dark .data-table thead th {
+        :root[data-theme="dark"] .data-table thead th {
             background: #2d2540;
             color: #c9b3ec;
         }
 
-        body.dark .data-table tbody tr:hover {
+        :root[data-theme="dark"] .data-table tbody tr:hover {
             background: #2d3138;
         }
 
-        body.dark .callout-tip {
+        :root[data-theme="dark"] .callout-tip {
             background: #1f3a2c;
         }
 
-        body.dark .callout-note {
+        :root[data-theme="dark"] .callout-note {
             background: #1f2c3f;
         }
 
-        body.dark .callout-warning {
+        :root[data-theme="dark"] .callout-warning {
             background: #3a2c18;
         }
 
-        body.dark .copy-btn {
+        :root[data-theme="dark"] .copy-btn {
             background: #2d3138;
             color: #c0c4ca;
             border-color: #3a3f46;
         }
 
-        body.dark .copy-btn:hover {
+        :root[data-theme="dark"] .copy-btn:hover {
             background: #2d2540;
-            color: #c9b3ec;
-        }
-
-        /* Theme toggle button */
-        #theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 100;
-            font-family: var(--font-sans);
-            font-size: .8rem;
-            font-weight: 600;
-            padding: .4rem .8rem;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            background: var(--bg-card);
-            color: var(--text-secondary);
-            cursor: pointer;
-            box-shadow: var(--shadow-sm);
-        }
-
-        #theme-toggle:hover {
-            background: var(--purple-bg);
-            color: var(--purple-mid);
-        }
-
-        body.dark #theme-toggle:hover {
             color: #c9b3ec;
         }
     </style>
 </head>
 
 <body>
-
-    <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">&#127769;
-        Dark</button>
 
     <div class="page-wrapper">
 
@@ -772,24 +742,6 @@
     </div>
 
     <script src="../js/main.v3.js"></script>
-    <script>
-        (function () {
-            var btn = document.getElementById('theme-toggle');
-            if (!btn) return;
-            function setTheme(dark) {
-                document.body.classList.toggle('dark', dark);
-                btn.textContent = dark ? '☀ Light' : '🌙 Dark';
-                try { localStorage.setItem('t16-theme', dark ? 'dark' : 'light'); } catch (e) { }
-            }
-            var saved = null;
-            try { saved = localStorage.getItem('t16-theme'); } catch (e) { }
-            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setTheme(saved ? saved === 'dark' : prefersDark);
-            btn.addEventListener('click', function () {
-                setTheme(!document.body.classList.contains('dark'));
-            });
-        })();
-    </script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@
    --b-medium-bg:#ffe699;--b-medium-fg:#7a5c00;
    --b-low-bg:#c6e0b4;--b-low-fg:#23501a;
  }
- body.dark{
+ :root[data-theme="dark"]{
    --bg:#1a1d21;--fg:#e6e6e6;--muted:#9aa0a6;--card-bg:#262a30;--card-border:#3a3f46;
    --ctrl-bg:#2d3138;--ctrl-border:#4a5058;--accent:#4a90d9;--accent-fg:#fff;
    --row-fg:#c0c4ca;--shadow:0 1px 3px rgba(0,0,0,.3);
@@ -33,7 +33,12 @@
  .toolbar{margin-bottom:1rem}
  .toolbar button{padding:.3rem .8rem;border:1px solid var(--ctrl-border);background:var(--ctrl-bg);color:var(--fg);
    border-radius:4px;cursor:pointer;margin-right:.4rem}
- #theme-toggle{position:fixed;top:1rem;right:1rem;z-index:10}
+ .theme-toggle{position:fixed;right:1rem;bottom:1rem;z-index:200;width:44px;height:44px;border-radius:50%;border:1px solid var(--card-border);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 2px 8px rgba(0,0,0,.12);transition:all .2s}
+ .theme-toggle:hover{transform:scale(1.1)}
+ :root[data-theme="dark"] .theme-toggle{background:#262a30;border-color:#4a5058;color:#e6e6e6}
+ .theme-toggle .icon-sun{display:none}
+ :root[data-theme="dark"] .theme-toggle .icon-moon{display:none}
+ :root[data-theme="dark"] .theme-toggle .icon-sun{display:inline}
  .card.collapsed .summary,.card.collapsed .row,.card.collapsed .badges{display:none}
  .card h3 .when{font-weight:normal;color:var(--muted);font-size:.85rem;margin-left:.5rem}
  .card h3{cursor:pointer}
@@ -53,8 +58,10 @@
  details{margin-top:.5rem} details summary{cursor:pointer;color:var(--accent)}
  .row{display:flex;gap:1rem;flex-wrap:wrap;font-size:.9rem;color:var(--row-fg)}
  .row b{color:var(--fg)}
-</style></head><body>
-<button id="theme-toggle" class="filters" title="Toggle dark mode"><span>🌙 Dark</span></button>
+</style>
+<script>(function(){try{var s=localStorage.getItem('theme');var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',s||(p?'dark':'light'));}catch(e){}})()</script>
+</head><body>
+
 <h1>M365 Message Center Report</h1>
 <div class="meta">Generated 2026-05-08 18:22 UTC &middot; 27 messages</div>
 <div class="filters">
@@ -222,16 +229,8 @@
    document.querySelectorAll('.filters button[data-prod]').forEach(x=>x.classList.toggle('active',x.dataset.prod==='all'&&sel.prod==='all'));
    apply();
  });
- const tbtn=document.getElementById('theme-toggle');
- function setTheme(dark){
-   document.body.classList.toggle('dark',dark);
-   tbtn.querySelector('span').textContent=dark?'☀ Light':'🌙 Dark';
-   try{localStorage.setItem('mc-theme',dark?'dark':'light');}catch(e){}
- }
- const saved=(()=>{try{return localStorage.getItem('mc-theme');}catch(e){return null;}})();
- const prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
- setTheme(saved?saved==='dark':prefersDark);
- tbtn.addEventListener('click',()=>setTheme(!document.body.classList.contains('dark')));
+ // ---- Theme toggle (standard .theme-toggle button) ----
+ (function(){if(!document.querySelector('.theme-toggle')){var b=document.createElement('button');b.type='button';b.className='theme-toggle';b.title='Toggle dark mode';b.setAttribute('aria-label','Toggle dark mode');b.innerHTML='<span class="icon-moon" aria-hidden="true">&#9790;</span><span class="icon-sun" aria-hidden="true">&#9728;</span>';b.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);try{localStorage.setItem('theme',c);}catch(e){}});document.body.appendChild(b);}})();
  // ---- Export (HTML / CSV / XLSX) ----
  function visibleCards(){
    return Array.from(document.querySelectorAll('.card')).filter(c=>c.style.display!=='none');
@@ -268,13 +267,13 @@
    const cards=visibleCards();if(!cards.length){alert('Nothing to export.');return;}
    const styleEl=document.querySelector('style');
    const styleHtml=styleEl?styleEl.outerHTML:'';
-   const isDark=document.body.classList.contains('dark');
+   const isDark=document.documentElement.getAttribute('data-theme')==='dark';
    const cardsHtml=cards.map(c=>{
      const cl=c.cloneNode(true);cl.classList.remove('collapsed');return cl.outerHTML;
    }).join('\n');
-   const doc='<!doctype html><html lang="en"><head><meta charset="utf-8">'+
+   const doc='<!doctype html><html lang="en"'+(isDark?' data-theme="dark"':'')+'><head><meta charset="utf-8">'+
      '<title>M365 Message Center Export</title>'+styleHtml+'</head>'+
-     '<body'+(isDark?' class="dark"':'')+'>'+
+     '<body>'+
      '<h1>M365 Message Center Report &mdash; Export</h1>'+
      '<div class="meta">Exported '+new Date().toISOString().slice(0,16).replace('T',' ')+' &middot; '+cards.length+' messages</div>'+
      cardsHtml+'</body></html>';
