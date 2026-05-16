@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Religion Comparison — Centered on The Church of Jesus Christ of Latter-day Saints</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --lds-blue: #003366;
+    --lds-gold: #c9a961;
+    --bg: #f5f3ee;
+    --panel: #ffffff;
+    --ink: #1f1f1f;
+    --muted: #555;
+    --rule: #d8d3c4;
+    --accent: #0b3d91;
+    --highlight: #fff7d6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, var(--lds-blue), #1a4d8c);
+    color: white;
+    padding: 24px 32px;
+    border-bottom: 4px solid var(--lds-gold);
+  }
+  header h1 {
+    margin: 0 0 6px 0;
+    font-size: 26px;
+    font-weight: 600;
+  }
+  header p {
+    margin: 0;
+    opacity: 0.85;
+    font-size: 14px;
+  }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  .controls {
+    background: var(--panel);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+    border-top: 3px solid var(--lds-gold);
+  }
+  .control-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: end;
+  }
+  .control-group {
+    flex: 1;
+    min-width: 220px;
+  }
+  .control-group label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+  }
+  select:focus { outline: 2px solid var(--accent); }
+  .lds-toggle {
+    background: #fdf8e7;
+    border: 1px solid var(--lds-gold);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+  .lds-toggle input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--lds-blue);
+  }
+  .lds-toggle label { font-weight: 600; cursor: pointer; }
+  .lds-toggle .note { color: var(--muted); font-weight: normal; }
+
+  .comparison-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .comparison-grid.three-col { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 900px) {
+    .comparison-grid, .comparison-grid.three-col { grid-template-columns: 1fr; }
+  }
+
+  .religion-card {
+    background: var(--panel);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border-top: 3px solid var(--accent);
+  }
+  .religion-card.lds-card { border-top-color: var(--lds-gold); }
+  .card-header {
+    padding: 18px 20px 14px;
+    background: linear-gradient(180deg, #fafaf6 0%, white 100%);
+    border-bottom: 1px solid var(--rule);
+  }
+  .religion-name {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--lds-blue);
+  }
+  .religion-card.lds-card .religion-name { color: #6b5318; }
+  .religion-meta {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .religion-meta span { margin-right: 14px; }
+  .card-body { padding: 16px 20px 20px; }
+  .category {
+    margin-bottom: 18px;
+  }
+  .category h3 {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 4px;
+  }
+  .religion-card.lds-card .category h3 { color: #8a6d1b; }
+  .category p { margin: 0 0 8px 0; font-size: 14px; }
+  .category ul { margin: 0; padding-left: 20px; font-size: 14px; }
+  .category li { margin-bottom: 4px; }
+
+  /* Glossary tooltip */
+  .term {
+    border-bottom: 1px dotted var(--accent);
+    cursor: help;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .term:hover { background: var(--highlight); }
+  #glossary-tooltip {
+    position: fixed;
+    background: #222;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.45;
+    width: 320px;
+    max-width: calc(100vw - 24px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    pointer-events: none;
+    white-space: normal;
+    text-align: left;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s, visibility 0.15s;
+  }
+  #glossary-tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  #glossary-tooltip::after {
+    content: '';
+    position: absolute;
+    left: var(--arrow-x, 50%);
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+  }
+  #glossary-tooltip.above::after {
+    top: 100%;
+    border-top-color: #222;
+  }
+  #glossary-tooltip.below::after {
+    bottom: 100%;
+    border-bottom-color: #222;
+  }
+
+  .lds-distinct {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: #fdf8e7;
+    border-left: 3px solid var(--lds-gold);
+    font-size: 13px;
+    color: #5a4a14;
+    border-radius: 0 4px 4px 0;
+  }
+  .lds-distinct strong { color: #6b5318; }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--rule);
+    margin-top: 40px;
+  }
+  .legend {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .empty {
+    background: var(--panel);
+    border: 2px dashed var(--rule);
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>A Comparison of World Religions &amp; Christian Traditions</h1>
+  <p>Centered on the doctrine of The Church of Jesus Christ of Latter-day Saints — hover any underlined term for a definition.</p>
+</header>
+
+<div class="container">
+  <div class="controls">
+    <div class="control-row">
+      <div class="control-group">
+        <label for="left-select">Left Comparison</label>
+        <select id="left-select"></select>
+      </div>
+      <div class="control-group">
+        <label for="right-select">Right Comparison</label>
+        <select id="right-select"></select>
+      </div>
+    </div>
+    <div class="lds-toggle">
+      <input type="checkbox" id="lds-mode" />
+      <label for="lds-mode">Compare against The Church of Jesus Christ of Latter-day Saints</label>
+      <span class="note">— locks LDS into the first column and lets you compare two other traditions side-by-side.</span>
+    </div>
+    <p class="legend">Tip: hover (or tap) any <span class="term" data-def="Words and names with this style have hover-definitions. Try hovering!">underlined term</span> for a popup definition.</p>
+  </div>
+
+  <div id="comparison" class="comparison-grid"></div>
+</div>
+
+<footer>
+  Comparison framed from a Latter-day Saint perspective. Other traditions are described fairly in their own self-understanding where possible. For authoritative teaching, consult each tradition's own sources.
+</footer>
+
+<div id="glossary-tooltip" role="tooltip" aria-hidden="true"></div>
+
+<script>
+// =============================
+// GLOSSARY
+// =============================
+const glossary = {
+  "Trinity": "The classical Christian doctrine (formalized in the Nicene Creed, AD 325/381) that God is one substance (ousia) in three co-equal, co-eternal Persons: Father, Son, and Holy Spirit — one Being, not three.",
+  "Godhead": "In LDS usage, the unity of three distinct, separate Beings — God the Father, Jesus Christ (His resurrected Son), and the Holy Ghost — perfectly united in purpose, will, and love, but not one in substance.",
+  "Restoration": "LDS belief that the original Church established by Jesus Christ fell into apostasy after the apostles died and was restored to the earth in 1830 through the prophet Joseph Smith, including priesthood authority, ordinances, and continuing revelation.",
+  "Apostasy": "A falling away from the original truth. LDS teach a Great Apostasy occurred after the death of the original apostles, removing priesthood authority and corrupting doctrine until the Restoration.",
+  "Priesthood": "The authority of God delegated to man to act in His name. LDS distinguish the Aaronic (preparatory) and Melchizedek (higher) priesthoods, restored by John the Baptist and Peter, James, and John respectively.",
+  "Calvinism": "A Reformed Protestant theology systematized by John Calvin (1509–1564) emphasizing the absolute sovereignty of God, total depravity of humans, unconditional election (predestination), limited atonement, irresistible grace, and perseverance of the saints (TULIP).",
+  "Arminianism": "A Protestant theology (Jacobus Arminius, 1560–1609) emphasizing human free will, conditional election, universal atonement, resistible grace — held by Methodists, most Baptists, and Pentecostals.",
+  "Sola Scriptura": "Latin: 'Scripture alone.' Protestant doctrine that the Bible is the sole infallible rule for faith and practice. LDS reject this in favor of an open canon and continuing revelation through living prophets.",
+  "Sola Fide": "Latin: 'Faith alone.' The Protestant doctrine that salvation is by faith alone, apart from works. LDS teach salvation is by grace through faith, made manifest by repentance, ordinances, and obedience.",
+  "Catholic": "From Greek 'katholikos' (universal). The Catholic (Roman Catholic) Church traces its authority to Peter and the unbroken succession of bishops; it accepts Scripture and Sacred Tradition together, led by the Pope.",
+  "Protestant": "Christian traditions that originated in the 16th-century Reformation (Luther, Calvin, Zwingli) protesting Roman Catholic teaching. Defined by sola scriptura, sola fide, and rejection of papal authority. LDS are NOT Protestant — they reject the creeds both Catholics and Protestants share.",
+  "Orthodox": "Eastern Christian churches (Greek, Russian, Serbian, etc.) that split from Rome in 1054 (Great Schism). They share Catholic sacramental theology but reject papal supremacy and the Filioque clause.",
+  "Pope": "The Bishop of Rome, considered by Catholics the successor of Peter and supreme earthly head of the Catholic Church.",
+  "Apostle": "Greek 'one sent forth.' Original twelve disciples of Jesus, plus Paul. LDS believe twelve living apostles lead the restored Church today as special witnesses of Christ.",
+  "Prophet": "One who receives and declares revelation from God. LDS believe a living prophet leads the Church today, in the pattern of Moses, Isaiah, and others.",
+  "Sacrament (LDS) / Eucharist / Communion": "The ordinance of partaking of bread and water (LDS) or bread and wine (most others) in remembrance of Christ's atoning sacrifice. Catholics/Orthodox teach Real Presence; most Protestants teach a symbolic memorial; LDS teach renewal of covenants.",
+  "Baptism": "Initiatory ordinance of immersion (LDS, Baptists, Orthodox, Pentecostals) or sprinkling/pouring (Catholics, Methodists, Lutherans). LDS practice baptism by immersion at age 8 or older for the remission of sins.",
+  "Atonement": "Christ's suffering in Gethsemane and on the cross to redeem mankind from sin and death. LDS uniquely emphasize Gethsemane alongside Calvary, and apply the Atonement to all who ever lived through ordinances for the dead.",
+  "Exaltation": "The LDS doctrine of the highest degree of salvation — to become like God the Father, dwelling eternally in family relationships in the celestial kingdom. Distinct from general salvation/resurrection, which is universal.",
+  "Celestial Kingdom": "The highest of three degrees of glory in LDS theology — where God the Father dwells. Reserved for those who receive all saving ordinances and endure faithful.",
+  "Terrestrial Kingdom": "Middle degree of glory in LDS theology — for honorable people who did not accept the fulness of the gospel.",
+  "Telestial Kingdom": "Lowest degree of glory in LDS theology — for the wicked who eventually receive a measure of glory after suffering for their sins.",
+  "Pre-mortal Existence": "LDS doctrine that all human beings lived as spirit children of Heavenly Parents before being born on earth. This life is the second estate.",
+  "Plan of Salvation": "LDS framework describing the purpose of life — pre-mortal existence, mortal probation, atonement, resurrection, judgment, and degrees of glory.",
+  "Book of Mormon": "Sacred LDS scripture, published 1830, presented as an ancient record of God's dealings with peoples in the Americas, translated by Joseph Smith from gold plates. Subtitled 'Another Testament of Jesus Christ.'",
+  "Doctrine and Covenants": "A book of LDS scripture containing revelations given primarily to Joseph Smith and successive prophets — a record of the Restoration in progress.",
+  "Pearl of Great Price": "An LDS scripture containing the Book of Moses, Book of Abraham, Joseph Smith—Matthew, Joseph Smith—History, and the Articles of Faith.",
+  "Joseph Smith": "Founder of the Latter-day Saint movement (1805–1844). LDS believe God the Father and Jesus Christ appeared to him in 1820 (the First Vision), commencing the Restoration.",
+  "First Vision": "LDS founding event — Joseph Smith's 1820 theophany in which he reported seeing God the Father and Jesus Christ as two distinct, glorified Beings, answering his prayer about which church to join.",
+  "Temple (LDS)": "Dedicated houses of the Lord, distinct from meetinghouses, where Latter-day Saints receive higher ordinances — endowments, sealings, and proxy ordinances for the dead.",
+  "Sealing": "LDS temple ordinance binding husband and wife (and children to parents) for time and all eternity, not merely 'until death do us part.'",
+  "Endowment": "An LDS temple ordinance in which adults receive instruction about the plan of salvation and make sacred covenants with God.",
+  "Word of Wisdom": "LDS health code (Doctrine and Covenants 89) prohibiting alcohol, tobacco, coffee, tea, and harmful drugs.",
+  "Tithing": "Donating one-tenth of one's increase to the Church. Practiced by LDS as a commandment with promised blessings; also taught by many Christian traditions, often as a guideline rather than commandment.",
+  "Unitarian": "A theological position rejecting the Trinity in favor of belief that God is one Person. Historical Unitarians (e.g., Servetus, modern Unitarian Universalists) generally view Jesus as a great teacher or prophet rather than God Incarnate. LDS reject the Trinity but affirm Christ's full divinity, so are not Unitarian in the classical sense.",
+  "Trinitarian": "One who affirms the Nicene doctrine of the Trinity — that God is one Being in three co-equal Persons. Catholics, Orthodox, and mainstream Protestants are Trinitarian.",
+  "Nicene Creed": "Statement of Christian belief formulated at the Councils of Nicaea (325) and Constantinople (381) defining the Trinity and the full divinity of Christ. Accepted by Catholics, Orthodox, and most Protestants; LDS reject it as a post-apostolic creed.",
+  "Apostles' Creed": "Early Christian statement of faith, accepted by most Christian traditions; LDS reject the line 'descended into hell' as interpreted creedally and reject creeds as binding.",
+  "Saint": "In LDS usage, any baptized member of the Church (as in the New Testament 'saints in Christ Jesus'). In Catholic/Orthodox usage, a deceased person formally canonized for exemplary holiness.",
+  "Canonization": "The Catholic/Orthodox process by which a deceased person is formally declared a saint, worthy of veneration.",
+  "Veneration": "Honoring saints, icons, or relics — distinguished from worship (latria), which Catholics/Orthodox reserve for God alone.",
+  "Eucharist": "Catholic/Orthodox term for the sacrament of bread and wine, believed to become the literal body and blood of Christ (transubstantiation in Catholicism).",
+  "Transubstantiation": "Catholic doctrine that during the Mass, the bread and wine are substantially changed into the body and blood of Christ, though the appearances remain.",
+  "Consubstantiation": "Lutheran-leaning view that Christ's body and blood are present 'in, with, and under' the bread and wine — without the elements changing substance.",
+  "Mass": "The Catholic liturgical service centered on the Eucharist.",
+  "Liturgy": "A set order of public worship — used especially in Catholic, Orthodox, Anglican, and Lutheran traditions.",
+  "Reformation": "16th-century European movement (Luther's 95 Theses, 1517) that produced Protestantism — emphasizing scripture, faith, and grace alone against perceived Catholic abuses.",
+  "Born Again": "Term from John 3:3 used especially by Evangelicals and Baptists to describe a conscious conversion experience. LDS view being born again as a process beginning at baptism and continuing through covenant life.",
+  "Evangelical": "Protestant movement emphasizing personal conversion, biblical authority, the cross, and active evangelism. Includes most Baptists, many non-denominational churches, and Pentecostals.",
+  "Pentecostal": "Christian tradition emphasizing the post-conversion baptism of the Holy Spirit, often evidenced by speaking in tongues, healing, and prophecy — emerging from the 1906 Azusa Street Revival.",
+  "Speaking in Tongues": "Glossolalia — utterances believed to be a spiritual gift. Pentecostals/Charismatics view it as evidence of Spirit baptism; LDS view it as a New Testament gift that operated at the Restoration but is not typically sought today.",
+  "Predestination": "Doctrine, especially in Calvinism, that God has eternally decreed who will be saved and who will be damned, independent of human choice.",
+  "Free Agency / Moral Agency": "LDS doctrine that all souls were given the ability to choose between good and evil — central to the plan of salvation. Contrasts with strict Calvinist predestination.",
+  "Original Sin": "Catholic/Protestant doctrine that all humans inherit guilt and a fallen nature from Adam. LDS affirm a fallen nature but reject inherited guilt — the 2nd Article of Faith: 'men will be punished for their own sins, and not for Adam's transgression.'",
+  "Total Depravity": "Calvinist doctrine that every part of human nature is corrupted by sin, rendering humans incapable of choosing God without irresistible grace. LDS reject this.",
+  "Grace": "God's enabling and saving power, freely given through Jesus Christ. Protestants emphasize salvation by grace alone through faith alone. LDS teach that we are saved by grace, 'after all we can do' (2 Nephi 25:23).",
+  "Jehovah": "The covenant name of God (YHWH) in the Hebrew Bible. LDS identify Jehovah specifically as the pre-mortal Jesus Christ; Jews and most Christians use it as a name of the single God.",
+  "Elohim": "Hebrew word for God. In LDS usage, the personal name of God the Father.",
+  "Watchtower": "Common shorthand for the Watch Tower Bible and Tract Society — the governing organization of Jehovah's Witnesses.",
+  "Jehovah's Witnesses": "Restorationist Christian sect founded by Charles Taze Russell in the 1870s. They reject the Trinity, reject the cross, refuse blood transfusions, do not celebrate birthdays or most holidays, and expect Armageddon imminently.",
+  "Armageddon": "The final battle expected at Christ's return, named after Megiddo in Israel. Jehovah's Witnesses uniquely emphasize this as imminent and central to their message.",
+  "Seventh-day Adventist": "Protestant denomination founded after the Millerite movement (1844 Great Disappointment), emphasizing Saturday Sabbath, the imminent return of Christ, and the prophetic writings of Ellen G. White.",
+  "Sabbath": "Day of rest and worship. Most Christians observe Sunday (the Lord's Day, commemorating the Resurrection); Seventh-day Adventists and Jews observe Saturday (the biblical seventh day).",
+  "Lutheran": "Protestant tradition founded by Martin Luther (1517). Emphasizes justification by faith alone, two sacraments (baptism, Eucharist), real presence in communion (consubstantiation-like), and infant baptism.",
+  "Methodist": "Protestant tradition originating with John Wesley in 18th-century England. Arminian in soteriology, emphasizes personal holiness, sanctification, and social justice.",
+  "Baptist": "Protestant tradition emphasizing believer's baptism by immersion (not infants), congregational church government, the priesthood of all believers, and sola scriptura. Largest U.S. Protestant family.",
+  "Believer's Baptism": "The Baptist practice of baptizing only those old enough to profess faith — rejecting infant baptism.",
+  "Infant Baptism": "Baptism of infants, practiced by Catholics, Orthodox, Lutherans, Methodists, Anglicans. Rejected by Baptists, Pentecostals, and LDS, who teach baptism follows accountability (LDS: age 8).",
+  "Hinduism": "World's third-largest religion, originating in the Indian subcontinent. Diverse traditions affirming many gods/manifestations of one ultimate reality (Brahman), reincarnation (samsara), karma, and liberation (moksha).",
+  "Brahman": "In Hinduism, the ultimate, unchanging reality — the source of all being. Different schools see Brahman as personal (Vishnu, Shiva) or impersonal.",
+  "Karma": "The law of moral cause and effect, in Hinduism, Buddhism, Jainism, Sikhism. Good and evil actions produce corresponding consequences across lifetimes.",
+  "Reincarnation / Samsara": "The cycle of birth, death, and rebirth in Hindu, Buddhist, Jain, and Sikh thought. The goal is liberation from this cycle. LDS reject reincarnation in favor of a single mortal probation followed by resurrection.",
+  "Moksha": "Hindu liberation — release from the cycle of samsara and union with Brahman.",
+  "Dharma": "In Hinduism/Buddhism, righteous duty, moral law, or the teaching of the Buddha.",
+  "Vedas": "The oldest sacred Hindu scriptures, including the Rigveda, Samaveda, Yajurveda, and Atharvaveda.",
+  "Bhagavad Gita": "Influential Hindu scripture — a dialogue between Prince Arjuna and the god Krishna on duty, devotion, and the nature of reality.",
+  "Buddhism": "Religion/philosophy founded by Siddhartha Gautama (the Buddha, c. 5th century BC) in India, teaching the Four Noble Truths, the Eightfold Path, and the goal of nirvana — release from suffering and the cycle of rebirth.",
+  "Nirvana": "In Buddhism, the cessation of suffering and the cycle of rebirth — the ultimate goal. Often described as the 'blowing out' of craving and ignorance.",
+  "Four Noble Truths": "The core of Buddhist teaching: (1) life involves suffering, (2) suffering arises from craving, (3) suffering can cease, (4) the Eightfold Path leads to its cessation.",
+  "Eightfold Path": "Buddhist path to liberation: right view, intention, speech, action, livelihood, effort, mindfulness, concentration.",
+  "Buddha": "'The Awakened One' — Siddhartha Gautama, founder of Buddhism. Not viewed as a god but as an enlightened teacher.",
+  "Islam": "Monotheistic religion founded by the prophet Muhammad in 7th-century Arabia. Teaches submission (Islam) to Allah, the one God, and follows the Qur'an as God's final revelation.",
+  "Allah": "Arabic word for God, used by Muslims (and Arabic-speaking Christians). Strictly one — Islam emphatically rejects the Trinity and any 'partners' with God.",
+  "Muhammad": "Prophet of Islam (c. AD 570–632), believed by Muslims to be the final messenger of God, receiving the Qur'an from the angel Gabriel.",
+  "Qur'an": "The holy book of Islam, believed by Muslims to be the literal word of Allah revealed to Muhammad.",
+  "Five Pillars": "Core Islamic practices: shahada (confession of faith), salat (five daily prayers), zakat (almsgiving), sawm (fasting in Ramadan), hajj (pilgrimage to Mecca).",
+  "Shahada": "The Islamic confession of faith: 'There is no god but Allah, and Muhammad is His messenger.'",
+  "Sunni / Shia": "The two main branches of Islam, divided over succession after Muhammad. Sunnis (~85%) accepted the first four caliphs; Shias hold that Ali, Muhammad's cousin, was the rightful successor.",
+  "Judaism": "The covenant religion of the Jewish people, tracing back to Abraham, Isaac, Jacob, and Moses. Affirms one God, the Torah, and the coming of the Messiah (still awaited).",
+  "Torah": "The first five books of the Hebrew Bible (Genesis, Exodus, Leviticus, Numbers, Deuteronomy) — the most sacred Jewish scripture. Also broadly refers to all Jewish teaching.",
+  "Talmud": "Central rabbinic Jewish text — commentary and discussion on the Mishnah (oral law). The two main compilations are the Babylonian and Jerusalem Talmuds.",
+  "Messiah": "Hebrew 'anointed one.' Jews await a coming Davidic king who will restore Israel. Christians (including LDS) believe Jesus is the Messiah and will return in glory.",
+  "Sikhism": "Monotheistic religion founded by Guru Nanak in 15th-century Punjab (India). Teaches one God, equality of all people, honest labor, and remembrance of God's name.",
+  "Guru": "In Sikhism, a divinely-inspired teacher. Sikhs honor ten human Gurus (Nanak through Gobind Singh) and the Guru Granth Sahib (their scripture) as the eternal living Guru.",
+  "Guru Granth Sahib": "The central holy scripture of Sikhism — treated as the eternal living Guru.",
+  "Bahá'í Faith": "Religion founded in 19th-century Persia by Bahá'u'lláh. Teaches the oneness of God, the unity of religions, and progressive revelation through a series of Manifestations (including Moses, Jesus, Muhammad, the Báb, and Bahá'u'lláh).",
+  "Progressive Revelation": "The idea (held by Bahá'ís, and in a different sense by LDS) that God reveals His will incrementally through messengers suited to each age.",
+  "Theosis / Deification": "Eastern Orthodox doctrine that humans can become 'partakers of the divine nature' (2 Peter 1:4) — sharing in God's life and likeness while remaining distinct from His essence. LDS exaltation has parallels but goes further, teaching humans can become joint-heirs with Christ.",
+  "Filioque": "Latin 'and from the Son.' Clause added to the Nicene Creed in the West (the Holy Spirit proceeds from the Father and the Son), rejected by Eastern Orthodoxy — a major cause of the 1054 Schism.",
+  "Real Presence": "Doctrine that Christ is truly, objectively present in the Eucharist. Catholics, Orthodox, Lutherans (in varying senses); contrasted with the Baptist/Evangelical/LDS view of memorial.",
+  "Sanctification": "The process of being made holy after conversion. Methodists/Wesleyans emphasize a 'second blessing'; LDS see it as a lifelong covenant process.",
+  "Anointing of the Sick": "Catholic sacrament for the seriously ill. LDS practice a similar ordinance of administering to the sick via priesthood blessing with consecrated oil.",
+  "Confirmation": "Sacrament/ordinance following baptism in which the Holy Spirit is conferred. Catholic, Orthodox, Lutheran, and LDS all practice forms of this (LDS: 'Confirmation' and 'Gift of the Holy Ghost' by laying on of hands).",
+  "Confession": "Catholic/Orthodox sacrament of reconciliation — confessing sins to a priest for absolution. LDS confess serious sins to a bishop, but everyday repentance is private between the person and God.",
+  "Continuing Revelation": "LDS doctrine that God continues to reveal His will today through living prophets and apostles, and through personal revelation to all who seek it.",
+  "Open Canon": "The LDS belief that scripture is not closed — additional scripture can be added by revelation. Contrasts with the Protestant/Catholic closed canon.",
+  "Articles of Faith": "Thirteen statements written by Joseph Smith in 1842 summarizing core LDS beliefs.",
+  "Mormon": "Common but informal name for members of The Church of Jesus Christ of Latter-day Saints, after the Book of Mormon. The Church prefers 'Latter-day Saint' or its full name.",
+  "Heavenly Parents": "LDS doctrine that humans are spirit children of a Heavenly Father and a Heavenly Mother. The Family: A Proclamation to the World (1995) affirms this.",
+  "Saved by Grace": "The Christian doctrine that humans cannot earn salvation — it is God's gift through Christ. LDS affirm grace but pair it with covenant faithfulness (Articles of Faith 3)."
+};
+
+// Mark up terms in HTML with hover popups
+function markupTerms(html) {
+  if (!html) return '';
+  // Sort longest-first so multi-word terms get matched before substrings
+  const terms = Object.keys(glossary).sort((a, b) => b.length - a.length);
+  let out = html;
+  const placeholders = [];
+  terms.forEach(term => {
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp('(?<![\\w>])(' + escaped + ')(?![\\w<])', 'i');
+    const match = out.match(re);
+    if (match) {
+      const def = glossary[term].replace(/"/g, '&quot;');
+      const matchedText = match[1];
+      const placeholder = `@@TERM${placeholders.length}@@`;
+      placeholders.push(`<span class="term" tabindex="0" data-def="${def}">${matchedText}</span>`);
+      out = out.replace(re, placeholder);
+    }
+  });
+  placeholders.forEach((repl, i) => {
+    out = out.split(`@@TERM${i}@@`).join(repl);
+  });
+  return out;
+}
+
+// =============================
+// RELIGION DATA
+// =============================
+const religions = {
+  lds: {
+    name: "The Church of Jesus Christ of Latter-day Saints",
+    short: "Latter-day Saints (LDS)",
+    founded: "1830 (Restoration)",
+    founder: "Joseph Smith (prophet)",
+    adherents: "~17.5 million",
+    isLDS: true,
+    theology: "Believe in the Godhead — three separate, distinct Beings: God the Father (Elohim), Jesus Christ (Jehovah, the pre-mortal Son), and the Holy Ghost — perfectly unified in purpose but NOT one in substance. Reject the Nicene Trinity as a post-apostolic creed. The Father and the Son have glorified bodies of flesh and bone; the Holy Ghost is a personage of spirit. Humans are literal spirit children of Heavenly Parents.",
+    scripture: "Open canon: the Bible (King James Version), the Book of Mormon (Another Testament of Jesus Christ), the Doctrine and Covenants, and the Pearl of Great Price. Continuing Revelation through a living prophet and twelve apostles. Reject sola scriptura.",
+    salvation: "Salvation is by grace through faith, manifested by repentance, baptism, receiving the Holy Ghost, and enduring to the end. Universal resurrection through Christ's Atonement. Three degrees of glory after judgment — Celestial, Terrestrial, Telestial Kingdoms. Exaltation (the highest celestial reward) is for those who receive all saving ordinances and become like Heavenly Father. Pre-mortal Existence and a Plan of Salvation frame this life as a mortal probation.",
+    practices: "Baptism by immersion at age 8 or older. Sacrament (bread and water) renewing baptismal covenants weekly. Temple ordinances: Endowment and Sealing (eternal marriage). Word of Wisdom (no alcohol, tobacco, coffee, tea). Tithing. Three-hour Sunday worship simplified to two-hour 'come, follow me' model. Lay priesthood — no paid clergy. Missionary service.",
+    distinct: "LDS are neither Catholic nor Protestant — they reject the creeds that define both. The defining LDS claim is Restoration: priesthood authority, ordinances, and continuing revelation returned to the earth through Joseph Smith."
+  },
+  catholic: {
+    name: "Roman Catholic Church",
+    short: "Catholic",
+    founded: "Apostolic era (claim Petrine succession)",
+    founder: "Jesus Christ (via the Apostle Peter)",
+    adherents: "~1.36 billion",
+    theology: "Trinitarian — one God in three Persons (Nicene Creed). Jesus is fully God and fully man (Chalcedonian definition). Mary is venerated as Theotokos (God-bearer) and Immaculate Conception. Veneration of saints, angels, and relics.",
+    scripture: "Sacred Scripture (73 books — including Deuterocanonical/Apocrypha) AND Sacred Tradition, both interpreted authoritatively by the Magisterium under the Pope. Closed canon. Reject sola scriptura.",
+    salvation: "Salvation by grace through faith, lived out through the seven sacraments and good works. Heaven, Hell, and Purgatory (a state of purification before heaven). Original Sin inherited from Adam — removed by infant baptism. Mortal vs. venial sins distinguished.",
+    practices: "Seven sacraments: Baptism (infant), Confirmation, Eucharist (Mass, transubstantiation), Reconciliation (Confession), Anointing of the Sick, Holy Orders, Matrimony. Celibate priesthood. Liturgical calendar. Marian devotions, rosary, veneration of saints and icons. Lent, Holy Days of Obligation.",
+    distinct: "Vs. LDS: Catholics claim unbroken Petrine succession — LDS claim that authority was lost in the Great Apostasy and restored in 1830. Catholic Trinity ≠ LDS Godhead. Catholic closed canon ≠ LDS open canon. No temple endowments, eternal sealings, or proxy work for the dead."
+  },
+  orthodox: {
+    name: "Eastern Orthodox Church",
+    short: "Eastern Orthodox",
+    founded: "Apostolic era (formally separate after 1054 Great Schism)",
+    founder: "Jesus Christ (via apostolic succession)",
+    adherents: "~220 million",
+    theology: "Trinitarian, but reject the Filioque clause (Holy Spirit proceeds from the Father, not 'from the Father and the Son'). Strong emphasis on Theosis — the believer being deified by partaking of divine grace. Veneration of icons, saints, and Mary (Theotokos).",
+    scripture: "Bible (slightly different OT canon than Catholic) plus Sacred Tradition, the writings of the Church Fathers, and the seven Ecumenical Councils. Closed canon.",
+    salvation: "Salvation as a lifelong process of Theosis — being made like God by grace, through the sacramental life of the Church. Less juridical (legal) and more therapeutic in framing than the Western view. Heaven and Hell; no formal doctrine of Purgatory.",
+    practices: "Seven mysteries (sacraments). Divine Liturgy (often St. John Chrysostom's). Married priesthood (parish priests can marry before ordination; bishops are monastics). Strict fasting calendar. Iconography is central. Eastern emphasis on mystery, beauty, and continuity.",
+    distinct: "Vs. LDS: Orthodox Theosis has fascinating parallels to LDS exaltation ('God became man so that man might become god' — St. Athanasius), but Orthodox theology insists humans remain creatures sharing in God's energies, not His essence. LDS teach humans are literal spirit offspring of God and can become joint-heirs with Christ."
+  },
+  baptist: {
+    name: "Baptist",
+    short: "Baptist",
+    founded: "17th century (John Smyth, 1609)",
+    founder: "Various Reformation-era leaders",
+    adherents: "~100 million globally",
+    theology: "Trinitarian, evangelical Protestant. Affirm the Nicene Creed in substance (though many congregations are non-creedal in form). Most are Arminian-leaning on free will, though Reformed Baptists are Calvinist. Strong emphasis on personal conversion (Born Again).",
+    scripture: "Bible alone — sola scriptura. Closed canon. The believer interprets Scripture under the Holy Spirit's guidance (priesthood of all believers). No binding tradition or hierarchy.",
+    salvation: "Saved by Grace through faith alone (sola fide). Many Baptists hold 'once saved, always saved' (eternal security). Heaven for the saved, Hell for the lost. No purgatory or post-mortem opportunity.",
+    practices: "Believer's Baptism by full immersion (no infant baptism). Communion as a symbolic memorial (Zwinglian view) — usually monthly or quarterly. Congregational church government (each local church autonomous). Sunday worship; emphasis on preaching. Active evangelism, missions, Sunday School.",
+    distinct: "Vs. LDS: Both practice adult baptism by immersion, but Baptists reject continuing revelation, prophets, additional scripture, temple ordinances, and the Godhead view. Baptists view LDS as a separate religion — not Christian in the creedal sense."
+  },
+  lutheran: {
+    name: "Lutheranism",
+    short: "Lutheran",
+    founded: "1517 (Martin Luther's 95 Theses)",
+    founder: "Martin Luther",
+    adherents: "~75 million",
+    theology: "Trinitarian. Affirm the Apostles', Nicene, and Athanasian Creeds, plus the Book of Concord. Justification by faith alone (sola fide) is the central doctrine. Two kinds of righteousness — passive (before God) and active (before neighbor).",
+    scripture: "Sola Scriptura. Bible (Protestant 66-book canon) as the sole authoritative rule. Lutheran Confessions (Augsburg, Smalcald, etc.) are authoritative as faithful summaries.",
+    salvation: "Saved by Grace alone, through faith alone, on account of Christ alone. Heaven and Hell. Reject Purgatory. Believe in 'sacramental union' in the Eucharist — Christ's body and blood are truly present 'in, with, and under' the bread and wine.",
+    practices: "Two sacraments: Baptism (infant, by sprinkling or pouring) and Eucharist (frequent, with real presence). Liturgical worship. Ordained pastors (men in confessional Lutheran bodies; men and women in liberal ones). Confirmation around age 14.",
+    distinct: "Vs. LDS: Lutherans hold the most pointed Reformation doctrine of 'faith alone' — LDS teach faith manifested through covenant works. Lutheran infant baptism by sprinkling differs from LDS immersion at accountability. No restoration claims."
+  },
+  methodist: {
+    name: "Methodism / Wesleyanism",
+    short: "Methodist",
+    founded: "18th century (John Wesley, c. 1738)",
+    founder: "John & Charles Wesley",
+    adherents: "~80 million",
+    theology: "Trinitarian, Arminian. Emphasis on prevenient grace (God's grace before conversion that enables free response), justification, and Sanctification — even 'Christian perfection' or entire sanctification as a 'second work of grace.'",
+    scripture: "Sola Scriptura as the primary authority, balanced by the Wesleyan Quadrilateral: Scripture, Tradition, Reason, and Experience.",
+    salvation: "Saved by Grace through faith — but rejected unconditional Predestination. Salvation can be lost through persistent unbelief. Heaven and Hell. Strong emphasis on holiness and social justice.",
+    practices: "Two sacraments: Baptism (infant or believer) and Eucharist (real presence, generally monthly). Connectional polity with bishops. Class meetings, hymn singing (Charles Wesley wrote thousands), open Communion, emphasis on small groups and 'methodical' spiritual disciplines.",
+    distinct: "Vs. LDS: Methodists share an emphasis on holiness, repentance, and ongoing transformation. But they reject restoration, additional scripture, and temple work. LDS doctrine of progression toward Godliness goes further than Wesleyan sanctification."
+  },
+  pentecostal: {
+    name: "Pentecostalism",
+    short: "Pentecostal",
+    founded: "1906 (Azusa Street Revival)",
+    founder: "William J. Seymour (movement)",
+    adherents: "~280 million (incl. Charismatics)",
+    theology: "Trinitarian (most groups; Oneness Pentecostals are non-Trinitarian — they baptize only in Jesus' name). Emphasis on the post-conversion Baptism in the Holy Spirit, often evidenced by Speaking in Tongues, healing, prophecy, and miracles.",
+    scripture: "Sola Scriptura, but with strong emphasis on ongoing supernatural gifts and the prophetic voice today. Bible as inerrant Word of God.",
+    salvation: "Born Again by repentance and faith; many also teach a 'second work of grace' (Spirit Baptism). Most are Arminian — salvation can be forfeited. Heaven and Hell; some teach a literal millennium and dispensational eschatology.",
+    practices: "Believer's baptism by immersion. Communion (symbolic). Exuberant, Spirit-led worship — singing, prophecy, healing, tongues. Lay-led and pastor-led. Strong evangelism and global missions. Often modest dress codes and behavioral standards.",
+    distinct: "Vs. LDS: Both affirm spiritual gifts and ongoing revelation in some sense. But Pentecostals see revelation as charismatic gift to individuals, not as binding scripture or authoritative pronouncements through living prophets and apostles."
+  },
+  sda: {
+    name: "Seventh-day Adventist Church",
+    short: "Seventh-day Adventist",
+    founded: "1863 (formal organization; movement after the 1844 'Great Disappointment')",
+    founder: "Ellen G. White, James White, Joseph Bates",
+    adherents: "~22 million",
+    theology: "Trinitarian, Protestant. Affirm sola scriptura but also regard Ellen G. White's writings as a 'lesser light' inspired by God. Distinctive doctrines: Saturday Sabbath, conditional immortality (the dead are unconscious until resurrection), annihilationism (the wicked are destroyed, not eternally tormented), and the Investigative Judgment beginning 1844.",
+    scripture: "Bible alone as final authority. Ellen G. White's writings (Conflict of the Ages series, etc.) are valued as prophetic counsel.",
+    salvation: "By grace through faith. Conditional immortality — only the saved live forever. Annihilationism — the wicked are destroyed, not eternally tormented. Pre-Advent Investigative Judgment.",
+    practices: "Sabbath worship sundown Friday to sundown Saturday. Believer's baptism by immersion. Communion (symbolic) with footwashing. Health emphasis — many are vegetarian and avoid alcohol, tobacco, coffee, tea, and pork (similar to the Word of Wisdom). Tithing. Active mission and health/education work.",
+    distinct: "Vs. LDS: Both have a founding 19th-century American prophetic figure (Joseph Smith / Ellen G. White) and dietary codes. But SDA hold sola scriptura, reject restored priesthood and temple ordinances, and embrace annihilation rather than degrees of glory."
+  },
+  jw: {
+    name: "Jehovah's Witnesses",
+    short: "Jehovah's Witnesses",
+    founded: "1870s (Watch Tower founded 1881)",
+    founder: "Charles Taze Russell",
+    adherents: "~8.7 million 'publishers'",
+    theology: "Non-Trinitarian. Reject the Trinity, the deity of Christ in the Trinitarian sense, the immortality of the soul, hellfire, and the cross. Jesus is the first creation of Jehovah — identified with the archangel Michael — and was resurrected as a spirit creature. The Holy Spirit is God's active force, not a person.",
+    scripture: "New World Translation of the Bible (their own translation). All teaching is mediated by the Governing Body in Warwick, NY (Watch Tower).",
+    salvation: "An 'anointed' 144,000 go to heaven to rule with Christ; the 'great crowd' of other faithful live forever on a paradise earth. No hell — the wicked are annihilated. Salvation requires field service (door-to-door preaching) and obedience to the Watch Tower.",
+    practices: "No celebration of birthdays, Christmas, Easter, or national holidays. Refuse blood transfusions and military service. Strong shunning (disfellowshipping) of those who leave. Door-to-door evangelism, Kingdom Halls (not churches), Memorial of Christ's Death (once yearly, most do not partake).",
+    distinct: "Vs. LDS: Both are 19th-century American restorationist movements that reject the Trinity, but the resemblance ends there. LDS affirm Christ's full deity and resurrection in a glorified body. JW deny both. LDS celebrate birthdays, Christmas, military service; JW prohibit them all."
+  },
+  trinitarian: {
+    name: "Trinitarian Christianity (general)",
+    short: "Trinitarians",
+    founded: "AD 325 / 381 (Council of Nicaea / Constantinople)",
+    founder: "Patristic Fathers (Athanasius, Cappadocians)",
+    adherents: "Vast majority of ~2.4 billion Christians",
+    theology: "One God in three co-equal, co-eternal Persons — Father, Son, and Holy Spirit — one substance (homoousios). The Son is 'begotten, not made.' Mainstream Catholics, Orthodox, and most Protestants confess this in the Nicene and Apostles' Creeds.",
+    scripture: "Varies by tradition — but all hold the Bible as authoritative. Catholics/Orthodox include Deuterocanonical books; Protestants do not.",
+    salvation: "Varies by tradition — but all hold that salvation is through Christ's atoning work, received by grace. Differences over faith/works, sacraments, predestination, and assurance.",
+    practices: "Vary widely. All baptize in the name of the Father, Son, and Holy Spirit (Matt 28:19). All confess Jesus as fully God and fully man.",
+    distinct: "Vs. LDS: Trinitarianism is the line the LDS draw. LDS affirm one Godhead but three distinct Beings — rejecting the Nicene definition as a post-apostolic creedal corruption. LDS see this as a return to the New Testament view in which Jesus prays to His Father as a separate Person."
+  },
+  unitarian: {
+    name: "Unitarianism",
+    short: "Unitarians",
+    founded: "16th century (Servetus, Socinus); modern Unitarian Universalist Assoc. 1961",
+    founder: "Various (Servetus, Socinus, Channing, Emerson)",
+    adherents: "~600,000 UU; broader Unitarian theology beyond",
+    theology: "God is one Person, not three. Jesus is honored as a great moral teacher, prophet, or in some forms a uniquely Spirit-filled man, but NOT God Incarnate. The Holy Spirit is the influence of God, not a third Person. Modern Unitarian Universalism is non-creedal and often pluralistic — Christians, humanists, Buddhists, theists, atheists all welcome.",
+    scripture: "Bible respected but interpreted with reason. Modern UUs draw from many religious traditions — 'Six Sources' include Christian and Jewish teachings, Earth-centered traditions, humanist wisdom, etc.",
+    salvation: "Most Unitarians historically rejected vicarious atonement, original sin, eternal hell, and even the necessity of belief in Christ for salvation. Modern UUs generally affirm the worth and dignity of every person, not a doctrinal path of salvation.",
+    practices: "Sunday services with hymns, readings, sermons. No required creed. Open communion in some congregations. Strong emphasis on social justice and ethical living.",
+    distinct: "Vs. LDS: Both reject the classical Trinity, but for opposite reasons. Unitarians deny the full divinity of Christ. LDS strongly affirm Christ's full divinity as Jehovah, the literal Son of God in the flesh, the Savior of the world. LDS are decidedly NOT Unitarian."
+  },
+  jewish: {
+    name: "Judaism",
+    short: "Judaism",
+    founded: "Patriarchal era (Abraham, c. 2000 BC); rabbinic Judaism after 70 AD",
+    founder: "Abraham; Moses (Torah given c. 1300 BC)",
+    adherents: "~15 million",
+    theology: "Strict monotheism — one indivisible God (Shema: 'Hear, O Israel, the LORD our God, the LORD is One'). Reject the Trinity and the deity of Jesus. God is utterly transcendent yet personal and covenant-keeping.",
+    scripture: "Tanakh (Hebrew Bible — Torah, Prophets, Writings) plus the rabbinic Talmud (Mishnah and Gemara). Halakhah (Jewish law) governs daily life. Reform/Conservative/Orthodox/Hasidic streams differ in authority of Talmud and observance.",
+    salvation: "Less focus on personal salvation, more on covenant faithfulness in this life and the World to Come (Olam Ha-Ba). Messianic age awaited — Jews do not regard Jesus as the Messiah. Belief in resurrection (Orthodox); Reform Jews often hold a more symbolic view.",
+    practices: "Sabbath (Shabbat) sundown Friday to sundown Saturday. Kosher dietary laws (kashrut). Circumcision (brit milah) of male infants. Bar/Bat Mitzvah at 13/12. Major festivals: Passover, Shavuot, Sukkot, Rosh Hashanah, Yom Kippur, Hanukkah, Purim. Synagogue worship, Torah reading, prayer (Shacharit, Mincha, Ma'ariv).",
+    distinct: "Vs. LDS: Judaism gave Christianity (and Mormonism) its scriptures, covenant theology, and Messianic hope. LDS deeply revere Israel — the Book of Mormon is presented as the record of a branch of Israel in the Americas — and look forward to the literal gathering of Israel. But LDS affirm Jesus is the awaited Messiah; Judaism does not."
+  },
+  islam: {
+    name: "Islam",
+    short: "Islam",
+    founded: "AD 610 (revelation to Muhammad in Mecca)",
+    founder: "Prophet Muhammad",
+    adherents: "~2 billion",
+    theology: "Strict monotheism (tawhid). Allah is one — without partner, son, or division. Jesus (Isa) is honored as a virgin-born prophet and Messiah, but NOT divine and NOT crucified (Qur'an 4:157). Muhammad is the seal of the prophets — the final messenger.",
+    scripture: "The Qur'an as the literal word of Allah revealed to Muhammad via the angel Gabriel. The Hadith (recorded sayings/actions of Muhammad) and Sunnah (his example). The Tawrat (Torah), Zabur (Psalms), and Injil (Gospel) are honored as earlier revelations, but believed corrupted.",
+    salvation: "By submission (Islam) to Allah and obedience to His commands. The Day of Judgment weighs deeds — paradise (Jannah) or hell (Jahannam). No vicarious atonement — each soul bears its own sin. Mercy is from Allah's pleasure, not a savior's sacrifice.",
+    practices: "Five Pillars: Shahada (confession), Salat (five daily prayers facing Mecca), Zakat (almsgiving), Sawm (fasting in Ramadan), Hajj (pilgrimage to Mecca). Halal dietary laws, no alcohol or pork. Friday congregational prayer (Jumu'ah). Sunni and Shia branches.",
+    distinct: "Vs. LDS: Islam and LDS both honor a single founding prophet who received scripture by angelic visitation, and both reject the Trinity. But Islam denies Christ's divinity and atoning death; LDS affirm both. Islam closes prophecy with Muhammad; LDS hold prophecy continues today."
+  },
+  hindu: {
+    name: "Hinduism",
+    short: "Hinduism",
+    founded: "No single founder — Vedic era c. 1500 BC, with deep prehistoric roots",
+    founder: "No single founder",
+    adherents: "~1.2 billion",
+    theology: "Diverse. Most schools affirm Brahman — the ultimate reality — manifested in countless deities (Vishnu, Shiva, Devi, etc.). Some schools (Advaita) are non-dual: Brahman is impersonal and all reality is one. Others (Dvaita) are dualistic and personal-theistic. Avatars (incarnations of God, especially Vishnu as Rama and Krishna) descend in times of need.",
+    scripture: "Vast: Shruti ('heard') — the four Vedas, Upanishads. Smriti ('remembered') — the epics Mahabharata (containing the Bhagavad Gita) and Ramayana, the Puranas, and Dharma Shastras. Open in practice.",
+    salvation: "Moksha — liberation from samsara (the cycle of Reincarnation) governed by Karma. Achieved through paths of knowledge (jnana), devotion (bhakti), action (karma yoga), or meditation (raja yoga). Multiple lifetimes are presumed.",
+    practices: "Puja (worship at home shrines and temples). Festivals (Diwali, Holi, Navaratri). Yoga and meditation. Pilgrimage (Varanasi, Kumbh Mela). Caste-related practices in some communities (less so in modern reform). Vegetarianism common (especially Brahmin).",
+    distinct: "Vs. LDS: Both teach a pre-mortal existence of the soul, but LDS reject reincarnation — humans live one mortal probation, then resurrect to judgment and degrees of glory. LDS affirm one God (with the Father, Son, and Holy Ghost), distinct from Hindu polytheism or non-dualism."
+  },
+  buddhist: {
+    name: "Buddhism",
+    short: "Buddhism",
+    founded: "c. 5th century BC (Siddhartha Gautama)",
+    founder: "Siddhartha Gautama — the Buddha",
+    adherents: "~520 million",
+    theology: "Non-theistic in most traditions — no creator God. The Buddha was a human teacher who attained enlightenment. Mahayana traditions add cosmic Buddhas and bodhisattvas. Theravada is more austere and atheistic.",
+    scripture: "Theravada: Pali Canon (Tripitaka — 'Three Baskets'). Mahayana: additional sutras (Lotus Sutra, Heart Sutra, etc.). Vajrayana (Tibetan): tantras and oral lineages.",
+    salvation: "Nirvana — the extinction of craving, ignorance, and the cycle of rebirth — achieved by following the Four Noble Truths and the Eightfold Path. Karma drives rebirth across lives. Mahayana adds the bodhisattva ideal — postponing one's own nirvana to liberate others.",
+    practices: "Meditation (vipassana, zazen, etc.). Five Precepts (no killing, stealing, sexual misconduct, lying, intoxicants). Sangha (community of monks/nuns). Pilgrimage (Bodh Gaya, Lumbini). Offerings to the Buddha (not as a god but as honor). Vegetarian in many lineages.",
+    distinct: "Vs. LDS: LDS and Buddhism both emphasize self-mastery, mental discipline, and compassion. But LDS center on a personal Creator God and a Savior whose Atonement is essential — while Buddhism teaches liberation through one's own effort and insight, without a saving God."
+  },
+  sikh: {
+    name: "Sikhism",
+    short: "Sikhism",
+    founded: "15th century AD (Guru Nanak, b. 1469)",
+    founder: "Guru Nanak (1469–1539) and the nine succeeding Gurus",
+    adherents: "~30 million",
+    theology: "Strict monotheism — Ik Onkar ('One God'). God is formless, all-pervading, beyond image. Reject idol worship and caste. The ten Gurus are inspired teachers, not divine; after the tenth, the Guru Granth Sahib (scripture) is the eternal Guru.",
+    scripture: "Guru Granth Sahib — compiled hymns of the Gurus and other saints. Regarded as the living, eternal Guru.",
+    salvation: "Liberation from samsara (cycle of rebirth) by remembering God's name (Naam), honest labor (Kirat Karni), and sharing with others (Vand Chakna). Realization through the Guru's grace.",
+    practices: "Five Ks (for initiated Khalsa Sikhs): Kesh (uncut hair, often under a turban), Kangha (comb), Kara (steel bracelet), Kachera (cotton undergarment), Kirpan (small ceremonial sword). Gurdwara worship, langar (free communal meal — anyone may eat). No alcohol, tobacco, or meat from ritually slaughtered animals.",
+    distinct: "Vs. LDS: Both affirm one God, honor a founding prophet/Guru, and emphasize ethical living, community service, and uncreated divine names. But Sikhism accepts reincarnation and rejects Christ as a savior. LDS center on Christ's Atonement and one mortal probation."
+  },
+  bahai: {
+    name: "Bahá'í Faith",
+    short: "Bahá'í",
+    founded: "1844 (the Báb) / 1863 (Bahá'u'lláh's declaration)",
+    founder: "Bahá'u'lláh (1817–1892)",
+    adherents: "~5–8 million",
+    theology: "Strict monotheism. God is unknowable in essence but reveals Himself through a series of Manifestations — Abraham, Moses, Krishna, Buddha, Zoroaster, Jesus, Muhammad, the Báb, and Bahá'u'lláh — each suited to their age (Progressive Revelation). The unity of God, unity of religion, and unity of humanity are central.",
+    scripture: "The writings of Bahá'u'lláh (Kitab-i-Aqdas, Kitab-i-Iqan, etc.), the Báb, and 'Abdu'l-Bahá. Earlier scriptures honored.",
+    salvation: "Spiritual progress through knowing and loving God and serving humanity. Soul continues in spiritual realms after death — no hell as a place; hell is distance from God.",
+    practices: "Daily obligatory prayer. Fast (sunrise to sunset for 19 days each March). 19-day Feast. Pilgrimage to Haifa, Israel. No clergy — elected local and national Spiritual Assemblies and the Universal House of Justice in Haifa. No alcohol, no drugs. Strong emphasis on racial unity, women's equality, and world peace.",
+    distinct: "Vs. LDS: Both teach progressive revelation, but Bahá'ís hold Bahá'u'lláh as the latest (and for this age, the supreme) Manifestation. LDS affirm Jesus Christ as the unique and central Savior of all mankind; Bahá'u'lláh is not viewed by LDS as a prophet of God."
+  }
+};
+
+// =============================
+// RENDERING
+// =============================
+function renderReligionCard(key) {
+  const r = religions[key];
+  if (!r) return '<div class="empty">Select a tradition to compare.</div>';
+  const cls = r.isLDS ? 'religion-card lds-card' : 'religion-card';
+  const distinct = r.distinct ? `<div class="lds-distinct"><strong>LDS contrast:</strong> ${markupTerms(r.distinct)}</div>` : '';
+  return `
+    <div class="${cls}">
+      <div class="card-header">
+        <h2 class="religion-name">${r.name}</h2>
+        <div class="religion-meta">
+          <span><strong>Founded:</strong> ${r.founded}</span>
+          <span><strong>Founder:</strong> ${r.founder}</span>
+          <span><strong>Adherents:</strong> ${r.adherents}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="category">
+          <h3>Core Theology</h3>
+          <p>${markupTerms(r.theology)}</p>
+        </div>
+        <div class="category">
+          <h3>Scripture &amp; Authority</h3>
+          <p>${markupTerms(r.scripture)}</p>
+        </div>
+        <div class="category">
+          <h3>Salvation &amp; Afterlife</h3>
+          <p>${markupTerms(r.salvation)}</p>
+        </div>
+        <div class="category">
+          <h3>Practices &amp; Ordinances</h3>
+          <p>${markupTerms(r.practices)}</p>
+        </div>
+        ${distinct}
+      </div>
+    </div>
+  `;
+}
+
+// =============================
+// CONTROLS
+// =============================
+const leftSelect = document.getElementById('left-select');
+const rightSelect = document.getElementById('right-select');
+const ldsCheckbox = document.getElementById('lds-mode');
+const comparison = document.getElementById('comparison');
+
+function populateSelects() {
+  const keys = Object.keys(religions);
+  [leftSelect, rightSelect].forEach(sel => {
+    sel.innerHTML = keys.map(k => `<option value="${k}">${religions[k].name}</option>`).join('');
+  });
+  leftSelect.value = 'lds';
+  rightSelect.value = 'catholic';
+}
+
+function render() {
+  if (ldsCheckbox.checked) {
+    comparison.className = 'comparison-grid three-col';
+    // If LDS is selected in left, swap left to next available
+    const left = leftSelect.value === 'lds' ? 'catholic' : leftSelect.value;
+    const right = rightSelect.value === 'lds' ? 'baptist' : rightSelect.value;
+    comparison.innerHTML =
+      renderReligionCard('lds') +
+      renderReligionCard(left) +
+      renderReligionCard(right);
+  } else {
+    comparison.className = 'comparison-grid';
+    comparison.innerHTML =
+      renderReligionCard(leftSelect.value) +
+      renderReligionCard(rightSelect.value);
+  }
+}
+
+function syncControlsForLDSMode() {
+  if (ldsCheckbox.checked) {
+    // Hide LDS from selects to avoid duplication
+    [leftSelect, rightSelect].forEach(sel => {
+      const current = sel.value;
+      const keys = Object.keys(religions).filter(k => k !== 'lds');
+      sel.innerHTML = keys.map(k => `<option value="${k}">${religions[k].name}</option>`).join('');
+      if (keys.includes(current)) sel.value = current;
+      else sel.value = sel === leftSelect ? 'catholic' : 'baptist';
+    });
+  } else {
+    populateSelects();
+  }
+}
+
+populateSelects();
+render();
+
+leftSelect.addEventListener('change', render);
+rightSelect.addEventListener('change', render);
+ldsCheckbox.addEventListener('change', () => {
+  syncControlsForLDSMode();
+  render();
+});
+
+// =============================
+// FLOATING TOOLTIP (viewport-clamped)
+// =============================
+const tooltip = document.getElementById('glossary-tooltip');
+const MARGIN = 12;
+const GAP = 10;
+
+function showTooltip(termEl) {
+  const def = termEl.getAttribute('data-def');
+  if (!def) return;
+  tooltip.innerHTML = def;
+  tooltip.classList.add('visible');
+  tooltip.setAttribute('aria-hidden', 'false');
+  positionTooltip(termEl);
+}
+
+function positionTooltip(termEl) {
+  const rect = termEl.getBoundingClientRect();
+  const tipRect = tooltip.getBoundingClientRect();
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+
+  // Horizontal: center on term, then clamp to viewport with MARGIN.
+  const termCenter = rect.left + rect.width / 2;
+  let left = termCenter - tipRect.width / 2;
+  left = Math.max(MARGIN, Math.min(left, vw - tipRect.width - MARGIN));
+
+  // Vertical: prefer above; if not enough space, place below.
+  const spaceAbove = rect.top;
+  const spaceBelow = vh - rect.bottom;
+  let top;
+  let placeAbove = spaceAbove >= tipRect.height + GAP + MARGIN;
+  if (!placeAbove && spaceBelow >= tipRect.height + GAP + MARGIN) {
+    placeAbove = false;
+  } else if (!placeAbove && spaceBelow < spaceAbove) {
+    placeAbove = true; // fall back to above even if cramped
+  }
+
+  if (placeAbove) {
+    top = rect.top - tipRect.height - GAP;
+    tooltip.classList.add('above');
+    tooltip.classList.remove('below');
+  } else {
+    top = rect.bottom + GAP;
+    tooltip.classList.add('below');
+    tooltip.classList.remove('above');
+  }
+  top = Math.max(MARGIN, Math.min(top, vh - tipRect.height - MARGIN));
+
+  // Arrow points at term center, clamped within the tooltip body.
+  const arrowX = Math.max(12, Math.min(termCenter - left, tipRect.width - 12));
+  tooltip.style.setProperty('--arrow-x', arrowX + 'px');
+  tooltip.style.left = left + 'px';
+  tooltip.style.top = top + 'px';
+}
+
+function hideTooltip() {
+  tooltip.classList.remove('visible');
+  tooltip.setAttribute('aria-hidden', 'true');
+}
+
+document.addEventListener('mouseover', (e) => {
+  const t = e.target.closest('.term');
+  if (t) showTooltip(t);
+});
+document.addEventListener('mouseout', (e) => {
+  const t = e.target.closest('.term');
+  if (t) hideTooltip();
+});
+document.addEventListener('focusin', (e) => {
+  const t = e.target.closest('.term');
+  if (t) showTooltip(t);
+});
+document.addEventListener('focusout', (e) => {
+  const t = e.target.closest('.term');
+  if (t) hideTooltip();
+});
+window.addEventListener('scroll', hideTooltip, true);
+window.addEventListener('resize', hideTooltip);
+</script>
+</body>
+</html>
