@@ -15,6 +15,59 @@
     --rule: #d8d3c4;
     --accent: #0b3d91;
     --highlight: #fff7d6;
+    --header-grad-start: #003366;
+    --header-grad-end: #1a4d8c;
+    --header-ink: #ffffff;
+    --card-grad-start: #fafaf6;
+    --card-grad-end: #ffffff;
+    --lds-card-bg: #fdf8e7;
+    --lds-distinct-ink: #5a4a14;
+    --lds-name-ink: #6b5318;
+    --lds-h3-ink: #8a6d1b;
+    --tooltip-bg: #222;
+    --tooltip-ink: #ffffff;
+    --summary-agree-bg: #e8f5e9;
+    --summary-agree-border: #4caf50;
+    --summary-agree-ink: #1b5e20;
+    --summary-differ-bg: #fff3e0;
+    --summary-differ-border: #ff9800;
+    --summary-differ-ink: #6e2c00;
+    --btn-bg: rgba(255,255,255,0.15);
+    --btn-bg-hover: rgba(255,255,255,0.28);
+    --btn-ink: #ffffff;
+    --btn-border: rgba(255,255,255,0.35);
+  }
+  [data-theme="dark"] {
+    --lds-blue: #4a7bb5;
+    --lds-gold: #d4b870;
+    --bg: #14171c;
+    --panel: #20242b;
+    --ink: #e8e8e8;
+    --muted: #a8a8a8;
+    --rule: #3a3f47;
+    --accent: #6ba3ff;
+    --highlight: #4a4020;
+    --header-grad-start: #0d1a2e;
+    --header-grad-end: #1a2c4a;
+    --header-ink: #ffffff;
+    --card-grad-start: #232831;
+    --card-grad-end: #20242b;
+    --lds-card-bg: #2c2820;
+    --lds-distinct-ink: #d4b870;
+    --lds-name-ink: #e3c478;
+    --lds-h3-ink: #d4b870;
+    --tooltip-bg: #f0f0f0;
+    --tooltip-ink: #111;
+    --summary-agree-bg: #1c3220;
+    --summary-agree-border: #4caf50;
+    --summary-agree-ink: #b8e6bc;
+    --summary-differ-bg: #3a2818;
+    --summary-differ-border: #ff9800;
+    --summary-differ-ink: #ffcc99;
+    --btn-bg: rgba(255,255,255,0.10);
+    --btn-bg-hover: rgba(255,255,255,0.22);
+    --btn-ink: #ffffff;
+    --btn-border: rgba(255,255,255,0.25);
   }
   * { box-sizing: border-box; }
   body {
@@ -23,13 +76,23 @@
     background: var(--bg);
     color: var(--ink);
     line-height: 1.5;
+    transition: background 0.25s, color 0.25s;
   }
   header {
-    background: linear-gradient(135deg, var(--lds-blue), #1a4d8c);
-    color: white;
+    background: linear-gradient(135deg, var(--header-grad-start), var(--header-grad-end));
+    color: var(--header-ink);
     padding: 24px 32px;
     border-bottom: 4px solid var(--lds-gold);
+    position: relative;
   }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-text { flex: 1; min-width: 260px; }
   header h1 {
     margin: 0 0 6px 0;
     font-size: 26px;
@@ -40,6 +103,30 @@
     opacity: 0.85;
     font-size: 14px;
   }
+  .header-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .icon-btn {
+    background: var(--btn-bg);
+    color: var(--btn-ink);
+    border: 1px solid var(--btn-border);
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s;
+  }
+  .icon-btn:hover { background: var(--btn-bg-hover); }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .tap-hint { display: none; }
+  body.touch-mode .hover-hint { display: none; }
+  body.touch-mode .tap-hint { display: inline; }
   .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -47,11 +134,13 @@
   }
   .controls {
     background: var(--panel);
+    color: var(--ink);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     margin-bottom: 20px;
     border-top: 3px solid var(--lds-gold);
+    transition: background 0.25s;
   }
   .control-row {
     display: flex;
@@ -78,12 +167,13 @@
     font-size: 15px;
     border: 1px solid var(--rule);
     border-radius: 6px;
-    background: white;
+    background: var(--panel);
+    color: var(--ink);
     cursor: pointer;
   }
   select:focus { outline: 2px solid var(--accent); }
   .lds-toggle {
-    background: #fdf8e7;
+    background: var(--lds-card-bg);
     border: 1px solid var(--lds-gold);
     padding: 12px 16px;
     border-radius: 6px;
@@ -92,6 +182,7 @@
     align-items: center;
     gap: 10px;
     font-size: 14px;
+    color: var(--ink);
   }
   .lds-toggle input[type="checkbox"] {
     width: 18px;
@@ -101,6 +192,78 @@
   }
   .lds-toggle label { font-weight: 600; cursor: pointer; }
   .lds-toggle .note { color: var(--muted); font-weight: normal; }
+
+  /* Summary box */
+  .summary-box {
+    background: var(--panel);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+    overflow: hidden;
+    border-top: 3px solid var(--lds-gold);
+  }
+  .summary-header {
+    padding: 14px 20px;
+    background: linear-gradient(180deg, var(--card-grad-start) 0%, var(--card-grad-end) 100%);
+    border-bottom: 1px solid var(--rule);
+  }
+  .summary-header h2 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .summary-header .summary-sub {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .summary-body { padding: 14px 20px 16px; }
+  .summary-section { margin-bottom: 12px; }
+  .summary-section:last-child { margin-bottom: 0; }
+  .summary-section-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .summary-section.agree .summary-section-title { color: var(--summary-agree-ink); }
+  .summary-section.differ .summary-section-title { color: var(--summary-differ-ink); }
+  .summary-row {
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+  .summary-section.agree .summary-row {
+    background: var(--summary-agree-bg);
+    border-left: 3px solid var(--summary-agree-border);
+    color: var(--summary-agree-ink);
+  }
+  .summary-section.differ .summary-row {
+    background: var(--summary-differ-bg);
+    border-left: 3px solid var(--summary-differ-border);
+    color: var(--summary-differ-ink);
+  }
+  .summary-row strong { font-weight: 700; }
+  .summary-row .axis-values {
+    margin-top: 4px;
+    display: grid;
+    gap: 4px;
+    font-size: 13px;
+  }
+  .summary-row .axis-values .av {
+    display: grid;
+    grid-template-columns: minmax(120px, max-content) 1fr;
+    gap: 8px;
+  }
+  .summary-row .axis-values .av-name { font-weight: 600; opacity: 0.85; }
 
   .comparison-grid {
     display: grid;
@@ -114,15 +277,17 @@
 
   .religion-card {
     background: var(--panel);
+    color: var(--ink);
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     overflow: hidden;
     border-top: 3px solid var(--accent);
+    transition: background 0.25s;
   }
   .religion-card.lds-card { border-top-color: var(--lds-gold); }
   .card-header {
     padding: 18px 20px 14px;
-    background: linear-gradient(180deg, #fafaf6 0%, white 100%);
+    background: linear-gradient(180deg, var(--card-grad-start) 0%, var(--card-grad-end) 100%);
     border-bottom: 1px solid var(--rule);
   }
   .religion-name {
@@ -131,7 +296,7 @@
     font-weight: 700;
     color: var(--lds-blue);
   }
-  .religion-card.lds-card .religion-name { color: #6b5318; }
+  .religion-card.lds-card .religion-name { color: var(--lds-name-ink); }
   .religion-meta {
     margin-top: 6px;
     font-size: 13px;
@@ -151,7 +316,7 @@
     border-bottom: 1px solid var(--rule);
     padding-bottom: 4px;
   }
-  .religion-card.lds-card .category h3 { color: #8a6d1b; }
+  .religion-card.lds-card .category h3 { color: var(--lds-h3-ink); }
   .category p { margin: 0 0 8px 0; font-size: 14px; }
   .category ul { margin: 0; padding-left: 20px; font-size: 14px; }
   .category li { margin-bottom: 4px; }
@@ -166,8 +331,8 @@
   .term:hover { background: var(--highlight); }
   #glossary-tooltip {
     position: fixed;
-    background: #222;
-    color: #fff;
+    background: var(--tooltip-bg);
+    color: var(--tooltip-ink);
     padding: 10px 14px;
     border-radius: 6px;
     font-size: 13px;
@@ -175,7 +340,7 @@
     line-height: 1.45;
     width: 320px;
     max-width: calc(100vw - 24px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
     pointer-events: none;
     white-space: normal;
     text-align: left;
@@ -197,23 +362,35 @@
   }
   #glossary-tooltip.above::after {
     top: 100%;
-    border-top-color: #222;
+    border-top-color: var(--tooltip-bg);
   }
   #glossary-tooltip.below::after {
     bottom: 100%;
-    border-bottom-color: #222;
+    border-bottom-color: var(--tooltip-bg);
   }
+  .tooltip-close {
+    display: none;
+    margin-top: 6px;
+    text-align: right;
+    font-size: 11px;
+    opacity: 0.7;
+    font-style: italic;
+  }
+  body.touch-mode #glossary-tooltip {
+    pointer-events: auto;
+  }
+  body.touch-mode .tooltip-close { display: block; }
 
   .lds-distinct {
     margin-top: 10px;
     padding: 10px 12px;
-    background: #fdf8e7;
+    background: var(--lds-card-bg);
     border-left: 3px solid var(--lds-gold);
     font-size: 13px;
-    color: #5a4a14;
+    color: var(--lds-distinct-ink);
     border-radius: 0 4px 4px 0;
   }
-  .lds-distinct strong { color: #6b5318; }
+  .lds-distinct strong { color: var(--lds-name-ink); }
 
   footer {
     text-align: center;
@@ -241,8 +418,22 @@
 </head>
 <body>
 <header>
-  <h1>A Comparison of World Religions &amp; Christian Traditions</h1>
-  <p>Centered on the doctrine of The Church of Jesus Christ of Latter-day Saints — hover any underlined term for a definition.</p>
+  <div class="header-inner">
+    <div class="header-text">
+      <h1>A Comparison of World Religions &amp; Christian Traditions</h1>
+      <p>Centered on the doctrine of The Church of Jesus Christ of Latter-day Saints — <span class="hover-hint">hover</span><span class="tap-hint">tap</span> any underlined term for a definition.</p>
+    </div>
+    <div class="header-actions">
+      <button id="home-btn" class="icon-btn" type="button" title="Reset to default view" aria-label="Home — reset comparison">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z"/></svg>
+        <span>Home</span>
+      </button>
+      <button id="theme-btn" class="icon-btn" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="theme-label">Dark</span>
+      </button>
+    </div>
+  </div>
 </header>
 
 <div class="container">
@@ -265,6 +456,7 @@
     <p class="legend">Tip: hover (or tap) any <span class="term" data-def="Words and names with this style have hover-definitions. Try hovering!">underlined term</span> for a popup definition.</p>
   </div>
 
+  <div id="summary-box"></div>
   <div id="comparison" class="comparison-grid"></div>
 </div>
 
@@ -290,7 +482,7 @@ const glossary = {
   "Sola Fide": "Latin: 'Faith alone.' The Protestant doctrine that salvation is by faith alone, apart from works. LDS teach salvation is by grace through faith, made manifest by repentance, ordinances, and obedience.",
   "Catholic": "From Greek 'katholikos' (universal). The Catholic (Roman Catholic) Church traces its authority to Peter and the unbroken succession of bishops; it accepts Scripture and Sacred Tradition together, led by the Pope.",
   "Protestant": "Christian traditions that originated in the 16th-century Reformation (Luther, Calvin, Zwingli) protesting Roman Catholic teaching. Defined by sola scriptura, sola fide, and rejection of papal authority. LDS are NOT Protestant — they reject the creeds both Catholics and Protestants share.",
-  "Orthodox": "Eastern Christian churches (Greek, Russian, Serbian, etc.) that split from Rome in 1054 (Great Schism). They share Catholic sacramental theology but reject papal supremacy and the Filioque clause.",
+  "Orthodox": "Eastern Christian churches (Greek, Russian, Serbian, etc.) that split from Rome in AD 1054 (Great Schism). They share Catholic sacramental theology but reject papal supremacy and the Filioque clause.",
   "Pope": "The Bishop of Rome, considered by Catholics the successor of Peter and supreme earthly head of the Catholic Church.",
   "Apostle": "Greek 'one sent forth.' Original twelve disciples of Jesus, plus Paul. LDS believe twelve living apostles lead the restored Church today as special witnesses of Christ.",
   "Prophet": "One who receives and declares revelation from God. LDS believe a living prophet leads the Church today, in the pattern of Moses, Isaiah, and others.",
@@ -309,13 +501,13 @@ const glossary = {
   "Joseph Smith": "Founder of the Latter-day Saint movement (1805–1844). LDS believe God the Father and Jesus Christ appeared to him in 1820 (the First Vision), commencing the Restoration.",
   "First Vision": "LDS founding event — Joseph Smith's 1820 theophany in which he reported seeing God the Father and Jesus Christ as two distinct, glorified Beings, answering his prayer about which church to join.",
   "Temple (LDS)": "Dedicated houses of the Lord, distinct from meetinghouses, where Latter-day Saints receive higher ordinances — endowments, sealings, and proxy ordinances for the dead.",
-  "Sealing": "LDS temple ordinance binding husband and wife (and children to parents) for time and all eternity, not merely 'until death do us part.'",
+  "Sealing": "LDS temple ordinance binding husband and wife (and children to parents) for time and all eternity, not merely 'until death do us part.'.",
   "Endowment": "An LDS temple ordinance in which adults receive instruction about the plan of salvation and make sacred covenants with God.",
   "Word of Wisdom": "LDS health code (Doctrine and Covenants 89) prohibiting alcohol, tobacco, coffee, tea, and harmful drugs.",
   "Tithing": "Donating one-tenth of one's increase to the Church. Practiced by LDS as a commandment with promised blessings; also taught by many Christian traditions, often as a guideline rather than commandment.",
   "Unitarian": "A theological position rejecting the Trinity in favor of belief that God is one Person. Historical Unitarians (e.g., Servetus, modern Unitarian Universalists) generally view Jesus as a great teacher or prophet rather than God Incarnate. LDS reject the Trinity but affirm Christ's full divinity, so are not Unitarian in the classical sense.",
   "Trinitarian": "One who affirms the Nicene doctrine of the Trinity — that God is one Being in three co-equal Persons. Catholics, Orthodox, and mainstream Protestants are Trinitarian.",
-  "Nicene Creed": "Statement of Christian belief formulated at the Councils of Nicaea (325) and Constantinople (381) defining the Trinity and the full divinity of Christ. Accepted by Catholics, Orthodox, and most Protestants; LDS reject it as a post-apostolic creed.",
+  "Nicene Creed": "Statement of Christian belief formulated at the Councils of Nicaea (AD 325) and Constantinople (AD 381) defining the Trinity and the full divinity of Christ. Accepted by Catholics, Orthodox, and most Protestants; LDS reject it as a post-apostolic creed.",
   "Apostles' Creed": "Early Christian statement of faith, accepted by most Christian traditions; LDS reject the line 'descended into hell' as interpreted creedally and reject creeds as binding.",
   "Saint": "In LDS usage, any baptized member of the Church (as in the New Testament 'saints in Christ Jesus'). In Catholic/Orthodox usage, a deceased person formally canonized for exemplary holiness.",
   "Canonization": "The Catholic/Orthodox process by which a deceased person is formally declared a saint, worthy of veneration.",
@@ -377,7 +569,7 @@ const glossary = {
   "Bahá'í Faith": "Religion founded in 19th-century Persia by Bahá'u'lláh. Teaches the oneness of God, the unity of religions, and progressive revelation through a series of Manifestations (including Moses, Jesus, Muhammad, the Báb, and Bahá'u'lláh).",
   "Progressive Revelation": "The idea (held by Bahá'ís, and in a different sense by LDS) that God reveals His will incrementally through messengers suited to each age.",
   "Theosis / Deification": "Eastern Orthodox doctrine that humans can become 'partakers of the divine nature' (2 Peter 1:4) — sharing in God's life and likeness while remaining distinct from His essence. LDS exaltation has parallels but goes further, teaching humans can become joint-heirs with Christ.",
-  "Filioque": "Latin 'and from the Son.' Clause added to the Nicene Creed in the West (the Holy Spirit proceeds from the Father and the Son), rejected by Eastern Orthodoxy — a major cause of the 1054 Schism.",
+  "Filioque": "Latin 'and from the Son.' Clause added to the Nicene Creed in the West (the Holy Spirit proceeds from the Father and the Son), rejected by Eastern Orthodoxy — a major cause of the AD 1054 Schism.",
   "Real Presence": "Doctrine that Christ is truly, objectively present in the Eucharist. Catholics, Orthodox, Lutherans (in varying senses); contrasted with the Baptist/Evangelical/LDS view of memorial.",
   "Sanctification": "The process of being made holy after conversion. Methodists/Wesleyans emphasize a 'second blessing'; LDS see it as a lifelong covenant process.",
   "Anointing of the Sick": "Catholic sacrament for the seriously ill. LDS practice a similar ordinance of administering to the sick via priesthood blessing with consecrated oil.",
@@ -423,10 +615,19 @@ const religions = {
   lds: {
     name: "The Church of Jesus Christ of Latter-day Saints",
     short: "Latter-day Saints (LDS)",
-    founded: "1830 (Restoration)",
+    founded: "AD 1830 (Restoration)",
     founder: "Joseph Smith (prophet)",
     adherents: "~17.5 million",
     isLDS: true,
+    axes: {
+      "Nature of God": "Three separate Beings (Godhead)",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Open — Bible + Restoration scriptures",
+      "Continuing Revelation": "Yes — living prophets and apostles",
+      "Baptism": "Immersion at age 8+",
+      "Afterlife": "Resurrection, judgment, three degrees of glory + exaltation",
+      "Authority": "Restored priesthood through Joseph Smith"
+    },
     theology: "Believe in the Godhead — three separate, distinct Beings: God the Father (Elohim), Jesus Christ (Jehovah, the pre-mortal Son), and the Holy Ghost — perfectly unified in purpose but NOT one in substance. Reject the Nicene Trinity as a post-apostolic creed. The Father and the Son have glorified bodies of flesh and bone; the Holy Ghost is a personage of spirit. Humans are literal spirit children of Heavenly Parents.",
     scripture: "Open canon: the Bible (King James Version), the Book of Mormon (Another Testament of Jesus Christ), the Doctrine and Covenants, and the Pearl of Great Price. Continuing Revelation through a living prophet and twelve apostles. Reject sola scriptura.",
     salvation: "Salvation is by grace through faith, manifested by repentance, baptism, receiving the Holy Ghost, and enduring to the end. Universal resurrection through Christ's Atonement. Three degrees of glory after judgment — Celestial, Terrestrial, Telestial Kingdoms. Exaltation (the highest celestial reward) is for those who receive all saving ordinances and become like Heavenly Father. Pre-mortal Existence and a Plan of Salvation frame this life as a mortal probation.",
@@ -439,6 +640,15 @@ const religions = {
     founded: "Apostolic era (claim Petrine succession)",
     founder: "Jesus Christ (via the Apostle Peter)",
     adherents: "~1.36 billion",
+    axes: {
+      "Nature of God": "Trinity — one Being in three Persons",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Closed — Bible + Sacred Tradition",
+      "Continuing Revelation": "No — Magisterium interprets deposit of faith",
+      "Baptism": "Infant baptism by pouring",
+      "Afterlife": "Heaven, Hell, Purgatory",
+      "Authority": "Apostolic succession through the Pope"
+    },
     theology: "Trinitarian — one God in three Persons (Nicene Creed). Jesus is fully God and fully man (Chalcedonian definition). Mary is venerated as Theotokos (God-bearer) and Immaculate Conception. Veneration of saints, angels, and relics.",
     scripture: "Sacred Scripture (73 books — including Deuterocanonical/Apocrypha) AND Sacred Tradition, both interpreted authoritatively by the Magisterium under the Pope. Closed canon. Reject sola scriptura.",
     salvation: "Salvation by grace through faith, lived out through the seven sacraments and good works. Heaven, Hell, and Purgatory (a state of purification before heaven). Original Sin inherited from Adam — removed by infant baptism. Mortal vs. venial sins distinguished.",
@@ -451,6 +661,15 @@ const religions = {
     founded: "Apostolic era (formally separate after 1054 Great Schism)",
     founder: "Jesus Christ (via apostolic succession)",
     adherents: "~220 million",
+    axes: {
+      "Nature of God": "Trinity — one Being in three Persons (rejects Filioque)",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Closed — Bible + Sacred Tradition + Ecumenical Councils",
+      "Continuing Revelation": "No — guarded by Ecumenical Councils and Tradition",
+      "Baptism": "Infant baptism by triple immersion",
+      "Afterlife": "Heaven, Hell (no formal Purgatory)",
+      "Authority": "Apostolic succession through patriarchs and bishops"
+    },
     theology: "Trinitarian, but reject the Filioque clause (Holy Spirit proceeds from the Father, not 'from the Father and the Son'). Strong emphasis on Theosis — the believer being deified by partaking of divine grace. Veneration of icons, saints, and Mary (Theotokos).",
     scripture: "Bible (slightly different OT canon than Catholic) plus Sacred Tradition, the writings of the Church Fathers, and the seven Ecumenical Councils. Closed canon.",
     salvation: "Salvation as a lifelong process of Theosis — being made like God by grace, through the sacramental life of the Church. Less juridical (legal) and more therapeutic in framing than the Western view. Heaven and Hell; no formal doctrine of Purgatory.",
@@ -463,6 +682,15 @@ const religions = {
     founded: "17th century (John Smyth, 1609)",
     founder: "Various Reformation-era leaders",
     adherents: "~100 million globally",
+    axes: {
+      "Nature of God": "Trinity — one Being in three Persons",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Closed — Bible alone (sola scriptura)",
+      "Continuing Revelation": "No — Bible is sufficient",
+      "Baptism": "Immersion of believers (no infants)",
+      "Afterlife": "Heaven or Hell",
+      "Authority": "Local congregational autonomy"
+    },
     theology: "Trinitarian, evangelical Protestant. Affirm the Nicene Creed in substance (though many congregations are non-creedal in form). Most are Arminian-leaning on free will, though Reformed Baptists are Calvinist. Strong emphasis on personal conversion (Born Again).",
     scripture: "Bible alone — sola scriptura. Closed canon. The believer interprets Scripture under the Holy Spirit's guidance (priesthood of all believers). No binding tradition or hierarchy.",
     salvation: "Saved by Grace through faith alone (sola fide). Many Baptists hold 'once saved, always saved' (eternal security). Heaven for the saved, Hell for the lost. No purgatory or post-mortem opportunity.",
@@ -475,6 +703,15 @@ const religions = {
     founded: "1517 (Martin Luther's 95 Theses)",
     founder: "Martin Luther",
     adherents: "~75 million",
+    axes: {
+      "Nature of God": "Trinity — one Being in three Persons",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Closed — Bible alone (sola scriptura)",
+      "Continuing Revelation": "No — Bible is sufficient",
+      "Baptism": "Infant baptism by pouring or sprinkling",
+      "Afterlife": "Heaven or Hell",
+      "Authority": "Ordained pastors; Lutheran Confessions"
+    },
     theology: "Trinitarian. Affirm the Apostles', Nicene, and Athanasian Creeds, plus the Book of Concord. Justification by faith alone (sola fide) is the central doctrine. Two kinds of righteousness — passive (before God) and active (before neighbor).",
     scripture: "Sola Scriptura. Bible (Protestant 66-book canon) as the sole authoritative rule. Lutheran Confessions (Augsburg, Smalcald, etc.) are authoritative as faithful summaries.",
     salvation: "Saved by Grace alone, through faith alone, on account of Christ alone. Heaven and Hell. Reject Purgatory. Believe in 'sacramental union' in the Eucharist — Christ's body and blood are truly present 'in, with, and under' the bread and wine.",
@@ -487,6 +724,15 @@ const religions = {
     founded: "18th century (John Wesley, c. 1738)",
     founder: "John & Charles Wesley",
     adherents: "~80 million",
+    axes: {
+      "Nature of God": "Trinity — one Being in three Persons",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Closed — Bible primary (Wesleyan Quadrilateral)",
+      "Continuing Revelation": "No — Bible is final authority",
+      "Baptism": "Infant or believer baptism by various modes",
+      "Afterlife": "Heaven or Hell",
+      "Authority": "Connectional polity with bishops"
+    },
     theology: "Trinitarian, Arminian. Emphasis on prevenient grace (God's grace before conversion that enables free response), justification, and Sanctification — even 'Christian perfection' or entire sanctification as a 'second work of grace.'",
     scripture: "Sola Scriptura as the primary authority, balanced by the Wesleyan Quadrilateral: Scripture, Tradition, Reason, and Experience.",
     salvation: "Saved by Grace through faith — but rejected unconditional Predestination. Salvation can be lost through persistent unbelief. Heaven and Hell. Strong emphasis on holiness and social justice.",
@@ -499,6 +745,15 @@ const religions = {
     founded: "1906 (Azusa Street Revival)",
     founder: "William J. Seymour (movement)",
     adherents: "~280 million (incl. Charismatics)",
+    axes: {
+      "Nature of God": "Trinity — one Being in three Persons",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Closed — Bible alone (sola scriptura)",
+      "Continuing Revelation": "Charismatic gifts to individuals (not binding scripture)",
+      "Baptism": "Immersion of believers",
+      "Afterlife": "Heaven or Hell",
+      "Authority": "Spirit-led pastors and prophets"
+    },
     theology: "Trinitarian (most groups; Oneness Pentecostals are non-Trinitarian — they baptize only in Jesus' name). Emphasis on the post-conversion Baptism in the Holy Spirit, often evidenced by Speaking in Tongues, healing, prophecy, and miracles.",
     scripture: "Sola Scriptura, but with strong emphasis on ongoing supernatural gifts and the prophetic voice today. Bible as inerrant Word of God.",
     salvation: "Born Again by repentance and faith; many also teach a 'second work of grace' (Spirit Baptism). Most are Arminian — salvation can be forfeited. Heaven and Hell; some teach a literal millennium and dispensational eschatology.",
@@ -511,6 +766,15 @@ const religions = {
     founded: "1863 (formal organization; movement after the 1844 'Great Disappointment')",
     founder: "Ellen G. White, James White, Joseph Bates",
     adherents: "~22 million",
+    axes: {
+      "Nature of God": "Trinity — one Being in three Persons",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Closed — Bible alone; Ellen G. White as 'lesser light'",
+      "Continuing Revelation": "Limited — Ellen G. White's prophetic counsel",
+      "Baptism": "Immersion of believers",
+      "Afterlife": "Saved live forever; wicked annihilated (no eternal hell)",
+      "Authority": "General Conference; Ellen G. White's writings"
+    },
     theology: "Trinitarian, Protestant. Affirm sola scriptura but also regard Ellen G. White's writings as a 'lesser light' inspired by God. Distinctive doctrines: Saturday Sabbath, conditional immortality (the dead are unconscious until resurrection), annihilationism (the wicked are destroyed, not eternally tormented), and the Investigative Judgment beginning 1844.",
     scripture: "Bible alone as final authority. Ellen G. White's writings (Conflict of the Ages series, etc.) are valued as prophetic counsel.",
     salvation: "By grace through faith. Conditional immortality — only the saved live forever. Annihilationism — the wicked are destroyed, not eternally tormented. Pre-Advent Investigative Judgment.",
@@ -523,6 +787,15 @@ const religions = {
     founded: "1870s (Watch Tower founded 1881)",
     founder: "Charles Taze Russell",
     adherents: "~8.7 million 'publishers'",
+    axes: {
+      "Nature of God": "One Person — Jehovah (no Trinity)",
+      "View of Jesus": "First created being; archangel Michael; not divine",
+      "Scripture Canon": "Closed — New World Translation; Governing Body teaching",
+      "Continuing Revelation": "Yes — through the Governing Body",
+      "Baptism": "Immersion of believers",
+      "Afterlife": "144,000 in heaven; faithful on paradise earth; wicked annihilated",
+      "Authority": "Watch Tower Governing Body (Warwick, NY)"
+    },
     theology: "Non-Trinitarian. Reject the Trinity, the deity of Christ in the Trinitarian sense, the immortality of the soul, hellfire, and the cross. Jesus is the first creation of Jehovah — identified with the archangel Michael — and was resurrected as a spirit creature. The Holy Spirit is God's active force, not a person.",
     scripture: "New World Translation of the Bible (their own translation). All teaching is mediated by the Governing Body in Warwick, NY (Watch Tower).",
     salvation: "An 'anointed' 144,000 go to heaven to rule with Christ; the 'great crowd' of other faithful live forever on a paradise earth. No hell — the wicked are annihilated. Salvation requires field service (door-to-door preaching) and obedience to the Watch Tower.",
@@ -535,6 +808,15 @@ const religions = {
     founded: "AD 325 / 381 (Council of Nicaea / Constantinople)",
     founder: "Patristic Fathers (Athanasius, Cappadocians)",
     adherents: "Vast majority of ~2.4 billion Christians",
+    axes: {
+      "Nature of God": "Trinity — one Being in three Persons",
+      "View of Jesus": "Divine Son and Savior",
+      "Scripture Canon": "Closed — Bible (varies by tradition)",
+      "Continuing Revelation": "No — public revelation closed",
+      "Baptism": "Varies — usually infant or believer baptism",
+      "Afterlife": "Heaven or Hell (some hold Purgatory)",
+      "Authority": "Varies — Pope, councils, or scripture"
+    },
     theology: "One God in three co-equal, co-eternal Persons — Father, Son, and Holy Spirit — one substance (homoousios). The Son is 'begotten, not made.' Mainstream Catholics, Orthodox, and most Protestants confess this in the Nicene and Apostles' Creeds.",
     scripture: "Varies by tradition — but all hold the Bible as authoritative. Catholics/Orthodox include Deuterocanonical books; Protestants do not.",
     salvation: "Varies by tradition — but all hold that salvation is through Christ's atoning work, received by grace. Differences over faith/works, sacraments, predestination, and assurance.",
@@ -547,6 +829,15 @@ const religions = {
     founded: "16th century (Servetus, Socinus); modern Unitarian Universalist Assoc. 1961",
     founder: "Various (Servetus, Socinus, Channing, Emerson)",
     adherents: "~600,000 UU; broader Unitarian theology beyond",
+    axes: {
+      "Nature of God": "One Person (no Trinity)",
+      "View of Jesus": "Great teacher/prophet; not God Incarnate",
+      "Scripture Canon": "Bible respected; non-creedal; multiple sources",
+      "Continuing Revelation": "No formal prophetic claim",
+      "Baptism": "Optional symbolic act",
+      "Afterlife": "Varied; often this-worldly focus",
+      "Authority": "Congregational, non-creedal"
+    },
     theology: "God is one Person, not three. Jesus is honored as a great moral teacher, prophet, or in some forms a uniquely Spirit-filled man, but NOT God Incarnate. The Holy Spirit is the influence of God, not a third Person. Modern Unitarian Universalism is non-creedal and often pluralistic — Christians, humanists, Buddhists, theists, atheists all welcome.",
     scripture: "Bible respected but interpreted with reason. Modern UUs draw from many religious traditions — 'Six Sources' include Christian and Jewish teachings, Earth-centered traditions, humanist wisdom, etc.",
     salvation: "Most Unitarians historically rejected vicarious atonement, original sin, eternal hell, and even the necessity of belief in Christ for salvation. Modern UUs generally affirm the worth and dignity of every person, not a doctrinal path of salvation.",
@@ -571,6 +862,15 @@ const religions = {
     founded: "AD 610 (revelation to Muhammad in Mecca)",
     founder: "Prophet Muhammad",
     adherents: "~2 billion",
+    axes: {
+      "Nature of God": "One God — Allah (strict tawhid)",
+      "View of Jesus": "Honored prophet; not divine; not crucified",
+      "Scripture Canon": "Closed — Qur'an, Hadith, Sunnah",
+      "Continuing Revelation": "Closed with Muhammad (seal of prophets)",
+      "Baptism": "Not practiced",
+      "Afterlife": "Paradise (Jannah) or Hell (Jahannam)",
+      "Authority": "Qur'an + Sunnah; scholars (ulama)"
+    },
     theology: "Strict monotheism (tawhid). Allah is one — without partner, son, or division. Jesus (Isa) is honored as a virgin-born prophet and Messiah, but NOT divine and NOT crucified (Qur'an 4:157). Muhammad is the seal of the prophets — the final messenger.",
     scripture: "The Qur'an as the literal word of Allah revealed to Muhammad via the angel Gabriel. The Hadith (recorded sayings/actions of Muhammad) and Sunnah (his example). The Tawrat (Torah), Zabur (Psalms), and Injil (Gospel) are honored as earlier revelations, but believed corrupted.",
     salvation: "By submission (Islam) to Allah and obedience to His commands. The Day of Judgment weighs deeds — paradise (Jannah) or hell (Jahannam). No vicarious atonement — each soul bears its own sin. Mercy is from Allah's pleasure, not a savior's sacrifice.",
@@ -583,6 +883,15 @@ const religions = {
     founded: "No single founder — Vedic era c. 1500 BC, with deep prehistoric roots",
     founder: "No single founder",
     adherents: "~1.2 billion",
+    axes: {
+      "Nature of God": "Brahman (one ultimate reality, many manifestations)",
+      "View of Jesus": "Sometimes honored as avatar/teacher; not unique Savior",
+      "Scripture Canon": "Vedas, Upanishads, Bhagavad Gita, Puranas",
+      "Continuing Revelation": "Ongoing through gurus and sages",
+      "Baptism": "Not practiced (other rites of passage)",
+      "Afterlife": "Reincarnation until moksha (liberation)",
+      "Authority": "Vedas; gurus; lineage traditions"
+    },
     theology: "Diverse. Most schools affirm Brahman — the ultimate reality — manifested in countless deities (Vishnu, Shiva, Devi, etc.). Some schools (Advaita) are non-dual: Brahman is impersonal and all reality is one. Others (Dvaita) are dualistic and personal-theistic. Avatars (incarnations of God, especially Vishnu as Rama and Krishna) descend in times of need.",
     scripture: "Vast: Shruti ('heard') — the four Vedas, Upanishads. Smriti ('remembered') — the epics Mahabharata (containing the Bhagavad Gita) and Ramayana, the Puranas, and Dharma Shastras. Open in practice.",
     salvation: "Moksha — liberation from samsara (the cycle of Reincarnation) governed by Karma. Achieved through paths of knowledge (jnana), devotion (bhakti), action (karma yoga), or meditation (raja yoga). Multiple lifetimes are presumed.",
@@ -595,6 +904,15 @@ const religions = {
     founded: "c. 5th century BC (Siddhartha Gautama)",
     founder: "Siddhartha Gautama — the Buddha",
     adherents: "~520 million",
+    axes: {
+      "Nature of God": "Non-theistic (no creator God in most schools)",
+      "View of Jesus": "Not part of the tradition",
+      "Scripture Canon": "Pali Canon (Theravada); Mahayana sutras",
+      "Continuing Revelation": "Ongoing teaching through lineages",
+      "Baptism": "Not practiced",
+      "Afterlife": "Rebirth until Nirvana (liberation)",
+      "Authority": "The Buddha, the Dharma, the Sangha"
+    },
     theology: "Non-theistic in most traditions — no creator God. The Buddha was a human teacher who attained enlightenment. Mahayana traditions add cosmic Buddhas and bodhisattvas. Theravada is more austere and atheistic.",
     scripture: "Theravada: Pali Canon (Tripitaka — 'Three Baskets'). Mahayana: additional sutras (Lotus Sutra, Heart Sutra, etc.). Vajrayana (Tibetan): tantras and oral lineages.",
     salvation: "Nirvana — the extinction of craving, ignorance, and the cycle of rebirth — achieved by following the Four Noble Truths and the Eightfold Path. Karma drives rebirth across lives. Mahayana adds the bodhisattva ideal — postponing one's own nirvana to liberate others.",
@@ -607,6 +925,15 @@ const religions = {
     founded: "15th century AD (Guru Nanak, b. 1469)",
     founder: "Guru Nanak (1469–1539) and the nine succeeding Gurus",
     adherents: "~30 million",
+    axes: {
+      "Nature of God": "One formless God (Ik Onkar)",
+      "View of Jesus": "Not part of the tradition",
+      "Scripture Canon": "Guru Granth Sahib (eternal living Guru)",
+      "Continuing Revelation": "Closed with the tenth Guru",
+      "Baptism": "Amrit ceremony (initiation into Khalsa)",
+      "Afterlife": "Reincarnation until union with God",
+      "Authority": "Guru Granth Sahib; Khalsa community"
+    },
     theology: "Strict monotheism — Ik Onkar ('One God'). God is formless, all-pervading, beyond image. Reject idol worship and caste. The ten Gurus are inspired teachers, not divine; after the tenth, the Guru Granth Sahib (scripture) is the eternal Guru.",
     scripture: "Guru Granth Sahib — compiled hymns of the Gurus and other saints. Regarded as the living, eternal Guru.",
     salvation: "Liberation from samsara (cycle of rebirth) by remembering God's name (Naam), honest labor (Kirat Karni), and sharing with others (Vand Chakna). Realization through the Guru's grace.",
@@ -619,6 +946,15 @@ const religions = {
     founded: "1844 (the Báb) / 1863 (Bahá'u'lláh's declaration)",
     founder: "Bahá'u'lláh (1817–1892)",
     adherents: "~5–8 million",
+    axes: {
+      "Nature of God": "One unknowable God",
+      "View of Jesus": "One of many Manifestations of God",
+      "Scripture Canon": "Bahá'u'lláh's writings + earlier scriptures",
+      "Continuing Revelation": "Yes — progressive Manifestations",
+      "Baptism": "Not practiced",
+      "Afterlife": "Spiritual progress in spiritual realms",
+      "Authority": "Universal House of Justice (Haifa)"
+    },
     theology: "Strict monotheism. God is unknowable in essence but reveals Himself through a series of Manifestations — Abraham, Moses, Krishna, Buddha, Zoroaster, Jesus, Muhammad, the Báb, and Bahá'u'lláh — each suited to their age (Progressive Revelation). The unity of God, unity of religion, and unity of humanity are central.",
     scripture: "The writings of Bahá'u'lláh (Kitab-i-Aqdas, Kitab-i-Iqan, etc.), the Báb, and 'Abdu'l-Bahá. Earlier scriptures honored.",
     salvation: "Spiritual progress through knowing and loving God and serving humanity. Soul continues in spiritual realms after death — no hell as a place; hell is distance from God.",
@@ -669,12 +1005,37 @@ function renderReligionCard(key) {
 }
 
 // =============================
-// CONTROLS
+// CONTROLS + SUMMARY
 // =============================
 const leftSelect = document.getElementById('left-select');
 const rightSelect = document.getElementById('right-select');
 const ldsCheckbox = document.getElementById('lds-mode');
 const comparison = document.getElementById('comparison');
+const summaryBox = document.getElementById('summary-box');
+const homeBtn = document.getElementById('home-btn');
+const themeBtn = document.getElementById('theme-btn');
+const themeIcon = document.getElementById('theme-icon');
+const themeLabel = document.getElementById('theme-label');
+
+const COMPARE_AXES = [
+  "Nature of God",
+  "View of Jesus",
+  "Scripture Canon",
+  "Continuing Revelation",
+  "Baptism",
+  "Afterlife",
+  "Authority"
+];
+
+function escapeHtml(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
 function populateSelects() {
   const keys = Object.keys(religions);
@@ -685,27 +1046,83 @@ function populateSelects() {
   rightSelect.value = 'catholic';
 }
 
+function renderSummary(keys) {
+  const traditions = keys.map(k => religions[k]).filter(r => r && r.axes);
+  if (traditions.length < 2) { summaryBox.innerHTML = ''; return; }
+
+  const agree = [];
+  const differ = [];
+  COMPARE_AXES.forEach(axis => {
+    const values = traditions.map(t => (t.axes && t.axes[axis]) || '—');
+    const allSame = values.every(v => v === values[0]);
+    if (allSame && values[0] !== '—') {
+      agree.push({ axis, value: values[0] });
+    } else {
+      differ.push({ axis, values });
+    }
+  });
+
+  const names = traditions.map(t => t.short || t.name);
+  const namesText = names.length === 2
+    ? `${names[0]} & ${names[1]}`
+    : `${names.slice(0, -1).join(', ')} & ${names[names.length - 1]}`;
+
+  let html = `
+    <div class="summary-box">
+      <div class="summary-header">
+        <h2>At-a-Glance: ${escapeHtml(namesText)}</h2>
+        <div class="summary-sub">A quick map of where these traditions line up — and where they part ways.</div>
+      </div>
+      <div class="summary-body">`;
+
+  if (agree.length) {
+    html += `
+      <div class="summary-section agree">
+        <div class="summary-section-title">Where they agree</div>`;
+    agree.forEach(item => {
+      html += `<div class="summary-row"><strong>${escapeHtml(item.axis)}:</strong> ${escapeHtml(item.value)}</div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (differ.length) {
+    html += `
+      <div class="summary-section differ">
+        <div class="summary-section-title">Where they differ</div>`;
+    differ.forEach(item => {
+      const rows = item.values.map((v, i) =>
+        `<div class="av"><span class="av-name">${escapeHtml(names[i])}:</span><span>${escapeHtml(v)}</span></div>`
+      ).join('');
+      html += `<div class="summary-row"><strong>${escapeHtml(item.axis)}</strong><div class="axis-values">${rows}</div></div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (!agree.length && !differ.length) {
+    html += `<div class="summary-section"><div class="summary-row">No comparison data available.</div></div>`;
+  }
+
+  html += `</div></div>`;
+  summaryBox.innerHTML = html;
+}
+
 function render() {
+  let keys;
   if (ldsCheckbox.checked) {
     comparison.className = 'comparison-grid three-col';
-    // If LDS is selected in left, swap left to next available
     const left = leftSelect.value === 'lds' ? 'catholic' : leftSelect.value;
     const right = rightSelect.value === 'lds' ? 'baptist' : rightSelect.value;
-    comparison.innerHTML =
-      renderReligionCard('lds') +
-      renderReligionCard(left) +
-      renderReligionCard(right);
+    keys = ['lds', left, right];
   } else {
     comparison.className = 'comparison-grid';
-    comparison.innerHTML =
-      renderReligionCard(leftSelect.value) +
-      renderReligionCard(rightSelect.value);
+    keys = [leftSelect.value, rightSelect.value];
   }
+  renderSummary(keys);
+  comparison.innerHTML = keys.map(renderReligionCard).join('');
 }
 
 function syncControlsForLDSMode() {
   if (ldsCheckbox.checked) {
-    // Hide LDS from selects to avoid duplication
     [leftSelect, rightSelect].forEach(sel => {
       const current = sel.value;
       const keys = Object.keys(religions).filter(k => k !== 'lds');
@@ -729,16 +1146,81 @@ ldsCheckbox.addEventListener('change', () => {
 });
 
 // =============================
-// FLOATING TOOLTIP (viewport-clamped)
+// HOME BUTTON
+// =============================
+homeBtn.addEventListener('click', () => {
+  ldsCheckbox.checked = false;
+  syncControlsForLDSMode();
+  leftSelect.value = 'lds';
+  rightSelect.value = 'catholic';
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// =============================
+// DARK MODE
+// =============================
+const SUN_ICON = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+const MOON_ICON = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeIcon.innerHTML = SUN_ICON;
+    themeLabel.textContent = 'Light';
+    themeBtn.setAttribute('title', 'Switch to light mode');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    themeIcon.innerHTML = MOON_ICON;
+    themeLabel.textContent = 'Dark';
+    themeBtn.setAttribute('title', 'Switch to dark mode');
+  }
+}
+
+let savedTheme = null;
+try { savedTheme = localStorage.getItem('religion-comparison-theme'); } catch (e) {}
+if (savedTheme === 'dark' || savedTheme === 'light') {
+  applyTheme(savedTheme);
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  applyTheme('dark');
+} else {
+  applyTheme('light');
+}
+
+themeBtn.addEventListener('click', () => {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = isDark ? 'light' : 'dark';
+  applyTheme(next);
+  try { localStorage.setItem('religion-comparison-theme', next); } catch (e) {}
+});
+
+// =============================
+// TOOLTIP (hover on desktop, tap on touch)
 // =============================
 const tooltip = document.getElementById('glossary-tooltip');
 const MARGIN = 12;
 const GAP = 10;
 
+const isTouchDevice = (window.matchMedia && (
+  window.matchMedia('(hover: none)').matches ||
+  window.matchMedia('(pointer: coarse)').matches
+)) || ('ontouchstart' in window);
+
+if (isTouchDevice) {
+  document.body.classList.add('touch-mode');
+}
+
+let activeTerm = null;
+
 function showTooltip(termEl) {
   const def = termEl.getAttribute('data-def');
   if (!def) return;
-  tooltip.innerHTML = def;
+  activeTerm = termEl;
+  let html = def;
+  if (isTouchDevice) {
+    html += '<div class="tooltip-close">Tap anywhere to close</div>';
+  }
+  tooltip.innerHTML = html;
   tooltip.classList.add('visible');
   tooltip.setAttribute('aria-hidden', 'false');
   positionTooltip(termEl);
@@ -750,12 +1232,10 @@ function positionTooltip(termEl) {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
 
-  // Horizontal: center on term, then clamp to viewport with MARGIN.
   const termCenter = rect.left + rect.width / 2;
   let left = termCenter - tipRect.width / 2;
   left = Math.max(MARGIN, Math.min(left, vw - tipRect.width - MARGIN));
 
-  // Vertical: prefer above; if not enough space, place below.
   const spaceAbove = rect.top;
   const spaceBelow = vh - rect.bottom;
   let top;
@@ -763,7 +1243,7 @@ function positionTooltip(termEl) {
   if (!placeAbove && spaceBelow >= tipRect.height + GAP + MARGIN) {
     placeAbove = false;
   } else if (!placeAbove && spaceBelow < spaceAbove) {
-    placeAbove = true; // fall back to above even if cramped
+    placeAbove = true;
   }
 
   if (placeAbove) {
@@ -777,7 +1257,6 @@ function positionTooltip(termEl) {
   }
   top = Math.max(MARGIN, Math.min(top, vh - tipRect.height - MARGIN));
 
-  // Arrow points at term center, clamped within the tooltip body.
   const arrowX = Math.max(12, Math.min(termCenter - left, tipRect.width - 12));
   tooltip.style.setProperty('--arrow-x', arrowX + 'px');
   tooltip.style.left = left + 'px';
@@ -787,24 +1266,53 @@ function positionTooltip(termEl) {
 function hideTooltip() {
   tooltip.classList.remove('visible');
   tooltip.setAttribute('aria-hidden', 'true');
+  activeTerm = null;
 }
 
+// Desktop hover
 document.addEventListener('mouseover', (e) => {
+  if (isTouchDevice) return;
   const t = e.target.closest('.term');
   if (t) showTooltip(t);
 });
 document.addEventListener('mouseout', (e) => {
+  if (isTouchDevice) return;
   const t = e.target.closest('.term');
   if (t) hideTooltip();
 });
+
+// Keyboard focus (both modes)
 document.addEventListener('focusin', (e) => {
   const t = e.target.closest('.term');
   if (t) showTooltip(t);
 });
 document.addEventListener('focusout', (e) => {
   const t = e.target.closest('.term');
-  if (t) hideTooltip();
+  if (t && !isTouchDevice) hideTooltip();
 });
+
+// Tap-to-toggle (works on all devices; primary path on touch)
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('.term');
+  if (t) {
+    e.preventDefault();
+    if (activeTerm === t) {
+      hideTooltip();
+    } else {
+      showTooltip(t);
+    }
+    return;
+  }
+  // Click outside an open tooltip dismisses it
+  if (activeTerm && !e.target.closest('#glossary-tooltip')) {
+    hideTooltip();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && activeTerm) hideTooltip();
+});
+
 window.addEventListener('scroll', hideTooltip, true);
 window.addEventListener('resize', hideTooltip);
 </script>
