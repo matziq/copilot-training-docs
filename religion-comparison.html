@@ -271,8 +271,83 @@
     grid-template-columns: 1fr 1fr;
   }
   .comparison-grid.three-col { grid-template-columns: 1fr 1fr 1fr; }
+  .comparison-grid.topic-grid { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 1100px) {
+    .comparison-grid.topic-grid { grid-template-columns: 1fr 1fr; }
+  }
   @media (max-width: 900px) {
-    .comparison-grid, .comparison-grid.three-col { grid-template-columns: 1fr; }
+    .comparison-grid, .comparison-grid.three-col, .comparison-grid.topic-grid { grid-template-columns: 1fr; }
+  }
+
+  .topic-banner {
+    background: var(--panel);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+    overflow: hidden;
+    border-top: 3px solid var(--lds-gold);
+  }
+  .topic-banner-head {
+    padding: 14px 20px;
+    background: linear-gradient(180deg, var(--card-grad-start) 0%, var(--card-grad-end) 100%);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topic-banner-head h2 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .topic-banner-head .sub {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .topic-card {
+    background: var(--panel);
+    color: var(--ink);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border-top: 3px solid var(--accent);
+    padding: 14px 16px 16px;
+  }
+  .topic-card.lds-card { border-top-color: var(--lds-gold); background: var(--lds-card-bg); }
+  .topic-card .t-name {
+    margin: 0 0 4px 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--lds-blue);
+  }
+  .topic-card.lds-card .t-name { color: var(--lds-name-ink); }
+  .topic-card .t-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .topic-card .t-axis {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .topic-card .t-value {
+    font-size: 14.5px;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  .control-group select:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .controls.topic-mode .lds-toggle {
+    opacity: 0.45;
+    pointer-events: none;
   }
 
   .religion-card {
@@ -447,8 +522,12 @@
         <label for="right-select">Right Comparison</label>
         <select id="right-select"></select>
       </div>
+      <div class="control-group">
+        <label for="topic-select">Or View By Topic</label>
+        <select id="topic-select"></select>
+      </div>
     </div>
-    <div class="lds-toggle">
+    <div class="lds-toggle" id="lds-toggle-row">
       <input type="checkbox" id="lds-mode" />
       <label for="lds-mode">Compare against The Church of Jesus Christ of Latter-day Saints</label>
       <span class="note">— locks LDS into the first column and lets you compare two other traditions side-by-side.</span>
@@ -501,7 +580,7 @@ const glossary = {
   "Joseph Smith": "Founder of the Latter-day Saint movement (1805–1844). LDS believe God the Father and Jesus Christ appeared to him in 1820 (the First Vision), commencing the Restoration.",
   "First Vision": "LDS founding event — Joseph Smith's 1820 theophany in which he reported seeing God the Father and Jesus Christ as two distinct, glorified Beings, answering his prayer about which church to join.",
   "Temple (LDS)": "Dedicated houses of the Lord, distinct from meetinghouses, where Latter-day Saints receive higher ordinances — endowments, sealings, and proxy ordinances for the dead.",
-  "Sealing": "LDS temple ordinance binding husband and wife (and children to parents) for time and all eternity, not merely 'until death do us part.'.",
+  "Sealing": "LDS temple ordinance binding husband and wife (and children to parents) for time and all eternity, not merely 'until death do us part.'",
   "Endowment": "An LDS temple ordinance in which adults receive instruction about the plan of salvation and make sacred covenants with God.",
   "Word of Wisdom": "LDS health code (Doctrine and Covenants 89) prohibiting alcohol, tobacco, coffee, tea, and harmful drugs.",
   "Tithing": "Donating one-tenth of one's increase to the Church. Practiced by LDS as a commandment with promised blessings; also taught by many Christian traditions, often as a guideline rather than commandment.",
@@ -1009,13 +1088,25 @@ function renderReligionCard(key) {
 // =============================
 const leftSelect = document.getElementById('left-select');
 const rightSelect = document.getElementById('right-select');
+const topicSelect = document.getElementById('topic-select');
 const ldsCheckbox = document.getElementById('lds-mode');
+const controlsEl = document.querySelector('.controls');
 const comparison = document.getElementById('comparison');
 const summaryBox = document.getElementById('summary-box');
 const homeBtn = document.getElementById('home-btn');
 const themeBtn = document.getElementById('theme-btn');
 const themeIcon = document.getElementById('theme-icon');
 const themeLabel = document.getElementById('theme-label');
+
+const TOPIC_DESCRIPTIONS = {
+  "Nature of God": "How each tradition understands the being and identity of God.",
+  "View of Jesus": "Whether Jesus is divine, prophetic, or simply human — and what role He plays in salvation.",
+  "Scripture Canon": "What writings are accepted as authoritative, and whether the canon is open or closed.",
+  "Continuing Revelation": "Whether God still speaks through living prophets, charismatic gifts, or only the closed Bible.",
+  "Baptism": "Who is baptized, by what mode, and at what age — or whether baptism is practiced at all.",
+  "Afterlife": "What each tradition teaches about life after death — heaven, hell, paradise, rebirth, or annihilation.",
+  "Authority": "Where final religious authority rests — in a prophet, a pope, a council, scripture alone, or a community."
+};
 
 const COMPARE_AXES = [
   "Nature of God",
@@ -1044,6 +1135,42 @@ function populateSelects() {
   });
   leftSelect.value = 'lds';
   rightSelect.value = 'catholic';
+}
+
+function populateTopicSelect() {
+  const opts = ['<option value="">Side-by-side (off)</option>']
+    .concat(COMPARE_AXES.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`));
+  topicSelect.innerHTML = opts.join('');
+  topicSelect.value = '';
+}
+
+function renderTopicView(axis) {
+  summaryBox.innerHTML = `
+    <div class="topic-banner">
+      <div class="topic-banner-head">
+        <h2>By Topic: ${escapeHtml(axis)}</h2>
+        <div class="sub">${escapeHtml(TOPIC_DESCRIPTIONS[axis] || '')}</div>
+      </div>
+    </div>`;
+
+  // LDS first, then the rest in declaration order
+  const orderedKeys = ['lds'].concat(Object.keys(religions).filter(k => k !== 'lds'));
+  const cards = orderedKeys.map(k => {
+    const r = religions[k];
+    if (!r) return '';
+    const value = (r.axes && r.axes[axis]) || '—';
+    const cls = r.isLDS ? 'topic-card lds-card' : 'topic-card';
+    return `
+      <div class="${cls}">
+        <div class="t-name">${escapeHtml(r.name)}</div>
+        <div class="t-meta">${escapeHtml(r.founded || '')}${r.adherents ? ' · ' + escapeHtml(r.adherents) : ''}</div>
+        <div class="t-axis">${escapeHtml(axis)}</div>
+        <div class="t-value">${markupTerms(escapeHtml(value))}</div>
+      </div>`;
+  }).join('');
+
+  comparison.className = 'comparison-grid topic-grid';
+  comparison.innerHTML = cards;
 }
 
 function renderSummary(keys) {
@@ -1107,6 +1234,20 @@ function renderSummary(keys) {
 }
 
 function render() {
+  const topic = topicSelect.value;
+  if (topic) {
+    controlsEl.classList.add('topic-mode');
+    leftSelect.disabled = true;
+    rightSelect.disabled = true;
+    ldsCheckbox.disabled = true;
+    renderTopicView(topic);
+    return;
+  }
+  controlsEl.classList.remove('topic-mode');
+  leftSelect.disabled = false;
+  rightSelect.disabled = false;
+  ldsCheckbox.disabled = false;
+
   let keys;
   if (ldsCheckbox.checked) {
     comparison.className = 'comparison-grid three-col';
@@ -1136,10 +1277,12 @@ function syncControlsForLDSMode() {
 }
 
 populateSelects();
+populateTopicSelect();
 render();
 
 leftSelect.addEventListener('change', render);
 rightSelect.addEventListener('change', render);
+topicSelect.addEventListener('change', render);
 ldsCheckbox.addEventListener('change', () => {
   syncControlsForLDSMode();
   render();
@@ -1149,6 +1292,7 @@ ldsCheckbox.addEventListener('change', () => {
 // HOME BUTTON
 // =============================
 homeBtn.addEventListener('click', () => {
+  topicSelect.value = '';
   ldsCheckbox.checked = false;
   syncControlsForLDSMode();
   leftSelect.value = 'lds';
