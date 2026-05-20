@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copilot Chat (Basic) &mdash; Trainer Playbook</title>
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon-t17.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../css/styles.css" />
+
+    <style>
+        /* ============================================================
+           DARK MODE OVERRIDES
+           ============================================================ */
+        :root[data-theme="dark"] {
+            --bg-page: #1a1d21;
+            --bg-card: #262a30;
+            --text-primary: #e6e6e6;
+            --text-secondary: #c0c4ca;
+            --text-muted: #9aa0a6;
+            --border-light: #3a3f46;
+            --purple-bg: #1f2740;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, .4);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, .55);
+        }
+
+        :root[data-theme="dark"] .page-hero h1,
+        :root[data-theme="dark"] .module-title {
+            color: #9ec5fb;
+        }
+
+        :root[data-theme="dark"] a {
+            color: #9ec5fb;
+        }
+
+        :root[data-theme="dark"] .quick-nav a {
+            color: #9ec5fb;
+        }
+
+        :root[data-theme="dark"] .quick-nav a:hover {
+            color: #fff;
+        }
+
+        :root[data-theme="dark"] .data-table thead th {
+            background: #1f2740;
+            color: #9ec5fb;
+        }
+
+        :root[data-theme="dark"] .data-table tbody tr:hover {
+            background: #2d3138;
+        }
+
+        :root[data-theme="dark"] .callout-tip {
+            background: #1f3a2c;
+        }
+
+        :root[data-theme="dark"] .callout-note {
+            background: #1b2740;
+        }
+
+        :root[data-theme="dark"] .callout-warning {
+            background: #3a2c18;
+        }
+
+        :root[data-theme="dark"] .copy-btn {
+            background: #2d3138;
+            color: #c0c4ca;
+            border-color: #3a3f46;
+        }
+
+        :root[data-theme="dark"] .copy-btn:hover {
+            background: #1f2740;
+            color: #9ec5fb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <a href="../../trainerdocs.html"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--purple-mid);margin-bottom:var(--sp-4);">&larr;
+            All Trainings</a>
+
+        <header class="page-hero">
+            <h1>Copilot Chat (Basic) &mdash; Trainer Playbook</h1>
+            <p class="subtitle">
+                Everything you need to deliver the Microsoft 365 Copilot Chat (Basic) session.
+                Beginner-friendly, hands-on, ~75 minutes total. Pairs with the M365 Copilot Chat
+                training deck and the Student Companion Guide. Includes 19 copy-paste demos with
+                trainer notes, call-outs, and a troubleshooting cheat sheet.
+            </p>
+        </header>
+
+        <nav class="quick-nav" id="quick-nav">
+            <a href="#glance">&#128197; Session at a Glance</a>
+            <a href="#setup">&#9989; Pre-Session Setup</a>
+            <a href="#deck">&#127916; Deck Talking Points</a>
+            <a href="#warmup">&#9889; Warm-Up &amp; Research (Demos 1&ndash;4)</a>
+            <a href="#writing">&#9999;&#65039; Writing &amp; Communication (Demos 5&ndash;9)</a>
+            <a href="#summarize">&#128221; Summarize &amp; Extract (Demos 10&ndash;12)</a>
+            <a href="#data">&#128202; Data &amp; Visuals (Demos 13&ndash;14)</a>
+            <a href="#images">&#128247; Images (Demos 15&ndash;16)</a>
+            <a href="#personalize">&#129504; Memory &amp; Fun (Demos 17&ndash;18)</a>
+            <a href="#outlook">&#128231; Outlook Bonus (Demo 19)</a>
+            <a href="#troubleshoot">&#128295; Troubleshooting</a>
+            <a href="#wrapup">&#127919; Wrap-Up Checklist</a>
+            <span class="nav-spacer"></span>
+            <button type="button" data-action="expand-all">Expand all</button>
+            <button type="button" data-action="collapse-all">Collapse all</button>
+        </nav>
+
+        <!-- ============================================================
+             SESSION AT A GLANCE
+             ============================================================ -->
+        <section id="glance">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128197;</div>
+                <div class="module-meta">
+                    <div class="module-label">Overview</div>
+                    <h2 class="module-title">Session at a Glance</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Audience &amp; Objectives</span>
+                    <span class="section-card-title">Who It&rsquo;s For &amp; What They&rsquo;ll Learn</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>This is a beginner-friendly, hands-on session introducing Microsoft 365 Copilot Chat
+                        (Basic) to people who may have never used an AI chat tool at work. Attendees do
+                        <strong>not</strong> need a Copilot license to use the product after the session.
+                    </p>
+                    <p><strong>Learning objectives</strong></p>
+                    <ul>
+                        <li>Explain what Copilot Chat is and how it differs from public AI tools.</li>
+                        <li>Access Copilot Chat in the browser, in Microsoft 365 apps, and on mobile.</li>
+                        <li>Write effective prompts using <strong>Goal, Context, Source, Expectations</strong>.</li>
+                        <li>Use Copilot Chat across 18+ common scenarios: research, drafting,
+                            summarizing, visualizing, and creating.</li>
+                    </ul>
+                    <p><strong>Audience</strong></p>
+                    <ul>
+                        <li>Knowledge workers new to AI chat tools.</li>
+                        <li>Mixed-role groups (sales, ops, marketing, finance, HR).</li>
+                        <li>No Copilot license required to follow along.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">~75 Minutes</span>
+                    <span class="section-card-title">Suggested Timing</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Block</th>
+                                <th>Time</th>
+                                <th>Slides</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Welcome, agenda, what is Copilot Chat</td>
+                                <td>00:00 &ndash; 00:10</td>
+                                <td>1&ndash;8</td>
+                            </tr>
+                            <tr>
+                                <td>Getting started &mdash; sign-in &amp; interface tour</td>
+                                <td>00:10 &ndash; 00:20</td>
+                                <td>9&ndash;17</td>
+                            </tr>
+                            <tr>
+                                <td>The art of prompting</td>
+                                <td>00:20 &ndash; 00:30</td>
+                                <td>19&ndash;24</td>
+                            </tr>
+                            <tr>
+                                <td>Live demos (pick the ones that resonate)</td>
+                                <td>00:30 &ndash; 01:05</td>
+                                <td>25&ndash;32</td>
+                            </tr>
+                            <tr>
+                                <td>Q&amp;A, recap, where to go next</td>
+                                <td>01:05 &ndash; 01:15</td>
+                                <td>33&ndash;36</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>You don&rsquo;t need to run all 19 demos &mdash; pick the subset that best matches the
+                        room. Demos 1, 5, 10, and 11 are the most universally useful starters.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             PRE-SESSION SETUP
+             ============================================================ -->
+        <section id="setup">
+
+            <div class="module-header">
+                <div class="module-icon green">&#9989;</div>
+                <div class="module-meta">
+                    <div class="module-label">Setup</div>
+                    <h2 class="module-title">Pre-Session Setup Checklist</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Account &amp; Browser</span>
+                    <span class="section-card-title">Use a Clean Demo Account</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Use a <strong>separate Edge browser profile</strong> &mdash; not your daily profile.</li>
+                        <li>Sign in with a <strong>test tenant account</strong> (e.g., a CDX tenant) that does
+                            NOT have a Copilot license assigned.</li>
+                        <li>Do not use your production Microsoft account. Internal-first features and UI may
+                            differ from what customers see.</li>
+                        <li>Avoid accounts linked to an agent billing plan &mdash; extra UI elements may
+                            appear and confuse attendees.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo Files</span>
+                    <span class="section-card-title">Stage These in OneDrive</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>Upload these sample files to the test account&rsquo;s OneDrive so they&rsquo;re available
+                        during demos:</p>
+                    <ul>
+                        <li><em>Holiday Staffing Strategy.docx</em></li>
+                        <li><em>Loyalty Program Meeting Transcript.docx</em></li>
+                        <li><em>Quarterly Store Performance.xlsx</em></li>
+                        <li><em>Retail Storefront.png</em></li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Reset Copilot</span>
+                    <span class="section-card-title">Clean Starting State</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Open Settings (top-right <strong>&ctdot;</strong>) &rarr; Personalization.</li>
+                        <li>Clear any Custom Instructions left over from a previous session.</li>
+                        <li>Optionally clear Copilot Memory so the audience sees a clean starting state.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Tech Check</span>
+                    <span class="section-card-title">Five Minutes Before You Start</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Confirm the <strong>green shield &#9989;</strong> appears next to &ldquo;New chat&rdquo;
+                            &mdash; Enterprise Data Protection.</li>
+                        <li>Run one prompt and one file upload end-to-end before the room arrives.</li>
+                        <li>If you plan to demo image generation (Demo 16), make sure you haven&rsquo;t
+                            already used today&rsquo;s free image generation.</li>
+                        <li>Project a high-contrast theme &mdash; the chat is busy with citations and toolbars.</li>
+                        <li>Bump the browser zoom to 125&ndash;150% before screen sharing.</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DECK TALKING POINTS
+             ============================================================ -->
+        <section id="deck">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#127916;</div>
+                <div class="module-meta">
+                    <div class="module-label">Deck</div>
+                    <h2 class="module-title">Deck Talking Points</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Slides 1&ndash;18</span>
+                    <span class="section-card-title">Open, Frame, Tour</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Slides 1&ndash;3 &mdash; Open warm.</strong> Acknowledge that AI feels
+                            overwhelming &mdash; this session is the opposite. By the end they&rsquo;ll have
+                            used Copilot Chat themselves.</li>
+                        <li><strong>Slide 4 &mdash; Learning outcomes.</strong> Set the expectation that this is
+                            hands-on.</li>
+                        <li><strong>Slides 6&ndash;7 &mdash; Value proposition.</strong> Anchor 30 minutes saved
+                            per day. Stress Enterprise Data Protection &mdash; this is the at-work version, not
+                            a public chatbot.</li>
+                        <li><strong>Slide 8 &mdash; Audience engagement.</strong> Optional: ask the room how
+                            they think it could help. Builds engagement before you show the product.</li>
+                        <li><strong>Slides 10&ndash;12 &mdash; Where to use it.</strong> Browser, M365 apps,
+                            mobile. Point out the green shield and what it means.</li>
+                        <li><strong>Slide 13 &mdash; Interface tour.</strong> Skip Notebooks &mdash; that&rsquo;s
+                            license-only. Highlight the prompt box, suggested prompts, chat history, and the
+                            &ctdot; menu.</li>
+                        <li><strong>Slides 14&ndash;15 &mdash; Models &amp; Memory.</strong> Briefly explain
+                            GPT-5.X and Copilot Memory. Don&rsquo;t get stuck in model details &mdash; the
+                            audience cares about outcomes, not models.</li>
+                        <li><strong>Slide 16 &mdash; Outlook.</strong> Mention Copilot in Outlook for licensed
+                            users. Skim past for unlicensed audiences (and see Demo 19 for the non-licensed
+                            Outlook story).</li>
+                        <li><strong>Slide 17 &mdash; App agents.</strong> Word/Excel/PowerPoint agents are
+                            licensed capabilities, but it&rsquo;s good to know they exist.</li>
+                        <li><strong>Slide 18 &mdash; Demo gate.</strong> Switch to the browser.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Slides 19&ndash;36</span>
+                    <span class="section-card-title">Prompting, Features, Demos, Close</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Slides 20&ndash;24 &mdash; The art of prompting.</strong> Spend real time
+                            here. Run the vague-vs-detailed comparison live if you can.</li>
+                        <li><strong>Slides 25&ndash;29 &mdash; Features to know.</strong> File upload, data
+                            visualization, image generation, Prompt Gallery, Copilot Pages.</li>
+                        <li><strong>Slides 31&ndash;32 &mdash; Demo block.</strong> Pick demos that match the
+                            audience&rsquo;s roles.</li>
+                        <li><strong>Slide 34 &mdash; Wrap-up.</strong> Prompt Gallery and community resources.
+                            Encourage daily use.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Framework</span>
+                    <span class="section-card-title">The Four Prompt Ingredients</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Drill this on the prompting slides and then point it out in Demo 5. Every great
+                        prompt has these four ingredients.
+                    </div>
+                    <ul>
+                        <li><strong>Goal</strong> &mdash; what do you want Copilot to do?</li>
+                        <li><strong>Context</strong> &mdash; why do you need it, and who is involved?</li>
+                        <li><strong>Source</strong> &mdash; which information should Copilot use?</li>
+                        <li><strong>Expectations</strong> &mdash; what should the answer look or sound like?</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMOS 1-4 — WARM-UP & RESEARCH
+             ============================================================ -->
+        <section id="warmup">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#9889;</div>
+                <div class="module-meta">
+                    <div class="module-label">Demos 1&ndash;4</div>
+                    <h2 class="module-title">Warm-Up &amp; Research</h2>
+                </div>
+            </div>
+
+            <!-- Demo 1 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 1 &middot; Warm-up</span>
+                    <span class="section-card-title">Ask Copilot a Simple Question</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Anytime you need a quick explanation, definition, or
+                        summary. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Use this as the gentle on-ramp. The point is to show Copilot Chat works like a
+                        conversation. Mention that plain language is fine.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Point out the response toolbar that appears below Copilot&rsquo;s answer &mdash; copy,
+                        regenerate, thumbs up/down, read aloud.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Explain how a large language model works as if you&rsquo;re
+                            explaining it to a curious 5th grader. Keep it under 150 words and use one short
+                            analogy.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p class="tip"><em>Trainer tip:</em> Try the same question without the word limit and the
+                        analogy to see how much your wording shapes the answer.</p>
+                </div>
+            </article>
+
+            <!-- Demo 2 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 2 &middot; Web research</span>
+                    <span class="section-card-title">Research Industry Trends from the Web</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Staying current with what&rsquo;s happening in your
+                        industry. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Highlight that Copilot Chat (Basic) pulls from the web. Encourage attendees to try
+                        the same prompt with their own industry.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Scroll the response and show the inline citation links &mdash; emphasize that you can
+                        click through to verify the sources.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">What have been the biggest trends in retail over the past 6
+                            months? Summarize using recent web articles and industry analyst reports. Give me
+                            5 trends with one short paragraph of context per trend.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p class="tip"><em>Trainer tip:</em> Switch &ldquo;retail&rdquo; to your industry &mdash;
+                        manufacturing, healthcare, financial services &mdash; and run it again.</p>
+                </div>
+            </article>
+
+            <!-- Demo 3 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 3 &middot; Iterate</span>
+                    <span class="section-card-title">Competitor Research with a Follow-Up</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> When you need to brief yourself before a meeting or
+                        pitch. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Run the second prompt in the same chat to demonstrate context continuity. Try a
+                        different company if Patagonia returns sparse results &mdash; Microsoft, Tesla, Apple,
+                        Boeing, Ford, Pfizer, Costco are good options.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Call out how &ldquo;business tone&rdquo; and the paragraph constraint shape the
+                        answer. Ask the room: &ldquo;What changes if I delete those two phrases?&rdquo;
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">I work in marketing and focus on competitor research. Give
+                            me a concise summary of recent news about Patagonia. Focus on web articles from
+                            the last 3 months. Provide the answer in two to three paragraphs and use a
+                            professional business tone.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Can you go deeper on anything they&rsquo;ve shared about
+                            sustainability or supply chain practices?</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 4 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 4 &middot; Role-play</span>
+                    <span class="section-card-title">Make Copilot Your Productivity Coach</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Starting your day or rebooting your focus mid-week.
+                        <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Swap in your own job title live for color. The &ldquo;pretend&rdquo; framing is the
+                        lesson &mdash; assigning a role shapes tone and content.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Note how the persona pattern (&ldquo;Pretend you&rsquo;re a&hellip;&rdquo;) is
+                        reusable for a coach, editor, recruiter, financial planner, etc.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Pretend you&rsquo;re my productivity coach for the day.
+                            I&rsquo;m a District Sales Manager covering 12 retail stores. What are three
+                            things I should prioritize today, and why? Keep each one short and practical.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p class="tip"><em>Trainer tip:</em> Swap in your real job title for a personalized
+                        version.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMOS 5-9 — WRITING & COMMUNICATION
+             ============================================================ -->
+        <section id="writing">
+
+            <div class="module-header">
+                <div class="module-icon red">&#9999;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Demos 5&ndash;9</div>
+                    <h2 class="module-title">Writing &amp; Communication</h2>
+                </div>
+            </div>
+
+            <!-- Demo 5 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 5 &middot; Creativity</span>
+                    <span class="section-card-title">Brainstorm Campaign Ideas</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Whenever you need 10 ideas in 60 seconds.
+                        <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Two-step flow showcases Copilot as a thinking partner: generate, then critique. The
+                        follow-up is where the real value lives.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Highlight the four ingredients in the first prompt: <strong>goal</strong> (10 ideas),
+                        <strong>context</strong> (recycling program), <strong>source</strong> (customer
+                        segment), <strong>expectations</strong> (headline + description).
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Generate 10 creative campaign ideas for promoting our new
+                            in-store recycling program. The ideas should be suitable for social media and
+                            our customer email newsletter. Include a one-sentence description and a catchy
+                            headline for each. Our customers are eco-conscious shoppers ages 25&ndash;45 who
+                            already participate in our loyalty program.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Pick the three you think are strongest and explain why.
+                            Then suggest one quick way to test each one.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 6 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 6 &middot; Writing</span>
+                    <span class="section-card-title">Draft a Professional Email</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Sending the same kind of internal update you write all
+                        the time. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        The follow-up showcases tone-shifting in the same conversation. Ask the room:
+                        &ldquo;When would you send the email version vs the chat version?&rdquo;
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Show the response toolbar&rsquo;s copy button and explain that paste works straight
+                        into Outlook or Teams.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Draft an email to my team letting them know our weekly
+                            all-hands meeting is moving from Wednesday at 10am to Thursday at 2pm starting
+                            next week, because of a scheduling conflict with the regional review. Keep it
+                            warm, concise, and under 120 words. End with a friendly sign-off.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Now rewrite it in a more casual tone, like a quick chat
+                            message.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 7 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 7 &middot; Refine</span>
+                    <span class="section-card-title">Improve Your Writing</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> When you&rsquo;ve drafted something fast and want it
+                        sharpened. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        The &ldquo;list what you changed&rdquo; instruction is the highlight &mdash; it makes
+                        Copilot a writing tutor, not just a rewriter.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Read the original and the rewrite out loud. Ask the audience which version
+                        they&rsquo;d rather receive.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Improve the writing of the paragraph below. Make it
+                            clearer, more concise, and more professional, but keep my voice friendly. Show
+                            me the rewritten version, then list 3 specific things you changed and why.
+
+"Hey team I wanted to reach out and let you all know that we are going to be making some changes to the way we are doing our weekly reports going forward I think the current process is kind of clunky and takes up too much time so I am hoping we can simplify it a bit, more details coming soon."</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 8 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 8 &middot; Language</span>
+                    <span class="section-card-title">Translate a Message</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Customer comms, multilingual teams, traveling
+                        teammates. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Quick and crowd-pleasing. If you have native speakers in the room, ask them to
+                        sanity-check Copilot&rsquo;s output.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Mention this also works in reverse &mdash; paste a foreign-language email and ask
+                        Copilot to translate to English.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Translate the message below into Spanish, French, and
+                            German. Keep the tone friendly and the meaning the same. Show each translation
+                            under its language name.
+
+"Thanks for stopping by our store this weekend! As a loyalty member, you've earned $10 off your next purchase. Use code THANKS10 at checkout &mdash; valid through the end of the month."</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 9 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 9 &middot; Customer reply</span>
+                    <span class="section-card-title">Respond to a Customer Complaint with Empathy</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Customer-facing teams, support, account managers.
+                        <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Show how &ldquo;empathetic&rdquo; shapes the tone vs a default reply. Optionally
+                        re-run with &ldquo;firm and policy-driven&rdquo; as a contrast.
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Reminder</div>
+                        Remind the room that the final reply should still be reviewed by a human &mdash;
+                        Copilot is a draft generator, not the brand voice.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Write a response to the customer message below. The reply
+                            should be empathetic, clear, acknowledge the issue, and offer a path to
+                            resolution. Include a warm greeting and a professional closing. Keep it under
+                            200 words.
+
+"I bought the running shoes online about six weeks ago. They felt great for the first week or two, but the stitching on the left shoe is already coming apart along the side. I bought these because of your brand's reputation and I'm pretty disappointed. What can you do to make this right?"</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMOS 10-12 — SUMMARIZE & EXTRACT
+             ============================================================ -->
+        <section id="summarize">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#128221;</div>
+                <div class="module-meta">
+                    <div class="module-label">Demos 10&ndash;12</div>
+                    <h2 class="module-title">Summarize &amp; Extract</h2>
+                </div>
+            </div>
+
+            <!-- Demo 10 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 10 &middot; Summarize</span>
+                    <span class="section-card-title">Summarize Pasted Meeting Notes</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Anytime you have rough notes from a meeting you want
+                        to send out. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Two-step: first the summary, then the email. Both prompts run in the same chat.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Point out the structure instruction (Decisions / Action Items / Open Questions)
+                        &mdash; Copilot follows formats reliably.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Summarize the meeting notes below into a concise executive
+                            summary. Use three sections: Key Decisions, Action Items (with the owner in
+                            bold), and Open Questions. End with a "Follow-up Questions" section listing 3
+                            things a leader might want to ask.
+
+NOTES:
+- Q4 budget review on Tuesday
+- Maria suggested reallocating $80K from print marketing to social ads &mdash; Devon agreed, will model the impact and come back next week
+- Loyalty program enrollment up 31% YoY &mdash; strongest growth segment is in-store sign-ups in the Southwest region
+- Tom raised that store associates are overwhelmed during peak weekend hours &mdash; Maria asked Ops to scope a 4-hour flex shift pilot
+- Holiday creative deck delayed by 1 week, new ETA Nov 18 &mdash; owned by the design team
+- Open: do we want to run a dormant-customer win-back offer before the new year? No owner assigned yet
+- Next meeting Nov 21</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Now turn that summary into a short email I can send to my
+                            leadership team.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 11 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 11 &middot; Attach file</span>
+                    <span class="section-card-title">Summarize a Document You Upload</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Long memos, strategy docs, PDFs you don&rsquo;t have
+                        time to read end to end. <strong>File needed:</strong>
+                        <em>Holiday Staffing Strategy.docx</em>.
+                    </p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Use the paperclip / Add content button in the prompt box. Drag the file directly
+                        from the desktop or pick it from the file picker. Confirm the green shield is
+                        visible.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Supported uploads: Word, PowerPoint, Excel, PDF, and images. Note that very large
+                        files may be summarized only partially.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Summarize this document in 5 bullet points a busy executive
+                            could read in 30 seconds. Then list the 3 most important risks and the 3 most
+                            important next steps, each as a single line.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Draft a 4-sentence Teams message I can send to my regional
+                            VP recommending we approve this plan.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 12 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 12 &middot; Attach file</span>
+                    <span class="section-card-title">Turn a Meeting Transcript into Action Items</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Post-meeting recap when you have a transcript but no
+                        time to write the email. <strong>File needed:</strong>
+                        <em>Loyalty Program Meeting Transcript.docx</em>.
+                    </p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Anyone who lives in meetings will love this one. Pair Demo 12 with Demo 10 to show
+                        that pasted notes and uploaded transcripts work the same way.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Point out that the names of attendees come from the doc &mdash; Copilot didn&rsquo;t
+                        invent them.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">From this meeting transcript, extract: (1) the key
+                            decisions made, (2) every action item with the owner&rsquo;s name and any date
+                            mentioned, and (3) any open questions that don&rsquo;t yet have an owner. Use a
+                            clean bulleted format.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Now write a short recap email I can send to everyone who
+                            attended. Friendly tone, no more than 150 words.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMOS 13-14 — DATA & VISUALS
+             ============================================================ -->
+        <section id="data">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128202;</div>
+                <div class="module-meta">
+                    <div class="module-label">Demos 13&ndash;14</div>
+                    <h2 class="module-title">Data &amp; Visuals</h2>
+                </div>
+            </div>
+
+            <!-- Demo 13 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 13 &middot; Attach file</span>
+                    <span class="section-card-title">Visualize Data from a Spreadsheet</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Quick exploratory look at sales, performance, or any
+                        tabular data. <strong>File needed:</strong>
+                        <em>Quarterly Store Performance.xlsx</em>.
+                    </p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        After Copilot renders the chart in the chat, hover over a bar to show
+                        interactivity. Mention you can copy the chart into PowerPoint or paste the data
+                        table into Excel.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Charts are rendered as images inside the chat. They aren&rsquo;t live links to the
+                        file.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">This spreadsheet shows quarterly sales by store. In plain
+                            English, what are the 3 most interesting patterns or insights? Then create a
+                            visual that compares annual totals by store, sorted from highest to lowest.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Now show me the Q4 sales numbers grouped by region as a pie
+                            chart.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 14 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 14 &middot; Visualize</span>
+                    <span class="section-card-title">Build a Table and Chart from Scratch</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> You want a quick visual but you don&rsquo;t have the
+                        data yet. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        No file needed &mdash; this demo also reinforces that Copilot Chat (Basic) can pull
+                        from the web.
+                    </div>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Reminder</div>
+                        Remind the room to verify the underlying numbers if they intend to use the chart in
+                        a real deliverable. Copilot pulls from public sources but isn&rsquo;t a substitute
+                        for a sourced data feed.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Create a table of the top 5 countries by GDP for each of
+                            the years 2020 through 2025. List each country along with the GDP value (in
+                            trillions of USD) for each year. Use the most recent reliable data you can
+                            find. Generate a real visual word cloud image that contains the most exported
+                            items for each country.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Plot each country as a line in a line chart so I can see
+                            the trend over time.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMOS 15-16 — IMAGES
+             ============================================================ -->
+        <section id="images">
+
+            <div class="module-header">
+                <div class="module-icon green">&#128247;</div>
+                <div class="module-meta">
+                    <div class="module-label">Demos 15&ndash;16</div>
+                    <h2 class="module-title">Images</h2>
+                </div>
+            </div>
+
+            <!-- Demo 15 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 15 &middot; Attach file</span>
+                    <span class="section-card-title">Describe an Image</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Store visit reports, marketing reviews, accessibility
+                        descriptions. <strong>File needed:</strong> <em>Retail Storefront.png</em>.</p>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Trainer Note</div>
+                        Important: images must be uploaded or dragged in. They cannot be pulled in via the
+                        Context IQ &ldquo;/&rdquo; picker. Use the Add Content button or drag-and-drop.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        After the description, ask the room what they noticed in the image that Copilot
+                        did or didn&rsquo;t mention.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Describe what you see in this image. Then suggest two ways
+                            a store manager could use this view to improve the customer experience.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Demo 16 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 16 &middot; Create visuals</span>
+                    <span class="section-card-title">Generate an Image</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Quick training visuals, social posts, presentation
+                        cover slides. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Trainer Note</div>
+                        Save this for late in the demo block &mdash; Copilot Chat (Basic) is limited to one
+                        image generation per day for users without a Copilot license. If you&rsquo;ve
+                        already generated an image earlier, demo it anyway and walk through what the result
+                        would look like.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Talk about prompt specificity: &ldquo;bright, photorealistic&hellip; warm and
+                        natural lighting&hellip; inclusive&rdquo; are the levers that shape the result.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Generate a bright, photorealistic image of a friendly
+                            retail store associate helping a customer in the apparel section of a modern
+                            clothing store. The lighting should be warm and natural, the background
+                            detailed and welcoming, and the scene should feel inclusive of a diverse range
+                            of customers. I&rsquo;ll use this image in a training deck about excellent
+                            customer service.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p class="tip"><em>Trainer tip:</em> Got the result? Try asking Copilot to &ldquo;make a
+                        second version with a different background&rdquo; &mdash; but remember the daily limit.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMOS 17-18 — PERSONALIZE & FUN
+             ============================================================ -->
+        <section id="personalize">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#129504;</div>
+                <div class="module-meta">
+                    <div class="module-label">Demos 17&ndash;18</div>
+                    <h2 class="module-title">Memory, Personalization &amp; Fun</h2>
+                </div>
+            </div>
+
+            <!-- Demo 17 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 17 &middot; Personalize</span>
+                    <span class="section-card-title">Teach Copilot About You (Memory &amp; Personalization)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Once. After this, every future response is more
+                        relevant. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Walk through the Memory settings live &mdash; top-right <strong>&ctdot;</strong>
+                        menu &rarr; Personalization &rarr; Copilot Memory. Show the room what&rsquo;s been
+                        saved.
+                    </div>
+
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Call Out</div>
+                        Memory is on by default. Tell users they can review and delete entries any time.
+                        Custom Instructions live in the same settings area.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt 1 &mdash; Get to know me</div>
+                        <div class="prompt-box">Ask me 10 short questions about myself &mdash; my job, what
+                            I work on, what I find frustrating, how I like to communicate &mdash; to get to
+                            know me better so you can give me more relevant answers going forward. Ask them
+                            one or two at a time and wait for my reply. Remember the results for future
+                            interactions.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt 2 &mdash; Learn my writing style</div>
+                        <div class="prompt-box">Ask me 5 questions to learn more about my writing style
+                            &mdash; things like tone, sentence length, words I use, and any phrases I want
+                            you to avoid. After I answer, summarize my style in a short paragraph I can
+                            save. Remember the results for future interactions.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <p class="tip"><em>Trainer tip:</em> Want to review or clear what Copilot remembers? Click
+                        the <strong>&ctdot;</strong> menu (top-right of Copilot Chat) &rarr; Personalization
+                        &rarr; Copilot Memory.</p>
+                </div>
+            </article>
+
+            <!-- Demo 18 -->
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 18 &middot; Fun</span>
+                    <span class="section-card-title">Lighten Up the Workday</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Kicking off a team meeting, brainstorming an offsite,
+                        or just for fun. <strong>Files needed:</strong> None.</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Friendly closer. Optional but high-energy &mdash; leave time for one if Q&amp;A is
+                        light. Reinforce that Copilot Chat isn&rsquo;t only for serious work &mdash; the
+                        more you interact with it, the better you get at prompting.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Suggest 5 office-friendly icebreaker questions I can use to
+                            kick off a team meeting next Monday morning. Mix one that&rsquo;s a little
+                            quirky with four that are easy and inclusive.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Follow-up (same chat)</div>
+                        <div class="prompt-box">Now suggest 5 office-friendly jokes I could open the
+                            meeting with.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             DEMO 19 — OUTLOOK BONUS
+             ============================================================ -->
+        <section id="outlook">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#128231;</div>
+                <div class="module-meta">
+                    <div class="module-label">Bonus Demo 19</div>
+                    <h2 class="module-title">Outlook &amp; Copilot</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo 19 &middot; Outlook</span>
+                    <span class="section-card-title">Reply with Coaching by Copilot</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>When to use:</strong> Wrapping a meeting follow-up email and want a
+                        tone-check before you hit send. <strong>Where to run:</strong> Outlook (web, new
+                        Outlook on Windows / Mac, or mobile).</p>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Trainer Note</div>
+                        Click <strong>Coaching by Copilot</strong> before sending &mdash; it scores tone,
+                        clarity, and sentiment. Outlook is the one app where Copilot Chat stays available
+                        for non-licensed enterprise users, so this is the natural daily-use story.
+                    </div>
+
+                    <div class="prompt-block">
+                        <div class="prompt-label">Prompt</div>
+                        <div class="prompt-box">Write a reply thanking them for the meeting, confirming
+                            I&rsquo;ll send the architecture diagram by Friday, and proposing next Tuesday
+                            for the follow-up.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             TROUBLESHOOTING
+             ============================================================ -->
+        <section id="troubleshoot">
+
+            <div class="module-header">
+                <div class="module-icon red">&#128295;</div>
+                <div class="module-meta">
+                    <div class="module-label">Reference</div>
+                    <h2 class="module-title">Troubleshooting</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Common Snags</span>
+                    <span class="section-card-title">When a Demo Misbehaves</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Symptom</th>
+                                <th>What to do</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>File upload fails or the file is too big.</td>
+                                <td>Trim the document or paste the relevant section as text into the prompt
+                                    box. Demo 10 (pasted notes) is a great fallback.</td>
+                            </tr>
+                            <tr>
+                                <td>Image generation says you&rsquo;ve hit the daily limit.</td>
+                                <td>Copilot Chat (Basic) is limited to one image per day for users without
+                                    a Copilot license. Pre-generate the image earlier in the day, or talk
+                                    through the prompt and show the result you generated before the session.</td>
+                            </tr>
+                            <tr>
+                                <td>Web response is sparse for your chosen company.</td>
+                                <td>Swap to a different example &mdash; Patagonia is reliable; Microsoft,
+                                    Tesla, Apple, Costco, and Boeing are also strong. Avoid private
+                                    companies with little news coverage.</td>
+                            </tr>
+                            <tr>
+                                <td>Chart doesn&rsquo;t render.</td>
+                                <td>Re-run the visualization prompt. If still failing, ask Copilot to
+                                    &ldquo;show the data as a table&rdquo; instead &mdash; the data is still
+                                    useful.</td>
+                            </tr>
+                            <tr>
+                                <td>No green shield is visible.</td>
+                                <td>The user isn&rsquo;t signed in to a work or school account. Sign out,
+                                    switch profiles, and re-sign in with the correct account.</td>
+                            </tr>
+                            <tr>
+                                <td>Audience asks about Notebooks, Researcher, or Analyst.</td>
+                                <td>Explain that those are part of the licensed Microsoft 365 Copilot
+                                    experience. Today&rsquo;s session focuses on what&rsquo;s available to
+                                    everyone in Copilot Chat (Basic).</td>
+                            </tr>
+                            <tr>
+                                <td>Audience asks where their data goes.</td>
+                                <td>Reinforce Enterprise Data Protection: when signed in with the work
+                                    account and the green shield is visible, conversation content is not
+                                    used to train public models, and it&rsquo;s protected by the same data
+                                    commitments as other M365 services.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             WRAP-UP
+             ============================================================ -->
+        <section id="wrapup">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127919;</div>
+                <div class="module-meta">
+                    <div class="module-label">Wrap-Up</div>
+                    <h2 class="module-title">Wrap-Up Checklist</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Close the Session</span>
+                    <span class="section-card-title">Five Things to Hit in the Last Five Minutes</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li>Recap the four prompting ingredients (Goal, Context, Source, Expectations).</li>
+                        <li>Point to the Prompt Gallery and the LinkedIn community.</li>
+                        <li>Share the Student Companion Guide and demo files with attendees.</li>
+                        <li>Encourage them to try Copilot Chat <strong>today</strong> &mdash; once before
+                            they go to sleep.</li>
+                        <li>Collect feedback via the QR code on the closing slide.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Resources</span>
+                    <span class="section-card-title">Bookmark These</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>m365copilot.com</strong> &mdash;
+                            <a href="https://m365copilot.com" target="_blank"
+                                style="color:var(--blue-step);font-weight:600;">Copilot Chat on the web</a>
+                            (sign in with work account).
+                        </li>
+                        <li><strong>Settings &rarr; Personalization</strong> &mdash; manage saved memories,
+                            custom instructions, and chat history.</li>
+                        <li><strong>Prompt Gallery</strong> &mdash; under &ldquo;See more&rdquo; suggestions
+                            in Copilot Chat. Hundreds of ready-to-use prompts.</li>
+                        <li><strong>Microsoft 365 Copilot community</strong> on LinkedIn &mdash; tips, news,
+                            and conversations with other users.</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../../js/main.v3.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2B6CB0"/>
+            <stop offset="100%" stop-color="#4C51BF"/>
+        </linearGradient>
+    </defs>
+    <rect width="32" height="32" rx="6" fill="url(#g)"/>
+    <!-- Chat bubble -->
+    <path d="M6 9 Q6 6 9 6 L23 6 Q26 6 26 9 L26 18 Q26 21 23 21 L14 21 L10 25 L10 21 L9 21 Q6 21 6 18 Z" fill="#fff" opacity=".95"/>
+    <!-- Sparkle -->
+    <path d="M16 10 L17 13 L20 14 L17 15 L16 18 L15 15 L12 14 L15 13 Z" fill="#4C51BF"/>
+</svg>
