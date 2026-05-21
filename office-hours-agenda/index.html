@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Office Hours Agenda &mdash; Copilot Chat &amp; Agents</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-oha.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+        /* ============================================================
+           DARK MODE OVERRIDES
+           ============================================================ */
+        :root[data-theme="dark"] {
+            --bg-page: #1a1d21;
+            --bg-card: #262a30;
+            --text-primary: #e6e6e6;
+            --text-secondary: #c0c4ca;
+            --text-muted: #9aa0a6;
+            --border-light: #3a3f46;
+            --purple-bg: #1f2740;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, .4);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, .55);
+        }
+
+        :root[data-theme="dark"] .page-hero h1,
+        :root[data-theme="dark"] .module-title {
+            color: #9ec5fb;
+        }
+
+        :root[data-theme="dark"] a {
+            color: #9ec5fb;
+        }
+
+        :root[data-theme="dark"] .quick-nav a {
+            color: #9ec5fb;
+        }
+
+        :root[data-theme="dark"] .quick-nav a:hover {
+            color: #fff;
+        }
+
+        :root[data-theme="dark"] .data-table thead th {
+            background: #1f2740;
+            color: #9ec5fb;
+        }
+
+        :root[data-theme="dark"] .data-table tbody tr:hover {
+            background: #2d3138;
+        }
+
+        :root[data-theme="dark"] .callout-tip {
+            background: #1f3a2c;
+        }
+
+        :root[data-theme="dark"] .callout-note {
+            background: #1b2740;
+        }
+
+        :root[data-theme="dark"] .callout-warning {
+            background: #3a2c18;
+        }
+
+        :root[data-theme="dark"] .copy-btn {
+            background: #2d3138;
+            color: #c0c4ca;
+            border-color: #3a3f46;
+        }
+
+        :root[data-theme="dark"] .copy-btn:hover {
+            background: #1f2740;
+            color: #9ec5fb;
+        }
+
+        /* ============================================================
+           AGENDA-SPECIFIC TABLE STYLING
+           ============================================================ */
+        .agenda-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--sp-2, 8px);
+        }
+
+        .agenda-table th,
+        .agenda-table td {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+
+        .agenda-table thead th {
+            background: var(--purple-bg, #f3f0ff);
+            color: var(--purple-mid, #5b3ec7);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .agenda-table tbody tr:hover {
+            background: rgba(91, 62, 199, 0.06);
+        }
+
+        :root[data-theme="dark"] .agenda-table tbody tr:hover {
+            background: #2d3138;
+        }
+
+        .agenda-time {
+            font-weight: 700;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .agenda-topic {
+            font-weight: 600;
+        }
+
+        .agenda-block {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .agenda-block.chat {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .agenda-block.agents {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .agenda-block.memory {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .agenda-block.intro,
+        .agenda-block.wrap {
+            background: #ede9fe;
+            color: #5b21b6;
+        }
+
+        :root[data-theme="dark"] .agenda-block.chat {
+            background: #1e3a8a;
+            color: #bfdbfe;
+        }
+
+        :root[data-theme="dark"] .agenda-block.agents {
+            background: #14532d;
+            color: #bbf7d0;
+        }
+
+        :root[data-theme="dark"] .agenda-block.memory {
+            background: #78350f;
+            color: #fde68a;
+        }
+
+        :root[data-theme="dark"] .agenda-block.intro,
+        :root[data-theme="dark"] .agenda-block.wrap {
+            background: #4c1d95;
+            color: #ddd6fe;
+        }
+
+        .demo-pill {
+            display: inline-block;
+            padding: 2px 8px;
+            margin: 2px 4px 2px 0;
+            border-radius: 999px;
+            background: var(--purple-bg, #f3f0ff);
+            color: var(--purple-mid, #5b3ec7);
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        :root[data-theme="dark"] .demo-pill {
+            background: #1f2740;
+            color: #c4b5fd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <header class="page-hero">
+            <h1>Office Hours Agenda</h1>
+            <p class="subtitle">
+                A focused 40-minute working session covering Microsoft 365 Copilot Chat and
+                Copilot Agents &mdash; with bite-sized intros, live demos, and a closing tour
+                of Copilot Memory &amp; Custom Instructions. Drop in with questions, leave
+                with prompts you can run on Monday morning.
+            </p>
+        </header>
+
+        <nav class="quick-nav" id="quick-nav">
+            <a href="#agenda">&#128197; At-a-Glance Agenda</a>
+            <a href="#copilot-chat">&#128172; Copilot Chat</a>
+            <a href="#agents">&#129302; Agents</a>
+            <a href="#memory">&#129504; Memory &amp; Custom Instructions</a>
+            <a href="#wrap">&#127919; Wrap-Up</a>
+            <span class="nav-spacer"></span>
+            <button type="button" data-action="expand-all">Expand all</button>
+            <button type="button" data-action="collapse-all">Collapse all</button>
+        </nav>
+
+        <!-- ============================================================
+             AT-A-GLANCE AGENDA
+             ============================================================ -->
+        <section id="agenda">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128197;</div>
+                <div class="module-meta">
+                    <div class="module-label">40 Minutes</div>
+                    <h2 class="module-title">At-a-Glance Agenda</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Schedule</span>
+                    <span class="section-card-title">How We&rsquo;ll Spend the Time</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <table class="agenda-table">
+                        <thead>
+                            <tr>
+                                <th style="width:90px;">Time</th>
+                                <th style="width:130px;">Block</th>
+                                <th>Topic</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="agenda-time">0:00 &ndash; 0:02</td>
+                                <td><span class="agenda-block intro">Open</span></td>
+                                <td class="agenda-topic">Welcome, framing, what you&rsquo;ll leave with</td>
+                            </tr>
+                            <tr>
+                                <td class="agenda-time">0:02 &ndash; 0:18</td>
+                                <td><span class="agenda-block chat">Copilot Chat</span></td>
+                                <td class="agenda-topic">Intro + live demos (writing, summarize, data &amp; visuals, image generation)</td>
+                            </tr>
+                            <tr>
+                                <td class="agenda-time">0:18 &ndash; 0:34</td>
+                                <td><span class="agenda-block agents">Agents</span></td>
+                                <td class="agenda-topic">Intro + live demos (Prompt Coach, Idea Coach, build &ldquo;The Hype Lab&rdquo;)</td>
+                            </tr>
+                            <tr>
+                                <td class="agenda-time">0:34 &ndash; 0:39</td>
+                                <td><span class="agenda-block memory">Memory</span></td>
+                                <td class="agenda-topic">Copilot Memory &amp; Custom Instructions tour</td>
+                            </tr>
+                            <tr>
+                                <td class="agenda-time">0:39 &ndash; 0:40</td>
+                                <td><span class="agenda-block wrap">Wrap</span></td>
+                                <td class="agenda-topic">Q&amp;A and one-thing-to-try-Monday</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; Working session, not a webinar</div>
+                        Office Hours runs lean on purpose. Bring a real task you&rsquo;re stuck on
+                        &mdash; we&rsquo;ll swap one of the demos for your scenario if it&rsquo;s a
+                        better fit for the room.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             COPILOT CHAT — 16 MIN
+             ============================================================ -->
+        <section id="copilot-chat">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128172;</div>
+                <div class="module-meta">
+                    <div class="module-label">Block 1 &middot; 16 min</div>
+                    <h2 class="module-title">Copilot Chat &mdash; Intro &amp; Demos</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-new">Intro &middot; ~4 min</span>
+                    <span class="section-card-title">What Copilot Chat Is (and Why the Green Shield Matters)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Where to find it:</strong>
+                            <a href="https://m365copilot.com" target="_blank">m365copilot.com</a>,
+                            inside Teams/Outlook/M365 apps, or the M365 Copilot mobile app.</li>
+                        <li><strong>The green shield</strong> next to &ldquo;New chat&rdquo; confirms
+                            Enterprise Data Protection is on &mdash; your conversation stays inside
+                            your company&rsquo;s protection boundary.</li>
+                        <li><strong>What&rsquo;s free in Copilot Chat (Basic):</strong> file uploads,
+                            web grounding, charts &amp; tables, one image per day, and Copilot
+                            Memory.</li>
+                        <li><strong>Prompting framework we&rsquo;ll use:</strong>
+                            <strong>G</strong>oal &middot; <strong>C</strong>ontext &middot;
+                            <strong>S</strong>ource &middot; <strong>E</strong>xpectations.</li>
+                    </ul>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Reference handout</div>
+                        Full 19-demo walkthrough lives in the
+                        <a href="../training17user/">Copilot Chat (Basic) &mdash; Student Companion Guide</a>.
+                        Open it after class to re-run anything we cover live.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo &middot; Writing</span>
+                    <span class="section-card-title">Subtopic 1 &mdash; Draft, Refine &amp; Translate</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>What we&rsquo;ll look at:</strong> Pulling demos 5&ndash;9 from the
+                        companion guide &mdash; we&rsquo;ll pick one or two live based on the room.</p>
+                    <ul>
+                        <li><span class="demo-pill">Demo 6</span> Draft a professional email about a
+                            meeting move, then re-tone it as a chat message.</li>
+                        <li><span class="demo-pill">Demo 7</span> Improve a clunky paragraph &mdash;
+                            and ask Copilot to <em>show what it changed and why</em>.</li>
+                        <li><span class="demo-pill">Demo 8</span> Translate a loyalty offer into
+                            Spanish, French, and German while keeping the tone.</li>
+                    </ul>
+                    <p class="tip"><em>Why we picked these:</em> writing tasks are the highest-volume
+                        Copilot Chat use case in retail and CPG teams &mdash; the biggest time-saver
+                        per click.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo &middot; Summarize</span>
+                    <span class="section-card-title">Subtopic 2 &mdash; Summarize Notes &amp; Documents</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>What we&rsquo;ll look at:</strong> Demos 10&ndash;12 &mdash; turning
+                        rough input into clean, sendable output.</p>
+                    <ul>
+                        <li><span class="demo-pill">Demo 10</span> Summarize pasted meeting notes into
+                            Key Decisions, Action Items, and Open Questions, then convert it into a
+                            leadership email in the same chat.</li>
+                        <li><span class="demo-pill">Demo 11</span> Upload a strategy doc and pull out
+                            5 bullets, 3 risks, and 3 next steps.</li>
+                        <li><span class="demo-pill">Demo 12</span> Extract decisions, owners, and dates
+                            from a meeting transcript &mdash; then auto-draft the recap email.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo &middot; Data &amp; Visuals</span>
+                    <span class="section-card-title">Subtopic 3 &mdash; Tables &amp; Charts from Data</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>What we&rsquo;ll look at:</strong> Demos 13&ndash;14 &mdash; visualizing
+                        information you already have, or building it from scratch.</p>
+                    <ul>
+                        <li><span class="demo-pill">Demo 13</span> Upload a quarterly-sales spreadsheet,
+                            ask for the 3 most interesting patterns, then chart annual totals by store
+                            &mdash; followed by a Q4 pie chart by region.</li>
+                        <li><span class="demo-pill">Demo 14</span> Build a top-5 countries-by-GDP
+                            table for 2020&ndash;2025 with no data file, then plot the trend.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Demo &middot; Images</span>
+                    <span class="section-card-title">Subtopic 4 &mdash; Image Generation (the &ldquo;wow&rdquo;)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>What we&rsquo;ll look at:</strong> Demos 15&ndash;16 &mdash; describing
+                        an image, then generating one.</p>
+                    <ul>
+                        <li><span class="demo-pill">Demo 15</span> Upload a storefront photo and ask
+                            for two ways a manager could improve the customer experience.</li>
+                        <li><span class="demo-pill">Demo 16</span> Generate a photorealistic
+                            customer-service training visual &mdash; one image per day in the free
+                            tier, so we save it for the close.</li>
+                    </ul>
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Daily limit</div>
+                        Free users get <strong>one image per day</strong> in Copilot Chat (Basic).
+                        We&rsquo;ll run one live, then point the room to the handout for follow-up
+                        iteration on their own time.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             AGENTS — 16 MIN
+             ============================================================ -->
+        <section id="agents">
+
+            <div class="module-header">
+                <div class="module-icon green">&#129302;</div>
+                <div class="module-meta">
+                    <div class="module-label">Block 2 &middot; 16 min</div>
+                    <h2 class="module-title">Agents &mdash; Intro &amp; Demos</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-new">Intro &middot; ~3 min</span>
+                    <span class="section-card-title">What an Agent Is (and What&rsquo;s Free)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>Working definition:</strong> An agent is AI on a job description
+                            &mdash; instructions, personality, knowledge sources, and capabilities
+                            packaged together so the same task gets the same shape every time.</li>
+                        <li><strong>Where to find them:</strong>
+                            <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a>
+                            &rarr; <strong>Agents</strong> in the left rail. The
+                            <strong>Agent Store</strong> lists Microsoft-built and partner agents.</li>
+                        <li><strong>What&rsquo;s free for Copilot Chat (Basic) users:</strong>
+                            Microsoft-built agents (Prompt Coach, Idea Coach, Researcher preview,
+                            Writing Coach, Learning Coach), plus <strong>Agent Builder</strong>
+                            with web search, Image Generator, and Code Interpreter.</li>
+                        <li><strong>What needs a license:</strong> grounding on your SharePoint,
+                            OneDrive, email, calendar, or Teams data &mdash; that&rsquo;s where the
+                            paid M365 Copilot license unlocks the next level.</li>
+                    </ul>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128270; Reference handout</div>
+                        The full Agent Revolution demo pack &mdash; including the &ldquo;Hype Lab&rdquo;
+                        build sheet &mdash; lives in the
+                        <a href="../training2user/">Agent Revolution &mdash; User Guide</a>.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-agent">Demo &middot; Prompt Coach</span>
+                    <span class="section-card-title">Subtopic 1 &mdash; Rescue &amp; Build Prompts with Prompt Coach</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>What we&rsquo;ll look at:</strong> Two of the four Prompt Coach demos.
+                        Open Copilot Chat &rarr; <strong>Agents</strong> &rarr; search
+                        &ldquo;Prompt Coach.&rdquo;</p>
+                    <ul>
+                        <li><span class="demo-pill">Demo 1.1</span> Rescue a vague prompt
+                            (&ldquo;Write a launch email for our new private-label snack&rdquo;)
+                            &mdash; Coach flags what&rsquo;s missing and rewrites it.</li>
+                        <li><span class="demo-pill">Demo 1.3</span> Compliance &amp; fairness check
+                            on a competitive-claim prompt &mdash; the responsible-AI guardrail
+                            moment.</li>
+                    </ul>
+                    <p class="tip"><em>The takeaway:</em> Prompt Coach <em>interviews</em> you
+                        &mdash; that&rsquo;s the feature, not friction.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-agent">Demo &middot; Idea Coach</span>
+                    <span class="section-card-title">Subtopic 2 &mdash; Generate &amp; Stress-Test with Idea Coach</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>What we&rsquo;ll look at:</strong> Two of the four Idea Coach demos.
+                        Coach is a thinking partner, not a yes-man.</p>
+                    <ul>
+                        <li><span class="demo-pill">Demo 2.1</span> Generate 8 summer beverage
+                            concepts for Gen Z &mdash; each with a name, hook, cultural insight,
+                            and one risk.</li>
+                        <li><span class="demo-pill">Demo 2.3</span> Stress-test a private-label
+                            premium-coffee idea with SWOT, a pre-mortem, and three killer questions
+                            for leadership.</li>
+                    </ul>
+                    <p class="tip"><em>The takeaway:</em> Coach didn&rsquo;t validate the idea
+                        &mdash; it interrogated it. That&rsquo;s the value.</p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-advanced">Demo &middot; Build Your Own</span>
+                    <span class="section-card-title">Subtopic 3 &mdash; Build &ldquo;The Hype Lab&rdquo; in Agent Builder</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p><strong>What we&rsquo;ll look at:</strong> A speed-built declarative agent that
+                        any unlicensed Copilot Chat user can run. It&rsquo;s a product/campaign
+                        concept generator for retail and CPG.</p>
+                    <ul>
+                        <li><span class="demo-pill">Step 1</span> Open
+                            <strong>copilot.microsoft.com</strong> &rarr; <strong>Agents</strong>
+                            &rarr; <strong>Create agent</strong> &rarr; <strong>Describe</strong>
+                            tab. Paste the one-paragraph description.</li>
+                        <li><span class="demo-pill">Step 2</span> Switch to <strong>Configure</strong>
+                            &mdash; drop in the Instructions (personality + rules).</li>
+                        <li><span class="demo-pill">Step 3</span> Add up to 4 public URLs as
+                            scoped web search (retaildive.com, nrf.com, trendhunter.com,
+                            thedrum.com).</li>
+                        <li><span class="demo-pill">Step 4</span> Toggle on <strong>Image
+                                Generator</strong> and <strong>Code Interpreter</strong>.</li>
+                        <li><span class="demo-pill">Step 5</span> Run a live test prompt &mdash; the
+                            packaging-mockup render is the applause moment.</li>
+                    </ul>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; If we run short on time</div>
+                        We&rsquo;ll skip live build and demo a pre-built &ldquo;Hype Lab&rdquo;
+                        instead &mdash; the full step-by-step lives in the
+                        <a href="../training2user/">Agent Revolution user guide</a> so anyone can
+                        recreate it after class.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             MEMORY & CUSTOM INSTRUCTIONS — 5 MIN
+             ============================================================ -->
+        <section id="memory">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#129504;</div>
+                <div class="module-meta">
+                    <div class="module-label">Block 3 &middot; 5 min</div>
+                    <h2 class="module-title">Copilot Memory &amp; Custom Instructions</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-tip">Personalize Once, Benefit Daily</span>
+                    <span class="section-card-title">Why This Is Worth 5 Minutes</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p>
+                        <strong>Copilot Memory</strong> lets Copilot Chat remember things about
+                        <em>you</em> across conversations &mdash; your role, the projects you work
+                        on, your writing voice, and preferences like &ldquo;always answer in
+                        bullets&rdquo; or &ldquo;avoid hype words.&rdquo;
+                        <strong>Custom Instructions</strong> are the standing brief you give
+                        Copilot up front so it never has to ask again. Together they turn every
+                        future response into a more personal, more relevant answer with no extra
+                        prompting cost.
+                    </p>
+
+                    <p><strong>What we&rsquo;ll show live (one prompt, one settings tour):</strong></p>
+                    <ul>
+                        <li><span class="demo-pill">Teach</span> Run a quick &ldquo;ask me 10
+                            short questions about myself&rdquo; prompt &mdash; Copilot interviews
+                            you, saves the memories, and uses them going forward.</li>
+                        <li><span class="demo-pill">Review</span> Open the top-right
+                            <strong>&ctdot;</strong> menu &rarr; <strong>Personalization</strong>
+                            &rarr; <strong>Copilot Memory</strong> to see, edit, or clear
+                            individual memories.</li>
+                        <li><span class="demo-pill">Set</span> In the same Personalization area,
+                            drop in a few lines of <strong>Custom Instructions</strong> &mdash;
+                            who you are, how you like answers formatted, and what to avoid.</li>
+                    </ul>
+
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128172; The one-line version</div>
+                        <strong>Memory</strong> is what Copilot picks up about you over time.
+                        <strong>Custom Instructions</strong> is what you tell Copilot once, in
+                        writing, that it should always remember. Both live under
+                        <em>Settings &rarr; Personalization</em>.
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+             WRAP
+             ============================================================ -->
+        <section id="wrap">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127919;</div>
+                <div class="module-meta">
+                    <div class="module-label">Wrap-Up &middot; 1 min</div>
+                    <h2 class="module-title">What to Try Monday Morning</h2>
+                </div>
+            </div>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Three Things</span>
+                    <span class="section-card-title">Leave Office Hours With&hellip;</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ul>
+                        <li><strong>One prompt to reuse</strong> &mdash; copy a writing or
+                            summarize demo from the Copilot Chat handout and run it on a real
+                            task.</li>
+                        <li><strong>One agent to try</strong> &mdash; open <strong>Prompt
+                                Coach</strong> or <strong>Idea Coach</strong> in the Agent Store
+                            and put a current project through it.</li>
+                        <li><strong>One personalization to set</strong> &mdash; add 3&ndash;5
+                            lines of Custom Instructions so every future answer starts smarter.</li>
+                    </ul>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128206; Companion handouts</div>
+                        <ul style="margin:6px 0 0 18px;">
+                            <li><a href="../training17user/">Copilot Chat (Basic) &mdash; Student
+                                    Companion Guide</a> &mdash; all 19 demos, copy-paste ready.</li>
+                            <li><a href="../training2user/">Agent Revolution &mdash; User Guide</a>
+                                &mdash; Prompt Coach, Idea Coach, and the full Hype Lab build.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="../js/main.v3.js"></script>
+</body>
+
+</html>
