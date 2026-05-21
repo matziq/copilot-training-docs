@@ -768,7 +768,7 @@ img {
 .theme-toggle {
     position: fixed;
     right: 1rem;
-    bottom: 1rem;
+    top: 1rem;
     width: 44px;
     height: 44px;
     border-radius: 50%;

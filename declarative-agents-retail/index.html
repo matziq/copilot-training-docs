@@ -519,9 +519,41 @@
       color: #6ee7b7;
     }
 
-    /* Theme toggle (injected by main.v3.js) — position override for this layout */
+    /* Theme toggle (injected by main.v3.js) — standardized to top-right */
     .theme-toggle {
+      position: fixed;
+      right: 1rem;
+      top: 1rem;
       z-index: 60;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--accent);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+      transition: background .15s, transform .15s;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle .icon-sun {
+      display: none;
+    }
+
+    :root[data-theme="dark"] .theme-toggle .icon-moon {
+      display: none;
+    }
+
+    :root[data-theme="dark"] .theme-toggle .icon-sun {
+      display: inline;
     }
   </style>
 </head>
