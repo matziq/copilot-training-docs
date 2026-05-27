@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>3. Copilot Studio — Office Plant Whisperer</title>
+<link rel="icon" href="../images/favicon-cs.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>3. Copilot Studio</h1>
+  <p>Capabilities tour + Demo: the "Office Plant Whisperer"</p>
+</header>
+
+<nav class="modules">
+  <a href="index.html">Home</a>
+  <a href="01-intro-to-agents.html">1. Intro to Agents</a>
+  <a href="02-agent-builder.html">2. Agent Builder</a>
+  <a href="03-copilot-studio.html" class="active">3. Copilot Studio</a>
+  <a href="04-tweaking-testing.html">4. Tweaking &amp; Testing</a>
+</nav>
+
+<main>
+  <h2>What is Copilot Studio?</h2>
+  <p><strong>Copilot Studio</strong> is the pro-grade, low-code authoring environment for agents. Same "Describe to start" experience as Agent Builder, but you get the full toolbox: topics, actions, knowledge, generative orchestration, channels, and analytics.</p>
+
+  <ul>
+    <li><span class="pill licensed">Premium</span> Standalone license, capacity-based (message packs) or per-user.</li>
+    <li>Hosts agents that can publish to Teams, web, Slack, mobile apps, the Copilot Chat surface, and more.</li>
+    <li>Sits inside the Power Platform — natively connects to Dataverse, Power Automate, and 1500+ connectors.</li>
+  </ul>
+
+  <h2>Capabilities at a glance</h2>
+  <table>
+    <thead><tr><th>Capability</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Topics</strong></td><td>Structured conversation flows triggered by phrases. Can branch, ask questions, call actions, return generative answers.</td></tr>
+      <tr><td><strong>Generative answers</strong></td><td>Lets the agent answer freely from your knowledge sources (web pages, SharePoint, files, Dataverse, custom data) without you scripting every path.</td></tr>
+      <tr><td><strong>Generative orchestration</strong></td><td>Agent decides at runtime which topic, action, or knowledge source best fits the user's intent — no rigid trigger phrases needed.</td></tr>
+      <tr><td><strong>Actions</strong></td><td>Call Power Automate flows, Power Apps connectors, REST APIs, prompts, AI Builder models, or other agents.</td></tr>
+      <tr><td><strong>Knowledge</strong></td><td>Public web search, specific URLs, SharePoint, OneDrive, uploaded files, Dataverse, enterprise data via Graph connectors.</td></tr>
+      <tr><td><strong>Entities &amp; variables</strong></td><td>Capture user input (locations, dates, custom lists) and pass through the conversation.</td></tr>
+      <tr><td><strong>Channels</strong></td><td>Publish to Teams, custom websites, Microsoft 365 Copilot, Facebook, Slack, custom apps via Direct Line.</td></tr>
+      <tr><td><strong>Analytics</strong></td><td>Sessions, resolution rate, top topics, abandoned conversations, customer satisfaction.</td></tr>
+      <tr><td><strong>Authentication</strong></td><td>Entra ID, OAuth providers, no-auth, end-user auth for connector calls.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Demo: "Office Plant Whisperer"</h2>
+  <p>A friendly agent for office workers who don't know what their desk plant wants. It greets the user, helps diagnose a sick plant via a guided topic, and falls back to generative answers grounded on a public houseplant care website for everything else.</p>
+
+  <div class="callout">
+    This demo uses <strong>licensed Copilot Studio features</strong>: generative answers with a public web knowledge source and a custom topic with branching dialog. No connectors, no Power Automate — we're keeping it tight for the time we have.
+  </div>
+
+  <h3>Step 1 — Create the agent in Copilot Studio</h3>
+  <ol class="steps">
+    <li>Go to <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a>.</li>
+    <li>Click <strong>Create</strong> → <strong>New agent</strong>.</li>
+    <li>You'll land on a chat with Copilot. This is the <strong>Describe</strong> experience — same idea as Agent Builder, expanded.</li>
+  </ol>
+
+  <h3>Step 2 — Describe the agent to Copilot</h3>
+  <p>Paste this and let Copilot ask any follow-ups. Accept its suggestions; you can refine later.</p>
+
+  <div class="copy-block">
+    <div class="label"><span>Describe prompt</span><button class="copy-btn" data-target="cs-describe">Copy</button></div>
+    <pre id="cs-describe">Build an agent called "Office Plant Whisperer." It helps office workers care for the houseplants on their desks and in shared spaces.
+
+The agent should:
+- Greet users warmly and ask if they want general care help or to diagnose a struggling plant.
+- Answer questions about watering schedules, light needs, common pests, repotting, and propagation for popular office plants like pothos, snake plants, ZZ plants, monsteras, succulents, and peace lilies.
+- Ground its answers on a reputable public houseplant care website.
+- Include a guided "diagnose my plant" topic that asks the user a few quick questions (what plant, what's wrong: yellow leaves / brown tips / drooping / pests / something else, and how often they water) and then suggests the most likely cause and three things to try.
+
+Personality: kind, encouraging, a little whimsical. Talks to plants like they're tiny green coworkers. Never shames the user for killing a plant.
+
+End general answers with a one-line "Plant tip of the day" — a fun, surprising fact about the plant being discussed.</pre>
+  </div>
+
+  <ol class="steps" start="4">
+    <li>When Copilot asks follow-ups (tone, scope, languages), accept defaults or paraphrase what's in the prompt.</li>
+    <li>Click <strong>Create</strong>. The agent opens to the <strong>Overview</strong> page with generated name, description, instructions, and starter topics.</li>
+  </ol>
+
+  <h3>Step 3 — Refine the instructions</h3>
+  <p>Go to <strong>Overview</strong> → <strong>Instructions</strong> (or <strong>Settings</strong> → <strong>Generative AI</strong> → instructions, depending on UI version). Replace with:</p>
+
+  <div class="copy-block">
+    <div class="label"><span>Instructions</span><button class="copy-btn" data-target="cs-instructions">Copy</button></div>
+    <pre id="cs-instructions">You are the Office Plant Whisperer — a warm, slightly whimsical houseplant care assistant for office workers.
+
+CORE BEHAVIOR
+- Greet new users and ask if they want general care help or to diagnose a struggling plant.
+- If they want diagnosis, hand off to the "Diagnose my plant" topic.
+- For general questions, answer from your grounded knowledge sources. If the source doesn't cover it, say so honestly and suggest where to look.
+
+STYLE
+- Kind, encouraging, slightly whimsical. Refer to plants as "tiny green coworkers" or by name.
+- Never shame the user for over- or under-watering. Killing a plant is part of becoming a plant person.
+- Keep responses scannable: short paragraphs, bullets when listing care steps.
+
+TIP OF THE DAY
+- End every general answer with: "🌱 Plant tip of the day:" followed by one surprising, true fact about the plant being discussed (origin, biology, history, etc.).
+
+OUT OF SCOPE
+- Outdoor landscaping, vegetable gardening, hydroponic farming — politely redirect.
+- Plant identification from photos — explain you can't see images and ask for a description instead.</pre>
+  </div>
+
+  <h3>Step 4 — Add a knowledge source</h3>
+  <ol class="steps">
+    <li>Go to the <strong>Knowledge</strong> tab.</li>
+    <li>Click <strong>+ Add knowledge</strong> → <strong>Public websites</strong>.</li>
+    <li>Add this URL as the grounding source (a well-known public houseplant care site):</li>
+  </ol>
+
+  <div class="copy-block">
+    <div class="label"><span>Knowledge URL</span><button class="copy-btn" data-target="cs-knowledge">Copy</button></div>
+    <pre id="cs-knowledge">https://www.thesill.com/blogs/plant-care</pre>
+  </div>
+
+  <p>Name the source <code>The Sill — Plant Care Blog</code> and give it this description so the orchestrator knows when to use it:</p>
+
+  <div class="copy-block">
+    <div class="label"><span>Knowledge source description</span><button class="copy-btn" data-target="cs-knowledge-desc">Copy</button></div>
+    <pre id="cs-knowledge-desc">Authoritative guide to indoor houseplant care, watering, light, common problems, pests, and repotting for popular species like pothos, snake plants, ZZ plants, monsteras, peace lilies, fiddle-leaf figs, and succulents.</pre>
+  </div>
+
+  <div class="callout warn">
+    <strong>Substitute as needed:</strong> If your tenant blocks that domain, swap in any public plant-care site your org allows. The agent works the same way.
+  </div>
+
+  <h3>Step 5 — Add the "Diagnose my plant" topic</h3>
+  <ol class="steps">
+    <li>Go to the <strong>Topics</strong> tab → <strong>+ Add a topic</strong> → <strong>Create with Copilot</strong>.</li>
+    <li>This is the in-Studio "Describe" experience for topics. Paste:</li>
+  </ol>
+
+  <div class="copy-block">
+    <div class="label"><span>Topic Describe prompt</span><button class="copy-btn" data-target="cs-topic">Copy</button></div>
+    <pre id="cs-topic">Topic name: Diagnose my plant.
+
+Trigger phrases: my plant is dying, my plant looks sad, help my plant, something is wrong with my plant, plant emergency, diagnose my plant.
+
+Conversation flow:
+1. Acknowledge the user warmly ("Okay, let's check on your tiny green coworker.").
+2. Ask: "What kind of plant is it?" — store the answer in a variable called PlantType.
+3. Ask: "What's it doing?" with these multiple-choice options: Yellow leaves, Brown crispy tips, Drooping, Pests / bugs, Something else. Store in Symptom.
+4. Ask: "How often do you water it?" with options: Every few days, Once a week, Every couple of weeks, Honestly I forget. Store in WateringHabit.
+5. Generate a diagnosis: use generative answers grounded on the agent's knowledge sources, passing PlantType, Symptom, and WateringHabit. Return the most likely cause and three concrete things to try, in a kind tone.
+6. Ask: "Want me to set a reminder routine for this plant?" — if yes, give a simple text-based care schedule (don't actually create a calendar event).
+7. End with the Plant tip of the day for the user's plant type.</pre>
+  </div>
+
+  <ol class="steps" start="3">
+    <li>Click <strong>Create</strong>. Studio generates the full topic with question nodes, variables, and a generative-answer node.</li>
+    <li>Open the generated topic, click through each node, and tell the class what Copilot built. Show the variables on the right pane.</li>
+    <li>Save the topic.</li>
+  </ol>
+
+  <h3>Step 6 — Set conversation starters</h3>
+  <p>On the <strong>Overview</strong> tab, replace the auto-generated starters with these:</p>
+
+  <div class="copy-block">
+    <div class="label"><span>Starter 1</span><button class="copy-btn" data-target="cs-sp1">Copy</button></div>
+    <pre id="cs-sp1">How often should I water my pothos?</pre>
+  </div>
+  <div class="copy-block">
+    <div class="label"><span>Starter 2</span><button class="copy-btn" data-target="cs-sp2">Copy</button></div>
+    <pre id="cs-sp2">My snake plant is dying — help.</pre>
+  </div>
+  <div class="copy-block">
+    <div class="label"><span>Starter 3</span><button class="copy-btn" data-target="cs-sp3">Copy</button></div>
+    <pre id="cs-sp3">What's a low-light plant that won't die on my desk?</pre>
+  </div>
+  <div class="copy-block">
+    <div class="label"><span>Starter 4</span><button class="copy-btn" data-target="cs-sp4">Copy</button></div>
+    <pre id="cs-sp4">Diagnose my plant.</pre>
+  </div>
+
+  <h3>Step 7 — Set the icon</h3>
+  <p>Top of the <strong>Overview</strong> page → click the agent icon → <strong>Generate</strong>, and use:</p>
+  <div class="copy-block">
+    <div class="label"><span>Icon prompt</span><button class="copy-btn" data-target="cs-icon">Copy</button></div>
+    <pre id="cs-icon">A cute minimalist illustration of a smiling monstera leaf wearing tiny round glasses, soft green and cream palette, flat vector style, white background.</pre>
+  </div>
+
+  <h3>Step 8 — Test in the side pane</h3>
+  <p>Use the <strong>Test your agent</strong> panel on the right. Click <strong>refresh</strong> after saving topic/knowledge changes.</p>
+
+  <div class="copy-block">
+    <div class="label"><span>Test 1 — Generative answer + grounding</span><button class="copy-btn" data-target="cs-test1">Copy</button></div>
+    <pre id="cs-test1">How much light does a ZZ plant need, and how do I know if it's getting too much?</pre>
+  </div>
+  <div class="copy-block">
+    <div class="label"><span>Test 2 — Triggers the diagnose topic</span><button class="copy-btn" data-target="cs-test2">Copy</button></div>
+    <pre id="cs-test2">My pothos has yellow leaves and I water it every couple of weeks.</pre>
+  </div>
+  <div class="copy-block">
+    <div class="label"><span>Test 3 — Out of scope check</span><button class="copy-btn" data-target="cs-test3">Copy</button></div>
+    <pre id="cs-test3">Can you identify my plant if I send a photo?</pre>
+  </div>
+  <div class="copy-block">
+    <div class="label"><span>Test 4 — Persona check</span><button class="copy-btn" data-target="cs-test4">Copy</button></div>
+    <pre id="cs-test4">I killed another plant. I'm a monster.</pre>
+  </div>
+
+  <div class="callout good">
+    <strong>Watch the right pane.</strong> Studio shows you which topic was triggered, which knowledge source was queried, and the citations. That visibility is the killer feature that Agent Builder doesn't have.
+  </div>
+
+  <h3>Step 9 — Publish (optional, if time allows)</h3>
+  <ol class="steps">
+    <li><strong>Publish</strong> button (top right) → confirm.</li>
+    <li>Go to <strong>Channels</strong> → enable <strong>Microsoft 365 Copilot</strong> or <strong>Teams</strong>.</li>
+    <li>For Teams: click <strong>Availability options</strong> → <strong>Show to people in my organization</strong> (requires admin approval depending on tenant settings).</li>
+  </ol>
+
+  <div class="nav-foot">
+    <a href="02-agent-builder.html">← Agent Builder</a>
+    <a href="04-tweaking-testing.html">Next: Tweaking &amp; Testing →</a>
+  </div>
+</main>
+
+<footer class="site">Building Agents in M365 · Training Edition</footer>
+<script src="assets/copy.js"></script>
+</body>
+</html>

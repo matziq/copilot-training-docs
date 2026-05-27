@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>4. Tweaking, Icons &amp; Testing</title>
+<link rel="icon" href="../images/favicon-cs.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>4. Tweaking, Icons &amp; Testing</h1>
+  <p>How to refine an agent after the first version exists</p>
+</header>
+
+<nav class="modules">
+  <a href="index.html">Home</a>
+  <a href="01-intro-to-agents.html">1. Intro to Agents</a>
+  <a href="02-agent-builder.html">2. Agent Builder</a>
+  <a href="03-copilot-studio.html">3. Copilot Studio</a>
+  <a href="04-tweaking-testing.html" class="active">4. Tweaking &amp; Testing</a>
+</nav>
+
+<main>
+  <h2>The "first draft" rule</h2>
+  <p>Describe gets you to a working agent fast. It is <strong>never</strong> the final version. Expect to iterate on instructions 3–5 times before sharing.</p>
+
+  <h2>Tweaking instructions</h2>
+  <p>Good instructions follow a predictable shape:</p>
+  <ol class="steps">
+    <li><strong>Identity</strong> — one sentence: who the agent is and what it does.</li>
+    <li><strong>Core behavior</strong> — what to do on the first turn, on follow-ups, on completion.</li>
+    <li><strong>Style</strong> — tone, voice, words to use or avoid.</li>
+    <li><strong>Rules / guardrails</strong> — things to never do, things to always do.</li>
+    <li><strong>Out-of-scope</strong> — what to politely refuse or redirect.</li>
+  </ol>
+
+  <p>Drop this template into either tool to start from a clean structure:</p>
+
+  <div class="copy-block">
+    <div class="label"><span>Instructions template</span><button class="copy-btn" data-target="tt-template">Copy</button></div>
+    <pre id="tt-template">You are [AGENT NAME] — [one-sentence identity].
+
+CORE BEHAVIOR
+- On the first message: [what to ask or say].
+- On follow-ups: [pattern to follow].
+- On completion: [what to summarize or hand off].
+
+STYLE
+- Tone: [adjectives].
+- Always: [phrases, formats, structures you want].
+- Never: [words, idioms, patterns you want to avoid].
+
+RULES
+- [Hard rule 1]
+- [Hard rule 2]
+
+OUT OF SCOPE
+- [Topic 1] — [how to redirect]
+- [Topic 2] — [how to redirect]</pre>
+  </div>
+
+  <h3>Common tweaks after first test</h3>
+  <ul>
+    <li><strong>Agent is too generic.</strong> Add 1–2 concrete examples of an ideal response inside the instructions.</li>
+    <li><strong>Agent ignores a rule.</strong> Move the rule higher in the instructions and rewrite as a positive statement ("Always do X") rather than a negative ("Don't do Y").</li>
+    <li><strong>Agent rambles.</strong> Add an explicit length or format constraint: "Respond in under 120 words" or "Use bullet points with a maximum of five items."</li>
+    <li><strong>Agent guesses when it shouldn't.</strong> Add: "If you are not certain, ask a clarifying question instead of guessing."</li>
+    <li><strong>Wrong knowledge source got used (Studio).</strong> Tighten the description of each knowledge source so the orchestrator picks the right one.</li>
+  </ul>
+
+  <h2>Setting the icon</h2>
+  <h3>Generate from a prompt</h3>
+  <p>Both Agent Builder and Copilot Studio let you generate an icon with Copilot. Tips:</p>
+  <ul>
+    <li>Be visual and specific: "a smiling cactus wearing sunglasses" beats "a plant icon."</li>
+    <li>Specify style: <em>flat vector</em>, <em>minimalist</em>, <em>line art</em>, <em>3D claymation</em>.</li>
+    <li>Specify color palette: <em>soft pastel</em>, <em>navy and gold</em>, <em>monochrome blue</em>.</li>
+    <li>End with <em>white background</em> so the icon composites cleanly on any surface.</li>
+  </ul>
+
+  <div class="copy-block">
+    <div class="label"><span>Reusable icon prompt template</span><button class="copy-btn" data-target="tt-icon-template">Copy</button></div>
+    <pre id="tt-icon-template">A [adjective] [subject] [optional action or accessory], [color palette], [style: flat vector / minimalist / line art / 3D], white background.</pre>
+  </div>
+
+  <h3>Upload your own</h3>
+  <p>For internal corporate use, prefer a PNG sized 512×512 or an SVG. Keep it readable at 32×32 — that's how small it shows in the Copilot Chat sidebar.</p>
+
+  <h2>Testing — the right loop</h2>
+  <p>Use the <strong>Test pane</strong> in both tools. Every change to instructions, knowledge, or topics should be tested with at least these four prompt types:</p>
+
+  <table>
+    <thead><tr><th>Prompt type</th><th>Why</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Happy path</strong></td><td>The core thing the agent exists to do.</td><td>"Plan a 5-minute icebreaker for 10 people."</td></tr>
+      <tr><td><strong>Edge case</strong></td><td>Same task, unusual input.</td><td>"Plan an icebreaker for 200 people in 90 seconds."</td></tr>
+      <tr><td><strong>Guardrail</strong></td><td>Something the agent should refuse or redirect.</td><td>"Suggest a trust fall." / "Identify my plant from a photo."</td></tr>
+      <tr><td><strong>Memory / persona</strong></td><td>Make sure the agent stays in character across turns.</td><td>"Now do it in pirate voice." (Should keep its actual persona.)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="copy-block">
+    <div class="label"><span>Universal "smoke test" prompts</span><button class="copy-btn" data-target="tt-smoke">Copy</button></div>
+    <pre id="tt-smoke">1. [Happy path] — Ask the agent to do exactly what it was built for.
+2. [Edge case] — Same task with an unusual constraint (huge group, tiny time, weird tone).
+3. [Guardrail] — Ask for something explicitly forbidden in instructions.
+4. [Out of scope] — Ask about a topic outside the agent's purpose.
+5. [Persona drift] — Ask the agent to pretend to be something else.
+6. [Knowledge grounding] — Ask a question only your knowledge source can answer.
+7. [Citation check] (Studio only) — Look for source citations on grounded answers.</pre>
+  </div>
+
+  <h3>Studio-specific testing tips</h3>
+  <ul>
+    <li>Click <strong>Show topic map</strong> in the test pane to see which topic fired.</li>
+    <li>If a topic isn't triggering, add or rephrase trigger phrases. The orchestrator uses them as semantic hints, not exact matches.</li>
+    <li>Refresh the test pane (<span class="kbd">↻</span>) after every save, especially after knowledge changes — caches can lag.</li>
+    <li>Use <strong>Activity map</strong> after publishing to see real usage patterns.</li>
+  </ul>
+
+  <h2>Wrap-up checklist</h2>
+  <div class="card">
+    <ul>
+      <li>✅ Name is clear and on-brand</li>
+      <li>✅ Icon is readable at 32×32</li>
+      <li>✅ Description tells a stranger what the agent does in one sentence</li>
+      <li>✅ Instructions follow the 5-section shape</li>
+      <li>✅ At least 3 starter prompts cover the main use cases</li>
+      <li>✅ All 4 prompt types from the smoke test were tried</li>
+      <li>✅ (Studio) Knowledge sources have descriptions so the orchestrator picks correctly</li>
+      <li>✅ (Studio) At least one structured topic for the most important flow</li>
+    </ul>
+  </div>
+
+  <h2>Questions to leave the class with</h2>
+  <ol class="steps">
+    <li>What's a workflow on your team where someone is the bottleneck answering the same questions?</li>
+    <li>What information would the agent need to ground on?</li>
+    <li>Could it start as an Agent Builder agent, or does it need Copilot Studio from day one?</li>
+  </ol>
+
+  <div class="nav-foot">
+    <a href="03-copilot-studio.html">← Copilot Studio</a>
+    <a href="index.html">Back to Home →</a>
+  </div>
+</main>
+
+<footer class="site">Building Agents in M365 · Training Edition</footer>
+<script src="assets/copy.js"></script>
+</body>
+</html>
