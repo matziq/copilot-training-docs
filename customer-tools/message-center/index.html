@@ -267,7 +267,8 @@
      '<body>'+
      '<h1>M365 Message Center Report &mdash; Export</h1>'+
      '<div class="meta">Exported '+new Date().toISOString().slice(0,16).replace('T',' ')+' &middot; '+cards.length+' messages</div>'+
-     cardsHtml+'</body></html>';
+     cardsHtml+'    <script src="../../js/sitenav.js"></script>
+</body></html>';
    download('m365-message-center_'+ts()+'.html',new Blob([doc],{type:'text/html;charset=utf-8'}));
  });
  function loadScript(src){
@@ -293,4 +294,5 @@
    XLSX.writeFile(wb,'m365-message-center_'+ts()+'.xlsx');
  });
  apply();
-</script></body></html>
+</script>    <script src="../../js/sitenav.js"></script>
+</body></html>

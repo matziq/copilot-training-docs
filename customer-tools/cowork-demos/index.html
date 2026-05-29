@@ -1351,6 +1351,7 @@
     if (!document.querySelector('.theme-toggle')) { var b = document.createElement('button'); b.type = 'button'; b.className = 'theme-toggle'; b.title = 'Toggle dark mode'; b.innerHTML = '<span class="icon-moon">&#9790;</span><span class="icon-sun">&#9728;</span>'; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', c); try { localStorage.setItem('theme', c); } catch (e) { } }); document.body.appendChild(b); }
   </script>
 
+    <script src="../../js/sitenav.js"></script>
 </body>
 
 </html>

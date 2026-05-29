@@ -73,8 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ---- Theme toggle (floating button) ---- */
-    if (!document.querySelector('.theme-toggle')) {
+    /* ---- Theme toggle (floating button) ----
+       Skipped when sitenav.js is loaded — sitenav provides an in-nav toggle. */
+    if (!document.querySelector('.theme-toggle') &&
+        !document.querySelector('.site-theme-toggle') &&
+        !document.getElementById('site-nav-style')) {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'theme-toggle';

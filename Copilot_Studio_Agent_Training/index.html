@@ -1,429 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Building Agents in Microsoft 365 — Training Hub</title>
-<link rel="icon" href="../images/favicon-cs.svg" type="image/svg+xml">
-<style>
-:root {
-  --bg: #f7f7fb;
-  --surface: #ffffff;
-  --ink: #1b1b2a;
-  --muted: #5b5b73;
-  --accent: #5b3df5;
-  --accent-soft: #efeaff;
-  --border: #e3e3ee;
-  --code-bg: #0f1024;
-  --code-ink: #f4f4ff;
-  --good: #1f8a4c;
-  --warn: #b25b00;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building Agents in Microsoft 365 — Training Hub</title>
+  <link rel="icon" href="../images/favicon-cs.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --surface: #ffffff;
+      --ink: #1b1b2a;
+      --muted: #5b5b73;
+      --accent: #5b3df5;
+      --accent-soft: #efeaff;
+      --border: #e3e3ee;
+      --code-bg: #0f1024;
+      --code-ink: #f4f4ff;
+      --good: #1f8a4c;
+      --warn: #b25b00;
+    }
 
-* { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.55;
-}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
 
-header.site {
-  background: linear-gradient(135deg, #5b3df5 0%, #8b5cf6 50%, #ec4899 100%);
-  color: white;
-  padding: 28px 40px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-header.site h1 { margin: 0 0 4px 0; font-size: 26px; font-weight: 600; }
-header.site p { margin: 0; opacity: 0.92; font-size: 14px; }
+    header.site {
+      background: linear-gradient(135deg, #5b3df5 0%, #8b5cf6 50%, #ec4899 100%);
+      color: white;
+      padding: 28px 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
 
-nav.modules {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 10px 40px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-}
-nav.modules a {
-  text-decoration: none;
-  color: var(--muted);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-nav.modules a:hover { background: var(--accent-soft); color: var(--accent); }
-nav.modules a.active { background: var(--accent); color: white; }
+    header.site h1 {
+      margin: 0 0 4px 0;
+      font-size: 26px;
+      font-weight: 600;
+    }
 
-main {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 32px 40px 80px 40px;
-}
+    header.site p {
+      margin: 0;
+      opacity: 0.92;
+      font-size: 14px;
+    }
 
-.page { display: none; }
-.page.active { display: block; }
+    nav.modules {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 40px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
 
-.page-header {
-  margin-bottom: 8px;
-}
-.page-header h2.page-title {
-  font-size: 24px;
-  margin: 0 0 4px 0;
-  border-bottom: none;
-  padding-bottom: 0;
-  color: var(--accent);
-}
-.page-header p.page-sub { margin: 0 0 24px 0; color: var(--muted); font-size: 14px; }
+    nav.modules a {
+      text-decoration: none;
+      color: var(--muted);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
 
-h2 {
-  font-size: 22px;
-  margin-top: 36px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--accent-soft);
-}
-h3 { font-size: 17px; margin-top: 24px; }
-h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 6px; }
+    nav.modules a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
 
-p, li { font-size: 15px; }
+    nav.modules a.active {
+      background: var(--accent);
+      color: white;
+    }
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px 24px;
-  margin: 16px 0;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-}
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 40px 80px 40px;
+    }
 
-.callout {
-  border-left: 4px solid var(--accent);
-  background: var(--accent-soft);
-  padding: 12px 16px;
-  border-radius: 6px;
-  margin: 16px 0;
-  font-size: 14px;
-}
-.callout.warn { border-left-color: var(--warn); background: #fff4e6; }
-.callout.good { border-left-color: var(--good); background: #e8f7ee; }
+    .page {
+      display: none;
+    }
 
-.agenda {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 6px 16px;
-  margin: 12px 0;
-}
-.agenda .time { font-weight: 600; color: var(--accent); }
+    .page.active {
+      display: block;
+    }
 
-.copy-block { margin: 12px 0 20px 0; }
-.copy-block .label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #2a2b45;
-  color: #d8d8ee;
-  padding: 8px 14px;
-  border-radius: 8px 8px 0 0;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.copy-block pre {
-  margin: 0;
-  background: var(--code-bg);
-  color: var(--code-ink);
-  padding: 16px;
-  border-radius: 0 0 8px 8px;
-  overflow-x: auto;
-  font-family: "Cascadia Code", "Consolas", "Monaco", monospace;
-  font-size: 13.5px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-.copy-btn {
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 5px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 0.15s ease;
-}
-.copy-btn:hover { background: #4a2fd4; }
-.copy-btn.copied { background: var(--good); }
+    .page-header {
+      margin-bottom: 8px;
+    }
 
-ol.steps { padding-left: 20px; }
-ol.steps li { margin-bottom: 8px; }
+    .page-header h2.page-title {
+      font-size: 24px;
+      margin: 0 0 4px 0;
+      border-bottom: none;
+      padding-bottom: 0;
+      color: var(--accent);
+    }
 
-.kbd {
-  background: #ececf3;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1px 6px;
-  font-family: monospace;
-  font-size: 12px;
-}
+    .page-header p.page-sub {
+      margin: 0 0 24px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-.pill {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  margin-right: 6px;
-}
-.pill.free { background: #e8f7ee; color: var(--good); }
-.pill.licensed { background: #fff4e6; color: var(--warn); }
+    h2 {
+      font-size: 22px;
+      margin-top: 36px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-soft);
+    }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 12px 0;
-  font-size: 14px;
-}
-table th, table td {
-  border: 1px solid var(--border);
-  padding: 8px 12px;
-  text-align: left;
-}
-table th { background: var(--accent-soft); color: var(--accent); }
+    h3 {
+      font-size: 17px;
+      margin-top: 24px;
+    }
 
-footer.site {
-  text-align: center;
-  padding: 20px;
-  color: var(--muted);
-  font-size: 13px;
-}
-.nav-foot {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-.nav-foot a {
-  text-decoration: none;
-  color: var(--accent);
-  font-weight: 500;
-  cursor: pointer;
-}
+    h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
 
-.tile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin: 20px 0;
-}
-.tile {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 18px;
-  text-decoration: none;
-  color: var(--ink);
-  transition: all 0.15s ease;
-  cursor: pointer;
-  display: block;
-}
-.tile:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(91,61,245,0.15);
-}
-.tile .num {
-  display: inline-block;
-  width: 28px; height: 28px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  border-radius: 50%;
-  text-align: center;
-  line-height: 28px;
-  font-weight: 700;
-  font-size: 13px;
-  margin-bottom: 8px;
-}
-.tile h3 { margin: 4px 0 6px 0; font-size: 16px; }
-.tile p { margin: 0; color: var(--muted); font-size: 13px; }
-</style>
+    p,
+    li {
+      font-size: 15px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .callout.warn {
+      border-left-color: var(--warn);
+      background: #fff4e6;
+    }
+
+    .callout.good {
+      border-left-color: var(--good);
+      background: #e8f7ee;
+    }
+
+    .agenda {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 6px 16px;
+      margin: 12px 0;
+    }
+
+    .agenda .time {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .copy-block {
+      margin: 12px 0 20px 0;
+    }
+
+    .copy-block .label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #2a2b45;
+      color: #d8d8ee;
+      padding: 8px 14px;
+      border-radius: 8px 8px 0 0;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .copy-block pre {
+      margin: 0;
+      background: var(--code-bg);
+      color: var(--code-ink);
+      padding: 16px;
+      border-radius: 0 0 8px 8px;
+      overflow-x: auto;
+      font-family: "Cascadia Code", "Consolas", "Monaco", monospace;
+      font-size: 13.5px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .copy-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .copy-btn:hover {
+      background: #4a2fd4;
+    }
+
+    .copy-btn.copied {
+      background: var(--good);
+    }
+
+    ol.steps {
+      padding-left: 20px;
+    }
+
+    ol.steps li {
+      margin-bottom: 8px;
+    }
+
+    .kbd {
+      background: #ececf3;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .pill.free {
+      background: #e8f7ee;
+      color: var(--good);
+    }
+
+    .pill.licensed {
+      background: #fff4e6;
+      color: var(--warn);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+
+    table th,
+    table td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table th {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    footer.site {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-foot {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-foot a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .tile {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: all 0.15s ease;
+      cursor: pointer;
+      display: block;
+    }
+
+    .tile:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(91, 61, 245, 0.15);
+    }
+
+    .tile .num {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .tile h3 {
+      margin: 4px 0 6px 0;
+      font-size: 16px;
+    }
+
+    .tile p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
 </head>
+
 <body>
-<header class="site">
-  <h1>Building Agents in Microsoft 365</h1>
-  <p>A 1-hour hands-on training: Agent Builder &amp; Copilot Studio</p>
-</header>
+  <header class="site">
+    <h1>Building Agents in Microsoft 365</h1>
+    <p>A 1-hour hands-on training: Agent Builder &amp; Copilot Studio</p>
+  </header>
 
-<nav class="modules">
-  <a data-page="home" class="active">Home</a>
-  <a data-page="m1">1. Intro to Agents</a>
-  <a data-page="m2">2. Agent Builder</a>
-  <a data-page="m3">3. Copilot Studio</a>
-  <a data-page="m4">4. Tweaking &amp; Testing</a>
-</nav>
+  <nav class="modules">
+    <a data-page="home" class="active">Home</a>
+    <a data-page="m1">1. Intro to Agents</a>
+    <a data-page="m2">2. Agent Builder</a>
+    <a data-page="m3">3. Copilot Studio</a>
+    <a data-page="m4">4. Tweaking &amp; Testing</a>
+  </nav>
 
-<main>
+  <main>
 
-<!-- =================== HOME =================== -->
-<section class="page active" id="page-home">
-  <h2>Welcome</h2>
-  <p>In the next hour you'll learn what agents are, how to build a simple declarative agent inside <strong>Microsoft 365 Copilot Agent Builder</strong>, and how to graduate to <strong>Copilot Studio</strong> for richer capabilities. You'll leave with two working demo agents.</p>
+    <!-- =================== HOME =================== -->
+    <section class="page active" id="page-home">
+      <h2>Welcome</h2>
+      <p>In the next hour you'll learn what agents are, how to build a simple declarative agent inside <strong>Microsoft
+          365 Copilot Agent Builder</strong>, and how to graduate to <strong>Copilot Studio</strong> for richer
+        capabilities. You'll leave with two working demo agents.</p>
 
-  <h3>Agenda</h3>
-  <div class="card">
-    <div class="agenda">
-      <div class="time">0:00–0:05</div><div>Intro to Agents — what they are and why now</div>
-      <div class="time">0:05–0:10</div><div>Intro to Agent Builder</div>
-      <div class="time">0:10–0:25</div><div><strong>Demo 1:</strong> Build the "Icebreaker Architect" in Agent Builder</div>
-      <div class="time">0:25–0:35</div><div>Intro to Copilot Studio &amp; capabilities tour</div>
-      <div class="time">0:35–0:50</div><div><strong>Demo 2:</strong> Build the "Office Plant Whisperer" in Copilot Studio</div>
-      <div class="time">0:50–1:00</div><div>Tweaking instructions, icons, testing &amp; Q&amp;A</div>
-    </div>
-  </div>
+      <h3>Agenda</h3>
+      <div class="card">
+        <div class="agenda">
+          <div class="time">0:00–0:05</div>
+          <div>Intro to Agents — what they are and why now</div>
+          <div class="time">0:05–0:10</div>
+          <div>Intro to Agent Builder</div>
+          <div class="time">0:10–0:25</div>
+          <div><strong>Demo 1:</strong> Build the "Icebreaker Architect" in Agent Builder</div>
+          <div class="time">0:25–0:35</div>
+          <div>Intro to Copilot Studio &amp; capabilities tour</div>
+          <div class="time">0:35–0:50</div>
+          <div><strong>Demo 2:</strong> Build the "Office Plant Whisperer" in Copilot Studio</div>
+          <div class="time">0:50–1:00</div>
+          <div>Tweaking instructions, icons, testing &amp; Q&amp;A</div>
+        </div>
+      </div>
 
-  <h3>Modules</h3>
-  <div class="tile-grid">
-    <a class="tile" data-page="m1">
-      <span class="num">1</span>
-      <h3>Intro to Agents</h3>
-      <p>What makes something an "agent," and how the M365 stack maps to it.</p>
-    </a>
-    <a class="tile" data-page="m2">
-      <span class="num">2</span>
-      <h3>Agent Builder</h3>
-      <p>The fastest path to a declarative agent — Demo: Icebreaker Architect.</p>
-    </a>
-    <a class="tile" data-page="m3">
-      <span class="num">3</span>
-      <h3>Copilot Studio</h3>
-      <p>Pro-grade authoring with topics, knowledge, and actions — Demo: Office Plant Whisperer.</p>
-    </a>
-    <a class="tile" data-page="m4">
-      <span class="num">4</span>
-      <h3>Tweaking &amp; Testing</h3>
-      <p>Refining instructions, custom icons, and the test pane workflow.</p>
-    </a>
-  </div>
+      <h3>Modules</h3>
+      <div class="tile-grid">
+        <a class="tile" data-page="m1">
+          <span class="num">1</span>
+          <h3>Intro to Agents</h3>
+          <p>What makes something an "agent," and how the M365 stack maps to it.</p>
+        </a>
+        <a class="tile" data-page="m2">
+          <span class="num">2</span>
+          <h3>Agent Builder</h3>
+          <p>The fastest path to a declarative agent — Demo: Icebreaker Architect.</p>
+        </a>
+        <a class="tile" data-page="m3">
+          <span class="num">3</span>
+          <h3>Copilot Studio</h3>
+          <p>Pro-grade authoring with topics, knowledge, and actions — Demo: Office Plant Whisperer.</p>
+        </a>
+        <a class="tile" data-page="m4">
+          <span class="num">4</span>
+          <h3>Tweaking &amp; Testing</h3>
+          <p>Refining instructions, custom icons, and the test pane workflow.</p>
+        </a>
+      </div>
 
-  <div class="callout">
-    <strong>How to use these docs:</strong> Every prompt the instructor uses (descriptions, instructions, knowledge URLs, test questions) appears in a dark "copy block" with a <strong>Copy</strong> button. Click it and paste straight into the tool.
-  </div>
+      <div class="callout">
+        <strong>How to use these docs:</strong> Every prompt the instructor uses (descriptions, instructions, knowledge
+        URLs, test questions) appears in a dark "copy block" with a <strong>Copy</strong> button. Click it and paste
+        straight into the tool.
+      </div>
 
-  <h3>What you need before we start</h3>
-  <ul>
-    <li>A Microsoft 365 account with Copilot Chat access (for Agent Builder).</li>
-    <li>A Copilot Studio trial or licensed environment.</li>
-    <li>A modern browser (Edge or Chrome).</li>
-  </ul>
-</section>
+      <h3>What you need before we start</h3>
+      <ul>
+        <li>A Microsoft 365 account with Copilot Chat access (for Agent Builder).</li>
+        <li>A Copilot Studio trial or licensed environment.</li>
+        <li>A modern browser (Edge or Chrome).</li>
+      </ul>
+    </section>
 
-<!-- =================== MODULE 1 =================== -->
-<section class="page" id="page-m1">
-  <div class="page-header">
-    <h2 class="page-title">1. Intro to Agents</h2>
-    <p class="page-sub">What an agent really is — and what makes it different from a chatbot</p>
-  </div>
+    <!-- =================== MODULE 1 =================== -->
+    <section class="page" id="page-m1">
+      <div class="page-header">
+        <h2 class="page-title">1. Intro to Agents</h2>
+        <p class="page-sub">What an agent really is — and what makes it different from a chatbot</p>
+      </div>
 
-  <h2>What is an agent?</h2>
-  <p>An <strong>agent</strong> is a purpose-built AI assistant that combines four things:</p>
-  <ul>
-    <li><strong>Instructions</strong> — the persona, scope, tone, and rules it follows.</li>
-    <li><strong>Knowledge</strong> — the documents, sites, or data sources it can ground answers in.</li>
-    <li><strong>Actions</strong> — the things it can <em>do</em> (call APIs, kick off a Power Automate flow, post a message).</li>
-    <li><strong>Triggers / surface</strong> — where the user meets it: Microsoft 365 Copilot Chat, Teams, a website, etc.</li>
-  </ul>
+      <h2>What is an agent?</h2>
+      <p>An <strong>agent</strong> is a purpose-built AI assistant that combines four things:</p>
+      <ul>
+        <li><strong>Instructions</strong> — the persona, scope, tone, and rules it follows.</li>
+        <li><strong>Knowledge</strong> — the documents, sites, or data sources it can ground answers in.</li>
+        <li><strong>Actions</strong> — the things it can <em>do</em> (call APIs, kick off a Power Automate flow, post a
+          message).</li>
+        <li><strong>Triggers / surface</strong> — where the user meets it: Microsoft 365 Copilot Chat, Teams, a website,
+          etc.</li>
+      </ul>
 
-  <div class="callout">
-    A regular chatbot answers from a fixed script. An <strong>agent</strong> reasons over your instructions and grounding to handle situations you didn't explicitly script.
-  </div>
+      <div class="callout">
+        A regular chatbot answers from a fixed script. An <strong>agent</strong> reasons over your instructions and
+        grounding to handle situations you didn't explicitly script.
+      </div>
 
-  <h2>Two flavors of "agent" in the Microsoft stack</h2>
-  <table>
-    <thead>
-      <tr><th>Declarative agent</th><th>Custom / Pro agent</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Built on top of Microsoft 365 Copilot's reasoning. Configured with instructions + knowledge + (optionally) actions.</td>
-        <td>Built in Copilot Studio. Can use custom topics, generative orchestration, your own AI models, multi-channel publishing.</td>
-      </tr>
-      <tr>
-        <td>Authored in <strong>Agent Builder</strong> (inside Copilot Chat) or Copilot Studio "agent builder" experience.</td>
-        <td>Authored in <strong>Copilot Studio</strong>.</td>
-      </tr>
-      <tr>
-        <td>Lives <em>inside</em> Microsoft 365 Copilot Chat.</td>
-        <td>Can live in Teams, a website, Slack, custom apps, the Copilot Chat surface, and more.</td>
-      </tr>
-    </tbody>
-  </table>
+      <h2>Two flavors of "agent" in the Microsoft stack</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Declarative agent</th>
+            <th>Custom / Pro agent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Built on top of Microsoft 365 Copilot's reasoning. Configured with instructions + knowledge +
+              (optionally) actions.</td>
+            <td>Built in Copilot Studio. Can use custom topics, generative orchestration, your own AI models,
+              multi-channel publishing.</td>
+          </tr>
+          <tr>
+            <td>Authored in <strong>Agent Builder</strong> (inside Copilot Chat) or Copilot Studio "agent builder"
+              experience.</td>
+            <td>Authored in <strong>Copilot Studio</strong>.</td>
+          </tr>
+          <tr>
+            <td>Lives <em>inside</em> Microsoft 365 Copilot Chat.</td>
+            <td>Can live in Teams, a website, Slack, custom apps, the Copilot Chat surface, and more.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h2>When to use which</h2>
-  <ul>
-    <li><span class="pill free">Start here</span> <strong>Agent Builder</strong> when the agent just needs Copilot's chat surface, a persona, and maybe some grounding files or web sources.</li>
-    <li><span class="pill licensed">Pro</span> <strong>Copilot Studio</strong> when you need structured topics, branching dialog, connectors to line-of-business systems, analytics, multi-channel publishing, or custom AI orchestration.</li>
-  </ul>
+      <h2>When to use which</h2>
+      <ul>
+        <li><span class="pill free">Start here</span> <strong>Agent Builder</strong> when the agent just needs Copilot's
+          chat surface, a persona, and maybe some grounding files or web sources.</li>
+        <li><span class="pill licensed">Pro</span> <strong>Copilot Studio</strong> when you need structured topics,
+          branching dialog, connectors to line-of-business systems, analytics, multi-channel publishing, or custom AI
+          orchestration.</li>
+      </ul>
 
-  <h2>The "Describe" superpower</h2>
-  <p>Both tools include a <strong>Describe</strong> experience where you type a plain-English description of what you want, and Copilot configures the agent for you — name, icon, instructions, starter prompts, and (in Studio) suggested topics. We'll use it in both demos today rather than configuring fields manually.</p>
+      <h2>The "Describe" superpower</h2>
+      <p>Both tools include a <strong>Describe</strong> experience where you type a plain-English description of what
+        you want, and Copilot configures the agent for you — name, icon, instructions, starter prompts, and (in Studio)
+        suggested topics. We'll use it in both demos today rather than configuring fields manually.</p>
 
-  <div class="callout good">
-    <strong>Why we always start with Describe:</strong> it gets you to a working, on-brand agent in under a minute, and gives you a strong starting point to refine. Hand-typing instructions from a blank field is a great way to burn 20 minutes of class time.
-  </div>
+      <div class="callout good">
+        <strong>Why we always start with Describe:</strong> it gets you to a working, on-brand agent in under a minute,
+        and gives you a strong starting point to refine. Hand-typing instructions from a blank field is a great way to
+        burn 20 minutes of class time.
+      </div>
 
-  <div class="nav-foot">
-    <a data-page="home">← Home</a>
-    <a data-page="m2">Next: Agent Builder →</a>
-  </div>
-</section>
+      <div class="nav-foot">
+        <a data-page="home">← Home</a>
+        <a data-page="m2">Next: Agent Builder →</a>
+      </div>
+    </section>
 
-<!-- =================== MODULE 2 =================== -->
-<section class="page" id="page-m2">
-  <div class="page-header">
-    <h2 class="page-title">2. Agent Builder</h2>
-    <p class="page-sub">Demo: Build the "Icebreaker Architect" agent</p>
-  </div>
+    <!-- =================== MODULE 2 =================== -->
+    <section class="page" id="page-m2">
+      <div class="page-header">
+        <h2 class="page-title">2. Agent Builder</h2>
+        <p class="page-sub">Demo: Build the "Icebreaker Architect" agent</p>
+      </div>
 
-  <h2>What is Agent Builder?</h2>
-  <p><strong>Agent Builder</strong> is the lightweight authoring experience inside Microsoft 365 Copilot Chat. You launch it directly from the Copilot Chat sidebar, describe what you want, and the agent shows up alongside your other Copilot agents — no separate portal, no admin center detour.</p>
+      <h2>What is Agent Builder?</h2>
+      <p><strong>Agent Builder</strong> is the lightweight authoring experience inside Microsoft 365 Copilot Chat. You
+        launch it directly from the Copilot Chat sidebar, describe what you want, and the agent shows up alongside your
+        other Copilot agents — no separate portal, no admin center detour.</p>
 
-  <ul>
-    <li><span class="pill free">No premium license required</span> when you stick to instructions + uploaded files + web/SharePoint sources.</li>
-    <li>Lives in Copilot Chat. Shareable to your tenant with a link.</li>
-    <li>Best for: personas, role-based assistants, knowledge-grounded helpers.</li>
-  </ul>
+      <ul>
+        <li><span class="pill free">No premium license required</span> when you stick to instructions + uploaded files +
+          web/SharePoint sources.</li>
+        <li>Lives in Copilot Chat. Shareable to your tenant with a link.</li>
+        <li>Best for: personas, role-based assistants, knowledge-grounded helpers.</li>
+      </ul>
 
-  <div class="callout warn">
-    <strong>License note for this demo:</strong> We intentionally use <em>no</em> connectors, no Power Platform actions, and no premium knowledge sources. Our Icebreaker Architect is pure instructions — it works on a standard Copilot Chat seat.
-  </div>
+      <div class="callout warn">
+        <strong>License note for this demo:</strong> We intentionally use <em>no</em> connectors, no Power Platform
+        actions, and no premium knowledge sources. Our Icebreaker Architect is pure instructions — it works on a
+        standard Copilot Chat seat.
+      </div>
 
-  <h2>Demo: "Icebreaker Architect"</h2>
-  <p>Our agent helps anyone running a meeting, workshop, all-hands, or team offsite generate creative, low-cringe icebreakers tuned to the size of the group, time available, and vibe of the meeting.</p>
+      <h2>Demo: "Icebreaker Architect"</h2>
+      <p>Our agent helps anyone running a meeting, workshop, all-hands, or team offsite generate creative, low-cringe
+        icebreakers tuned to the size of the group, time available, and vibe of the meeting.</p>
 
-  <h3>Step 1 — Open Agent Builder</h3>
-  <ol class="steps">
-    <li>Open <a href="https://m365.cloud.microsoft/chat" target="_blank">Microsoft 365 Copilot Chat</a>.</li>
-    <li>In the left rail, click <strong>Agents</strong> → <strong>+ Create agent</strong> (or "Build an agent"). This opens the Agent Builder pane.</li>
-    <li>You'll land on the <strong>Describe</strong> tab — that's where the magic starts.</li>
-  </ol>
+      <h3>Step 1 — Open Agent Builder</h3>
+      <ol class="steps">
+        <li>Open <a href="https://m365.cloud.microsoft/chat" target="_blank">Microsoft 365 Copilot Chat</a>.</li>
+        <li>In the left rail, click <strong>Agents</strong> → <strong>+ Create agent</strong> (or "Build an agent").
+          This opens the Agent Builder pane.</li>
+        <li>You'll land on the <strong>Describe</strong> tab — that's where the magic starts.</li>
+      </ol>
 
-  <h3>Step 2 — Use Describe to bootstrap the agent</h3>
-  <p>Paste this into the Describe box and let Copilot generate the name, icon, instructions, and starter prompts.</p>
+      <h3>Step 2 — Use Describe to bootstrap the agent</h3>
+      <p>Paste this into the Describe box and let Copilot generate the name, icon, instructions, and starter prompts.
+      </p>
 
-  <div class="copy-block">
-    <div class="label"><span>Describe prompt</span><button class="copy-btn" data-target="ab-describe">Copy</button></div>
-    <pre id="ab-describe">Create an agent called "Icebreaker Architect" that helps anyone running a meeting, workshop, all-hands, or offsite invent creative, low-cringe icebreaker activities.
+      <div class="copy-block">
+        <div class="label"><span>Describe prompt</span><button class="copy-btn" data-target="ab-describe">Copy</button>
+        </div>
+        <pre id="ab-describe">Create an agent called "Icebreaker Architect" that helps anyone running a meeting, workshop, all-hands, or offsite invent creative, low-cringe icebreaker activities.
 
 When a user starts a conversation, ask three quick questions in a single message:
 1. Group size (small under 8, medium 8-25, large 25+)
@@ -442,19 +582,23 @@ Tone: warm, witty, never cheesy. Avoid trust falls, anything involving touching,
 If the user pushes back on an idea, generate fresh alternatives — never repeat one you've already suggested in this conversation.
 
 End each response with: "Want me to remix one of these, or generate three more?"</pre>
-  </div>
+      </div>
 
-  <ol class="steps" start="4">
-    <li>Click <strong>Create</strong> (or "Generate"). Agent Builder fills in the Name, Description, Instructions, and Starter prompts automatically.</li>
-    <li>Review the generated fields. The instructor will point out which fields came from which part of the Describe prompt.</li>
-  </ol>
+      <ol class="steps" start="4">
+        <li>Click <strong>Create</strong> (or "Generate"). Agent Builder fills in the Name, Description, Instructions,
+          and Starter prompts automatically.</li>
+        <li>Review the generated fields. The instructor will point out which fields came from which part of the Describe
+          prompt.</li>
+      </ol>
 
-  <h3>Step 3 — Refine the instructions (optional polish)</h3>
-  <p>The Describe output is usually 90% there. Drop this refinement into the <strong>Instructions</strong> field (or have students replace what was generated) so everyone is on the same page for the live test:</p>
+      <h3>Step 3 — Refine the instructions (optional polish)</h3>
+      <p>The Describe output is usually 90% there. Drop this refinement into the <strong>Instructions</strong> field (or
+        have students replace what was generated) so everyone is on the same page for the live test:</p>
 
-  <div class="copy-block">
-    <div class="label"><span>Instructions (refined)</span><button class="copy-btn" data-target="ab-instructions">Copy</button></div>
-    <pre id="ab-instructions">You are the Icebreaker Architect. Your job is to design memorable, inclusive icebreaker activities for meetings, workshops, all-hands, and offsites.
+      <div class="copy-block">
+        <div class="label"><span>Instructions (refined)</span><button class="copy-btn"
+            data-target="ab-instructions">Copy</button></div>
+        <pre id="ab-instructions">You are the Icebreaker Architect. Your job is to design memorable, inclusive icebreaker activities for meetings, workshops, all-hands, and offsites.
 
 OPENING TURN
 On the very first message, ask all three of these in one short message:
@@ -478,124 +622,185 @@ RULES
 
 CLOSING LINE
 End every response with: "Want me to remix one of these, or generate three more?"</pre>
-  </div>
+      </div>
 
-  <h3>Step 4 — Starter prompts</h3>
-  <p>Starter prompts are the buttons users see the first time they open the agent. Use these in the <strong>Starter prompts</strong> section (replace whatever Describe generated):</p>
+      <h3>Step 4 — Starter prompts</h3>
+      <p>Starter prompts are the buttons users see the first time they open the agent. Use these in the <strong>Starter
+          prompts</strong> section (replace whatever Describe generated):</p>
 
-  <div class="copy-block">
-    <div class="label"><span>Starter prompt 1</span><button class="copy-btn" data-target="ab-sp1">Copy</button></div>
-    <pre id="ab-sp1">I have a 30-person all-hands tomorrow. Need a 5-minute energetic icebreaker.</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Starter prompt 2</span><button class="copy-btn" data-target="ab-sp2">Copy</button></div>
-    <pre id="ab-sp2">Give me a getting-to-know-you activity for a new team of six, 15 minutes.</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Starter prompt 3</span><button class="copy-btn" data-target="ab-sp3">Copy</button></div>
-    <pre id="ab-sp3">Design a creative-thinking warmup for a hybrid design workshop.</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Starter prompt 4</span><button class="copy-btn" data-target="ab-sp4">Copy</button></div>
-    <pre id="ab-sp4">I hate every icebreaker I've ever done. Convince me with three weird ones.</pre>
-  </div>
+      <div class="copy-block">
+        <div class="label"><span>Starter prompt 1</span><button class="copy-btn" data-target="ab-sp1">Copy</button>
+        </div>
+        <pre id="ab-sp1">I have a 30-person all-hands tomorrow. Need a 5-minute energetic icebreaker.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Starter prompt 2</span><button class="copy-btn" data-target="ab-sp2">Copy</button>
+        </div>
+        <pre id="ab-sp2">Give me a getting-to-know-you activity for a new team of six, 15 minutes.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Starter prompt 3</span><button class="copy-btn" data-target="ab-sp3">Copy</button>
+        </div>
+        <pre id="ab-sp3">Design a creative-thinking warmup for a hybrid design workshop.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Starter prompt 4</span><button class="copy-btn" data-target="ab-sp4">Copy</button>
+        </div>
+        <pre id="ab-sp4">I hate every icebreaker I've ever done. Convince me with three weird ones.</pre>
+      </div>
 
-  <h3>Step 5 — Set the icon</h3>
-  <ol class="steps">
-    <li>Click the agent's icon in the top-left of the builder.</li>
-    <li>Choose <strong>Generate icon</strong> and paste this prompt:</li>
-  </ol>
-  <div class="copy-block">
-    <div class="label"><span>Icon generation prompt</span><button class="copy-btn" data-target="ab-icon">Copy</button></div>
-    <pre id="ab-icon">A friendly minimalist illustration of a melting ice cube being broken open with a tiny architect's blueprint scroll spilling out, soft pastel palette, flat vector style, white background.</pre>
-  </div>
-  <p>Or upload a PNG/SVG if you have a brand asset.</p>
+      <h3>Step 5 — Set the icon</h3>
+      <ol class="steps">
+        <li>Click the agent's icon in the top-left of the builder.</li>
+        <li>Choose <strong>Generate icon</strong> and paste this prompt:</li>
+      </ol>
+      <div class="copy-block">
+        <div class="label"><span>Icon generation prompt</span><button class="copy-btn"
+            data-target="ab-icon">Copy</button></div>
+        <pre
+          id="ab-icon">A friendly minimalist illustration of a melting ice cube being broken open with a tiny architect's blueprint scroll spilling out, soft pastel palette, flat vector style, white background.</pre>
+      </div>
+      <p>Or upload a PNG/SVG if you have a brand asset.</p>
 
-  <h3>Step 6 — Save and test</h3>
-  <ol class="steps">
-    <li>Click <strong>Create</strong> (top right). The agent is saved to your personal agents.</li>
-    <li>The test pane opens on the right. Click a starter prompt — verify the agent asks the size/time/vibe question first.</li>
-    <li>Try the test prompts below:</li>
-  </ol>
+      <h3>Step 6 — Save and test</h3>
+      <ol class="steps">
+        <li>Click <strong>Create</strong> (top right). The agent is saved to your personal agents.</li>
+        <li>The test pane opens on the right. Click a starter prompt — verify the agent asks the size/time/vibe question
+          first.</li>
+        <li>Try the test prompts below:</li>
+      </ol>
 
-  <div class="copy-block">
-    <div class="label"><span>Test 1 — Standard path</span><button class="copy-btn" data-target="ab-test1">Copy</button></div>
-    <pre id="ab-test1">Medium group, 10 minutes, team-bonding vibe. We're a remote engineering team.</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Test 2 — Guardrail check</span><button class="copy-btn" data-target="ab-test2">Copy</button></div>
-    <pre id="ab-test2">Give me a trust fall variation.</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Test 3 — No-repeat check</span><button class="copy-btn" data-target="ab-test3">Copy</button></div>
-    <pre id="ab-test3">I don't love any of those. Give me three more.</pre>
-  </div>
+      <div class="copy-block">
+        <div class="label"><span>Test 1 — Standard path</span><button class="copy-btn"
+            data-target="ab-test1">Copy</button></div>
+        <pre id="ab-test1">Medium group, 10 minutes, team-bonding vibe. We're a remote engineering team.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Test 2 — Guardrail check</span><button class="copy-btn"
+            data-target="ab-test2">Copy</button></div>
+        <pre id="ab-test2">Give me a trust fall variation.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Test 3 — No-repeat check</span><button class="copy-btn"
+            data-target="ab-test3">Copy</button></div>
+        <pre id="ab-test3">I don't love any of those. Give me three more.</pre>
+      </div>
 
-  <div class="callout good">
-    <strong>What the audience should notice:</strong> Test 2 should be refused gracefully. Test 3 should return three <em>new</em> icebreakers, not repeats. That's the instructions doing their job.
-  </div>
+      <div class="callout good">
+        <strong>What the audience should notice:</strong> Test 2 should be refused gracefully. Test 3 should return
+        three <em>new</em> icebreakers, not repeats. That's the instructions doing their job.
+      </div>
 
-  <h3>Step 7 — Share</h3>
-  <p>Click <strong>Share</strong> in the top right → copy the link. Anyone in your tenant with Copilot Chat can open it instantly. No deployment, no admin approvals, no Teams app package.</p>
+      <h3>Step 7 — Share</h3>
+      <p>Click <strong>Share</strong> in the top right → copy the link. Anyone in your tenant with Copilot Chat can open
+        it instantly. No deployment, no admin approvals, no Teams app package.</p>
 
-  <div class="nav-foot">
-    <a data-page="m1">← Intro to Agents</a>
-    <a data-page="m3">Next: Copilot Studio →</a>
-  </div>
-</section>
+      <div class="nav-foot">
+        <a data-page="m1">← Intro to Agents</a>
+        <a data-page="m3">Next: Copilot Studio →</a>
+      </div>
+    </section>
 
-<!-- =================== MODULE 3 =================== -->
-<section class="page" id="page-m3">
-  <div class="page-header">
-    <h2 class="page-title">3. Copilot Studio</h2>
-    <p class="page-sub">Capabilities tour + Demo: the "Office Plant Whisperer"</p>
-  </div>
+    <!-- =================== MODULE 3 =================== -->
+    <section class="page" id="page-m3">
+      <div class="page-header">
+        <h2 class="page-title">3. Copilot Studio</h2>
+        <p class="page-sub">Capabilities tour + Demo: the "Office Plant Whisperer"</p>
+      </div>
 
-  <h2>What is Copilot Studio?</h2>
-  <p><strong>Copilot Studio</strong> is the pro-grade, low-code authoring environment for agents. Same "Describe to start" experience as Agent Builder, but you get the full toolbox: topics, actions, knowledge, generative orchestration, channels, and analytics.</p>
+      <h2>What is Copilot Studio?</h2>
+      <p><strong>Copilot Studio</strong> is the pro-grade, low-code authoring environment for agents. Same "Describe to
+        start" experience as Agent Builder, but you get the full toolbox: topics, actions, knowledge, generative
+        orchestration, channels, and analytics.</p>
 
-  <ul>
-    <li><span class="pill licensed">Premium</span> Standalone license, capacity-based (message packs) or per-user.</li>
-    <li>Hosts agents that can publish to Teams, web, Slack, mobile apps, the Copilot Chat surface, and more.</li>
-    <li>Sits inside the Power Platform — natively connects to Dataverse, Power Automate, and 1500+ connectors.</li>
-  </ul>
+      <ul>
+        <li><span class="pill licensed">Premium</span> Standalone license, capacity-based (message packs) or per-user.
+        </li>
+        <li>Hosts agents that can publish to Teams, web, Slack, mobile apps, the Copilot Chat surface, and more.</li>
+        <li>Sits inside the Power Platform — natively connects to Dataverse, Power Automate, and 1500+ connectors.</li>
+      </ul>
 
-  <h2>Capabilities at a glance</h2>
-  <table>
-    <thead><tr><th>Capability</th><th>What it does</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Topics</strong></td><td>Structured conversation flows triggered by phrases. Can branch, ask questions, call actions, return generative answers.</td></tr>
-      <tr><td><strong>Generative answers</strong></td><td>Lets the agent answer freely from your knowledge sources (web pages, SharePoint, files, Dataverse, custom data) without you scripting every path.</td></tr>
-      <tr><td><strong>Generative orchestration</strong></td><td>Agent decides at runtime which topic, action, or knowledge source best fits the user's intent — no rigid trigger phrases needed.</td></tr>
-      <tr><td><strong>Actions</strong></td><td>Call Power Automate flows, Power Apps connectors, REST APIs, prompts, AI Builder models, or other agents.</td></tr>
-      <tr><td><strong>Knowledge</strong></td><td>Public web search, specific URLs, SharePoint, OneDrive, uploaded files, Dataverse, enterprise data via Graph connectors.</td></tr>
-      <tr><td><strong>Entities &amp; variables</strong></td><td>Capture user input (locations, dates, custom lists) and pass through the conversation.</td></tr>
-      <tr><td><strong>Channels</strong></td><td>Publish to Teams, custom websites, Microsoft 365 Copilot, Facebook, Slack, custom apps via Direct Line.</td></tr>
-      <tr><td><strong>Analytics</strong></td><td>Sessions, resolution rate, top topics, abandoned conversations, customer satisfaction.</td></tr>
-      <tr><td><strong>Authentication</strong></td><td>Entra ID, OAuth providers, no-auth, end-user auth for connector calls.</td></tr>
-    </tbody>
-  </table>
+      <h2>Capabilities at a glance</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>What it does</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Topics</strong></td>
+            <td>Structured conversation flows triggered by phrases. Can branch, ask questions, call actions, return
+              generative answers.</td>
+          </tr>
+          <tr>
+            <td><strong>Generative answers</strong></td>
+            <td>Lets the agent answer freely from your knowledge sources (web pages, SharePoint, files, Dataverse,
+              custom data) without you scripting every path.</td>
+          </tr>
+          <tr>
+            <td><strong>Generative orchestration</strong></td>
+            <td>Agent decides at runtime which topic, action, or knowledge source best fits the user's intent — no rigid
+              trigger phrases needed.</td>
+          </tr>
+          <tr>
+            <td><strong>Actions</strong></td>
+            <td>Call Power Automate flows, Power Apps connectors, REST APIs, prompts, AI Builder models, or other
+              agents.</td>
+          </tr>
+          <tr>
+            <td><strong>Knowledge</strong></td>
+            <td>Public web search, specific URLs, SharePoint, OneDrive, uploaded files, Dataverse, enterprise data via
+              Graph connectors.</td>
+          </tr>
+          <tr>
+            <td><strong>Entities &amp; variables</strong></td>
+            <td>Capture user input (locations, dates, custom lists) and pass through the conversation.</td>
+          </tr>
+          <tr>
+            <td><strong>Channels</strong></td>
+            <td>Publish to Teams, custom websites, Microsoft 365 Copilot, Facebook, Slack, custom apps via Direct Line.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Analytics</strong></td>
+            <td>Sessions, resolution rate, top topics, abandoned conversations, customer satisfaction.</td>
+          </tr>
+          <tr>
+            <td><strong>Authentication</strong></td>
+            <td>Entra ID, OAuth providers, no-auth, end-user auth for connector calls.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h2>Demo: "Office Plant Whisperer"</h2>
-  <p>A friendly agent for office workers who don't know what their desk plant wants. It greets the user, helps diagnose a sick plant via a guided topic, and falls back to generative answers grounded on a public houseplant care website for everything else.</p>
+      <h2>Demo: "Office Plant Whisperer"</h2>
+      <p>A friendly agent for office workers who don't know what their desk plant wants. It greets the user, helps
+        diagnose a sick plant via a guided topic, and falls back to generative answers grounded on a public houseplant
+        care website for everything else.</p>
 
-  <div class="callout">
-    This demo uses <strong>licensed Copilot Studio features</strong>: generative answers with a public web knowledge source and a custom topic with branching dialog. No connectors, no Power Automate — we're keeping it tight for the time we have.
-  </div>
+      <div class="callout">
+        This demo uses <strong>licensed Copilot Studio features</strong>: generative answers with a public web knowledge
+        source and a custom topic with branching dialog. No connectors, no Power Automate — we're keeping it tight for
+        the time we have.
+      </div>
 
-  <h3>Step 1 — Create the agent in Copilot Studio</h3>
-  <ol class="steps">
-    <li>Go to <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a>.</li>
-    <li>Click <strong>Create</strong> → <strong>New agent</strong>.</li>
-    <li>You'll land on a chat with Copilot. This is the <strong>Describe</strong> experience — same idea as Agent Builder, expanded.</li>
-  </ol>
+      <h3>Step 1 — Create the agent in Copilot Studio</h3>
+      <ol class="steps">
+        <li>Go to <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a>.</li>
+        <li>Click <strong>Create</strong> → <strong>New agent</strong>.</li>
+        <li>You'll land on a chat with Copilot. This is the <strong>Describe</strong> experience — same idea as Agent
+          Builder, expanded.</li>
+      </ol>
 
-  <h3>Step 2 — Describe the agent to Copilot</h3>
-  <p>Paste this and let Copilot ask any follow-ups. Accept its suggestions; you can refine later.</p>
+      <h3>Step 2 — Describe the agent to Copilot</h3>
+      <p>Paste this and let Copilot ask any follow-ups. Accept its suggestions; you can refine later.</p>
 
-  <div class="copy-block">
-    <div class="label"><span>Describe prompt</span><button class="copy-btn" data-target="cs-describe">Copy</button></div>
-    <pre id="cs-describe">Build an agent called "Office Plant Whisperer." It helps office workers care for the houseplants on their desks and in shared spaces.
+      <div class="copy-block">
+        <div class="label"><span>Describe prompt</span><button class="copy-btn" data-target="cs-describe">Copy</button>
+        </div>
+        <pre
+          id="cs-describe">Build an agent called "Office Plant Whisperer." It helps office workers care for the houseplants on their desks and in shared spaces.
 
 The agent should:
 - Greet users warmly and ask if they want general care help or to diagnose a struggling plant.
@@ -606,19 +811,23 @@ The agent should:
 Personality: kind, encouraging, a little whimsical. Talks to plants like they're tiny green coworkers. Never shames the user for killing a plant.
 
 End general answers with a one-line "Plant tip of the day" — a fun, surprising fact about the plant being discussed.</pre>
-  </div>
+      </div>
 
-  <ol class="steps" start="4">
-    <li>When Copilot asks follow-ups (tone, scope, languages), accept defaults or paraphrase what's in the prompt.</li>
-    <li>Click <strong>Create</strong>. The agent opens to the <strong>Overview</strong> page with generated name, description, instructions, and starter topics.</li>
-  </ol>
+      <ol class="steps" start="4">
+        <li>When Copilot asks follow-ups (tone, scope, languages), accept defaults or paraphrase what's in the prompt.
+        </li>
+        <li>Click <strong>Create</strong>. The agent opens to the <strong>Overview</strong> page with generated name,
+          description, instructions, and starter topics.</li>
+      </ol>
 
-  <h3>Step 3 — Refine the instructions</h3>
-  <p>Go to <strong>Overview</strong> → <strong>Instructions</strong> (or <strong>Settings</strong> → <strong>Generative AI</strong> → instructions, depending on UI version). Replace with:</p>
+      <h3>Step 3 — Refine the instructions</h3>
+      <p>Go to <strong>Overview</strong> → <strong>Instructions</strong> (or <strong>Settings</strong> →
+        <strong>Generative AI</strong> → instructions, depending on UI version). Replace with:</p>
 
-  <div class="copy-block">
-    <div class="label"><span>Instructions</span><button class="copy-btn" data-target="cs-instructions">Copy</button></div>
-    <pre id="cs-instructions">You are the Office Plant Whisperer — a warm, slightly whimsical houseplant care assistant for office workers.
+      <div class="copy-block">
+        <div class="label"><span>Instructions</span><button class="copy-btn" data-target="cs-instructions">Copy</button>
+        </div>
+        <pre id="cs-instructions">You are the Office Plant Whisperer — a warm, slightly whimsical houseplant care assistant for office workers.
 
 CORE BEHAVIOR
 - Greet new users and ask if they want general care help or to diagnose a struggling plant.
@@ -636,40 +845,47 @@ TIP OF THE DAY
 OUT OF SCOPE
 - Outdoor landscaping, vegetable gardening, hydroponic farming — politely redirect.
 - Plant identification from photos — explain you can't see images and ask for a description instead.</pre>
-  </div>
+      </div>
 
-  <h3>Step 4 — Add a knowledge source</h3>
-  <ol class="steps">
-    <li>Go to the <strong>Knowledge</strong> tab.</li>
-    <li>Click <strong>+ Add knowledge</strong> → <strong>Public websites</strong>.</li>
-    <li>Add this URL as the grounding source (a well-known public houseplant care site):</li>
-  </ol>
+      <h3>Step 4 — Add a knowledge source</h3>
+      <ol class="steps">
+        <li>Go to the <strong>Knowledge</strong> tab.</li>
+        <li>Click <strong>+ Add knowledge</strong> → <strong>Public websites</strong>.</li>
+        <li>Add this URL as the grounding source (a well-known public houseplant care site):</li>
+      </ol>
 
-  <div class="copy-block">
-    <div class="label"><span>Knowledge URL</span><button class="copy-btn" data-target="cs-knowledge">Copy</button></div>
-    <pre id="cs-knowledge">https://www.thesill.com/blogs/plant-care</pre>
-  </div>
+      <div class="copy-block">
+        <div class="label"><span>Knowledge URL</span><button class="copy-btn" data-target="cs-knowledge">Copy</button>
+        </div>
+        <pre id="cs-knowledge">https://www.thesill.com/blogs/plant-care</pre>
+      </div>
 
-  <p>Name the source <code>The Sill — Plant Care Blog</code> and give it this description so the orchestrator knows when to use it:</p>
+      <p>Name the source <code>The Sill — Plant Care Blog</code> and give it this description so the orchestrator knows
+        when to use it:</p>
 
-  <div class="copy-block">
-    <div class="label"><span>Knowledge source description</span><button class="copy-btn" data-target="cs-knowledge-desc">Copy</button></div>
-    <pre id="cs-knowledge-desc">Authoritative guide to indoor houseplant care, watering, light, common problems, pests, and repotting for popular species like pothos, snake plants, ZZ plants, monsteras, peace lilies, fiddle-leaf figs, and succulents.</pre>
-  </div>
+      <div class="copy-block">
+        <div class="label"><span>Knowledge source description</span><button class="copy-btn"
+            data-target="cs-knowledge-desc">Copy</button></div>
+        <pre
+          id="cs-knowledge-desc">Authoritative guide to indoor houseplant care, watering, light, common problems, pests, and repotting for popular species like pothos, snake plants, ZZ plants, monsteras, peace lilies, fiddle-leaf figs, and succulents.</pre>
+      </div>
 
-  <div class="callout warn">
-    <strong>Substitute as needed:</strong> If your tenant blocks that domain, swap in any public plant-care site your org allows. The agent works the same way.
-  </div>
+      <div class="callout warn">
+        <strong>Substitute as needed:</strong> If your tenant blocks that domain, swap in any public plant-care site
+        your org allows. The agent works the same way.
+      </div>
 
-  <h3>Step 5 — Add the "Diagnose my plant" topic</h3>
-  <ol class="steps">
-    <li>Go to the <strong>Topics</strong> tab → <strong>+ Add a topic</strong> → <strong>Create with Copilot</strong>.</li>
-    <li>This is the in-Studio "Describe" experience for topics. Paste:</li>
-  </ol>
+      <h3>Step 5 — Add the "Diagnose my plant" topic</h3>
+      <ol class="steps">
+        <li>Go to the <strong>Topics</strong> tab → <strong>+ Add a topic</strong> → <strong>Create with
+            Copilot</strong>.</li>
+        <li>This is the in-Studio "Describe" experience for topics. Paste:</li>
+      </ol>
 
-  <div class="copy-block">
-    <div class="label"><span>Topic Describe prompt</span><button class="copy-btn" data-target="cs-topic">Copy</button></div>
-    <pre id="cs-topic">Topic name: Diagnose my plant.
+      <div class="copy-block">
+        <div class="label"><span>Topic Describe prompt</span><button class="copy-btn"
+            data-target="cs-topic">Copy</button></div>
+        <pre id="cs-topic">Topic name: Diagnose my plant.
 
 Trigger phrases: my plant is dying, my plant looks sad, help my plant, something is wrong with my plant, plant emergency, diagnose my plant.
 
@@ -681,103 +897,116 @@ Conversation flow:
 5. Generate a diagnosis: use generative answers grounded on the agent's knowledge sources, passing PlantType, Symptom, and WateringHabit. Return the most likely cause and three concrete things to try, in a kind tone.
 6. Ask: "Want me to set a reminder routine for this plant?" — if yes, give a simple text-based care schedule (don't actually create a calendar event).
 7. End with the Plant tip of the day for the user's plant type.</pre>
-  </div>
+      </div>
 
-  <ol class="steps" start="3">
-    <li>Click <strong>Create</strong>. Studio generates the full topic with question nodes, variables, and a generative-answer node.</li>
-    <li>Open the generated topic, click through each node, and tell the class what Copilot built. Show the variables on the right pane.</li>
-    <li>Save the topic.</li>
-  </ol>
+      <ol class="steps" start="3">
+        <li>Click <strong>Create</strong>. Studio generates the full topic with question nodes, variables, and a
+          generative-answer node.</li>
+        <li>Open the generated topic, click through each node, and tell the class what Copilot built. Show the variables
+          on the right pane.</li>
+        <li>Save the topic.</li>
+      </ol>
 
-  <h3>Step 6 — Set conversation starters</h3>
-  <p>On the <strong>Overview</strong> tab, replace the auto-generated starters with these:</p>
+      <h3>Step 6 — Set conversation starters</h3>
+      <p>On the <strong>Overview</strong> tab, replace the auto-generated starters with these:</p>
 
-  <div class="copy-block">
-    <div class="label"><span>Starter 1</span><button class="copy-btn" data-target="cs-sp1">Copy</button></div>
-    <pre id="cs-sp1">How often should I water my pothos?</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Starter 2</span><button class="copy-btn" data-target="cs-sp2">Copy</button></div>
-    <pre id="cs-sp2">My snake plant is dying — help.</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Starter 3</span><button class="copy-btn" data-target="cs-sp3">Copy</button></div>
-    <pre id="cs-sp3">What's a low-light plant that won't die on my desk?</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Starter 4</span><button class="copy-btn" data-target="cs-sp4">Copy</button></div>
-    <pre id="cs-sp4">Diagnose my plant.</pre>
-  </div>
+      <div class="copy-block">
+        <div class="label"><span>Starter 1</span><button class="copy-btn" data-target="cs-sp1">Copy</button></div>
+        <pre id="cs-sp1">How often should I water my pothos?</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Starter 2</span><button class="copy-btn" data-target="cs-sp2">Copy</button></div>
+        <pre id="cs-sp2">My snake plant is dying — help.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Starter 3</span><button class="copy-btn" data-target="cs-sp3">Copy</button></div>
+        <pre id="cs-sp3">What's a low-light plant that won't die on my desk?</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Starter 4</span><button class="copy-btn" data-target="cs-sp4">Copy</button></div>
+        <pre id="cs-sp4">Diagnose my plant.</pre>
+      </div>
 
-  <h3>Step 7 — Set the icon</h3>
-  <p>Top of the <strong>Overview</strong> page → click the agent icon → <strong>Generate</strong>, and use:</p>
-  <div class="copy-block">
-    <div class="label"><span>Icon prompt</span><button class="copy-btn" data-target="cs-icon">Copy</button></div>
-    <pre id="cs-icon">A cute minimalist illustration of a smiling monstera leaf wearing tiny round glasses, soft green and cream palette, flat vector style, white background.</pre>
-  </div>
+      <h3>Step 7 — Set the icon</h3>
+      <p>Top of the <strong>Overview</strong> page → click the agent icon → <strong>Generate</strong>, and use:</p>
+      <div class="copy-block">
+        <div class="label"><span>Icon prompt</span><button class="copy-btn" data-target="cs-icon">Copy</button></div>
+        <pre
+          id="cs-icon">A cute minimalist illustration of a smiling monstera leaf wearing tiny round glasses, soft green and cream palette, flat vector style, white background.</pre>
+      </div>
 
-  <h3>Step 8 — Test in the side pane</h3>
-  <p>Use the <strong>Test your agent</strong> panel on the right. Click <strong>refresh</strong> after saving topic/knowledge changes.</p>
+      <h3>Step 8 — Test in the side pane</h3>
+      <p>Use the <strong>Test your agent</strong> panel on the right. Click <strong>refresh</strong> after saving
+        topic/knowledge changes.</p>
 
-  <div class="copy-block">
-    <div class="label"><span>Test 1 — Generative answer + grounding</span><button class="copy-btn" data-target="cs-test1">Copy</button></div>
-    <pre id="cs-test1">How much light does a ZZ plant need, and how do I know if it's getting too much?</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Test 2 — Triggers the diagnose topic</span><button class="copy-btn" data-target="cs-test2">Copy</button></div>
-    <pre id="cs-test2">My pothos has yellow leaves and I water it every couple of weeks.</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Test 3 — Out of scope check</span><button class="copy-btn" data-target="cs-test3">Copy</button></div>
-    <pre id="cs-test3">Can you identify my plant if I send a photo?</pre>
-  </div>
-  <div class="copy-block">
-    <div class="label"><span>Test 4 — Persona check</span><button class="copy-btn" data-target="cs-test4">Copy</button></div>
-    <pre id="cs-test4">I killed another plant. I'm a monster.</pre>
-  </div>
+      <div class="copy-block">
+        <div class="label"><span>Test 1 — Generative answer + grounding</span><button class="copy-btn"
+            data-target="cs-test1">Copy</button></div>
+        <pre id="cs-test1">How much light does a ZZ plant need, and how do I know if it's getting too much?</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Test 2 — Triggers the diagnose topic</span><button class="copy-btn"
+            data-target="cs-test2">Copy</button></div>
+        <pre id="cs-test2">My pothos has yellow leaves and I water it every couple of weeks.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Test 3 — Out of scope check</span><button class="copy-btn"
+            data-target="cs-test3">Copy</button></div>
+        <pre id="cs-test3">Can you identify my plant if I send a photo?</pre>
+      </div>
+      <div class="copy-block">
+        <div class="label"><span>Test 4 — Persona check</span><button class="copy-btn"
+            data-target="cs-test4">Copy</button></div>
+        <pre id="cs-test4">I killed another plant. I'm a monster.</pre>
+      </div>
 
-  <div class="callout good">
-    <strong>Watch the right pane.</strong> Studio shows you which topic was triggered, which knowledge source was queried, and the citations. That visibility is the killer feature that Agent Builder doesn't have.
-  </div>
+      <div class="callout good">
+        <strong>Watch the right pane.</strong> Studio shows you which topic was triggered, which knowledge source was
+        queried, and the citations. That visibility is the killer feature that Agent Builder doesn't have.
+      </div>
 
-  <h3>Step 9 — Publish (optional, if time allows)</h3>
-  <ol class="steps">
-    <li><strong>Publish</strong> button (top right) → confirm.</li>
-    <li>Go to <strong>Channels</strong> → enable <strong>Microsoft 365 Copilot</strong> or <strong>Teams</strong>.</li>
-    <li>For Teams: click <strong>Availability options</strong> → <strong>Show to people in my organization</strong> (requires admin approval depending on tenant settings).</li>
-  </ol>
+      <h3>Step 9 — Publish (optional, if time allows)</h3>
+      <ol class="steps">
+        <li><strong>Publish</strong> button (top right) → confirm.</li>
+        <li>Go to <strong>Channels</strong> → enable <strong>Microsoft 365 Copilot</strong> or <strong>Teams</strong>.
+        </li>
+        <li>For Teams: click <strong>Availability options</strong> → <strong>Show to people in my organization</strong>
+          (requires admin approval depending on tenant settings).</li>
+      </ol>
 
-  <div class="nav-foot">
-    <a data-page="m2">← Agent Builder</a>
-    <a data-page="m4">Next: Tweaking &amp; Testing →</a>
-  </div>
-</section>
+      <div class="nav-foot">
+        <a data-page="m2">← Agent Builder</a>
+        <a data-page="m4">Next: Tweaking &amp; Testing →</a>
+      </div>
+    </section>
 
-<!-- =================== MODULE 4 =================== -->
-<section class="page" id="page-m4">
-  <div class="page-header">
-    <h2 class="page-title">4. Tweaking, Icons &amp; Testing</h2>
-    <p class="page-sub">How to refine an agent after the first version exists</p>
-  </div>
+    <!-- =================== MODULE 4 =================== -->
+    <section class="page" id="page-m4">
+      <div class="page-header">
+        <h2 class="page-title">4. Tweaking, Icons &amp; Testing</h2>
+        <p class="page-sub">How to refine an agent after the first version exists</p>
+      </div>
 
-  <h2>The "first draft" rule</h2>
-  <p>Describe gets you to a working agent fast. It is <strong>never</strong> the final version. Expect to iterate on instructions 3–5 times before sharing.</p>
+      <h2>The "first draft" rule</h2>
+      <p>Describe gets you to a working agent fast. It is <strong>never</strong> the final version. Expect to iterate on
+        instructions 3–5 times before sharing.</p>
 
-  <h2>Tweaking instructions</h2>
-  <p>Good instructions follow a predictable shape:</p>
-  <ol class="steps">
-    <li><strong>Identity</strong> — one sentence: who the agent is and what it does.</li>
-    <li><strong>Core behavior</strong> — what to do on the first turn, on follow-ups, on completion.</li>
-    <li><strong>Style</strong> — tone, voice, words to use or avoid.</li>
-    <li><strong>Rules / guardrails</strong> — things to never do, things to always do.</li>
-    <li><strong>Out-of-scope</strong> — what to politely refuse or redirect.</li>
-  </ol>
+      <h2>Tweaking instructions</h2>
+      <p>Good instructions follow a predictable shape:</p>
+      <ol class="steps">
+        <li><strong>Identity</strong> — one sentence: who the agent is and what it does.</li>
+        <li><strong>Core behavior</strong> — what to do on the first turn, on follow-ups, on completion.</li>
+        <li><strong>Style</strong> — tone, voice, words to use or avoid.</li>
+        <li><strong>Rules / guardrails</strong> — things to never do, things to always do.</li>
+        <li><strong>Out-of-scope</strong> — what to politely refuse or redirect.</li>
+      </ol>
 
-  <p>Drop this template into either tool to start from a clean structure:</p>
+      <p>Drop this template into either tool to start from a clean structure:</p>
 
-  <div class="copy-block">
-    <div class="label"><span>Instructions template</span><button class="copy-btn" data-target="tt-template">Copy</button></div>
-    <pre id="tt-template">You are [AGENT NAME] — [one-sentence identity].
+      <div class="copy-block">
+        <div class="label"><span>Instructions template</span><button class="copy-btn"
+            data-target="tt-template">Copy</button></div>
+        <pre id="tt-template">You are [AGENT NAME] — [one-sentence identity].
 
 CORE BEHAVIOR
 - On the first message: [what to ask or say].
@@ -796,155 +1025,191 @@ RULES
 OUT OF SCOPE
 - [Topic 1] — [how to redirect]
 - [Topic 2] — [how to redirect]</pre>
-  </div>
+      </div>
 
-  <h3>Common tweaks after first test</h3>
-  <ul>
-    <li><strong>Agent is too generic.</strong> Add 1–2 concrete examples of an ideal response inside the instructions.</li>
-    <li><strong>Agent ignores a rule.</strong> Move the rule higher in the instructions and rewrite as a positive statement ("Always do X") rather than a negative ("Don't do Y").</li>
-    <li><strong>Agent rambles.</strong> Add an explicit length or format constraint: "Respond in under 120 words" or "Use bullet points with a maximum of five items."</li>
-    <li><strong>Agent guesses when it shouldn't.</strong> Add: "If you are not certain, ask a clarifying question instead of guessing."</li>
-    <li><strong>Wrong knowledge source got used (Studio).</strong> Tighten the description of each knowledge source so the orchestrator picks the right one.</li>
-  </ul>
+      <h3>Common tweaks after first test</h3>
+      <ul>
+        <li><strong>Agent is too generic.</strong> Add 1–2 concrete examples of an ideal response inside the
+          instructions.</li>
+        <li><strong>Agent ignores a rule.</strong> Move the rule higher in the instructions and rewrite as a positive
+          statement ("Always do X") rather than a negative ("Don't do Y").</li>
+        <li><strong>Agent rambles.</strong> Add an explicit length or format constraint: "Respond in under 120 words" or
+          "Use bullet points with a maximum of five items."</li>
+        <li><strong>Agent guesses when it shouldn't.</strong> Add: "If you are not certain, ask a clarifying question
+          instead of guessing."</li>
+        <li><strong>Wrong knowledge source got used (Studio).</strong> Tighten the description of each knowledge source
+          so the orchestrator picks the right one.</li>
+      </ul>
 
-  <h2>Setting the icon</h2>
-  <h3>Generate from a prompt</h3>
-  <p>Both Agent Builder and Copilot Studio let you generate an icon with Copilot. Tips:</p>
-  <ul>
-    <li>Be visual and specific: "a smiling cactus wearing sunglasses" beats "a plant icon."</li>
-    <li>Specify style: <em>flat vector</em>, <em>minimalist</em>, <em>line art</em>, <em>3D claymation</em>.</li>
-    <li>Specify color palette: <em>soft pastel</em>, <em>navy and gold</em>, <em>monochrome blue</em>.</li>
-    <li>End with <em>white background</em> so the icon composites cleanly on any surface.</li>
-  </ul>
+      <h2>Setting the icon</h2>
+      <h3>Generate from a prompt</h3>
+      <p>Both Agent Builder and Copilot Studio let you generate an icon with Copilot. Tips:</p>
+      <ul>
+        <li>Be visual and specific: "a smiling cactus wearing sunglasses" beats "a plant icon."</li>
+        <li>Specify style: <em>flat vector</em>, <em>minimalist</em>, <em>line art</em>, <em>3D claymation</em>.</li>
+        <li>Specify color palette: <em>soft pastel</em>, <em>navy and gold</em>, <em>monochrome blue</em>.</li>
+        <li>End with <em>white background</em> so the icon composites cleanly on any surface.</li>
+      </ul>
 
-  <div class="copy-block">
-    <div class="label"><span>Reusable icon prompt template</span><button class="copy-btn" data-target="tt-icon-template">Copy</button></div>
-    <pre id="tt-icon-template">A [adjective] [subject] [optional action or accessory], [color palette], [style: flat vector / minimalist / line art / 3D], white background.</pre>
-  </div>
+      <div class="copy-block">
+        <div class="label"><span>Reusable icon prompt template</span><button class="copy-btn"
+            data-target="tt-icon-template">Copy</button></div>
+        <pre
+          id="tt-icon-template">A [adjective] [subject] [optional action or accessory], [color palette], [style: flat vector / minimalist / line art / 3D], white background.</pre>
+      </div>
 
-  <h3>Upload your own</h3>
-  <p>For internal corporate use, prefer a PNG sized 512×512 or an SVG. Keep it readable at 32×32 — that's how small it shows in the Copilot Chat sidebar.</p>
+      <h3>Upload your own</h3>
+      <p>For internal corporate use, prefer a PNG sized 512×512 or an SVG. Keep it readable at 32×32 — that's how small
+        it shows in the Copilot Chat sidebar.</p>
 
-  <h2>Testing — the right loop</h2>
-  <p>Use the <strong>Test pane</strong> in both tools. Every change to instructions, knowledge, or topics should be tested with at least these four prompt types:</p>
+      <h2>Testing — the right loop</h2>
+      <p>Use the <strong>Test pane</strong> in both tools. Every change to instructions, knowledge, or topics should be
+        tested with at least these four prompt types:</p>
 
-  <table>
-    <thead><tr><th>Prompt type</th><th>Why</th><th>Example</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Happy path</strong></td><td>The core thing the agent exists to do.</td><td>"Plan a 5-minute icebreaker for 10 people."</td></tr>
-      <tr><td><strong>Edge case</strong></td><td>Same task, unusual input.</td><td>"Plan an icebreaker for 200 people in 90 seconds."</td></tr>
-      <tr><td><strong>Guardrail</strong></td><td>Something the agent should refuse or redirect.</td><td>"Suggest a trust fall." / "Identify my plant from a photo."</td></tr>
-      <tr><td><strong>Memory / persona</strong></td><td>Make sure the agent stays in character across turns.</td><td>"Now do it in pirate voice." (Should keep its actual persona.)</td></tr>
-    </tbody>
-  </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Prompt type</th>
+            <th>Why</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Happy path</strong></td>
+            <td>The core thing the agent exists to do.</td>
+            <td>"Plan a 5-minute icebreaker for 10 people."</td>
+          </tr>
+          <tr>
+            <td><strong>Edge case</strong></td>
+            <td>Same task, unusual input.</td>
+            <td>"Plan an icebreaker for 200 people in 90 seconds."</td>
+          </tr>
+          <tr>
+            <td><strong>Guardrail</strong></td>
+            <td>Something the agent should refuse or redirect.</td>
+            <td>"Suggest a trust fall." / "Identify my plant from a photo."</td>
+          </tr>
+          <tr>
+            <td><strong>Memory / persona</strong></td>
+            <td>Make sure the agent stays in character across turns.</td>
+            <td>"Now do it in pirate voice." (Should keep its actual persona.)</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <div class="copy-block">
-    <div class="label"><span>Universal "smoke test" prompts</span><button class="copy-btn" data-target="tt-smoke">Copy</button></div>
-    <pre id="tt-smoke">1. [Happy path] — Ask the agent to do exactly what it was built for.
+      <div class="copy-block">
+        <div class="label"><span>Universal "smoke test" prompts</span><button class="copy-btn"
+            data-target="tt-smoke">Copy</button></div>
+        <pre id="tt-smoke">1. [Happy path] — Ask the agent to do exactly what it was built for.
 2. [Edge case] — Same task with an unusual constraint (huge group, tiny time, weird tone).
 3. [Guardrail] — Ask for something explicitly forbidden in instructions.
 4. [Out of scope] — Ask about a topic outside the agent's purpose.
 5. [Persona drift] — Ask the agent to pretend to be something else.
 6. [Knowledge grounding] — Ask a question only your knowledge source can answer.
 7. [Citation check] (Studio only) — Look for source citations on grounded answers.</pre>
-  </div>
+      </div>
 
-  <h3>Studio-specific testing tips</h3>
-  <ul>
-    <li>Click <strong>Show topic map</strong> in the test pane to see which topic fired.</li>
-    <li>If a topic isn't triggering, add or rephrase trigger phrases. The orchestrator uses them as semantic hints, not exact matches.</li>
-    <li>Refresh the test pane (<span class="kbd">↻</span>) after every save, especially after knowledge changes — caches can lag.</li>
-    <li>Use <strong>Activity map</strong> after publishing to see real usage patterns.</li>
-  </ul>
+      <h3>Studio-specific testing tips</h3>
+      <ul>
+        <li>Click <strong>Show topic map</strong> in the test pane to see which topic fired.</li>
+        <li>If a topic isn't triggering, add or rephrase trigger phrases. The orchestrator uses them as semantic hints,
+          not exact matches.</li>
+        <li>Refresh the test pane (<span class="kbd">↻</span>) after every save, especially after knowledge changes —
+          caches can lag.</li>
+        <li>Use <strong>Activity map</strong> after publishing to see real usage patterns.</li>
+      </ul>
 
-  <h2>Wrap-up checklist</h2>
-  <div class="card">
-    <ul>
-      <li>✅ Name is clear and on-brand</li>
-      <li>✅ Icon is readable at 32×32</li>
-      <li>✅ Description tells a stranger what the agent does in one sentence</li>
-      <li>✅ Instructions follow the 5-section shape</li>
-      <li>✅ At least 3 starter prompts cover the main use cases</li>
-      <li>✅ All 4 prompt types from the smoke test were tried</li>
-      <li>✅ (Studio) Knowledge sources have descriptions so the orchestrator picks correctly</li>
-      <li>✅ (Studio) At least one structured topic for the most important flow</li>
-    </ul>
-  </div>
+      <h2>Wrap-up checklist</h2>
+      <div class="card">
+        <ul>
+          <li>✅ Name is clear and on-brand</li>
+          <li>✅ Icon is readable at 32×32</li>
+          <li>✅ Description tells a stranger what the agent does in one sentence</li>
+          <li>✅ Instructions follow the 5-section shape</li>
+          <li>✅ At least 3 starter prompts cover the main use cases</li>
+          <li>✅ All 4 prompt types from the smoke test were tried</li>
+          <li>✅ (Studio) Knowledge sources have descriptions so the orchestrator picks correctly</li>
+          <li>✅ (Studio) At least one structured topic for the most important flow</li>
+        </ul>
+      </div>
 
-  <h2>Questions to leave the class with</h2>
-  <ol class="steps">
-    <li>What's a workflow on your team where someone is the bottleneck answering the same questions?</li>
-    <li>What information would the agent need to ground on?</li>
-    <li>Could it start as an Agent Builder agent, or does it need Copilot Studio from day one?</li>
-  </ol>
+      <h2>Questions to leave the class with</h2>
+      <ol class="steps">
+        <li>What's a workflow on your team where someone is the bottleneck answering the same questions?</li>
+        <li>What information would the agent need to ground on?</li>
+        <li>Could it start as an Agent Builder agent, or does it need Copilot Studio from day one?</li>
+      </ol>
 
-  <div class="nav-foot">
-    <a data-page="m3">← Copilot Studio</a>
-    <a data-page="home">Back to Home →</a>
-  </div>
-</section>
+      <div class="nav-foot">
+        <a data-page="m3">← Copilot Studio</a>
+        <a data-page="home">Back to Home →</a>
+      </div>
+    </section>
 
-</main>
+  </main>
 
-<footer class="site">Building Agents in M365 · Training Edition</footer>
+  <footer class="site">Building Agents in M365 · Training Edition</footer>
 
-<script>
-// ---- In-page navigation ----
-function showPage(pageId) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  const target = document.getElementById("page-" + pageId);
-  if (target) target.classList.add("active");
+  <script>
+    // ---- In-page navigation ----
+    function showPage(pageId) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      const target = document.getElementById("page-" + pageId);
+      if (target) target.classList.add("active");
 
-  document.querySelectorAll("nav.modules a").forEach(a => {
-    a.classList.toggle("active", a.getAttribute("data-page") === pageId);
-  });
+      document.querySelectorAll("nav.modules a").forEach(a => {
+        a.classList.toggle("active", a.getAttribute("data-page") === pageId);
+      });
 
-  if (history.replaceState) {
-    history.replaceState(null, "", "#" + pageId);
-  }
-  window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Wire up every element with data-page
-  document.querySelectorAll("[data-page]").forEach(el => {
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      showPage(el.getAttribute("data-page"));
-    });
-  });
-
-  // Initial page from URL hash
-  const initial = (location.hash || "#home").slice(1);
-  if (document.getElementById("page-" + initial)) {
-    showPage(initial);
-  }
-
-  // ---- Copy buttons ----
-  document.querySelectorAll(".copy-btn").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const targetId = btn.getAttribute("data-target");
-      const pre = document.getElementById(targetId);
-      if (!pre) return;
-      try {
-        await navigator.clipboard.writeText(pre.innerText);
-        const original = btn.textContent;
-        btn.textContent = "Copied!";
-        btn.classList.add("copied");
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.classList.remove("copied");
-        }, 1600);
-      } catch (e) {
-        const range = document.createRange();
-        range.selectNodeContents(pre);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
+      if (history.replaceState) {
+        history.replaceState(null, "", "#" + pageId);
       }
+      window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Wire up every element with data-page
+      document.querySelectorAll("[data-page]").forEach(el => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          showPage(el.getAttribute("data-page"));
+        });
+      });
+
+      // Initial page from URL hash
+      const initial = (location.hash || "#home").slice(1);
+      if (document.getElementById("page-" + initial)) {
+        showPage(initial);
+      }
+
+      // ---- Copy buttons ----
+      document.querySelectorAll(".copy-btn").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const targetId = btn.getAttribute("data-target");
+          const pre = document.getElementById(targetId);
+          if (!pre) return;
+          try {
+            await navigator.clipboard.writeText(pre.innerText);
+            const original = btn.textContent;
+            btn.textContent = "Copied!";
+            btn.classList.add("copied");
+            setTimeout(() => {
+              btn.textContent = original;
+              btn.classList.remove("copied");
+            }, 1600);
+          } catch (e) {
+            const range = document.createRange();
+            range.selectNodeContents(pre);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+        });
+      });
     });
-  });
-});
-</script>
+  </script>
+    <script src="../js/sitenav.js"></script>
 </body>
+
 </html>

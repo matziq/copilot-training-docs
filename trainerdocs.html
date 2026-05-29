@@ -187,6 +187,43 @@
         .training-card.hidden-by-filter {
             display: none;
         }
+
+        /* ── Category sections (deep-linked from top nav) ── */
+        .cat-section {
+            margin-top: var(--sp-12);
+            scroll-margin-top: 72px;
+        }
+
+        .cat-section-header {
+            display: flex;
+            align-items: baseline;
+            gap: var(--sp-3);
+            padding-bottom: var(--sp-3);
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .cat-section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--purple-deep);
+            margin: 0;
+        }
+
+        .cat-section-header .cat-section-count {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .cat-section .training-grid {
+            margin-top: var(--sp-6);
+        }
+
+        .cat-section.hidden-by-filter {
+            display: none;
+        }
     </style>
 </head>
 
@@ -210,317 +247,387 @@
             <button class="filter-pill" data-filter="m365-copilot">M365 Copilot</button>
         </div>
 
-        <div class="training-grid" id="trainingGrid">
+        <!-- ============================================================
+             COPILOT CHAT
+             ============================================================ -->
+        <section id="cat-copilot-chat" class="cat-section">
+            <div class="cat-section-header">
+                <h2>&#128172; Copilot Chat</h2>
+                <span class="cat-section-count">Trainer demo scripts</span>
+            </div>
+            <div class="training-grid">
 
-            <!-- ── Training 1 (Trainer) ── -->
-            <a href="Trainer/training1/" class="training-card purple" data-category="m365-copilot">
-                <div class="training-card-icon">&#128188;</div>
-                <span class="training-card-label">Training 1 &middot; Trainer</span>
-                <div class="training-card-title">Sales Master Class &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Trainer guide: Copilot Mobile, Chat (Web &amp; Work), Teams, Researcher,
-                    Analyst, Word, PowerPoint, Outlook, Excel (22 prompts), and agent build.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 6 Modules</span>
-                    <span>&#9202; ~2 hrs</span>
-                </div>
-            </a>
+                <!-- ── Training 3 (Trainer) ── -->
+                <a href="Trainer/training3/" class="training-card orange" data-category="copilot-chat">
+                    <div class="training-card-icon">&#128172;</div>
+                    <span class="training-card-label">Training 3 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Chat for All &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        Trainer demo walkthrough: setup, UI overview, web research, brainstorming,
+                        file-based analysis, data visualization, and image analysis.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 6 Modules</span>
+                        <span>&#9202; ~65 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 2 (Trainer) ── -->
-            <a href="Trainer/training2/" class="training-card green" data-category="agents">
-                <div class="training-card-icon">&#129302;</div>
-                <span class="training-card-label">Training 2 &middot; Trainer</span>
-                <div class="training-card-title">Agent Revolution &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Demo walkthrough covering Prompt Coach, Idea Coach, custom agent creation,
-                    Researcher, Analyst, and premium M365 Copilot agents.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 3 Modules</span>
-                    <span>&#9202; ~45 min</span>
-                </div>
-            </a>
+                <!-- ── Training 6 (Trainer) ── -->
+                <a href="Trainer/training6/" class="training-card teal" data-category="copilot-chat">
+                    <div class="training-card-icon">&#128172;</div>
+                    <span class="training-card-label">Training 6 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Chat Training &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        55-minute live demo script: interface walk-through, 4 prompt ingredients,
+                        4 demos (email, brainstorming, file upload, writing), memory &amp;
+                        personalization, image generation, and Prompt Gallery.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 7 Segments</span>
+                        <span>&#9202; ~55 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 3 (Trainer) ── -->
-            <a href="Trainer/training3/" class="training-card orange" data-category="copilot-chat">
-                <div class="training-card-icon">&#128172;</div>
-                <span class="training-card-label">Training 3 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Chat for All &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Trainer demo walkthrough: setup, UI overview, web research, brainstorming,
-                    file-based analysis, data visualization, and image analysis.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 6 Modules</span>
-                    <span>&#9202; ~65 min</span>
-                </div>
-            </a>
+                <!-- ── Training 8 (Trainer) ── -->
+                <a href="Trainer/training8/" class="training-card purple" data-category="copilot-chat">
+                    <div class="training-card-icon">&#128172;</div>
+                    <span class="training-card-label">Training 8 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Chat Training &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        90-minute trainer script: intro to Copilot, GCSE prompting framework,
+                        working with files, 3 live demo sets, best practices, and role-based
+                        prompt appendix.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 8 Sections</span>
+                        <span>&#9202; ~90 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 4 (Trainer) ── -->
-            <a href="Trainer/training4/" class="training-card red" data-category="m365-copilot">
-                <div class="training-card-icon">&#128227;</div>
-                <span class="training-card-label">Training 4 &middot; Trainer</span>
-                <div class="training-card-title">Marketing AI Workshop &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    90-minute presenter guide: prompting best practices, data analysis,
-                    PowerPoint Agent, Work IQ, Excel &amp; PowerPoint (licensed), and agent-based
-                    product feed enrichment.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 7 Demos</span>
-                    <span>&#9202; ~90 min</span>
-                </div>
-            </a>
+                <!-- ── Training 13 (Trainer) ── -->
+                <a href="Trainer/training13/" class="training-card blue" data-category="copilot-chat">
+                    <div class="training-card-icon">&#9889;</div>
+                    <span class="training-card-label">Training 13 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Chat &mdash; Your IT Superpower &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        IT-focused trainer guide: the numbers, what&rsquo;s new, interface overview,
+                        GCSE framework, nine live demos (scripting, troubleshooting, KQL, security,
+                        incidents, regex, Bicep, change requests, on-call triage), tips &amp; tricks,
+                        and custom instructions.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 9 Sections</span>
+                        <span>&#9202; ~60 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 5 (Trainer) ── -->
-            <a href="Trainer/training5/" class="training-card orange" data-category="m365-copilot">
-                <div class="training-card-icon">&#9889;</div>
-                <span class="training-card-label">Training 5 &middot; Trainer</span>
-                <div class="training-card-title">M365 Copilot Hands-on Training for Power Users &mdash; Trainer Guide
-                </div>
-                <p class="training-card-desc">
-                    Facilitator script &amp; prompt library: 4 live demo scenarios (Outlook,
-                    Teams, Word, Excel), prompt crafting principles, and troubleshooting tips.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 4 Scenarios</span>
-                    <span>&#9202; ~60 min</span>
-                </div>
-            </a>
+                <!-- ── Training 16 (Trainer) ── -->
+                <a href="Trainer/training16/" class="training-card red" data-category="copilot-chat">
+                    <div class="training-card-icon">&#128227;</div>
+                    <span class="training-card-label">Training 16 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Chat for Marketing &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        Beverage-industry trainer guide: ~40-minute run of show, pre-class
+                        setup checklist, ten copy-paste demos with talking points (trends,
+                        personas, multi-channel campaigns, competitive teardown, files,
+                        Outlook, memory, image concepts), and a Monday-morning close.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 10 Demos</span>
+                        <span>&#9202; ~40 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 6 (Trainer) ── -->
-            <a href="Trainer/training6/" class="training-card teal" data-category="copilot-chat">
-                <div class="training-card-icon">&#128172;</div>
-                <span class="training-card-label">Training 6 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Chat Training &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    55-minute live demo script: interface walk-through, 4 prompt ingredients,
-                    4 demos (email, brainstorming, file upload, writing), memory &amp;
-                    personalization, image generation, and Prompt Gallery.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 7 Segments</span>
-                    <span>&#9202; ~55 min</span>
-                </div>
-            </a>
+                <!-- ── Training 17 (Trainer) ── -->
+                <a href="Trainer/training17/" class="training-card blue" data-category="copilot-chat">
+                    <div class="training-card-icon">&#128172;</div>
+                    <span class="training-card-label">Training 17 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Chat (Basic) &mdash; Trainer Playbook</div>
+                    <p class="training-card-desc">
+                        Beginner-friendly trainer playbook: ~75-minute run of show, pre-class
+                        setup, deck talking points (GCSE framework), and all 19 copy-paste
+                        demos with trainer notes, call-outs, and a troubleshooting cheat sheet
+                        covering writing, summarizing, data viz, images, memory, and Outlook.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 19 Demos</span>
+                        <span>&#9202; ~75 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 7 (Trainer) ── -->
-            <a href="Trainer/training7/" class="training-card green" data-category="agents">
-                <div class="training-card-icon">&#129302;</div>
-                <span class="training-card-label">Training 7 &middot; Trainer</span>
-                <div class="training-card-title">AI Agents Immersion Workshop &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Full-day facilitator script: AI agent concepts, Copilot Studio hands-on lab,
-                    hackathon challenge, use case library, judging criteria, and demo day format.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 3 Modules</span>
-                    <span>&#9202; Full Day</span>
-                </div>
-            </a>
+            </div>
+        </section>
 
-            <!-- ── Training 8 (Trainer) ── -->
-            <a href="Trainer/training8/" class="training-card purple" data-category="copilot-chat">
-                <div class="training-card-icon">&#128172;</div>
-                <span class="training-card-label">Training 8 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Chat Training &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    90-minute trainer script: intro to Copilot, GCSE prompting framework,
-                    working with files, 3 live demo sets, best practices, and role-based
-                    prompt appendix.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 8 Sections</span>
-                    <span>&#9202; ~90 min</span>
-                </div>
-            </a>
+        <!-- ============================================================
+             AGENTS
+             ============================================================ -->
+        <section id="cat-agents" class="cat-section">
+            <div class="cat-section-header">
+                <h2>&#129302; Agents</h2>
+                <span class="cat-section-count">Build &amp; deploy AI agents</span>
+            </div>
+            <div class="training-grid">
 
-            <!-- ── Training 9 (Trainer) ── -->
-            <a href="Trainer/training9/" class="training-card red" data-category="agents">
-                <div class="training-card-icon">&#128640;</div>
-                <span class="training-card-label">Training 9 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Agents Hack-a-Thon &mdash; Facilitator Guide</div>
-                <p class="training-card-desc">
-                    Full-day facilitator script: event overview, pre-event checklists,
-                    run of show, build phase coaching, 6 agent scenarios, FAQ &amp;
-                    troubleshooting, and post-event follow-up.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 8 Sections</span>
-                    <span>&#9202; Full Day</span>
-                </div>
-            </a>
+                <!-- ── Training 2 (Trainer) ── -->
+                <a href="Trainer/training2/" class="training-card green" data-category="agents">
+                    <div class="training-card-icon">&#129302;</div>
+                    <span class="training-card-label">Training 2 &middot; Trainer</span>
+                    <div class="training-card-title">Agent Revolution &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        Demo walkthrough covering Prompt Coach, Idea Coach, custom agent creation,
+                        Researcher, Analyst, and premium M365 Copilot agents.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 3 Modules</span>
+                        <span>&#9202; ~45 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 10 (Trainer) ── -->
-            <a href="Trainer/training10/" class="training-card purple" data-category="prompting">
-                <div class="training-card-icon">&#10024;</div>
-                <span class="training-card-label">Training 10 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Prompt-a-thon Masterclass &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Interactive prompt masterclass: art of prompting, GCSE framework,
-                    iterating &amp; expanding prompts, conversational prompting, agents,
-                    expanded 7 best practices deep-dives, Copilot interface, and live demo.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 10 Sections</span>
-                    <span>&#9202; ~90 min</span>
-                </div>
-            </a>
+                <!-- ── Training 7 (Trainer) ── -->
+                <a href="Trainer/training7/" class="training-card green" data-category="agents">
+                    <div class="training-card-icon">&#129302;</div>
+                    <span class="training-card-label">Training 7 &middot; Trainer</span>
+                    <div class="training-card-title">AI Agents Immersion Workshop &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        Full-day facilitator script: AI agent concepts, Copilot Studio hands-on lab,
+                        hackathon challenge, use case library, judging criteria, and demo day format.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 3 Modules</span>
+                        <span>&#9202; Full Day</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 11 (Trainer) ── -->
-            <a href="Trainer/training11/" class="training-card green" data-category="prompting">
-                <div class="training-card-icon">&#10024;</div>
-                <span class="training-card-label">Training 11 &middot; Trainer</span>
-                <div class="training-card-title">M365 Copilot Promptathon &mdash; Advanced &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Trainer guide: art of prompting, GCSE framework, iterating &amp;
-                    expanding prompts, conversational prompting, agents, 7 best practices
-                    deep-dives, Copilot interface overview, and live demo.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 10 Sections</span>
-                    <span>&#9202; ~90 min</span>
-                </div>
-            </a>
+                <!-- ── Training 9 (Trainer) ── -->
+                <a href="Trainer/training9/" class="training-card red" data-category="agents">
+                    <div class="training-card-icon">&#128640;</div>
+                    <span class="training-card-label">Training 9 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Agents Hack-a-Thon &mdash; Facilitator Guide</div>
+                    <p class="training-card-desc">
+                        Full-day facilitator script: event overview, pre-event checklists,
+                        run of show, build phase coaching, 6 agent scenarios, FAQ &amp;
+                        troubleshooting, and post-event follow-up.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 8 Sections</span>
+                        <span>&#9202; Full Day</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 12 (Trainer) ── -->
-            <a href="Trainer/training12/" class="training-card orange" data-category="prompting">
-                <div class="training-card-icon">&#10024;</div>
-                <span class="training-card-label">Training 12 &middot; Trainer</span>
-                <div class="training-card-title">M365 Copilot Promptathon &mdash; Standard &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Trainer guide: art of prompting, GCSE framework, iterating &amp;
-                    expanding prompts, conversational prompting, using templates, agents,
-                    prompt sharing, and 7 best practices deep-dives.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 9 Sections</span>
-                    <span>&#9202; ~90 min</span>
-                </div>
-            </a>
+                <!-- ── Training 15 (Trainer) ── -->
+                <a href="Trainer/training15/" class="training-card teal" data-category="agents">
+                    <div class="training-card-icon">&#129302;</div>
+                    <span class="training-card-label">Training 15 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Studio Training &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        60-minute, demo-heavy Copilot Studio facilitator script: run of show,
+                        pre-class checklist, Agent Builder vs. Studio comparison, three live
+                        demos (Concierge, Service Hero, Deal Desk), talk tracks, wow moments,
+                        fallbacks, and Q&amp;A prep.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 8 Sections</span>
+                        <span>&#9202; ~60 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 13 (Trainer) ── -->
-            <a href="Trainer/training13/" class="training-card blue" data-category="copilot-chat">
-                <div class="training-card-icon">&#9889;</div>
-                <span class="training-card-label">Training 13 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Chat &mdash; Your IT Superpower &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    IT-focused trainer guide: the numbers, what&rsquo;s new, interface overview,
-                    GCSE framework, nine live demos (scripting, troubleshooting, KQL, security,
-                    incidents, regex, Bicep, change requests, on-call triage), tips &amp; tricks,
-                    and custom instructions.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 9 Sections</span>
-                    <span>&#9202; ~60 min</span>
-                </div>
-            </a>
+                <!-- ── Declarative Agents — Retail ── -->
+                <a href="declarative-agents-retail/" class="training-card green" data-category="agents">
+                    <div class="training-card-icon">&#129302;</div>
+                    <span class="training-card-label">Build Sheet &middot; Trainer</span>
+                    <div class="training-card-title">Retail Declarative Agents &mdash; Live Build Sheet</div>
+                    <p class="training-card-desc">
+                        Three copy-paste declarative agents for retail: Retail Pulse (industry
+                        intelligence), Shrink Stopper (loss prevention), and Peak Season Planner
+                        (holiday &amp; seasonal strategy). Each uses 3 web sources.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#129302; 3 Agents</span>
+                        <span>&#127760; Web-grounded</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 14 (Trainer) ── -->
-            <a href="Trainer/training14/" class="training-card purple" data-category="m365-copilot">
-                <div class="training-card-icon">&#9878;</div>
-                <span class="training-card-label">Training 14 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Immersion &mdash; Legal &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Legal-focused trainer guide: GCSE framework, Work IQ, document comparison,
-                    deep legal research with Researcher agent, Copilot in Word &amp; Outlook,
-                    building a contract review agent, and trainer tips throughout.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 7 Sections</span>
-                    <span>&#9202; ~60 min</span>
-                </div>
-            </a>
+            </div>
+        </section>
 
-            <!-- ── Training 15 (Trainer) ── -->
-            <a href="Trainer/training15/" class="training-card teal" data-category="agents">
-                <div class="training-card-icon">&#129302;</div>
-                <span class="training-card-label">Training 15 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Studio Training &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    60-minute, demo-heavy Copilot Studio facilitator script: run of show,
-                    pre-class checklist, Agent Builder vs. Studio comparison, three live
-                    demos (Concierge, Service Hero, Deal Desk), talk tracks, wow moments,
-                    fallbacks, and Q&amp;A prep.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 8 Sections</span>
-                    <span>&#9202; ~60 min</span>
-                </div>
-            </a>
+        <!-- ============================================================
+             PROMPTING
+             ============================================================ -->
+        <section id="cat-prompting" class="cat-section">
+            <div class="cat-section-header">
+                <h2>&#10024; Prompting</h2>
+                <span class="cat-section-count">Frameworks &amp; promptathons</span>
+            </div>
+            <div class="training-grid">
 
-            <!-- ── Training 16 (Trainer) ── -->
-            <a href="Trainer/training16/" class="training-card red" data-category="copilot-chat">
-                <div class="training-card-icon">&#128227;</div>
-                <span class="training-card-label">Training 16 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Chat for Marketing &mdash; Trainer Guide</div>
-                <p class="training-card-desc">
-                    Beverage-industry trainer guide: ~40-minute run of show, pre-class
-                    setup checklist, ten copy-paste demos with talking points (trends,
-                    personas, multi-channel campaigns, competitive teardown, files,
-                    Outlook, memory, image concepts), and a Monday-morning close.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 10 Demos</span>
-                    <span>&#9202; ~40 min</span>
-                </div>
-            </a>
+                <!-- ── Training 10 (Trainer) ── -->
+                <a href="Trainer/training10/" class="training-card purple" data-category="prompting">
+                    <div class="training-card-icon">&#10024;</div>
+                    <span class="training-card-label">Training 10 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Prompt-a-thon Masterclass &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        Interactive prompt masterclass: art of prompting, GCSE framework,
+                        iterating &amp; expanding prompts, conversational prompting, agents,
+                        expanded 7 best practices deep-dives, Copilot interface, and live demo.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 10 Sections</span>
+                        <span>&#9202; ~90 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Training 17 (Trainer) ── -->
-            <a href="Trainer/training17/" class="training-card blue" data-category="copilot-chat">
-                <div class="training-card-icon">&#128172;</div>
-                <span class="training-card-label">Training 17 &middot; Trainer</span>
-                <div class="training-card-title">Copilot Chat (Basic) &mdash; Trainer Playbook</div>
-                <p class="training-card-desc">
-                    Beginner-friendly trainer playbook: ~75-minute run of show, pre-class
-                    setup, deck talking points (GCSE framework), and all 19 copy-paste
-                    demos with trainer notes, call-outs, and a troubleshooting cheat sheet
-                    covering writing, summarizing, data viz, images, memory, and Outlook.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#128218; 19 Demos</span>
-                    <span>&#9202; ~75 min</span>
-                </div>
-            </a>
+                <!-- ── Training 11 (Trainer) ── -->
+                <a href="Trainer/training11/" class="training-card green" data-category="prompting">
+                    <div class="training-card-icon">&#10024;</div>
+                    <span class="training-card-label">Training 11 &middot; Trainer</span>
+                    <div class="training-card-title">M365 Copilot Promptathon &mdash; Advanced &mdash; Trainer Guide
+                    </div>
+                    <p class="training-card-desc">
+                        Trainer guide: art of prompting, GCSE framework, iterating &amp;
+                        expanding prompts, conversational prompting, agents, 7 best practices
+                        deep-dives, Copilot interface overview, and live demo.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 10 Sections</span>
+                        <span>&#9202; ~90 min</span>
+                    </div>
+                </a>
 
-            <!-- ── Declarative Agents — Retail (Trainer) ── -->
-            <a href="declarative-agents-retail/" class="training-card green" data-category="agents">
-                <div class="training-card-icon">&#129302;</div>
-                <span class="training-card-label">Build Sheet &middot; Trainer</span>
-                <div class="training-card-title">Retail Declarative Agents &mdash; Live Build Sheet</div>
-                <p class="training-card-desc">
-                    Three copy-paste declarative agents for retail: Retail Pulse (industry
-                    intelligence), Shrink Stopper (loss prevention), and Peak Season Planner
-                    (holiday &amp; seasonal strategy). Each uses 3 web sources.
-                </p>
-                <div class="training-card-meta">
-                    <span>&#129302; 3 Agents</span>
-                    <span>&#127760; Web-grounded</span>
-                </div>
-            </a>
+                <!-- ── Training 12 (Trainer) ── -->
+                <a href="Trainer/training12/" class="training-card orange" data-category="prompting">
+                    <div class="training-card-icon">&#10024;</div>
+                    <span class="training-card-label">Training 12 &middot; Trainer</span>
+                    <div class="training-card-title">M365 Copilot Promptathon &mdash; Standard &mdash; Trainer Guide
+                    </div>
+                    <p class="training-card-desc">
+                        Trainer guide: art of prompting, GCSE framework, iterating &amp;
+                        expanding prompts, conversational prompting, using templates, agents,
+                        prompt sharing, and 7 best practices deep-dives.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 9 Sections</span>
+                        <span>&#9202; ~90 min</span>
+                    </div>
+                </a>
 
-        </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             M365 COPILOT
+             ============================================================ -->
+        <section id="cat-m365-copilot" class="cat-section">
+            <div class="cat-section-header">
+                <h2>&#128188; M365 Copilot</h2>
+                <span class="cat-section-count">Power users &amp; vertical guides</span>
+            </div>
+            <div class="training-grid">
+
+                <!-- ── Training 1 (Trainer) ── -->
+                <a href="Trainer/training1/" class="training-card purple" data-category="m365-copilot">
+                    <div class="training-card-icon">&#128188;</div>
+                    <span class="training-card-label">Training 1 &middot; Trainer</span>
+                    <div class="training-card-title">Sales Master Class &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        Trainer guide: Copilot Mobile, Chat (Web &amp; Work), Teams, Researcher,
+                        Analyst, Word, PowerPoint, Outlook, Excel (22 prompts), and agent build.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 6 Modules</span>
+                        <span>&#9202; ~2 hrs</span>
+                    </div>
+                </a>
+
+                <!-- ── Training 4 (Trainer) ── -->
+                <a href="Trainer/training4/" class="training-card red" data-category="m365-copilot">
+                    <div class="training-card-icon">&#128227;</div>
+                    <span class="training-card-label">Training 4 &middot; Trainer</span>
+                    <div class="training-card-title">Marketing AI Workshop &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        90-minute presenter guide: prompting best practices, data analysis,
+                        PowerPoint Agent, Work IQ, Excel &amp; PowerPoint (licensed), and agent-based
+                        product feed enrichment.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 7 Demos</span>
+                        <span>&#9202; ~90 min</span>
+                    </div>
+                </a>
+
+                <!-- ── Training 5 (Trainer) ── -->
+                <a href="Trainer/training5/" class="training-card orange" data-category="m365-copilot">
+                    <div class="training-card-icon">&#9889;</div>
+                    <span class="training-card-label">Training 5 &middot; Trainer</span>
+                    <div class="training-card-title">M365 Copilot Hands-on Training for Power Users &mdash; Trainer
+                        Guide</div>
+                    <p class="training-card-desc">
+                        Facilitator script &amp; prompt library: 4 live demo scenarios (Outlook,
+                        Teams, Word, Excel), prompt crafting principles, and troubleshooting tips.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 4 Scenarios</span>
+                        <span>&#9202; ~60 min</span>
+                    </div>
+                </a>
+
+                <!-- ── Training 14 (Trainer) ── -->
+                <a href="Trainer/training14/" class="training-card purple" data-category="m365-copilot">
+                    <div class="training-card-icon">&#9878;</div>
+                    <span class="training-card-label">Training 14 &middot; Trainer</span>
+                    <div class="training-card-title">Copilot Immersion &mdash; Legal &mdash; Trainer Guide</div>
+                    <p class="training-card-desc">
+                        Legal-focused trainer guide: GCSE framework, Work IQ, document comparison,
+                        deep legal research with Researcher agent, Copilot in Word &amp; Outlook,
+                        building a contract review agent, and trainer tips throughout.
+                    </p>
+                    <div class="training-card-meta">
+                        <span>&#128218; 7 Sections</span>
+                        <span>&#9202; ~60 min</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
 
     </div>
 
     <script>
+        function applyFilter(filter) {
+            document.querySelectorAll('.filter-pill').forEach(function (p) {
+                p.classList.toggle('active', p.dataset.filter === filter);
+            });
+            document.querySelectorAll('.training-card').forEach(function (card) {
+                var match = (filter === 'all' || card.dataset.category === filter);
+                card.classList.toggle('hidden-by-filter', !match);
+            });
+            document.querySelectorAll('.cat-section').forEach(function (sec) {
+                var visible = sec.querySelectorAll('.training-card:not(.hidden-by-filter)').length;
+                sec.classList.toggle('hidden-by-filter', visible === 0);
+            });
+        }
+
         document.getElementById('filterBar').addEventListener('click', function (e) {
             var pill = e.target.closest('.filter-pill');
             if (!pill) return;
-            var filter = pill.dataset.filter;
-            document.querySelectorAll('.filter-pill').forEach(function (p) { p.classList.remove('active'); });
-            pill.classList.add('active');
-            document.querySelectorAll('.training-card').forEach(function (card) {
-                if (filter === 'all' || card.dataset.category === filter) {
-                    card.classList.remove('hidden-by-filter');
-                } else {
-                    card.classList.add('hidden-by-filter');
-                }
-            });
+            applyFilter(pill.dataset.filter);
+            if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
         });
+
+        function syncFromHash() {
+            var m = (location.hash || '').match(/^#cat-(.+)$/);
+            if (!m) { applyFilter('all'); return; }
+            var cat = m[1];
+            applyFilter('all');
+            var target = document.getElementById('cat-' + cat);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        window.addEventListener('hashchange', syncFromHash);
+        if (location.hash) {
+            setTimeout(syncFromHash, 50);
+        }
     </script>
 
+    <script src="js/sitenav.js"></script>
     <script src="js/main.v3.js"></script>
 </body>
 

@@ -132,6 +132,15 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Offset anchor jumps so the sticky top nav (injected by js/sitenav.js)
+   doesn't cover the target heading. */
+:target,
+section[id],
+.module-header,
+.section-card[id] {
+    scroll-margin-top: 72px;
+}
+
 a {
     color: var(--purple-mid);
     text-decoration: none;
