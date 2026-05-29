@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keep PowerPoint On-Brand with Copilot &mdash; Template Setup Guide</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-ppt-brand.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+        /* ── Page-specific helpers ── */
+        .density-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--sp-4);
+            margin: var(--sp-4) 0;
+        }
+
+        .density-card {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: var(--sp-4);
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .density-card h4 {
+            margin: 0 0 var(--sp-2) 0;
+            color: var(--purple-mid);
+            font-size: .95rem;
+        }
+
+        .density-card .mini-slide {
+            background: linear-gradient(135deg, #fff 0%, #fbf3ee 100%);
+            border: 1px solid #f1d6c4;
+            border-radius: var(--radius-sm);
+            height: 110px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow: hidden;
+        }
+
+        :root[data-theme="dark"] .density-card .mini-slide {
+            background: linear-gradient(135deg, #2a1f1a 0%, #3a2418 100%);
+            border-color: #5b3a25;
+        }
+
+        .mini-bar {
+            background: #ff7a45;
+            border-radius: 3px;
+            height: 6px;
+        }
+
+        .mini-bar.title {
+            height: 10px;
+            width: 70%;
+            background: #c04316;
+        }
+
+        .mini-bar.thin {
+            opacity: .6;
+        }
+
+        .mini-bar.thinner {
+            opacity: .4;
+        }
+
+        .mini-slide.light .mini-bar.title {
+            margin-bottom: auto;
+        }
+
+        .mini-slide.medium {
+            flex-direction: row;
+        }
+
+        .mini-slide.medium .left,
+        .mini-slide.medium .right {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .mini-slide.medium .right {
+            background: #ff7a45;
+            border-radius: 4px;
+            opacity: .35;
+        }
+
+        .mini-slide.heavy .row {
+            display: flex;
+            gap: 4px;
+        }
+
+        .mini-slide.heavy .row .mini-bar {
+            flex: 1;
+            opacity: .55;
+        }
+
+        .density-label {
+            display: inline-block;
+            font-size: .7rem;
+            font-weight: 700;
+            color: #c04316;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            margin-bottom: 4px;
+        }
+
+        :root[data-theme="dark"] .density-label {
+            color: #ff9466;
+        }
+
+        /* Pillar cards (overview at top of page) */
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--sp-4);
+            margin: var(--sp-6) 0 var(--sp-4);
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-left: 4px solid #ff7a45;
+            border-radius: var(--radius-md);
+            padding: var(--sp-4) var(--sp-5);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pillar-card .icon {
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-bottom: var(--sp-2);
+        }
+
+        .pillar-card h4 {
+            margin: 0 0 var(--sp-1) 0;
+            font-size: 1rem;
+            color: var(--purple-deep);
+        }
+
+        .pillar-card p {
+            margin: 0;
+            font-size: .9rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .pillar-card.green {
+            border-left-color: var(--green-step);
+        }
+
+        .pillar-card.blue {
+            border-left-color: var(--blue-step);
+        }
+
+        .pillar-card.purple {
+            border-left-color: var(--purple-step);
+        }
+
+        /* Reference image block */
+        .ref-fig {
+            margin: var(--sp-4) 0;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ref-fig img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .ref-fig figcaption {
+            padding: var(--sp-2) var(--sp-3);
+            font-size: .8rem;
+            color: var(--text-secondary);
+            background: var(--bg-page);
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* Hierarchy mini-diagram */
+        .hierarchy-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: var(--sp-4);
+            background: var(--bg-page);
+            border-radius: var(--radius-md);
+            margin: var(--sp-3) 0;
+        }
+
+        .hier-box {
+            border: 2px solid #c04316;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 8px 18px;
+            font-weight: 600;
+            font-size: .9rem;
+            color: #c04316;
+        }
+
+        .hier-box.child {
+            border-color: #ff9466;
+            color: #ff7a45;
+            font-weight: 500;
+            font-size: .8rem;
+            padding: 6px 14px;
+        }
+
+        :root[data-theme="dark"] .hier-box {
+            color: #ff9466;
+            border-color: #ff9466;
+        }
+
+        :root[data-theme="dark"] .hier-box.child {
+            color: #ffb088;
+            border-color: #c07a55;
+        }
+
+        .hier-arrow {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: .8;
+        }
+
+        .hier-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* FAQ */
+        details.faq {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--purple-mid);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--sp-3);
+            padding: var(--sp-3) var(--sp-4);
+            box-shadow: var(--shadow-sm);
+        }
+
+        details.faq summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--purple-deep);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: var(--sp-2);
+        }
+
+        details.faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.faq summary::after {
+            content: '▾';
+            margin-left: auto;
+            color: var(--purple-mid);
+            transition: transform .2s;
+        }
+
+        details.faq[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        details.faq p,
+        details.faq ul {
+            margin-top: var(--sp-3);
+            color: var(--text-secondary);
+            line-height: 1.55;
+            font-size: .92rem;
+        }
+
+        details.faq ul {
+            padding-left: var(--sp-5);
+        }
+
+        details.faq li {
+            margin-bottom: var(--sp-1);
+        }
+
+        .layout-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: var(--sp-3) 0;
+        }
+
+        .layout-tag {
+            background: var(--purple-bg);
+            color: var(--purple-deep);
+            font-size: .78rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-light);
+        }
+
+        :root[data-theme="dark"] .layout-tag {
+            background: #2a1f4a;
+            color: #d6c4ff;
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--sp-4);
+            margin: var(--sp-3) 0;
+        }
+
+        @media (max-width: 640px) {
+            .compare-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .compare-card {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: var(--sp-3) var(--sp-4);
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .compare-card.good {
+            border-top: 4px solid var(--green-step);
+        }
+
+        .compare-card.bad {
+            border-top: 4px solid var(--red-step);
+        }
+
+        .compare-card h5 {
+            margin: 0 0 var(--sp-2) 0;
+            font-size: .95rem;
+        }
+
+        .compare-card.good h5 {
+            color: var(--green-step);
+        }
+
+        .compare-card.bad h5 {
+            color: var(--red-step);
+        }
+
+        .source-link {
+            display: inline-block;
+            margin-top: var(--sp-2);
+            font-size: .85rem;
+            color: var(--purple-mid);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <header class="page-hero">
+            <h1>Keep PowerPoint On-Brand with Copilot</h1>
+            <p class="subtitle">
+                A step-by-step guide to building a PowerPoint template that Copilot can actually
+                use &mdash; from sample slides and Slide Master setup to themes, placeholders,
+                and uploading to your Brand Kit.
+            </p>
+        </header>
+
+        <nav class="quick-nav" id="quick-nav">
+            <a href="#module-overview">&#127919; Why Templates Matter</a>
+            <a href="#module-samples">&#129534; Sample Slides</a>
+            <a href="#module-master">&#128221; Slide Master</a>
+            <a href="#module-theme">&#127912; Theme Settings</a>
+            <a href="#module-placeholders">&#128206; Placeholders</a>
+            <a href="#module-upload">&#9729;&#65039; Upload to Brand Kit</a>
+            <a href="#module-faq">&#10068; FAQs</a>
+            <span class="nav-spacer"></span>
+            <button type="button" data-action="expand-all">Expand all</button>
+            <button type="button" data-action="collapse-all">Collapse all</button>
+        </nav>
+
+        <!-- ============================================================
+             MODULE 1 — OVERVIEW
+             ============================================================ -->
+        <section id="module-overview">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#127919;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 1 &middot; Foundation</div>
+                    <h2 class="module-title">Why Your Template Is Copilot&rsquo;s Foundation</h2>
+                </div>
+                <span class="module-time">~5 min</span>
+            </div>
+
+            <p class="module-intro">
+                When you ask Copilot in PowerPoint to create or edit slides, it doesn&rsquo;t just
+                apply a theme &mdash; it learns from your template, infers your brand&rsquo;s visual
+                language, and generates on-brand output. A well-structured template means
+                presentations that look like <em>your organization</em> made them.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Concept 1.1</span>
+                    <span class="section-card-title">The Three Inputs Copilot Uses</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Every Copilot-generated PowerPoint is synthesized from three sources:
+                    </p>
+                    <div class="pillar-grid">
+                        <div class="pillar-card">
+                            <div class="icon">&#129534;</div>
+                            <h4>Slides &amp; Layouts</h4>
+                            <p>The <strong>sample slide types</strong> and layouts defined in your
+                                brand template.</p>
+                        </div>
+                        <div class="pillar-card green">
+                            <div class="icon">&#129512;</div>
+                            <h4>Objects</h4>
+                            <p>Design elements &mdash; text, shapes, images, data visualizations &mdash;
+                                inside those sample slides.</p>
+                        </div>
+                        <div class="pillar-card blue">
+                            <div class="icon">&#128172;</div>
+                            <h4>Your Prompt</h4>
+                            <p>The specific instructions you give Copilot for the topic, tone, and
+                                content of the deck.</p>
+                        </div>
+                    </div>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Key Insight</div>
+                        Copilot <strong>primarily</strong> uses your sample slides, and
+                        <strong>secondarily</strong> your template&rsquo;s structure and layouts
+                        from the Slide Master. The more representative slides you provide,
+                        the better the output.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Concept 1.2</span>
+                    <span class="section-card-title">How Copilot Builds a Slide (Step by Step)</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Copilot <strong>interprets your request</strong>
+                                and identifies the slide types you need.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">It <strong>looks at the sample slides</strong>
+                                in your template and selects the closest matching layouts.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">It <strong>generates content</strong> that fits
+                                the placeholder structure, density, and visual hierarchy of those
+                                layouts.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">It <strong>applies brand assets</strong>
+                                &mdash; images, icons, fonts, even brand voice &mdash; from your
+                                Brand Kit.</span>
+                        </li>
+                    </ol>
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; If your template lacks sample slides</div>
+                        Copilot falls back to the Slide Master alone, which usually produces
+                        <strong>generic layouts, minimal formatting, and slides that don&rsquo;t
+                            match your brand</strong>.
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ============================================================
+             MODULE 2 — SAMPLE SLIDES
+             ============================================================ -->
+        <section id="module-samples">
+
+            <div class="module-header">
+                <div class="module-icon red">&#129534;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 2 &middot; The Most Important Step</div>
+                    <h2 class="module-title">Provide Representative Sample Slides</h2>
+                </div>
+                <span class="module-time">~15 min</span>
+            </div>
+
+            <p class="module-intro">
+                Sample slides are the single biggest lever for on-brand output. Build a set of
+                fully-designed example slides that show Copilot exactly how your brand
+                communicates &mdash; layouts, density, color, typography, imagery, and data viz.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.1</span>
+                    <span class="section-card-title">Build Your Core Layout Library</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Open your <code>.pptx</code> or <code>.potx</code> file and add at least
+                        one fully-designed sample slide for each of the layouts below. Multiple
+                        examples per type (e.g. two different content layouts) give Copilot more
+                        choice.
+                    </p>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Decide which generic layouts your team uses
+                                most often.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Design <strong>one polished example</strong>
+                                of each, using real-looking content (placeholder Lorem text is
+                                fine).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Group similar layouts (e.g. multiple section
+                                dividers in brand colors) to show Copilot variation.</span>
+                        </li>
+                    </ol>
+                    <p class="module-intro" style="margin-top:1rem"><strong>Recommended core layouts:</strong></p>
+                    <div class="layout-tags">
+                        <span class="layout-tag">Title</span>
+                        <span class="layout-tag">Agenda</span>
+                        <span class="layout-tag">Section Header / Divider</span>
+                        <span class="layout-tag">Content (text, bullets, icons)</span>
+                        <span class="layout-tag">Image Layouts</span>
+                        <span class="layout-tag">Data Visualization (tables, charts)</span>
+                        <span class="layout-tag">Statistics / Dashboards</span>
+                        <span class="layout-tag">Timelines</span>
+                        <span class="layout-tag">Process Diagrams / Flow Charts</span>
+                        <span class="layout-tag">Quotes / Testimonials</span>
+                        <span class="layout-tag">Q&amp;A</span>
+                        <span class="layout-tag">Summary / Key Takeaways</span>
+                        <span class="layout-tag">Conclusion</span>
+                        <span class="layout-tag">Thank You / Next Steps</span>
+                    </div>
+                    <p class="module-intro"><strong>Optional, scenario-specific layouts:</strong></p>
+                    <div class="layout-tags">
+                        <span class="layout-tag">Introductions / Bios</span>
+                        <span class="layout-tag">Meet the Team</span>
+                        <span class="layout-tag">Contacts</span>
+                        <span class="layout-tag">Maps</span>
+                        <span class="layout-tag">Calendar</span>
+                        <span class="layout-tag">Case Studies</span>
+                    </div>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Note</div>
+                        These are recommendations &mdash; not requirements. Cover the slide types
+                        your brand actually uses; broader layout/style coverage produces better
+                        Copilot results.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.2</span>
+                    <span class="section-card-title">Demonstrate Content Density</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Copilot decides how much text to put on a slide based on the density
+                        patterns it sees in your samples. Show all three so it has options.
+                    </p>
+                    <div class="density-row">
+                        <div class="density-card">
+                            <span class="density-label">Light Density</span>
+                            <h4>Title &amp; subtitle only</h4>
+                            <div class="mini-slide light">
+                                <div class="mini-bar title"></div>
+                                <div class="mini-bar thin" style="width:50%"></div>
+                            </div>
+                            <p style="font-size:.82rem;margin-top:.5rem;color:var(--text-secondary)">
+                                Generous whitespace, big idea per slide. Good for openers and
+                                section dividers.
+                            </p>
+                        </div>
+                        <div class="density-card">
+                            <span class="density-label">Medium Density</span>
+                            <h4>Balanced layouts</h4>
+                            <div class="mini-slide medium">
+                                <div class="left">
+                                    <div class="mini-bar title" style="width:90%"></div>
+                                    <div class="mini-bar thin"></div>
+                                    <div class="mini-bar thin" style="width:80%"></div>
+                                    <div class="mini-bar thinner" style="width:70%"></div>
+                                </div>
+                                <div class="right"></div>
+                            </div>
+                            <p style="font-size:.82rem;margin-top:.5rem;color:var(--text-secondary)">
+                                Text on one side, image or chart on the other. The workhorse
+                                content slide.
+                            </p>
+                        </div>
+                        <div class="density-card">
+                            <span class="density-label">Heavy Density</span>
+                            <h4>Content-rich, minimal whitespace</h4>
+                            <div class="mini-slide heavy">
+                                <div class="mini-bar title"></div>
+                                <div class="row">
+                                    <div class="mini-bar"></div>
+                                    <div class="mini-bar"></div>
+                                    <div class="mini-bar"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="mini-bar"></div>
+                                    <div class="mini-bar"></div>
+                                    <div class="mini-bar"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="mini-bar"></div>
+                                    <div class="mini-bar"></div>
+                                    <div class="mini-bar"></div>
+                                </div>
+                            </div>
+                            <p style="font-size:.82rem;margin-top:.5rem;color:var(--text-secondary)">
+                                Dense text, multicolumn layouts, detailed charts or tables.
+                                Reference slides, deep dives.
+                            </p>
+                        </div>
+                    </div>
+                    <figure class="ref-fig">
+                        <img src="https://support.microsoft.com/images/en-us/71585486-5c9f-4720-ba7c-2abbe26a7119?format=avif&w=800"
+                            alt="Microsoft example of a medium-density PowerPoint slide" loading="lazy" />
+                        <figcaption>Microsoft&rsquo;s reference example of a medium-density slide.
+                            <a class="source-link"
+                                href="https://support.microsoft.com/en-gb/topic/keep-your-presentation-on-brand-with-copilot-046c23d5-012e-49e0-8579-fe49302959fc"
+                                target="_blank" rel="noopener">Source &rarr;</a>
+                        </figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.3</span>
+                    <span class="section-card-title">Show Visual Style Consistency</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Make the visual rules of your brand obvious. The more cleanly your
+                        sample slides demonstrate consistent usage, the better Copilot can copy
+                        it.
+                    </p>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Color usage:</strong> show how colors
+                                are applied across slide types and within charts, diagrams, and
+                                graphs.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text"><strong>Typography hierarchy:</strong> include
+                                examples of headings, subheadings, and body text actually in
+                                use.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Icons and images:</strong> show them
+                                incorporated into layouts &mdash; via placeholders or placed
+                                directly.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text"><strong>Multicolor variants:</strong> e.g.
+                                section header slides in multiple brand-approved colors so Copilot
+                                can rotate them.</span>
+                        </li>
+                    </ol>
+                    <figure class="ref-fig">
+                        <img src="https://support.microsoft.com/images/en-us/22397fc8-5001-4974-8bce-f8d0c81eb971?format=avif&w=800"
+                            alt="Sample slide showing visual style with brand colors and typography" loading="lazy" />
+                        <figcaption>Visual-style sample &mdash; consistent color, type, and layout
+                            cues.</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.4</span>
+                    <span class="section-card-title">Photography &amp; Image Styles</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Include real example slides that show how your brand uses imagery &mdash;
+                        composition, cropping, and placement.
+                    </p>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Add a <strong>full-bleed background</strong>
+                                image example (e.g. for title slides).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Add an <strong>inset image + caption</strong>
+                                example (e.g. for content slides).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Show <strong>multiple aspect ratios</strong>
+                                if your brand uses them (square, 16:9, portrait).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Where possible, use <strong>picture
+                                    placeholders</strong> so Copilot can swap in new
+                                images.</span>
+                        </li>
+                    </ol>
+                    <figure class="ref-fig">
+                        <img src="https://support.microsoft.com/images/en-us/1b32a7b6-8051-4134-8aaa-bd2d60d0af01?format=avif&w=800"
+                            alt="Sample slide showing brand photography style" loading="lazy" />
+                        <figcaption>Photography style sample &mdash; full-bleed composition.</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 2.5</span>
+                    <span class="section-card-title">Data Visualization Patterns</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Build out sample slides that show how your brand presents data &mdash;
+                        Copilot will reuse the patterns.
+                    </p>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Add a <strong>highlighted statistic / KPI</strong>
+                                slide layout.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Add <strong>chart examples</strong> using brand
+                                colors (bar, line, pie if used).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Add a <strong>table</strong> example with brand
+                                styling.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Add <strong>process / timeline / infographic</strong>
+                                samples in your visual language.</span>
+                        </li>
+                    </ol>
+                    <figure class="ref-fig">
+                        <img src="https://support.microsoft.com/images/en-us/cbc03ea6-56d0-42f2-8287-b9074fa42535?format=avif&w=800"
+                            alt="Sample slide showing brand data visualization with metrics" loading="lazy" />
+                        <figcaption>KPI / metric layout example.</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-power">&#9889; Best Practices</span>
+                    <span class="section-card-title">Tips for the Best Sample Slides</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="compare-grid">
+                        <div class="compare-card good">
+                            <h5>&#9989; Do</h5>
+                            <ul class="steps" style="margin:0;padding:0;list-style:none">
+                                <li style="padding:.25rem 0">Design each slide with a clear,
+                                    recognizable purpose.</li>
+                                <li style="padding:.25rem 0">Build <strong>complete, end-to-end
+                                        layouts</strong> &mdash; not loose icon/chart libraries.</li>
+                                <li style="padding:.25rem 0">Choose layouts that reflect how you
+                                    actually work day-to-day.</li>
+                                <li style="padding:.25rem 0">Use images and icons to improve
+                                    readability and visual flow.</li>
+                                <li style="padding:.25rem 0">Ensure object negative spaces don&rsquo;t
+                                    overlap &mdash; especially text boxes.</li>
+                            </ul>
+                        </div>
+                        <div class="compare-card bad">
+                            <h5>&#10060; Avoid</h5>
+                            <ul class="steps" style="margin:0;padding:0;list-style:none">
+                                <li style="padding:.25rem 0">Don&rsquo;t mix instructional /
+                                    guidance content into the template &mdash; keep it separate.</li>
+                                <li style="padding:.25rem 0">Don&rsquo;t include &ldquo;component
+                                    libraries&rdquo; with loose icons; Copilot can&rsquo;t infer
+                                    intent from them.</li>
+                                <li style="padding:.25rem 0">Don&rsquo;t let decorative elements
+                                    overlap text or image areas.</li>
+                                <li style="padding:.25rem 0">Don&rsquo;t use one-off manual
+                                    formatting that contradicts your theme.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <figure class="ref-fig">
+                        <img src="https://support.microsoft.com/images/en-us/9f32d3ca-7030-4ee6-b68b-83713529be6d?format=avif&w=800"
+                            alt="Example showing object negative spaces that don't overlap" loading="lazy" />
+                        <figcaption>No-overlap rule &mdash; clean negative space helps Copilot
+                            read and regenerate the layout cleanly.</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ============================================================
+             MODULE 3 — SLIDE MASTER
+             ============================================================ -->
+        <section id="module-master">
+
+            <div class="module-header">
+                <div class="module-icon purple">&#128221;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 3 &middot; Backbone</div>
+                    <h2 class="module-title">Set Up Your Template in Slide Master</h2>
+                </div>
+                <span class="module-time">~10 min</span>
+            </div>
+
+            <p class="module-intro">
+                Slide Master is the structural backbone Copilot falls back to when sample slides
+                don&rsquo;t fully cover a request. A clean Slide Master keeps generated slides
+                on-brand even in edge cases.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 3.1</span>
+                    <span class="section-card-title">Open Slide Master View</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open your template (<code>.pptx</code> or
+                                <code>.potx</code>) in <strong>PowerPoint for Windows or Mac</strong>
+                                &mdash; not the web app.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Go to the <strong>View</strong> tab &rarr;
+                                <strong>Slide Master</strong> (in the &ldquo;Master Views&rdquo;
+                                group).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">The top thumbnail is the <strong>Slide
+                                    Master</strong>; the indented ones below are <strong>Slide
+                                    Layouts</strong> that inherit from it.</span>
+                        </li>
+                    </ol>
+                    <div class="callout callout-warning">
+                        <div class="callout-title">&#9888;&#65039; Important</div>
+                        Templates <strong>must be created in PowerPoint Desktop (Windows or
+                            Mac)</strong>. You can <em>use</em> a template on any platform, but
+                        building Slide Masters on the web is not supported.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Concept 3.2</span>
+                    <span class="section-card-title">Understand the Hierarchy</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Anything you define on the <strong>Slide Master</strong> is inherited by
+                        every <strong>Slide Layout</strong> below it. Define brand basics once at
+                        the top, then specialize per layout.
+                    </p>
+                    <div class="hierarchy-diagram">
+                        <div class="hier-box">Slide Master &nbsp;<span style="opacity:.7">(brand basics)</span></div>
+                        <div class="hier-arrow">&#8595;</div>
+                        <div class="hier-row">
+                            <div class="hier-box child">Title Layout</div>
+                            <div class="hier-box child">Content Layout</div>
+                            <div class="hier-box child">Section Divider</div>
+                            <div class="hier-box child">Data Layout</div>
+                            <div class="hier-box child">Q &amp; A</div>
+                        </div>
+                    </div>
+                    <figure class="ref-fig">
+                        <img src="https://support.microsoft.com/images/en-us/ef057ecc-aeb9-4e92-9ccb-39dd7f74ccf2?format=avif&w=800"
+                            alt="PowerPoint Slide Master View showing master and child layouts"
+                            loading="lazy" />
+                        <figcaption>The Slide Master (top) and its child Slide Layouts in
+                            Slide Master view.</figcaption>
+                    </figure>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        Customize the Slide Master to ensure consistent branding across all AI
+                        generated slides &mdash; Copilot leans on the Slide Master whenever your
+                        sample slides don&rsquo;t fully cover a request.
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ============================================================
+             MODULE 4 — THEME SETTINGS
+             ============================================================ -->
+        <section id="module-theme">
+
+            <div class="module-header">
+                <div class="module-icon green">&#127912;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 4 &middot; Brand DNA</div>
+                    <h2 class="module-title">Use Theme Settings, Not Manual Styling</h2>
+                </div>
+                <span class="module-time">~10 min</span>
+            </div>
+
+            <p class="module-intro">
+                Copilot learns from <strong>theme definitions</strong>, not one-off formatting.
+                Define your brand DNA centrally and Copilot will apply it everywhere.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 4.1</span>
+                    <span class="section-card-title">Define Theme Colors</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">In Slide Master view, go to the
+                                <strong>Slide Master</strong> tab &rarr; <strong>Colors</strong>
+                                &rarr; <strong>Customize Colors&hellip;</strong> (or
+                                <strong>Create New Theme Colors</strong>).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Set the 12 theme slots to your brand palette
+                                &mdash; backgrounds, text, accents, and hyperlinks.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text"><strong>Save</strong> the theme with a
+                                descriptive name (e.g. &ldquo;<em>Acme 2026 Primary</em>&rdquo;).</span>
+                        </li>
+                    </ol>
+                    <div class="callout callout-note">
+                        <div class="callout-title">&#128221; Why this matters</div>
+                        When Copilot inserts a new chart, accent shape, or callout it uses theme
+                        slots. Hard-coded hex colors won&rsquo;t carry through.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 4.2</span>
+                    <span class="section-card-title">Set Theme Fonts</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text"><strong>Slide Master</strong> tab &rarr;
+                                <strong>Fonts</strong> &rarr; <strong>Customize
+                                    Fonts&hellip;</strong></span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Choose your <strong>Heading</strong> and
+                                <strong>Body</strong> fonts (use brand-approved typefaces).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Apply consistent font sizes and hierarchy
+                                throughout your sample slides (H1 vs H2 vs body).</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 4.3</span>
+                    <span class="section-card-title">Standardize Visual Styles</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Apply consistent styling across all layouts so Copilot has one clear
+                        visual language to copy.
+                    </p>
+                    <ul class="steps" style="list-style:none;padding:0">
+                        <li style="padding:.35rem 0">&bull; <strong>Chart color schemes</strong>
+                            &mdash; align with your theme accents.</li>
+                        <li style="padding:.35rem 0">&bull; <strong>Icon style</strong> &mdash;
+                            outline vs filled, stroke weight, color rules.</li>
+                        <li style="padding:.35rem 0">&bull; <strong>Shape style</strong> &mdash;
+                            corner radius, border thickness, fill style.</li>
+                        <li style="padding:.35rem 0">&bull; <strong>Image placeholder style</strong>
+                            &mdash; aspect ratios, crops, overlays.</li>
+                    </ul>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Tip</div>
+                        Pick a single icon family for the whole template. Mixing flat, outlined,
+                        and skeuomorphic icons signals to Copilot that &ldquo;anything goes&rdquo;
+                        &mdash; and the output gets messy.
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ============================================================
+             MODULE 5 — PLACEHOLDERS
+             ============================================================ -->
+        <section id="module-placeholders">
+
+            <div class="module-header">
+                <div class="module-icon blue">&#128206;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 5 &middot; Structure</div>
+                    <h2 class="module-title">Use Placeholders Correctly</h2>
+                </div>
+                <span class="module-time">~8 min</span>
+            </div>
+
+            <p class="module-intro">
+                Placeholders tell Copilot <em>what kind</em> of content goes <em>where</em>.
+                Copilot uses placeholder <strong>type</strong>, <strong>position</strong>, and
+                <strong>size</strong> &mdash; not the example text inside them &mdash; to
+                generate slides.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Concept 5.1</span>
+                    <span class="section-card-title">Placeholder Types</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <div class="layout-tags">
+                        <span class="layout-tag">Title</span>
+                        <span class="layout-tag">Body text</span>
+                        <span class="layout-tag">Image / Picture</span>
+                        <span class="layout-tag">Chart</span>
+                        <span class="layout-tag">Table</span>
+                    </div>
+                    <p class="module-intro">
+                        Each type carries semantic meaning Copilot relies on when generating
+                        content. A <em>title</em> placeholder gets a title; a <em>chart</em>
+                        placeholder gets a chart.
+                    </p>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 5.2</span>
+                    <span class="section-card-title">Insert Placeholders the Right Way</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">In <strong>Slide Master view</strong>,
+                                select a Slide Layout (not the Master itself).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Click <strong>Slide Master &rarr; Insert
+                                    Placeholder</strong> and pick the correct type
+                                (Content, Picture, Chart, Text, Table&hellip;).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Position and size the placeholder cleanly
+                                &mdash; no overlap with other objects.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Repeat for every layout that needs content
+                                injection.</span>
+                        </li>
+                    </ol>
+                    <div class="compare-grid">
+                        <div class="compare-card good">
+                            <h5>&#9989; Do</h5>
+                            <ul class="steps" style="margin:0;padding:0;list-style:none">
+                                <li style="padding:.25rem 0">Use <strong>text placeholders</strong>
+                                    &mdash; not free-floating text boxes.</li>
+                                <li style="padding:.25rem 0">Insert via <code>Insert
+                                        Placeholder</code> in Slide Master view.</li>
+                                <li style="padding:.25rem 0">Keep placeholders readable and
+                                    non-overlapping with other objects.</li>
+                                <li style="padding:.25rem 0">Use picture placeholders for image
+                                    swaps.</li>
+                            </ul>
+                        </div>
+                        <div class="compare-card bad">
+                            <h5>&#10060; Avoid</h5>
+                            <ul class="steps" style="margin:0;padding:0;list-style:none">
+                                <li style="padding:.25rem 0">Don&rsquo;t use plain text boxes for
+                                    content Copilot should fill.</li>
+                                <li style="padding:.25rem 0">Don&rsquo;t put decorative shapes
+                                    on top of text or image areas.</li>
+                                <li style="padding:.25rem 0">Don&rsquo;t rely on placeholder
+                                    <strong>wording</strong> to convey meaning &mdash; Copilot
+                                    uses placeholder <em>type</em>, not the text inside it.</li>
+                                <li style="padding:.25rem 0">Don&rsquo;t overlap placeholders
+                                    with logos, backgrounds, or watermarks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ============================================================
+             MODULE 6 — UPLOAD TO BRAND KIT
+             ============================================================ -->
+        <section id="module-upload">
+
+            <div class="module-header">
+                <div class="module-icon teal">&#9729;&#65039;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 6 &middot; Go Live</div>
+                    <h2 class="module-title">Upload Your Template to Brand Kit</h2>
+                </div>
+                <span class="module-time">~5 min</span>
+            </div>
+
+            <p class="module-intro">
+                Once your template is optimized, upload it to your <strong>Brand Kit</strong> or
+                <strong>Organization Assets Library (OAL)</strong> so Copilot in PowerPoint can
+                use it for every new presentation.
+            </p>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-exercise">Exercise 6.1</span>
+                    <span class="section-card-title">Add Your Template to a Brand Kit</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Open the <strong>Microsoft 365 Copilot app</strong>.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">In the left navigation, choose <strong>Create
+                                </strong> &rarr; <strong>More&hellip;</strong> &rarr;
+                                <strong>Brand kits</strong>.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Open your Brand kit &rarr; go to
+                                <strong>Templates</strong>.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">4</span>
+                            <span class="step-text">Click <strong>Upload Template</strong>
+                                <em>or</em> pick an existing template from your Organization Asset
+                                Library.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">5</span>
+                            <span class="step-text">Select your <code>.potx</code> or
+                                <code>.pptx</code> file.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">6</span>
+                            <span class="step-text">Add metatags (optional but helpful for
+                                discovery).</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">7</span>
+                            <span class="step-text">Click <strong>Add to Brand kit</strong>
+                                &mdash; you&rsquo;re done.</span>
+                        </li>
+                    </ol>
+                    <div class="callout callout-tip">
+                        <div class="callout-title">&#128161; Pro Tip</div>
+                        Pair your template with the <strong>Brand Kit&rsquo;s voice/tone/imagery
+                            settings</strong> for the strongest on-brand results. Copilot
+                        combines all of it.
+                    </div>
+                </div>
+            </article>
+
+            <article class="section-card">
+                <div class="section-card-header">
+                    <span class="badge badge-power">&#9889; Power Move</span>
+                    <span class="section-card-title">Iterate Based on Real Output</span>
+                    <span class="collapse-arrow">&#9660;</span>
+                </div>
+                <div class="section-card-body">
+                    <p class="module-intro">
+                        Don&rsquo;t treat the template as &ldquo;done&rdquo; on upload.
+                        Generate a real deck, see where Copilot stumbles, and add or refine sample
+                        slides to fill those gaps.
+                    </p>
+                    <div class="prompt-block">
+                        <div class="prompt-label">Test Prompt &mdash; Run This in PowerPoint</div>
+                        <div class="prompt-box">Create a 10-slide presentation for [topic] using
+                            our brand template. Include a title slide, agenda, three content
+                            slides with supporting visuals, a data slide with a chart, a quote
+                            slide, a summary, and a thank-you slide.</div>
+                        <button class="copy-btn">&#128203; Copy Prompt</button>
+                    </div>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Note any slides where layout, density, or
+                                style drifts off-brand.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Add a matching sample slide to your template
+                                for that gap.</span>
+                        </li>
+                        <li class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Re-upload (or update) the template in your
+                                Brand Kit and rerun the prompt.</span>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ============================================================
+             MODULE 7 — FAQs
+             ============================================================ -->
+        <section id="module-faq">
+
+            <div class="module-header">
+                <div class="module-icon orange">&#10068;</div>
+                <div class="module-meta">
+                    <div class="module-label">Module 7 &middot; Reference</div>
+                    <h2 class="module-title">Frequently Asked Questions</h2>
+                </div>
+                <span class="module-time">~3 min</span>
+            </div>
+
+            <details class="faq">
+                <summary>Do we need sample slides for every layout?</summary>
+                <p>
+                    No &mdash; but the more layouts you cover, the better Copilot performs.
+                    Prioritize the layouts you actually use day-to-day. Copilot falls back to
+                    the Slide Master when a layout isn&rsquo;t represented, which produces
+                    weaker, more generic results.
+                </p>
+            </details>
+
+            <details class="faq">
+                <summary>Will images be placed into picture placeholders reliably?</summary>
+                <p>
+                    Picture placeholders are the most reliable way to get Copilot to drop the
+                    right image into the right spot. Always prefer picture placeholders over
+                    free-floating image objects when you want Copilot to swap in artwork.
+                </p>
+            </details>
+
+            <details class="faq">
+                <summary>Can placeholder text be used as semantic guidance?</summary>
+                <p>
+                    No. Copilot uses the placeholder&rsquo;s <strong>type</strong>,
+                    <strong>position</strong>, and <strong>size</strong> &mdash; not the example
+                    wording inside it. Lorem-ipsum-style placeholder text is fine; instructional
+                    text inside a placeholder won&rsquo;t change Copilot&rsquo;s behavior.
+                </p>
+            </details>
+
+            <details class="faq">
+                <summary>What happens if generated text needs more space?</summary>
+                <p>
+                    Copilot tries to stay within the placeholder&rsquo;s defined bounds. If your
+                    layout has very tight text boxes, generated content can get truncated or
+                    feel cramped &mdash; design your samples with realistic content density.
+                </p>
+            </details>
+
+            <details class="faq">
+                <summary>Are instructional slides allowed in the template?</summary>
+                <p>
+                    Don&rsquo;t embed instructional / &ldquo;how to use this template&rdquo;
+                    slides inside the template itself. Copilot will treat them as sample
+                    layouts and may try to mimic them. Keep guidance in a separate companion
+                    document.
+                </p>
+            </details>
+
+            <details class="faq">
+                <summary>What template formats are supported in Brand Kit?</summary>
+                <p>
+                    Both <code>.potx</code> (template) and <code>.pptx</code> (presentation)
+                    formats are supported. Either can be uploaded as a Brand Kit template.
+                </p>
+            </details>
+
+            <details class="faq">
+                <summary>Will Copilot follow the template if I open it first?</summary>
+                <p>
+                    The most reliable approach is to make the template part of a Brand Kit so
+                    Copilot uses it automatically. Manually opening a template and then
+                    prompting Copilot can work, but Brand Kit integration gives consistent
+                    results across the whole organization.
+                </p>
+            </details>
+
+            <div class="callout callout-note" style="margin-top:1.5rem">
+                <div class="callout-title">&#128279; Source</div>
+                Adapted from Microsoft&rsquo;s official guidance:
+                <a href="https://support.microsoft.com/en-gb/topic/keep-your-presentation-on-brand-with-copilot-046c23d5-012e-49e0-8579-fe49302959fc"
+                    target="_blank" rel="noopener">
+                    Keep your presentation on-brand with Copilot &rarr;
+                </a>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="../js/sitenav.js"></script>
+    <script src="../js/main.v3.js"></script>
+</body>
+
+</html>
