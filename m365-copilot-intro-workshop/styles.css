@@ -140,9 +140,16 @@ a { color: var(--primary); }
 }
 .modnav .wrap {
   display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+.modnav-links {
+  display: flex;
   gap: 6px;
   overflow-x: auto;
-  padding: 10px 0;
+  flex: 1;
+  min-width: 0;
 }
 .modnav a {
   white-space: nowrap;
@@ -154,6 +161,50 @@ a { color: var(--primary); }
   border-radius: 999px;
 }
 .modnav a:hover { color: var(--ink); background: var(--nav-hover); }
+
+.toggle-all {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--primary-dark);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.toggle-all:hover { background: var(--nav-hover); }
+
+/* Collapsible sections */
+.section-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+}
+.section-toggle::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  margin-left: auto;
+  border-right: 2.5px solid var(--muted);
+  border-bottom: 2.5px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.section.collapsed .section-toggle::after { transform: rotate(-45deg); }
+.section-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; border-radius: 6px; }
+.section-body {
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+.section.collapsed .section-body { display: none; }
 
 /* Sections */
 main section { padding: 56px 0; border-bottom: 1px solid var(--line); }

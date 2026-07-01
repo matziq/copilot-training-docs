@@ -40,6 +40,61 @@
     }
   }
 
+  function initCollapsibles() {
+    var sections = document.querySelectorAll("main section");
+    var toggles = [];
+
+    sections.forEach(function (section) {
+      var wrap = section.querySelector(".wrap");
+      if (!wrap) return;
+      var heading = wrap.querySelector("h2");
+      if (!heading) return;
+
+      var body = document.createElement("div");
+      body.className = "section-body";
+      var node = heading.nextSibling;
+      while (node) {
+        var next = node.nextSibling;
+        body.appendChild(node);
+        node = next;
+      }
+      wrap.appendChild(body);
+
+      heading.classList.add("section-toggle");
+      heading.setAttribute("role", "button");
+      heading.setAttribute("tabindex", "0");
+      heading.setAttribute("aria-expanded", "true");
+
+      function setState(collapsed) {
+        section.classList.toggle("collapsed", collapsed);
+        heading.setAttribute("aria-expanded", String(!collapsed));
+      }
+      function toggle() { setState(!section.classList.contains("collapsed")); }
+
+      heading.addEventListener("click", toggle);
+      heading.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle();
+        }
+      });
+
+      toggles.push({ section: section, setState: setState });
+    });
+
+    var allBtn = document.getElementById("toggle-all");
+    if (allBtn) {
+      allBtn.addEventListener("click", function () {
+        var anyOpen = toggles.some(function (t) {
+          return !t.section.classList.contains("collapsed");
+        });
+        toggles.forEach(function (t) { t.setState(anyOpen); });
+        allBtn.textContent = anyOpen ? "Expand all" : "Collapse all";
+        allBtn.setAttribute("aria-expanded", String(!anyOpen));
+      });
+    }
+  }
+
   function copyText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       return navigator.clipboard.writeText(text);
@@ -57,6 +112,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     initTheme();
+    initCollapsibles();
     var buttons = document.querySelectorAll(".copy-button");
 
     buttons.forEach(function (btn) {
