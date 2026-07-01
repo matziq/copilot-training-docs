@@ -7,9 +7,25 @@
   <meta name="description" content="A hands-on, one-hour introduction to Microsoft 365 Copilot. Learn Copilot Chat, Word, Outlook, Teams, Excel, and PowerPoint with live demos and a copy-ready prompt pack." />
   <link rel="icon" href="../images/favicon-m365-copilot.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("workshop-theme");
+        if (!t) {
+          t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+        }
+        if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
+
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+    <span class="tt-icon" aria-hidden="true">🌙</span>
+    <span class="tt-label">Dark</span>
+  </button>
 
   <header class="hero">
     <div class="wrap">
@@ -23,7 +39,7 @@
       </div>
       <div class="cta-row">
         <a class="btn btn-primary" href="#downloads">⬇️ Download prompt pack</a>
-        <a class="btn btn-ghost" href="#modules">Start the demos →</a>
+        <a class="btn btn-ghost" href="#chat">Start the demos →</a>
       </div>
     </div>
   </header>
@@ -32,7 +48,6 @@
     <div class="wrap">
       <a href="#downloads">Downloads</a>
       <a href="#setup">Setup</a>
-      <a href="#modules">Agenda</a>
       <a href="#chat">Chat</a>
       <a href="#word">Word</a>
       <a href="#outlook">Outlook</a>
@@ -86,45 +101,6 @@
           <article class="card">
             <h3>3. Use safe demo data</h3>
             <p>Have a sample document, an email thread, and a small Excel table ready. Avoid sensitive content during the class.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="modules">
-      <div class="wrap">
-        <h2>One-hour agenda</h2>
-        <p class="sub">Seven short segments. Each ends with a prompt you can try yourself.</p>
-        <div class="grid">
-          <article class="card">
-            <span class="time">5 min</span>
-            <h3>What is Copilot?</h3>
-            <p>How Copilot works across Microsoft 365 and how it's grounded in your own work data — securely.</p>
-          </article>
-          <article class="card">
-            <span class="time">10 min</span>
-            <h3>Copilot Chat</h3>
-            <p>Catch up on work, find files, and draft updates from a single conversation.</p>
-          </article>
-          <article class="card">
-            <span class="time">10 min</span>
-            <h3>Word</h3>
-            <p>Draft, summarize, and rewrite documents in seconds.</p>
-          </article>
-          <article class="card">
-            <span class="time">10 min</span>
-            <h3>Outlook</h3>
-            <p>Summarize threads and draft replies with the right tone.</p>
-          </article>
-          <article class="card">
-            <span class="time">8 min</span>
-            <h3>Teams</h3>
-            <p>Get meeting recaps and action items automatically.</p>
-          </article>
-          <article class="card">
-            <span class="time">12 min</span>
-            <h3>Excel &amp; PowerPoint</h3>
-            <p>Analyze data and turn ideas into a polished deck.</p>
           </article>
         </div>
       </div>

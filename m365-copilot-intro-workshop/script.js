@@ -1,6 +1,45 @@
 (function () {
   "use strict";
 
+  function applyTheme(theme) {
+    var root = document.documentElement;
+    var btn = document.getElementById("theme-toggle");
+    if (theme === "dark") {
+      root.setAttribute("data-theme", "dark");
+    } else {
+      root.removeAttribute("data-theme");
+    }
+    if (btn) {
+      var isDark = theme === "dark";
+      var icon = btn.querySelector(".tt-icon");
+      var label = btn.querySelector(".tt-label");
+      if (icon) icon.textContent = isDark ? "☀️" : "🌙";
+      if (label) label.textContent = isDark ? "Light" : "Dark";
+      btn.setAttribute("aria-pressed", String(isDark));
+      btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    }
+  }
+
+  function initTheme() {
+    var stored = null;
+    try { stored = localStorage.getItem("workshop-theme"); } catch (e) {}
+    if (!stored) {
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      stored = prefersDark ? "dark" : "light";
+    }
+    applyTheme(stored);
+
+    var btn = document.getElementById("theme-toggle");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        var next = isDark ? "light" : "dark";
+        applyTheme(next);
+        try { localStorage.setItem("workshop-theme", next); } catch (e) {}
+      });
+    }
+  }
+
   function copyText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       return navigator.clipboard.writeText(text);
@@ -17,6 +56,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    initTheme();
     var buttons = document.querySelectorAll(".copy-button");
 
     buttons.forEach(function (btn) {
