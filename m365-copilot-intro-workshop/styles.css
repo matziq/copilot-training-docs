@@ -198,13 +198,13 @@ a { color: var(--primary); }
   transform: rotate(45deg);
   transition: transform 0.2s ease;
 }
-.section.collapsed .section-toggle::after { transform: rotate(-45deg); }
+section.collapsed .section-toggle::after { transform: rotate(-45deg); }
 .section-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; border-radius: 6px; }
 .section-body {
   overflow: hidden;
   transition: opacity 0.2s ease;
 }
-.section.collapsed .section-body { display: none; }
+section.collapsed .section-body { display: none; }
 
 /* Sections */
 main section { padding: 56px 0; border-bottom: 1px solid var(--line); }
