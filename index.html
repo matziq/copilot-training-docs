@@ -1,795 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Training Hub</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-
-    <link rel="stylesheet" href="css/styles.css" />
-
-    <style>
-        /* --- Training Hub specific styles --- */
-        .training-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: var(--sp-6);
-            margin-top: var(--sp-8);
-        }
-
-        .training-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg);
-            padding: var(--sp-8) var(--sp-6);
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: var(--sp-4);
-            transition: box-shadow .2s, transform .15s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .training-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-3px);
-            text-decoration: none;
-        }
-
-        .training-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-
-        .training-card.purple::before {
-            background: var(--purple-mid);
-        }
-
-        .training-card.green::before {
-            background: var(--green-badge);
-        }
-
-        .training-card.orange::before {
-            background: var(--orange-step);
-        }
-
-        .training-card.blue::before {
-            background: var(--blue-step);
-        }
-
-        .training-card.red::before {
-            background: var(--red-step);
-        }
-
-        .training-card.teal::before {
-            background: var(--teal-step);
-        }
-
-        .training-card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #fff;
-        }
-
-        .training-card.purple .training-card-icon {
-            background: var(--purple-mid);
-        }
-
-        .training-card.green .training-card-icon {
-            background: var(--green-badge);
-        }
-
-        .training-card.orange .training-card-icon {
-            background: var(--orange-step);
-        }
-
-        .training-card.blue .training-card-icon {
-            background: var(--blue-step);
-        }
-
-        .training-card.red .training-card-icon {
-            background: var(--red-step);
-        }
-
-        .training-card.teal .training-card-icon {
-            background: var(--teal-step);
-        }
-
-        .training-card-label {
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .training-card-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--purple-deep);
-            line-height: 1.3;
-        }
-
-        .training-card-desc {
-            font-size: .9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            flex: 1;
-        }
-
-        .training-card-meta {
-            display: flex;
-            align-items: center;
-            gap: var(--sp-4);
-            font-size: .8rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            border-top: 1px solid var(--border-light);
-            padding-top: var(--sp-4);
-        }
-
-        .training-card-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--sp-1);
-        }
-
-        /* ── Category filter bar ── */
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--sp-2);
-            margin-top: var(--sp-6);
-            justify-content: center;
-        }
-
-        .filter-pill {
-            padding: .4rem 1rem;
-            border-radius: 999px;
-            border: 1.5px solid var(--border-light);
-            background: var(--bg-card);
-            color: var(--text-secondary);
-            font-size: .82rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all .15s;
-            font-family: var(--font-sans);
-        }
-
-        .filter-pill:hover {
-            border-color: var(--purple-mid);
-            color: var(--purple-mid);
-        }
-
-        .filter-pill.active {
-            background: var(--purple-mid);
-            border-color: var(--purple-mid);
-            color: #fff;
-        }
-
-        .training-card.hidden-by-filter {
-            display: none;
-        }
-
-        /* ── Category sections (deep-linked from top nav) ── */
-        .cat-section {
-            margin-top: var(--sp-12);
-            scroll-margin-top: 72px;
-            /* offset for sticky top nav when jumping to anchor */
-        }
-
-        .cat-section-header {
-            display: flex;
-            align-items: baseline;
-            gap: var(--sp-3);
-            padding-bottom: var(--sp-3);
-            border-bottom: 2px solid var(--border-light);
-        }
-
-        .cat-section-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--purple-deep);
-            margin: 0;
-        }
-
-        .cat-section-header .cat-section-count {
-            font-size: .8rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: .04em;
-            text-transform: uppercase;
-        }
-
-        .cat-section .training-grid {
-            margin-top: var(--sp-6);
-        }
-
-        /* Hide a whole section when none of its cards match the active filter */
-        .cat-section.hidden-by-filter {
-            display: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>matziq.github.io — Bookmarks</title>
+<link rel="icon" href="images/favicon-bookmarks.svg" type="image/svg+xml">
+<style>
+  :root{
+    --bg:#0f1216; --panel:#171b22; --panel2:#1e242d; --border:#2a313c;
+    --text:#e6eaf0; --muted:#9aa4b2; --accent:#4c9ffe; --accent2:#7c5cff;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f4f6f9; --panel:#ffffff; --panel2:#f0f3f8; --border:#dfe4ec; --text:#1a2230; --muted:#5c6675; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header{padding:32px 24px 8px;max-width:1200px;margin:0 auto}
+  h1{margin:0 0 4px;font-size:26px;font-weight:700}
+  .sub{color:var(--muted);font-size:14px}
+  .search{margin:16px auto 0;max-width:1200px;padding:0 24px}
+  .search input{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);font-size:15px;outline:none}
+  .search input:focus{border-color:var(--accent)}
+  main{max-width:1200px;margin:0 auto;padding:20px 24px 60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column}
+  .card h2{margin:0 0 12px;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+  .card h2 .n{margin-left:auto;font-size:12px;color:var(--muted);background:var(--panel2);border:1px solid var(--border);border-radius:20px;padding:1px 9px}
+  ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  li a{display:block;padding:8px 10px;border-radius:8px;color:var(--text);text-decoration:none;font-size:14px;transition:background .12s}
+  li a:hover{background:var(--panel2)}
+  li a .pair{color:var(--muted);font-size:12px}
+  footer{max-width:1200px;margin:0 auto;padding:0 24px 48px;color:var(--muted);font-size:13px}
+  .hidden{display:none}
+</style>
 </head>
-
 <body>
+<header>
+  <h1>matziq.github.io — Bookmarks</h1>
+  <div class="sub">Published GitHub Pages, organized by subject · 52 pages</div>
+</header>
+<div class="search"><input id="q" type="text" placeholder="Filter pages… (type to search)"></div>
+<main id="grid">
 
-    <div class="page-wrapper">
+  <section class="card">
+    <h2>Training Courses <span class="n">33</span></h2>
+    <ul>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training1/">Sales Master Class <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training1user/">Sales Master Class <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training1user/HR_Onboarding_Demo.html">Sales Master Class <span class="pair">· HR Onboarding Demo</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training2/">Agent Revolution <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training2user/">Agent Revolution <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training3/">Copilot Chat for All <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training3user/">Copilot Chat for All <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training4/">Marketing AI Workshop <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training5/">M365 Copilot Hands-on (Power Users) <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training5user/">M365 Copilot Hands-on (Power Users) <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training6/">Copilot Chat Training (6) <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training6user/">Copilot Chat Training (6) <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training7/">AI Agents Immersion Workshop <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training7user/">AI Agents Immersion Workshop <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training8/">Copilot Chat Training (8) <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training8user/">Copilot Chat Training (8) <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training9/">Copilot Agents Hack-a-Thon <span class="pair">· Facilitator</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training9user/">Copilot Agents Hack-a-Thon <span class="pair">· Workbook</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training10/">Copilot Prompt-a-thon Masterclass <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training11/">M365 Promptathon (Advanced) <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training11user/">M365 Promptathon (Advanced) <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training12/">M365 Promptathon (Standard) <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training12user/">M365 Promptathon (Standard) <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training13/">Copilot Chat — IT Superpower <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training13user/">Copilot Chat — IT Superpower <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training14/">Copilot Immersion — Legal <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training14user/">Copilot Immersion — Legal <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training15/">Copilot Studio Training <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training15user/">Copilot Studio Training <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training16/">Copilot Chat for Marketing <span class="pair">· Trainer</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training16user/">Copilot Chat for Marketing <span class="pair">· User</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Trainer/training17/">Copilot Chat (Basic) <span class="pair">· Trainer Playbook</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training17user/">Copilot Chat (Basic) <span class="pair">· Student</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/trainerdocs.html">Trainer Docs <span class="pair">· index</span></a></li>
+    </ul>
+  </section>
 
-        <header class="page-hero">
-            <h1>Training Hub</h1>
-            <p class="subtitle">
-                Select a training below to get started. Each course includes step-by-step
-                exercises, ready-to-use prompts, and power moves.
-            </p>
-        </header>
+  <section class="card">
+    <h2>Workshops &amp; Intro <span class="n">3</span></h2>
+    <ul>
+      <li><a href="https://matziq.github.io/copilot-training-docs/m365-copilot-intro-workshop/">Intro to Microsoft 365 Copilot — One-Hour Class</a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Copilot_Studio_Agent_Training/">Building Agents in Microsoft 365 — Training Hub</a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/office-hours-agenda/">Office Hours Agenda — Copilot Chat &amp; Agents</a></li>
+    </ul>
+  </section>
 
-        <div class="filter-bar" id="filterBar">
-            <button class="filter-pill active" data-filter="all">All</button>
-            <button class="filter-pill" data-filter="copilot-chat">Copilot Chat</button>
-            <button class="filter-pill" data-filter="agents">Agents</button>
-            <button class="filter-pill" data-filter="prompting">Prompting</button>
-            <button class="filter-pill" data-filter="m365-copilot">M365 Copilot</button>
-            <button class="filter-pill" data-filter="exam-prep">Exam Prep</button>
-        </div>
+  <section class="card">
+    <h2>Certification &amp; Exam Prep <span class="n">5</span></h2>
+    <ul>
+      <li><a href="https://matziq.github.io/copilot-training-docs/exam730user/">AB-730 Practice Exam <span class="pair">· AI Business Professional</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/flashcards730user/">AB-730 Flashcards <span class="pair">· AI Business Professional</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/exam731user/">AB-731 Practice Exam <span class="pair">· AI Transformation Leader</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/exam731user/study-guide.html">AB-731 Study Guide <span class="pair">· AI Transformation Leader</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/flashcards731user/">AB-731 Flashcards <span class="pair">· AI Transformation Leader</span></a></li>
+    </ul>
+  </section>
 
-        <!-- ============================================================
-             COPILOT CHAT
-             ============================================================ -->
-        <section id="cat-copilot-chat" class="cat-section">
-            <div class="cat-section-header">
-                <h2>&#128172; Copilot Chat</h2>
-                <span class="cat-section-count">User guides &amp; demos</span>
-            </div>
-            <div class="training-grid">
+  <section class="card">
+    <h2>Demo Prompts &amp; Build Scripts <span class="n">9</span></h2>
+    <ul>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Cowork_Demo_Prompts.html">Copilot Cowork — Demo Prompts</a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/customer-tools/cowork-demos/">Copilot Cowork — Demo Prompts <span class="pair">· customer tools</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/Declarative-Agents-Demo-Script.html">Retail Declarative Agents — Live Build Sheet</a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/declarative-agents-retail/">Retail Declarative Agents — Live Build Sheet <span class="pair">· alt</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/files/Contoso-Demo-Prompts.html">Low Code, Big Results — Contoso Demo Prompts</a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/files/Copilot%20Chat%20Training%20-%20Marketing%20Demo%20Prompts.html">Copilot Chat Training — Marketing Demo Prompts</a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/files/Copilot-Chat-IT-Superpower-MolsonCoors.html">Copilot Chat — IT Superpower <span class="pair">· Molson Coors</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/files/RCG%20Copilot%20Agents%20Training%20Session%20Demos.html">Agent Revolution — Demo Pack <span class="pair">· RCG</span></a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/training1user/HR_Onboarding_Demo.html">HR Onboarding Demo Prompts</a></li>
+    </ul>
+  </section>
 
-                <!-- ── Training 3 (User) ── -->
-                <a href="training3user/" class="training-card teal" data-category="copilot-chat">
-                    <div class="training-card-icon">&#128100;</div>
-                    <span class="training-card-label">Training 3 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Chat for All &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Hands-on exercises: web research, brainstorming, file analysis,
-                        data visualization, and image understanding.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 4 Modules</span>
-                        <span>&#9202; ~50 min</span>
-                    </div>
-                </a>
+  <section class="card">
+    <h2>Tools &amp; How-To <span class="n">2</span></h2>
+    <ul>
+      <li><a href="https://matziq.github.io/copilot-training-docs/scout-tips/">Microsoft Scout — Tips &amp; Tricks</a></li>
+      <li><a href="https://matziq.github.io/copilot-training-docs/ppt-brand-template-user/">Keep PowerPoint On-Brand with Copilot</a></li>
+    </ul>
+  </section>
 
-                <!-- ── Training 6 (User) ── -->
-                <a href="training6user/" class="training-card teal" data-category="copilot-chat">
-                    <div class="training-card-icon">&#128172;</div>
-                    <span class="training-card-label">Training 6 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Chat Training &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Quick-start guide: accessing Copilot Chat, the 4 prompt ingredients,
-                        hands-on prompts for email, brainstorming, meeting summaries, writing,
-                        image generation, and personalization.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 7 Sections</span>
-                        <span>&#9202; ~55 min</span>
-                    </div>
-                </a>
 
-                <!-- ── Training 8 (User) ── -->
-                <a href="training8user/" class="training-card purple" data-category="copilot-chat">
-                    <div class="training-card-icon">&#128172;</div>
-                    <span class="training-card-label">Training 8 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Chat Training &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Quick-start guide: accessing Copilot Chat, GCSE prompting framework,
-                        quick-start prompts, working with files, power user tips, and
-                        ready-to-use demo prompts.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 8 Sections</span>
-                        <span>&#9202; ~90 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 13 (User) ── -->
-                <a href="training13user/" class="training-card blue" data-category="copilot-chat">
-                    <div class="training-card-icon">&#9889;</div>
-                    <span class="training-card-label">Training 13 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Chat &mdash; Your IT Superpower &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        IT-focused user guide: interface overview, GCSE framework, nine live demo
-                        scenarios (scripting, troubleshooting, KQL, security review, incidents,
-                        regex, Bicep, change requests, on-call triage), tips &amp; tricks, and
-                        custom instructions.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 9 Sections</span>
-                        <span>&#9202; ~60 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 16 (User) ── -->
-                <a href="training16user/" class="training-card red" data-category="copilot-chat">
-                    <div class="training-card-icon">&#128227;</div>
-                    <span class="training-card-label">Training 16 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Chat for Marketing &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Beverage-industry handout: ten copy-paste demos covering trend briefings,
-                        buyer personas, multi-channel campaigns, competitive teardowns, file
-                        analysis, Outlook reasoning, memory, and image concepts.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 10 Demos</span>
-                        <span>&#9202; ~40 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 17 (User) ── -->
-                <a href="training17user/" class="training-card blue" data-category="copilot-chat">
-                    <div class="training-card-icon">&#128172;</div>
-                    <span class="training-card-label">Training 17 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Chat (Basic) &mdash; Student Companion Guide</div>
-                    <p class="training-card-desc">
-                        Beginner-friendly handout: 19 copy-paste prompts spanning research,
-                        writing, summarizing, data visuals, images, Outlook, and Copilot Memory.
-                        Includes a quick interface tour and the Goal/Context/Source/Expectations
-                        prompting framework.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 19 Demos</span>
-                        <span>&#9202; ~75 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Office Hours Agenda (User) ── -->
-                <a href="office-hours-agenda/" class="training-card purple" data-category="copilot-chat">
-                    <div class="training-card-icon">&#128197;</div>
-                    <span class="training-card-label">Office Hours &middot; Agenda</span>
-                    <div class="training-card-title">Office Hours Agenda &mdash; Copilot Chat &amp; Agents</div>
-                    <p class="training-card-desc">
-                        40-minute working-session agenda covering Copilot Chat intros &amp; demos,
-                        Agents (Prompt Coach, Idea Coach, build &ldquo;The Hype Lab&rdquo;), and a
-                        quick tour of Copilot Memory &amp; Custom Instructions.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 3 Blocks</span>
-                        <span>&#9202; 40 min</span>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- ============================================================
-             AGENTS
-             ============================================================ -->
-        <section id="cat-agents" class="cat-section">
-            <div class="cat-section-header">
-                <h2>&#129302; Agents</h2>
-                <span class="cat-section-count">Build &amp; deploy AI agents</span>
-            </div>
-            <div class="training-grid">
-
-                <!-- ── Training 2 (User) ── -->
-                <a href="training2user/" class="training-card blue" data-category="agents">
-                    <div class="training-card-icon">&#128100;</div>
-                    <span class="training-card-label">Training 2 &middot; User Guide</span>
-                    <div class="training-card-title">Agent Revolution &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Hands-on exercises for learners: Prompt Coach, Idea Coach, custom agent creation,
-                        Researcher, Analyst, and premium agent capabilities.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 2 Modules</span>
-                        <span>&#9202; ~35 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 7 (User) ── -->
-                <a href="training7user/" class="training-card green" data-category="agents">
-                    <div class="training-card-icon">&#129302;</div>
-                    <span class="training-card-label">Training 7 &middot; User Guide</span>
-                    <div class="training-card-title">AI Agents Immersion Workshop &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Hands-on workshop: AI agent concepts, three agent types, Microsoft agent
-                        landscape, build your first agent in Copilot Studio, hackathon challenge,
-                        and demo day.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 10 Sections</span>
-                        <span>&#9202; Full Day</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 9 (User) ── -->
-                <a href="training9user/" class="training-card red" data-category="agents">
-                    <div class="training-card-icon">&#128640;</div>
-                    <span class="training-card-label">Training 9 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Agents Hack-a-Thon &mdash; Participant Workbook</div>
-                    <p class="training-card-desc">
-                        Hands-on participant workbook: agenda, agent design canvas, scenario
-                        quick reference, build guides, tips, demo prep worksheet, and
-                        judging criteria.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 7 Sections</span>
-                        <span>&#9202; Full Day</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 15 (User) ── -->
-                <a href="training15user/" class="training-card teal" data-category="agents">
-                    <div class="training-card-icon">&#129302;</div>
-                    <span class="training-card-label">Training 15 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Studio Training &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Low-code agent-building handout: Agent Builder vs. Copilot Studio, plus
-                        three copy-paste demos &mdash; declarative Concierge, topics + action Service
-                        Hero, and autonomous Deal Desk with generative orchestration.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 5 Sections</span>
-                        <span>&#9202; ~60 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Copilot Studio Agent Training ── -->
-                <a href="Copilot_Studio_Agent_Training/" class="training-card purple" data-category="agents">
-                    <div class="training-card-icon">&#129302;</div>
-                    <span class="training-card-label">Training &middot; Hands-on</span>
-                    <div class="training-card-title">Building Agents in M365 &mdash; Agent Builder &amp; Copilot Studio
-                    </div>
-                    <p class="training-card-desc">
-                        1-hour hands-on: intro to agents, build the &ldquo;Icebreaker Architect&rdquo;
-                        in Agent Builder, build the &ldquo;Office Plant Whisperer&rdquo; in Copilot
-                        Studio with knowledge + a guided topic, plus tweaking, icons &amp; testing.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 4 Modules</span>
-                        <span>&#9202; ~60 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Declarative Agents — Retail ── -->
-                <a href="declarative-agents-retail/" class="training-card green" data-category="agents">
-                    <div class="training-card-icon">&#129302;</div>
-                    <span class="training-card-label">Build Sheet &middot; Agents</span>
-                    <div class="training-card-title">Retail Declarative Agents &mdash; Live Build Sheet</div>
-                    <p class="training-card-desc">
-                        Three copy-paste declarative agents for retail: Retail Pulse (industry
-                        intelligence), Shrink Stopper (loss prevention), and Peak Season Planner
-                        (holiday &amp; seasonal strategy). Each uses 3 web sources.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#129302; 3 Agents</span>
-                        <span>&#127760; Web-grounded</span>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- ============================================================
-             PROMPTING
-             ============================================================ -->
-        <section id="cat-prompting" class="cat-section">
-            <div class="cat-section-header">
-                <h2>&#10024; Prompting</h2>
-                <span class="cat-section-count">Frameworks &amp; promptathons</span>
-            </div>
-            <div class="training-grid">
-
-                <!-- ── Training 11 (User) ── -->
-                <a href="training11user/" class="training-card green" data-category="prompting">
-                    <div class="training-card-icon">&#10024;</div>
-                    <span class="training-card-label">Training 11 &middot; User Guide</span>
-                    <div class="training-card-title">M365 Copilot Promptathon &mdash; Advanced &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Hands-on exercises: art of prompting, GCSE framework, iterating &amp;
-                        expanding prompts, conversational prompting, agents, 7 best practices,
-                        and Copilot interface reference.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 8 Sections</span>
-                        <span>&#9202; ~90 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 12 (User) ── -->
-                <a href="training12user/" class="training-card orange" data-category="prompting">
-                    <div class="training-card-icon">&#10024;</div>
-                    <span class="training-card-label">Training 12 &middot; User Guide</span>
-                    <div class="training-card-title">M365 Copilot Promptathon &mdash; Standard &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Hands-on exercises: art of prompting, GCSE framework, iterating &amp;
-                        expanding prompts, conversational prompting, using templates, agents,
-                        prompt sharing, and 7 best practices.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 8 Sections</span>
-                        <span>&#9202; ~90 min</span>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- ============================================================
-             M365 COPILOT
-             ============================================================ -->
-        <section id="cat-m365-copilot" class="cat-section">
-            <div class="cat-section-header">
-                <h2>&#128188; M365 Copilot</h2>
-                <span class="cat-section-count">Power users &amp; vertical guides</span>
-            </div>
-            <div class="training-grid">
-
-                <!-- ── Training 1 (User) ── -->
-                <a href="training1user/" class="training-card blue" data-category="m365-copilot">
-                    <div class="training-card-icon">&#128100;</div>
-                    <span class="training-card-label">Training 1 &middot; User Guide</span>
-                    <div class="training-card-title">Sales Master Class &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Hands-on exercises: mobile, chat, Teams, Researcher, Analyst, M365 apps,
-                        Excel analysis, and custom agent building.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 6 Modules</span>
-                        <span>&#9202; ~2 hrs</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 5 (User) ── -->
-                <a href="training5user/" class="training-card blue" data-category="m365-copilot">
-                    <div class="training-card-icon">&#128100;</div>
-                    <span class="training-card-label">Training 5 &middot; User Guide</span>
-                    <div class="training-card-title">M365 Copilot Hands-on Training for Power Users &mdash; User Guide
-                    </div>
-                    <p class="training-card-desc">
-                        Prompting framework, app tips &amp; tricks, 4 live demos to follow along,
-                        best practices playbook, and upcoming Copilot features.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 5 Sections</span>
-                        <span>&#9202; ~60 min</span>
-                    </div>
-                </a>
-
-                <!-- ── Training 14 (User) ── -->
-                <a href="training14user/" class="training-card purple" data-category="m365-copilot">
-                    <div class="training-card-icon">&#9878;</div>
-                    <span class="training-card-label">Training 14 &middot; User Guide</span>
-                    <div class="training-card-title">Copilot Immersion &mdash; Legal &mdash; User Guide</div>
-                    <p class="training-card-desc">
-                        Legal-focused user guide: GCSE framework, Work IQ, document comparison,
-                        deep legal research with Researcher agent, Copilot in Word &amp; Outlook,
-                        and building a contract review agent.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 7 Sections</span>
-                        <span>&#9202; ~60 min</span>
-                    </div>
-                </a>
-
-                <!-- ── PowerPoint Brand Template ── -->
-                <a href="ppt-brand-template-user/" class="training-card orange" data-category="m365-copilot">
-                    <div class="training-card-icon">&#129534;</div>
-                    <span class="training-card-label">PowerPoint &middot; Template Setup</span>
-                    <div class="training-card-title">Keep PowerPoint On-Brand with Copilot</div>
-                    <p class="training-card-desc">
-                        Step-by-step guide to building a PowerPoint template Copilot can actually
-                        use &mdash; sample slides, Slide Master, themes, placeholders, and
-                        uploading to your Brand Kit.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128218; 7 Modules</span>
-                        <span>&#9202; ~55 min</span>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- ============================================================
-             EXAM PREP
-             ============================================================ -->
-        <section id="cat-exam-prep" class="cat-section">
-            <div class="cat-section-header">
-                <h2>&#127183; Exam Prep</h2>
-                <span class="cat-section-count">AB-730 &amp; AB-731 certifications</span>
-            </div>
-            <div class="training-grid">
-
-                <!-- ── Flashcards AB-731 (User) ── -->
-                <a href="flashcards731user/" class="training-card orange" data-category="exam-prep">
-                    <div class="training-card-icon">&#127183;</div>
-                    <span class="training-card-label">AB-731 &middot; Exam Prep</span>
-                    <div class="training-card-title">AI Transformation Leader &mdash; Flashcards</div>
-                    <p class="training-card-desc">
-                        40 interactive flashcards across 3 domains: Business Value of GenAI,
-                        Microsoft AI Apps &amp; Services, and Implementation &amp; Adoption.
-                        Random or by category with tagging support.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#127922; 40 Flashcards</span>
-                        <span>&#128193; 3 Domains</span>
-                    </div>
-                </a>
-
-                <!-- ── Study Guide AB-731 ── -->
-                <a href="exam731user/study-guide.html" class="training-card purple" data-category="exam-prep">
-                    <div class="training-card-icon">&#128218;</div>
-                    <span class="training-card-label">AB-731 &middot; Study Guide</span>
-                    <div class="training-card-title">AI Transformation Leader &mdash; Study Guide &amp; Tips</div>
-                    <p class="training-card-desc">
-                        Strategic preparation: Azure AI Foundry service mapping, Copilot vs Azure AI
-                        boundaries, cost models, Scale AI framework, Responsible AI triggers,
-                        decision trees, and a 48-hour revision checklist.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128161; 13 Sections</span>
-                        <span>&#127919; Judgment-focused</span>
-                    </div>
-                </a>
-
-                <!-- ── Flashcards AB-730 (User) ── -->
-                <a href="flashcards730user/" class="training-card blue" data-category="exam-prep">
-                    <div class="training-card-icon">&#127183;</div>
-                    <span class="training-card-label">AB-730 &middot; Exam Prep</span>
-                    <div class="training-card-title">AI Business Professional &mdash; Flashcards</div>
-                    <p class="training-card-desc">
-                        40 interactive flashcards across 3 domains: Generative AI Fundamentals,
-                        Prompts &amp; Conversations, and Draft &amp; Analyze Business Content.
-                        Random or by category with tagging support.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#127922; 40 Flashcards</span>
-                        <span>&#128193; 3 Domains</span>
-                    </div>
-                </a>
-
-                <!-- ── Practice Exam AB-731 ── -->
-                <a href="exam731user/" class="training-card red" data-category="exam-prep">
-                    <div class="training-card-icon">&#128220;</div>
-                    <span class="training-card-label">AB-731 &middot; Practice Exam</span>
-                    <div class="training-card-title">AI Transformation Leader &mdash; Practice Exam</div>
-                    <p class="training-card-desc">
-                        40 multiple-choice questions with randomized answers. Timed exam
-                        with pass/fail scoring (700/1000), domain breakdown, and missed
-                        question review.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128221; 40 Questions</span>
-                        <span>&#127942; Pass: 700</span>
-                    </div>
-                </a>
-
-                <!-- ── Practice Exam AB-730 ── -->
-                <a href="exam730user/" class="training-card green" data-category="exam-prep">
-                    <div class="training-card-icon">&#128220;</div>
-                    <span class="training-card-label">AB-730 &middot; Practice Exam</span>
-                    <div class="training-card-title">AI Business Professional &mdash; Practice Exam</div>
-                    <p class="training-card-desc">
-                        40 multiple-choice questions with randomized answers. Timed exam
-                        with pass/fail scoring (700/1000), domain breakdown, and missed
-                        question review.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128221; 40 Questions</span>
-                        <span>&#127942; Pass: 700</span>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- ============================================================
-             CUSTOMER TOOLS
-             ============================================================ -->
-        <section id="cat-customer-tools" class="cat-section">
-            <div class="cat-section-header">
-                <h2>&#128295; Customer Tools</h2>
-                <span class="cat-section-count">Utilities for M365 Copilot tenants</span>
-            </div>
-            <div class="training-grid">
-
-                <!-- ── M365 Message Center Report ── -->
-                <a href="customer-tools/message-center/" class="training-card purple" data-category="customer-tools">
-                    <div class="training-card-icon">&#128227;</div>
-                    <span class="training-card-label">Tool &middot; Report</span>
-                    <div class="training-card-title">M365 Message Center &mdash; Copilot Filter</div>
-                    <p class="training-card-desc">
-                        Latest Microsoft 365 Message Center posts tagged for Copilot Chat
-                        and Microsoft Copilot, summarized and filterable by product,
-                        audience, and urgency.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128202; Filterable</span>
-                        <span>&#128221; Summarized</span>
-                    </div>
-                </a>
-
-                <!-- ── Cowork Demo Prompts ── -->
-                <a href="customer-tools/cowork-demos/" class="training-card blue" data-category="customer-tools">
-                    <div class="training-card-icon">&#128172;</div>
-                    <span class="training-card-label">Tool &middot; Prompts</span>
-                    <div class="training-card-title">Cowork Demo Prompts</div>
-                    <p class="training-card-desc">
-                        Ready-to-copy demo prompts for Microsoft Copilot Cowork: morning
-                        briefings, email, calendar, meetings, documents, Teams, skills &amp;
-                        scheduled tasks. Pre-filled with demo-friendly examples.
-                    </p>
-                    <div class="training-card-meta">
-                        <span>&#128203; 30 Prompts</span>
-                        <span>&#9889; Copy &amp; Paste</span>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-    </div>
-
-    <script>
-        // ---- Filter pills ----
-        function applyFilter(filter) {
-            document.querySelectorAll('.filter-pill').forEach(function (p) {
-                p.classList.toggle('active', p.dataset.filter === filter);
-            });
-            document.querySelectorAll('.training-card').forEach(function (card) {
-                var match = (filter === 'all' || card.dataset.category === filter);
-                card.classList.toggle('hidden-by-filter', !match);
-            });
-            // Hide a whole section if none of its cards are visible
-            document.querySelectorAll('.cat-section').forEach(function (sec) {
-                var visible = sec.querySelectorAll('.training-card:not(.hidden-by-filter)').length;
-                sec.classList.toggle('hidden-by-filter', visible === 0);
-            });
-        }
-
-        document.getElementById('filterBar').addEventListener('click', function (e) {
-            var pill = e.target.closest('.filter-pill');
-            if (!pill) return;
-            applyFilter(pill.dataset.filter);
-            // Clear any active hash so we don't re-jump on next navigation
-            if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
-        });
-
-        // ---- Deep-link via hash: #cat-agents etc. ----
-        function syncFromHash() {
-            var m = (location.hash || '').match(/^#cat-(.+)$/);
-            if (!m) { applyFilter('all'); return; }
-            var cat = m[1];
-            applyFilter('all'); // show everything; section anchor handles scroll
-            // (Filter pills remain on "All" so the user sees adjacent sections too)
-            var target = document.getElementById('cat-' + cat);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        window.addEventListener('hashchange', syncFromHash);
-        if (location.hash) {
-            // Defer to let layout settle
-            setTimeout(syncFromHash, 50);
-        }
-    </script>
-
-    <script src="js/sitenav.js"></script>
-    <script src="js/main.v3.js"></script>
+</main>
+<footer>Tip: use the filter box to jump to any page. · <a href="hub.html" style="color:var(--accent)">Original Training Hub →</a></footer>
+<script>
+  const q=document.getElementById('q');
+  q.addEventListener('input',()=>{
+    const term=q.value.toLowerCase();
+    document.querySelectorAll('#grid .card').forEach(card=>{
+      let any=false;
+      card.querySelectorAll('li').forEach(li=>{
+        const m=li.textContent.toLowerCase().includes(term);
+        li.classList.toggle('hidden',!m); if(m)any=true;
+      });
+      card.classList.toggle('hidden',!any);
+    });
+  });
+</script>
 </body>
-
 </html>
