@@ -26,6 +26,8 @@
 
   --clr-heading: #263047;
 
+  --bg-pattern: url("../img/bg-spring.svg");
+
   --shadow-soft: 0 15px 35px rgba(58, 63, 115, 0.08);
 
   --shadow-card: 0 20px 45px rgba(58, 63, 115, 0.15);
@@ -103,6 +105,7 @@ html[data-theme="summer"] {
   --clr-border: rgba(60, 45, 10, 0.16);
   --clr-surface: #fffdf7;
   --clr-heading: #2b2410;
+  --bg-pattern: url("../img/bg-summer.svg");
 }
 
 html[data-theme="fall"] {
@@ -119,6 +122,7 @@ html[data-theme="fall"] {
   --clr-border: rgba(60, 35, 15, 0.18);
   --clr-surface: #fff8f0;
   --clr-heading: #2a1a10;
+  --bg-pattern: url("../img/bg-fall.svg");
 }
 
 html[data-theme="winter"] {
@@ -135,6 +139,7 @@ html[data-theme="winter"] {
   --clr-border: rgba(22, 32, 46, 0.16);
   --clr-surface: #f5faff;
   --clr-heading: #1e3a5f;
+  --bg-pattern: url("../img/bg-winter.svg");
 }
 
 html[data-theme="dark"] {
@@ -151,6 +156,7 @@ html[data-theme="dark"] {
   --clr-border: rgba(232, 236, 241, 0.16);
   --clr-surface: #161b22;
   --clr-heading: #f4f7fb;
+  --bg-pattern: url("../img/bg-dark.svg");
 }
 
 html {
@@ -167,7 +173,13 @@ body {
 
   color: var(--clr-ink);
 
-  background: var(--clr-cloud);
+  background-color: var(--clr-cloud);
+
+  background-image: var(--bg-pattern);
+
+  background-repeat: repeat;
+
+  background-attachment: fixed;
 
   transition: background-color 0.4s ease, color 0.4s ease;
 
