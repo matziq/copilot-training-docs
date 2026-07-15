@@ -1,3 +1,56 @@
+// Theme cycling: Spring (default) -> Summer -> Fall -> Dark -> Spring ...
+const THEME_STORAGE_KEY = 'mybookcentral-theme';
+const THEMES = [
+  { id: 'spring', label: 'Spring', icon: '🌱' },
+  { id: 'summer', label: 'Summer', icon: '☀️' },
+  { id: 'fall', label: 'Fall', icon: '🍂' },
+  { id: 'dark', label: 'Dark', icon: '🌙' },
+];
+
+const themeToggle = document.querySelector('[data-theme-toggle]');
+const themeIcon = document.querySelector('[data-theme-icon]');
+const themeLabel = document.querySelector('[data-theme-label]');
+
+function applyTheme(themeId) {
+  const theme = THEMES.find((t) => t.id === themeId) || THEMES[0];
+  if (theme.id === 'spring') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme.id);
+  }
+  if (themeIcon) themeIcon.textContent = theme.icon;
+  if (themeLabel) themeLabel.textContent = theme.label;
+  if (themeToggle) themeToggle.setAttribute('aria-label', `Change site theme (currently ${theme.label})`);
+}
+
+function getStoredTheme() {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY);
+  } catch (err) {
+    return null;
+  }
+}
+
+function storeTheme(themeId) {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, themeId);
+  } catch (err) {
+    // Ignore write errors (e.g., private browsing mode).
+  }
+}
+
+applyTheme(getStoredTheme() || 'spring');
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'spring';
+    const currentIndex = THEMES.findIndex((t) => t.id === current);
+    const next = THEMES[(currentIndex + 1) % THEMES.length];
+    applyTheme(next.id);
+    storeTheme(next.id);
+  });
+}
+
 const navToggle = document.querySelector('.nav-toggle');
 
 const navLinks = document.querySelector('.nav-links');
