@@ -304,6 +304,11 @@ h5 {
   object-fit: cover;
 }
 
+.hero--compact {
+  min-height: auto;
+  padding: 3rem 0 2.5rem;
+}
+
 .hero__badge {
   position: absolute;
   top: 1.5rem;
