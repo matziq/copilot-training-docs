@@ -121,6 +121,22 @@ html[data-theme="fall"] {
   --clr-heading: #2a1a10;
 }
 
+html[data-theme="winter"] {
+  --clr-deep-navy: #1e3a5f;
+  --clr-midnight: #142a45;
+  --clr-forest: hsl(205, 55%, 42%);
+  --clr-sage: hsl(200, 60%, 82%);
+  --clr-mint: hsl(190, 70%, 80%);
+  --clr-sand: hsl(210, 35%, 85%);
+  --clr-cloud: hsl(205, 45%, 97%);
+  --clr-sage-tint: hsl(205, 50%, 93%);
+  --clr-ink: #16202e;
+  --clr-muted: rgba(22, 32, 46, 0.72);
+  --clr-border: rgba(22, 32, 46, 0.16);
+  --clr-surface: #f5faff;
+  --clr-heading: #1e3a5f;
+}
+
 html[data-theme="dark"] {
   --clr-deep-navy: #0d1117;
   --clr-midnight: #05070a;

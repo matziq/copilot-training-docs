@@ -4,6 +4,7 @@ const THEMES = [
   { id: 'spring', label: 'Spring', icon: '🌱' },
   { id: 'summer', label: 'Summer', icon: '☀️' },
   { id: 'fall', label: 'Fall', icon: '🍂' },
+  { id: 'winter', label: 'Winter', icon: '❄️' },
   { id: 'dark', label: 'Dark', icon: '🌙' },
 ];
 
