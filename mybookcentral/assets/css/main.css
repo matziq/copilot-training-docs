@@ -24,6 +24,8 @@
 
   --clr-surface: #ffffff;
 
+  --clr-heading: #263047;
+
   --shadow-soft: 0 15px 35px rgba(58, 63, 115, 0.08);
 
   --shadow-card: 0 20px 45px rgba(58, 63, 115, 0.15);
@@ -100,6 +102,7 @@ html[data-theme="summer"] {
   --clr-muted: rgba(60, 45, 10, 0.72);
   --clr-border: rgba(60, 45, 10, 0.16);
   --clr-surface: #fffdf7;
+  --clr-heading: #2b2410;
 }
 
 html[data-theme="fall"] {
@@ -115,6 +118,7 @@ html[data-theme="fall"] {
   --clr-muted: rgba(60, 35, 15, 0.72);
   --clr-border: rgba(60, 35, 15, 0.18);
   --clr-surface: #fff8f0;
+  --clr-heading: #2a1a10;
 }
 
 html[data-theme="dark"] {
@@ -130,6 +134,7 @@ html[data-theme="dark"] {
   --clr-muted: rgba(232, 236, 241, 0.72);
   --clr-border: rgba(232, 236, 241, 0.16);
   --clr-surface: #161b22;
+  --clr-heading: #f4f7fb;
 }
 
 html {
@@ -268,8 +273,7 @@ main {
 
   font-size: clamp(2rem, 4vw, 3rem);
 
-  color: var(--clr-deep-navy);
-
+  color: var(--clr-heading);
 }
 
 
@@ -406,7 +410,7 @@ button,
 
   font-family: "Playfair Display", "Times New Roman", serif;
 
-  color: var(--clr-deep-navy);
+  color: var(--clr-heading);
 
 }
 
@@ -450,7 +454,7 @@ button,
 
   font-weight: 600;
 
-  color: var(--clr-midnight);
+  color: var(--clr-heading);
 
   position: relative;
 
@@ -659,7 +663,7 @@ button,
 
   font-size: clamp(2.75rem, 6vw, 4.5rem);
 
-  color: var(--clr-deep-navy);
+  color: var(--clr-heading);
 
 }
 
@@ -799,7 +803,7 @@ button,
 
   margin-bottom: 0.75rem;
 
-  color: var(--clr-midnight);
+  color: var(--clr-heading);
 
 }
 
@@ -1195,7 +1199,7 @@ button,
 
 .form-status[data-state="pending"] {
 
-  color: var(--clr-midnight);
+  color: var(--clr-heading);
 
 }
 
