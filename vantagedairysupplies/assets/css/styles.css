@@ -306,8 +306,8 @@ h5 {
 
 .hero__badge {
   position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
+  top: 1.5rem;
+  right: 1.5rem;
   background: rgba(6, 19, 39, 0.8);
   padding: 1rem 1.3rem;
   border-radius: var(--radius-sm);
