@@ -325,9 +325,7 @@ if (contactForms.length) {
       statusField.dataset.state = state;
     };
 
-    const endpoint = contactForm.getAttribute('action') || '/api/contact';
-
-    contactForm.addEventListener('submit', async (event) => {
+    contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
       const formData = new FormData(contactForm);
@@ -344,55 +342,15 @@ if (contactForms.length) {
 
       submitButton.disabled = true;
       submitButton.classList.add('loading');
-      setStatusMessage('Sending…', 'pending');
+      setStatusMessage('Opening your email app…', 'pending');
 
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
+      const mailto = buildMailtoLink(payload);
+      window.location.href = mailto;
+      contactForm.reset();
+      setStatusMessage("Opening your email app to send the message…", 'success');
 
-        // The API generally returns JSON, but when something goes wrong (proxy, server error,
-        // misconfigured response) we might get plain text/HTML. Handle both.
-        const rawText = await response.text();
-        const body = (() => {
-          try {
-            return rawText ? JSON.parse(rawText) : {};
-          } catch {
-            return { detail: rawText };
-          }
-        })();
-
-        if (!response.ok) {
-          const errorMsg = typeof body.detail === 'string'
-            ? body.detail
-            : 'We could not send your message. Please try again.';
-          throw new Error(errorMsg);
-        }
-
-        contactForm.reset();
-        setStatusMessage(body.message || "Thanks for your message! We'll be in touch soon.", 'success');
-      } catch (error) {
-        // Common local-dev case: serving via `python -m http.server`.
-        // That server doesn't support POST and returns an HTML 501 page.
-        const msg = error instanceof Error ? error.message : '';
-        const looksLikeUnsupportedPost = /Unsupported method \('POST'\)/i.test(msg) || /Error code:\s*501/i.test(msg);
-
-        if (looksLikeUnsupportedPost) {
-          const mailto = buildMailtoLink(payload);
-          // Open the user's email client with a pre-filled message.
-          window.location.href = mailto;
-          setStatusMessage('Opening your email app to send the message…', 'success');
-          return;
-        }
-
-        const errorMsg = msg || 'Something went wrong. Please try again later.';
-        setStatusMessage(errorMsg, 'error');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.classList.remove('loading');
-      }
+      submitButton.disabled = false;
+      submitButton.classList.remove('loading');
     });
   });
 }
