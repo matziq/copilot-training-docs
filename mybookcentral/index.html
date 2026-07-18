@@ -471,7 +471,7 @@
           </div>
 
           <div class="contact-card" data-animate>
-            <form class="contact-form" data-contact-form>
+            <form class="contact-form" data-contact-form action="contact.php" method="post">
               <label>
                 Your Name *
                 <input type="text" name="name" placeholder="Jane Reader" required />
@@ -487,6 +487,10 @@
               <label>
                 Your Message *
                 <textarea name="message" placeholder="How can we help?" required></textarea>
+              </label>
+              <label class="hp-field" aria-hidden="true">
+                Leave this field blank
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
               </label>
               <button class="btn btn-primary" type="submit" data-contact-submit>
                 <span>Send Message</span>

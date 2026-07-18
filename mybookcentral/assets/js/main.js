@@ -325,7 +325,9 @@ if (contactForms.length) {
       statusField.dataset.state = state;
     };
 
-    contactForm.addEventListener('submit', (event) => {
+    const endpoint = contactForm.getAttribute('action') || 'contact.php';
+
+    contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const formData = new FormData(contactForm);
@@ -342,37 +344,58 @@ if (contactForms.length) {
 
       submitButton.disabled = true;
       submitButton.classList.add('loading');
-      setStatusMessage('Opening your email app…', 'pending');
+      setStatusMessage('Sending…', 'pending');
 
-      const mailto = buildMailtoLink(payload);
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData),
+        });
 
-      // Trigger via a temporary anchor click, which is more reliable across
-      // browsers than setting window.location.href directly.
-      const link = document.createElement('a');
-      link.href = mailto;
-      link.rel = 'noopener';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+        const rawText = await response.text();
+        const body = (() => {
+          try {
+            return rawText ? JSON.parse(rawText) : {};
+          } catch {
+            return { message: rawText };
+          }
+        })();
 
-      contactForm.reset();
+        if (!response.ok) {
+          throw new Error(typeof body.message === 'string'
+            ? body.message
+            : 'We could not send your message. Please try again.');
+        }
 
-      // mailto: links only work if the browser/OS has a default mail app
-      // configured — there's no reliable way to detect success, so always
-      // show a manual fallback link alongside the status message.
-      statusField.innerHTML = '';
-      statusField.dataset.state = 'success';
-      statusField.append(
-        "If your email app didn't open, ",
-        Object.assign(document.createElement('a'), {
-          href: mailto,
-          textContent: 'click here to email us directly',
-        }),
-        ', or send a message to fdml@pmt.org.'
-      );
+        contactForm.reset();
+        setStatusMessage(body.message || "Thanks for your message! We'll be in touch soon.", 'success');
+      } catch (error) {
+        // Fallback for previews/hosts that can't run contact.php (e.g. a
+        // static GitHub Pages preview): open a pre-filled mailto: link.
+        const mailto = buildMailtoLink(payload);
+        const link = document.createElement('a');
+        link.href = mailto;
+        link.rel = 'noopener';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
 
-      submitButton.disabled = false;
-      submitButton.classList.remove('loading');
+        contactForm.reset();
+        statusField.innerHTML = '';
+        statusField.dataset.state = 'success';
+        statusField.append(
+          "If your email app didn't open, ",
+          Object.assign(document.createElement('a'), {
+            href: mailto,
+            textContent: 'click here to email us directly',
+          }),
+          ', or send a message to fdml@pmt.org.'
+        );
+      } finally {
+        submitButton.disabled = false;
+        submitButton.classList.remove('loading');
+      }
     });
   });
 }
