@@ -302,15 +302,13 @@ function buildMailtoLink(payload) {
 
   const body = lines.join('\n');
 
-  // Use URLSearchParams to encode the query string safely, but leave the
-  // address itself unencoded — encoding the "@" (e.g. as %40) causes some
-  // browsers/OS mail-handler integrations to silently reject the link.
-  const params = new URLSearchParams({
-    subject,
-    body,
-  });
+  // Build the query string manually with encodeURIComponent so spaces become
+  // %20 (per RFC 6068 for mailto: links). URLSearchParams encodes spaces as
+  // "+", which some mail clients (notably desktop Outlook) do not decode
+  // correctly in mailto links, causing the link to appear broken.
+  const query = `subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-  return `mailto:${to}?${params.toString()}`;
+  return `mailto:${to}?${query}`;
 }
 
 if (contactForms.length) {
