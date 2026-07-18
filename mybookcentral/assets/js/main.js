@@ -302,13 +302,15 @@ function buildMailtoLink(payload) {
 
   const body = lines.join('\n');
 
-  // Use URLSearchParams to encode safely.
+  // Use URLSearchParams to encode the query string safely, but leave the
+  // address itself unencoded — encoding the "@" (e.g. as %40) causes some
+  // browsers/OS mail-handler integrations to silently reject the link.
   const params = new URLSearchParams({
     subject,
     body,
   });
 
-  return `mailto:${encodeURIComponent(to)}?${params.toString()}`;
+  return `mailto:${to}?${params.toString()}`;
 }
 
 if (contactForms.length) {
@@ -345,9 +347,31 @@ if (contactForms.length) {
       setStatusMessage('Opening your email app…', 'pending');
 
       const mailto = buildMailtoLink(payload);
-      window.location.href = mailto;
+
+      // Trigger via a temporary anchor click, which is more reliable across
+      // browsers than setting window.location.href directly.
+      const link = document.createElement('a');
+      link.href = mailto;
+      link.rel = 'noopener';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
       contactForm.reset();
-      setStatusMessage("Opening your email app to send the message…", 'success');
+
+      // mailto: links only work if the browser/OS has a default mail app
+      // configured — there's no reliable way to detect success, so always
+      // show a manual fallback link alongside the status message.
+      statusField.innerHTML = '';
+      statusField.dataset.state = 'success';
+      statusField.append(
+        "If your email app didn't open, ",
+        Object.assign(document.createElement('a'), {
+          href: mailto,
+          textContent: 'click here to email us directly',
+        }),
+        ', or send a message to fdml@pmt.org.'
+      );
 
       submitButton.disabled = false;
       submitButton.classList.remove('loading');
