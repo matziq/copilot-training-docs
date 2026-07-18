@@ -637,25 +637,7 @@ button,
 
 .hero::after {
 
-  content: "";
-
-  position: absolute;
-
-  inset: -10% -5% auto 35%;
-
-  height: 120%;
-
-  background-image: url("../img/hero-bloom.svg");
-
-  background-repeat: no-repeat;
-
-  background-size: 90%;
-
-  opacity: 0.55;
-
-  pointer-events: none;
-
-  z-index: 0;
+  content: none;
 
 }
 
@@ -943,25 +925,7 @@ button,
 
 .section-illustrated::after {
 
-  content: "";
-
-  position: absolute;
-
-  width: clamp(180px, 32vw, 340px);
-
-  height: clamp(180px, 32vw, 340px);
-
-  background-image: url("../img/leaf-spray.svg");
-
-  background-size: contain;
-
-  background-repeat: no-repeat;
-
-  opacity: 0.25;
-
-  pointer-events: none;
-
-  z-index: 0;
+  content: none;
 
 }
 
