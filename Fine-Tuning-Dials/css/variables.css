@@ -1,0 +1,53 @@
+/* css/variables.css
+ * Design tokens for the "observatory control room" theme: near-black
+ * backgrounds, brushed-metal panels, amber/cyan accents, and four
+ * semantic severity colors used throughout the dial cards and status bar.
+ */
+:root {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --bg-void: #05070a;
+  --bg-panel: #10141b;
+  --bg-panel-raised: #171c25;
+  --bg-panel-hover: #1d2330;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Text */
+  --text-primary: #e9edf3;
+  --text-secondary: #9aa4b2;
+  --text-tertiary: #6b7482;
+
+  /* Accents */
+  --accent-amber: #ffb454;
+  --accent-amber-dim: #cf9143;
+  --accent-cyan: #4fd8e0;
+  --accent-cyan-dim: #3aa6ac;
+
+  /* Severity colors (also referenced directly by knob.js for arcs/badges) */
+  --severity-observed: #3ddc84;
+  --severity-marginal: #f4c542;
+  --severity-hostile: #ff8c42;
+  --severity-catastrophic: #ff5252;
+
+  --severity-observed-bg: rgba(61, 220, 132, 0.12);
+  --severity-marginal-bg: rgba(244, 197, 66, 0.12);
+  --severity-hostile-bg: rgba(255, 140, 66, 0.12);
+  --severity-catastrophic-bg: rgba(255, 82, 82, 0.14);
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Metrics */
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-panel: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+  /* Safe areas (iOS notches / Android gesture bars) */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fine-Tuning Dials</title>
+  <meta name="description" content="An interactive control panel of the universe's physical constants. Turn the dials and watch the cosmos change." />
+  <meta name="theme-color" content="#05070a" />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="icon" href="../images/favicon-ftd.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/knob.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/dialog.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="app-header__title">
+        <h1>Fine-Tuning Dials</h1>
+        <p class="app-header__tagline">An observatory control panel for the constants of nature.</p>
+      </div>
+      <div class="app-header__actions">
+        <button id="btn-randomize" type="button" class="btn btn--amber">
+          <span aria-hidden="true">🎲</span> Randomize
+        </button>
+        <button id="btn-reset-all" type="button" class="btn btn--cyan">
+          <span aria-hidden="true">⟲</span> Reset All
+        </button>
+      </div>
+    </header>
+
+    <section class="status-bar" id="status-bar" aria-live="polite"></section>
+
+    <main class="dial-grid" id="dial-grid" aria-label="Physical constant dials"></main>
+
+    <footer class="app-footer">
+      <p>
+        Outcome bands are grounded in the physics literature on cosmic fine-tuning
+        (Rees, <em>Just Six Numbers</em>; Barrow &amp; Tipler, <em>The Anthropic
+        Cosmological Principle</em>; the Hoyle carbon-12 resonance; Penrose's
+        entropy argument) but this is an educational simulation, not a physics
+        engine &mdash; band boundaries are illustrative approximations, not
+        precision calculations.
+      </p>
+    </footer>
+  </div>
+
+  <dialog id="info-dialog" class="info-dialog"></dialog>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

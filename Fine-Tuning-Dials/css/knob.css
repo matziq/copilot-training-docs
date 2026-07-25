@@ -1,0 +1,52 @@
+/* css/knob.css
+ * Styling for the rotary knob component built by js/knob.js.
+ */
+.knob {
+  --knob-size: clamp(88px, 22vw, 140px);
+  width: var(--knob-size);
+  height: var(--knob-size);
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.knob__svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55));
+}
+
+.knob__pointer-group {
+  transition: transform 90ms ease-out;
+}
+
+.knob--dragging .knob__pointer-group {
+  transition: none;
+}
+
+.knob__arc {
+  transition: stroke 200ms ease;
+}
+
+.knob__needle {
+  filter: drop-shadow(0 0 3px rgba(255, 180, 84, 0.55));
+}
+
+.knob__needle-tip {
+  filter: drop-shadow(0 0 3px rgba(79, 216, 224, 0.7));
+}
+
+.knob:hover .knob__svg,
+.knob:focus-visible .knob__svg {
+  filter: drop-shadow(0 6px 14px rgba(79, 216, 224, 0.35));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knob__pointer-group,
+  .knob__arc {
+    transition: none;
+  }
+}

@@ -1,0 +1,321 @@
+/* css/layout.css
+ * App shell, header, status bar, and dial-card grid. Mobile-first,
+ * responsive from 360px wide up through desktop, portrait and landscape.
+ */
+.app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: calc(1rem + var(--safe-top)) calc(1rem + var(--safe-right)) calc(2rem + var(--safe-bottom))
+    calc(1rem + var(--safe-left));
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+}
+
+.app-header__title h1 {
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  letter-spacing: 0.02em;
+  color: var(--accent-amber);
+}
+
+.app-header__tagline {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+}
+
+.app-header__actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* ---------- Status bar ---------- */
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-panel);
+}
+
+.status-bar--pulse {
+  animation: status-pulse 500ms ease;
+}
+
+@keyframes status-pulse {
+  0% {
+    box-shadow: var(--shadow-panel), 0 0 0 0 rgba(79, 216, 224, 0.5);
+  }
+  100% {
+    box-shadow: var(--shadow-panel), 0 0 0 14px rgba(79, 216, 224, 0);
+  }
+}
+
+.status-bar__gauge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 160px;
+  flex: 0 0 auto;
+}
+
+.status-bar__gauge-track {
+  width: 120px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.status-bar__gauge-fill {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  background: var(--severity-observed);
+  transition: transform 300ms ease, background 300ms ease;
+}
+
+.status-bar__gauge-label {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  min-width: 3.2em;
+}
+
+.status-bar__body {
+  flex: 1 1 240px;
+}
+
+.status-bar__headline {
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.status-bar__text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ---------- Dial grid ---------- */
+.dial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 400px) {
+  .dial-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .dial-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+.dial-card {
+  background: linear-gradient(160deg, var(--bg-panel-raised), var(--bg-panel));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-shadow: var(--shadow-panel);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.dial-card[data-severity='observed'] {
+  border-color: color-mix(in srgb, var(--severity-observed) 35%, var(--border-subtle));
+}
+.dial-card[data-severity='marginal'] {
+  border-color: color-mix(in srgb, var(--severity-marginal) 40%, var(--border-subtle));
+}
+.dial-card[data-severity='hostile'] {
+  border-color: color-mix(in srgb, var(--severity-hostile) 45%, var(--border-subtle));
+}
+.dial-card[data-severity='catastrophic'] {
+  border-color: color-mix(in srgb, var(--severity-catastrophic) 55%, var(--border-subtle));
+}
+
+.dial-card--flash {
+  animation: card-flash 480ms ease;
+}
+
+@keyframes card-flash {
+  0% {
+    box-shadow: var(--shadow-panel), 0 0 0 0 rgba(255, 255, 255, 0.35);
+  }
+  100% {
+    box-shadow: var(--shadow-panel), 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+}
+
+.dial-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.dial-card__name {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  text-align: left;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0;
+  line-height: 1.25;
+}
+
+.dial-card__name:hover {
+  color: var(--accent-cyan);
+}
+
+.dial-card__symbol {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-amber);
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+.dial-card__reset {
+  flex: 0 0 auto;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-panel);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: color 150ms ease, transform 150ms ease, border-color 150ms ease;
+}
+
+.dial-card__reset:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan-dim);
+  transform: rotate(-45deg);
+}
+
+.dial-card__knob-mount {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem 0;
+}
+
+.dial-card__readout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-mono);
+  text-align: center;
+  gap: 0.1rem;
+}
+
+.dial-card__value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dial-card__unit {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+}
+
+.dial-card__multiplier {
+  font-size: 0.76rem;
+  color: var(--accent-cyan);
+}
+
+.consequence {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.consequence__badge {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+}
+
+.dial-card[data-severity='observed'] .consequence__badge {
+  color: var(--severity-observed);
+  background: var(--severity-observed-bg);
+}
+.dial-card[data-severity='marginal'] .consequence__badge {
+  color: var(--severity-marginal);
+  background: var(--severity-marginal-bg);
+}
+.dial-card[data-severity='hostile'] .consequence__badge {
+  color: var(--severity-hostile);
+  background: var(--severity-hostile-bg);
+}
+.dial-card[data-severity='catastrophic'] .consequence__badge {
+  color: var(--severity-catastrophic);
+  background: var(--severity-catastrophic-bg);
+}
+
+.consequence__headline {
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+.consequence__text {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  text-align: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ---------- Landscape / short-viewport tweaks ---------- */
+@media (max-height: 480px) and (orientation: landscape) {
+  .app-header {
+    padding-bottom: 0.5rem;
+  }
+  .dial-grid {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  }
+}

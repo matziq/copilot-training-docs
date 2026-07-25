@@ -1,0 +1,91 @@
+/* css/base.css
+ * Reset + base element styles.
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at top, #0b0f16 0%, var(--bg-void) 55%, #020304 100%);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+.knob:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-panel-raised);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6em 1.1em;
+  transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:hover {
+  background: var(--bg-panel-hover);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn--amber {
+  border-color: color-mix(in srgb, var(--accent-amber) 45%, var(--border-strong));
+  color: var(--accent-amber);
+}
+
+.btn--cyan {
+  border-color: color-mix(in srgb, var(--accent-cyan) 45%, var(--border-strong));
+  color: var(--accent-cyan);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
