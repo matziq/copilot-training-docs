@@ -134,22 +134,37 @@ export function formatMultiplier(constant, t) {
  * the worst severity present, a 0-100 habitability score, and the list of
  * dials responsible for the worst severity (empty if everything is
  * 'observed').
+ *
+ * Habitability is a "weakest link" property, not an average across dials.
+ * A single catastrophically wrong constant (e.g. gravity turned up until
+ * all matter collapses into black holes) kills the universe outright no
+ * matter how perfect every other dial is -- it doesn't matter that the
+ * fine-structure constant is fine if there are no stars left to shine.
+ * So the score is driven entirely by the single worst severity present,
+ * with a small extra penalty for each additional dial that shares that
+ * same worst severity (more independent failures compound).
  */
 export function computeUniverseStatus(constants, tById) {
   let worst = SEVERITY.OBSERVED;
-  let scoreSum = 0;
   const perDial = [];
 
   for (const constant of constants) {
     const t = tById[constant.id] ?? observedT(constant);
     const band = getBand(constant, t);
     perDial.push({ id: constant.id, band, t });
-    scoreSum += severityScore(band.severity);
     if (isAtLeastAsBad(band.severity, worst)) worst = band.severity;
   }
 
-  const score = constants.length ? Math.round(scoreSum / constants.length) : 100;
   const offenders = perDial.filter((d) => d.band.severity === worst && worst !== SEVERITY.OBSERVED);
+
+  let score;
+  if (worst === SEVERITY.OBSERVED) {
+    score = 100;
+  } else {
+    const base = severityScore(worst);
+    const extraOffenders = Math.max(0, offenders.length - 1);
+    score = Math.max(0, Math.round(base - extraOffenders * 4));
+  }
 
   return { worst, score, offenders, perDial };
 }

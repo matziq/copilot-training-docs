@@ -1,4 +1,4 @@
-﻿// js/constants.js
+// js/constants.js
 //
 // Data module for "Fine-Tuning Dials".
 //
@@ -73,7 +73,7 @@ export const CONSTANTS = [
     id: 'gravity',
     name: 'Gravitational Constant',
     symbol: 'G',
-    unit: 'NÂ·mÂ²Â·kgâ»Â²',
+    unit: 'N·m²·kg⁻²',
     observedValue: 6.674e-11,
     scaleType: 'log',
     tMin: -6,
@@ -196,7 +196,7 @@ export const CONSTANTS = [
   {
     id: 'weak-force',
     name: 'Weak Nuclear Force',
-    symbol: 'Î±_w (relative)',
+    symbol: 'α_w (relative)',
     unit: 'Ã— nominal weak coupling',
     observedValue: 1,
     scaleType: 'log',
@@ -258,7 +258,7 @@ export const CONSTANTS = [
   {
     id: 'fine-structure',
     name: 'Electromagnetic Force (Fine-Structure Constant)',
-    symbol: 'Î±',
+    symbol: 'α',
     unit: 'dimensionless',
     observedValue: 7.297e-3,
     scaleType: 'log',
@@ -444,8 +444,8 @@ export const CONSTANTS = [
   {
     id: 'matter-density',
     name: 'Initial Matter Density Parameter',
-    symbol: 'Î©_m',
-    unit: 'dimensionless (Î©_m)',
+    symbol: 'Ω_m',
+    unit: 'dimensionless (Ω_m)',
     observedValue: 0.315,
     scaleType: 'log',
     tMin: -4,
@@ -569,7 +569,7 @@ export const CONSTANTS = [
     id: 'neutron-proton-diff',
     name: 'Neutron-Proton Mass Difference',
     symbol: 'Î”m',
-    unit: 'MeV/cÂ²',
+    unit: 'MeV/c²',
     observedValue: 1.293,
     scaleType: 'log',
     tMin: -1.5,
@@ -630,7 +630,7 @@ export const CONSTANTS = [
   {
     id: 'fusion-efficiency',
     name: 'Hydrogen-to-Helium Fusion Efficiency',
-    symbol: 'Îµ',
+    symbol: 'ε',
     unit: 'mass fraction (Î”E/mcÂ²)',
     observedValue: 0.007,
     scaleType: 'log',
@@ -788,19 +788,19 @@ export const CONSTANTS = [
         value: 4,
         severity: SEVERITY.CATASTROPHIC,
         headline: 'Orbits and orbitals both destabilize',
-        text: 'Force laws fall off as 1/rÂ³ instead of 1/rÂ². Planetary orbits are no longer stable -- planets spiral into their star or fly off into space -- and, by the same instability, atomic electrons can no longer occupy stable orbitals.',
+        text: 'Force laws fall off as 1/r³ instead of 1/r². Planetary orbits are no longer stable -- planets spiral into their star or fly off into space -- and, by the same instability, atomic electrons can no longer occupy stable orbitals.',
       },
       {
         value: 5,
         severity: SEVERITY.CATASTROPHIC,
         headline: 'Forces fall off even faster',
-        text: 'With forces weakening as 1/râ´, any bound orbits -- planetary or atomic -- are even less stable than in four dimensions. Persistent structure of any kind is essentially impossible.',
+        text: 'With forces weakening as 1/r⁴, any bound orbits -- planetary or atomic -- are even less stable than in four dimensions. Persistent structure of any kind is essentially impossible.',
       },
       {
         value: 6,
         severity: SEVERITY.CATASTROPHIC,
         headline: 'No stable bound states, macroscopic or atomic',
-        text: 'Under a 1/râµ force law, stable bound orbits do not generically exist at any scale. Without stable atoms or stable orbits, no lasting structure -- chemical, planetary, or otherwise -- can form.',
+        text: 'Under a 1/r⁵ force law, stable bound orbits do not generically exist at any scale. Without stable atoms or stable orbits, no lasting structure -- chemical, planetary, or otherwise -- can form.',
       },
       {
         value: 7,
