@@ -7,7 +7,7 @@
 //
 // Bump CACHE_VERSION whenever any cached asset changes so clients pick up
 // the update instead of serving stale files forever.
-const CACHE_VERSION = 'ftd-v1';
+const CACHE_VERSION = 'ftd-v2';
 const CACHE_NAME = `fine-tuning-dials-${CACHE_VERSION}`;
 
 // All paths are relative so this works under a sub-path static server and,
