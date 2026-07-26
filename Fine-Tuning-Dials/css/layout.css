@@ -254,6 +254,51 @@
   color: var(--accent-cyan);
 }
 
+.dial-card__fine-adjust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.dial-card__fine-btn {
+  flex: 0 0 auto;
+  width: 2.1rem;
+  height: 2.1rem;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-panel);
+  color: var(--accent-amber);
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: color 150ms ease, transform 100ms ease, border-color 150ms ease, background 150ms ease;
+}
+
+.dial-card__fine-btn:hover,
+.dial-card__fine-btn:focus-visible {
+  color: var(--bg-base);
+  background: var(--accent-amber);
+  border-color: var(--accent-amber);
+}
+
+.dial-card__fine-btn:active {
+  transform: scale(0.92);
+}
+
+.dial-card__fine-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
 .consequence {
   border-top: 1px solid var(--border-subtle);
   padding-top: 0.6rem;

@@ -13,6 +13,8 @@ import {
   observedT,
   computeUniverseStatus,
   severityLabel,
+  FINE_T_STEP,
+  FINE_STEP_MULTIPLIER,
 } from './physics.js';
 import { Knob } from './knob.js';
 import { loadState, saveState, clearState } from './state.js';
@@ -123,6 +125,26 @@ function buildDialCard(constant) {
     <span class="dial-card__multiplier" data-role="multiplier"></span>
   `;
 
+  // Fine-adjust "clicker": nudges the dial by a flat 1% relative step
+  // (e.g. 1.00x -> 1.01x) so users can tune precisely without hunting for
+  // an exact drag angle. Not shown for the discrete dimensions stepper,
+  // which has no meaningful "1%" between its integer positions.
+  let fineAdjust = null;
+  if (constant.scaleType !== 'stepper') {
+    fineAdjust = document.createElement('div');
+    fineAdjust.className = 'dial-card__fine-adjust';
+    const stepLabel = `${FINE_STEP_MULTIPLIER.toFixed(2)}x`;
+    fineAdjust.innerHTML = `
+      <button type="button" class="dial-card__fine-btn" data-dir="-1" aria-label="Decrease ${constant.name} by 1 percent">−</button>
+      <span class="dial-card__fine-label">fine ±1%</span>
+      <button type="button" class="dial-card__fine-btn" data-dir="1" aria-label="Increase ${constant.name} by 1 percent">+</button>
+    `;
+    fineAdjust.title = `Nudge by ${stepLabel} per click`;
+    fineAdjust.querySelectorAll('.dial-card__fine-btn').forEach((btn) => {
+      btn.addEventListener('click', () => nudgeDial(constant.id, Number(btn.dataset.dir)));
+    });
+  }
+
   const consequence = document.createElement('div');
   consequence.className = 'consequence';
   consequence.innerHTML = `
@@ -134,6 +156,7 @@ function buildDialCard(constant) {
   card.appendChild(header);
   card.appendChild(knobMount);
   card.appendChild(readout);
+  if (fineAdjust) card.appendChild(fineAdjust);
   card.appendChild(consequence);
   dialGrid.appendChild(card);
 
@@ -211,6 +234,20 @@ function resetDial(id, { persist: shouldPersist }) {
   const t = observedT(dial.constant);
   dial.knob.setT(t);
   handleDialUpdate(id, t, { persist: shouldPersist });
+}
+
+/** Nudge a dial by a flat 1% relative step (direction is +1 or -1). */
+function nudgeDial(id, direction) {
+  const dial = dials.get(id);
+  if (!dial) return;
+  const { constant, knob } = dial;
+  if (constant.scaleType === 'stepper') return;
+  const next = knob.getT() + direction * FINE_T_STEP;
+  // emit:true routes through the same onChange the drag/keyboard handlers
+  // use, which already updates the consequence panel and the universe
+  // status gauge -- we only need to persist afterwards.
+  knob.setT(next, { emit: true });
+  persist();
 }
 
 function persist() {
