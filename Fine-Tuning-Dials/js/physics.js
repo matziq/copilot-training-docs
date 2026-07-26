@@ -97,6 +97,51 @@ function bandKnots(constant) {
 }
 
 /**
+ * The minimum-deviation dial position that pushes a constant just outside
+ * its 'observed' band -- i.e. the smallest possible nudge, in whichever
+ * direction requires less change, that makes this one dial inhospitable
+ * to life. Used by the "Nearest Catastrophe" control to show how thin the
+ * observed band really is: it snaps every dial to the closest edge of its
+ * life-permitting range, rather than to a random or extreme value.
+ */
+export function minimalHostileT(constant) {
+  if (constant.scaleType === 'stepper') {
+    const obsIdx = observedIndex(constant);
+    const last = constant.values.length - 1;
+    // Prefer stepping toward whichever neighbor still exists; a stepper
+    // constant like the number of spatial dimensions has no "distance" to
+    // minimize beyond one integer step off the observed index.
+    if (obsIdx < last) return obsIdx + 1;
+    if (obsIdx > 0) return obsIdx - 1;
+    return obsIdx;
+  }
+
+  let prevTMax = constant.tMin;
+  let lowerEdge = constant.tMin;
+  let upperEdge = constant.tMax;
+  for (const band of constant.bands) {
+    const bandTMax = band.tMax === Infinity ? constant.tMax : band.tMax;
+    if (band.severity === SEVERITY.OBSERVED) {
+      lowerEdge = prevTMax;
+      upperEdge = bandTMax;
+    }
+    prevTMax = bandTMax;
+  }
+
+  const obs = observedT(constant);
+  // Push just past whichever edge is nearer to the observed setting, by a
+  // hair more than the fine-adjust step so it lands solidly inside the
+  // neighboring (non-observed) band rather than right on the boundary.
+  const eps = FINE_T_STEP / 2;
+  const distLower = obs - lowerEdge;
+  const distUpper = upperEdge - obs;
+  if (distLower <= distUpper) {
+    return clampT(constant, lowerEdge - eps);
+  }
+  return clampT(constant, upperEdge + eps);
+}
+
+/**
  * A continuous, interpolated habitability score in [0, 100] for a single
  * dial at position `t`. Unlike `getBand`, which snaps to a new severity
  * the instant `t` crosses a threshold, this ramps smoothly between the

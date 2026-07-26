@@ -134,8 +134,8 @@ export const CONSTANTS = [
   {
     id: 'strong-force',
     name: 'Strong Nuclear Force',
-    symbol: 'Î±â‚› (relative)',
-    unit: 'Ã— nominal QCD coupling',
+    symbol: 'αₛ (relative)',
+    unit: '× nominal QCD coupling',
     observedValue: 1,
     scaleType: 'log',
     tMin: -0.035,
@@ -197,7 +197,7 @@ export const CONSTANTS = [
     id: 'weak-force',
     name: 'Weak Nuclear Force',
     symbol: 'α_w (relative)',
-    unit: 'Ã— nominal weak coupling',
+    unit: '× nominal weak coupling',
     observedValue: 1,
     scaleType: 'log',
     tMin: -4,
@@ -269,7 +269,7 @@ export const CONSTANTS = [
     blurb:
       'Sets the strength of electromagnetism: chemical bond energies, atomic structure, and the Coulomb barrier that fusion must overcome.',
     learnMore:
-      'The fine-structure constant, Î± â‰ˆ 1/137, measures how strongly charged particles interact. It governs the size and stability of atomic orbitals, the strength of chemical bonds, and -- because nuclei are positively charged -- the Coulomb repulsion that fusion reactions must tunnel through. A much smaller Î± leaves electromagnetism too weak to hold atoms together; a much larger Î± raises the fusion barrier so high that stars struggle to ignite, and pushes heavy nuclei toward instability as electrostatic repulsion overwhelms the strong force.',
+      'The fine-structure constant, α ≈ 1/137, measures how strongly charged particles interact. It governs the size and stability of atomic orbitals, the strength of chemical bonds, and -- because nuclei are positively charged -- the Coulomb repulsion that fusion reactions must tunnel through. A much smaller α leaves electromagnetism too weak to hold atoms together; a much larger α raises the fusion barrier so high that stars struggle to ignite, and pushes heavy nuclei toward instability as electrostatic repulsion overwhelms the strong force.',
     bands: [
       {
         tMax: -1,
@@ -382,8 +382,8 @@ export const CONSTANTS = [
   {
     id: 'cosmological-constant',
     name: 'Cosmological Constant (Dark Energy Density)',
-    symbol: 'Î©_Î›',
-    unit: 'dimensionless (Î©_Î›)',
+    symbol: 'Ω_Λ',
+    unit: 'dimensionless (Ω_Λ)',
     observedValue: 0.6889,
     scaleType: 'log',
     tMin: -8,
@@ -506,7 +506,7 @@ export const CONSTANTS = [
   {
     id: 'proton-electron-ratio',
     name: 'Proton-to-Electron Mass Ratio',
-    symbol: 'Î¼ = mâ‚š/mâ‚‘',
+    symbol: 'μ = mₚ/mₑ',
     unit: 'dimensionless',
     observedValue: 1836.15,
     scaleType: 'log',
@@ -568,7 +568,7 @@ export const CONSTANTS = [
   {
     id: 'neutron-proton-diff',
     name: 'Neutron-Proton Mass Difference',
-    symbol: 'Î”m',
+    symbol: 'Δm',
     unit: 'MeV/c²',
     observedValue: 1.293,
     scaleType: 'log',
@@ -631,7 +631,7 @@ export const CONSTANTS = [
     id: 'fusion-efficiency',
     name: 'Hydrogen-to-Helium Fusion Efficiency',
     symbol: 'ε',
-    unit: 'mass fraction (Î”E/mcÂ²)',
+    unit: 'mass fraction (ΔE/mc²)',
     observedValue: 0.007,
     scaleType: 'log',
     tMin: -0.15,
@@ -693,7 +693,7 @@ export const CONSTANTS = [
     id: 'density-fluctuations',
     name: 'Primordial Density Fluctuation Amplitude',
     symbol: 'Q',
-    unit: 'Î”T/T (dimensionless)',
+    unit: 'ΔT/T (dimensionless)',
     observedValue: 1e-5,
     scaleType: 'log',
     tMin: -4,
@@ -816,7 +816,7 @@ export const CONSTANTS = [
     id: 'initial-entropy',
     name: 'Initial Entropy of the Universe',
     symbol: 'S_i',
-    unit: 'Ã— actual primordial entropy',
+    unit: '× actual primordial entropy',
     observedValue: 1,
     observedDisplay: 'extraordinarily low (Penrose estimate: 1 part in 10^(10^123))',
     scaleType: 'log',
@@ -878,7 +878,7 @@ export const CONSTANTS = [
   {
     id: 'hoyle-resonance',
     name: 'Carbon-12 Hoyle Resonance',
-    symbol: 'E(Hoyle) âˆ’ E(3Î±)',
+    symbol: 'E(Hoyle) − E(3α)',
     unit: 'MeV above the 3-alpha threshold',
     observedValue: 0.379,
     scaleType: 'log',

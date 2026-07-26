@@ -7,7 +7,7 @@
 //
 // Bump CACHE_VERSION whenever any cached asset changes so clients pick up
 // the update instead of serving stale files forever.
-const CACHE_VERSION = 'ftd-v3';
+const CACHE_VERSION = 'ftd-v5';
 const CACHE_NAME = `fine-tuning-dials-${CACHE_VERSION}`;
 
 // All paths are relative so this works under a sub-path static server and,
@@ -38,7 +38,12 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then((cache) => cache.addAll(PRECACHE_URLS))
+      // Force each precache fetch to bypass the browser's ordinary HTTP
+      // cache (not just our own Cache Storage). Without {cache: 'reload'}
+      // here, a stale disk-cached response for e.g. constants.js can get
+      // baked into a brand-new CACHE_VERSION, defeating the whole point
+      // of bumping the version to pick up a fix.
+      .then((cache) => cache.addAll(PRECACHE_URLS.map((url) => new Request(url, { cache: 'reload' }))))
       .then(() => self.skipWaiting())
   );
 });

@@ -79,6 +79,11 @@ svg {
   color: var(--accent-cyan);
 }
 
+.btn--red {
+  border-color: color-mix(in srgb, var(--severity-catastrophic) 45%, var(--border-strong));
+  color: var(--severity-catastrophic);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

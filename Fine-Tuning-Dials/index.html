@@ -28,6 +28,18 @@
         <p class="app-header__tagline">An observatory control panel for the constants of nature.</p>
       </div>
       <div class="app-header__actions">
+        <div class="app-header__nudge-group" role="group" aria-label="Nudge every dial by 1 percent">
+          <button id="btn-nudge-all-down" type="button" class="btn" title="Decrease every dial by 1%">
+            <span aria-hidden="true">−1%</span>
+          </button>
+          <button id="btn-nudge-all-up" type="button" class="btn" title="Increase every dial by 1%">
+            <span aria-hidden="true">+1%</span>
+          </button>
+        </div>
+        <button id="btn-nearest-catastrophe" type="button" class="btn btn--red"
+          title="Snap every dial to the minimum change that makes it inhospitable to life">
+          <span aria-hidden="true">☠</span> Nearest Catastrophe
+        </button>
         <button id="btn-randomize" type="button" class="btn btn--amber">
           <span aria-hidden="true">🎲</span> Randomize
         </button>

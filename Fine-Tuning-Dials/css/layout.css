@@ -38,7 +38,19 @@
 
 .app-header__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
+  align-items: center;
+}
+
+.app-header__nudge-group {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.app-header__nudge-group .btn {
+  font-family: var(--font-mono);
+  padding-inline: 0.7rem;
 }
 
 /* ---------- Status bar ---------- */
@@ -142,20 +154,32 @@
   flex-direction: column;
   gap: 0.65rem;
   box-shadow: var(--shadow-panel);
-  transition: border-color 200ms ease, box-shadow 200ms ease;
+  transition: border-color 200ms ease, box-shadow 200ms ease, background 300ms ease;
 }
 
 .dial-card[data-severity='observed'] {
   border-color: color-mix(in srgb, var(--severity-observed) 35%, var(--border-subtle));
+  background:
+    linear-gradient(160deg, var(--severity-observed-bg), transparent 65%),
+    linear-gradient(160deg, var(--bg-panel-raised), var(--bg-panel));
 }
 .dial-card[data-severity='marginal'] {
   border-color: color-mix(in srgb, var(--severity-marginal) 40%, var(--border-subtle));
+  background:
+    linear-gradient(160deg, var(--severity-marginal-bg), transparent 65%),
+    linear-gradient(160deg, var(--bg-panel-raised), var(--bg-panel));
 }
 .dial-card[data-severity='hostile'] {
   border-color: color-mix(in srgb, var(--severity-hostile) 45%, var(--border-subtle));
+  background:
+    linear-gradient(160deg, var(--severity-hostile-bg), transparent 65%),
+    linear-gradient(160deg, var(--bg-panel-raised), var(--bg-panel));
 }
 .dial-card[data-severity='catastrophic'] {
   border-color: color-mix(in srgb, var(--severity-catastrophic) 55%, var(--border-subtle));
+  background:
+    linear-gradient(160deg, var(--severity-catastrophic-bg), transparent 65%),
+    linear-gradient(160deg, var(--bg-panel-raised), var(--bg-panel));
 }
 
 .dial-card--flash {

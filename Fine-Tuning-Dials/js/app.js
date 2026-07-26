@@ -15,6 +15,7 @@ import {
   severityLabel,
   FINE_T_STEP,
   FINE_STEP_MULTIPLIER,
+  minimalHostileT,
 } from './physics.js';
 import { Knob } from './knob.js';
 import { loadState, saveState, clearState } from './state.js';
@@ -38,6 +39,9 @@ const statusBar = document.getElementById('status-bar');
 const infoDialog = document.getElementById('info-dialog');
 const btnResetAll = document.getElementById('btn-reset-all');
 const btnRandomize = document.getElementById('btn-randomize');
+const btnNearestCatastrophe = document.getElementById('btn-nearest-catastrophe');
+const btnNudgeAllUp = document.getElementById('btn-nudge-all-up');
+const btnNudgeAllDown = document.getElementById('btn-nudge-all-down');
 
 buildStatusBar();
 CONSTANTS.forEach(buildDialCard);
@@ -61,6 +65,36 @@ btnRandomize.addEventListener('click', () => {
   refreshUniverseStatus();
   pulseStatusBar();
 });
+
+btnNearestCatastrophe.addEventListener('click', () => {
+  // Snap every dial to the minimum possible deviation from its observed
+  // value that still pushes it out of the life-permitting band -- shows
+  // how thin the tuned window really is, rather than a wild random spin.
+  for (const [id, dial] of dials) {
+    const t = minimalHostileT(dial.constant);
+    dial.knob.setT(t);
+    handleDialUpdate(id, t, { persist: false });
+  }
+  persist();
+  refreshUniverseStatus();
+  pulseStatusBar();
+});
+
+btnNudgeAllUp.addEventListener('click', () => nudgeAllDials(1));
+btnNudgeAllDown.addEventListener('click', () => nudgeAllDials(-1));
+
+/** Nudge every non-stepper dial by a flat 1% relative step at once. */
+function nudgeAllDials(direction) {
+  for (const [id, dial] of dials) {
+    if (dial.constant.scaleType === 'stepper') continue;
+    const t = dial.knob.getT() + direction * FINE_T_STEP;
+    dial.knob.setT(t);
+    handleDialUpdate(id, t, { persist: false });
+  }
+  persist();
+  refreshUniverseStatus();
+  pulseStatusBar();
+}
 
 function randomTFor(constant) {
   if (constant.scaleType === 'stepper') {
