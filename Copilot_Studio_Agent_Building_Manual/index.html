@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../images/favicon-csmanual.svg" type="image/svg+xml">
+<title>Building Agents in Microsoft Copilot Studio &mdash; Manual</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --bg-elev:#ffffff; --text:#1b2430; --text-soft:#4b5568;
+    --border:#dde3ee; --sidebar-bg:#ffffff; --sidebar-border:#e3e8f2;
+    --navy:#1f3864; --blue:#2e75b6; --blue-soft:#eaf1fb; --accent:#2e75b6;
+    --hero1:#1f3864; --hero2:#2e75b6; --hero3:#5aa9e6;
+    --card-bg:#ffffff; --code-bg:#f0f3f9;
+    --gotcha-bg:#fdecea; --gotcha-border:#e2564d; --gotcha-text:#7a2118;
+    --tip-bg:#e8f5e9; --tip-border:#3f9142; --tip-text:#1e4d20;
+    --table-head-bg:#1f3864; --table-head-text:#ffffff;
+    --row-alt:#f7f9fd; --shadow:0 2px 10px rgba(31,56,100,0.08);
+    --scrollbar:#c7d2e6;
+  }
+  html[data-theme="dark"]{
+    --bg:#0f1420; --bg-elev:#161d2c; --text:#e6ebf5; --text-soft:#a8b3c9;
+    --border:#28324a; --sidebar-bg:#121826; --sidebar-border:#232c42;
+    --navy:#7fa8e0; --blue:#5aa9e6; --blue-soft:#1b2740; --accent:#5aa9e6;
+    --hero1:#0d1424; --hero2:#1f3864; --hero3:#2e75b6;
+    --card-bg:#161d2c; --code-bg:#1a2233;
+    --gotcha-bg:#2a1917; --gotcha-border:#e2564d; --gotcha-text:#f4beb8;
+    --tip-bg:#132a17; --tip-border:#3f9142; --tip-text:#bfe8c2;
+    --table-head-bg:#22314f; --table-head-text:#eef3fc;
+    --row-alt:#1b2333; --shadow:0 2px 14px rgba(0,0,0,0.4);
+    --scrollbar:#334264;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Segoe UI",Calibri,Arial,sans-serif;background:var(--bg);color:var(--text);
+       transition:background .25s ease,color .25s ease;}
+  a{color:var(--accent);}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-thumb{background:var(--scrollbar);border-radius:6px;}
+
+  .layout{display:flex;min-height:100vh;}
+
+  /* Sidebar */
+  .sidebar{
+    width:290px;flex:0 0 290px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);
+    position:sticky;top:0;height:100vh;overflow-y:auto;padding:22px 14px 30px;z-index:20;
+  }
+  .brand{padding:4px 10px 18px;border-bottom:1px solid var(--sidebar-border);margin-bottom:14px;}
+  .brand .title{font-weight:700;font-size:15px;line-height:1.3;color:var(--navy);}
+  .brand .sub{font-size:11.5px;color:var(--text-soft);margin-top:4px;}
+  .theme-toggle{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    margin:0 6px 18px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;
+    background:var(--blue-soft);cursor:pointer;font-size:12.5px;font-weight:600;color:var(--text);
+    user-select:none;
+  }
+  .theme-toggle:hover{border-color:var(--accent);}
+  .theme-toggle .icon{font-size:15px;}
+  nav.toc{display:flex;flex-direction:column;gap:2px;}
+  nav.toc a{
+    display:flex;gap:8px;align-items:baseline;text-decoration:none;color:var(--text-soft);
+    font-size:13px;padding:7px 10px;border-radius:8px;line-height:1.35;
+  }
+  nav.toc a .n{flex:0 0 20px;font-weight:700;color:var(--accent);font-size:11.5px;}
+  nav.toc a:hover{background:var(--blue-soft);color:var(--text);}
+  nav.toc a.active{background:var(--blue-soft);color:var(--navy);font-weight:700;}
+  html[data-theme="dark"] nav.toc a.active{color:#fff;}
+
+  /* Main */
+  .main{flex:1;min-width:0;}
+  .hero{
+    background:linear-gradient(120deg,var(--hero1),var(--hero2) 60%,var(--hero3));
+    color:#fff;padding:56px 48px 42px;position:relative;overflow:hidden;
+  }
+  .hero .eyebrow{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;font-weight:700;}
+  .hero h1{font-size:34px;margin:10px 0 8px;line-height:1.2;max-width:820px;}
+  .hero p.lead{font-size:15.5px;opacity:.92;max-width:760px;margin:0 0 18px;}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .hero .meta span{
+    background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);
+    padding:6px 12px;border-radius:20px;font-size:12.5px;font-weight:600;
+  }
+
+  .content{padding:34px 48px 70px;max-width:980px;}
+
+  section.section{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:14px;margin-bottom:18px;
+    box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:20px;
+  }
+  .section-header{
+    display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;user-select:none;
+  }
+  .section-header .badge{
+    flex:0 0 34px;height:34px;border-radius:9px;background:var(--blue-soft);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;
+  }
+  .section-header .htext{flex:1;}
+  .section-header h2{margin:0;font-size:18px;color:var(--navy);}
+  .section-header .hsub{font-size:12.5px;color:var(--text-soft);margin-top:2px;}
+  .chevron{transition:transform .25s ease;color:var(--text-soft);font-size:14px;flex:0 0 16px;}
+  section.section.open .chevron{transform:rotate(90deg);}
+  .section-body{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  section.section.open .section-body{max-height:none;}
+  .section-body-inner{padding:0 24px 26px;}
+
+  h3{color:var(--navy);font-size:15.5px;margin:22px 0 8px;}
+  p{line-height:1.6;font-size:14.5px;color:var(--text);margin:0 0 12px;}
+  ul,ol{margin:0 0 14px;padding-left:22px;line-height:1.6;font-size:14.5px;}
+  li{margin-bottom:6px;}
+  li strong{color:var(--navy);}
+
+  .callout{border-left:4px solid; border-radius:8px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.55;}
+  .callout.gotcha{background:var(--gotcha-bg);border-color:var(--gotcha-border);color:var(--gotcha-text);}
+  .callout.tip{background:var(--tip-bg);border-color:var(--tip-border);color:var(--tip-text);}
+  .callout .clabel{font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.05em;display:block;margin-bottom:4px;}
+
+  .table-wrap{overflow-x:auto;margin:14px 0;border-radius:10px;border:1px solid var(--border);}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px;}
+  thead th{background:var(--table-head-bg);color:var(--table-head-text);text-align:left;padding:10px 14px;font-weight:700;white-space:nowrap;}
+  tbody td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);}
+  tbody td:first-child{font-weight:600;color:var(--navy);white-space:nowrap;}
+  tbody tr:nth-child(even){background:var(--row-alt);}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+  .card{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+  .card h4{margin:0 0 6px;font-size:13.5px;color:var(--navy);}
+  .card p{margin:0;font-size:13px;}
+
+  .divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
+  .footnote{font-size:12.5px;color:var(--text-soft);font-style:italic;}
+
+  .backtotop{
+    position:fixed;bottom:22px;right:28px;background:var(--navy);color:#fff;border:none;
+    width:42px;height:42px;border-radius:50%;font-size:16px;cursor:pointer;box-shadow:var(--shadow);
+    display:none;align-items:center;justify-content:center;z-index:30;
+  }
+  .backtotop.show{display:flex;}
+
+  .mobile-bar{display:none;}
+
+  @media (max-width:900px){
+    .layout{display:block;}
+    .sidebar{
+      position:fixed;top:0;left:0;height:100vh;transform:translateX(-100%);transition:transform .25s ease;
+      box-shadow:0 0 24px rgba(0,0,0,.25);width:270px;flex:0 0 270px;
+    }
+    .sidebar.open{transform:translateX(0);}
+    .mobile-bar{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      background:var(--sidebar-bg);border-bottom:1px solid var(--sidebar-border);
+      padding:12px 16px;position:sticky;top:0;z-index:25;
+    }
+    .mobile-bar .mtitle{font-weight:700;font-size:14px;color:var(--navy);}
+    .mobile-bar button{
+      background:var(--blue-soft);border:1px solid var(--border);border-radius:8px;
+      padding:7px 12px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;
+    }
+    .hero{padding:32px 22px 26px;}
+    .hero h1{font-size:26px;}
+    .content{padding:22px 18px 60px;}
+    .grid-2{grid-template-columns:1fr;}
+  }
+
+  @media print{
+    .sidebar,.backtotop,.mobile-bar{display:none !important;}
+    .layout{display:block;}
+    section.section .section-body{max-height:none !important;}
+    section.section{box-shadow:none;border:1px solid #ccc;break-inside:avoid;}
+    .hero{background:#1f3864 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+<div class="mobile-bar">
+  <span class="mtitle">Copilot Studio Manual</span>
+  <button id="navToggle">&#9776; Menu</button>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="title">Building Agents in Microsoft Copilot Studio</div>
+      <div class="sub">Practical instruction manual &middot; v1.0 &middot; July 2026</div>
+    </div>
+    <div class="theme-toggle" id="themeToggle">
+      <span><span class="icon" id="themeIcon">&#127769;</span> <span id="themeLabel">Dark mode</span></span>
+      <span>&#8644;</span>
+    </div>
+    <nav class="toc" id="toc">
+      <a href="#s1"><span class="n">01</span>What Copilot Studio Is (and Isn't)</a>
+      <a href="#s2"><span class="n">02</span>Core Concepts &amp; Vocabulary</a>
+      <a href="#s3"><span class="n">03</span>Building Your First Agent</a>
+      <a href="#s4"><span class="n">04</span>Writing Agent Instructions</a>
+      <a href="#s5"><span class="n">05</span>Topics in Depth</a>
+      <a href="#s6"><span class="n">06</span>Generative vs. Classic Orchestration</a>
+      <a href="#s7"><span class="n">07</span>Knowledge Sources</a>
+      <a href="#s8"><span class="n">08</span>Tools, Connectors &amp; Actions</a>
+      <a href="#s9"><span class="n">09</span>Multi-Agent Systems</a>
+      <a href="#s10"><span class="n">10</span>Variables &amp; Conversation Memory</a>
+      <a href="#s11"><span class="n">11</span>Testing Your Agent</a>
+      <a href="#s12"><span class="n">12</span>Auth, Security &amp; DLP</a>
+      <a href="#s13"><span class="n">13</span>Publishing &amp; Channels</a>
+      <a href="#s14"><span class="n">14</span>ALM &amp; Governance</a>
+      <a href="#s15"><span class="n">15</span>Analytics &amp; Monitoring</a>
+      <a href="#s16"><span class="n">16</span>Licensing &amp; Capacity</a>
+      <a href="#s17"><span class="n">17</span>Troubleshooting Checklist</a>
+      <a href="#s18"><span class="n">18</span>Tips &amp; Power-User Notes</a>
+      <a href="#s19"><span class="n">19</span>Glossary</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="hero">
+      <div class="eyebrow">Instruction Manual</div>
+      <h1>Building Agents in Microsoft Copilot Studio</h1>
+      <p class="lead">Concepts, workflow, tools, orchestration, testing, security, governance &mdash; and the gotchas that trip up first-time builders.</p>
+      <div class="meta">
+        <span>Version 1.0</span>
+        <span>Updated July 2026</span>
+        <span>19 sections</span>
+        <span>Click any section to expand</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <section class="section open" id="s1">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">1</div>
+          <div class="htext"><h2>What Copilot Studio Is (and Isn't)</h2><div class="hsub">Positioning the product before you build anything</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <p>Microsoft Copilot Studio is a graphical, low-code SaaS tool for building, testing, publishing, and governing AI agents. It combines a conversational canvas (topics, entities, dialog nodes) with generative AI orchestration (large language models choosing tools, knowledge, and topics on the fly), a growing catalog of connectors/tools, and native integration with Microsoft 365, Teams, Dataverse, and Azure.</p>
+          <p>Think of it as three products layered together:</p>
+          <ul>
+            <li><strong>Agent runtime &amp; authoring canvas</strong> &mdash; where you define instructions, topics, entities, variables, and conversation flow.</li>
+            <li><strong>Orchestration engine</strong> &mdash; a model-driven planner that decides, per user turn, whether to answer from knowledge, run a topic, call a tool, or hand off to another agent.</li>
+            <li><strong>Platform services</strong> &mdash; publishing channels, environments, solutions/ALM, DLP policies, analytics, and licensing that sit underneath every agent you build.</li>
+          </ul>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Copilot Studio agents are NOT the same thing as &ldquo;Microsoft 365 Copilot&rdquo; (the M365 chat experience) or &ldquo;Copilot agents&rdquo; built via Agent Builder in M365 Copilot Chat. Copilot Studio is the superset, full-featured authoring tool; Agent Builder is a simplified subset aimed at end users creating lightweight declarative agents. If someone says &ldquo;build me a Copilot agent,&rdquo; clarify which surface they mean.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s2">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">2</div>
+          <div class="htext"><h2>Core Concepts &amp; Vocabulary</h2><div class="hsub">Get this vocabulary straight before building anything</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <p>Most confusion in Copilot Studio traces back to mixing these terms up.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Term</th><th>What it is</th><th>Common confusion</th></tr></thead>
+            <tbody>
+              <tr><td>Agent</td><td>The overall bot/assistant: instructions + topics + tools + knowledge + triggers, published to channels.</td><td>Sometimes still called &ldquo;bot&rdquo; or &ldquo;copilot&rdquo; in older docs/UI remnants.</td></tr>
+              <tr><td>Topic</td><td>A single conversational thread handling one intent (e.g., &ldquo;Reset password&rdquo;), triggered by phrases or events, built as a node graph.</td><td>Topics are NOT the same as tools &mdash; a topic is conversation logic; a tool is an external action/data call.</td></tr>
+              <tr><td>Trigger phrases</td><td>Example user utterances that teach the NLU/orchestrator when to fire a topic.</td><td>Not required at all under pure generative orchestration if you write a strong topic description instead.</td></tr>
+              <tr><td>Entity</td><td>A reusable data type extracted from user input (prebuilt like Date/Number/Email, custom lists, or regex).</td><td>Entities live at the agent level and are referenced inside topics &mdash; don't recreate the same entity per topic.</td></tr>
+              <tr><td>Variable</td><td>A named slot holding data during a session (topic input/output, global, or system variable).</td><td>Topic-scoped variables don't automatically persist across topics &mdash; pass them explicitly as inputs/outputs.</td></tr>
+              <tr><td>Tool / Action</td><td>A callable capability: a connector action, a custom connector, a Power Automate/agent flow, a plugin, or an MCP server tool.</td><td>&ldquo;Actions&rdquo; was the old name; &ldquo;Tools&rdquo; is current terminology (2025+ UI).</td></tr>
+              <tr><td>Knowledge source</td><td>Grounding data the agent can retrieve and cite from: SharePoint, websites, uploaded files, Dataverse, public sites, enterprise search.</td><td>Knowledge answers are generated, not just retrieved &mdash; bad source hygiene = confidently wrong answers.</td></tr>
+              <tr><td>Agent flow / Workflow</td><td>Automation logic (visual, Power-Automate-like) that can run standalone or be called by an agent as a tool.</td><td>&ldquo;Workflows&rdquo; (newer, in preview) and &ldquo;agent flows&rdquo; (classic) are two different flow authoring surfaces &mdash; don't assume feature parity.</td></tr>
+              <tr><td>Orchestration</td><td>How the agent decides what to do each turn: generative (model-driven) or classic (trigger-phrase matching).</td><td>New agents default to generative orchestration; older agents migrated from Power Virtual Agents often still run classic.</td></tr>
+              <tr><td>Child / connected agent</td><td>Another Copilot Studio agent (or agent from another platform) invoked as a sub-agent for a specialized domain.</td><td>Not the same as a &ldquo;tool&rdquo; &mdash; a child agent gets its own reasoning turn, a tool just returns data.</td></tr>
+            </tbody>
+          </table></div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s3">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">3</div>
+          <div class="htext"><h2>Building Your First Agent</h2><div class="hsub">A step-by-step workflow from blank canvas to launch</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <ol>
+            <li>Start from a description, not a canvas. In Copilot Studio, click Create &rarr; describe the agent's purpose, audience, and tone in a sentence or two. The generated name, description, and starter instructions save real authoring time &mdash; always edit them afterward rather than accepting defaults blindly.</li>
+            <li>Write the Instructions field like a system prompt. This is the single highest-leverage piece of authoring: role, scope, tone, escalation behavior, and hard boundaries (what NOT to do).</li>
+            <li>Add knowledge sources next. Connect the SharePoint sites, websites, or files the agent should ground answers in before you build topics &mdash; this lets generative orchestration answer a surprising amount out of the box.</li>
+            <li>Build 3&ndash;5 core topics for your must-have deterministic flows (things that must always follow the same steps, like a refund policy check or an escalation handoff). Leave the long tail to generative answers from knowledge.</li>
+            <li>Add tools for anything requiring live data or an action (create a ticket, check order status, send an email). Use existing connectors before building custom ones.</li>
+            <li>Test continuously in the Test pane (side panel) after every meaningful change &mdash; not just at the end.</li>
+            <li>Set up authentication and DLP before you publish anywhere beyond your own test session.</li>
+            <li>Publish to a single channel first (Teams is usually the fastest, safest starting point), gather feedback, then expand to additional channels.</li>
+            <li>Turn on analytics and review transcripts weekly for the first month &mdash; this is where you find the topics/tools you're missing.</li>
+          </ol>
+          <div class="callout tip"><span class="clabel">Tip</span>Resist the urge to model every possible conversation path as a topic. Under generative orchestration, a well-written topic/tool description plus solid knowledge grounding replaces dozens of manual trigger-phrase topics you'd have needed under classic orchestration.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s4">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">4</div>
+          <div class="htext"><h2>Writing Agent Instructions</h2><div class="hsub">The system prompt &mdash; your biggest lever</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <p>The Instructions box is read by the orchestrator on every turn and is the biggest single lever for agent behavior &mdash; treat it with the same care as an LLM system prompt, not as marketing copy.</p>
+          <h3>Structure that works well</h3>
+          <ul>
+            <li>Role &amp; audience: &ldquo;You are an internal IT support agent for Contoso employees.&rdquo;</li>
+            <li>Scope boundaries: explicitly list what the agent should and should not attempt (e.g., &ldquo;Do not provide legal or medical advice; escalate those requests.&rdquo;)</li>
+            <li>Tone &amp; style: concise, formal/casual, reading level, use of emojis (usually: don't).</li>
+            <li>Grounding rule: &ldquo;Always answer using the connected knowledge sources; if the answer isn't found, say so rather than guessing.&rdquo;</li>
+            <li>Escalation rule: define exactly when/how to hand off to a human or another agent.</li>
+            <li>Formatting rule: state preferred response format (bullets, short paragraphs, tables) since generative responses otherwise vary run to run.</li>
+          </ul>
+          <h3>Gotchas</h3>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Instructions are not guaranteed to be followed verbatim &mdash; they bias the model, they don't hard-code it. Anything that must always happen (compliance disclaimers, exact wording, blocked topics) belongs in a topic with explicit nodes, not just in free-text instructions.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Long, vague instructions dilute focus. Short, specific, imperative sentences outperform paragraphs of context. If you paste in a 2-page brand style guide, expect inconsistent adherence.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Instructions and topic/tool descriptions compete for the model's attention budget together in the orchestration prompt. Bloating instructions can silently reduce how reliably tools/topics get picked.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s5">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">5</div>
+          <div class="htext"><h2>Topics in Depth</h2><div class="hsub">Anatomy, descriptions, and common failure modes</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <h3>Anatomy of a topic</h3>
+          <ul>
+            <li>Trigger: phrases (classic) and/or a natural-language description (generative) that tells the orchestrator when this topic applies.</li>
+            <li>Nodes: Question (capture input into a variable/entity), Message, Condition, Redirect to another topic, Call a tool/flow, Adaptive Card, End of conversation, and the newer generative &ldquo;Add a fallback/AI response&rdquo; nodes.</li>
+            <li>Topic inputs/outputs: formal parameters that let a topic be called by other topics, tools, or the orchestrator with structured data.</li>
+            <li>System topics: built-in topics (Greeting, Escalate, Goodbye, Multiple Topics Matched, On Error, Conversation Boost) you should customize rather than ignore.</li>
+          </ul>
+          <h3>Writing topic descriptions for generative orchestration</h3>
+          <p>Under generative orchestration the topic's Name + Description is effectively a tool description the planner reads to decide relevance. Write it the way you'd document a function: state exactly when to use it and what it returns/does.</p>
+          <ul>
+            <li><strong>Good:</strong> &ldquo;Use when a user wants to check the delivery status of an existing order using an order number.&rdquo;</li>
+            <li><strong>Weak:</strong> &ldquo;Order stuff&rdquo; &mdash; too vague, competes poorly against other topics with clearer descriptions.</li>
+          </ul>
+          <h3>Common gotchas</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+            <tbody>
+              <tr><td>Wrong topic keeps firing</td><td>Overlapping/vague trigger phrases or descriptions between topics</td><td>Tighten descriptions; merge near-duplicate topics; add negative examples in testing</td></tr>
+              <tr><td>Topic never fires</td><td>Orchestration set to classic but trigger phrases are too few/narrow, or generative orchestration is on but the description is generic</td><td>Add more/diverse trigger phrases (classic) or rewrite the description to be specific and action-oriented (generative)</td></tr>
+              <tr><td>Variable is empty in a later topic</td><td>Variables are topic-scoped by default</td><td>Explicitly pass values via topic inputs/outputs or promote to a Global variable</td></tr>
+              <tr><td>Conversation loops or restarts unexpectedly</td><td>Missing End of Conversation node or unhandled Redirect chain</td><td>Always terminate topics explicitly; test multi-topic redirects end to end</td></tr>
+              <tr><td>Agent answers differently every time for the same question</td><td>Relying purely on generative fallback with no topic or knowledge grounding</td><td>Add a topic (deterministic) or a knowledge source (grounded) for anything that must be consistent</td></tr>
+            </tbody>
+          </table></div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s6">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">6</div>
+          <div class="htext"><h2>Generative vs. Classic Orchestration</h2><div class="hsub">Two very different decision-making models</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <p>Every new agent defaults to generative orchestration: the model chooses among topics, tools, knowledge, and child agents based on their descriptions, rather than matching keyword trigger phrases. Classic orchestration (the original Power Virtual Agents model) still exists and some environments disable generative orchestration entirely via admin policy.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Behavior</th><th>Generative vs. Classic</th></tr></thead>
+            <tbody>
+              <tr><td>Topic selection</td><td>Generative: by description/purpose. Classic: by trigger-phrase match only.</td></tr>
+              <tr><td>Multi-step reasoning</td><td>Generative: can combine topics + tools + knowledge in one turn. Classic: picks one topic per turn.</td></tr>
+              <tr><td>Slot filling</td><td>Generative: auto-generates clarifying questions for missing inputs. Classic: you must build Question nodes manually.</td></tr>
+              <tr><td>Predictability</td><td>Classic is more deterministic/testable turn by turn; generative is more flexible but less literally predictable.</td></tr>
+              <tr><td>Multi-agent (child agents)</td><td>Only available/meaningful under generative orchestration.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="callout tip"><span class="clabel">Tip</span>Use classic orchestration (or lock specific topics to &ldquo;only trigger on exact match&rdquo;) for regulated, must-be-word-for-word flows (e.g., financial disclosures). Use generative orchestration for everything else &mdash; it dramatically reduces the number of topics you need to hand-author.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Switching an existing agent's orchestration mode after it has many hand-tuned trigger-phrase topics can change behavior significantly. Test thoroughly in a non-production environment before flipping this setting on a live agent.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s7">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">7</div>
+          <div class="htext"><h2>Knowledge Sources</h2><div class="hsub">Grounding generative answers in your real content</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <p>Knowledge sources let the agent ground generative answers in your real content instead of hallucinating. Supported source types include SharePoint sites/document libraries, public and enterprise websites, uploaded files, Dataverse tables, and &mdash; depending on licensing/environment &mdash; enterprise search connectors (e.g., Microsoft Graph connectors).</p>
+          <h3>Best practices</h3>
+          <ul>
+            <li>Scope SharePoint knowledge to the specific site/library the agent actually needs &mdash; indexing the whole tenant hurts relevance and increases the chance of surfacing content the requester shouldn't see (respect existing permissions, but don't rely on that as your only access control).</li>
+            <li>Prefer a small number of clean, current sources over many overlapping ones &mdash; duplicate/conflicting content is the #1 cause of wrong-but-confident answers.</li>
+            <li>Use descriptive titles/metadata on source documents; citations shown to users are only as good as the source's own structure (headings, clear sectioning).</li>
+            <li>Periodically prune stale content &mdash; the agent has no way to know a document is outdated unless you remove or update it.</li>
+          </ul>
+          <h3>Gotchas</h3>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Newly added or updated SharePoint/website content is not searchable instantly &mdash; indexing can take anywhere from minutes to a day depending on source type and size. Don't assume a fix you just made in the source doc is already live.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Generative answers over knowledge are still generative &mdash; the agent can paraphrase incorrectly or blend two sources into an unintended answer. Always test edge-case questions, and use the &ldquo;only answer from these sources&rdquo; / strict grounding settings for compliance-sensitive agents.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Knowledge search respects the connected source's native permissions model at query time in most configurations, but behavior varies by source type and authentication mode &mdash; always verify with a real least-privileged test account before assuming row/document-level security is enforced end to end.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s8">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">8</div>
+          <div class="htext"><h2>Tools, Connectors &amp; Actions</h2><div class="hsub">How an agent does things, not just talks about them</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <h3>Where tools come from</h3>
+          <div class="grid-2">
+            <div class="card"><h4>Prebuilt connectors</h4><p>1,000+ Power Platform connectors (Microsoft 365, Dynamics 365, ServiceNow, Salesforce, SAP, Jira, etc.) &mdash; always check here first.</p></div>
+            <div class="card"><h4>Custom connectors</h4><p>Wrap any REST API (with an OpenAPI/Swagger definition) that isn't already covered.</p></div>
+            <div class="card"><h4>Model Context Protocol (MCP) servers</h4><p>Connect external MCP tool servers directly as agent tools &mdash; useful for reusing tools already built for other AI assistants.</p></div>
+            <div class="card"><h4>Agent flows / Power Automate flows</h4><p>For multi-step logic, approvals, human-in-the-loop review, or orchestrating several connector calls before returning a single result to the agent.</p></div>
+            <div class="card"><h4>Prompt tools / AI Builder prompts</h4><p>A reusable generative step (summarize, classify, extract) that the agent can call like any other tool.</p></div>
+            <div class="card"><h4>Code interpreter</h4><p>Lets the agent write and execute code for calculations, data transforms, or chart generation on the fly.</p></div>
+          </div>
+          <h3>Writing good tool descriptions</h3>
+          <p>Same principle as topics: the orchestrator decides when to call a tool almost entirely based on its name, description, and input/output parameter descriptions. Vague tool descriptions (&ldquo;Get data&rdquo;) get skipped or misused.</p>
+          <h3>Gotchas</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Issue</th><th>Cause</th><th>Fix</th></tr></thead>
+            <tbody>
+              <tr><td>Tool never gets called</td><td>Weak/generic description, or overlapping tools with similar purposes</td><td>Rewrite description with concrete trigger scenarios; consolidate near-duplicate tools</td></tr>
+              <tr><td>Tool called with wrong/missing parameters</td><td>Parameter descriptions missing or ambiguous types</td><td>Add clear parameter descriptions, examples, and mark required fields explicitly</td></tr>
+              <tr><td>&ldquo;Action&rdquo; or connector fails silently in conversation</td><td>Underlying connection/credential expired or lacks scope</td><td>Check the connection reference; reauthorize; verify least-privilege scopes</td></tr>
+              <tr><td>Flow times out mid-conversation</td><td>Long-running Power Automate flow blocking a synchronous tool call</td><td>Use async patterns / human-in-the-loop approval flows designed for agent callback rather than blocking calls</td></tr>
+              <tr><td>Works in maker test pane, fails for real users</td><td>Connector uses the maker's own connection instead of end-user (on-behalf-of) auth</td><td>Configure end-user authentication for the connector where supported instead of a shared maker connection</td></tr>
+            </tbody>
+          </table></div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s9">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">9</div>
+          <div class="htext"><h2>Multi-Agent Systems</h2><div class="hsub">Child and connected agents</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <p>Copilot Studio lets one agent call another agent as a specialized sub-agent &mdash; either another Copilot Studio agent, or (via emerging cross-platform standards like Agent-to-Agent/A2A and MCP) agents built on other platforms.</p>
+          <h3>When to split into multiple agents</h3>
+          <ul>
+            <li>Different domains with little topic overlap (HR agent vs. IT agent) &mdash; easier to govern, own, and update independently.</li>
+            <li>Different owning teams that need separate permissions, publishing cadence, or DLP boundaries.</li>
+            <li>A specialized deep-reasoning or heavily-tooled sub-domain that would otherwise bloat one agent's instructions/tool list past what the orchestrator can reliably choose between.</li>
+          </ul>
+          <h3>Gotchas</h3>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>A child agent is invoked based on its description, exactly like a topic or tool &mdash; vague child-agent descriptions mean it rarely gets picked, or gets picked for the wrong queries.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Each hop to a child agent costs an extra reasoning turn (latency and, depending on licensing, message consumption). Don't split agents just for organizational tidiness if a single well-structured agent would serve users faster.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Authentication context does not always pass through automatically between parent and child agents across tenants/platforms &mdash; verify identity and data-access behavior explicitly when agents cross a trust boundary.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s10">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">10</div>
+          <div class="htext"><h2>Variables &amp; Conversation Memory</h2><div class="hsub">Slots, scope, and what actually persists</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <ul>
+            <li>Topic variables: local to one topic unless declared as inputs/outputs.</li>
+            <li>Global variables: available across all topics in the agent for the duration of the session.</li>
+            <li>System variables: built-ins like <em>User.DisplayName</em>, <em>Activity.Locale</em>, <em>Conversation.Id</em> &mdash; use these instead of re-asking users for information the platform already knows.</li>
+            <li>Entities: reused across topics for consistent extraction (e.g., a single &ldquo;OrderNumber&rdquo; entity referenced by five topics, instead of five separate regex patterns).</li>
+          </ul>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Session/conversation memory does not automatically persist across channel sessions or after long inactivity timeouts (commonly ~30 minutes). Don't design a flow assuming the agent &ldquo;remembers&rdquo; something from yesterday unless you've explicitly wired that into Dataverse or another durable store.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s11">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">11</div>
+          <div class="htext"><h2>Testing Your Agent</h2><div class="hsub">Built-in tools and what to actually test</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <h3>Built-in tools</h3>
+          <ul>
+            <li><strong>Test pane:</strong> always-available side panel for chatting with the in-progress (unpublished) version of the agent; supports tracing/debug view of which topic/tool/knowledge fired and why.</li>
+            <li><strong>Topic-level test/track:</strong> step through a single topic's node graph to see variable values at each step.</li>
+            <li><strong>Multiple environments (Dev/Test/Prod):</strong> build and validate in a non-production environment before promoting via solutions.</li>
+          </ul>
+          <h3>What to actually test</h3>
+          <ul>
+            <li>Paraphrases and typos of your main trigger phrases, not just the exact examples you authored.</li>
+            <li>Adversarial/out-of-scope questions to confirm the agent declines or escalates gracefully instead of hallucinating.</li>
+            <li>Multi-turn conversations that cross topic boundaries (does context/variables survive a redirect?).</li>
+            <li>Authentication edge cases: signed-in vs. anonymous, expired token, insufficient permissions.</li>
+            <li>Each publish channel separately &mdash; behavior (cards, auth prompts, message length limits) can differ between Teams, web chat, and M365 Copilot.</li>
+          </ul>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Testing in the maker's own test pane often uses the maker's own identity/permissions. Always retest with a representative low-privilege end-user account before go-live &mdash; this is the #1 source of &ldquo;it worked when I built it&rdquo; surprises.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s12">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">12</div>
+          <div class="htext"><h2>Auth, Security &amp; DLP</h2><div class="hsub">Authentication modes and data loss prevention</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <h3>Authentication modes</h3>
+          <ul>
+            <li><strong>Authenticate with Microsoft (default):</strong> automatic Entra ID auth for Teams, Power Apps, and M365 Copilot &mdash; no manual setup.</li>
+            <li><strong>Authenticate manually:</strong> configure your own OAuth/Entra app registration &mdash; needed for custom channels or non-Microsoft identity providers.</li>
+            <li><strong>No authentication:</strong> anyone with the link can chat; tools requiring end-user credentials cannot be used in this mode.</li>
+          </ul>
+          <h3>Data Loss Prevention (DLP) and admin controls</h3>
+          <ul>
+            <li>Environment-level DLP policies control which connectors agents in that environment may use (Business / Non-Business / Blocked tiers) &mdash; build in the environment where your target connectors are actually allowed before you invest hours wiring them up.</li>
+            <li>Admins can disable generative orchestration, restrict which knowledge source types are connectable, and require managed environments for production agents.</li>
+            <li>Content moderation settings control how strictly the agent filters/handles harmful, off-topic, or sensitive user input.</li>
+          </ul>
+          <h3>Gotchas</h3>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>A tool that works fine in dev can be silently blocked in prod if the target environment's DLP policy classifies that connector differently. Check DLP policy per environment before promoting.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>&ldquo;No authentication&rdquo; agents cannot call tools that require end-user credentials (on-behalf-of auth) &mdash; if a tool needs to act as the specific signed-in user, authentication must be turned on.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Sensitivity-labeled or access-restricted source documents don't automatically become &ldquo;safe&rdquo; just because they're referenced by an agent &mdash; validate real end-to-end permission enforcement, not just that the agent can technically retrieve the content in a test.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s13">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">13</div>
+          <div class="htext"><h2>Publishing &amp; Channels</h2><div class="hsub">Where and how agents go live</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <p>Publishing pushes your latest saved changes live to every connected channel simultaneously &mdash; there is no per-channel publish. Because of persistent-session channels (like Teams), users mid-conversation won't see changes until their next new session; typical channel sessions end after ~30 minutes of inactivity.</p>
+          <h3>Common channels</h3>
+          <ul>
+            <li>Microsoft Teams &mdash; fastest path for internal agents; supports Adaptive Cards and native Entra auth.</li>
+            <li>Microsoft 365 Copilot &mdash; surfaces the agent inside the Copilot Chat experience/side panel for tenant users.</li>
+            <li>Web / &ldquo;Custom canvas&rdquo; &mdash; embeddable chat control for websites or custom apps.</li>
+            <li>Facebook, and other channels via the underlying Azure Bot Service framework for broader reach.</li>
+            <li>Direct Line / API &mdash; for fully custom front-end integrations.</li>
+          </ul>
+          <div class="callout tip"><span class="clabel">Tip</span>Publish to one low-risk channel first (commonly Teams, restricted to a pilot group), gather real transcripts and analytics for a week or two, then expand &mdash; don't publish to every channel on day one.</div>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Forgetting to click Publish after edits is the most common &ldquo;why isn't my fix showing up&rdquo; support question &mdash; saving a topic is not the same as publishing the agent.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s14">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">14</div>
+          <div class="htext"><h2>ALM &amp; Governance</h2><div class="hsub">Environments, solutions, and source control</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <ul>
+            <li>Agents live inside Power Platform environments and can be packaged into Solutions for controlled export/import between Dev &rarr; Test &rarr; Prod.</li>
+            <li>Managed environments add governance guardrails: sharing limits, maker onboarding, weekly digest of usage/errors, and (in supported configurations) pipelines for automated promotion.</li>
+            <li>Source control: solution-aware source control (e.g., exporting unpacked solution files to Git) lets teams review agent changes like code, though the conversational canvas itself is still authored primarily through the UI.</li>
+            <li>Center of Excellence (CoE) tooling and the Power Platform admin center give tenant-wide visibility into every agent, its owner, connectors used, and DLP compliance.</li>
+          </ul>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Exporting/importing solutions across environments can break connection references and environment-specific values (SharePoint site URLs, flow connections) if you don't use environment variables/connection references correctly during export &mdash; plan for this from the start of a project, not after the first failed import.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s15">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">15</div>
+          <div class="htext"><h2>Analytics &amp; Monitoring</h2><div class="hsub">Finding out what's actually happening in production</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <ul>
+            <li>Built-in analytics dashboard: session volume, engagement, resolution/escalation rates, topic/tool usage breakdown, and satisfaction (CSAT) if configured.</li>
+            <li>Transcripts: read real conversations (respecting privacy/compliance requirements) to find missing topics, misfires, and confusing responses &mdash; this is the single best source of &ldquo;what to build next.&rdquo;</li>
+            <li>Application Insights integration: pipe telemetry into Azure Monitor for custom dashboards, alerting, and longer retention than the built-in analytics views.</li>
+          </ul>
+          <div class="callout tip"><span class="clabel">Tip</span>Set a recurring weekly review of &ldquo;unresolved&rdquo; or &ldquo;escalated&rdquo; conversations for at least the first month after launch &mdash; this single habit finds more real issues than any amount of pre-launch testing.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s16">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">16</div>
+          <div class="htext"><h2>Licensing &amp; Capacity</h2><div class="hsub">Message consumption and credit pools</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <ul>
+            <li>Copilot Studio is metered primarily via message consumption (billed per successful message/session, depending on plan), separate from Power Platform per-app/per-user licensing for other Power Platform resources the agent touches.</li>
+            <li>Some capabilities (AI Builder prompts, premium connectors, certain generative features) draw on separate credit/capacity pools &mdash; watch consumption dashboards, especially for high-traffic customer-facing agents.</li>
+            <li>M365 Copilot license holders get certain built-in entitlements for using agents inside Microsoft 365 Copilot Chat, distinct from standalone Copilot Studio capacity purchased by an admin.</li>
+          </ul>
+          <div class="callout gotcha"><span class="clabel">Gotcha</span>Message/consumption limits are easy to blow through with chatty generative back-and-forth (clarifying questions, multi-tool chains) compared to old-style single-topic classic bots. Model expected consumption before committing to a launch date for a high-volume agent.</div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s17">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">17</div>
+          <div class="htext"><h2>Troubleshooting Checklist</h2><div class="hsub">Quick reference for common problems</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <div class="table-wrap"><table>
+            <thead><tr><th>Problem</th><th>Check first</th></tr></thead>
+            <tbody>
+              <tr><td>Agent gives wrong/hallucinated answer</td><td>Is it answering from a topic, tool, or knowledge? Check the trace. Tighten knowledge sources and instructions grounding rule.</td></tr>
+              <tr><td>Change not visible to users</td><td>Did you click Publish? Are users in an existing session that hasn't refreshed?</td></tr>
+              <tr><td>Tool/connector fails for real users but not for you</td><td>Check end-user vs. maker connection/auth mode and DLP policy in that environment.</td></tr>
+              <tr><td>Topic/tool never triggers</td><td>Rewrite the name/description to be specific and example-driven; check for a competing near-duplicate.</td></tr>
+              <tr><td>Works in Dev, breaks in Prod</td><td>Check DLP policy differences, connection references, and environment variables after solution import.</td></tr>
+              <tr><td>Inconsistent answers across runs</td><td>Move must-be-consistent content into a topic with fixed Message nodes instead of relying purely on generative fallback.</td></tr>
+              <tr><td>Users stuck in a loop</td><td>Check for missing End of Conversation nodes or an unhandled Redirect chain.</td></tr>
+              <tr><td>Slow responses</td><td>Look for long-running flows/tools called synchronously in the middle of the conversation; consider async or human-in-the-loop patterns.</td></tr>
+            </tbody>
+          </table></div>
+        </div></div>
+      </section>
+
+      <section class="section" id="s18">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">18</div>
+          <div class="htext"><h2>Tips &amp; Power-User Notes</h2><div class="hsub">Habits that pay off over time</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <ul>
+            <li>Use natural-language authoring (&ldquo;describe what you want this topic/flow to do&rdquo;) to scaffold a first draft fast, then hand-edit the generated nodes/logic &mdash; it's a starting point, not a finished product.</li>
+            <li>Keep a running &ldquo;unhandled questions&rdquo; list from transcripts and knowledge-source gaps; triage weekly instead of trying to anticipate everything up front.</li>
+            <li>Prefer editing a topic/tool description over adding more trigger phrases when using generative orchestration &mdash; description quality matters more than phrase quantity.</li>
+            <li>Use Adaptive Cards for anything structured (order summaries, forms, multiple-choice) instead of forcing users to type free text.</li>
+            <li>Name topics, tools, and variables descriptively and consistently (verb-noun for tools, noun for topics) &mdash; this pays off both for the orchestrator's model and for the next human who maintains the agent.</li>
+            <li>When an agent grows past ~15-20 heavily used topics/tools, consider whether it's time to split into child agents rather than keep piling on.</li>
+            <li>Duplicate an agent (or export/import a solution) before making a risky structural change so you always have a rollback point.</li>
+            <li>Use environment variables/connection references for anything environment-specific (site URLs, API endpoints) from day one &mdash; retrofitting this after go-live is painful.</li>
+            <li>Pair every new tool with a one-line description written from the model's point of view (&ldquo;use this when&hellip;&rdquo;) rather than a human-facing marketing description.</li>
+          </ul>
+        </div></div>
+      </section>
+
+      <section class="section" id="s19">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="badge">19</div>
+          <div class="htext"><h2>Glossary</h2><div class="hsub">Quick lookup for every term in this manual</div></div>
+          <div class="chevron">&#9656;</div>
+        </div>
+        <div class="section-body"><div class="section-body-inner">
+          <div class="table-wrap"><table>
+            <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td>Agent</td><td>A configured assistant: instructions + topics + tools + knowledge + triggers, publishable to channels.</td></tr>
+              <tr><td>Agent Builder</td><td>A simplified agent-creation surface inside Microsoft 365 Copilot Chat, distinct from full Copilot Studio.</td></tr>
+              <tr><td>Topic</td><td>A conversational unit handling one intent, built as a node graph, triggered by phrases and/or description.</td></tr>
+              <tr><td>Entity</td><td>A reusable extractable data type (prebuilt or custom) referenced across topics.</td></tr>
+              <tr><td>Generative orchestration</td><td>Model-driven decision-making across topics, tools, knowledge, and child agents each turn.</td></tr>
+              <tr><td>Classic orchestration</td><td>Trigger-phrase matching to select a single topic per turn (the original Power Virtual Agents model).</td></tr>
+              <tr><td>Tool</td><td>A callable capability &mdash; connector action, custom connector, flow, prompt, or MCP tool.</td></tr>
+              <tr><td>Knowledge source</td><td>Connected content (SharePoint, website, files, Dataverse) the agent can search and cite.</td></tr>
+              <tr><td>Agent flow / Workflow</td><td>Visual automation logic, callable standalone or as an agent tool.</td></tr>
+              <tr><td>Child/connected agent</td><td>Another agent invoked as a specialized sub-agent under generative orchestration.</td></tr>
+              <tr><td>DLP policy</td><td>Data Loss Prevention policy classifying which connectors an environment's agents may use.</td></tr>
+              <tr><td>Managed environment</td><td>A Power Platform environment with added governance controls for production agents.</td></tr>
+              <tr><td>Solution</td><td>The ALM packaging unit for exporting/importing an agent and its components between environments.</td></tr>
+              <tr><td>MCP (Model Context Protocol)</td><td>An open standard for connecting external tool servers to AI agents/assistants.</td></tr>
+              <tr><td>Direct Line</td><td>The underlying API/channel used for fully custom front-end integrations with an agent.</td></tr>
+            </tbody>
+          </table></div>
+          <hr class="divider">
+          <p class="footnote">This manual reflects Copilot Studio capabilities as of mid-2026. The platform ships new features frequently (orchestration options, tool types, and channel support in particular) &mdash; treat the concepts and gotchas here as durable, but re-check Microsoft Learn for the newest UI specifics before a major build.</p>
+        </div></div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<button class="backtotop" id="backTop" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+  // ---- Section collapse/expand ----
+  function toggleSection(headerEl){
+    var section = headerEl.closest('.section');
+    section.classList.toggle('open');
+  }
+
+  // Nav click: expand target section, close mobile sidebar, let browser scroll
+  document.querySelectorAll('#toc a').forEach(function(link){
+    link.addEventListener('click', function(){
+      var id = link.getAttribute('href').substring(1);
+      var target = document.getElementById(id);
+      if(target && !target.classList.contains('open')){
+        target.classList.add('open');
+      }
+      document.getElementById('sidebar').classList.remove('open');
+    });
+  });
+
+  // ---- Theme toggle ----
+  var STORAGE_KEY = 'copilotStudioManual_theme';
+  var htmlEl = document.documentElement;
+  var themeIcon = document.getElementById('themeIcon');
+  var themeLabel = document.getElementById('themeLabel');
+
+  function applyTheme(theme){
+    htmlEl.setAttribute('data-theme', theme);
+    if(theme === 'dark'){
+      themeIcon.innerHTML = '&#9728;';
+      themeLabel.textContent = 'Light mode';
+    } else {
+      themeIcon.innerHTML = '&#127769;';
+      themeLabel.textContent = 'Dark mode';
+    }
+  }
+
+  var saved = localStorage.getItem(STORAGE_KEY);
+  if(saved){
+    applyTheme(saved);
+  } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    var current = htmlEl.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem(STORAGE_KEY, next);
+  });
+
+  // ---- Mobile sidebar toggle ----
+  var navToggleBtn = document.getElementById('navToggle');
+  if(navToggleBtn){
+    navToggleBtn.addEventListener('click', function(){
+      document.getElementById('sidebar').classList.toggle('open');
+    });
+  }
+
+  // ---- Scrollspy ----
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section.section'));
+  var navLinks = {};
+  document.querySelectorAll('#toc a').forEach(function(a){
+    navLinks[a.getAttribute('href').substring(1)] = a;
+  });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var id = entry.target.id;
+      var link = navLinks[id];
+      if(!link) return;
+      if(entry.isIntersecting){
+        Object.values(navLinks).forEach(function(l){ l.classList.remove('active'); });
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(function(s){ observer.observe(s); });
+
+  // ---- Back to top button ----
+  var backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 500){ backTop.classList.add('show'); }
+    else { backTop.classList.remove('show'); }
+  });
+</script>
+</body>
+</html>
