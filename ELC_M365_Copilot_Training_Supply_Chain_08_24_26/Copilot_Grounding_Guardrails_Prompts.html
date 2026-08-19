@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../images/favicon-supplier-workflows.svg" type="image/svg+xml">
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <title>Grounded Copilot Prompt Library</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .hero { padding: 64px 0 32px; }
+    .eyebrow {
+      color: var(--cp-accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 800px;
+      margin: 10px 0 16px;
+      font-size: clamp(2.25rem, 6vw, 4.6rem);
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+    }
+    .lede {
+      max-width: 760px;
+      margin: 0;
+      color: var(--cp-text-soft);
+      font-size: 1.12rem;
+    }
+    .formula {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .formula div {
+      padding: 14px 16px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+    }
+    .formula b { display: block; color: var(--cp-accent); }
+    .formula span { color: var(--cp-text-muted); font-size: 0.86rem; }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 14px 0;
+      background: var(--cp-overlay);
+      border-bottom: 1px solid var(--cp-border);
+      backdrop-filter: blur(12px);
+    }
+    .toolbar .shell { display: flex; gap: 10px; align-items: center; }
+    .search {
+      width: 100%;
+      min-width: 0;
+      padding: 11px 13px;
+      color: var(--cp-text);
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      outline: none;
+    }
+    .search:focus { border-color: var(--cp-accent); }
+    .button {
+      flex: none;
+      padding: 10px 14px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 0.625rem;
+      color: var(--cp-text);
+      background: var(--cp-surface);
+      font-weight: 650;
+    }
+    .button:hover { border-color: var(--cp-accent); color: var(--cp-accent); }
+    .button.primary {
+      color: var(--cp-accent-fg);
+      background: var(--cp-accent);
+      border-color: var(--cp-accent);
+    }
+    .button.primary:hover { color: var(--cp-accent-fg); background: var(--cp-accent-hover); }
+    .status {
+      padding: 28px 0 14px;
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding-bottom: 64px;
+    }
+    .card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      box-shadow: var(--cp-shadow);
+    }
+    .card-head {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .card h2 {
+      margin: 4px 0 0;
+      font-size: 1.2rem;
+      line-height: 1.25;
+    }
+    .category {
+      color: var(--cp-accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .copy {
+      min-width: 74px;
+      padding: 8px 10px;
+      color: var(--cp-accent);
+      background: var(--cp-accent-soft);
+      border: 1px solid var(--cp-accent);
+      border-radius: 0.625rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .copy:hover { color: var(--cp-accent-fg); background: var(--cp-accent); }
+    .copy.copied { color: var(--cp-accent-fg); background: var(--cp-success); border-color: var(--cp-success); }
+    .prompt { display: grid; gap: 0; padding: 4px 20px 18px; }
+    .part {
+      display: grid;
+      grid-template-columns: 106px 1fr;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .part:last-child { border-bottom: 0; }
+    .label {
+      color: var(--cp-accent);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .part p { margin: 0; color: var(--cp-text-soft); }
+    .empty {
+      display: none;
+      margin: 24px 0 64px;
+      padding: 32px;
+      text-align: center;
+      color: var(--cp-text-muted);
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+    }
+    footer {
+      padding: 24px 0 40px;
+      color: var(--cp-text-muted);
+      border-top: 1px solid var(--cp-border);
+      font-size: 0.85rem;
+    }
+    code {
+      font-family: Consolas, "Courier New", Courier, monospace;
+      color: var(--cp-text);
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      padding: 2px 6px;
+    }
+    @media (max-width: 760px) {
+      .hero { padding-top: 42px; }
+      .formula, .grid { grid-template-columns: 1fr; }
+      .toolbar .shell { align-items: stretch; flex-wrap: wrap; }
+      .search { flex-basis: 100%; }
+      .button { flex: 1; }
+      .part { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <div class="eyebrow">Copilot prompt library</div>
+      <h1>Ground it. Guard it. Label it.</h1>
+      <p class="lede">Reusable prompts designed to make Copilot show its evidence, expose uncertainty, avoid invented details, and separate facts from interpretation.</p>
+      <div class="formula" aria-label="Prompt framework">
+        <div><b>Goal</b><span>The result to produce</span></div>
+        <div><b>Context</b><span>Why it matters</span></div>
+        <div><b>Source</b><span>What evidence is allowed</span></div>
+        <div><b>Expectation</b><span>Shape, labels, and guardrails</span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="shell">
+      <input id="search" class="search" type="search" placeholder="Search prompts, guardrails, or labels..." aria-label="Search prompts">
+      <button id="copyAll" class="button primary" type="button">Copy all</button>
+      <button id="themeToggle" class="button" type="button">Toggle theme</button>
+    </div>
+  </div>
+
+  <main class="shell">
+    <div id="status" class="status" aria-live="polite"></div>
+    <section id="grid" class="grid" aria-label="Prompt cards"></section>
+    <div id="empty" class="empty">No prompts match that search.</div>
+  </main>
+
+  <footer>
+    <div class="shell">
+      Adapted and generalized from Copilot training materials in the customer library. Replace bracketed placeholders and attach or reference the named source before running a prompt.
+    </div>
+  </footer>
+
+  <script>
+    const prompts = [
+      {
+        category: "Grounding",
+        title: "Source-only research brief",
+        goal: "Create a decision-ready research brief about [topic or question].",
+        context: "The audience will use this brief to make [decision], so unsupported claims or stale information could lead to the wrong action.",
+        source: "Use only [attached files / named websites / approved publications]. Do not rely on general knowledge when the approved sources do not answer the question.",
+        expectation: "For every material claim, provide the source name, publication date, and a clickable citation. Label each statement as FACT, INFERENCE, or RECOMMENDATION. If the sources conflict, show both positions. If evidence is missing, write NOT FOUND. Do not guess, invent, or fill gaps."
+      },
+      {
+        category: "Grounding",
+        title: "Grounded document summary",
+        goal: "Summarize [document or file set] for [audience] so they can understand the key points and required actions quickly.",
+        context: "This summary may be forwarded without the original files, so readers need to know exactly what is supported and what remains unresolved.",
+        source: "Use only the attached or referenced [file names]. Treat those files as the complete evidence set for this task.",
+        expectation: "Return sections labeled KEY FACTS, DECISIONS, ACTIONS, RISKS, and UNKNOWNS. Cite the source file and page, section, slide, row, or cell for each important item. Preserve the source wording for dates, amounts, names, and commitments. Use NOT STATED when a detail is absent."
+      },
+      {
+        category: "Accuracy",
+        title: "Facts versus interpretation",
+        goal: "Assess the claim: [insert claim].",
+        context: "The claim is being considered for [presentation, email, recommendation, or decision], and the audience must not mistake interpretation for proven fact.",
+        source: "Use [named files, messages, meeting notes, or approved web sources] and no other evidence.",
+        expectation: "Create four clearly labeled sections: SUPPORTED FACTS, REASONABLE INFERENCES, UNSUPPORTED CLAIMS, and INFORMATION NEEDED. Quote or cite the evidence behind every supported fact. Rewrite the original claim so it says only what the evidence supports. Do not soften or hide uncertainty."
+      },
+      {
+        category: "Accuracy",
+        title: "Independent-source reconciliation",
+        goal: "Reconcile [Source A] and [Source B] before either is treated as authoritative.",
+        context: "The two sources describe the same period or subject but do not agree. Do not assume either source is correct.",
+        source: "Compare [Source A] and [Source B] line by line or item by item.",
+        expectation: "List every mismatch with the item identifier, both source values, absolute variance, and percentage variance where applicable. Separately label MISSING IN A, MISSING IN B, DUPLICATE, and INTERNAL CALCULATION ERROR. Show all differences without deciding which source is correct. For each difference, list plausible explanations and the evidence needed to confirm one."
+      },
+      {
+        category: "Audit",
+        title: "Formula and model audit",
+        goal: "Audit [workbook or model] before it is used to support [decision or report].",
+        context: "The model was inherited or changed over time, and nobody has verified that every calculation follows the intended pattern.",
+        source: "Review the formulas, inputs, named ranges, tables, and figures in [workbook, sheets, or cell range].",
+        expectation: "Determine the dominant calculation pattern and identify every exception. Find inconsistent formulas, hardcoded values inside formulas, values typed over formulas, broken references, unexplained constants, and totals that do not reconcile. Quote exact sheet and cell references. Label each finding HIGH, MEDIUM, or LOW risk. Do not fix anything; state what was verified and what was not."
+      },
+      {
+        category: "Audit",
+        title: "Data quality exceptions report",
+        goal: "Determine whether [dataset] is safe to analyze before anyone quotes a result from it.",
+        context: "The data came from [system or provider] and has not yet been cleaned, validated, or reviewed.",
+        source: "Inspect every row and column in [file or table]. Use any provided data dictionary or validation rules as the authority.",
+        expectation: "Check duplicates, required-field blanks, invalid formats, inconsistent categories, impossible values, dates stored as text, outliers, and values outside defined rules. Return ROW, FIELD, PROBLEM, SEVERITY, and RECOMMENDED CHECK. Label each record SAFE, REVIEW, or EXCLUDE. State the number and percentage of rows safe to analyze without correction."
+      },
+      {
+        category: "Guardrail",
+        title: "No-invention action plan",
+        goal: "Create a concise [action plan, recovery plan, project plan, or executive brief] for [audience].",
+        context: "The plan must be useful without hiding gaps in ownership, timing, evidence, or causal certainty.",
+        source: "Use the attached [notes, workbook, transcript, or project files] as the source of facts and commitments.",
+        expectation: "Separate SOURCE FACTS, COMMITMENTS, and RECOMMENDATIONS. Do not invent metrics, owners, dates, quantities, savings, status, or causes. Use NOT ASSIGNED for missing owners, NOT CONFIRMED for missing dates or validation, and NOT PROVIDED for missing values. Every action must show owner, due date, evidence of completion, and status."
+      },
+      {
+        category: "Guardrail",
+        title: "Claim stress test",
+        goal: "Stress-test the claim that [insert proposed conclusion] before it is presented to leadership.",
+        context: "I am considering making this claim, but I want the strongest evidence-based challenge to it first.",
+        source: "Use [named source files] and the analysis already completed in this conversation.",
+        expectation: "Argue against the claim. List every conclusion the data cannot support, every alternative explanation it cannot rule out, and every condition that must be true for the claim to hold. Identify the additional evidence needed to make the claim safely. Finish with a revised claim labeled EVIDENCE and INTERPRETATION. Be direct and do not invent certainty."
+      },
+      {
+        category: "Guardrail",
+        title: "Inbox actions without guesswork",
+        goal: "Identify what I need to handle first from [Inbox, Teams chats, or selected folder] during [time period].",
+        context: "I need a short, reliable action list rather than a broad summary of activity.",
+        source: "Use only messages in [location] from [time window].",
+        expectation: "Include an item only when there is an explicit request to me, a commitment I made, or a request I made that remains open. Return ACTION, REQUESTOR, EVIDENCE, DUE DATE, and SOURCE LINK. Use NO DUE DATE STATED when none is written. Do not infer deadlines, owners, or next steps. Exclude informational messages."
+      },
+      {
+        category: "Labels",
+        title: "Confidence-rated analysis",
+        goal: "Evaluate [analysis, recommendation, forecast, or conclusion] for use by a decision-making audience.",
+        context: "The audience needs to understand both the answer and how much trust the available evidence justifies.",
+        source: "Use [named source files and prior analysis].",
+        expectation: "Give an overall CONFIDENCE score from 1 to 10. Start at 10 and deduct one point at a time, with one line explaining each deduction. Then label each conclusion HIGH, MEDIUM, or LOW confidence and cite its evidence. Include ASSUMPTIONS, CONTRADICTORY EVIDENCE, MISSING DATA, and WHAT WOULD CHANGE THE RATING."
+      },
+      {
+        category: "Labels",
+        title: "Cited comparison matrix",
+        goal: "Compare [options, vendors, proposals, candidates, or approaches] against [decision criteria].",
+        context: "The comparison must be transparent enough for another reviewer to challenge or reproduce it.",
+        source: "Use only [named proposals, resumes, product documents, research sources, or attached files].",
+        expectation: "Return a matrix with CRITERION, OPTION A, OPTION B, EVIDENCE, SOURCE, and CONFIDENCE. Label each cell VERIFIED, INFERRED, CONFLICTING, or NOT FOUND. Do not convert missing information into a zero or a negative judgment. Keep factual comparison separate from the final recommendation and explain the weighting used."
+      },
+      {
+        category: "Audit",
+        title: "Auditable, repeatable method",
+        goal: "Convert the completed [analysis or process] into a method another person can rerun independently.",
+        context: "A competent colleague who was not part of this conversation must be able to reproduce and audit the result without asking questions.",
+        source: "Use [input files] and the completed analysis in this conversation.",
+        expectation: "Document REQUIRED INPUTS, SOURCE-DATA VALIDATION, ORDERED STEPS, EXACT FORMULAS OR RULES, CONTROL TOTALS, PASS/FAIL CHECKS, OUTPUT LABELS, and KNOWN LIMITATIONS. State the conditions that must be true before the method is allowed to run. Label every assumption USER-SUPPLIED or SOURCE-SUPPORTED."
+      }
+    ];
+
+    const grid = document.getElementById("grid");
+    const search = document.getElementById("search");
+    const status = document.getElementById("status");
+    const empty = document.getElementById("empty");
+
+    function fullPrompt(prompt) {
+      return `Goal: ${prompt.goal}\n\nContext: ${prompt.context}\n\nSource: ${prompt.source}\n\nExpectation: ${prompt.expectation}`;
+    }
+
+    function makePart(label, text) {
+      const row = document.createElement("div");
+      row.className = "part";
+      const name = document.createElement("div");
+      name.className = "label";
+      name.textContent = label;
+      const content = document.createElement("p");
+      content.textContent = text;
+      row.append(name, content);
+      return row;
+    }
+
+    async function copyText(text, button) {
+      await navigator.clipboard.writeText(text);
+      if (button) {
+        const original = button.textContent;
+        button.textContent = "Copied";
+        button.classList.add("copied");
+        setTimeout(() => {
+          button.textContent = original;
+          button.classList.remove("copied");
+        }, 1400);
+      }
+    }
+
+    function render() {
+      const term = search.value.trim().toLowerCase();
+      const visible = prompts.filter(prompt =>
+        Object.values(prompt).join(" ").toLowerCase().includes(term)
+      );
+      grid.replaceChildren();
+      visible.forEach(prompt => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const head = document.createElement("div");
+        head.className = "card-head";
+        const titleGroup = document.createElement("div");
+        const category = document.createElement("div");
+        category.className = "category";
+        category.textContent = prompt.category;
+        const title = document.createElement("h2");
+        title.textContent = prompt.title;
+        titleGroup.append(category, title);
+
+        const copyButton = document.createElement("button");
+        copyButton.className = "copy";
+        copyButton.type = "button";
+        copyButton.textContent = "COPY";
+        copyButton.setAttribute("aria-label", `Copy ${prompt.title}`);
+        copyButton.addEventListener("click", () => copyText(fullPrompt(prompt), copyButton));
+        head.append(titleGroup, copyButton);
+
+        const body = document.createElement("div");
+        body.className = "prompt";
+        body.append(
+          makePart("Goal", prompt.goal),
+          makePart("Context", prompt.context),
+          makePart("Source", prompt.source),
+          makePart("Expectation", prompt.expectation)
+        );
+        card.append(head, body);
+        grid.append(card);
+      });
+      status.textContent = `${visible.length} of ${prompts.length} prompts`;
+      empty.style.display = visible.length ? "none" : "block";
+    }
+
+    search.addEventListener("input", render);
+    document.getElementById("copyAll").addEventListener("click", event => {
+      const text = prompts.map(prompt => `${prompt.title}\n${fullPrompt(prompt)}`).join("\n\n---\n\n");
+      copyText(text, event.currentTarget);
+    });
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    });
+    render();
+  </script>
+</body>
+</html>

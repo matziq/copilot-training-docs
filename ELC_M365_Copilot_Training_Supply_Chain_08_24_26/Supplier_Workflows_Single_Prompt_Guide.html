@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="../images/favicon-supplier-workflows.svg" type="image/svg+xml">
+  <title>Estee Lauder GSM | Single-Prompt Supplier Workflow</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme = param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f4ef;
+      --surface: #ffffff;
+      --surface-soft: #f5f5f5;
+      --border: #dedede;
+      --text: #242424;
+      --muted: #5c5c5c;
+      --accent: #b11f4b;
+      --accent-soft: rgba(177,31,75,.08);
+      --accent-fg: #ffffff;
+      --success: #16803b;
+      --warning: #b66b00;
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #3d3b3a;
+      --surface: #292929;
+      --surface-soft: #343231;
+      --border: #515151;
+      --text: #dedede;
+      --muted: #b0b0b0;
+      --accent: #fd8ea1;
+      --accent-soft: rgba(253,142,161,.14);
+      --accent-fg: #1a1a1a;
+      --success: #4ade80;
+      --warning: #fbbf24;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",Aptos,Calibri,sans-serif;line-height:1.5}
+    button{font:inherit}
+    header{padding:28px clamp(20px,5vw,72px) 42px;background:var(--surface);border-bottom:1px solid var(--border)}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+    h1,h2{font-family:Georgia,"Times New Roman",serif}
+    h1{font-size:clamp(2.35rem,6vw,4.6rem);line-height:1.04;margin:42px 0 12px;max-width:1000px}
+    h1 em{color:var(--accent);font-weight:500}
+    .subtitle{max-width:900px;color:var(--muted);font:1.2rem/1.5 Georgia,"Times New Roman",serif}
+    .theme,.copy{border:1px solid var(--border);border-radius:.625rem;padding:9px 13px;cursor:pointer}
+    .theme{background:var(--surface-soft);color:var(--text)}
+    main{max-width:1180px;margin:auto;padding:32px clamp(16px,4vw,54px) 64px}
+    section{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
+    h2{font-size:1.75rem;margin:0 0 8px}
+    .count{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:800}
+    .files{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+    .file{padding:12px;border:1px solid var(--border);border-radius:.625rem;background:var(--surface-soft)}
+    .file strong{display:block;overflow-wrap:anywhere;color:var(--accent)}
+    .prompt-wrap{position:relative}
+    pre{white-space:pre-wrap;word-wrap:break-word;margin:16px 0 0;padding:20px 20px 62px;border:1px solid var(--border);border-radius:.625rem;background:var(--surface-soft);color:var(--text);font:13px/1.58 Consolas,"Courier New",monospace}
+    .copy{position:absolute;right:14px;bottom:14px;background:var(--accent);color:var(--accent-fg);font-weight:800}
+    .copy.done{background:var(--success)}
+    .note{color:var(--muted)}
+    .guardrail{padding:12px 14px;border:1px solid var(--warning);border-radius:.625rem;background:var(--surface-soft)}
+    @media(max-width:700px){.files{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top">
+      <div class="eyebrow">Estee Lauder Companies | Global Supplier Management</div>
+      <button class="theme" id="themeToggle" type="button">Toggle theme</button>
+    </div>
+    <h1>The Supplier Shock Room: <em>One Prompt</em></h1>
+    <div class="subtitle">One grounded instruction produces the same decision path as the full demo: verify, challenge, trade, trigger, communicate, and reuse.</div>
+  </header>
+  <main>
+    <section>
+      <span class="count">1 prompt total</span>
+      <h2>Attach all five source files</h2>
+      <p class="note">Use the exact filenames below so Copilot can identify every source unambiguously.</p>
+      <div class="files">
+        <div class="file"><strong>Demo_01_Aurelia_Supplier_Disruption_Brief.docx</strong><span>Verified signals and scenario assumptions</span></div>
+        <div class="file"><strong>Demo_02_Orion_Commercial_Adjustment_Proposal.docx</strong><span>Supplier request and evidence gaps</span></div>
+        <div class="file"><strong>Demo_03_Aurelia_Orion_Contract_Excerpt.docx</strong><span>Selected fictional contract clauses</span></div>
+        <div class="file"><strong>Demo_04_Aurelia_Supplier_Exposure_and_Negotiation.xlsx</strong><span>Exposure, claim audit, negotiation, risk, and executive sheets</span></div>
+        <div class="file"><strong>Demo_05_Supplier_Decision_Kit.docx</strong><span>Reusable team-resource template</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Run this single prompt</h2>
+      <p class="note">Paste it once after attaching all five files. Copilot should complete the phases in order and return one integrated decision package.</p>
+      <div class="prompt-wrap">
+        <pre id="master-prompt">Goal: Build a complete, decision-grade Aurelia-Orion supplier disruption package that reaches the same conclusions as the full Supplier Shock Room workflow: verify the claim, challenge weak evidence, prepare a protected negotiation, convert risk into action, brief leadership, and leave a reusable team resource.
+
+Context: I am a category manager preparing for the August 27 Orion negotiation and a procurement leadership update for the Radiant Veil launch. Aurelia must protect continuity without accepting unsupported cost, double recovery, or a bad pricing precedent. A conditional 12-month volume signal may be considered only with GSM lead approval and reciprocal, measurable protections. Work as an evidence-disciplined procurement analyst, commercial challenger, negotiation coach, risk operator, executive communicator, and playbook editor. Complete every phase below in order, carry forward validated findings, and silently self-review the full package for unsupported statements, ambiguous numbers, buried decisions, and scenario-specific content before returning the final answer.
+
+Source: Use only these attached files:
+1. Demo_01_Aurelia_Supplier_Disruption_Brief.docx
+2. Demo_02_Orion_Commercial_Adjustment_Proposal.docx
+3. Demo_03_Aurelia_Orion_Contract_Excerpt.docx
+4. Demo_04_Aurelia_Supplier_Exposure_and_Negotiation.xlsx, including Exposure, Claim_Audit, Data_Dictionary, Negotiation_Ladder, Risk_Tripwires, and Executive_Snapshot
+5. Demo_05_Supplier_Decision_Kit.docx
+
+Treat the contract excerpt as a business-reading aid that requires legal review. Cite the exact filename and workbook sheet for every material fact and number. Clearly label verified facts, supplier assertions, calculations, scenario assumptions, confidence, and missing evidence. Do not add external facts, carrier ETAs, supplier commitments, legal conclusions, customs determinations, or current-market claims. Do not treat Suez as closed or historical freight spikes as current quotations.
+
+Expectation: Return one integrated package with the following seven sections.
+
+1. VERIFIED SIGNAL ROOM
+- Give a 150-word executive situation summary and a 60-second verbal leadership brief.
+- Build a four-column evidence ledger separating verified facts, supplier assertions, calculations, and scenario assumptions.
+- List the five most decision-relevant evidence gaps and three questions that must be answered before price approval.
+- Identify the single most consequential plausible-looking claim that is not decision-grade, why it is weak, evidence needed, and the commercial risk of accepting it.
+
+2. CLAIM AUDIT AND EVIDENCE REQUEST
+- Validate relevant workbook formulas and create a SKU-level claim ledger ranked by challengeable-gap dollars; annotate precedent and compliance risk.
+- Include supplier-claimed dollars, Aurelia-supported dollars, challengeable gap, evidence status, relevant clause, confidence, and recommended disposition.
+- Explicitly test for an expired government charge, a full-invoice-value metal-duty assumption, missing ten-digit HTS and origin detail, and possible double recovery.
+- Provide chart-ready data comparing supplier-claimed, Aurelia-supported, and challengeable dollars by SKU, with an action title stating the negotiation implication.
+- Draft a claim-line evidence request covering origin, ten-digit HTS code, entry date, customs value or metal-content value, carrier baseline, third-party invoice, and mitigation evidence.
+
+3. NEGOTIATION CONTROL TOWER
+- Define both parties' objectives and interests, Aurelia's BATNA, likely supplier BATNA, target and walk-away by issue, seven diagnostic questions, a five-rung give-get ladder, and an authority map.
+- Every concession must receive a reciprocal get; show what the category manager can decide and what requires trade, legal, finance, supply-chain, GSM lead, or leadership approval.
+- Red-team the plan as Orion's commercial director: strongest supplier arguments, Aurelia's overconfidence, and the three questions most likely to put the category manager on the back foot.
+- Finish with a firm, collaborative, evidence-led 90-second opening that acknowledges legitimate disruption, rejects blanket recovery, and offers verified-cost, launch-protection, auditability, reset, and resilience exchanges.
+
+4. CONTRACT DECISION MAP
+- Map each supplier claim to relevant clause, plain-language business implication, required evidence, provisional category-manager action, and legal or customs review question.
+- Distinguish open purchase orders from future orders and flag notice, mitigation, audit, no-double-recovery, force-majeure, and order-of-precedence issues.
+- Identify the three phrases most likely to support competing interpretations; give Aurelia's strongest reading, Orion's strongest reading, and the exact counsel question.
+- Draft five neutral, non-waiver meeting questions. Display "Not legal advice" prominently and make no definitive legal conclusion.
+
+5. RISK TRIPWIRES AND SHOCK TEST
+- Validate risk scores and return a prioritized action board with risk, leading indicator, measurable threshold, action, owner, deadline, evidence source, and escalation path; separate monitor, mitigate now, and escalate.
+- Apply this scenario change: Egypt glass ETA slips by 9 days and Orion confirms only 92% aluminum-collar allocation. Identify every tripwire that fires and the next three actions in sequence.
+- Find risks sharing a component, route, supplier action, or decision owner, and recommend one mitigation that reduces multiple risks without double-counting benefit.
+
+6. FIVE-SLIDE LEADERSHIP UPDATE
+- Provide exactly five slide-ready sections: what changed; verified exposure versus supplier claim; launch and continuity risk; negotiation posture and give-get; decisions needed this week.
+- For each slide provide an action title, one primary message, concise body content, visual recommendation, source tags for every number, confidence label, visible assumptions, and speaker notes.
+- Include concise speaker-note answers to: Why not reject the entire increase? What if Orion threatens allocation? What is the legal basis? What would change the recommendation?
+- Ensure the recommendation and decision asks are explicit; do not create extra slides.
+
+7. REUSABLE GSM TEAM RESOURCE
+- Adapt Demo_05_Supplier_Decision_Kit.docx into a scenario-neutral playbook containing minimum supplier-change intake, four approved prompt cards, claim-evidence checklist, negotiation give-get template, risk-tripwire template, human-review checklist, and escalation map.
+- Replace Aurelia-specific conclusions and fictional values with clearly labeled placeholders. Add version owner, review cadence, and last-verified fields.
+- Cold-start test the playbook and correct any unclear placeholder, hidden Aurelia dependency, owner gap, or missing quality check.
+- End with a short Teams launch post explaining what the resource helps with, when to use it, what it does not replace, and who keeps tariff and contract references current. Include no scenario-specific confidential details.
+
+Final quality rules: Use tables where comparison improves clarity. Preserve traceability from every conclusion to a source. Mark assumptions and unresolved gaps rather than filling them. Customs and trade compliance owns HTS, origin, value, and duty applicability; legal owns contract rights, remedies, and waiver risk; category managers own negotiation judgment only within documented authority. Verify every material number, source, assumption, and supplier commitment before use.</pre>
+        <button class="copy" id="copyPrompt" type="button">Copy prompt</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Expected conclusion</h2>
+      <p><strong>Verify - Challenge - Trade - Trigger.</strong> The package should separate evidence from assertion, reject unsupported blanket recovery, exchange only verified cost for reciprocal protections, operationalize launch risk, make leadership decisions explicit, and preserve the workflow as an owned GSM resource.</p>
+      <p class="guardrail"><strong>Human review remains required.</strong> Legal, customs and trade compliance, finance, supply chain, and procurement leadership retain their respective decision rights.</p>
+    </section>
+  </main>
+  <script>
+    const root = document.documentElement;
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+    });
+    document.getElementById("copyPrompt").addEventListener("click", async event => {
+      await navigator.clipboard.writeText(document.getElementById("master-prompt").innerText);
+      const button = event.currentTarget;
+      button.textContent = "Copied";
+      button.classList.add("done");
+      setTimeout(() => {
+        button.textContent = "Copy prompt";
+        button.classList.remove("done");
+      }, 1300);
+    });
+  </script>
+</body>
+</html>
