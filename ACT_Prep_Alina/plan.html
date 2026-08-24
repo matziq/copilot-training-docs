@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 26-Day Plan &mdash; Alina&rsquo;s ACT Prep</title>
+<meta name="description" content="A day-by-day 26-day Enhanced ACT study plan: weekday section work, three Saturday full-length tests, and Sunday deep reviews.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>The 26-Day Plan</h1>
+<p class="lede">Monday August 24 through Friday September 18. Weekdays are short and specific.
+    Full tests happen on your three free Saturdays. Sundays are for review, which is where the score
+    actually moves.</p>
+
+<div class="card" style="margin:1.5rem 0">
+    <div class="meter-row" style="margin-bottom:1rem">
+        <span class="mlabel"><strong>Overall progress</strong></span>
+        <span class="meter"><i class="good" id="progMeter" data-pct="0"></i></span>
+        <span class="mval" id="progTxt">0%</span>
+    </div>
+    <div class="btn-row">
+        <button class="btn" id="todayBtn">Jump to today</button>
+        <button class="btn secondary" id="printBtn">Print the plan</button>
+        <button class="btn ghost" id="resetBtn">Clear all checkboxes</button>
+    </div>
+</div>
+
+<div class="callout tip">
+    <span class="callout-title">How to use this</span>
+    <p style="margin-bottom:0">Do the day you are on, check the boxes as you go, and stop when you are done.
+        Your checkmarks save automatically in this browser. If you miss a day, do not try to double up the
+        next day &mdash; just move on. Consistency beats cramming, especially in the last week.</p>
+</div>
+
+<div id="planRoot"></div>
+
+<div class="card" style="margin-top:2rem;border-color:var(--good)">
+    <h2 style="margin-top:0">Saturday, September 19 &mdash; Test Day</h2>
+    <p>No studying. You have done the work. Eat protein, get there early, and fill in every single bubble.</p>
+    <p style="margin-bottom:0"><a href="index.html#main">Review the test-day checklist &rarr;</a></p>
+</div>
+
+</div></main>
+
+<footer id="footer"></footer>
+
+<script>
+/* ============================================================
+   26-day plan data
+   tag: math | english | reading | science | writing | test | tools
+   ============================================================ */
+var WEEKS = [
+    { n: 1, title: "Week 1 — Diagnose and rebuild the Math core", goal: "Relearn the algebra you are losing points on, then take a real baseline.", days: [1, 7] },
+    { n: 2, title: "Week 2 — Attack what Test 1 exposed", goal: "Every session this week is aimed at a topic you actually missed.", days: [8, 14] },
+    { n: 3, title: "Week 3 — Pace, precision, and the essay", goal: "You know the content now. This week is about finishing on time without careless errors.", days: [15, 21] },
+    { n: 4, title: "Week 4 — Sharpen, then taper", goal: "Light, confident work. Do not learn anything new after Wednesday.", days: [22, 26] }
+];
+
+var PLAN = [
+{ d:1, focus:"Set up and start Math", min:70, tasks:[
+    { tag:"test", text:"Read the home page and learn exactly what changed on the Enhanced ACT. This matters more than any single question.", href:"index.html" },
+    { tag:"math", text:"Read the Math Guide down through the formula bank. Do not memorize yet — just see the whole map.", href:"math.html" },
+    { tag:"math", text:"Drill: Linear Equations &amp; Inequalities", href:"drills.html?set=math-linear" },
+    { tag:"math", text:"Drill: Percents, Ratios &amp; Proportions", href:"drills.html?set=math-percent" },
+    { tag:"tools", text:"Open the error log and make your first entry. You will use this every single day.", href:"tools.html#errorlog" }
+]},
+{ d:2, focus:"Algebra core + punctuation", min:80, tasks:[
+    { tag:"math", text:"Drill: Quadratics &amp; Factoring", href:"drills.html?set=math-quadratic" },
+    { tag:"math", text:"Drill: Exponents, Radicals &amp; Scientific Notation", href:"drills.html?set=math-exponents" },
+    { tag:"english", text:"Read the English Guide punctuation section — the four comma jobs, semicolons, colons, dashes.", href:"english.html#punctuation" },
+    { tag:"english", text:"Drill: Commas, Semicolons, Colons &amp; Dashes", href:"drills.html?set=eng-punctuation" },
+    { tag:"tools", text:"Flashcards: first 20 cards of the Math Formulas deck", href:"tools.html#flashcards" }
+]},
+{ d:3, focus:"Functions + the Reading method", min:75, tasks:[
+    { tag:"math", text:"Read the Math Guide section on functions and graph transformations.", href:"math.html#functions" },
+    { tag:"math", text:"Drill: Functions, Notation &amp; Transformations", href:"drills.html?set=math-functions" },
+    { tag:"reading", text:"Read the Reading Guide, especially the five ways a wrong answer is wrong.", href:"reading.html" },
+    { tag:"reading", text:"Drill: Inference &amp; Evidence", href:"drills.html?set=read-inference" }
+]},
+{ d:4, focus:"Coordinate geometry + grammar", min:75, tasks:[
+    { tag:"math", text:"Drill: Coordinate Geometry — slope, distance, midpoint, circles", href:"drills.html?set=math-coordinate" },
+    { tag:"english", text:"Drill: Agreement, Tense &amp; Pronouns", href:"drills.html?set=eng-grammar" },
+    { tag:"science", text:"Skim the Science Guide so you know how to attack each passage type on Saturday.", href:"science.html" },
+    { tag:"tools", text:"Flashcards: next 20 Math Formula cards", href:"tools.html#flashcards" }
+]},
+{ d:5, focus:"Light day — set up for the test", min:45, tasks:[
+    { tag:"writing", text:"Read the Writing Guide and study the sample essay that scored a 10.", href:"writing.html" },
+    { tag:"tools", text:"Flashcards: one full pass through the English Rules deck", href:"tools.html#flashcards" },
+    { tag:"test", text:"Set up tomorrow now: calculator with fresh batteries, pencils, scratch paper, timer, a quiet room, phone in another room.", href:"" },
+    { tag:"test", text:"In bed by 10:30. You are rehearsing test morning, not just the test.", href:"" }
+]},
+{ d:6, focus:"FULL PRACTICE TEST 1", min:210, isTest:true, tasks:[
+    { tag:"test", text:"<strong>Practice Test 1</strong> — all four sections, strictly timed, one sitting. Start by 9:00 am if you can.", href:"practice-test-1.html" },
+    { tag:"tools", text:"Record your four section scores in the score calculator.", href:"tools.html#calc" },
+    { tag:"test", text:"Do <em>not</em> review it today. Close the laptop and rest your brain — you will see more tomorrow.", href:"" }
+]},
+{ d:7, focus:"Deep review of Test 1", min:90, isReview:true, tasks:[
+    { tag:"test", text:"Review every missed English and Math question. Read the full explanation on each one, even the ones you guessed right.", href:"practice-test-1.html" },
+    { tag:"test", text:"Review every missed Reading and Science question.", href:"practice-test-1.html" },
+    { tag:"tools", text:"Log every miss and tag it: (a) never knew the rule, (b) knew it and rushed, (c) misread the question.", href:"tools.html#errorlog" },
+    { tag:"tools", text:"Write your three weakest topics at the top of the log. Next week is built around them.", href:"tools.html#errorlog" }
+]},
+
+{ d:8, focus:"Rebuild your weakest Math topic", min:80, tasks:[
+    { tag:"math", text:"Redo every Math question you missed on Test 1 — on paper, from scratch, before looking at the answer.", href:"practice-test-1.html" },
+    { tag:"math", text:"Drill whichever Math topic came out lowest in your Test 1 topic breakdown.", href:"drills.html" },
+    { tag:"tools", text:"Flashcards: every formula you could not recall on Saturday", href:"tools.html#flashcards" }
+]},
+{ d:9, focus:"English sentence structure", min:70, tasks:[
+    { tag:"english", text:"Read the English Guide on fragments, run-ons, and modifiers.", href:"english.html#structure" },
+    { tag:"english", text:"Drill: Fragments, Run-ons, Modifiers &amp; Parallelism", href:"drills.html?set=eng-structure" },
+    { tag:"english", text:"Redo every English question you missed on Test 1.", href:"practice-test-1.html" }
+]},
+{ d:10, focus:"Geometry and trigonometry", min:85, tasks:[
+    { tag:"math", text:"Read the Math Guide geometry and trig sections. Memorize the two special right triangles today.", href:"math.html#geometry" },
+    { tag:"math", text:"Drill: Angles, Triangles &amp; Circles", href:"drills.html?set=math-geometry" },
+    { tag:"math", text:"Drill: Right-Triangle Trigonometry &amp; the Unit Circle", href:"drills.html?set=math-trig" }
+]},
+{ d:11, focus:"Reading precision", min:70, tasks:[
+    { tag:"reading", text:"Drill: Vocabulary in Context &amp; Author&rsquo;s Tone", href:"drills.html?set=read-vocab" },
+    { tag:"reading", text:"Redo every Reading question you missed on Test 1 and find the exact sentence that proves the right answer.", href:"practice-test-1.html" },
+    { tag:"tools", text:"Flashcards: Reading &amp; Writing Strategy deck", href:"tools.html#flashcards" }
+]},
+{ d:12, focus:"Light day — set up for the test", min:50, tasks:[
+    { tag:"science", text:"Drill: Reading Tables, Graphs &amp; Trends", href:"drills.html?set=sci-datatrends" },
+    { tag:"tools", text:"Flashcards: speed pass through the whole Math Formulas deck", href:"tools.html#flashcards" },
+    { tag:"test", text:"Set up for tomorrow. Same routine as last Saturday. Bed by 10:30.", href:"" }
+]},
+{ d:13, focus:"FULL PRACTICE TEST 2", min:210, isTest:true, tasks:[
+    { tag:"test", text:"<strong>Practice Test 2</strong> — full length, strictly timed, same start time as last week.", href:"practice-test-2.html" },
+    { tag:"tools", text:"Record your scores and compare them to Test 1.", href:"tools.html#calc" },
+    { tag:"test", text:"Again: no review today.", href:"" }
+]},
+{ d:14, focus:"Deep review of Test 2", min:90, isReview:true, tasks:[
+    { tag:"test", text:"Review every miss across all four sections.", href:"practice-test-2.html" },
+    { tag:"tools", text:"Log every miss with its cause tag.", href:"tools.html#errorlog" },
+    { tag:"tools", text:"Compare your Test 1 and Test 2 topic breakdowns. Anything weak on <em>both</em> is your real problem — mark it.", href:"tools.html#calc" },
+    { tag:"test", text:"Count how many misses were &ldquo;knew it but rushed.&rdquo; If that number is high, your issue is pacing, not knowledge.", href:"" }
+]},
+
+{ d:15, focus:"Labor Day — long Math session", min:120, tasks:[
+    { tag:"math", text:"Drill: Statistics, Data Displays &amp; Probability", href:"drills.html?set=math-stats" },
+    { tag:"math", text:"Drill: Multi-Step Word Problems &amp; Systems", href:"drills.html?set=math-wordproblems" },
+    { tag:"math", text:"Redo every Math miss from Test 2.", href:"practice-test-2.html" },
+    { tag:"tools", text:"Flashcards: full Math Formulas deck, out loud", href:"tools.html#flashcards" }
+]},
+{ d:16, focus:"English rhetoric — the 30+ questions", min:70, tasks:[
+    { tag:"english", text:"Read the English Guide on concision, transitions, and the &ldquo;which choice best&hellip;&rdquo; questions. This is what separates 28 from 32.", href:"english.html#rhetoric" },
+    { tag:"english", text:"Drill: Concision, Transitions &amp; Word Choice", href:"drills.html?set=eng-rhetoric" },
+    { tag:"english", text:"Redo every English miss from Test 2.", href:"practice-test-2.html" }
+]},
+{ d:17, focus:"Math pacing under the clock", min:70, tasks:[
+    { tag:"math", text:"Retake the Math section of Test 1, timed. Goal: finish with three minutes left for a full review sweep.", href:"practice-test-1.html" },
+    { tag:"math", text:"Compare to your first attempt. Any question you missed twice goes straight into the error log.", href:"tools.html#errorlog" }
+]},
+{ d:18, focus:"Reading pacing under the clock", min:70, tasks:[
+    { tag:"reading", text:"Retake the Reading section of Test 1, timed. Ten minutes per passage, no exceptions.", href:"practice-test-1.html" },
+    { tag:"reading", text:"Review the misses. If you ran out of time, you are re-reading too much — trust your first pass.", href:"" }
+]},
+{ d:19, focus:"Timed essay + set up", min:60, tasks:[
+    { tag:"writing", text:"Write one full 40-minute timed essay using the template. Handwrite it if you are testing on paper.", href:"writing.html#prompts" },
+    { tag:"writing", text:"Score it yourself against the four-domain rubric, then rewrite your weakest paragraph.", href:"writing.html#rubric" },
+    { tag:"test", text:"Set up for tomorrow&rsquo;s dress rehearsal. Bed by 10:30.", href:"" }
+]},
+{ d:20, focus:"FULL PRACTICE TEST 3 — dress rehearsal", min:210, isTest:true, tasks:[
+    { tag:"test", text:"<strong>Practice Test 3</strong> — start at the exact clock time your real test starts next Saturday. Full rehearsal, including the break.", href:"practice-test-3.html" },
+    { tag:"tools", text:"Record your scores.", href:"tools.html#calc" },
+    { tag:"test", text:"No review today.", href:"" }
+]},
+{ d:21, focus:"Final deep review", min:90, isReview:true, tasks:[
+    { tag:"test", text:"Review every miss on Test 3.", href:"practice-test-3.html" },
+    { tag:"tools", text:"Update the error log one last time.", href:"tools.html#errorlog" },
+    { tag:"tools", text:"Write your final three weak topics. Days 22 to 24 are only about these.", href:"tools.html#errorlog" }
+]},
+
+{ d:22, focus:"Your last three weak spots", min:70, tasks:[
+    { tag:"math", text:"Re-drill your two weakest Math topics.", href:"drills.html" },
+    { tag:"tools", text:"Reread every entry in your error log from the top.", href:"tools.html#errorlog" },
+    { tag:"tools", text:"Flashcards: any card you have missed more than once", href:"tools.html#flashcards" }
+]},
+{ d:23, focus:"Mixed timed practice", min:70, tasks:[
+    { tag:"english", text:"One full timed English section from a test you have not used yet.", href:"tests.html" },
+    { tag:"reading", text:"Two timed Reading passages, ten minutes each.", href:"tests.html" },
+    { tag:"tools", text:"Log anything you missed.", href:"tools.html#errorlog" }
+]},
+{ d:24, focus:"Science + light Math", min:60, tasks:[
+    { tag:"science", text:"Drill: Experimental Design &amp; Conflicting Viewpoints", href:"drills.html?set=sci-design" },
+    { tag:"math", text:"Twenty mixed Math questions at an easy, confident pace. You are keeping the machinery warm, not learning.", href:"drills.html" },
+    { tag:"test", text:"Confirm your test center address and exactly what time you need to leave.", href:"" }
+]},
+{ d:25, focus:"Final review — nothing new", min:50, tasks:[
+    { tag:"tools", text:"One sweep through all four flashcard decks.", href:"tools.html#flashcards" },
+    { tag:"writing", text:"Reread your essay template until you could write it from memory.", href:"writing.html#template" },
+    { tag:"tools", text:"Read the top of your error log one final time.", href:"tools.html#errorlog" },
+    { tag:"test", text:"Stop studying by 8:00 pm.", href:"" }
+]},
+{ d:26, focus:"REST — do not study", min:20, isRest:true, tasks:[
+    { tag:"test", text:"No practice questions today. None. Cramming the day before lowers scores.", href:"" },
+    { tag:"test", text:"Pack the bag: admission ticket, photo ID, calculator plus spare batteries, several No. 2 pencils, eraser, silent watch, water, snack, layers.", href:"" },
+    { tag:"test", text:"Set two alarms. Lay out your clothes.", href:"" },
+    { tag:"test", text:"Lights out by 10:00 pm. Sleep is the highest-value thing you can do tonight.", href:"" }
+]}
+];
+
+(function () {
+    var TAGS = { math:"Math", english:"English", reading:"Reading", science:"Science",
+                 writing:"Writing", test:"Test", tools:"Tools" };
+    var TAGCLS = { math:"tag-math", english:"tag-english", reading:"tag-reading",
+                   science:"tag-science", writing:"tag-writing", test:"tag-test", tools:"tag-test" };
+
+    function totalTasks() {
+        var n = 0;
+        for (var i = 0; i < PLAN.length; i++) n += PLAN[i].tasks.length;
+        return n;
+    }
+
+    function render() {
+        var root = document.getElementById("planRoot");
+        var today = ACT.currentPlanDay();
+        var html = "";
+
+        for (var w = 0; w < WEEKS.length; w++) {
+            var wk = WEEKS[w];
+            html += '<div class="week-head"><h2>' + wk.title + "</h2>" +
+                '<span class="wgoal">' + wk.goal + "</span></div>";
+
+            for (var i = 0; i < PLAN.length; i++) {
+                var day = PLAN[i];
+                if (day.d < wk.days[0] || day.d > wk.days[1]) continue;
+
+                var date = ACT.dateForDay(day.d);
+                var cls = "day-card";
+                if (day.d === today) cls += " is-today";
+                else if (day.d < today) cls += " is-past";
+
+                var hrs = day.min >= 120
+                    ? (Math.floor(day.min / 60) + " hr " + (day.min % 60 ? (day.min % 60) + " min" : ""))
+                    : day.min + " min";
+
+                var extra = "";
+                if (day.isTest) extra = ' <span class="badge amber">Full test</span>';
+                else if (day.isReview) extra = ' <span class="badge teal">Review day</span>';
+                else if (day.isRest) extra = ' <span class="badge good">Rest</span>';
+
+                html += '<div class="' + cls + '" id="day-' + day.d + '">' +
+                    '<div class="day-head">' +
+                    '<span class="day-chip">Day ' + day.d + "</span>" +
+                    '<span class="day-date">' + ACT.fmtDate(date) + "</span>" +
+                    '<span class="day-focus">' + day.focus + extra + "</span>" +
+                    '<span class="day-time">' + hrs + "</span></div>";
+
+                for (var t = 0; t < day.tasks.length; t++) {
+                    var task = day.tasks[t];
+                    var key = "d" + day.d + "-" + t;
+                    var label = '<span class="tag ' + TAGCLS[task.tag] + '">' + TAGS[task.tag] + "</span>" + task.text;
+                    if (task.href) label += ' <a href="' + task.href + '" style="font-size:.85em">open &rarr;</a>';
+                    html += '<div class="task"><input type="checkbox" id="' + key + '" data-key="' + key + '">' +
+                        '<label for="' + key + '">' + label + "</label></div>";
+                }
+                html += "</div>";
+            }
+        }
+        root.innerHTML = html;
+
+        ACT.onCheckChange = updateProgress;
+        ACT.bindPersistentChecks("plan", root);
+        updateProgress(ACT.store.get("plan", {}));
+        markCompleteDays();
+    }
+
+    function markCompleteDays() {
+        var state = ACT.store.get("plan", {});
+        for (var i = 0; i < PLAN.length; i++) {
+            var day = PLAN[i], all = true;
+            for (var t = 0; t < day.tasks.length; t++) {
+                if (!state["d" + day.d + "-" + t]) { all = false; break; }
+            }
+            var node = document.getElementById("day-" + day.d);
+            if (node) node.classList.toggle("all-done", all);
+        }
+    }
+
+    function updateProgress(state) {
+        var done = 0, total = totalTasks();
+        for (var k in state) { if (Object.prototype.hasOwnProperty.call(state, k)) done++; }
+        var pct = Math.round(done / total * 100);
+        var meter = document.getElementById("progMeter");
+        ACT.fillMeter(meter, pct);
+        document.getElementById("progTxt").textContent = done + " / " + total;
+        markCompleteDays();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        render();
+
+        document.getElementById("todayBtn").onclick = function () {
+            var d = Math.min(26, Math.max(1, ACT.currentPlanDay()));
+            var node = document.getElementById("day-" + d);
+            if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
+            else ACT.toast("The plan window has passed \u2014 it is test week.");
+        };
+        document.getElementById("printBtn").onclick = function () { window.print(); };
+        document.getElementById("resetBtn").onclick = function () {
+            if (window.confirm("Uncheck every task in the whole plan?")) {
+                ACT.store.set("plan", {});
+                render();
+                ACT.toast("Plan reset.");
+            }
+        };
+
+        var d = ACT.currentPlanDay();
+        if (d >= 1 && d <= 26) {
+            var node = document.getElementById("day-" + d);
+            if (node) window.setTimeout(function () {
+                node.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 350);
+        }
+    });
+})();
+</script>
+</body>
+</html>

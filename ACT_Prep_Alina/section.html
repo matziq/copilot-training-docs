@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Single Section Practice &mdash; Alina&rsquo;s ACT Prep</title>
+<meta name="description" content="Run one timed Enhanced ACT section on its own clock — the backbone of weekday practice.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+    <h1 class="no-print" id="pageTitle">Single Section Practice</h1>
+    <p class="lede no-print" id="pageSub">Pick a section and a test below.</p>
+    <div id="picker" class="no-print"></div>
+    <div id="app"></div>
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/english.js"></script>
+<script src="assets/data/math.js"></script>
+<script src="assets/data/reading.js"></script>
+<script src="assets/data/science.js"></script>
+<script src="assets/test-engine.js"></script>
+<script>
+(function () {
+    var NAMES = { english: "English", math: "Mathematics", reading: "Reading", science: "Science" };
+
+    function param(k) {
+        var m = new RegExp("[?&]" + k + "=([^&]*)").exec(window.location.search);
+        return m ? decodeURIComponent(m[1]) : null;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var s = param("s"), t = param("t") || "1";
+        var key = "test" + t + "_" + s;
+
+        if (s && NAMES[s] && window.ACT_DATA && window.ACT_DATA[key]) {            document.getElementById("pageTitle").textContent = NAMES[s] + " \u2014 Test " + t;
+            var sec = window.ACT_DATA[key];
+            var count = 0;
+            for (var u = 0; u < sec.units.length; u++) count += sec.units[u].questions.length;
+            document.getElementById("pageSub").textContent =
+                count + " questions in " + sec.timeMinutes + " minutes, on the clock, exactly as it appears on test day.";
+            document.getElementById("picker").innerHTML =
+                '<p class="no-print"><a href="tests.html">&larr; All practice tests</a></p>';
+
+            ACT.Test.mount({
+                el: document.getElementById("app"),
+                testId: key,
+                title: NAMES[s] + " \u2014 Practice Test " + t,
+                blurb: "One timed section. Treat it exactly like the real thing: no pausing, no phone, and a guess on every question you cannot finish.",
+                sections: [key]
+            });
+            return;
+        }
+
+        // an explicitly requested section that did not load is an error, not a reason
+        // to silently show the picker
+        if (s && NAMES[s]) {
+            document.getElementById("pageTitle").textContent = NAMES[s] + " \u2014 Test " + t;
+            document.getElementById("pageSub").textContent = "";
+            document.getElementById("picker").innerHTML =
+                '<div class="callout warn"><span class="callout-title">That section did not load</span>' +
+                "<p>The question data for <strong>" + NAMES[s] + ", Test " + ACT.escapeHtml(t) +
+                "</strong> could not be read. Refresh the page; if it keeps happening the data file is missing.</p>" +
+                '<p style="margin-bottom:0"><a href="tests.html">Back to all practice tests</a></p></div>';
+            return;
+        }
+
+        // no valid selection: show the picker grid
+        var html = '<div class="grid grid-4" style="margin:1.5rem 0">';
+        var order = ["english", "math", "reading", "science"];
+        var icons = { english: "teal", math: "bad", reading: "amber", science: "good" };
+        for (var i = 0; i < order.length; i++) {
+            var id = order[i];
+            var ref = (window.ACT_DATA || {})["test1_" + id];
+            var q = 0;
+            if (ref) for (var j = 0; j < ref.units.length; j++) q += ref.units[j].questions.length;
+            html += '<div class="card"><div class="card-icon ' + icons[id] + '">' +
+                NAMES[id].charAt(0) + "</div><h3>" + NAMES[id] + "</h3>" +
+                '<p class="muted" style="font-size:.86rem">' + q + " questions &middot; " +
+                (ref ? ref.timeMinutes : "?") + " min</p><div class=\"btn-row\">" +
+                '<a class="btn sm" href="section.html?s=' + id + '&t=1">Test 1</a>' +
+                '<a class="btn sm secondary" href="section.html?s=' + id + '&t=2">Test 2</a>' +
+                '<a class="btn sm secondary" href="section.html?s=' + id + '&t=3">Test 3</a>' +
+                "</div></div>";
+        }
+        html += "</div>" +
+            '<div class="callout tip"><span class="callout-title">When to use this</span>' +
+            "<p style=\"margin-bottom:0\">Single sections are your weekday tool. A timed English section is 35 minutes; " +
+            "a timed Math section is 50. Both fit in a lunch break and both train pacing, which is the thing " +
+            "full-length tests train best and drills train worst.</p></div>";
+        document.getElementById("picker").innerHTML = html;
+    });
+})();
+</script>
+</body>
+</html>

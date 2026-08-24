@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study Tools &mdash; Alina&rsquo;s ACT Prep</title>
+<meta name="description" content="Interactive ACT study tools: score calculator, section timer, flashcards, and an error log for tracking every miss.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Study Tools</h1>
+<p class="lede">Four things you will use all month: a score calculator so you know what each point is worth,
+    a section timer, the flashcard decks, and the error log that turns your mistakes into a study list.</p>
+
+<div class="toc">
+    <h4>On this page</h4>
+    <ul>
+        <li><a href="#calc">Score calculator</a></li>
+        <li><a href="#raw">Raw score converter</a></li>
+        <li><a href="#timer">Section timer</a></li>
+        <li><a href="#flashcards">Flashcards</a></li>
+        <li><a href="#errorlog">Error log</a></li>
+    </ul>
+</div>
+
+<!-- ============ SCORE CALCULATOR ============ -->
+<section id="calc">
+    <h2>Score calculator</h2>
+    <p>Your composite is the average of English, Math, and Reading, rounded to the nearest whole number.
+        Science and Writing are reported separately and do not change it. Move the numbers around to see
+        exactly which point is worth chasing.</p>
+
+    <div class="grid grid-2">
+        <div class="tool-panel">
+            <div class="grid grid-3" style="gap:.75rem">
+                <div class="field"><label for="cE">English</label><input type="number" id="cE" min="1" max="36" value="28"></div>
+                <div class="field"><label for="cM">Math</label><input type="number" id="cM" min="1" max="36" value="24"></div>
+                <div class="field"><label for="cR">Reading</label><input type="number" id="cR" min="1" max="36" value="26"></div>
+            </div>
+            <div class="grid grid-2" style="gap:.75rem">
+                <div class="field"><label for="cS">Science <span class="faint">(optional)</span></label><input type="number" id="cS" min="1" max="36" value="26"></div>
+                <div class="field"><label for="cW">Writing <span class="faint">(of 12)</span></label><input type="number" id="cW" min="2" max="12" value="8"></div>
+            </div>
+            <div class="btn-row">
+                <button class="btn secondary sm" id="loadBase">Load my last real ACT</button>
+                <button class="btn secondary sm" id="loadTarget">Load my target</button>
+                <button class="btn secondary sm" id="loadLast">Load my last practice test</button>
+            </div>
+        </div>
+
+        <div class="tool-panel center">
+            <div class="sname" style="font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);font-weight:700">Composite</div>
+            <div style="font-size:4.5rem;font-weight:800;line-height:1.05" id="compOut">26</div>
+            <div id="compNote" class="muted"></div>
+            <div id="compBars" style="margin-top:1.2rem;text-align:left"></div>
+        </div>
+    </div>
+
+    <div class="callout tip">
+        <span class="callout-title">The arithmetic worth memorizing</span>
+        <p style="margin-bottom:0">Because the composite averages three sections, <strong>every 3 points you
+            add across English, Math, and Reading is worth 1 composite point.</strong> Three points is
+            easiest to find in your weakest section, which is why Math gets most of your time.</p>
+    </div>
+</section>
+
+<!-- ============ RAW CONVERTER ============ -->
+<section id="raw">
+    <h2>Raw score converter</h2>
+    <p>Took a section on paper and want to know roughly what it scales to? Enter how many you got right.</p>
+    <div class="tool-panel">
+        <div class="grid grid-4" id="rawGrid"></div>
+        <p class="faint" style="margin:1rem 0 0"><small>The ACT has not published official conversion tables
+            for the Enhanced format. These curves are modeled on released ACT tests and rescaled to the new
+            question counts, so treat them as a close estimate rather than an exact score.</small></p>
+    </div>
+</section>
+
+<!-- ============ TIMER ============ -->
+<section id="timer">
+    <h2>Section timer</h2>
+    <p>Use this for any practice you do on paper. The checkpoint list tells you where you should be, so you
+        find out you are behind at minute 12 instead of minute 33.</p>
+
+    <div class="tool-panel">
+        <div class="big-timer" id="bigClock">35:00</div>
+        <div class="btn-row" style="justify-content:center;margin-bottom:1rem">
+            <button class="btn lg" id="tStart">Start</button>
+            <button class="btn secondary" id="tPause">Pause</button>
+            <button class="btn ghost" id="tReset">Reset</button>
+        </div>
+        <div class="btn-row" style="justify-content:center" id="tPresets"></div>
+        <div id="checkpoints" style="margin-top:1.4rem"></div>
+    </div>
+</section>
+
+<!-- ============ FLASHCARDS ============ -->
+<section id="flashcards">
+    <h2>Flashcards</h2>
+    <p>The ACT does not give you a formula sheet. Everything in the Math deck has to be in your head by
+        September 19. Click a card to flip it.</p>
+
+    <div class="tool-panel">
+        <div class="grid grid-2" style="gap:.75rem;margin-bottom:1rem">
+            <div class="field"><label for="deckSel">Deck</label><select id="deckSel"></select></div>
+            <div class="field"><label for="modeSel">Show</label><select id="modeSel">
+                <option value="all">All cards</option>
+                <option value="missed">Only cards I have missed</option>
+            </select></div>
+        </div>
+
+        <div class="flashcard" id="card" role="button" tabindex="0" aria-label="Flashcard, click to flip">
+            <span class="fc-side" id="fcSide">Front</span>
+            <span class="fc-deck" id="fcDeck"></span>
+            <div id="fcBody" class="fc-front">Loading&hellip;</div>
+            <span class="fc-hint">Click, or press Space, to flip</span>
+        </div>
+
+        <div class="btn-row" style="justify-content:center;margin-top:1rem">
+            <button class="btn secondary" id="fcPrev">&larr; Back</button>
+            <button class="btn good" id="fcGot" style="background:var(--good)">I knew it</button>
+            <button class="btn danger" id="fcMiss">I missed it</button>
+            <button class="btn secondary" id="fcNext">Next &rarr;</button>
+        </div>
+        <div class="btn-row" style="justify-content:center;margin-top:.6rem">
+            <button class="btn ghost sm" id="fcShuffle">Shuffle</button>
+            <button class="btn ghost sm" id="fcClear">Clear my missed list</button>
+        </div>
+        <div class="meter-row" style="margin-top:1.2rem">
+            <span class="mlabel" id="fcPos">Card 1 of 1</span>
+            <span class="meter"><i class="good" id="fcMeter" data-pct="0"></i></span>
+            <span class="mval" id="fcStats">0 missed</span>
+        </div>
+    </div>
+</section>
+
+<!-- ============ ERROR LOG ============ -->
+<section id="errorlog">
+    <h2>Error log</h2>
+    <p>This is the most valuable tool on the site and the one students skip. After every test and every drill,
+        write down what you missed and <em>why</em>. Sorting misses by cause tells you whether your problem is
+        knowledge, speed, or attention &mdash; and those three have completely different fixes.</p>
+
+    <div class="callout key">
+        <span class="callout-title">The three causes</span>
+        <ul style="margin-bottom:0">
+            <li><strong>Never knew it</strong> &mdash; a real content gap. Fix: learn the rule, then drill that topic.</li>
+            <li><strong>Knew it, rushed</strong> &mdash; a pacing problem. Fix: slow down on the early, easy questions where you are losing free points.</li>
+            <li><strong>Misread it</strong> &mdash; an attention problem. Fix: underline what the question actually asks before you solve.</li>
+        </ul>
+    </div>
+
+    <div class="tool-panel">
+        <div class="grid grid-4" style="gap:.6rem">
+            <div class="field"><label for="elSection">Section</label><select id="elSection">
+                <option>Math</option><option>English</option><option>Reading</option>
+                <option>Science</option><option>Writing</option>
+            </select></div>
+            <div class="field"><label for="elTopic">Topic or rule</label><input type="text" id="elTopic" placeholder="e.g. arc length"></div>
+            <div class="field"><label for="elCause">Cause</label><select id="elCause">
+                <option value="never">Never knew it</option>
+                <option value="rushed">Knew it, rushed</option>
+                <option value="misread">Misread the question</option>
+            </select></div>
+            <div class="field"><label for="elAdd">&nbsp;</label><button class="btn" id="elAdd" style="width:100%">Add entry</button></div>
+        </div>
+        <div class="field"><label for="elNote">What is the rule, in your own words?</label>
+            <textarea id="elNote" placeholder="Write the fix, not the mistake. &ldquo;Arc length = (angle/360) x 2 pi r &mdash; I used the diameter instead of the radius.&rdquo;"></textarea></div>
+
+        <div id="elSummary" style="margin-top:1.2rem"></div>
+        <div id="elTable" style="margin-top:1rem"></div>
+        <div class="btn-row" style="margin-top:1rem">
+            <button class="btn secondary sm" id="elCopy">Copy the whole log</button>
+            <button class="btn ghost sm" id="elClear">Clear the log</button>
+        </div>
+    </div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/flashcards.js"></script>
+<script>
+/* ============================================================
+   SCORE CALCULATOR
+   ============================================================ */
+(function () {
+    var ids = ["cE", "cM", "cR", "cS", "cW"];
+    function val(id) { return parseInt(document.getElementById(id).value, 10) || 0; }
+
+    function update() {
+        var e = val("cE"), m = val("cM"), r = val("cR");
+        var comp = ACT.composite({ english: e, math: m, reading: r });
+        document.getElementById("compOut").textContent = comp == null ? "\u2014" : comp;
+
+        var base = ACT.baseline.composite, tgt = ACT.target.composite;
+        var d = comp - base;
+        var note = d === 0 ? "Same as your 26."
+            : d > 0 ? "+" + d + " over your 26" + (comp >= tgt ? " \u2014 that is target or better." : ".")
+            : d + " versus your 26.";
+        var avg = ((e + m + r) / 3).toFixed(2);
+        document.getElementById("compNote").innerHTML = note + '<br><span class="faint">Average of ' +
+            e + ", " + m + ", " + r + " = " + avg + "</span>";
+
+        var need = [];
+        var pairs = [["English", e, ACT.target.english], ["Math", m, ACT.target.math], ["Reading", r, ACT.target.reading]];
+        var html = "";
+        for (var i = 0; i < pairs.length; i++) {
+            var pct = Math.round(pairs[i][1] / 36 * 100);
+            var cls = pairs[i][1] >= pairs[i][2] ? "good" : (pairs[i][1] >= pairs[i][2] - 2 ? "amber" : "bad");
+            html += '<div class="meter-row"><span class="mlabel" style="width:120px">' + pairs[i][0] +
+                " <strong>" + pairs[i][1] + "</strong></span>" +
+                '<span class="meter"><i class="' + cls + '" data-pct="' + pct + '"></i></span>' +
+                '<span class="mval">target ' + pairs[i][2] + "</span></div>";
+            if (pairs[i][1] < pairs[i][2]) need.push(pairs[i][0] + " +" + (pairs[i][2] - pairs[i][1]));
+        }
+        html += '<p class="muted" style="margin:.6rem 0 0;font-size:.86rem">' +
+            (need.length ? "To hit a " + tgt + ": " + need.join(", ") + "." : "At or above every section target.") +
+            "</p>";
+        var box = document.getElementById("compBars");
+        box.innerHTML = html;
+        ACT.autoFillMeters(box);
+    }
+
+    function setAll(o) {
+        document.getElementById("cE").value = o.english;
+        document.getElementById("cM").value = o.math;
+        document.getElementById("cR").value = o.reading;
+        document.getElementById("cS").value = o.science;
+        document.getElementById("cW").value = o.writing;
+        update();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        for (var i = 0; i < ids.length; i++) document.getElementById(ids[i]).addEventListener("input", update);
+        document.getElementById("loadBase").onclick = function () { setAll(ACT.baseline); ACT.toast("Loaded your last real ACT."); };
+        document.getElementById("loadTarget").onclick = function () { setAll(ACT.target); ACT.toast("Loaded your target."); };
+        document.getElementById("loadLast").onclick = function () {
+            var hist = ACT.store.get("history", {}), runs = [];
+            for (var k in hist) { if (Object.prototype.hasOwnProperty.call(hist, k)) runs.push(hist[k]); }
+            if (!runs.length) { ACT.toast("No practice tests recorded yet."); return; }
+            runs.sort(function (a, b) { return a.at - b.at; });
+            var s = runs[runs.length - 1].scores;
+            setAll({ english: s.english || 0, math: s.math || 0, reading: s.reading || 0,
+                     science: s.science || 0, writing: ACT.baseline.writing });
+            ACT.toast("Loaded " + runs[runs.length - 1].title + ".");
+        };
+        update();
+    });
+})();
+
+/* ============================================================
+   RAW SCORE CONVERTER
+   ============================================================ */
+(function () {
+    document.addEventListener("DOMContentLoaded", function () {
+        var grid = document.getElementById("rawGrid");
+        var html = "";
+        for (var i = 0; i < ACT.SECTIONS.length; i++) {
+            var s = ACT.SECTIONS[i];
+            html += '<div class="field"><label for="raw-' + s.id + '">' + s.name + " <span class=\"faint\">of " +
+                s.q + '</span></label><input type="number" id="raw-' + s.id + '" min="0" max="' + s.q +
+                '" placeholder="correct"><div class="center" style="font-size:1.6rem;font-weight:800;margin-top:.4rem" id="out-' +
+                s.id + '">&mdash;</div></div>';
+        }
+        grid.innerHTML = html;
+
+        for (var j = 0; j < ACT.SECTIONS.length; j++) {
+            (function (s) {
+                var input = document.getElementById("raw-" + s.id);
+                input.addEventListener("input", function () {
+                    var v = parseInt(input.value, 10);
+                    var out = document.getElementById("out-" + s.id);
+                    if (isNaN(v) || v < 0 || v > s.q) { out.innerHTML = "&mdash;"; return; }
+                    out.textContent = ACT.rawToScale(s.id, v, s.q);
+                });
+            })(ACT.SECTIONS[j]);
+        }
+    });
+})();
+
+/* ============================================================
+   SECTION TIMER
+   ============================================================ */
+(function () {
+    var PRESETS = [
+        { name: "English", min: 35, q: 50, marks: [[7, "Passage 1 done"], [14, "Passage 2 done"], [21, "Passage 3 done"], [28, "Passage 4 done"], [35, "Passage 5 done"]] },
+        { name: "Math", min: 50, q: 45, marks: [[12, "Through question 15"], [24, "Through question 25"], [36, "Through question 35"], [47, "All 45 answered"], [50, "Review sweep done"]] },
+        { name: "Reading", min: 40, q: 36, marks: [[10, "Passage 1 done"], [20, "Passage 2 done"], [30, "Passage 3 done"], [40, "Passage 4 done"]] },
+        { name: "Science", min: 40, q: 40, marks: [[7, "Passage 1 done"], [14, "Passage 2 done"], [21, "Passage 3 done"], [28, "Passage 4 done"], [34, "Passage 5 done"], [40, "Passage 6 done"]] },
+        { name: "Writing", min: 40, q: 1, marks: [[5, "Plan finished"], [12, "Intro and body 1"], [24, "Body 2 and 3"], [37, "Conclusion written"], [40, "Proofread"]] }
+    ];
+
+    var current = PRESETS[0], remaining = current.min * 60, running = false, handle = null, lastTs = 0;
+
+    function paint() {
+        var clock = document.getElementById("bigClock");
+        clock.textContent = ACT.fmtClock(remaining);
+        var frac = remaining / (current.min * 60);
+        clock.className = "big-timer" + (frac <= 0.05 ? " danger" : (frac <= 0.2 ? " warn" : ""));
+
+        var elapsed = current.min * 60 - remaining;
+        var rows = "";
+        for (var i = 0; i < current.marks.length; i++) {
+            var m = current.marks[i];
+            var passed = elapsed >= m[0] * 60;
+            rows += "<tr><td>" + m[0] + " min</td><td>" + m[1] + "</td><td>" +
+                (passed ? '<span class="badge amber">now</span>' : '<span class="badge">upcoming</span>') +
+                "</td></tr>";
+        }
+        document.getElementById("checkpoints").innerHTML =
+            "<h4>" + current.name + " checkpoints</h4><div class=\"table-scroll\"><table class=\"data-table\">" +
+            "<thead><tr><th>By minute</th><th>You should have</th><th></th></tr></thead><tbody>" +
+            rows + "</tbody></table></div>";
+    }
+
+    function tick() {
+        var now = Date.now();
+        remaining = Math.max(0, remaining - (now - lastTs) / 1000);
+        lastTs = now;
+        paint();
+        if (remaining <= 0) { stop(); ACT.toast("Time is up on " + current.name + ".", 4000); }
+    }
+    function start() { if (running) return; running = true; lastTs = Date.now(); handle = window.setInterval(tick, 250); }
+    function stop() { running = false; if (handle) { window.clearInterval(handle); handle = null; } }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var host = document.getElementById("tPresets"), html = "";
+        for (var i = 0; i < PRESETS.length; i++) {
+            html += '<button class="btn sm ' + (i === 0 ? "" : "secondary") + '" data-i="' + i + '">' +
+                PRESETS[i].name + " &middot; " + PRESETS[i].min + "m</button>";
+        }
+        host.innerHTML = html;
+
+        var btns = host.querySelectorAll("button");
+        for (var b = 0; b < btns.length; b++) {
+            (function (btn) {
+                btn.onclick = function () {
+                    stop();
+                    current = PRESETS[parseInt(btn.getAttribute("data-i"), 10)];
+                    remaining = current.min * 60;
+                    for (var k = 0; k < btns.length; k++) btns[k].className = "btn sm secondary";
+                    btn.className = "btn sm";
+                    paint();
+                };
+            })(btns[b]);
+        }
+
+        document.getElementById("tStart").onclick = start;
+        document.getElementById("tPause").onclick = stop;
+        document.getElementById("tReset").onclick = function () { stop(); remaining = current.min * 60; paint(); };
+        paint();
+    });
+})();
+
+/* ============================================================
+   FLASHCARDS
+   ============================================================ */
+(function () {
+    var cards = [], view = [], idx = 0, flipped = false;
+
+    function missedSet() { return ACT.store.get("fcMissed", {}); }
+
+    function buildView() {
+        var deck = document.getElementById("deckSel").value;
+        var mode = document.getElementById("modeSel").value;
+        var missed = missedSet();
+        view = [];
+        for (var i = 0; i < cards.length; i++) {
+            if (deck !== "__all" && cards[i].deck !== deck) continue;
+            if (mode === "missed" && !missed[cards[i].id]) continue;
+            view.push(cards[i]);
+        }
+        idx = 0; flipped = false;
+        paint();
+    }
+
+    function paint() {
+        var body = document.getElementById("fcBody");
+        var side = document.getElementById("fcSide");
+        var deckLbl = document.getElementById("fcDeck");
+
+        if (!view.length) {
+            body.className = "fc-front";
+            body.innerHTML = "Nothing here yet.";
+            side.textContent = "";
+            deckLbl.textContent = "";
+            document.getElementById("fcPos").textContent = "0 cards";
+        } else {
+            var c = view[idx];
+            deckLbl.textContent = c.deck;
+            if (flipped) { side.textContent = "Back"; body.className = "fc-back"; body.innerHTML = c.back; }
+            else { side.textContent = "Front"; body.className = "fc-front"; body.innerHTML = c.front; }
+            document.getElementById("fcPos").textContent = "Card " + (idx + 1) + " of " + view.length;
+        }
+
+        var missed = missedSet(), n = 0;
+        for (var k in missed) { if (Object.prototype.hasOwnProperty.call(missed, k)) n++; }
+        document.getElementById("fcStats").textContent = n + " missed";
+        ACT.fillMeter(document.getElementById("fcMeter"),
+            view.length ? Math.round((idx + 1) / view.length * 100) : 0);
+    }
+
+    function move(d) {
+        if (!view.length) return;
+        idx = (idx + d + view.length) % view.length;
+        flipped = false;
+        paint();
+    }
+
+    function mark(isMissed) {
+        if (!view.length) return;
+        var missed = missedSet(), c = view[idx];
+        if (isMissed) missed[c.id] = 1; else delete missed[c.id];
+        ACT.store.set("fcMissed", missed);
+        move(1);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        cards = (window.ACT_DATA && window.ACT_DATA.flashcards) || [];
+
+        var decks = [], seen = {};
+        for (var i = 0; i < cards.length; i++) {
+            if (!seen[cards[i].deck]) { seen[cards[i].deck] = 1; decks.push(cards[i].deck); }
+        }
+        var sel = document.getElementById("deckSel");
+        var opts = '<option value="__all">All decks (' + cards.length + " cards)</option>";
+        for (var d = 0; d < decks.length; d++) {
+            var n = 0;
+            for (var j = 0; j < cards.length; j++) if (cards[j].deck === decks[d]) n++;
+            opts += '<option value="' + decks[d] + '">' + decks[d] + " (" + n + ")</option>";
+        }
+        sel.innerHTML = opts;
+        if (decks.length) sel.value = decks[0];
+
+        sel.onchange = buildView;
+        document.getElementById("modeSel").onchange = buildView;
+
+        var card = document.getElementById("card");
+        card.onclick = function () { flipped = !flipped; paint(); };
+        card.onkeydown = function (e) {
+            if (e.key === " " || e.key === "Enter") { e.preventDefault(); flipped = !flipped; paint(); }
+            else if (e.key === "ArrowRight") move(1);
+            else if (e.key === "ArrowLeft") move(-1);
+        };
+
+        document.getElementById("fcNext").onclick = function () { move(1); };
+        document.getElementById("fcPrev").onclick = function () { move(-1); };
+        document.getElementById("fcGot").onclick = function () { mark(false); };
+        document.getElementById("fcMiss").onclick = function () { mark(true); };
+        document.getElementById("fcShuffle").onclick = function () {
+            for (var i = view.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = view[i]; view[i] = view[j]; view[j] = t;
+            }
+            idx = 0; flipped = false; paint();
+            ACT.toast("Shuffled.");
+        };
+        document.getElementById("fcClear").onclick = function () {
+            ACT.store.set("fcMissed", {}); buildView(); ACT.toast("Missed list cleared.");
+        };
+
+        buildView();
+    });
+})();
+
+/* ============================================================
+   ERROR LOG
+   ============================================================ */
+(function () {
+    var CAUSES = { never: "Never knew it", rushed: "Knew it, rushed", misread: "Misread it" };
+    var CAUSE_CLS = { never: "bad", rushed: "amber", misread: "accent" };
+
+    function all() { return ACT.store.get("errors", []); }
+
+    function render() {
+        var rows = all();
+        var host = document.getElementById("elTable");
+
+        if (!rows.length) {
+            host.innerHTML = '<p class="muted">Nothing logged yet. Your first entries come from Practice Test 1 ' +
+                "on August 29 &mdash; or from any drill you do this week.</p>";
+            document.getElementById("elSummary").innerHTML = "";
+            return;
+        }
+
+        var html = '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+            "<th>Date</th><th>Section</th><th>Topic</th><th>Cause</th><th>The rule</th><th></th>" +
+            "</tr></thead><tbody>";
+        for (var i = rows.length - 1; i >= 0; i--) {
+            var r = rows[i];
+            html += "<tr><td>" + r.date + "</td><td>" + ACT.escapeHtml(r.section) + "</td><td><strong>" +
+                ACT.escapeHtml(r.topic) + '</strong></td><td><span class="badge ' + CAUSE_CLS[r.cause] + '">' +
+                CAUSES[r.cause] + "</span></td><td>" + ACT.escapeHtml(r.note || "") +
+                '</td><td><button class="btn sm ghost" data-del="' + i + '">Remove</button></td></tr>';
+        }
+        html += "</tbody></table></div>";
+        host.innerHTML = html;
+
+        var dels = host.querySelectorAll("[data-del]");
+        for (var d = 0; d < dels.length; d++) {
+            (function (btn) {
+                btn.onclick = function () {
+                    var list = all();
+                    list.splice(parseInt(btn.getAttribute("data-del"), 10), 1);
+                    ACT.store.set("errors", list);
+                    render();
+                };
+            })(dels[d]);
+        }
+
+        // summary by cause and by section
+        var byCause = { never: 0, rushed: 0, misread: 0 }, bySection = {};
+        for (var j = 0; j < rows.length; j++) {
+            byCause[rows[j].cause] = (byCause[rows[j].cause] || 0) + 1;
+            bySection[rows[j].section] = (bySection[rows[j].section] || 0) + 1;
+        }
+        var total = rows.length;
+        var s = '<div class="grid grid-3">';
+        for (var c in byCause) {
+            if (!Object.prototype.hasOwnProperty.call(byCause, c)) continue;
+            var pct = Math.round(byCause[c] / total * 100);
+            s += '<div class="card center"><div class="sname" style="font-size:.72rem;text-transform:uppercase;' +
+                'letter-spacing:.08em;color:var(--text-dim);font-weight:700">' + CAUSES[c] + "</div>" +
+                '<div style="font-size:2rem;font-weight:800">' + byCause[c] + "</div>" +
+                '<div class="muted"><small>' + pct + "% of your misses</small></div></div>";
+        }
+        s += "</div>";
+
+        var top = "";
+        if (byCause.rushed >= byCause.never && byCause.rushed > 0) {
+            top = '<div class="callout warn" style="margin-top:1rem"><span class="callout-title">Read this</span>' +
+                "<p style=\"margin-bottom:0\">Most of your misses are things you already knew. That is a pacing " +
+                "and attention problem, not a knowledge problem &mdash; and it is the fastest kind to fix. " +
+                "Slow down on the first third of each section, where the questions are easiest and a careless " +
+                "error costs exactly as much as a hard one.</p></div>";
+        } else if (byCause.never > 0) {
+            top = '<div class="callout" style="margin-top:1rem"><span class="callout-title">Read this</span>' +
+                "<p style=\"margin-bottom:0\">Most of your misses are genuine content gaps. Good news: those are " +
+                'the most fixable in 26 days. Take your three most frequent topics into the <a href="drills.html">' +
+                "drills</a> and hit each one twice this week.</p></div>";
+        }
+        document.getElementById("elSummary").innerHTML = s + top;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("elAdd").onclick = function () {
+            var topic = document.getElementById("elTopic").value.trim();
+            if (!topic) { ACT.toast("Give it a topic first."); return; }
+            var d = new Date();
+            var list = all();
+            list.push({
+                date: (d.getMonth() + 1) + "/" + d.getDate(),
+                section: document.getElementById("elSection").value,
+                topic: topic,
+                cause: document.getElementById("elCause").value,
+                note: document.getElementById("elNote").value.trim()
+            });
+            ACT.store.set("errors", list);
+            document.getElementById("elTopic").value = "";
+            document.getElementById("elNote").value = "";
+            render();
+            ACT.toast("Logged.");
+        };
+
+        document.getElementById("elCopy").onclick = function () {
+            var rows = all();
+            if (!rows.length) { ACT.toast("Nothing to copy."); return; }
+            var txt = "ACT ERROR LOG\n\n";
+            for (var i = 0; i < rows.length; i++) {
+                txt += rows[i].date + "  [" + rows[i].section + "] " + rows[i].topic +
+                    " \u2014 " + CAUSES[rows[i].cause] + "\n";
+                if (rows[i].note) txt += "    " + rows[i].note + "\n";
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(txt).then(function () { ACT.toast("Copied to your clipboard."); },
+                    function () { window.prompt("Copy this:", txt); });
+            } else { window.prompt("Copy this:", txt); }
+        };
+
+        document.getElementById("elClear").onclick = function () {
+            if (window.confirm("Delete every entry in the error log?")) {
+                ACT.store.set("errors", []); render(); ACT.toast("Log cleared.");
+            }
+        };
+
+        render();
+    });
+})();
+</script>
+</body>
+</html>

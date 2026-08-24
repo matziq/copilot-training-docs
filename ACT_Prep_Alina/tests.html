@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Tests &mdash; Alina&rsquo;s ACT Prep</title>
+<meta name="description" content="Three full-length Enhanced ACT practice tests, one for each Saturday before the September 19 exam, with automatic scoring and full review mode.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>The Three Practice Tests</h1>
+<p class="lede">One for each Saturday you have left. Each is a full-length Enhanced ACT: 50 English,
+    45 Math, 36 Reading, and 40 Science questions, every section on its own clock.</p>
+
+<div class="callout warn">
+    <span class="callout-title">Take these seriously or do not take them at all</span>
+    <p style="margin-bottom:0">A practice test taken with your phone nearby, in three sittings, with the
+        timer paused, tells you nothing. Sit down at 9:00 am, put the phone in another room, use a real
+        calculator and scratch paper, take one ten-minute break after Math, and do not stop. The score you
+        get under real conditions is the only number worth having.</p>
+</div>
+
+<div class="grid grid-3" id="testCards" style="margin:1.5rem 0"></div>
+
+<section>
+    <h2>Why Saturdays, and why only three</h2>
+    <div class="grid grid-2">
+        <div class="card">
+            <h3 style="margin-top:0">The schedule</h3>
+            <div class="table-scroll"><table class="data-table">
+                <thead><tr><th>Date</th><th>Test</th><th>Purpose</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Sat Aug 29</strong></td><td>Practice Test 1</td><td>Your true baseline under the new format. Expect it to feel different from the ACT you took before.</td></tr>
+                    <tr><td><strong>Sat Sep 5</strong></td><td>Practice Test 2</td><td>Checkpoint. Did the week of targeted work move the needle on the topics you missed?</td></tr>
+                    <tr><td><strong>Sat Sep 12</strong></td><td>Practice Test 3</td><td>Dress rehearsal. Same start time as the real thing, same break, same everything.</td></tr>
+                    <tr><td><strong>Sat Sep 19</strong></td><td><span class="badge good">The real ACT</span></td><td>The fourth Saturday.</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+        <div class="card">
+            <h3 style="margin-top:0">Three is the right number</h3>
+            <p>More full tests would not help you. Full-length tests are expensive in time and energy, and
+                they measure far more than they teach.</p>
+            <p>What actually raises a score is the day <em>after</em> the test, when you work out why each
+                miss happened. Three tests give you three full review cycles, and each cycle points your
+                weekday work at something specific.</p>
+            <p style="margin-bottom:0">On weekdays, use the <a href="drills.html">topic drills</a> and single
+                timed sections instead. Same benefit, an hour instead of four.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Test day rules to rehearse</h2>
+    <div class="grid grid-2">
+        <div class="card">
+            <h3 style="margin-top:0">Timing</h3>
+            <ul style="margin-bottom:0">
+                <li><strong>English</strong> &mdash; 50 questions, 35 minutes. Seven minutes per passage.</li>
+                <li><strong>Math</strong> &mdash; 45 questions, 50 minutes. Be at question 30 by minute 30.</li>
+                <li><strong>Break</strong> &mdash; ten minutes. Eat something.</li>
+                <li><strong>Reading</strong> &mdash; 36 questions, 40 minutes. Ten minutes per passage.</li>
+                <li><strong>Science</strong> &mdash; 40 questions, 40 minutes. Six to seven minutes per passage.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3 style="margin-top:0">Rules</h3>
+            <ul style="margin-bottom:0">
+                <li>Never leave a bubble blank. Four choices now, so a guess is worth 25%.</li>
+                <li>If a question passes 90 seconds, guess, flag it, and move.</li>
+                <li>Do not go back to a section whose time has ended. You cannot on test day.</li>
+                <li>A bad section is not a bad test. Reset and keep going.</li>
+                <li>Do not review the test the same day you take it.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Practice a single section instead</h2>
+    <p>On a weekday you will not have four hours. Run one section on its own clock &mdash; it still trains
+        pacing, and it is the backbone of your weekday plan.</p>
+    <div class="grid grid-4" id="sectionCards"></div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/english.js"></script>
+<script src="assets/data/math.js"></script>
+<script src="assets/data/reading.js"></script>
+<script src="assets/data/science.js"></script>
+<script>
+(function () {
+    var TESTS = [
+        { n: 1, date: "Saturday, August 29", tag: "Baseline", cls: "", href: "practice-test-1.html",
+          note: "Your real starting point under the Enhanced format. Do not study for it \u2014 that defeats the purpose." },
+        { n: 2, date: "Saturday, September 5", tag: "Checkpoint", cls: "amber", href: "practice-test-2.html",
+          note: "Taken after a week aimed squarely at what Test 1 exposed." },
+        { n: 3, date: "Saturday, September 12", tag: "Dress rehearsal", cls: "good", href: "practice-test-3.html",
+          note: "Seven days out. Start at the exact clock time your real test starts." }
+    ];
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var hist = ACT.store.get("history", {});
+        var host = document.getElementById("testCards");
+        var html = "";
+
+        for (var i = 0; i < TESTS.length; i++) {
+            var t = TESTS[i];
+            var run = hist["test" + t.n];
+            var status = run
+                ? '<div class="callout key" style="margin:.9rem 0 0"><span class="callout-title">Completed</span>' +
+                  "<p style=\"margin-bottom:0\">Composite <strong>" + run.composite + "</strong> &middot; " +
+                  "E " + (run.scores.english || "\u2014") + " &middot; M " + (run.scores.math || "\u2014") +
+                  " &middot; R " + (run.scores.reading || "\u2014") + " &middot; S " + (run.scores.science || "\u2014") +
+                  "</p></div>"
+                : "";
+            html += '<a class="card card-link" href="' + t.href + '">' +
+                '<div class="card-icon ' + t.cls + '">' + t.n + "</div>" +
+                "<h3>Practice Test " + t.n + ' <span class="badge ' + (t.cls || "accent") + '">' + t.tag + "</span></h3>" +
+                '<p class="muted" style="font-size:.86rem;margin-bottom:.5rem"><strong>' + t.date + "</strong></p>" +
+                "<p>" + t.note + "</p>" +
+                '<p class="faint" style="margin-bottom:0"><small>171 questions &middot; 2 hr 45 min plus a break</small></p>' +
+                status + "</a>";
+        }
+        host.innerHTML = html;
+
+        // single-section launcher
+        var secHost = document.getElementById("sectionCards");
+        var secs = [
+            { id: "english", name: "English", icon: "teal", q: 50, min: 35 },
+            { id: "math", name: "Math", icon: "bad", q: 45, min: 50 },
+            { id: "reading", name: "Reading", icon: "amber", q: 36, min: 40 },
+            { id: "science", name: "Science", icon: "good", q: 40, min: 40 }
+        ];
+        var sh = "";
+        for (var s = 0; s < secs.length; s++) {
+            var x = secs[s];
+            sh += '<div class="card"><div class="card-icon ' + x.icon + '">' + x.name.charAt(0) + "</div>" +
+                "<h3>" + x.name + "</h3>" +
+                '<p class="muted" style="font-size:.86rem">' + x.q + " questions &middot; " + x.min + " min</p>" +
+                '<div class="btn-row">' +
+                '<a class="btn sm" href="section.html?s=' + x.id + '&t=1">T1</a>' +
+                '<a class="btn sm secondary" href="section.html?s=' + x.id + '&t=2">T2</a>' +
+                '<a class="btn sm secondary" href="section.html?s=' + x.id + '&t=3">T3</a>' +
+                "</div></div>";
+        }
+        secHost.innerHTML = sh;
+    });
+})();
+</script>
+</body>
+</html>
