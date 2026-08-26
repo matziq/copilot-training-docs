@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Exam 3 &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="CompTIA A+ Core 1 practice exam 3: the dress rehearsal, 60 timed questions across the five 220-1101 domains with scaled scoring and full review.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+    <h1 class="no-print">Practice Exam 3</h1>
+    <p class="lede no-print">Tuesday, September 1 &mdash; the dress rehearsal. Start at your real appointment time.</p>
+    <div id="app"></div>
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/exam3.js"></script>
+<script src="assets/test-engine.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    AP.Test.mount({
+        el: document.getElementById("app"),
+        testId: "exam3",
+        core: "core1",
+        title: "Practice Exam 3 \u2014 Dress Rehearsal",
+        blurb: "The hardest of the three, heavy on multi-clue scenarios where you have to pick the BEST or the FIRST action rather than simply recall a fact. Run it exactly like Friday: same clock time, same room, same breakfast, phone in another room. Your answers save automatically.",
+        sections: ["exam3"]
+    });
+});
+</script>
+</body>
+</html>

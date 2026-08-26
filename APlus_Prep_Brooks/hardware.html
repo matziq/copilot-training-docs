@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardware &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="Hardware study guide for CompTIA A+ Core 1 domain 3.0, focused on high-yield memorization topics.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Hardware</h1>
+<p class="lede">Hardware is domain 3.0, 25% of Core 1, and the largest single knowledge domain. It is almost entirely memorization, which makes it the fastest domain to raise a score in.</p>
+
+<section id="cables">
+  <div class="week-head"><h2>Cables and connectors</h2><span class="wgoal">Recognize the connector, know what it carries, and remember the speed or limit.</span></div>
+  <p>On the exam, cable questions usually give you a device, a connector shape, or a speed. Your job is to map it to the right physical standard without overthinking it.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Connector or standard</th>
+      <th>Use</th>
+      <th>Speed, limit, or exam cue</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>USB-A</td>
+      <td>Host-side USB connector on desktops, laptops, chargers, and hubs.</td>
+      <td>Shape does not define speed; color sometimes hints, but the controller standard decides.</td>
+    </tr>
+        <tr>
+      <td>USB-B</td>
+      <td>Device-side connector on printers, scanners, and older external drives.</td>
+      <td>Common printer cable answer.</td>
+    </tr>
+        <tr>
+      <td>USB-C</td>
+      <td>Reversible connector for data, charging, video alternate modes, and docks.</td>
+      <td>Can carry USB, DisplayPort Alt Mode, Thunderbolt, and power delivery when supported.</td>
+    </tr>
+        <tr>
+      <td>Micro-USB</td>
+      <td>Older mobile devices, small peripherals, and embedded gear.</td>
+      <td>Small trapezoid; not reversible.</td>
+    </tr>
+        <tr>
+      <td>Mini-USB</td>
+      <td>Older cameras, GPS units, and legacy peripherals.</td>
+      <td>Larger than Micro-USB; mostly legacy.</td>
+    </tr>
+        <tr>
+      <td>USB 2.0</td>
+      <td>Keyboard, mouse, printer, basic flash drives.</td>
+      <td>480 Mbps.</td>
+    </tr>
+        <tr>
+      <td>USB 3.2 Gen 1</td>
+      <td>External storage and modern peripherals.</td>
+      <td>5 Gbps; same speed as older USB 3.0 / USB 3.1 Gen 1 naming.</td>
+    </tr>
+        <tr>
+      <td>USB 3.2 Gen 2</td>
+      <td>Higher-speed external SSDs and docks.</td>
+      <td>10 Gbps.</td>
+    </tr>
+        <tr>
+      <td>USB 3.2 Gen 2&times;2</td>
+      <td>High-speed USB-C external storage.</td>
+      <td>20 Gbps; requires USB-C and compatible host/device.</td>
+    </tr>
+        <tr>
+      <td>Thunderbolt 3</td>
+      <td>High-end docks, displays, external GPUs, fast storage.</td>
+      <td>40 Gbps over USB-C connector.</td>
+    </tr>
+        <tr>
+      <td>Thunderbolt 4</td>
+      <td>Modern docks and displays with stricter feature requirements.</td>
+      <td>40 Gbps over USB-C; more consistent minimum capabilities than Thunderbolt 3.</td>
+    </tr>
+        <tr>
+      <td>Lightning</td>
+      <td>Apple mobile devices and accessories.</td>
+      <td>Proprietary reversible Apple connector.</td>
+    </tr>
+        <tr>
+      <td>DisplayPort</td>
+      <td>PC monitors and docking stations.</td>
+      <td>Carries digital video and audio; supports daisy-chaining with MST.</td>
+    </tr>
+        <tr>
+      <td>HDMI</td>
+      <td>TVs, monitors, projectors, game consoles, conference rooms.</td>
+      <td>Carries digital video and audio; common home theater answer.</td>
+    </tr>
+        <tr>
+      <td>DVI</td>
+      <td>Older flat-panel monitors.</td>
+      <td>Digital video on DVI-D, analog on DVI-A, both on DVI-I; no native audio in normal PC use.</td>
+    </tr>
+        <tr>
+      <td>VGA</td>
+      <td>Legacy projectors and monitors.</td>
+      <td>Analog video only; 15-pin blue connector is a classic cue.</td>
+    </tr>
+        <tr>
+      <td>SATA revision 1</td>
+      <td>Internal drives.</td>
+      <td>1.5 Gbps.</td>
+    </tr>
+        <tr>
+      <td>SATA revision 2</td>
+      <td>Internal drives.</td>
+      <td>3 Gbps.</td>
+    </tr>
+        <tr>
+      <td>SATA revision 3</td>
+      <td>Internal HDDs, SATA SSDs, optical drives.</td>
+      <td>6 Gbps; common modern SATA number.</td>
+    </tr>
+        <tr>
+      <td>eSATA</td>
+      <td>External SATA storage.</td>
+      <td>Data only; external connector, not USB.</td>
+    </tr>
+        <tr>
+      <td>Molex</td>
+      <td>Legacy power for older drives, fans, and adapters.</td>
+      <td>4-pin peripheral power connector.</td>
+    </tr>
+        <tr>
+      <td>SCSI</td>
+      <td>Legacy servers, scanners, and enterprise storage.</td>
+      <td>Older parallel storage bus; expect termination and device IDs in legacy contexts.</td>
+    </tr>
+        <tr>
+      <td>RJ11</td>
+      <td>Telephone lines and DSL phone connection.</td>
+      <td>Smaller than RJ45; usually 2 or 4 conductors.</td>
+    </tr>
+        <tr>
+      <td>RJ45</td>
+      <td>Ethernet twisted-pair networking.</td>
+      <td>8P8C modular plug; used with Cat 5e, Cat 6, and Cat 6a.</td>
+    </tr>
+        <tr>
+      <td>F-type</td>
+      <td>Coaxial cable for cable internet, cable TV, and satellite.</td>
+      <td>Threaded coax connector.</td>
+    </tr>
+        <tr>
+      <td>Punchdown</td>
+      <td>Terminating twisted pair into patch panels and keystone jacks.</td>
+      <td>Use a punchdown tool, not a crimper.</td>
+    </tr>
+  </tbody></table></div>
+  <h3>Twisted pair, coaxial, and jacket types</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Cable</th>
+      <th>Maximum speed</th>
+      <th>Distance</th>
+      <th>What to remember</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>Cat 5</td>
+      <td>100 Mbps</td>
+      <td>100 m</td>
+      <td>Legacy Fast Ethernet.</td>
+    </tr>
+        <tr>
+      <td>Cat 5e</td>
+      <td>1 Gbps</td>
+      <td>100 m</td>
+      <td>Minimum common Gigabit Ethernet cable.</td>
+    </tr>
+        <tr>
+      <td>Cat 6</td>
+      <td>10 Gbps or 1 Gbps</td>
+      <td>10 Gbps to 55 m; 1 Gbps to 100 m</td>
+      <td>Exam trap: 10 Gbps does not reach 100 m on Cat 6.</td>
+    </tr>
+        <tr>
+      <td>Cat 6a</td>
+      <td>10 Gbps</td>
+      <td>100 m</td>
+      <td>Augmented Cat 6; better alien crosstalk resistance.</td>
+    </tr>
+        <tr>
+      <td>Plenum</td>
+      <td>Depends on category</td>
+      <td>Depends on category</td>
+      <td>Fire-rated jacket for air-handling spaces; low smoke.</td>
+    </tr>
+        <tr>
+      <td>Riser</td>
+      <td>Depends on category</td>
+      <td>Depends on category</td>
+      <td>Vertical runs between floors; not a substitute for plenum where plenum is required.</td>
+    </tr>
+        <tr>
+      <td>Shielded twisted pair</td>
+      <td>Depends on category</td>
+      <td>Depends on category</td>
+      <td>Extra shielding for EMI-heavy areas; must be grounded correctly.</td>
+    </tr>
+        <tr>
+      <td>Unshielded twisted pair</td>
+      <td>Depends on category</td>
+      <td>Depends on category</td>
+      <td>Most common Ethernet cabling.</td>
+    </tr>
+        <tr>
+      <td>Coaxial</td>
+      <td>Service dependent</td>
+      <td>Longer than typical patch cables</td>
+      <td>Used by cable providers and antennas; F-type connector is the cue.</td>
+    </tr>
+  </tbody></table></div>
+  <h3>Fiber essentials</h3>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Single-mode fiber</h3><p>Uses a narrow core and laser light for long-distance runs. It is the long-range, higher-cost answer.</p></div>
+    <div class="card"><h3 style="margin-top:0">Multimode fiber</h3><p>Uses a larger core and LED or laser light for shorter building or campus runs. It is usually cheaper than single-mode.</p></div>
+    <div class="card"><h3 style="margin-top:0">SC, LC, and ST</h3><p>SC is square push-pull, LC is smaller with a latch, and ST is round with a twist-lock bayonet.</p></div>
+  </div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>Connector shape and speed standard are not the same thing. USB-C can be slow or fast. M.2 can be SATA or NVMe. RJ45 is the connector; Cat 5e, Cat 6, and Cat 6a are cable categories.</p><p>Another favorite: Cat 6 supports 10 Gbps only to 55 m, while Cat 6a supports 10 Gbps to 100 m.</p></div>
+  <div class="btn-row"><a class="btn sm" href="drills.html?set=c1-cabling">Drill cabling</a><a class="btn sm secondary" href="tools.html#ports">Port tool</a></div>
+</section>
+
+<section id="memory">
+  <div class="week-head"><h2>RAM</h2><span class="wgoal">Match the memory generation, form factor, pin count, and compatibility rule.</span></div>
+  <p>RAM questions are mostly recognition. If the pin count, voltage, and notch do not match the board, the module does not install. Do not try to force a memory generation into the wrong slot.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Memory</th>
+      <th>Desktop DIMM pins</th>
+      <th>Laptop SODIMM pins</th>
+      <th>Voltage</th>
+      <th>Common speed range</th>
+      <th>Keying rule</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>DDR3</td>
+      <td>240</td>
+      <td>204</td>
+      <td>1.5 V standard; DDR3L is 1.35 V</td>
+      <td>DDR3-800 to DDR3-2133</td>
+      <td>Different notch from DDR4 and DDR5.</td>
+    </tr>
+        <tr>
+      <td>DDR4</td>
+      <td>288</td>
+      <td>260</td>
+      <td>1.2 V</td>
+      <td>DDR4-2133 to DDR4-3200 commonly</td>
+      <td>Same desktop pin count as DDR5, but different notch and signaling.</td>
+    </tr>
+        <tr>
+      <td>DDR5</td>
+      <td>288</td>
+      <td>262</td>
+      <td>1.1 V</td>
+      <td>DDR5-4800 and higher commonly</td>
+      <td>Not physically interchangeable with DDR4 despite 288-pin desktop count.</td>
+    </tr>
+  </tbody></table></div>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">DIMM vs SODIMM</h3><p>DIMMs go in desktops and many servers. SODIMMs are shorter modules used in laptops, mini PCs, and some all-in-one systems.</p></div>
+    <div class="card"><h3 style="margin-top:0">Channels</h3><p>Single channel uses one memory channel. Dual channel and quad channel increase bandwidth when the CPU and motherboard support it and modules are installed in the correct matched slots.</p></div>
+  </div>
+  <p>Matched pairs matter because the memory controller runs best when each channel has the same capacity and similar speed/timing. Mixing sizes can work, but part of the memory may run in single-channel mode or at the slowest module&rsquo;s speed.</p>
+  <p>ECC memory detects and corrects single-bit memory errors. It belongs in servers, workstations, and systems where data integrity matters. Non-ECC memory is normal for consumer desktops and laptops.</p>
+  <p>Virtual memory uses storage as an overflow area when physical RAM is insufficient. On Windows, that backing file is the page file. It prevents immediate crashes but is much slower than RAM, especially on HDDs.</p>
+  <div class="callout key"><span class="callout-title">Most testable RAM facts</span><p>DDR3 desktop DIMM is 240 pins. DDR4 and DDR5 desktop DIMMs are both 288 pins, but they are keyed differently and are not interchangeable.</p><p>Laptop pin counts are DDR3 SODIMM 204, DDR4 SODIMM 260, and DDR5 SODIMM 262. ECC is a server/workstation feature, not a gaming-speed feature.</p></div>
+  <details class="acc"><summary>Quick installation checklist</summary><div class="acc-body"><ol>
+      <li>Check motherboard generation support first.</li>
+      <li>Check supported capacity per slot and total capacity.</li>
+      <li>Install matched modules in the paired slots shown in the motherboard manual.</li>
+      <li>Enable the supported memory profile only if the board and RAM support it.</li>
+      <li>If the system fails POST, reseat RAM and test one module at a time.</li>
+    </ol></div></details>
+</section>
+
+<section id="storage">
+  <div class="week-head"><h2>Storage</h2><span class="wgoal">Separate form factor from bus and memorize RAID behavior.</span></div>
+  <p>Storage questions often hide the answer in the bus. A drive can physically be M.2 but electrically SATA or NVMe. NVMe uses PCIe lanes and is much faster than SATA because it was designed for solid-state storage, not spinning disks.</p>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">HDD</h3><p>Spinning magnetic storage. 5400 RPM drives use less power and are common in laptops; 7200 RPM drives are faster and common in desktops. 2.5-inch fits laptops; 3.5-inch fits desktops.</p></div>
+    <div class="card"><h3 style="margin-top:0">SSD</h3><p>No moving parts, low latency, and high random I/O. Common form factors include 2.5-inch SATA, mSATA, M.2, and U.2.</p></div>
+    <div class="card"><h3 style="margin-top:0">Optical</h3><p>CD, DVD, and Blu-ray drives are used for legacy media, installation discs, and archival workflows. They are usually SATA internally or USB externally.</p></div>
+  </div>
+  <h3>M.2 keying and bus</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Form factor</th>
+      <th>Bus</th>
+      <th>Keying</th>
+      <th>Exam point</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>2.5-inch SATA SSD</td>
+      <td>SATA</td>
+      <td>SATA data and power</td>
+      <td>Limited by SATA III at 6 Gbps before overhead.</td>
+    </tr>
+        <tr>
+      <td>mSATA</td>
+      <td>SATA</td>
+      <td>Mini PCIe-like connector</td>
+      <td>Older small SSD format.</td>
+    </tr>
+        <tr>
+      <td>M.2 SATA</td>
+      <td>SATA</td>
+      <td>Often B key or B+M key</td>
+      <td>M.2 shape does not guarantee NVMe speed.</td>
+    </tr>
+        <tr>
+      <td>M.2 NVMe</td>
+      <td>PCIe / NVMe</td>
+      <td>Often M key</td>
+      <td>Uses PCIe lanes; much higher throughput and lower latency than SATA.</td>
+    </tr>
+        <tr>
+      <td>U.2</td>
+      <td>PCIe / NVMe</td>
+      <td>Enterprise cabled connector</td>
+      <td>Common in servers and enterprise storage.</td>
+    </tr>
+  </tbody></table></div>
+  <p>NVMe over PCIe can use multiple lanes, commonly PCIe x4 for client SSDs. A PCIe 3.0 x4 NVMe drive can move several GB/s, while SATA SSDs top out around the SATA interface limit. That real throughput advantage matters for large file transfers, boot times, and heavy I/O workloads.</p>
+  <h3>RAID levels</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>RAID</th>
+      <th>Minimum drives</th>
+      <th>Usable capacity formula</th>
+      <th>Fault tolerance</th>
+      <th>When used</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>RAID 0</td>
+      <td>2</td>
+      <td>Number of drives &times; smallest drive</td>
+      <td>None</td>
+      <td>Speed and capacity when data loss is acceptable.</td>
+    </tr>
+        <tr>
+      <td>RAID 1</td>
+      <td>2</td>
+      <td>Smallest drive</td>
+      <td>One drive in a mirror can fail</td>
+      <td>Simple redundancy for boot volumes or small systems.</td>
+    </tr>
+        <tr>
+      <td>RAID 5</td>
+      <td>3</td>
+      <td>(Number of drives &minus; 1) &times; smallest drive</td>
+      <td>One drive can fail</td>
+      <td>Balanced capacity and redundancy in small arrays.</td>
+    </tr>
+        <tr>
+      <td>RAID 6</td>
+      <td>4</td>
+      <td>(Number of drives &minus; 2) &times; smallest drive</td>
+      <td>Two drives can fail</td>
+      <td>Larger arrays needing better rebuild safety.</td>
+    </tr>
+        <tr>
+      <td>RAID 10</td>
+      <td>4</td>
+      <td>Half of total raw capacity</td>
+      <td>Can lose one drive per mirror pair</td>
+      <td>High performance plus redundancy; striped mirrors.</td>
+    </tr>
+  </tbody></table></div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>RAID is not a backup. RAID keeps a system available after a drive failure, but it does not protect against deletion, malware, theft, fire, or corrupted files.</p></div>
+</section>
+
+<section id="power">
+  <div class="week-head"><h2>Power supplies</h2><span class="wgoal">Know connector pin counts, sizing, safety, and rails.</span></div>
+  <p>Pick a PSU by estimating CPU, GPU, drives, fans, and peripherals, then add headroom. A common target is enough capacity that the system does not run at the PSU&rsquo;s maximum output during normal load.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Connector or feature</th>
+      <th>Use</th>
+      <th>What to remember</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>24-pin ATX</td>
+      <td>Main motherboard power.</td>
+      <td>Largest motherboard power connector.</td>
+    </tr>
+        <tr>
+      <td>8-pin EPS / CPU</td>
+      <td>CPU power near the processor socket.</td>
+      <td>Do not confuse with PCIe GPU power.</td>
+    </tr>
+        <tr>
+      <td>6+2-pin PCIe</td>
+      <td>Graphics card auxiliary power.</td>
+      <td>Can function as 6-pin or 8-pin for GPUs.</td>
+    </tr>
+        <tr>
+      <td>SATA power</td>
+      <td>SATA drives and some accessories.</td>
+      <td>Flat 15-pin power connector.</td>
+    </tr>
+        <tr>
+      <td>Molex</td>
+      <td>Legacy peripherals.</td>
+      <td>4-pin connector; still appears in adapter questions.</td>
+    </tr>
+        <tr>
+      <td>Modular PSU</td>
+      <td>All cables detachable.</td>
+      <td>Better cable management; use cables designed for that exact PSU model.</td>
+    </tr>
+        <tr>
+      <td>Semi-modular PSU</td>
+      <td>Some fixed cables, some detachable.</td>
+      <td>Main motherboard cables are often fixed.</td>
+    </tr>
+        <tr>
+      <td>Non-modular PSU</td>
+      <td>All cables permanently attached.</td>
+      <td>Cheaper, but more unused cables in the case.</td>
+    </tr>
+        <tr>
+      <td>Redundant PSU</td>
+      <td>Server availability.</td>
+      <td>One PSU can fail while the system stays powered.</td>
+    </tr>
+        <tr>
+      <td>80 PLUS</td>
+      <td>Efficiency rating.</td>
+      <td>Higher ratings waste less power as heat; not a wattage rating.</td>
+    </tr>
+  </tbody></table></div>
+  <h3>Voltage and rails</h3>
+  <p>In North America, input voltage is commonly 115 V. Many other regions use 230 V. Older PSUs may have a red voltage selector switch; setting it wrong can damage equipment. Modern active PFC supplies usually auto-switch.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Rail</th>
+      <th>Feeds</th>
+      <th>Exam cue</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>+3.3 V</td>
+      <td>Chipsets, memory-related circuitry, and low-voltage logic.</td>
+      <td>Motherboard logic.</td>
+    </tr>
+        <tr>
+      <td>+5 V</td>
+      <td>USB power, some drive electronics, and logic circuits.</td>
+      <td>USB and legacy logic.</td>
+    </tr>
+        <tr>
+      <td>+12 V</td>
+      <td>CPU voltage regulators, GPU, motors, fans, and drives.</td>
+      <td>High-draw components.</td>
+    </tr>
+  </tbody></table></div>
+  <div class="callout warn"><span class="callout-title">Safety warning</span><p>Never open a power supply. Capacitors can retain dangerous charge after the system is unplugged. Replace the PSU as a unit unless you are trained and authorized to service it.</p></div>
+</section>
+
+<section id="motherboards">
+  <div class="week-head"><h2>Motherboards, CPUs, and cooling</h2><span class="wgoal">Read compatibility from form factor, socket, chipset, firmware, and thermal design.</span></div>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Form factor</th>
+      <th>Typical dimensions</th>
+      <th>Expansion profile</th>
+      <th>Use case</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>ATX</td>
+      <td>12 &times; 9.6 in</td>
+      <td>Up to 7 expansion slots</td>
+      <td>Full desktop builds with multiple cards.</td>
+    </tr>
+        <tr>
+      <td>microATX</td>
+      <td>9.6 &times; 9.6 in</td>
+      <td>Up to 4 expansion slots</td>
+      <td>Smaller desktops with moderate expansion.</td>
+    </tr>
+        <tr>
+      <td>mini-ITX</td>
+      <td>6.7 &times; 6.7 in</td>
+      <td>Usually 1 expansion slot</td>
+      <td>Small form factor systems.</td>
+    </tr>
+  </tbody></table></div>
+  <p>PCIe slots are described by lane count: x1, x4, x8, and x16. A shorter PCIe card can fit in a longer slot, such as an x1 card in an x16 slot. A physically longer card cannot fit in a shorter closed slot. PCIe generations are backward compatible, but speed drops to the slowest supported generation and lane count.</p>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Headers</h3><p>Front-panel headers connect power switch, reset switch, power LED, and drive LED. USB headers feed front-panel USB ports. Fan headers power and control fans. M.2 sockets accept small SSDs or wireless cards depending on board support.</p></div>
+    <div class="card"><h3 style="margin-top:0">BIOS vs UEFI</h3><p>BIOS is legacy firmware. UEFI adds Secure Boot, GPT support, boot drives larger than 2 TB, graphical setup, and better preboot features.</p></div>
+    <div class="card"><h3 style="margin-top:0">CMOS battery</h3><p>A dead CMOS battery causes lost date/time, forgotten firmware settings, and sometimes boot-order resets after power is removed.</p></div>
+  </div>
+  <p>TPM stores cryptographic keys and supports measured boot, device encryption, and platform identity. It may be a discrete chip or firmware TPM built into the CPU/chipset platform.</p>
+  <p>CPU socket compatibility is physical and electrical. LGA puts pins in the socket and pads on the CPU. PGA puts pins on the CPU and holes in the socket. Socket shape, chipset support, BIOS/UEFI version, and power delivery all matter.</p>
+  <p>Cores are physical execution units. Threads are logical execution paths. Virtualization extensions such as Intel VT-x and AMD-V let hypervisors run virtual machines efficiently.</p>
+  <p>Cooling removes heat from the CPU, GPU, chipset, and case. Heat sinks spread heat, thermal paste fills microscopic gaps, and thermal pads bridge wider gaps on components such as VRAM. Air cooling uses fans and heat sinks; liquid cooling moves heat to a radiator. Fan curves adjust fan speed based on temperature.</p>
+  <div class="callout key"><span class="callout-title">Compatibility order</span><p>For a CPU upgrade, check socket first, then chipset support, firmware version, power requirements, cooler clearance, and memory support.</p></div>
+</section>
+
+<section id="printers">
+  <div class="week-head"><h2>Printers</h2><span class="wgoal">Memorize the laser imaging process in exact order and match symptoms to printer type.</span></div>
+  <h3>Laser imaging process</h3>
+  <ol>
+    <li><strong>Processing:</strong> The printer receives and rasterizes the page; failures look like slow printing, garbled output, or job errors.</li>
+    <li><strong>Charging:</strong> The primary charge roller applies a uniform charge to the drum; failures cause gray background or uneven image density.</li>
+    <li><strong>Exposing:</strong> A laser writes the image by discharging selected drum areas; failures cause missing or distorted image areas.</li>
+    <li><strong>Developing:</strong> Toner sticks to the discharged image areas on the drum; failures cause faded print or missing toner.</li>
+    <li><strong>Transferring:</strong> Toner moves from drum to paper; failures cause blank pages, weak image transfer, or toner left on the drum.</li>
+    <li><strong>Fusing:</strong> Heat and pressure bond toner to the paper; failures cause toner that smears or rubs off.</li>
+    <li><strong>Cleaning:</strong> Residual toner is removed and the drum is prepared for the next page; failures cause repeating marks or ghost images.</li>
+  </ol>
+  <div class="grid grid-4">
+    <div class="card"><h3 style="margin-top:0">Inkjet</h3><p>Uses a print head, carriage, roller, duplexing assembly, and calibration. Common issues include clogged nozzles, streaks, alignment problems, and wet ink smearing.</p></div>
+    <div class="card"><h3 style="margin-top:0">Thermal</h3><p>Uses a feed assembly, heating element, and special thermal paper. Receipt printers are the classic example; heat or old paper can darken output.</p></div>
+    <div class="card"><h3 style="margin-top:0">Impact</h3><p>Uses a print head, ribbon, tractor feed, and impact paper. It is still used for multipart forms because physical impact transfers through carbon or multipart sheets.</p></div>
+    <div class="card"><h3 style="margin-top:0">3-D</h3><p>Uses filament or resin, a print bed, motors, and calibration. Failed adhesion, clogged nozzles, and leveling problems are common symptoms.</p></div>
+  </div>
+  <h3>Consumables and maintenance</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Printer type</th>
+      <th>Consumables</th>
+      <th>Maintenance interval cue</th>
+      <th>Common maintenance task</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>Laser</td>
+      <td>Toner, drum, fuser, maintenance kit.</td>
+      <td>Page-count based.</td>
+      <td>Replace toner, drum, fuser, transfer roller, pickup rollers.</td>
+    </tr>
+        <tr>
+      <td>Inkjet</td>
+      <td>Ink cartridges or tanks, print head.</td>
+      <td>When quality drops or after cartridge changes.</td>
+      <td>Clean nozzles, align/calibrate, replace cartridges.</td>
+    </tr>
+        <tr>
+      <td>Thermal</td>
+      <td>Thermal paper; sometimes ribbon for thermal transfer.</td>
+      <td>Roll replacement or poor output.</td>
+      <td>Clean heating element and feed path.</td>
+    </tr>
+        <tr>
+      <td>Impact</td>
+      <td>Ribbon and paper.</td>
+      <td>When print is faint or forms misfeed.</td>
+      <td>Replace ribbon, align tractor feed, clear jams.</td>
+    </tr>
+        <tr>
+      <td>3-D</td>
+      <td>Filament, resin, build surface.</td>
+      <td>Per material change or print failure.</td>
+      <td>Level bed, clean nozzle, clean resin vat, calibrate axes.</td>
+    </tr>
+  </tbody></table></div>
+  <p>Printer sharing lets a computer share its attached printer. A print server manages print queues for network printers. Spooling stores print jobs on disk so applications can finish sending the job before the printer is physically done.</p>
+  <div class="callout trap"><span class="callout-title">Printer trap</span><p>If toner smears after printing, think fuser. If ink streaks or colors are missing on an inkjet, think clogged nozzles or calibration. If multipart forms are required, choose impact.</p></div>
+</section>
+
+<section id="displays">
+  <div class="week-head"><h2>Displays and video</h2><span class="wgoal">Connect display symptoms to panel technology, backlight, resolution, and port capability.</span></div>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Panel type</th>
+      <th>Strengths</th>
+      <th>Weaknesses</th>
+      <th>Best fit</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>IPS</td>
+      <td>Good color and wide viewing angles.</td>
+      <td>Usually slower response than TN and may cost more.</td>
+      <td>Design, office work, general use.</td>
+    </tr>
+        <tr>
+      <td>TN</td>
+      <td>Fast response and low cost.</td>
+      <td>Weak viewing angles and color accuracy.</td>
+      <td>Budget displays or competitive gaming.</td>
+    </tr>
+        <tr>
+      <td>VA</td>
+      <td>Strong contrast and deep blacks.</td>
+      <td>Can have slower pixel transitions.</td>
+      <td>Media viewing and general use.</td>
+    </tr>
+        <tr>
+      <td>OLED</td>
+      <td>Excellent contrast, true blacks, fast response.</td>
+      <td>Burn-in risk and higher cost.</td>
+      <td>Premium laptops, phones, and displays.</td>
+    </tr>
+  </tbody></table></div>
+  <p>Resolution is the pixel count, such as 1920 &times; 1080 or 3840 &times; 2160. Aspect ratio is the shape, such as 16:9 or 16:10. Refresh rate is how often the display updates per second, measured in Hz. Response time is how quickly pixels change state.</p>
+  <p>LCD panels need a backlight. LED backlights are common now. Older CCFL-backlit laptops used an inverter to convert power for the fluorescent tube; a failed inverter could cause a very dim image that is barely visible with a flashlight.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Connector</th>
+      <th>Audio</th>
+      <th>Daisy-chain</th>
+      <th>Resolution capability cue</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>VGA</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Analog; quality drops at higher resolutions.</td>
+    </tr>
+        <tr>
+      <td>DVI</td>
+      <td>Normally no</td>
+      <td>No</td>
+      <td>Digital DVI-D supports older flat panels; dual-link supports higher resolutions than single-link.</td>
+    </tr>
+        <tr>
+      <td>HDMI</td>
+      <td>Yes</td>
+      <td>No standard PC monitor daisy-chain</td>
+      <td>Common for TVs and monitors; versions determine 4K and high-refresh support.</td>
+    </tr>
+        <tr>
+      <td>DisplayPort</td>
+      <td>Yes</td>
+      <td>Yes, with MST</td>
+      <td>Common high-resolution PC display connector.</td>
+    </tr>
+        <tr>
+      <td>USB-C Alt Mode</td>
+      <td>Yes when carrying DisplayPort/HDMI</td>
+      <td>Possible with DisplayPort Alt Mode support</td>
+      <td>One cable can carry video, data, and power if all devices support it.</td>
+    </tr>
+        <tr>
+      <td>Thunderbolt 3/4</td>
+      <td>Yes</td>
+      <td>Yes through docks or supported displays</td>
+      <td>High-bandwidth USB-C connector, up to 40 Gbps.</td>
+    </tr>
+  </tbody></table></div>
+</section>
+
+<section id="cheatsheet">
+  <div class="week-head"><h2>The night-before hardware sheet</h2><span class="wgoal">Pure recall to review right before the exam.</span></div>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">RAID minimums</h3><ul>
+      <li>RAID 0: 2 drives, no fault tolerance.</li>
+      <li>RAID 1: 2 drives, mirror.</li>
+      <li>RAID 5: 3 drives, one-drive fault tolerance.</li>
+      <li>RAID 6: 4 drives, two-drive fault tolerance.</li>
+      <li>RAID 10: 4 drives, striped mirrors.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">DDR pin counts</h3><ul>
+      <li>DDR3 DIMM: 240; DDR3 SODIMM: 204.</li>
+      <li>DDR4 DIMM: 288; DDR4 SODIMM: 260.</li>
+      <li>DDR5 DIMM: 288; DDR5 SODIMM: 262.</li>
+      <li>DDR generations are keyed differently.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">USB and Thunderbolt</h3><ul>
+      <li>USB 2.0: 480 Mbps.</li>
+      <li>USB 3.2 Gen 1: 5 Gbps.</li>
+      <li>USB 3.2 Gen 2: 10 Gbps.</li>
+      <li>USB 3.2 Gen 2&times;2: 20 Gbps.</li>
+      <li>Thunderbolt 3/4: 40 Gbps.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Laser order</h3><ol>
+      <li>Processing</li>
+      <li>Charging</li>
+      <li>Exposing</li>
+      <li>Developing</li>
+      <li>Transferring</li>
+      <li>Fusing</li>
+      <li>Cleaning</li>
+    </ol></div>
+    <div class="card"><h3 style="margin-top:0">PSU connectors</h3><ul>
+      <li>24-pin ATX: motherboard.</li>
+      <li>8-pin EPS: CPU.</li>
+      <li>6+2-pin PCIe: GPU.</li>
+      <li>SATA power: drives.</li>
+      <li>Molex: legacy peripherals.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Cat cable limits</h3><ul>
+      <li>Cat 5: 100 Mbps / 100 m.</li>
+      <li>Cat 5e: 1 Gbps / 100 m.</li>
+      <li>Cat 6: 10 Gbps / 55 m or 1 Gbps / 100 m.</li>
+      <li>Cat 6a: 10 Gbps / 100 m.</li>
+    </ul></div>
+  </div>
+  <div class="btn-row"><a class="btn" href="drills.html?set=c1-memory-storage">Memory and storage</a><a class="btn secondary" href="drills.html?set=c1-power-boards">Power and boards</a><a class="btn ghost" href="drills.html?set=c1-printers">Printers</a><a class="btn ghost" href="drills.html?set=c1-cabling">Cabling</a></div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

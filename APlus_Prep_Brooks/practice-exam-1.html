@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Exam 1 &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="CompTIA A+ Core 1 practice exam 1: 60 timed questions weighted across the five 220-1101 domains, with scaled scoring and full review.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+    <h1 class="no-print">Practice Exam 1</h1>
+    <p class="lede no-print">Wednesday, August 26 &mdash; your cold baseline. Take it before you study anything.</p>
+    <div id="app"></div>
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/exam1.js"></script>
+<script src="assets/test-engine.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    AP.Test.mount({
+        el: document.getElementById("app"),
+        testId: "exam1",
+        core: "core1",
+        title: "Practice Exam 1 \u2014 Baseline",
+        blurb: "Sixty questions in sixty minutes, weighted across the five Core 1 domains the way CompTIA weights them. Take this one cold. A baseline you studied for is not a baseline \u2014 it is a comfort blanket, and it will hide the exact gaps this plan is built to close. Your answers save automatically, so a closed tab will not lose your work.",
+        sections: ["exam1"]
+    });
+});
+</script>
+</body>
+</html>

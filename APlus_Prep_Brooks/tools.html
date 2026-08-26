@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study Tools &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="A+ study tools: scaled-score estimator, exam timer, 170 flashcards across eight decks, a searchable port reference, and an error log.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Study Tools</h1>
+<p class="lede">Five things that do a specific job: turn a raw score into a scaled one, run the clock,
+    hammer the pure-recall facts, look up a port fast, and keep a record of every mistake so you stop
+    making it twice.</p>
+
+<div class="btn-row" style="margin:1.25rem 0 2rem">
+    <a class="btn secondary sm" href="#calc">Score estimator</a>
+    <a class="btn secondary sm" href="#timer">Exam timer</a>
+    <a class="btn secondary sm" href="#flashcards">Flashcards</a>
+    <a class="btn secondary sm" href="#ports">Port reference</a>
+    <a class="btn secondary sm" href="#errorlog">Error log</a>
+</div>
+
+<!-- ============ SCORE ESTIMATOR ============ -->
+<section id="calc">
+    <h2>Scaled score estimator</h2>
+    <p>Enter how many you got right out of how many you answered, and this converts it to the 100&ndash;900
+        scale the way CompTIA reports it. Useful for scoring any practice material, not just the exams on
+        this site.</p>
+
+    <div class="grid grid-2">
+        <div class="card">
+            <h3 style="margin-top:0">Your raw score</h3>
+            <div class="grid grid-2">
+                <div class="field"><label for="cRight">Questions correct</label>
+                    <input type="number" id="cRight" min="0" max="200" value="43"></div>
+                <div class="field"><label for="cTotal">Questions total</label>
+                    <input type="number" id="cTotal" min="1" max="200" value="60"></div>
+            </div>
+            <div class="field"><label for="cCore">Which exam</label>
+                <select id="cCore">
+                    <option value="core1">Core 1 &mdash; 220-1101 (passing 675)</option>
+                    <option value="core2">Core 2 &mdash; 220-1102 (passing 700)</option>
+                </select></div>
+            <div class="btn-row">
+                <button class="btn secondary sm" id="loadLast">Load my last practice exam</button>
+                <button class="btn secondary sm" id="loadPass">Show me exactly what passing needs</button>
+            </div>
+        </div>
+
+        <div class="card center">
+            <div class="muted" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700">Estimated scaled score</div>
+            <div style="font-size:4.5rem;font-weight:800;line-height:1.05" id="scaledOut">675</div>
+            <div id="scaledNote" class="muted"></div>
+            <div id="scaledBars" style="margin-top:1.2rem;text-align:left"></div>
+        </div>
+    </div>
+
+    <div class="callout warn">
+        <span class="callout-title">What this number is and is not</span>
+        <p style="margin-bottom:0">CompTIA has never published its raw-to-scaled conversion, and the real exam
+            weights harder questions more heavily. This curve is anchored so that 72% correct lands on 675,
+            which is where the passing mark is generally understood to sit. Treat it as a readiness signal
+            with a margin of error of roughly &plusmn;40 points, not as a prediction.</p>
+    </div>
+</section>
+
+<!-- ============ TIMER ============ -->
+<section id="timer">
+    <h2>Exam timer</h2>
+    <p>The real exam is 90 minutes for up to 90 questions. Use this for timed sections, drills, or a full
+        rehearsal, and watch the checkpoints rather than the clock.</p>
+
+    <div class="card center">
+        <div class="big-timer" id="bigClock">90:00</div>
+        <div class="btn-row" style="justify-content:center;margin-bottom:.8rem">
+            <button class="btn lg" id="tStart">Start</button>
+            <button class="btn secondary" id="tPause">Pause</button>
+            <button class="btn ghost" id="tReset">Reset</button>
+        </div>
+        <div class="btn-row" style="justify-content:center" id="tPresets"></div>
+        <div id="checkpoints" style="margin-top:1.4rem;text-align:left"></div>
+    </div>
+</section>
+
+<!-- ============ FLASHCARDS ============ -->
+<section id="flashcards">
+    <h2>Flashcards</h2>
+    <p>One hundred and seventy cards across eight decks. These are for the facts that are pure recall
+        &mdash; port numbers, pin counts, RAID minimums, command switches. Click the card or press
+        <kbd>Space</kbd> to flip it, then say whether you knew it.</p>
+
+    <div class="card">
+        <div class="grid grid-2">
+            <div class="field"><label for="deckSel">Deck</label><select id="deckSel"></select></div>
+            <div class="field"><label for="modeSel">Show</label><select id="modeSel">
+                <option value="all">All cards in this deck</option>
+                <option value="missed">Only cards I have missed</option>
+            </select></div>
+        </div>
+
+        <div class="flashcard" id="card" role="button" tabindex="0" aria-label="Flashcard, click to flip">
+            <span class="fc-side" id="fcSide">Front</span>
+            <span class="fc-deck" id="fcDeck"></span>
+            <div id="fcBody" class="fc-front">Loading&hellip;</div>
+            <span class="fc-hint">Click, or press Space, to flip</span>
+        </div>
+
+        <div class="btn-row" style="justify-content:center;margin-top:1rem">
+            <button class="btn secondary" id="fcPrev">&larr; Back</button>
+            <button class="btn" id="fcGot" style="background:var(--good)">I knew it</button>
+            <button class="btn danger" id="fcMiss">I missed it</button>
+            <button class="btn secondary" id="fcNext">Next &rarr;</button>
+        </div>
+        <div class="btn-row" style="justify-content:center;margin-top:.6rem">
+            <button class="btn ghost sm" id="fcShuffle">Shuffle</button>
+            <button class="btn ghost sm" id="fcClear">Clear my missed list</button>
+        </div>
+
+        <div class="meter-row" style="margin-top:1.2rem">
+            <span class="mlabel" id="fcPos">Card 1 of 1</span>
+            <span class="meter"><i class="good" id="fcMeter" data-pct="0"></i></span>
+            <span class="mval" id="fcStats">0 missed</span>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PORT REFERENCE ============ -->
+<section id="ports">
+    <h2>Port and protocol reference</h2>
+    <p>The single densest source of easy points on Core 1. Type in the box to filter by port number,
+        protocol name, or what it does.</p>
+
+    <div class="card">
+        <div class="field"><label for="portFilter">Filter</label>
+            <input type="text" id="portFilter" placeholder="Try 443, or ssh, or email"></div>
+        <div class="table-scroll"><table class="data-table">
+            <thead><tr><th style="width:5.5rem">Port</th><th style="width:7rem">Protocol</th><th style="width:4.5rem">TCP/UDP</th><th>What it does, and what breaks without it</th></tr></thead>
+            <tbody id="portBody"></tbody>
+        </table></div>
+        <p class="muted" id="portCount" style="margin-bottom:0"></p>
+    </div>
+</section>
+
+<!-- ============ ERROR LOG ============ -->
+<section id="errorlog">
+    <h2>Error log</h2>
+    <p>The single highest-value habit in the whole plan. Every question you miss goes in here &mdash; not
+        the question, the <strong>rule</strong>. &ldquo;RAID 5 needs three drives, not two&rdquo; is a log
+        entry. &ldquo;Missed question 14&rdquo; is not.</p>
+
+    <div class="callout key">
+        <span class="callout-title">Tag the cause, because the three causes have three different fixes</span>
+        <p style="margin-bottom:0"><strong>Never knew it</strong> means learn the fact &mdash; flashcards.
+            <strong>Knew it and read past it</strong> means slow down and read the last line first &mdash; that
+            is a pacing and care problem, and more studying will not touch it.
+            <strong>Misread the question</strong> means you missed a BEST, a FIRST, or a NOT &mdash; that is
+            a reading habit, and it is the cheapest one to fix.</p>
+    </div>
+
+    <div class="card">
+        <div class="grid grid-4">
+            <div class="field"><label for="elDomain">Domain</label><select id="elDomain"></select></div>
+            <div class="field"><label for="elTopic">Topic or rule</label>
+                <input type="text" id="elTopic" placeholder="e.g. RAID 5 minimum drives"></div>
+            <div class="field"><label for="elCause">Cause</label><select id="elCause">
+                <option value="never">Never knew the fact</option>
+                <option value="rushed">Knew it and read past it</option>
+                <option value="misread">Misread the question</option>
+            </select></div>
+            <div class="field"><label for="elAdd">&nbsp;</label>
+                <button class="btn" id="elAdd" style="width:100%">Add entry</button></div>
+        </div>
+        <div class="field"><label for="elNote">The fix, in your own words</label>
+            <textarea id="elNote" placeholder="Write the rule, not the mistake. &ldquo;RAID 5 is striping with distributed parity: minimum three drives, survives one failure, usable capacity is n minus one. I answered two because I was thinking of RAID 1.&rdquo;"></textarea></div>
+
+        <div id="elSummary" style="margin-top:1.2rem"></div>
+        <div id="elTable" style="margin-top:1rem"></div>
+        <div class="btn-row" style="margin-top:1rem">
+            <button class="btn secondary sm" id="elCopy">Copy the whole log</button>
+            <button class="btn ghost sm" id="elClear">Clear the log</button>
+        </div>
+    </div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/flashcards.js"></script>
+<script>
+/* ============================================================
+   Port reference data
+   ============================================================ */
+var PORTS = [
+    ["20, 21", "FTP", "TCP", "File Transfer Protocol. 21 carries commands, 20 carries the data in active mode. Blocked: file transfers hang after connecting. Unencrypted \u2014 SFTP on 22 is the secure replacement."],
+    ["22", "SSH", "TCP", "Secure Shell, encrypted remote command line. Also carries SFTP and SCP. Blocked: no remote administration of Linux hosts, switches, or routers."],
+    ["23", "Telnet", "TCP", "Unencrypted remote command line, including passwords in clear text. The exam wants you to replace it with SSH every single time."],
+    ["25", "SMTP", "TCP", "Simple Mail Transfer Protocol, used to <em>send</em> mail server to server. Blocked: outbound mail queues but incoming mail still arrives. Many ISPs block 25 to fight spam \u2014 clients use 587 instead."],
+    ["53", "DNS", "UDP/TCP", "Name resolution. UDP for normal lookups, TCP for zone transfers and large responses. Blocked: nothing resolves by name, but everything still works by IP address. That symptom pair is the classic DNS giveaway."],
+    ["67, 68", "DHCP", "UDP", "Server listens on 67, client on 68. Blocked or unreachable: clients fall back to an APIPA address in 169.254.x.x and can talk only to the local subnet."],
+    ["80", "HTTP", "TCP", "Unencrypted web traffic. Blocked: plain http:// sites fail while https:// sites keep loading."],
+    ["110", "POP3", "TCP", "Downloads mail and by default deletes it from the server, so it does not sync across devices. 995 is the SSL version."],
+    ["137, 138, 139", "NetBIOS/NetBT", "TCP/UDP", "Legacy Windows name service and session service. Largely replaced by SMB on 445, but still tested."],
+    ["143", "IMAP", "TCP", "Leaves mail on the server and syncs state across devices, which is why it is the right answer for a user with a phone and a laptop. 993 is the SSL version."],
+    ["161, 162", "SNMP", "UDP", "161 is the manager polling the agent; 162 is the agent sending a trap to the manager. Used for network device monitoring."],
+    ["389", "LDAP", "TCP/UDP", "Directory lookups, including Active Directory. 636 is LDAPS, the encrypted version."],
+    ["427", "SLP", "TCP/UDP", "Service Location Protocol \u2014 how devices discover services on a local network without configuration."],
+    ["443", "HTTPS", "TCP", "HTTP over TLS. Blocked: secure sites time out while plain HTTP still loads. Do not confuse it with 8080, a common alternate HTTP or proxy port."],
+    ["445", "SMB/CIFS", "TCP", "Windows file and printer sharing. Blocked: mapped drives fail and shared printers disappear. Commonly blocked at the firewall because of ransomware worms."],
+    ["548", "AFP", "TCP", "Apple Filing Protocol, macOS file sharing. Modern macOS prefers SMB, but AFP still appears on the exam."],
+    ["465", "SMTPS", "TCP", "SMTP wrapped in implicit SSL. Older than 587 and still in use with some providers."],
+    ["587", "SMTP submission", "TCP", "The modern port a mail <em>client</em> uses to submit outgoing mail, with STARTTLS. If a user can receive but not send, this is the first setting to check."],
+    ["993", "IMAP over SSL", "TCP", "Encrypted IMAP. The default for corporate mail on a phone."],
+    ["995", "POP3 over SSL", "TCP", "Encrypted POP3."],
+    ["3389", "RDP", "TCP/UDP", "Remote Desktop Protocol. Blocked: Remote Desktop connections fail. Should never be exposed directly to the internet \u2014 put it behind a VPN."],
+    ["\u2014", "Port ranges", "\u2014", "Well-known ports are 0\u20131023, registered ports are 1024\u201349151, and dynamic or ephemeral ports are 49152\u201365535."]
+];
+
+/* ============================================================
+   Tools
+   ============================================================ */
+(function () {
+    "use strict";
+
+    /* ---------- score estimator ---------- */
+    function calc() {
+        var right = parseInt(document.getElementById("cRight").value, 10) || 0;
+        var total = parseInt(document.getElementById("cTotal").value, 10) || 1;
+        var core = document.getElementById("cCore").value;
+        if (right > total) { right = total; document.getElementById("cRight").value = total; }
+
+        var pct = right / total * 100;
+        var scaled = AP.rawToScaled(right, total);
+        var pass = AP.passMark(core);
+        var v = AP.verdict(scaled, core);
+
+        document.getElementById("scaledOut").textContent = scaled;
+
+        var gap = scaled - pass;
+        var note = gap >= 0
+            ? '<span class="badge good">' + v.label + "</span> " + gap + " point" + (gap === 1 ? "" : "s") +
+              " above the " + pass + " line."
+            : '<span class="badge ' + v.cls + '">' + v.label + "</span> " + Math.abs(gap) +
+              " point" + (Math.abs(gap) === 1 ? "" : "s") + " short of " + pass + ".";
+        var needPct = AP.passPct(core);
+        var need = AP.correctNeeded(core, total);
+        if (right < need) {
+            note += " You would need <strong>" + need + " of " + total + "</strong> (" + needPct +
+                "%), which is " + (need - right) + " more correct.";
+        }
+        document.getElementById("scaledNote").innerHTML = note;
+
+        var bars = '<div class="meter-row"><span class="mlabel">Percent correct</span>' +
+            '<span class="meter"><i class="' + (pct >= needPct ? "good" : (pct >= needPct - 8 ? "amber" : "bad")) +
+            '" data-pct="' + Math.round(pct) + '"></i></span>' +
+            '<span class="mval">' + Math.round(pct) + "%</span></div>" +
+            '<div class="meter-row"><span class="mlabel">Scaled, out of 900</span>' +
+            '<span class="meter"><i class="' + v.cls + '" data-pct="' + Math.round(scaled / 900 * 100) + '"></i></span>' +
+            '<span class="mval">' + scaled + "</span></div>" +
+            '<div class="meter-row"><span class="mlabel">Passing mark</span>' +
+            '<span class="meter"><i class="amber" data-pct="' + Math.round(pass / 900 * 100) + '"></i></span>' +
+            '<span class="mval">' + pass + "</span></div>";
+        var box = document.getElementById("scaledBars");
+        box.innerHTML = bars;
+        AP.autoFillMeters(box);
+    }
+
+    function bindCalc() {
+        var ids = ["cRight", "cTotal", "cCore"];
+        for (var i = 0; i < ids.length; i++) {
+            document.getElementById(ids[i]).addEventListener("input", calc);
+            document.getElementById(ids[i]).addEventListener("change", calc);
+        }
+        document.getElementById("loadLast").onclick = function () {
+            var hist = AP.store.get("history", {});
+            var runs = [];
+            for (var k in hist) { if (Object.prototype.hasOwnProperty.call(hist, k)) runs.push(hist[k]); }
+            if (!runs.length) { AP.toast("No practice exam recorded yet."); return; }
+            runs.sort(function (a, b) { return a.at - b.at; });
+            var last = runs[runs.length - 1];
+            document.getElementById("cRight").value = last.right;
+            document.getElementById("cTotal").value = last.total;
+            document.getElementById("cCore").value = last.core || "core1";
+            calc();
+            AP.toast("Loaded " + last.title + ".");
+        };
+        document.getElementById("loadPass").onclick = function () {
+            var core = document.getElementById("cCore").value;
+            document.getElementById("cTotal").value = 90;
+            document.getElementById("cRight").value = core === "core2" ? 68 : 65;
+            calc();
+            AP.toast("That is the real exam length and the score you need.");
+        };
+        calc();
+    }
+
+    /* ---------- timer ---------- */
+    var PRESETS = [
+        { label: "Full exam \u00b7 90 min", secs: 5400 },
+        { label: "Practice exam \u00b7 60 min", secs: 3600 },
+        { label: "Core 2 diagnostic \u00b7 45 min", secs: 2700 },
+        { label: "Drill \u00b7 10 min", secs: 600 }
+    ];
+    var tTotal = 5400, tLeft = 5400, tRunning = false, tHandle = null;
+
+    function paintClock() {
+        var c = document.getElementById("bigClock");
+        var m = Math.floor(tLeft / 60), s = Math.round(tLeft % 60);
+        c.textContent = m + ":" + (s < 10 ? "0" : "") + s;
+        c.className = "big-timer" + (tLeft <= 60 ? " danger" : (tLeft <= 300 ? " warn" : ""));
+        paintCheckpoints();
+    }
+
+    function paintCheckpoints() {
+        var elapsed = tTotal - tLeft;
+        var marks = [
+            { at: 0.25, label: "Quarter mark" },
+            { at: 0.50, label: "Halfway" },
+            { at: 0.75, label: "Three quarters" },
+            { at: 0.94, label: "Sweep your flagged questions" }
+        ];
+        var html = "";
+        for (var i = 0; i < marks.length; i++) {
+            var atSec = Math.round(tTotal * marks[i].at);
+            var reached = elapsed >= atSec;
+            var qAt = Math.round(90 * marks[i].at);
+            html += '<div class="meter-row"><span class="mlabel">' + marks[i].label + "</span>" +
+                '<span class="meter"><i class="' + (reached ? "good" : "") + '" data-pct="' +
+                (reached ? 100 : Math.min(100, Math.round(elapsed / atSec * 100))) + '"></i></span>' +
+                '<span class="mval">' + Math.floor(atSec / 60) + " min" +
+                (tTotal === 5400 ? " &middot; Q" + qAt : "") + "</span></div>";
+        }
+        var box = document.getElementById("checkpoints");
+        box.innerHTML = html;
+        AP.autoFillMeters(box);
+    }
+
+    function tick() {
+        tLeft = Math.max(0, tLeft - 1);
+        paintClock();
+        if (tLeft <= 0) {
+            window.clearInterval(tHandle); tRunning = false;
+            AP.toast("Time is up.", 4000);
+        }
+    }
+
+    function bindTimer() {
+        var ph = document.getElementById("tPresets");
+        for (var i = 0; i < PRESETS.length; i++) {
+            (function (p, idx) {
+                var b = document.createElement("button");
+                b.className = "btn sm " + (idx === 0 ? "" : "secondary");
+                b.type = "button";
+                b.innerHTML = p.label;
+                b.onclick = function () {
+                    window.clearInterval(tHandle); tRunning = false;
+                    tTotal = p.secs; tLeft = p.secs; paintClock();
+                    var all = ph.querySelectorAll("button");
+                    for (var j = 0; j < all.length; j++) all[j].className = "btn sm secondary";
+                    b.className = "btn sm";
+                };
+                ph.appendChild(b);
+            })(PRESETS[i], i);
+        }
+        document.getElementById("tStart").onclick = function () {
+            if (tRunning || tLeft <= 0) return;
+            tRunning = true;
+            tHandle = window.setInterval(tick, 1000);
+        };
+        document.getElementById("tPause").onclick = function () {
+            window.clearInterval(tHandle); tRunning = false;
+        };
+        document.getElementById("tReset").onclick = function () {
+            window.clearInterval(tHandle); tRunning = false; tLeft = tTotal; paintClock();
+        };
+        paintClock();
+    }
+
+    /* ---------- flashcards ---------- */
+    var cards = [], order = [], pos = 0, flipped = false;
+
+    function decks() {
+        var all = (window.AP_DATA && window.AP_DATA.flashcards) || [];
+        var seen = {}, out = [];
+        for (var i = 0; i < all.length; i++) {
+            if (!seen[all[i].deck]) { seen[all[i].deck] = 1; out.push(all[i].deck); }
+        }
+        return out;
+    }
+
+    function missedSet() { return AP.store.get("fcMissed", {}); }
+
+    function buildOrder() {
+        var deck = document.getElementById("deckSel").value;
+        var mode = document.getElementById("modeSel").value;
+        var missed = missedSet();
+        var all = (window.AP_DATA && window.AP_DATA.flashcards) || [];
+        cards = [];
+        for (var i = 0; i < all.length; i++) {
+            if (deck !== "__all" && all[i].deck !== deck) continue;
+            if (mode === "missed" && !missed[all[i].id]) continue;
+            cards.push(all[i]);
+        }
+        order = [];
+        for (var j = 0; j < cards.length; j++) order.push(j);
+        pos = 0; flipped = false;
+        paintCard();
+    }
+
+    function paintCard() {
+        var side = document.getElementById("fcSide");
+        var body = document.getElementById("fcBody");
+        var deckEl = document.getElementById("fcDeck");
+        var missed = missedSet();
+        var missedCount = 0;
+        for (var k in missed) { if (Object.prototype.hasOwnProperty.call(missed, k)) missedCount++; }
+
+        if (!cards.length) {
+            side.textContent = "";
+            deckEl.textContent = "";
+            body.className = "fc-back";
+            body.innerHTML = "<p>No cards match this filter. If you chose &ldquo;only cards I have missed&rdquo; " +
+                "and the list is empty, that is good news.</p>";
+            document.getElementById("fcPos").textContent = "0 cards";
+            document.getElementById("fcStats").textContent = missedCount + " missed";
+            AP.fillMeter(document.getElementById("fcMeter"), 0);
+            return;
+        }
+
+        var c = cards[order[pos]];
+        side.textContent = flipped ? "Back" : "Front";
+        deckEl.textContent = c.deck;
+        body.className = flipped ? "fc-back" : "fc-front";
+        body.innerHTML = flipped ? c.back : AP.escapeHtml(c.front);
+
+        document.getElementById("fcPos").textContent = "Card " + (pos + 1) + " of " + cards.length +
+            (c.tag ? " \u00b7 " + c.tag : "");
+        document.getElementById("fcStats").textContent = missedCount + " missed";
+        AP.fillMeter(document.getElementById("fcMeter"), Math.round((pos + 1) / cards.length * 100));
+    }
+
+    function step(n) {
+        if (!cards.length) return;
+        pos = (pos + n + cards.length) % cards.length;
+        flipped = false;
+        paintCard();
+    }
+
+    function bindFlashcards() {
+        var sel = document.getElementById("deckSel");
+        var list = decks();
+        var html = '<option value="__all">All decks</option>';
+        for (var i = 0; i < list.length; i++) {
+            html += '<option value="' + AP.escapeHtml(list[i]) + '">' + AP.escapeHtml(list[i]) + "</option>";
+        }
+        sel.innerHTML = html;
+
+        sel.onchange = buildOrder;
+        document.getElementById("modeSel").onchange = buildOrder;
+
+        var card = document.getElementById("card");
+        card.onclick = function () { flipped = !flipped; paintCard(); };
+        card.onkeydown = function (e) {
+            if (e.key === " " || e.key === "Enter") { e.preventDefault(); flipped = !flipped; paintCard(); }
+            else if (e.key === "ArrowRight") { step(1); }
+            else if (e.key === "ArrowLeft") { step(-1); }
+        };
+
+        document.getElementById("fcNext").onclick = function () { step(1); };
+        document.getElementById("fcPrev").onclick = function () { step(-1); };
+        document.getElementById("fcGot").onclick = function () {
+            if (!cards.length) return;
+            var m = missedSet();
+            delete m[cards[order[pos]].id];
+            AP.store.set("fcMissed", m);
+            step(1);
+        };
+        document.getElementById("fcMiss").onclick = function () {
+            if (!cards.length) return;
+            var m = missedSet();
+            m[cards[order[pos]].id] = 1;
+            AP.store.set("fcMissed", m);
+            step(1);
+        };
+        document.getElementById("fcShuffle").onclick = function () {
+            for (var i = order.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
+            }
+            pos = 0; flipped = false; paintCard();
+            AP.toast("Shuffled.");
+        };
+        document.getElementById("fcClear").onclick = function () {
+            if (window.confirm("Clear the list of cards you have marked as missed?")) {
+                AP.store.set("fcMissed", {});
+                buildOrder();
+                AP.toast("Missed list cleared.");
+            }
+        };
+
+        buildOrder();
+    }
+
+    /* ---------- port reference ---------- */
+    function paintPorts(filter) {
+        var f = (filter || "").toLowerCase().trim();
+        var body = document.getElementById("portBody");
+        var html = "", shown = 0;
+        for (var i = 0; i < PORTS.length; i++) {
+            var row = PORTS[i];
+            var hay = (row[0] + " " + row[1] + " " + row[2] + " " + row[3]).toLowerCase();
+            if (f && hay.indexOf(f) < 0) continue;
+            shown++;
+            html += "<tr><td><strong>" + row[0] + "</strong></td><td>" + row[1] + "</td><td>" +
+                row[2] + "</td><td>" + row[3] + "</td></tr>";
+        }
+        body.innerHTML = html || '<tr><td colspan="4" class="muted">Nothing matches that.</td></tr>';
+        document.getElementById("portCount").textContent =
+            shown + " of " + PORTS.length + " rows shown.";
+    }
+
+    function bindPorts() {
+        var inp = document.getElementById("portFilter");
+        inp.addEventListener("input", function () { paintPorts(inp.value); });
+        paintPorts("");
+    }
+
+    /* ---------- error log ---------- */
+    var CAUSES = { never: "Never knew the fact", rushed: "Knew it, read past it", misread: "Misread the question" };
+
+    function logGet() { return AP.store.get("errorLog", []); }
+    function logSet(v) { AP.store.set("errorLog", v); }
+
+    function paintLog() {
+        var rows = logGet();
+        var byCause = { never: 0, rushed: 0, misread: 0 };
+        var byDomain = {};
+        for (var i = 0; i < rows.length; i++) {
+            byCause[rows[i].cause] = (byCause[rows[i].cause] || 0) + 1;
+            byDomain[rows[i].domain] = (byDomain[rows[i].domain] || 0) + 1;
+        }
+
+        var sum = "";
+        if (rows.length) {
+            sum = '<h4 style="margin:0 0 .6rem">' + rows.length + " entr" + (rows.length === 1 ? "y" : "ies") + "</h4>";
+            for (var c in CAUSES) {
+                if (!Object.prototype.hasOwnProperty.call(CAUSES, c)) continue;
+                var n = byCause[c] || 0;
+                var pct = rows.length ? Math.round(n / rows.length * 100) : 0;
+                sum += '<div class="meter-row"><span class="mlabel">' + CAUSES[c] + "</span>" +
+                    '<span class="meter"><i class="' + (c === "never" ? "amber" : (c === "rushed" ? "bad" : "")) +
+                    '" data-pct="' + pct + '"></i></span><span class="mval">' + n + "</span></div>";
+            }
+            var worst = null;
+            for (var d in byDomain) {
+                if (Object.prototype.hasOwnProperty.call(byDomain, d)) {
+                    if (!worst || byDomain[d] > byDomain[worst]) worst = d;
+                }
+            }
+            if (worst) {
+                sum += '<div class="callout tip" style="margin-top:.9rem"><span class="callout-title">Your pattern</span>' +
+                    "<p style=\"margin-bottom:0\">Most of your misses are in <strong>" + AP.escapeHtml(worst) +
+                    "</strong>" +
+                    ((byCause.rushed || 0) > rows.length / 3
+                        ? ", and more than a third are &ldquo;knew it, read past it&rdquo; \u2014 that is a pacing " +
+                          "and care problem. Slow down and read the last line of every question first."
+                        : ". Spend the next drill session there.") +
+                    "</p></div>";
+            }
+        } else {
+            sum = '<p class="muted" style="margin:0">Nothing logged yet. Add your first entry after the ' +
+                "baseline exam.</p>";
+        }
+        var sBox = document.getElementById("elSummary");
+        sBox.innerHTML = sum;
+        AP.autoFillMeters(sBox);
+
+        var t = "";
+        if (rows.length) {
+            t = '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+                "<th>Domain</th><th>Topic or rule</th><th>Cause</th><th>The fix</th><th></th>" +
+                "</tr></thead><tbody>";
+            for (var j = rows.length - 1; j >= 0; j--) {
+                var r = rows[j];
+                t += "<tr><td>" + AP.escapeHtml(r.domain) + "</td><td><strong>" + AP.escapeHtml(r.topic) +
+                    '</strong></td><td><span class="badge ' +
+                    (r.cause === "never" ? "amber" : (r.cause === "rushed" ? "bad" : "")) + '">' +
+                    CAUSES[r.cause] + "</span></td><td>" + AP.escapeHtml(r.note || "") +
+                    '</td><td><button class="btn ghost sm" data-del="' + j + '">Remove</button></td></tr>';
+            }
+            t += "</tbody></table></div>";
+        }
+        var tBox = document.getElementById("elTable");
+        tBox.innerHTML = t;
+        var dels = tBox.querySelectorAll("button[data-del]");
+        for (var k = 0; k < dels.length; k++) {
+            (function (b) {
+                b.onclick = function () {
+                    var idx = parseInt(b.getAttribute("data-del"), 10);
+                    var cur = logGet();
+                    cur.splice(idx, 1);
+                    logSet(cur);
+                    paintLog();
+                };
+            })(dels[k]);
+        }
+    }
+
+    function bindLog() {
+        var sel = document.getElementById("elDomain");
+        var opts = "";
+        var groups = [["Core 1", AP.CORE1], ["Core 2", AP.CORE2]];
+        for (var g = 0; g < groups.length; g++) {
+            opts += '<optgroup label="' + groups[g][0] + '">';
+            for (var i = 0; i < groups[g][1].length; i++) {
+                opts += "<option>" + groups[g][1][i].name + "</option>";
+            }
+            opts += "</optgroup>";
+        }
+        sel.innerHTML = opts;
+
+        document.getElementById("elAdd").onclick = function () {
+            var topic = document.getElementById("elTopic").value.trim();
+            if (!topic) { AP.toast("Give the entry a topic first."); return; }
+            var rows = logGet();
+            rows.push({
+                domain: sel.value,
+                topic: topic,
+                cause: document.getElementById("elCause").value,
+                note: document.getElementById("elNote").value.trim(),
+                at: Date.now()
+            });
+            logSet(rows);
+            document.getElementById("elTopic").value = "";
+            document.getElementById("elNote").value = "";
+            paintLog();
+            AP.toast("Logged.");
+        };
+
+        document.getElementById("elCopy").onclick = function () {
+            var rows = logGet();
+            if (!rows.length) { AP.toast("Nothing to copy yet."); return; }
+            var txt = "A+ error log \u2014 " + rows.length + " entries\n\n";
+            for (var i = 0; i < rows.length; i++) {
+                txt += (i + 1) + ". [" + rows[i].domain + "] " + rows[i].topic +
+                    "\n   Cause: " + CAUSES[rows[i].cause] +
+                    (rows[i].note ? "\n   Fix: " + rows[i].note : "") + "\n\n";
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(txt).then(function () { AP.toast("Copied."); },
+                    function () { AP.toast("Could not copy."); });
+            } else {
+                window.prompt("Copy your log:", txt);
+            }
+        };
+
+        document.getElementById("elClear").onclick = function () {
+            if (window.confirm("Delete every entry in the error log? This cannot be undone.")) {
+                logSet([]);
+                paintLog();
+                AP.toast("Log cleared.");
+            }
+        };
+
+        paintLog();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        bindCalc();
+        bindTimer();
+        bindFlashcards();
+        bindPorts();
+        bindLog();
+    });
+})();
+</script>
+</body>
+</html>

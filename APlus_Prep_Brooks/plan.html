@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 9-Day Plan &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="A day-by-day 9-day CompTIA A+ Core 1 study plan: a cold baseline exam, targeted domain repair, three timed practice exams, and a proper taper.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>The 9-Day Plan</h1>
+<p class="lede">Wednesday August 26 through Thursday September 3. Every day has a job. Three of them are
+    full practice exams, three of them are repairs aimed at what those exams found, and the last one is
+    deliberately easy so you arrive rested.</p>
+
+<div class="card" style="margin:1.5rem 0">
+    <div class="meter-row" style="margin-bottom:1rem">
+        <span class="mlabel"><strong>Overall progress</strong></span>
+        <span class="meter"><i class="good" id="progMeter" data-pct="0"></i></span>
+        <span class="mval" id="progTxt">0 / 0</span>
+    </div>
+    <div class="btn-row">
+        <button class="btn" id="todayBtn">Jump to today</button>
+        <button class="btn secondary" id="printBtn">Print the plan</button>
+        <button class="btn ghost" id="resetBtn">Clear all checkboxes</button>
+    </div>
+</div>
+
+<div class="callout tip">
+    <span class="callout-title">How to use this</span>
+    <p style="margin-bottom:0">Do the day you are on, check the boxes as you go, and stop when you are done.
+        Checkmarks save automatically in this browser. If you miss a day, do not double up the next day
+        &mdash; drop the lowest-value task instead and keep moving. With nine days, momentum beats volume.</p>
+</div>
+
+<div class="callout warn">
+    <span class="callout-title">The one rule that matters most</span>
+    <p style="margin-bottom:0">Never review a practice exam on the same day you take it. Your brain is
+        still defending its answers. Sleep on it, come back the next morning, and you will see mistakes
+        that were invisible the night before. Every exam day in this plan is followed by a repair day for
+        exactly that reason.</p>
+</div>
+
+<div id="planRoot"></div>
+
+<div class="card" style="margin-top:2rem;border-color:var(--good)">
+    <h2 style="margin-top:0">Friday, September 4 &mdash; Exam Day</h2>
+    <p>No studying. You have done the work. Two forms of ID, arrive thirty minutes early, do the
+        performance-based questions last, and answer every single question even if it is a guess.</p>
+    <p style="margin-bottom:0"><a href="index.html#main">Review the exam-day checklist &rarr;</a></p>
+</div>
+
+</div></main>
+
+<footer id="footer"></footer>
+
+<script>
+/* ============================================================
+   9-day plan data
+   tag: exam | ts | hw | net | mob | core2 | tools
+   ============================================================ */
+var BLOCKS = [
+    { n: 1, title: "Days 1\u20133 \u2014 Find the gaps, then attack the biggest one",
+      goal: "A cold baseline, an honest review, and a full day on the two domains that are half the exam.",
+      days: [1, 3] },
+    { n: 2, title: "Days 4\u20136 \u2014 Close the domains one at a time",
+      goal: "Second exam at the midpoint, then Networking and the smaller domains cleaned up.",
+      days: [4, 6] },
+    { n: 3, title: "Days 7\u20139 \u2014 Rehearse, repair, taper",
+      goal: "Dress rehearsal, one last targeted repair, then deliberately back off.",
+      days: [7, 9] }
+];
+
+var PLAN = [
+{ d:1, focus:"Baseline exam \u2014 before you study anything", min:120, isExam:true, tasks:[
+    { tag:"exam", text:"Read the home page. Learn the exam format, the 675 line, and the domain weights. Ten minutes, and it changes how you read every question after this.", href:"index.html" },
+    { tag:"exam", text:"<strong>Practice Exam 1</strong> \u2014 60 questions, 60 minutes, timed, phone in another room. Take it <em>cold</em>. Do not read a guide first.", href:"practice-exam-1.html" },
+    { tag:"tools", text:"Write down your scaled score and your five domain percentages. That is your map for the next eight days.", href:"tools.html#errorlog" },
+    { tag:"exam", text:"Do <em>not</em> review it today. Close the laptop. You will see twice as much tomorrow morning.", href:"" }
+]},
+{ d:2, focus:"Review Exam 1 + the troubleshooting method", min:110, isReview:true, tasks:[
+    { tag:"exam", text:"Review every missed question from Exam 1. Read the full explanation on each one \u2014 including the questions you guessed right, because a lucky guess is not knowledge.", href:"practice-exam-1.html" },
+    { tag:"tools", text:"Log every miss and tag its cause: (a) never knew the fact, (b) knew it and read past it, (c) misread the question. The three causes have three different fixes.", href:"tools.html#errorlog" },
+    { tag:"ts", text:"Read the Troubleshooting guide, especially the six-step methodology and the diagnostic ladder. This is 28% of the exam and the most commonly botched section.", href:"troubleshooting.html#methodology" },
+    { tag:"ts", text:"Drill: Symptom &rarr; Cause, the diagnostic drill", href:"drills.html?set=c1-troubleshooting" },
+    { tag:"tools", text:"Write your two weakest domains at the top of the error log. Tomorrow is built around them.", href:"tools.html#errorlog" }
+]},
+{ d:3, focus:"Hardware \u2014 the memorization day", min:120, tasks:[
+    { tag:"hw", text:"Read the Hardware guide down through storage and RAID. Do not try to memorize on the first pass \u2014 just see the whole map.", href:"hardware.html" },
+    { tag:"hw", text:"Drill: RAM, Storage Interfaces &amp; RAID", href:"drills.html?set=c1-memory-storage" },
+    { tag:"hw", text:"Drill: Power Supplies, Motherboards &amp; CPUs", href:"drills.html?set=c1-power-boards" },
+    { tag:"hw", text:"Memorize the laser printer imaging process in order. Say it out loud until it is automatic: processing, charging, exposing, developing, transferring, fusing, cleaning.", href:"hardware.html#printers" },
+    { tag:"tools", text:"Flashcards: the Hardware Specs and RAID &amp; Storage decks, one full pass each.", href:"tools.html#flashcards" }
+]},
+{ d:4, focus:"PRACTICE EXAM 2 + same-day review", min:150, isExam:true, tasks:[
+    { tag:"exam", text:"<strong>Practice Exam 2</strong> \u2014 60 questions, 60 minutes, timed. Start in the morning while you are fresh.", href:"practice-exam-2.html" },
+    { tag:"exam", text:"Take a real break. An hour minimum, out of the house if you can.", href:"" },
+    { tag:"exam", text:"Then review it. This is the one exception to the sleep-on-it rule \u2014 it is Saturday, you have the time, and there are only five days left.", href:"practice-exam-2.html" },
+    { tag:"tools", text:"Compare your Exam 1 and Exam 2 domain percentages. Anything weak on <em>both</em> is your real problem. Anything that fixed itself was a fluke, not a gap.", href:"tools.html#errorlog" },
+    { tag:"tools", text:"Count how many misses were &ldquo;knew it but read past it.&rdquo; If that number is high, your problem is pacing and care, not knowledge \u2014 and the fix is different.", href:"tools.html#errorlog" }
+]},
+{ d:5, focus:"Networking \u2014 the table day", min:110, tasks:[
+    { tag:"net", text:"Read the Networking guide. It is mostly four tables: ports, cable limits, Wi-Fi standards, and which tool for which job.", href:"networking.html" },
+    { tag:"net", text:"Drill: Ports, Protocols &amp; What Breaks Without Them", href:"drills.html?set=c1-ports" },
+    { tag:"net", text:"Drill: IP Addressing, DHCP, DNS &amp; APIPA", href:"drills.html?set=c1-ipaddressing" },
+    { tag:"net", text:"Drill: Cables, Connectors &amp; Distance Limits", href:"drills.html?set=c1-cabling" },
+    { tag:"tools", text:"Flashcards: the Ports &amp; Protocols deck twice through. Twenty-eight cards, and they are the cheapest points on the exam.", href:"tools.html#flashcards" }
+]},
+{ d:6, focus:"Wireless, mobile, cloud, printers", min:110, tasks:[
+    { tag:"net", text:"Drill: Wi-Fi Standards, Channels &amp; SOHO Setup", href:"drills.html?set=c1-wireless" },
+    { tag:"mob", text:"Read the Mobile &amp; Cloud guide. These two domains are 24% of the exam and almost pure vocabulary \u2014 the cheapest score increase available to you today.", href:"mobile-cloud.html" },
+    { tag:"mob", text:"Drill: Mobile Hardware, Connections &amp; Sync", href:"drills.html?set=c1-mobile" },
+    { tag:"mob", text:"Drill: Hypervisors, Cloud Models &amp; VDI", href:"drills.html?set=c1-cloud" },
+    { tag:"hw", text:"Drill: Printers \u2014 Process, Consumables &amp; Maintenance", href:"drills.html?set=c1-printers" },
+    { tag:"exam", text:"Set up for tomorrow: same start time as your real appointment, quiet room, phone away. Bed by 10:30.", href:"" }
+]},
+{ d:7, focus:"PRACTICE EXAM 3 \u2014 dress rehearsal", min:100, isExam:true, tasks:[
+    { tag:"exam", text:"<strong>Practice Exam 3</strong> \u2014 start at the exact clock time your real exam starts on Friday. Full rehearsal: same room, same chair, same breakfast.", href:"practice-exam-3.html" },
+    { tag:"tools", text:"Record the scaled score. If it is above 675 you are in range. If it is 640\u2013674, you are two days of targeted work away. If it is below 600, focus tomorrow entirely on Troubleshooting and Hardware.", href:"tools.html#errorlog" },
+    { tag:"exam", text:"No review today. Rest tonight.", href:"" }
+]},
+{ d:8, focus:"Final repair \u2014 nothing new after today", min:120, isReview:true, tasks:[
+    { tag:"exam", text:"Review every miss on Exam 3. Read the explanation on all of them, not just the ones that surprised you.", href:"practice-exam-3.html" },
+    { tag:"tools", text:"Reread your entire error log from the top. Cross off anything you now know cold. What is left is your real study list.", href:"tools.html#errorlog" },
+    { tag:"ts", text:"Re-drill your two weakest sets from the whole plan. Repeat drills are worth more than new ones this late.", href:"drills.html" },
+    { tag:"hw", text:"Say the laser printer process, the six troubleshooting steps, and the RAID minimums out loud from memory. If any of them stutter, drill that one now.", href:"hardware.html#cheatsheet" },
+    { tag:"exam", text:"Confirm the appointment: time, location or online-proctored setup, exam code 220-1101, and the two forms of ID. Do this today, not Thursday night.", href:"" }
+]},
+{ d:9, focus:"Taper \u2014 do not cram", min:50, isRest:true, tasks:[
+    { tag:"tools", text:"One relaxed sweep through all eight flashcard decks. Speed, not depth. You are keeping the machinery warm, not learning.", href:"tools.html#flashcards" },
+    { tag:"hw", text:"Read the four night-before cheat sheets once each: Hardware, Networking, Mobile &amp; Cloud, Troubleshooting. Once. Not twice.", href:"hardware.html#cheatsheet" },
+    { tag:"tools", text:"Read the top of your error log one final time. Then close it.", href:"tools.html#errorlog" },
+    { tag:"exam", text:"No practice questions today. None. Cramming the day before a certification exam reliably lowers scores.", href:"" },
+    { tag:"exam", text:"Lay out ID and clothes. Set two alarms. Stop everything by 8:00 pm. Lights out by 10:00.", href:"" }
+]}
+];
+
+(function () {
+    var TAGS  = { exam:"Exam", ts:"Troubleshoot", hw:"Hardware", net:"Network", mob:"Mobile/Cloud", core2:"Core 2", tools:"Tools" };
+    var TAGCLS = { exam:"tag-math", ts:"tag-writing", hw:"tag-reading", net:"tag-english",
+                   mob:"tag-science", core2:"tag-test", tools:"tag-test" };
+
+    function totalTasks() {
+        var n = 0;
+        for (var i = 0; i < PLAN.length; i++) n += PLAN[i].tasks.length;
+        return n;
+    }
+
+    function render() {
+        var root = document.getElementById("planRoot");
+        var today = AP.currentPlanDay();
+        var html = "";
+
+        for (var w = 0; w < BLOCKS.length; w++) {
+            var blk = BLOCKS[w];
+            html += '<div class="week-head"><h2>' + blk.title + "</h2>" +
+                '<span class="wgoal">' + blk.goal + "</span></div>";
+
+            for (var i = 0; i < PLAN.length; i++) {
+                var day = PLAN[i];
+                if (day.d < blk.days[0] || day.d > blk.days[1]) continue;
+
+                var date = AP.dateForDay(day.d);
+                var cls = "day-card";
+                if (day.d === today) cls += " is-today";
+                else if (day.d < today) cls += " is-past";
+
+                var hrs = day.min >= 120
+                    ? (Math.floor(day.min / 60) + " hr " + (day.min % 60 ? (day.min % 60) + " min" : ""))
+                    : day.min + " min";
+
+                var extra = "";
+                if (day.isExam) extra = ' <span class="badge amber">Full exam</span>';
+                else if (day.isReview) extra = ' <span class="badge teal">Repair day</span>';
+                else if (day.isRest) extra = ' <span class="badge good">Taper</span>';
+
+                html += '<div class="' + cls + '" id="day-' + day.d + '">' +
+                    '<div class="day-head">' +
+                    '<span class="day-chip">Day ' + day.d + "</span>" +
+                    '<span class="day-date">' + AP.fmtDate(date) + "</span>" +
+                    '<span class="day-focus">' + day.focus + extra + "</span>" +
+                    '<span class="day-time">' + hrs + "</span></div>";
+
+                for (var t = 0; t < day.tasks.length; t++) {
+                    var task = day.tasks[t];
+                    var key = "d" + day.d + "-" + t;
+                    var label = '<span class="tag ' + TAGCLS[task.tag] + '">' + TAGS[task.tag] + "</span>" + task.text;
+                    if (task.href) label += ' <a href="' + task.href + '" style="font-size:.85em">open &rarr;</a>';
+                    html += '<div class="task"><input type="checkbox" id="' + key + '" data-key="' + key + '">' +
+                        '<label for="' + key + '">' + label + "</label></div>";
+                }
+                html += "</div>";
+            }
+        }
+        root.innerHTML = html;
+
+        AP.onCheckChange = updateProgress;
+        AP.bindPersistentChecks("plan", root);
+        updateProgress(AP.store.get("plan", {}));
+        markCompleteDays();
+    }
+
+    function markCompleteDays() {
+        var state = AP.store.get("plan", {});
+        for (var i = 0; i < PLAN.length; i++) {
+            var day = PLAN[i], all = true;
+            for (var t = 0; t < day.tasks.length; t++) {
+                if (!state["d" + day.d + "-" + t]) { all = false; break; }
+            }
+            var node = document.getElementById("day-" + day.d);
+            if (node) node.classList.toggle("all-done", all);
+        }
+    }
+
+    function updateProgress(state) {
+        var done = 0, total = totalTasks();
+        for (var k in state) { if (Object.prototype.hasOwnProperty.call(state, k)) done++; }
+        AP.fillMeter(document.getElementById("progMeter"), Math.round(done / total * 100));
+        document.getElementById("progTxt").textContent = done + " / " + total;
+        markCompleteDays();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        render();
+
+        document.getElementById("todayBtn").onclick = function () {
+            var d = Math.min(AP.PLAN_DAYS, Math.max(1, AP.currentPlanDay()));
+            var node = document.getElementById("day-" + d);
+            if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
+            else AP.toast("The plan window has passed \u2014 it is exam day.");
+        };
+        document.getElementById("printBtn").onclick = function () { window.print(); };
+        document.getElementById("resetBtn").onclick = function () {
+            if (window.confirm("Uncheck every task in the whole plan?")) {
+                AP.store.set("plan", {});
+                render();
+                AP.toast("Plan reset.");
+            }
+        };
+
+        var d = AP.currentPlanDay();
+        if (d >= 1 && d <= AP.PLAN_DAYS) {
+            var node = document.getElementById("day-" + d);
+            if (node) window.setTimeout(function () {
+                node.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 350);
+        }
+    });
+})();
+</script>
+</body>
+</html>

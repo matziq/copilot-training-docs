@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile Devices, Virtualization &amp; Cloud &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="Study mobile devices, laptop hardware, virtualization, and cloud computing terms for CompTIA A+ Core 1.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Mobile Devices, Virtualization &amp; Cloud</h1>
+<p class="lede">These are domains 1.0 (<strong>13%</strong>) and 4.0 (<strong>11%</strong>) of Core 1 &mdash; together about a quarter of the exam, and both are heavy on vocabulary rather than hands-on skill, which makes them cheap points if the terms are memorized.</p>
+
+<section id="laptop-hardware">
+  <div class="week-head">
+    <h2>Laptop hardware and replaceable parts</h2>
+    <span class="wgoal">Know which part fixes which symptom before you open the case.</span>
+  </div>
+  <p>Laptop repair is about replaceable modules. CompTIA expects you to identify the most likely failed part, not to describe every screw. Start with model-specific documentation, remove power, disconnect the battery when possible, and protect small ribbon cables.</p>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-icon bad">!</div>
+      <h3 style="margin-top:0">Battery</h3>
+      <p>A swollen battery is a safety problem, not a calibration problem. Power down, stop using the device, do not puncture or compress it, and send it to approved recycling or vendor disposal.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon teal">R</div>
+      <h3 style="margin-top:0">RAM</h3>
+      <p>Laptop memory uses SODIMM modules. Ultrabooks, tablets, and many thin business laptops may have soldered memory that cannot be upgraded separately.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">S</div>
+      <h3 style="margin-top:0">Storage</h3>
+      <p>Older laptops commonly use 2.5-inch SATA drives. Modern systems commonly use M.2 SSDs; the connector shape does not automatically tell you whether the drive is SATA or NVMe.</p>
+    </div>
+  </div>
+  <p>The wireless card is usually a small M.2 or mini PCIe module. Its antenna leads route through the display hinge and into the display bezel, so weak Wi-Fi after a screen repair often points to a loose antenna lead, not the access point.</p>
+  <p>Input and media parts are also modular: keyboard, touchpad, webcam, microphone, speakers, plastics, frames, and the system board. A digitizer senses touch; the display panel creates the image; an inverter powers an older CCFL backlight.</p>
+  <div class="callout tip">
+    <span class="callout-title">Repair habit</span>
+    Photograph screw locations and cable routing before removal. Laptop screws may be different lengths, and one long screw in the wrong hole can crack a palm rest or display back cover.
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Symptom</th>
+          <th>Part to suspect</th>
+          <th>Why it fits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Battery bulges, case separates, trackpad rises</td>
+          <td>Battery</td>
+          <td>Swelling means gas buildup inside the cell pack; stop use and replace safely.</td>
+        </tr>
+        <tr>
+          <td>System shuts off when unplugged</td>
+          <td>Battery or DC jack</td>
+          <td>If it runs on AC but not battery, test battery health and charging circuitry.</td>
+        </tr>
+        <tr>
+          <td>Several adjacent keys fail</td>
+          <td>Keyboard</td>
+          <td>A matrix row or ribbon cable can fail while the rest of the laptop works.</td>
+        </tr>
+        <tr>
+          <td>Random freezes after memory upgrade</td>
+          <td>SODIMM RAM</td>
+          <td>Wrong speed, bad module, poor seating, or unsupported capacity causes instability.</td>
+        </tr>
+        <tr>
+          <td>Storage not detected after drop</td>
+          <td>2.5-inch SATA drive or M.2 SSD</td>
+          <td>Mechanical drives are vulnerable to shock; M.2 drives can loosen from the retaining screw.</td>
+        </tr>
+        <tr>
+          <td>Weak Wi-Fi only after display replacement</td>
+          <td>Wireless antenna lead</td>
+          <td>Antennas route through the hinge and bezel, so a disconnected lead kills range.</td>
+        </tr>
+        <tr>
+          <td>No camera image but privacy light works</td>
+          <td>Webcam module or cable</td>
+          <td>The device may be present but the video sensor or display cable connection is failed.</td>
+        </tr>
+        <tr>
+          <td>Voice sounds muffled in calls</td>
+          <td>Microphone assembly</td>
+          <td>Debris, liquid damage, or a failed mic board can affect only audio input.</td>
+        </tr>
+        <tr>
+          <td>Cursor jumps or click area does not respond</td>
+          <td>Touchpad</td>
+          <td>Touchpad assemblies fail from wear, swelling battery pressure, or loose ribbon cables.</td>
+        </tr>
+        <tr>
+          <td>Image is visible but touch does not work</td>
+          <td>Digitizer</td>
+          <td>The touch layer is separate from the display image on many devices.</td>
+        </tr>
+        <tr>
+          <td>Touch works but screen has cracks or colored lines</td>
+          <td>Display panel</td>
+          <td>Panel damage affects pixels, backlight diffusion, and image output.</td>
+        </tr>
+        <tr>
+          <td>Very dim image on older CCFL laptop</td>
+          <td>Inverter or CCFL backlight</td>
+          <td>The inverter supplies high voltage to the CCFL lamp; LED panels usually do not use a separate inverter.</td>
+        </tr>
+        <tr>
+          <td>No audio from built-in sound, headphones work</td>
+          <td>Speakers or speaker cable</td>
+          <td>Internal speakers can fail separately from the audio codec.</td>
+        </tr>
+        <tr>
+          <td>Charging port wiggles or only charges at an angle</td>
+          <td>DC jack or USB-C power board</td>
+          <td>Physical port damage is common and may be on a replaceable daughterboard.</td>
+        </tr>
+        <tr>
+          <td>Multiple unrelated devices fail at once</td>
+          <td>System board</td>
+          <td>Shared controller, power rail, or board damage can break several subsystems together.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="laptop-features">
+  <div class="week-head">
+    <h2>Laptop displays and special features</h2>
+    <span class="wgoal">Separate panel type, lighting, touch, and external expansion.</span>
+  </div>
+  <p>LCD panel terms describe the image technology. IPS usually gives better viewing angles and color. TN is inexpensive and fast but has weaker viewing angles. VA has strong contrast but can show slower pixel response. OLED lights each pixel individually and can deliver deep black levels, but burn-in risk is a classic tradeoff.</p>
+  <p>The backlight is the light source behind an LCD. Older CCFL panels use an inverter; modern LED-backlit LCD panels usually have LED driver circuitry instead. If a flashlight shows a faint desktop on a dark screen, the image path works and the lighting path is suspect.</p>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-icon teal">D</div>
+      <h3 style="margin-top:0">Docking station</h3>
+      <p>A docking station expands the laptop into a desktop setup with power, displays, network, audio, and USB devices. It may use USB-C, Thunderbolt, or a proprietary connector.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">P</div>
+      <h3 style="margin-top:0">Port replicator</h3>
+      <p>A port replicator mainly duplicates ports for convenience. On the exam, a docking station is the richer expansion answer; a port replicator is the simpler connection hub answer.</p>
+    </div>
+  </div>
+  <p>Wi-Fi antenna connectors are small snap-on leads near the wireless card. The leads are normally labeled main and auxiliary, then routed up through the hinge into the display bezel for better radio performance.</p>
+  <p>Camera, webcam, and microphone components are often grouped near the top display bezel. A privacy shutter, firmware setting, application permission, or driver issue can look like a hardware failure, so check the simple controls before replacing the module.</p>
+  <p>Touchscreen repairs require correct vocabulary. The digitizer detects touch input, the display panel presents the image, and the bezel or glass may be separate plastics. Replacing the wrong layer is an expensive exam trap.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Special key</th>
+          <th>Common marking</th>
+          <th>Exam meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dual displays</td>
+          <td>Monitor icon</td>
+          <td>Cycles internal, external, duplicate, and extend display modes.</td>
+        </tr>
+        <tr>
+          <td>Wireless on/off</td>
+          <td>Antenna icon</td>
+          <td>Disables or enables Wi-Fi radio independent of network settings.</td>
+        </tr>
+        <tr>
+          <td>Cellular on/off</td>
+          <td>Cell tower or WWAN icon</td>
+          <td>Controls the mobile broadband adapter when installed.</td>
+        </tr>
+        <tr>
+          <td>Volume</td>
+          <td>Speaker icons</td>
+          <td>Mutes, lowers, or raises audio without opening software controls.</td>
+        </tr>
+        <tr>
+          <td>Brightness</td>
+          <td>Sun icons</td>
+          <td>Changes display brightness and can explain a screen that appears dim.</td>
+        </tr>
+        <tr>
+          <td>Keyboard backlight</td>
+          <td>Keyboard light icon</td>
+          <td>Toggles illumination under the keys on supported laptops.</td>
+        </tr>
+        <tr>
+          <td>Touchpad toggle</td>
+          <td>Touchpad icon</td>
+          <td>Disables the built-in pointing device; check this before replacing hardware.</td>
+        </tr>
+        <tr>
+          <td>Screen orientation</td>
+          <td>Rotation icon</td>
+          <td>Locks or rotates the display, especially on convertible devices.</td>
+        </tr>
+        <tr>
+          <td>Media keys</td>
+          <td>Play, pause, skip</td>
+          <td>Controls playback and may share the function row.</td>
+        </tr>
+        <tr>
+          <td>Airplane mode</td>
+          <td>Airplane icon</td>
+          <td>Disables radios such as Wi-Fi, Bluetooth, and cellular.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout key">
+    <span class="callout-title">Physical security</span>
+    A laptop lock is a cable lock that attaches to a security slot. It deters grab-and-go theft; it does not encrypt data or stop someone with extended physical access.
+  </div>
+</section>
+
+<section id="mobile-connections">
+  <div class="week-head">
+    <h2>Mobile connectivity</h2>
+    <span class="wgoal">Memorize connector capabilities and Bluetooth order.</span>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-icon teal">C</div>
+      <h3 style="margin-top:0">USB-C</h3>
+      <p>USB-C is reversible and can carry power, USB data, audio, and video using alternate modes such as DisplayPort. Capability depends on the port, cable, and device.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">L</div>
+      <h3 style="margin-top:0">Lightning</h3>
+      <p>Lightning is Apple proprietary. It carries power and data and can support audio or video through adapters, but it is not a generic USB-C connector.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">M</div>
+      <h3 style="margin-top:0">Micro-USB</h3>
+      <p>Micro-USB is legacy, not reversible, and typically carries charging and USB 2.0 data. It usually needs adapters for video or special accessories.</p>
+    </div>
+  </div>
+  <h3>Bluetooth pairing order</h3>
+  <p>The exam likes this sequence because it is operational, not theoretical. Keep it exact.</p>
+  <ol>
+    <li>Enable Bluetooth on the mobile device.</li>
+    <li>Enable pairing or discovery mode on the accessory.</li>
+    <li>Find the device in the mobile Bluetooth list.</li>
+    <li>Enter or confirm the PIN, passcode, or pairing prompt.</li>
+    <li>Test connectivity by using the accessory.</li>
+  </ol>
+  <div class="callout trap">
+    <span class="callout-title">Bluetooth trap</span>
+    Do not test first and do not enter a PIN before discovery. Pairing is radio on &rarr; accessory discoverable &rarr; select device &rarr; PIN &rarr; test.
+  </div>
+  <p>NFC is short-range wireless. It is used for tap-to-pay, badge access, quick pairing, and small data exchanges. Its short range is a feature because it reduces accidental long-distance communication.</p>
+  <p>A hotspot turns the phone into a Wi-Fi access point for other devices. Tethering shares the phone connection with one device over USB, Bluetooth, or Wi-Fi. A hotspot is a common form of tethering, but tethering is the broader term.</p>
+  <p>Airplane mode disables radios for flight safety and troubleshooting. Users can often re-enable Wi-Fi or Bluetooth manually while airplane mode remains on, depending on the platform.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cellular term</th>
+          <th>What it means in practice</th>
+          <th>Exam cue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2G</td>
+          <td>Legacy voice, SMS, and very limited data.</td>
+          <td>Old, slow, and often retired.</td>
+        </tr>
+        <tr>
+          <td>3G</td>
+          <td>Mobile data good enough for basic browsing and email.</td>
+          <td>Older smartphone data generation.</td>
+        </tr>
+        <tr>
+          <td>4G LTE</td>
+          <td>Broadband mobile data, streaming, and stable hotspot use.</td>
+          <td>Common high-speed cellular answer.</td>
+        </tr>
+        <tr>
+          <td>5G</td>
+          <td>Higher bandwidth and lower latency when coverage and device support exist.</td>
+          <td>Newest generation, but coverage varies by band and carrier.</td>
+        </tr>
+        <tr>
+          <td>GSM</td>
+          <td>SIM-based cellular family used by many carriers worldwide.</td>
+          <td>SIM card association.</td>
+        </tr>
+        <tr>
+          <td>CDMA</td>
+          <td>Older carrier-controlled activation model without the same SIM assumption.</td>
+          <td>Legacy carrier compatibility question.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="mobile-config">
+  <div class="week-head">
+    <h2>Mobile application and email configuration</h2>
+    <span class="wgoal">Ports, profiles, and synchronization are recall points.</span>
+  </div>
+  <p>Personal email setup usually needs a username, password, mail server names, ports, encryption settings, and whether the account is POP3 or IMAP. Corporate email may add Exchange, ActiveSync, mobile device management, certificate trust, VPN, and security policy prompts.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Protocol</th>
+          <th>Port</th>
+          <th>What to remember</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>IMAP</td>
+          <td>143</td>
+          <td>Receives mail while leaving it synchronized on the server.</td>
+        </tr>
+        <tr>
+          <td>IMAP over SSL/TLS</td>
+          <td>993</td>
+          <td>Secure IMAP; this is the mobile-friendly receive option.</td>
+        </tr>
+        <tr>
+          <td>POP3</td>
+          <td>110</td>
+          <td>Downloads mail; less useful for multi-device synchronization.</td>
+        </tr>
+        <tr>
+          <td>POP3 over SSL/TLS</td>
+          <td>995</td>
+          <td>Secure POP3.</td>
+        </tr>
+        <tr>
+          <td>SMTP</td>
+          <td>25</td>
+          <td>Server-to-server mail transfer; often blocked for client sending.</td>
+        </tr>
+        <tr>
+          <td>SMTP submission</td>
+          <td>587</td>
+          <td>Authenticated client submission, commonly with STARTTLS.</td>
+        </tr>
+        <tr>
+          <td>SMTPS</td>
+          <td>465</td>
+          <td>SMTP over SSL/TLS; still appears in exam port questions.</td>
+        </tr>
+        <tr>
+          <td>Exchange ActiveSync</td>
+          <td>443</td>
+          <td>Corporate mail, calendar, contacts, policy, and remote management over HTTPS.</td>
+        </tr>
+        <tr>
+          <td>S/MIME</td>
+          <td>Uses certificates</td>
+          <td>Encrypts and digitally signs email; users need the right certificate installed.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-icon good">2</div>
+      <h3 style="margin-top:0">Two-factor authentication</h3>
+      <p>Mobile 2FA may use push approval, authenticator codes, SMS, phone calls, or hardware keys. App passwords may be required for legacy apps that cannot handle modern authentication.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon teal">M</div>
+      <h3 style="margin-top:0">MDM vs MAM</h3>
+      <p>MDM manages the device: passcode, encryption, remote wipe, Wi-Fi, VPN, and certificates. MAM manages the application and its data, often without controlling the entire device.</p>
+    </div>
+  </div>
+  <p>Enrollment usually installs a profile. That profile can configure corporate email, Wi-Fi, VPN, certificates, restrictions, and approved applications. Corporate application repositories let employees install approved internal apps without using a public app store.</p>
+  <p>Synchronization may include mail, calendar, contacts, photos, files, and bookmarks. Sync to cloud keeps data in a provider account such as iCloud, Google, OneDrive, or Exchange. Sync to desktop copies data to a local computer through a cable or desktop app.</p>
+  <p>Account requirements matter. The user must sign in to the correct account, have permission to sync the data type, and have storage capacity available. Data caps also matter because photo and file synchronization can burn cellular data quickly.</p>
+  <div class="callout key">
+    <span class="callout-title">Port memory</span>
+    Receive mail: IMAP 143 or 993, POP3 110 or 995. Send mail: SMTP 25, 587, or 465. Secure versions are the larger numbers in the IMAP and POP3 pairs.
+  </div>
+</section>
+
+<section id="virtualization">
+  <div class="week-head">
+    <h2>Virtualization</h2>
+    <span class="wgoal">Know the hypervisor layer, resource needs, and risks.</span>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Where it runs</th>
+          <th>Examples</th>
+          <th>Where it belongs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Type 1, bare-metal</td>
+          <td>Directly on hardware</td>
+          <td>VMware ESXi, Microsoft Hyper-V, Xen, KVM-based platforms</td>
+          <td>Servers, data centers, production virtualization</td>
+        </tr>
+        <tr>
+          <td>Type 2, hosted</td>
+          <td>On top of a host operating system</td>
+          <td>VirtualBox, VMware Workstation, VMware Fusion, Parallels Desktop</td>
+          <td>Technician labs, desktops, test VMs, training</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout trap">
+    <span class="callout-title">Most-missed distinction</span>
+    Type 1 does not mean cloud and Type 2 does not mean desktop hardware. The distinction is the layer: Type 1 runs on hardware; Type 2 runs inside a host OS.
+  </div>
+  <p>Resource requirements start with a CPU that supports virtualization extensions such as Intel VT-x or AMD-V. Those extensions may need to be enabled in UEFI. Without them, a VM may fail to start or run only limited features.</p>
+  <p>RAM must be sized for the host plus every running guest. Storage must hold virtual disks and snapshots. Network settings decide whether the VM is isolated, bridged onto the LAN, or hidden behind NAT.</p>
+  <p>Security requirements include patching the host, patching the guest, protecting VM images, using least privilege, and isolating risky test machines. A VM escape is an attack where code breaks out of the guest and affects the host or other guests.</p>
+  <p>VM sprawl happens when teams create many VMs and forget ownership, patching, cost, or purpose. Sprawl wastes storage and creates unmanaged attack surface.</p>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-icon teal">S</div>
+      <h3 style="margin-top:0">Sandboxing</h3>
+      <p>Run suspicious software or risky configuration changes in an isolated VM instead of on a production workstation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">T</div>
+      <h3 style="margin-top:0">Test development</h3>
+      <p>Build repeatable test systems, snapshots, and clean rollback points for developers and support teams.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon good">L</div>
+      <h3 style="margin-top:0">Legacy support</h3>
+      <p>Run an older OS or application when the current hardware or operating system no longer supports it directly.</p>
+    </div>
+  </div>
+  <p>Application virtualization separates an application from the local OS so it can be delivered, isolated, or streamed more easily. Cross-platform virtualization lets a user run software built for a different operating system, such as Windows software on a macOS host.</p>
+</section>
+
+<section id="cloud">
+  <div class="week-head">
+    <h2>Cloud computing</h2>
+    <span class="wgoal">Draw the service split and memorize the named characteristics.</span>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Provider manages</th>
+          <th>You manage</th>
+          <th>Concrete example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>IaaS</td>
+          <td>Data center, physical servers, storage, networking, virtualization layer</td>
+          <td>Operating system, patches, applications, data, identity decisions</td>
+          <td>A rented cloud VM running Windows Server or Linux</td>
+        </tr>
+        <tr>
+          <td>PaaS</td>
+          <td>Infrastructure, OS, runtime, scaling platform, managed database or app service</td>
+          <td>Application code, data, configuration, access rules</td>
+          <td>A managed web app platform or database service</td>
+        </tr>
+        <tr>
+          <td>SaaS</td>
+          <td>Almost the whole application stack and service operation</td>
+          <td>User accounts, data usage, settings, and access policy</td>
+          <td>Microsoft 365, Google Workspace, Salesforce, Dropbox</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid grid-4">
+    <div class="card">
+      <h3 style="margin-top:0">Public cloud</h3>
+      <p>Provider-owned services delivered over the internet to many customers.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Private cloud</h3>
+      <p>Cloud-style resources dedicated to one organization, on-premises or hosted.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Hybrid cloud</h3>
+      <p>Public and private resources connected so workloads or data can move between them.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Community cloud</h3>
+      <p>Shared by organizations with a common mission, compliance need, or industry requirement.</p>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Characteristic</th>
+          <th>Plain meaning</th>
+          <th>Exam phrase to connect</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Shared resources</td>
+          <td>Multiple customers or workloads use pooled compute, storage, and network resources with logical separation.</td>
+          <td>Resource pooling and multi-tenancy.</td>
+        </tr>
+        <tr>
+          <td>Rapid elasticity</td>
+          <td>Capacity can expand or shrink quickly as demand changes.</td>
+          <td>Scale out during peak demand, scale in when demand drops.</td>
+        </tr>
+        <tr>
+          <td>Metered utilization</td>
+          <td>Usage is measured for billing, reporting, chargeback, or capacity planning.</td>
+          <td>Pay for what you use.</td>
+        </tr>
+        <tr>
+          <td>High availability</td>
+          <td>Services are designed to keep running through component failures using redundancy.</td>
+          <td>Uptime, failover, resilient design.</td>
+        </tr>
+        <tr>
+          <td>File synchronization</td>
+          <td>Files update across devices through a cloud account.</td>
+          <td>OneDrive, iCloud, Google Drive, Dropbox style behavior.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>VDI on-premises runs virtual desktops from company-controlled servers. VDI in the cloud delivers desktops from a cloud provider, which can reduce local infrastructure but depends on internet connectivity, identity, licensing, and provider capacity.</p>
+  <p>Desktop virtualization is the broader idea of separating the desktop environment from the physical endpoint. VDI is one implementation. A local Type 2 VM running a second desktop OS is also desktop virtualization, but it is not cloud VDI.</p>
+  <div class="callout trap">
+    <span class="callout-title">Cloud trap</span>
+    SaaS is not just a website. SaaS means the provider operates the application for you. IaaS gives you the VM; PaaS gives you the runtime; SaaS gives you the finished app.
+  </div>
+</section>
+
+<section id="cheatsheet">
+  <div class="week-head">
+    <h2>The night-before sheet for these two domains</h2>
+    <span class="wgoal">Pure recall that turns into quick exam points.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Bluetooth order</h3>
+      <ol>
+        <li>Enable Bluetooth.</li>
+        <li>Enable pairing.</li>
+        <li>Find the device.</li>
+        <li>Enter the PIN.</li>
+        <li>Test connectivity.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Email ports</h3>
+      <p><span class="badge teal">IMAP</span> 143, 993 SSL</p>
+      <p><span class="badge amber">POP3</span> 110, 995 SSL</p>
+      <p><span class="badge accent">SMTP</span> 25, 587 submission, 465 SMTPS</p>
+    </div>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Type 1 vs Type 2</h3>
+      <p>Type 1 runs directly on hardware. Type 2 runs on a host operating system. The layer is the test.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">IaaS / PaaS / SaaS</h3>
+      <p>IaaS: you manage the OS. PaaS: you manage the app and data. SaaS: you mainly manage users, settings, and data.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">Five cloud characteristics</h3>
+    <p><span class="badge">Shared resources</span> <span class="badge">Rapid elasticity</span> <span class="badge">Metered utilization</span> <span class="badge">High availability</span> <span class="badge">File synchronization</span></p>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Recall symptom</th>
+          <th>Likely part</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Faint image on older CCFL display</td>
+          <td>Inverter or backlight</td>
+        </tr>
+        <tr>
+          <td>Image works, touch fails</td>
+          <td>Digitizer</td>
+        </tr>
+        <tr>
+          <td>Touch works, pixels are cracked or lined</td>
+          <td>Display panel</td>
+        </tr>
+        <tr>
+          <td>Weak Wi-Fi after display work</td>
+          <td>Antenna lead through bezel</td>
+        </tr>
+        <tr>
+          <td>Keyboard row fails</td>
+          <td>Keyboard or ribbon cable</td>
+        </tr>
+        <tr>
+          <td>Random freezes after upgrade</td>
+          <td>SODIMM RAM</td>
+        </tr>
+        <tr>
+          <td>Case bulges near palm rest</td>
+          <td>Swollen battery</td>
+        </tr>
+        <tr>
+          <td>No charge unless cable is angled</td>
+          <td>DC jack or USB-C power board</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="btn-row">
+    <a class="btn" href="drills.html?set=c1-mobile">Practice mobile drills</a>
+    <a class="btn secondary" href="drills.html?set=c1-cloud">Practice cloud drills</a>
+  </div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

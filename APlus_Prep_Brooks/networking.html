@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Networking &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="Networking study guide for CompTIA A+ Core 1 domain 2.0, focused on ports, addressing, wireless, SOHO, and tools.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Networking</h1>
+<p class="lede">Networking is domain 2.0, 23% of Core 1, and the domain where a handful of memorized tables &mdash; ports, cable limits, and Wi-Fi standards &mdash; converts directly into points.</p>
+
+<section id="ports">
+  <div class="week-head"><h2>Ports and protocols</h2><span class="wgoal">Memorize the port, transport, purpose, and failure symptom.</span></div>
+  <p>Port questions are free points if you drill them. The exam usually asks what service uses a port, which port must be opened, or which service is broken when traffic is blocked.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Port</th>
+      <th>Protocol</th>
+      <th>TCP/UDP</th>
+      <th>What it does</th>
+      <th>What breaks if it is blocked</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>20/21</td>
+      <td>FTP</td>
+      <td>TCP</td>
+      <td>Transfers files; 21 control, 20 data in active FTP.</td>
+      <td>Legacy FTP uploads/downloads fail.</td>
+    </tr>
+        <tr>
+      <td>22</td>
+      <td>SSH</td>
+      <td>TCP</td>
+      <td>Secure remote shell.</td>
+      <td>Secure command-line administration fails.</td>
+    </tr>
+        <tr>
+      <td>22</td>
+      <td>SFTP</td>
+      <td>TCP</td>
+      <td>Secure file transfer over SSH.</td>
+      <td>Secure file transfers using SFTP fail.</td>
+    </tr>
+        <tr>
+      <td>23</td>
+      <td>Telnet</td>
+      <td>TCP</td>
+      <td>Unencrypted remote terminal.</td>
+      <td>Legacy remote terminal access fails.</td>
+    </tr>
+        <tr>
+      <td>25</td>
+      <td>SMTP</td>
+      <td>TCP</td>
+      <td>Server-to-server mail transfer.</td>
+      <td>Mail servers cannot relay outbound mail normally.</td>
+    </tr>
+        <tr>
+      <td>53</td>
+      <td>DNS</td>
+      <td>UDP/TCP</td>
+      <td>Resolves names to addresses; TCP also used for zone transfers and large replies.</td>
+      <td>Names do not resolve, but direct IP access may still work.</td>
+    </tr>
+        <tr>
+      <td>67/68</td>
+      <td>DHCP</td>
+      <td>UDP</td>
+      <td>Assigns IP configuration; server 67, client 68.</td>
+      <td>Clients fail to lease addresses and may get APIPA.</td>
+    </tr>
+        <tr>
+      <td>80</td>
+      <td>HTTP</td>
+      <td>TCP</td>
+      <td>Unencrypted web traffic.</td>
+      <td>Plain web pages fail to load.</td>
+    </tr>
+        <tr>
+      <td>110</td>
+      <td>POP3</td>
+      <td>TCP</td>
+      <td>Downloads email from a mailbox.</td>
+      <td>POP mail clients cannot retrieve mail.</td>
+    </tr>
+        <tr>
+      <td>137&ndash;139</td>
+      <td>NetBIOS / NetBT</td>
+      <td>TCP/UDP</td>
+      <td>Legacy Windows name and session services.</td>
+      <td>Legacy Windows browsing or name services fail.</td>
+    </tr>
+        <tr>
+      <td>143</td>
+      <td>IMAP</td>
+      <td>TCP</td>
+      <td>Synchronizes email folders without removing mail from server.</td>
+      <td>IMAP clients cannot sync mail.</td>
+    </tr>
+        <tr>
+      <td>161/162</td>
+      <td>SNMP</td>
+      <td>UDP</td>
+      <td>Monitors and manages network devices; 162 receives traps.</td>
+      <td>Monitoring systems stop collecting device status or alerts.</td>
+    </tr>
+        <tr>
+      <td>389</td>
+      <td>LDAP</td>
+      <td>TCP/UDP</td>
+      <td>Directory queries.</td>
+      <td>Directory lookups and some authentication-related queries fail.</td>
+    </tr>
+        <tr>
+      <td>427</td>
+      <td>SLP</td>
+      <td>TCP/UDP</td>
+      <td>Service Location Protocol discovery.</td>
+      <td>Automatic service discovery may fail.</td>
+    </tr>
+        <tr>
+      <td>443</td>
+      <td>HTTPS</td>
+      <td>TCP</td>
+      <td>Encrypted web traffic.</td>
+      <td>Secure websites and many APIs fail.</td>
+    </tr>
+        <tr>
+      <td>445</td>
+      <td>SMB/CIFS</td>
+      <td>TCP</td>
+      <td>Windows file and printer sharing.</td>
+      <td>Mapped drives, shared folders, and SMB printing fail.</td>
+    </tr>
+        <tr>
+      <td>548</td>
+      <td>AFP</td>
+      <td>TCP</td>
+      <td>Apple Filing Protocol.</td>
+      <td>Legacy macOS file sharing fails.</td>
+    </tr>
+        <tr>
+      <td>587</td>
+      <td>SMTP submission</td>
+      <td>TCP</td>
+      <td>Authenticated email client submission.</td>
+      <td>Email clients cannot send through the submission server.</td>
+    </tr>
+        <tr>
+      <td>993</td>
+      <td>IMAPS</td>
+      <td>TCP</td>
+      <td>IMAP over TLS.</td>
+      <td>Secure IMAP mail sync fails.</td>
+    </tr>
+        <tr>
+      <td>995</td>
+      <td>POP3S</td>
+      <td>TCP</td>
+      <td>POP3 over TLS.</td>
+      <td>Secure POP mail retrieval fails.</td>
+    </tr>
+        <tr>
+      <td>3389</td>
+      <td>RDP</td>
+      <td>TCP/UDP</td>
+      <td>Remote Desktop Protocol.</td>
+      <td>Remote Desktop connections fail.</td>
+    </tr>
+  </tbody></table></div>
+  <div class="callout key"><span class="callout-title">Most common ports</span><p>Memorize 22 SSH/SFTP, 25 SMTP, 53 DNS, 67/68 DHCP, 80 HTTP, 443 HTTPS, 445 SMB, and 3389 RDP first. Those appear constantly.</p></div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>Telnet is port 23 and unencrypted. SSH is port 22 and encrypted. HTTP is port 80 and unencrypted. HTTPS is port 443 and encrypted.</p></div>
+  <div class="btn-row"><a class="btn sm" href="drills.html?set=c1-ports">Drill ports</a><a class="btn sm secondary" href="tools.html#ports">Use the port tool</a></div>
+</section>
+
+<section id="ip">
+  <div class="week-head"><h2>IP addressing</h2><span class="wgoal">Identify private ranges, APIPA, masks, gateways, and IPv6 basics.</span></div>
+  <p>IPv4 addresses are 32-bit addresses written as four decimal octets, such as 192.168.1.25. A host needs an IP address, subnet mask, default gateway, and DNS server to communicate normally on most networks.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Range</th>
+      <th>Name</th>
+      <th>What it means</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>10.0.0.0/8</td>
+      <td>Private IPv4</td>
+      <td>Used inside organizations; not routed on the public internet.</td>
+    </tr>
+        <tr>
+      <td>172.16.0.0/12</td>
+      <td>Private IPv4</td>
+      <td>Covers 172.16.0.0 through 172.31.255.255.</td>
+    </tr>
+        <tr>
+      <td>192.168.0.0/16</td>
+      <td>Private IPv4</td>
+      <td>Common home and SOHO range.</td>
+    </tr>
+        <tr>
+      <td>127.0.0.1</td>
+      <td>Loopback</td>
+      <td>Tests the local TCP/IP stack on the same host.</td>
+    </tr>
+        <tr>
+      <td>169.254.0.0/16</td>
+      <td>APIPA</td>
+      <td>Windows self-assigned address when DHCP fails.</td>
+    </tr>
+  </tbody></table></div>
+  <div class="callout key"><span class="callout-title">What APIPA proves</span><p>An APIPA address proves the client did not receive a usable DHCP lease. It does not prove the NIC is bad. Check DHCP reachability, VLAN, cable, Wi-Fi association, switch port, and DHCP scope availability.</p></div>
+  <h3>Subnet masks and CIDR</h3>
+  <p>A subnet mask separates the network portion from the host portion. CIDR notation writes the number of network bits after a slash.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>CIDR</th>
+      <th>Mask</th>
+      <th>Usable host cue</th>
+      <th>Common use</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>/24</td>
+      <td>255.255.255.0</td>
+      <td>254 usable hosts</td>
+      <td>Common small LAN.</td>
+    </tr>
+        <tr>
+      <td>/25</td>
+      <td>255.255.255.128</td>
+      <td>126 usable hosts</td>
+      <td>Splitting a /24 in half.</td>
+    </tr>
+        <tr>
+      <td>/26</td>
+      <td>255.255.255.192</td>
+      <td>62 usable hosts</td>
+      <td>Small department subnet.</td>
+    </tr>
+        <tr>
+      <td>/27</td>
+      <td>255.255.255.224</td>
+      <td>30 usable hosts</td>
+      <td>Small office segment.</td>
+    </tr>
+        <tr>
+      <td>/28</td>
+      <td>255.255.255.240</td>
+      <td>14 usable hosts</td>
+      <td>Very small subnet.</td>
+    </tr>
+        <tr>
+      <td>/30</td>
+      <td>255.255.255.252</td>
+      <td>2 usable hosts</td>
+      <td>Point-to-point IPv4 link.</td>
+    </tr>
+  </tbody></table></div>
+  <p>The default gateway is the router interface a host uses to reach other networks. Static addressing is manually assigned. DHCP automatically leases configuration from a scope. A DHCP reservation gives a device the same address from DHCP based on its MAC address.</p>
+  <p>IPv6 uses 128-bit addresses written in hexadecimal. Link-local addresses begin with <code>fe80::</code> and are used on the local link. IPv6 has no broadcast; it uses multicast and neighbor discovery. SLAAC lets a host create its own IPv6 address using router advertisements.</p>
+  <details class="acc"><summary>Annotated <code>ipconfig /all</code> walkthrough</summary><div class="acc-body"><pre><code>Ethernet adapter Ethernet:
+   Description . . . . . . . . . . . : Intel Ethernet Adapter
+   Physical Address. . . . . . . . . : 00-11-22-33-44-55
+   DHCP Enabled. . . . . . . . . . . : Yes
+   IPv4 Address. . . . . . . . . . . : 169.254.23.18
+   Subnet Mask . . . . . . . . . . . : 255.255.0.0
+   Default Gateway . . . . . . . . . :
+   DNS Servers . . . . . . . . . . . : 192.168.1.1</code></pre><p>Read it in order. DHCP is enabled, but the address is 169.254.x.x, so the client did not get a DHCP lease. The blank default gateway explains why it cannot reach other networks. DNS is listed, but name resolution may still fail because the host has no valid route.</p><p>If the address were 192.168.1.50 with mask 255.255.255.0 and gateway 192.168.1.1, then DHCP probably worked and you would move to DNS or upstream connectivity.</p></div></details>
+</section>
+
+<section id="dns">
+  <div class="week-head"><h2>DNS and DHCP</h2><span class="wgoal">Know name resolution, record types, DORA, and common failure patterns.</span></div>
+  <p>Name resolution commonly checks local cache first, then the hosts file, then the configured DNS server. If an IP address works but a name fails, suspect DNS before blaming the website.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Record</th>
+      <th>Purpose</th>
+      <th>Example use</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>A</td>
+      <td>Maps a hostname to an IPv4 address.</td>
+      <td><code>www</code> to 203.0.113.10.</td>
+    </tr>
+        <tr>
+      <td>AAAA</td>
+      <td>Maps a hostname to an IPv6 address.</td>
+      <td><code>www</code> to 2001:db8::10.</td>
+    </tr>
+        <tr>
+      <td>MX</td>
+      <td>Identifies mail exchangers for a domain.</td>
+      <td>Routes inbound email.</td>
+    </tr>
+        <tr>
+      <td>TXT</td>
+      <td>Stores text values used for verification and mail security.</td>
+      <td>SPF, DKIM, and DMARC records.</td>
+    </tr>
+        <tr>
+      <td>CNAME</td>
+      <td>Creates an alias to another hostname.</td>
+      <td><code>shop</code> points to hosted provider name.</td>
+    </tr>
+  </tbody></table></div>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Symptom</th>
+      <th>Likely cause</th>
+      <th>What to check</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>Name does not resolve but IP works.</td>
+      <td>DNS server, record, or client resolver issue.</td>
+      <td>DNS server address, <code>nslookup</code>, cache, hosts file.</td>
+    </tr>
+        <tr>
+      <td>Some sites fail but others work.</td>
+      <td>Bad cached record, filtering, upstream DNS issue, or domain-specific outage.</td>
+      <td>Flush cache, try another resolver, check content filtering.</td>
+    </tr>
+        <tr>
+      <td>Wrong site loads.</td>
+      <td>Wrong DNS record, poisoned cache, or hosts file override.</td>
+      <td>Hosts file, DNS cache, authoritative record.</td>
+    </tr>
+  </tbody></table></div>
+  <h3>DHCP DORA</h3>
+  <ol>
+    <li><strong>Discover:</strong> The client broadcasts to find DHCP servers.</li>
+    <li><strong>Offer:</strong> A DHCP server offers an address and options.</li>
+    <li><strong>Request:</strong> The client requests the offered lease.</li>
+    <li><strong>Acknowledge:</strong> The server confirms the lease.</li>
+  </ol>
+  <p>Scope exhaustion means the DHCP server has no available addresses to lease. A reservation is still managed by DHCP and is tied to a client identifier such as a MAC address. A static address is configured on the device itself. If the DHCP server is unreachable, Windows clients commonly self-assign APIPA addresses in 169.254.0.0/16.</p>
+</section>
+
+<section id="wireless">
+  <div class="week-head"><h2>Wireless</h2><span class="wgoal">Memorize Wi-Fi generations, bands, channels, and interference.</span></div>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Standard</th>
+      <th>Band</th>
+      <th>Max theoretical throughput</th>
+      <th>Channel widths</th>
+      <th>Typical range cue</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>802.11a</td>
+      <td>5 GHz</td>
+      <td>54 Mbps</td>
+      <td>20 MHz</td>
+      <td>Shorter range, less legacy interference.</td>
+    </tr>
+        <tr>
+      <td>802.11b</td>
+      <td>2.4 GHz</td>
+      <td>11 Mbps</td>
+      <td>20 MHz</td>
+      <td>Longer range, slow legacy standard.</td>
+    </tr>
+        <tr>
+      <td>802.11g</td>
+      <td>2.4 GHz</td>
+      <td>54 Mbps</td>
+      <td>20 MHz</td>
+      <td>Longer range, more interference.</td>
+    </tr>
+        <tr>
+      <td>802.11n</td>
+      <td>2.4 GHz and 5 GHz</td>
+      <td>600 Mbps</td>
+      <td>20/40 MHz</td>
+      <td>Better range with MIMO.</td>
+    </tr>
+        <tr>
+      <td>802.11ac</td>
+      <td>5 GHz</td>
+      <td>6.9 Gbps</td>
+      <td>20/40/80/160 MHz</td>
+      <td>High throughput, shorter than 2.4 GHz.</td>
+    </tr>
+        <tr>
+      <td>802.11ax</td>
+      <td>2.4 GHz, 5 GHz, and 6 GHz for Wi-Fi 6E</td>
+      <td>9.6 Gbps</td>
+      <td>20/40/80/160 MHz</td>
+      <td>Efficient in dense networks.</td>
+    </tr>
+  </tbody></table></div>
+  <p>2.4 GHz travels farther and penetrates walls better, but it is crowded and has only three non-overlapping 20 MHz channels in the United States: 1, 6, and 11. 5 GHz is faster and cleaner but has shorter range. 6 GHz offers more channels and less congestion, but it has shorter range and requires Wi-Fi 6E or newer support.</p>
+  <p>MIMO uses multiple antennas to send or receive multiple streams. MU-MIMO lets an access point communicate with multiple clients more efficiently instead of serving one client at a time.</p>
+  <p>Interference sources include microwaves, cordless phones, Bluetooth devices, neighboring access points, thick walls, metal shelving, elevators, and poorly planned channel overlap. Place APs high, central, and away from major obstructions. Use channel planning so neighboring APs do not fight on the same channel.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Technology</th>
+      <th>Range</th>
+      <th>Use case</th>
+      <th>Exam cue</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>Bluetooth</td>
+      <td>Personal area, commonly about 10 m for many devices.</td>
+      <td>Headsets, keyboards, mice, speakers.</td>
+      <td>Short-range peripheral pairing.</td>
+    </tr>
+        <tr>
+      <td>NFC</td>
+      <td>A few centimeters.</td>
+      <td>Tap-to-pay, badge tap, quick pairing.</td>
+      <td>Very close proximity.</td>
+    </tr>
+        <tr>
+      <td>RFID</td>
+      <td>Varies from centimeters to many meters.</td>
+      <td>Inventory tags, badges, asset tracking.</td>
+      <td>Tag identification.</td>
+    </tr>
+        <tr>
+      <td>Long-range fixed wireless</td>
+      <td>Miles with line of sight.</td>
+      <td>Building-to-building or rural ISP links.</td>
+      <td>Directional antennas and line of sight.</td>
+    </tr>
+  </tbody></table></div>
+</section>
+
+<section id="soho">
+  <div class="week-head"><h2>SOHO networks</h2><span class="wgoal">Configure a small router securely and know the feature tradeoffs.</span></div>
+  <p>A SOHO router usually combines router, switch, access point, firewall, DHCP server, and NAT in one box. The setup goal is simple: secure the admin plane, secure Wi-Fi, segment guests, and expose only what is required.</p>
+  <ol>
+    <li>Change the default administrator username and password.</li>
+    <li>Update firmware before placing the router into normal service.</li>
+    <li>Set a clear SSID; disable SSID broadcast only when policy requires it, because it is not strong security by itself.</li>
+    <li>Use WPA3-Personal when available, or WPA2-AES if WPA3 is unavailable.</li>
+    <li>Do not use WEP or WPA/TKIP; both are obsolete and insecure.</li>
+    <li>Create a guest network with client isolation so guests cannot reach internal systems.</li>
+    <li>Size the DHCP scope for expected clients and set reservations for infrastructure devices.</li>
+    <li>Use port forwarding only for required inbound services.</li>
+    <li>Disable UPnP unless there is a documented need.</li>
+    <li>Use content filtering and firewall rules to enforce the organization&rsquo;s policy.</li>
+    <li>Use a DMZ only when a host must be exposed; understand that it increases risk.</li>
+    <li>Save and document the configuration after testing.</li>
+  </ol>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Feature</th>
+      <th>What it does</th>
+      <th>Exam trap</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>Port forwarding</td>
+      <td>Always forwards a specific inbound port to an internal host.</td>
+      <td>Creates a persistent exposure.</td>
+    </tr>
+        <tr>
+      <td>Port triggering</td>
+      <td>Temporarily opens inbound traffic after an outbound trigger.</td>
+      <td>Dynamic and usually client-initiated.</td>
+    </tr>
+        <tr>
+      <td>UPnP</td>
+      <td>Lets devices request port mappings automatically.</td>
+      <td>Convenient but risky if malware abuses it.</td>
+    </tr>
+        <tr>
+      <td>DMZ</td>
+      <td>Places a host outside normal firewall protection or forwards most unsolicited inbound traffic to it.</td>
+      <td>Not the same as a secure enterprise DMZ design.</td>
+    </tr>
+  </tbody></table></div>
+</section>
+
+<section id="devices">
+  <div class="week-head"><h2>Network hardware</h2><span class="wgoal">Know what each device does and what failure looks like.</span></div>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Router</h3><p>Routes traffic between networks. If it fails, clients can reach local devices but not other networks or the internet.</p></div>
+    <div class="card"><h3 style="margin-top:0">Switch</h3><p>Connects devices within a LAN using MAC addresses. If it fails, wired LAN clients lose local connectivity.</p></div>
+    <div class="card"><h3 style="margin-top:0">Managed switch</h3><p>Supports VLANs, monitoring, trunking, and configuration. Misconfiguration can isolate ports or break VLAN access.</p></div>
+    <div class="card"><h3 style="margin-top:0">Unmanaged switch</h3><p>Basic plug-and-play switching. If it fails, connected devices lose link or cannot pass traffic.</p></div>
+    <div class="card"><h3 style="margin-top:0">Access point</h3><p>Provides Wi-Fi bridge access to the wired network. If it fails, wireless clients disconnect while wired clients may still work.</p></div>
+    <div class="card"><h3 style="margin-top:0">Firewall</h3><p>Filters traffic by rules. If misconfigured, allowed services are blocked or unwanted traffic is exposed.</p></div>
+    <div class="card"><h3 style="margin-top:0">Patch panel</h3><p>Terminates building cabling in a wiring closet. Bad punchdowns cause intermittent or dead wall jacks.</p></div>
+    <div class="card"><h3 style="margin-top:0">PoE switch/injector</h3><p>Provides power over Ethernet to APs, phones, and cameras. If the power budget is exceeded, devices may not boot or may reboot under load.</p></div>
+    <div class="card"><h3 style="margin-top:0">Hub vs switch</h3><p>A hub repeats traffic to all ports; a switch forwards intelligently. Hubs cause collisions and are legacy.</p></div>
+    <div class="card"><h3 style="margin-top:0">Cable modem</h3><p>Connects a customer network to a cable ISP over coax. Failure causes loss of ISP link while local LAN may remain up.</p></div>
+    <div class="card"><h3 style="margin-top:0">DSL modem</h3><p>Connects through telephone lines. Failure or missing filters can cause no sync or unstable service.</p></div>
+    <div class="card"><h3 style="margin-top:0">ONT</h3><p>Optical network terminal converts fiber service to customer Ethernet or voice. Failure drops fiber internet service.</p></div>
+    <div class="card"><h3 style="margin-top:0">NIC</h3><p>Network interface card provides wired or wireless network access. Failure causes no link, driver errors, or poor throughput.</p></div>
+    <div class="card"><h3 style="margin-top:0">SDN</h3><p>Software-defined networking centrally controls network behavior. Controller issues can affect many devices at once.</p></div>
+    <div class="card"><h3 style="margin-top:0">Load balancer</h3><p>Distributes client requests across servers. Failure causes application outages or uneven server load.</p></div>
+    <div class="card"><h3 style="margin-top:0">Proxy server</h3><p>Intermediates client web or application traffic. Failure causes browsing or app access issues even when direct network access works.</p></div>
+    <div class="card"><h3 style="margin-top:0">IDS vs IPS</h3><p>IDS detects and alerts; IPS can block. A bad IPS rule can stop legitimate traffic.</p></div>
+    <div class="card"><h3 style="margin-top:0">Spam gateway</h3><p>Filters inbound and outbound email. Failure can allow spam through or block legitimate mail.</p></div>
+  </div>
+</section>
+
+<section id="wan">
+  <div class="week-head"><h2>Internet connection types</h2><span class="wgoal">Choose the connection by speed, latency, availability, and location.</span></div>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Type</th>
+      <th>Typical speed</th>
+      <th>Latency</th>
+      <th>Best fit</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>Satellite</td>
+      <td>Broadband speeds vary widely.</td>
+      <td>High, especially geostationary satellite.</td>
+      <td>Remote areas with no wired option.</td>
+    </tr>
+        <tr>
+      <td>Fiber</td>
+      <td>High, often hundreds of Mbps to multi-gigabit.</td>
+      <td>Low.</td>
+      <td>Best performance where available.</td>
+    </tr>
+        <tr>
+      <td>Cable</td>
+      <td>High downstream, lower upstream on many plans.</td>
+      <td>Low to moderate.</td>
+      <td>Homes and small offices with coax provider service.</td>
+    </tr>
+        <tr>
+      <td>DSL</td>
+      <td>Lower than cable/fiber; distance sensitive.</td>
+      <td>Moderate.</td>
+      <td>Locations served by telephone lines.</td>
+    </tr>
+        <tr>
+      <td>Cellular</td>
+      <td>Varies by LTE/5G coverage and congestion.</td>
+      <td>Moderate to low on good 5G; variable.</td>
+      <td>Mobile access or backup WAN.</td>
+    </tr>
+        <tr>
+      <td>WISP</td>
+      <td>Varies by provider and line of sight.</td>
+      <td>Moderate.</td>
+      <td>Rural fixed wireless where cabling is unavailable.</td>
+    </tr>
+  </tbody></table></div>
+</section>
+
+<section id="tools">
+  <div class="week-head"><h2>Network tools</h2><span class="wgoal">Map the exact scenario to the exact tool.</span></div>
+  <p>This section trips people up because the answer is usually the tool, not the theory. Read the scenario and pick what a technician would physically use next.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr>
+      <th>Tool</th>
+      <th>What it is for</th>
+      <th>Exam scenario</th>
+    </tr>
+  </thead><tbody>
+
+        <tr>
+      <td>Crimper</td>
+      <td>Attaches RJ45 plugs to twisted-pair cable.</td>
+      <td>You made a patch cable and need to terminate the plug.</td>
+    </tr>
+        <tr>
+      <td>Cable tester</td>
+      <td>Checks continuity, shorts, opens, crossed pairs, and miswires.</td>
+      <td>A new cable run does not work and you need to verify pinout.</td>
+    </tr>
+        <tr>
+      <td>Wire stripper</td>
+      <td>Removes outer jacket without damaging conductors.</td>
+      <td>You are preparing cable before termination.</td>
+    </tr>
+        <tr>
+      <td>Punchdown tool</td>
+      <td>Seats wires into IDC terminals on patch panels and keystone jacks.</td>
+      <td>You are terminating a wall jack or patch panel.</td>
+    </tr>
+        <tr>
+      <td>Toner probe</td>
+      <td>Traces a cable through walls or bundles.</td>
+      <td>You need to find which cable in the closet goes to a specific office.</td>
+    </tr>
+        <tr>
+      <td>Loopback plug</td>
+      <td>Tests a network port&rsquo;s transmit/receive function.</td>
+      <td>You need to test whether a NIC or switch port can loop traffic.</td>
+    </tr>
+        <tr>
+      <td>Network tap</td>
+      <td>Copies traffic for analysis without disrupting the link.</td>
+      <td>You need to capture packets between two devices.</td>
+    </tr>
+        <tr>
+      <td>Wi-Fi analyzer</td>
+      <td>Shows SSIDs, signal strength, channels, and interference.</td>
+      <td>Wireless is slow and you suspect channel overlap or weak signal.</td>
+    </tr>
+        <tr>
+      <td>Multimeter</td>
+      <td>Measures voltage, resistance, and continuity.</td>
+      <td>You need to verify electrical power, PoE voltage, or a basic continuity condition.</td>
+    </tr>
+  </tbody></table></div>
+  <div class="callout trap"><span class="callout-title">Tool trap</span><p>Use a cable tester to verify a cable. Use a toner probe to find a cable. Use a punchdown tool for jacks and patch panels. Use a crimper for RJ45 plugs.</p></div>
+</section>
+
+<section id="cheatsheet">
+  <div class="week-head"><h2>The night-before networking sheet</h2><span class="wgoal">Pure recall to review right before the exam.</span></div>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Condensed ports</h3><ul>
+      <li>20/21 FTP, 22 SSH/SFTP, 23 Telnet.</li>
+      <li>25 SMTP, 587 SMTP submission.</li>
+      <li>53 DNS, 67/68 DHCP.</li>
+      <li>80 HTTP, 443 HTTPS.</li>
+      <li>110 POP3, 143 IMAP, 993 IMAPS, 995 POP3S.</li>
+      <li>137&ndash;139 NetBIOS, 445 SMB, 3389 RDP.</li>
+      <li>161/162 SNMP, 389 LDAP, 427 SLP, 548 AFP.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Cat cable limits</h3><ul>
+      <li>Cat 5: 100 Mbps / 100 m.</li>
+      <li>Cat 5e: 1 Gbps / 100 m.</li>
+      <li>Cat 6: 10 Gbps / 55 m, 1 Gbps / 100 m.</li>
+      <li>Cat 6a: 10 Gbps / 100 m.</li>
+      <li>Plenum is for air-handling spaces.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Wi-Fi recall</h3><ul>
+      <li>802.11a: 5 GHz, 54 Mbps.</li>
+      <li>802.11b: 2.4 GHz, 11 Mbps.</li>
+      <li>802.11g: 2.4 GHz, 54 Mbps.</li>
+      <li>802.11n: 2.4/5 GHz, 600 Mbps.</li>
+      <li>802.11ac: 5 GHz, 6.9 Gbps.</li>
+      <li>802.11ax: 2.4/5/6 GHz, 9.6 Gbps.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Addressing recall</h3><ul>
+      <li>Private: 10.0.0.0/8.</li>
+      <li>Private: 172.16.0.0/12.</li>
+      <li>Private: 192.168.0.0/16.</li>
+      <li>Loopback: 127.0.0.1.</li>
+      <li>APIPA: 169.254.0.0/16 means DHCP failed.</li>
+      <li>2.4 GHz non-overlapping channels: 1, 6, 11.</li>
+    </ul></div>
+  </div>
+  <div class="btn-row"><a class="btn" href="drills.html?set=c1-ports">Ports</a><a class="btn secondary" href="drills.html?set=c1-ipaddressing">IP addressing</a><a class="btn ghost" href="drills.html?set=c1-wireless">Wireless</a><a class="btn ghost" href="drills.html?set=c1-cabling">Cabling</a></div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

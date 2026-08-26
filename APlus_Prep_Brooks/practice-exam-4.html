@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core 2 Diagnostic &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="CompTIA A+ Core 2 (220-1102) diagnostic exam: 40 timed questions across Operating Systems, Security, Software Troubleshooting, and Operational Procedures.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+    <h1 class="no-print">Core 2 Diagnostic</h1>
+    <p class="lede no-print">Forty questions across the four 220-1102 domains. Passing Core 2 is
+        <strong>700</strong>, not 675.</p>
+    <div id="app"></div>
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/exam4.js"></script>
+<script src="assets/test-engine.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    AP.Test.mount({
+        el: document.getElementById("app"),
+        testId: "exam4",
+        core: "core2",
+        title: "Core 2 (220-1102) Diagnostic",
+        blurb: "Forty questions in forty-five minutes across Operating Systems, Security, Software Troubleshooting, and Operational Procedures. Use this as a baseline if Core 2 is the exam you booked for September 4, or as your first look at the second half of the certification once Core 1 is behind you. Note that Core 2 passes at 700, a higher bar than Core 1.",
+        sections: ["exam4"]
+    });
+});
+</script>
+</body>
+</html>

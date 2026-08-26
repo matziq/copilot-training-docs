@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Exam 2 &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="CompTIA A+ Core 1 practice exam 2: 60 timed questions weighted across the five 220-1101 domains, with scaled scoring and full review.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+    <h1 class="no-print">Practice Exam 2</h1>
+    <p class="lede no-print">Saturday, August 29 &mdash; the midpoint checkpoint.</p>
+    <div id="app"></div>
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/exam2.js"></script>
+<script src="assets/test-engine.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    AP.Test.mount({
+        el: document.getElementById("app"),
+        testId: "exam2",
+        core: "core1",
+        title: "Practice Exam 2 \u2014 Checkpoint",
+        blurb: "Sixty questions in sixty minutes, same domain weighting as Exam 1 but a harder question set. The number that matters here is not the total \u2014 it is whether the two domains you were weakest in on Exam 1 moved. A flat total with a fixed weak domain is real progress. Your answers save automatically.",
+        sections: ["exam2"]
+    });
+});
+</script>
+</body>
+</html>

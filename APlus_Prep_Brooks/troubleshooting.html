@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardware &amp; Network Troubleshooting &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="Practice mapping Core 1 hardware, printer, mobile, display, storage, and network symptoms to likely causes.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Hardware &amp; Network Troubleshooting</h1>
+<p class="lede">This is domain 5.0 and <strong>28% of Core 1 &mdash; the single largest domain on the exam</strong>, larger than Hardware. It is scenario-based rather than recall-based, so the way to raise the score here is to practice mapping symptom to most likely cause.</p>
+
+<section id="methodology">
+  <div class="week-head">
+    <h2>The six-step methodology</h2>
+    <span class="wgoal">Answer next-step questions by following the official order.</span>
+  </div>
+  <ol>
+    <li>
+      <strong>Identify the problem.</strong>
+      <p>Gather information from the user, identify user changes, inquire regarding environmental or infrastructure changes, and back up before making changes, if applicable. Do not jump straight to replacement parts when the scenario is still describing discovery.</p>
+    </li>
+    <li>
+      <strong>Establish a theory of probable cause.</strong>
+      <p>Question the obvious first: power, cables, link lights, paper, toner, brightness, mute, airplane mode, and recent changes. Consider multiple approaches. Divide and conquer by testing at the midpoint, such as local machine versus network path.</p>
+    </li>
+    <li>
+      <strong>Test the theory to determine the cause.</strong>
+      <p>Run the test that proves or disproves the theory. Once confirmed, determine next steps to resolve the problem. If the theory is not confirmed, re-establish a new theory or escalate when the problem is outside your scope.</p>
+    </li>
+    <li>
+      <strong>Establish a plan of action to resolve the problem and implement the solution.</strong>
+      <p>Choose the fix, consider risk, schedule downtime when needed, and refer to vendor documentation for guidance. This is where you replace the failed part, change the configuration, clear the jam, or apply the approved patch.</p>
+    </li>
+    <li>
+      <strong>Verify full system functionality and, if applicable, implement preventive measures.</strong>
+      <p>Prove the system works from the user&rsquo;s perspective. Then prevent recurrence when possible: update firmware, improve airflow, replace worn rollers, secure cables, document settings, or educate the user.</p>
+    </li>
+    <li>
+      <strong>Document the findings, actions, and outcomes.</strong>
+      <p>Record the symptom, cause, tests, fix, parts used, configuration changes, and final result. Documentation helps the next technician and is often the final step in next-action questions.</p>
+    </li>
+  </ol>
+  <div class="callout key">
+    <span class="callout-title">Next means next</span>
+    The exam constantly asks what the technician should do NEXT. The answer is nearly always the next step in this list, not the most technically clever action.
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Scenario snippet</th>
+          <th>Correct next step</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>User says the laptop stopped working after moving desks.</td>
+          <td>Identify the problem.</td>
+          <td>Ask about user changes and environmental changes before testing parts.</td>
+        </tr>
+        <tr>
+          <td>You know the printer jams, but no one has checked the paper tray.</td>
+          <td>Establish a theory of probable cause.</td>
+          <td>Question the obvious before disassembling the printer.</td>
+        </tr>
+        <tr>
+          <td>You think DNS is failing and need proof.</td>
+          <td>Test the theory.</td>
+          <td>Run <code>nslookup</code> or ping a hostname after testing a public IP.</td>
+        </tr>
+        <tr>
+          <td>The failed SSD is confirmed and backups exist.</td>
+          <td>Establish and implement a plan.</td>
+          <td>The cause is known, so perform the approved replacement or restore.</td>
+        </tr>
+        <tr>
+          <td>The user can print again after you restart the spooler.</td>
+          <td>Verify full functionality.</td>
+          <td>Print a test page and confirm the user workflow, then prevent recurrence.</td>
+        </tr>
+        <tr>
+          <td>The fix is complete and the user confirms success.</td>
+          <td>Document findings, actions, and outcomes.</td>
+          <td>Documentation comes after verification.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="motherboard-cpu-power">
+  <div class="week-head">
+    <h2>Motherboard, CPU, RAM, and power symptoms</h2>
+    <span class="wgoal">Match power and POST symptoms to the safest first check.</span>
+  </div>
+  <div class="callout warn">
+    <span class="callout-title">Electrical safety</span>
+    If you see smoke, smell burning, hear arcing, or see a swollen battery or bulging capacitor, stop, unplug power, remove the battery if it is safe and removable, and do not keep testing by repeatedly powering on the system.
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Symptom</th>
+          <th>Most likely cause</th>
+          <th>First thing to check</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>No power at all</td>
+          <td>Bad outlet, AC adapter, power supply, DC jack, battery, or motherboard power rail</td>
+          <td>Verify outlet, power cable, adapter LED, and known-good power source.</td>
+        </tr>
+        <tr>
+          <td>POST beeps</td>
+          <td>Firmware detected hardware fault such as RAM, video, CPU, or board issue</td>
+          <td>Look up the beep pattern in vendor documentation.</td>
+        </tr>
+        <tr>
+          <td>POST code on display or board</td>
+          <td>Hardware initialization stopped at a vendor-specific checkpoint</td>
+          <td>Check the motherboard manual or service guide for that code.</td>
+        </tr>
+        <tr>
+          <td>No display but fans spin</td>
+          <td>Display output, GPU, RAM, firmware, or monitor input problem</td>
+          <td>Check monitor power/input/cable, then reseat RAM and test external display.</td>
+        </tr>
+        <tr>
+          <td>Intermittent shutdown</td>
+          <td>Loose power connection, overheating, failing PSU, failing battery, or motherboard fault</td>
+          <td>Check event timing, temperatures, power connection, and logs.</td>
+        </tr>
+        <tr>
+          <td>Sudden shutdown under load</td>
+          <td>Thermal protection or insufficient power delivery</td>
+          <td>Inspect heatsink, fan, vents, thermal paste, and PSU capacity.</td>
+        </tr>
+        <tr>
+          <td>System does not boot after RAM upgrade</td>
+          <td>Unsupported RAM, bad module, incorrect seating, or wrong slot population</td>
+          <td>Reseat the memory and test one known-good compatible module.</td>
+        </tr>
+        <tr>
+          <td>Continuous reboots</td>
+          <td>Bad update, thermal issue, power problem, RAM fault, or boot configuration loop</td>
+          <td>Boot to recovery or safe mode and check recent changes and temperatures.</td>
+        </tr>
+        <tr>
+          <td>Burning smell</td>
+          <td>Electrical short, failed PSU, overheated component, or damaged cable</td>
+          <td>Power off, unplug, and visually inspect before further testing.</td>
+        </tr>
+        <tr>
+          <td>Smoke</td>
+          <td>Active electrical failure</td>
+          <td>Disconnect power immediately and do not re-energize until repaired.</td>
+        </tr>
+        <tr>
+          <td>Distended or swollen capacitors</td>
+          <td>Failing motherboard or power supply capacitors</td>
+          <td>Inspect the board and replace the affected assembly.</td>
+        </tr>
+        <tr>
+          <td>Overheating</td>
+          <td>Blocked airflow, dust, bad fan, poor heatsink contact, or failed thermal compound</td>
+          <td>Check vents, fan operation, heatsink seating, and temperature readings.</td>
+        </tr>
+        <tr>
+          <td>Thermal throttling</td>
+          <td>CPU or GPU reduces speed to protect itself from heat</td>
+          <td>Monitor temperatures under load and clean cooling path.</td>
+        </tr>
+        <tr>
+          <td>Loud or grinding fan</td>
+          <td>Dust buildup, failing bearing, cable touching blades, or unbalanced fan</td>
+          <td>Inspect and clean the fan; replace it if the bearing grinds.</td>
+        </tr>
+        <tr>
+          <td>Clock drift</td>
+          <td>Dead CMOS battery or time synchronization disabled</td>
+          <td>Replace CMOS battery and verify date/time settings.</td>
+        </tr>
+        <tr>
+          <td>Losing BIOS settings</td>
+          <td>Dead CMOS battery</td>
+          <td>Replace the CMOS battery, then reconfigure firmware settings.</td>
+        </tr>
+        <tr>
+          <td>Inaccurate system date/time</td>
+          <td>CMOS battery, time zone, or NTP sync problem</td>
+          <td>Check firmware clock, OS time zone, and time sync status.</td>
+        </tr>
+        <tr>
+          <td>Unexpected shutdowns</td>
+          <td>Thermal, power, battery, OS crash, or failing motherboard</td>
+          <td>Check logs, temperature, PSU output, and whether shutdowns happen under load.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="storage-raid">
+  <div class="week-head">
+    <h2>Storage and RAID symptoms</h2>
+    <span class="wgoal">Protect data first, then repair hardware or arrays.</span>
+  </div>
+  <p>Storage troubleshooting begins with data preservation. If a drive is still readable but showing SMART failure, clicking, corruption, or extended read/write times, the right first answer is often to back up the data immediately before running destructive tests.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Symptom</th>
+          <th>Likely cause</th>
+          <th>First response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LED status indicator is amber or red</td>
+          <td>Drive fault, array fault, or enclosure warning</td>
+          <td>Check vendor meaning for that LED and verify backups before replacement.</td>
+        </tr>
+        <tr>
+          <td>Grinding noise</td>
+          <td>Mechanical hard drive failure</td>
+          <td>Back up immediately if possible and replace the drive.</td>
+        </tr>
+        <tr>
+          <td>Clicking noise</td>
+          <td>Failing hard drive actuator or head assembly</td>
+          <td>Stop unnecessary writes, back up data, and plan replacement.</td>
+        </tr>
+        <tr>
+          <td>Bootable device not found</td>
+          <td>Wrong boot order, disconnected drive, failed drive, damaged boot loader, or missing OS</td>
+          <td>Check firmware boot order and whether the drive is detected.</td>
+        </tr>
+        <tr>
+          <td>Data loss</td>
+          <td>Deleted files, failing media, malware, corruption, or accidental formatting</td>
+          <td>Stop writing to the disk and restore from backup or image the drive.</td>
+        </tr>
+        <tr>
+          <td>Data corruption</td>
+          <td>Failing storage, unsafe shutdowns, bad RAM, file system damage, or malware</td>
+          <td>Back up readable data, then check SMART and file system health.</td>
+        </tr>
+        <tr>
+          <td>RAID failure</td>
+          <td>One or more member disks failed or the controller lost metadata</td>
+          <td>Identify the failed member and follow controller documentation.</td>
+        </tr>
+        <tr>
+          <td>SMART failure warning</td>
+          <td>Drive predicts impending failure</td>
+          <td>Back up the data immediately and replace the drive.</td>
+        </tr>
+        <tr>
+          <td>Extended read/write times</td>
+          <td>Failing drive, bad sectors, full disk, low memory, or heavy background I/O</td>
+          <td>Check disk health and back up before stress testing.</td>
+        </tr>
+        <tr>
+          <td>Drive missing in the OS</td>
+          <td>Loose cable, disabled port, driver issue, failed drive, or uninitialized disk</td>
+          <td>Check BIOS/UEFI detection, cables, Device Manager, and Disk Management.</td>
+        </tr>
+        <tr>
+          <td>RAID not found</td>
+          <td>Controller disabled, metadata lost, failed controller, missing member, or changed firmware mode</td>
+          <td>Do not initialize disks; check controller settings and array metadata.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A RAID rebuild copies parity or mirror data onto a replacement drive so the array returns to a redundant state. During a rebuild the array is vulnerable, performance is lower, and another disk failure can cause data loss depending on the RAID level.</p>
+  <p><strong>RAID not found</strong> usually means the controller cannot identify the array metadata or the controller mode changed. Initializing the disks can destroy recovery options, so verify configuration and backups first.</p>
+  <div class="callout trap">
+    <span class="callout-title">RAID trap</span>
+    RAID is availability, not backup. A rebuild restores redundancy after a disk replacement; it does not recover deleted files or protect against corruption copied across the array.
+  </div>
+</section>
+
+<section id="display">
+  <div class="week-head">
+    <h2>Display symptoms</h2>
+    <span class="wgoal">Separate input source, cable, backlight, inverter, and panel failures.</span>
+  </div>
+  <p>Start with the simple chain: power, input source, cable, adapter, brightness, and known-good display. Incorrect data source means the monitor or projector is listening on HDMI 2 while the cable is on HDMI 1, DisplayPort, USB-C, or VGA.</p>
+  <p>Physical cabling issues cause no signal, flicker, intermittent image, wrong resolution, sparkles, or audio loss over HDMI or DisplayPort. Reseat both ends and test a known-good cable before replacing a display.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Symptom</th>
+          <th>Likely cause</th>
+          <th>Best diagnostic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Incorrect data source</td>
+          <td>Wrong monitor or projector input selected</td>
+          <td>Select the input that matches the connected cable.</td>
+        </tr>
+        <tr>
+          <td>Fuzzy image</td>
+          <td>Wrong resolution, analog VGA quality, scaling, or bad cable</td>
+          <td>Set native resolution and test a digital cable.</td>
+        </tr>
+        <tr>
+          <td>Dim image</td>
+          <td>Brightness setting, failing backlight, or older CCFL inverter failure</td>
+          <td>Raise brightness and shine a flashlight at the screen.</td>
+        </tr>
+        <tr>
+          <td>Flickering</td>
+          <td>Loose cable, failing backlight, refresh mismatch, GPU issue, or power problem</td>
+          <td>Reseat cable and test another display or source.</td>
+        </tr>
+        <tr>
+          <td>Artifacts or distortion</td>
+          <td>GPU, video memory, overheating, driver, or panel damage</td>
+          <td>Test external display and update or roll back video driver.</td>
+        </tr>
+        <tr>
+          <td>Dead pixels</td>
+          <td>Failed pixels in LCD or OLED panel</td>
+          <td>Use a solid-color test and check warranty threshold.</td>
+        </tr>
+        <tr>
+          <td>No audio over HDMI or DisplayPort</td>
+          <td>Wrong playback device, cable issue, adapter limitation, or monitor audio disabled</td>
+          <td>Select the digital display audio device in sound settings.</td>
+        </tr>
+        <tr>
+          <td>Incorrect color display</td>
+          <td>Loose analog pins, cable issue, wrong color profile, night light, or panel fault</td>
+          <td>Check cable, color profile, and display settings.</td>
+        </tr>
+        <tr>
+          <td>Projector overheats and shuts down</td>
+          <td>Blocked vents, dust, failing fan, or burned-out bulb area overheating</td>
+          <td>Clean filters, check fan, and allow proper cooldown.</td>
+        </tr>
+        <tr>
+          <td>Burned-out bulb</td>
+          <td>Projector lamp reached end of life</td>
+          <td>Check lamp hours and replace the lamp module.</td>
+        </tr>
+        <tr>
+          <td>Failing panel</td>
+          <td>Damaged LCD matrix, connector, or internal electronics</td>
+          <td>Compare internal and external display behavior.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The flashlight test separates backlight from panel. If you shine a bright flashlight at an apparently black laptop screen and can faintly see the desktop, the panel is drawing the image and the backlight or inverter path is the problem.</p>
+  <div class="callout key">
+    <span class="callout-title">Display trap</span>
+    A dark screen is not automatically a bad panel. On older CCFL laptops, a failed inverter can leave a faint image that only appears under a flashlight.
+  </div>
+</section>
+
+<section id="mobile-symptoms">
+  <div class="week-head">
+    <h2>Mobile device symptoms</h2>
+    <span class="wgoal">Treat physical damage and battery swelling as safety-first issues.</span>
+  </div>
+  <p>Poor or no connectivity can come from airplane mode, disabled Wi-Fi, weak signal, wrong SSID, bad password, captive portal, cellular outage, disabled mobile data, SIM problems, or MDM restrictions. Check radios and signal before resetting the device.</p>
+  <p>If the screen does not autorotate, check orientation lock first. Then test the accelerometer or gyroscope, update the OS, and inspect for physical or liquid damage.</p>
+  <p>Physically damaged ports cause intermittent charging, no data transfer, bent pins, loose cable fit, or debris-packed connectors. Do not force a connector; inspect and clean carefully with power removed.</p>
+  <p>A malfunctioning digitizer causes dead touch zones, phantom touches, or no touch response while the image still displays. A cracked display panel affects image output; a cracked digitizer affects touch input.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Battery symptom</th>
+          <th>Most likely cause</th>
+          <th>Mandatory response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rapid drain</td>
+          <td>Aging battery, high screen brightness, background apps, weak cellular signal, or sync load</td>
+          <td>Check battery health, app usage, radios, brightness, and sync settings.</td>
+        </tr>
+        <tr>
+          <td>Swollen battery</td>
+          <td>Internal battery failure and gas buildup</td>
+          <td>Power down, stop charging, do not puncture, isolate safely, and use approved disposal or recycling.</td>
+        </tr>
+        <tr>
+          <td>Overheating</td>
+          <td>High workload, poor ventilation, failing battery, charger issue, or environmental heat</td>
+          <td>Remove case if needed, stop heavy use, check charger, and inspect battery health.</td>
+        </tr>
+        <tr>
+          <td>Liquid damage</td>
+          <td>Conductive residue, corrosion, short circuits, or contaminated connectors</td>
+          <td>Power off, do not charge, disconnect power, and follow repair or replacement procedure.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn">
+    <span class="callout-title">Swollen battery rule</span>
+    Never press, bend, pierce, or heat a swollen lithium battery. The exam answer is safe handling and proper disposal, not continued charging or calibration.
+  </div>
+</section>
+
+<section id="printers">
+  <div class="week-head">
+    <h2>Printer symptoms</h2>
+    <span class="wgoal">Map the defect to the paper path, image path, fuser, or driver.</span>
+  </div>
+  <p>Printer questions often give the defect and ask for the failed component. Laser printers create, transfer, and fuse toner. Inkjet printers spray ink through printheads. Thermal printers use heat-sensitive media or ribbons. Impact printers strike an ink ribbon.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Defect</th>
+          <th>Most likely cause</th>
+          <th>Component cue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lines down the page or vertical streaks</td>
+          <td>Dirty corona wire, damaged drum, toner cartridge issue, or debris in paper path</td>
+          <td>Drum or cartridge</td>
+        </tr>
+        <tr>
+          <td>Horizontal lines</td>
+          <td>Dirty printhead, failing drum, damaged transfer roller, or repeated defect interval</td>
+          <td>Drum or printhead</td>
+        </tr>
+        <tr>
+          <td>Ghost images</td>
+          <td>Drum not fully cleaned or fuser temperature problem</td>
+          <td>Drum or fuser</td>
+        </tr>
+        <tr>
+          <td>Toner not fusing to the paper</td>
+          <td>Fuser not heating or wrong media type</td>
+          <td>Fuser</td>
+        </tr>
+        <tr>
+          <td>Faded print</td>
+          <td>Low toner, draft mode, clogged inkjet nozzles, or transfer problem</td>
+          <td>Toner, printhead, or transfer roller</td>
+        </tr>
+        <tr>
+          <td>Garbled print</td>
+          <td>Wrong driver, corrupted print job, bad cable, or printer language mismatch</td>
+          <td>Driver or spooler</td>
+        </tr>
+        <tr>
+          <td>Double or echo images</td>
+          <td>Ghosting from drum or fuser issue</td>
+          <td>Drum or fuser</td>
+        </tr>
+        <tr>
+          <td>Incorrect page orientation</td>
+          <td>Application setting, print driver setting, or tray configuration</td>
+          <td>Driver or application</td>
+        </tr>
+        <tr>
+          <td>Multipage misfeed</td>
+          <td>Worn pickup rollers, wrong paper, humidity, or separation pad issue</td>
+          <td>Pickup rollers</td>
+        </tr>
+        <tr>
+          <td>Paper not feeding</td>
+          <td>Empty tray, worn pickup rollers, bad tray sensor, or incorrect paper size</td>
+          <td>Pickup rollers or tray</td>
+        </tr>
+        <tr>
+          <td>Paper jams</td>
+          <td>Obstruction, worn rollers, wrong media, damaged paper path, or fuser exit problem</td>
+          <td>Rollers, path, or fuser</td>
+        </tr>
+        <tr>
+          <td>Creased paper</td>
+          <td>Paper path obstruction, worn rollers, humidity, or fuser roller problem</td>
+          <td>Rollers or fuser</td>
+        </tr>
+        <tr>
+          <td>Finishing issues</td>
+          <td>Staple jams, hole punch waste full, misaligned finisher, or unsupported media</td>
+          <td>Finisher assembly</td>
+        </tr>
+        <tr>
+          <td>Incorrect chroma display</td>
+          <td>Color calibration, wrong driver, low color toner or ink, or incorrect profile</td>
+          <td>Driver, calibration, or color supplies</td>
+        </tr>
+        <tr>
+          <td>Grinding noises</td>
+          <td>Broken gear, jammed roller, foreign object, or failing motor</td>
+          <td>Paper path or drive gears</td>
+        </tr>
+        <tr>
+          <td>Printer will not print</td>
+          <td>Print spooler stopped, printer offline, wrong default printer, queue stuck, or network issue</td>
+          <td>Spooler, offline state, or default printer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout tip">
+    <span class="callout-title">Fast printer tells</span>
+    Smears that wipe off point to the fuser. Repeating defects point to a rotating part such as the drum. Feed problems point to pickup rollers. Garbled output usually points to the driver or print language.
+  </div>
+</section>
+
+<section id="network-symptoms">
+  <div class="week-head">
+    <h2>Network symptoms</h2>
+    <span class="wgoal">Use a ladder so each failure proves one smaller section of the path.</span>
+  </div>
+  <p>Intermittent wireless connectivity can be weak signal, roaming between access points, channel congestion, power saving, outdated drivers, or interference from microwaves, cordless phones, Bluetooth, thick walls, and neighboring networks.</p>
+  <p>Slow network speeds can be duplex mismatch, weak Wi-Fi signal, overloaded access point, bad cable, old standard, congestion, malware, or service provider trouble. Limited connectivity often means the host has a local link but cannot reach DHCP or the gateway correctly.</p>
+  <p>Jitter is variation in packet delay. It hurts real-time traffic such as voice and video. Poor VoIP quality usually means latency, jitter, packet loss, low bandwidth, or QoS problems.</p>
+  <p>Port flapping means a switch port repeatedly goes up and down. Suspect a bad cable, failing NIC, speed or duplex issue, bad switch port, or power problem on the endpoint.</p>
+  <p>High latency is delay. External interference hurts wireless reliability. No connectivity means start at the physical layer and prove each rung upward.</p>
+  <h3>Diagnostic ladder</h3>
+  <ol>
+    <li>
+      <strong>Check the physical link light.</strong>
+      <p>No link light proves the problem is before IP: cable, port, NIC, switch, power, or wireless association.</p>
+    </li>
+    <li>
+      <strong>Check IP configuration with <code>ipconfig /all</code>.</strong>
+      <p>APIPA, a 169.254.x.x address, means no DHCP lease. A 0.0.0.0 address means no link or no usable IP configuration.</p>
+    </li>
+    <li>
+      <strong>Ping loopback with <code>ping 127.0.0.1</code>.</strong>
+      <p>Failure proves the local TCP/IP stack is broken.</p>
+    </li>
+    <li>
+      <strong>Ping the local IP address.</strong>
+      <p>Failure proves a local adapter, driver, or binding problem.</p>
+    </li>
+    <li>
+      <strong>Ping the default gateway.</strong>
+      <p>Failure proves the host cannot reach the local router or VLAN gateway.</p>
+    </li>
+    <li>
+      <strong>Ping a public IP such as <code>8.8.8.8</code>.</strong>
+      <p>Gateway succeeds but public IP fails proves a routing, firewall, ISP, or upstream problem.</p>
+    </li>
+    <li>
+      <strong>Ping a hostname.</strong>
+      <p>Public IP succeeds but hostname fails proves DNS name resolution is the likely issue.</p>
+    </li>
+  </ol>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Tool result</th>
+          <th>Conclusion</th>
+          <th>Next focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>ping 127.0.0.1</code> fails</td>
+          <td>Local TCP/IP stack problem</td>
+          <td>Adapter driver, stack reset, OS repair</td>
+        </tr>
+        <tr>
+          <td><code>ping</code> local IP fails</td>
+          <td>NIC or local binding problem</td>
+          <td>Adapter status and driver</td>
+        </tr>
+        <tr>
+          <td><code>ping</code> gateway fails</td>
+          <td>Local network path problem</td>
+          <td>Switch, Wi-Fi, VLAN, subnet, gateway address</td>
+        </tr>
+        <tr>
+          <td><code>ping 8.8.8.8</code> fails but gateway works</td>
+          <td>Upstream routing or internet problem</td>
+          <td>Router, firewall, ISP, default route</td>
+        </tr>
+        <tr>
+          <td><code>ping</code> hostname fails but public IP works</td>
+          <td>DNS problem</td>
+          <td>DNS server, suffix, cache, name record</td>
+        </tr>
+        <tr>
+          <td><code>tracert</code> stops at first hop</td>
+          <td>Gateway or upstream path issue</td>
+          <td>Router and ISP path</td>
+        </tr>
+        <tr>
+          <td><code>tracert</code> stops after several hops</td>
+          <td>Remote path or provider routing issue</td>
+          <td>Upstream network, remote firewall, provider status</td>
+        </tr>
+        <tr>
+          <td><code>nslookup</code> fails</td>
+          <td>DNS server or record problem</td>
+          <td>DNS settings and authoritative record</td>
+        </tr>
+        <tr>
+          <td><code>nslookup</code> returns wrong address</td>
+          <td>Incorrect DNS record or cache</td>
+          <td>Record correction and cache flush</td>
+        </tr>
+        <tr>
+          <td><code>netstat</code> shows connection established</td>
+          <td>Local host has an active session to that endpoint</td>
+          <td>Application behavior, firewall policy, or remote service</td>
+        </tr>
+        <tr>
+          <td><code>netstat</code> shows listening port</td>
+          <td>A local service is waiting for connections</td>
+          <td>Service identity and host firewall rule</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="cheatsheet">
+  <div class="week-head">
+    <h2>The night-before troubleshooting sheet</h2>
+    <span class="wgoal">Memorize the order, then drill symptom-to-cause mapping.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Six steps in order</h3>
+      <ol>
+        <li>Identify the problem.</li>
+        <li>Establish a theory of probable cause.</li>
+        <li>Test the theory to determine the cause.</li>
+        <li>Establish a plan and implement the solution.</li>
+        <li>Verify full system functionality and implement preventive measures.</li>
+        <li>Document findings, actions, and outcomes.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Diagnostic ladder in order</h3>
+      <ol>
+        <li>Link light.</li>
+        <li><code>ipconfig /all</code>.</li>
+        <li><code>ping 127.0.0.1</code>.</li>
+        <li>Ping local IP.</li>
+        <li>Ping default gateway.</li>
+        <li><code>ping 8.8.8.8</code>.</li>
+        <li>Ping a hostname.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Top symptom</th>
+          <th>Most likely cause</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>No power</td>
+          <td>Outlet, cable, PSU, adapter, battery, or motherboard power path</td>
+        </tr>
+        <tr>
+          <td>POST beeps</td>
+          <td>Vendor-coded RAM, video, CPU, or board fault</td>
+        </tr>
+        <tr>
+          <td>No display but fans spin</td>
+          <td>Monitor input, video cable, RAM, GPU, or panel path</td>
+        </tr>
+        <tr>
+          <td>Sudden shutdown under load</td>
+          <td>Overheating or insufficient power</td>
+        </tr>
+        <tr>
+          <td>Clock drift</td>
+          <td>Dead CMOS battery</td>
+        </tr>
+        <tr>
+          <td>Grinding hard drive</td>
+          <td>Mechanical drive failure</td>
+        </tr>
+        <tr>
+          <td>SMART failure</td>
+          <td>Back up immediately and replace the drive</td>
+        </tr>
+        <tr>
+          <td>Bootable device not found</td>
+          <td>Boot order, missing drive, failed drive, or damaged boot loader</td>
+        </tr>
+        <tr>
+          <td>Dim laptop image visible with flashlight</td>
+          <td>Backlight or inverter path</td>
+        </tr>
+        <tr>
+          <td>Artifacts or distortion</td>
+          <td>GPU, driver, overheating, or panel damage</td>
+        </tr>
+        <tr>
+          <td>Swollen phone battery</td>
+          <td>Stop use and dispose safely</td>
+        </tr>
+        <tr>
+          <td>Toner wipes off paper</td>
+          <td>Fuser problem</td>
+        </tr>
+        <tr>
+          <td>Repeating ghost images</td>
+          <td>Drum or fuser problem</td>
+        </tr>
+        <tr>
+          <td>Paper not feeding</td>
+          <td>Pickup rollers or tray problem</td>
+        </tr>
+        <tr>
+          <td>Public IP pings but hostnames fail</td>
+          <td>DNS problem</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <h3 style="margin-top:0">Safety first 1</h3>
+      <p>Unplug and stop testing if there is smoke, burning smell, arcing, or visible electrical damage.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Safety first 2</h3>
+      <p>Do not puncture, compress, charge, or keep using a swollen lithium battery.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Safety first 3</h3>
+      <p>Back up data before risky storage changes whenever the drive is still readable.</p>
+    </div>
+  </div>
+  <div class="btn-row">
+    <a class="btn" href="drills.html?set=c1-troubleshooting">Practice troubleshooting drills</a>
+    <a class="btn secondary" href="exams.html">Take a Core 1 practice exam</a>
+  </div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

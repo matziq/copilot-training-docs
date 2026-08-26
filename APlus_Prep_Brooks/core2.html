@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core 2 (220-1102) &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="A focused Core 2 map for Brooks covering the four 220-1102 domains, drills, diagnostic exam, and final recall sheet.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+<section>
+<span class="badge accent">CompTIA A+ Core 2</span>
+<h1>Core 2 (220-1102)</h1>
+<p class="lede">Core 2 is the other half of the A+ certification. Both exams must be passed to be certified, and Core 2 has its own passing mark of <strong>700</strong> on the 100&ndash;900 scale; Core 1 passes at 675. This page is the map of the four Core 2 domains, and if Core 2 is the exam being sat on September 4, this page plus the six Core 2 drills and the Core 2 diagnostic exam are where to start.</p>
+<div class="callout key">
+<span class="callout-title">Which exam are you actually sitting?</span>
+<p>The rest of this site is built for Core 1 (220-1101), the hardware, networking, mobile, virtualization, and troubleshooting half. If the September 4 booking is for Core 2, the study order flips: work this page and the <code>c2-</code> drills first, take <a href="practice-exam-4.html">practice-exam-4.html</a> as the baseline, and treat the Core 1 guides as the follow-on. Stay calm: this is still A+, just a different map.</p>
+</div>
+<div class="grid grid-4">
+<div class="card">
+<div class="card-icon teal">28%</div>
+<h3 style="margin-top:0">Operating Systems</h3>
+<p>Windows, macOS, Linux, tools, installs, networking, filesystems, and command-line basics.</p>
+</div>
+<div class="card">
+<div class="card-icon amber">28%</div>
+<h3 style="margin-top:0">Security</h3>
+<p>Physical controls, authentication, malware, social engineering, permissions, encryption, and data handling.</p>
+</div>
+<div class="card">
+<div class="card-icon bad">23%</div>
+<h3 style="margin-top:0">Software Troubleshooting</h3>
+<p>Windows, PC security, mobile app, mobile OS, and mobile security symptoms.</p>
+</div>
+<div class="card">
+<div class="card-icon good">21%</div>
+<h3 style="margin-top:0">Operational Procedures</h3>
+<p>Documentation, change control, backups, safety, compliance, communication, scripting, and remote access.</p>
+</div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Domain weight overview</h3>
+<div class="meter-row"><span class="mlabel">Operating Systems</span><span class="meter"><i class="teal" data-pct="28"></i></span><span class="mval">28%</span></div>
+<div class="meter-row"><span class="mlabel">Security</span><span class="meter"><i class="amber" data-pct="28"></i></span><span class="mval">28%</span></div>
+<div class="meter-row"><span class="mlabel">Software Troubleshooting</span><span class="meter"><i class="bad" data-pct="23"></i></span><span class="mval">23%</span></div>
+<div class="meter-row"><span class="mlabel">Operational Procedures</span><span class="meter"><i class="good" data-pct="21"></i></span><span class="mval">21%</span></div>
+<p class="muted">Core 2 is much more evenly weighted than Core 1, so no domain can be skipped.</p>
+</div>
+</section>
+
+<section id="os">
+<div class="week-head">
+<h2>1.0 Operating Systems (28%)</h2>
+<span class="wgoal">Goal: pick the right operating system feature, tool, install choice, or filesystem.</span>
+</div>
+<p>Core 2 operating systems questions are not just about clicking around Windows. They ask which edition, installation method, filesystem, control panel, administrative tool, or shell command solves a specific support problem.</p>
+<h3>Windows 10 and 11 editions</h3>
+<div class="table-scroll"><table class="data-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Home</th>
+<th>Pro</th>
+<th>Pro for Workstations</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Domain join</td><td>No domain join; local account and Microsoft account use are typical.</td><td>Yes; can join Active Directory domain environments.</td><td>Yes; includes Pro business features.</td><td>Yes; designed for centrally managed enterprise networks.</td></tr>
+<tr><td>BitLocker</td><td>Not full BitLocker management; some devices support device encryption.</td><td>Yes; full BitLocker drive encryption.</td><td>Yes; full BitLocker drive encryption.</td><td>Yes; full BitLocker plus enterprise management scenarios.</td></tr>
+<tr><td>Group Policy Editor</td><td>Not included in normal Home installs.</td><td>Included as <code>gpedit.msc</code>.</td><td>Included as <code>gpedit.msc</code>.</td><td>Included and commonly controlled by domain GPOs.</td></tr>
+<tr><td>Remote Desktop host</td><td>Can use the Remote Desktop client, but cannot normally host sessions.</td><td>Can host Remote Desktop sessions.</td><td>Can host Remote Desktop sessions.</td><td>Can host Remote Desktop sessions with enterprise controls.</td></tr>
+<tr><td>Maximum RAM</td><td>Windows 10/11 Home commonly tops out at 128 GB.</td><td>Windows 10/11 Pro commonly supports up to 2 TB.</td><td>Designed for high-end hardware and much higher memory ceilings.</td><td>High edition-dependent limits; exam focus is managed enterprise scale.</td></tr>
+</tbody>
+</table></div>
+<div class="callout trap">
+<span class="callout-title">Edition trap</span>
+<p>If the question says domain join, Group Policy Editor, full BitLocker management, or Remote Desktop host, Home is usually the wrong answer. If it says extreme workstation hardware, persistent memory, or server-grade workstation storage, think Pro for Workstations.</p>
+</div>
+<h3>Upgrade paths, installs, and updates</h3>
+<ul>
+<li>An in-place upgrade keeps applications, user data, and settings when the existing operating system and edition support the upgrade path.</li>
+<li>A clean install starts fresh and is best for badly corrupted systems, new drives, major edition changes, malware-damaged builds, or when you need a known-good baseline.</li>
+<li>Upgrade paths usually move from an older supported Windows version to a newer one, or from a lower edition to a higher edition, not backward.</li>
+<li>A feature update is a larger release that changes Windows capabilities and version level.</li>
+<li>A quality update is a smaller cumulative security, reliability, and bug-fix update.</li>
+<li>On the exam, feature update means bigger change; quality update means routine patching.</li>
+<li>32-bit Windows can address about 4 GB of RAM and runs 32-bit applications.</li>
+<li>64-bit Windows supports much more RAM and runs 64-bit applications plus most 32-bit applications.</li>
+<li>Use 64-bit Windows for modern hardware unless an old 32-bit-only driver or application forces otherwise.</li>
+</ul>
+<h3>Boot methods and installation sources</h3>
+<div class="grid grid-3">
+<div class="card"><h3 style="margin-top:0">USB</h3><p>The common field method for installing Windows, running recovery media, or booting diagnostic utilities.</p></div>
+<div class="card"><h3 style="margin-top:0">Optical</h3><p>Older but still testable. Think DVD install media, legacy recovery discs, or vendor rescue media.</p></div>
+<div class="card"><h3 style="margin-top:0">Network/PXE</h3><p>Boots from a network deployment server, common in managed business imaging and mass deployment.</p></div>
+<div class="card"><h3 style="margin-top:0">Internet-based</h3><p>Downloads recovery components from the vendor or cloud when local recovery is missing or damaged.</p></div>
+<div class="card"><h3 style="margin-top:0">External or hot-swappable drive</h3><p>Useful for imaging, diagnostics, or replacing storage without opening some systems.</p></div>
+<div class="card"><h3 style="margin-top:0">Internal hard drive partition</h3><p>Recovery partition or local installer partition used to reset or restore the system.</p></div>
+</div>
+<h3>Partition styles</h3>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Style</th><th>Limits</th><th>Boot requirement</th><th>Exam angle</th></tr></thead>
+<tbody>
+<tr><td>MBR</td><td>4 primary partitions and about 2 TB maximum disk size.</td><td>Legacy BIOS or UEFI compatibility modes.</td><td>Choose MBR for older systems or legacy boot requirements.</td></tr>
+<tr><td>GPT</td><td>Commonly supports 128 partitions in Windows and disks larger than 2 TB.</td><td>Requires UEFI for booting Windows from that disk.</td><td>Choose GPT for modern UEFI systems and large disks.</td></tr>
+</tbody>
+</table></div>
+<h3>File systems</h3>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>File system</th><th>Where you see it</th><th>Strength</th><th>Classic limit or caution</th></tr></thead>
+<tbody>
+<tr><td>NTFS</td><td>Modern Windows internal drives.</td><td>Permissions, EFS support, compression, journaling, and large files.</td><td>Best Windows default for security and reliability.</td></tr>
+<tr><td>exFAT</td><td>Flash drives shared between Windows, macOS, and many devices.</td><td>Handles large files without FAT32&rsquo;s file-size limit.</td><td>Less permission-rich than NTFS.</td></tr>
+<tr><td>FAT32</td><td>Older removable media and compatibility-focused devices.</td><td>Very widely readable.</td><td>A single file cannot exceed 4 GB; this is a major exam trap.</td></tr>
+<tr><td>ext3/ext4</td><td>Linux volumes.</td><td>Linux-native journaling filesystems; ext4 is newer and common.</td><td>Windows does not natively manage these like NTFS.</td></tr>
+<tr><td>APFS</td><td>Modern macOS storage.</td><td>Optimized for SSDs, snapshots, and Apple encryption workflows.</td><td>Use Disk Utility for management in macOS.</td></tr>
+</tbody>
+</table></div>
+<div class="callout tip"><span class="callout-title">Fast filesystem choices</span><p>Windows security volume &rarr; NTFS. Cross-platform flash drive with files over 4 GB &rarr; exFAT. Legacy device compatibility &rarr; FAT32, but remember the 4 GB single-file limit.</p></div>
+<h3>Windows administrative tools</h3>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Tool</th><th>How to recognize it</th><th>The problem it solves</th></tr></thead>
+<tbody>
+<tr><td>Task Manager</td><td>Processes, startup apps, performance tabs, users, and services snapshot.</td><td>Stops hung applications, checks CPU/RAM/disk pressure, disables startup items.</td></tr>
+<tr><td>MSConfig</td><td>System Configuration utility.</td><td>Selective startup, boot options, and service/startup troubleshooting.</td></tr>
+<tr><td>Event Viewer</td><td>Logs under Application, Security, Setup, System, and forwarded events.</td><td>Finds crash, boot, driver, service, authentication, and update clues.</td></tr>
+<tr><td>Device Manager</td><td>Hardware tree with drivers and device status.</td><td>Updates, rolls back, disables, enables, or uninstalls device drivers.</td></tr>
+<tr><td>Disk Management</td><td>Graphical partition and volume manager.</td><td>Initializes disks, creates volumes, changes drive letters, changes file system, and prepares partitions.</td></tr>
+<tr><td>Local Users and Groups</td><td>Local account and group console.</td><td>Manages local users, passwords, and local group membership.</td></tr>
+<tr><td>Performance Monitor</td><td>PerfMon counters and Data Collector Sets.</td><td>Tracks performance over time and builds baselines.</td></tr>
+<tr><td>Registry Editor (<code>regedit</code>)</td><td>Hierarchical Windows configuration database.</td><td>Edits advanced settings when documented fixes require hive or key changes.</td></tr>
+<tr><td>Group Policy Editor (<code>gpedit.msc</code>)</td><td>Local policy editor on Pro, Enterprise, and similar editions.</td><td>Configures local security and Windows behavior policies.</td></tr>
+<tr><td>Task Scheduler</td><td>Triggers, actions, history, and scheduled tasks.</td><td>Runs maintenance scripts or finds tasks causing recurring behavior.</td></tr>
+<tr><td>Resource Monitor</td><td>Detailed CPU, memory, disk, and network usage.</td><td>Identifies which process owns resource consumption.</td></tr>
+<tr><td>System Information (<code>msinfo32</code>)</td><td>Hardware, components, and software environment summary.</td><td>Confirms BIOS mode, RAM, drivers, and system configuration.</td></tr>
+<tr><td>Certificate Manager</td><td>User or computer certificate stores.</td><td>Views, imports, exports, and troubleshoots certificates.</td></tr>
+<tr><td>Services (<code>services.msc</code>)</td><td>Windows services list and startup types.</td><td>Starts, stops, restarts, disables, or sets automatic service startup.</td></tr>
+</tbody></table></div>
+<h3>Control Panel and Settings applets</h3>
+<ul>
+<li>Internet Options: proxy, certificates, trusted sites, privacy, and advanced browser-related Windows settings.</li>
+<li>Devices and Printers: printer properties, default printer, and device troubleshooting.</li>
+<li>Programs and Features or Apps: uninstall, repair, and manage installed applications and Windows features.</li>
+<li>Network and Sharing Center or Network &amp; Internet: adapters, sharing, proxy, VPN, and connection properties.</li>
+<li>Windows Defender Firewall: allowed apps, inbound/outbound rules, and active firewall profile.</li>
+<li>System: computer name, domain/workgroup, activation, Remote Desktop, and advanced system settings.</li>
+<li>Power Options: sleep, hibernate, lid behavior, and performance versus battery tradeoffs.</li>
+<li>Credential Manager: saved Windows and web credentials.</li>
+<li>Sync Center: offline files in business environments.</li>
+<li>Time and Language: date, time zone, region, and keyboard settings.</li>
+<li>Ease of Access or Accessibility: screen reader, magnifier, high contrast, captions, and input assistance.</li>
+<li>Update &amp; Security or Windows Update: patches, recovery, activation, and backup-related options.</li>
+</ul>
+<h3>Windows networking</h3>
+<ul>
+<li>A workgroup is peer-to-peer; each computer manages its own local users and permissions.</li>
+<li>A domain is centrally managed with Active Directory, domain accounts, Group Policy, and centralized authentication.</li>
+<li>Mapped drives assign a drive letter to a network share so users can access it like local storage.</li>
+<li>Printer sharing lets other users print through a shared printer or print server, subject to permissions and drivers.</li>
+<li>Metered connections reduce background data use and can delay some downloads on limited networks.</li>
+<li>Proxy settings send web traffic through an intermediary server for filtering, logging, or access control.</li>
+<li>Windows Firewall has domain, private, and public profiles; public is the most restrictive posture for untrusted networks.</li>
+</ul>
+<h3>macOS and Linux</h3>
+<div class="grid grid-2">
+<div class="card">
+<h3 style="margin-top:0">macOS tools</h3>
+<ul>
+<li>Time Machine backs up and restores files or systems.</li>
+<li>FileVault encrypts the startup disk.</li>
+<li>Disk Utility partitions, changes file systems, verifies, and repairs disks.</li>
+<li>Keychain stores passwords, certificates, and secure notes.</li>
+<li>Spotlight searches files, apps, and metadata.</li>
+<li>Mission Control shows spaces, desktops, and open windows.</li>
+<li>Gatekeeper helps block untrusted or unsigned apps.</li>
+</ul>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Linux command recognition</h3>
+<p><code>ls</code>, <code>cd</code>, <code>pwd</code>, <code>mv</code>, <code>cp</code>, <code>rm</code>, <code>chmod</code>, <code>chown</code>, <code>grep</code>, <code>ps</code>, <code>su</code>/<code>sudo</code>, <code>apt-get</code>/<code>yum</code>, <code>df</code>, <code>dd</code>, <code>cat</code>, <code>find</code>, <code>top</code>, <code>man</code>, and <code>ip</code>.</p>
+<p class="muted">Translate the verb: list, move, copy, remove, permissions, ownership, search, processes, privilege, packages, disk free, image/copy, display, locate, live process view, manual, and network addressing.</p>
+</div>
+</div>
+</section>
+
+<section id="commands">
+<div class="week-head">
+<h2>The command line</h2>
+<span class="wgoal">Goal: match the symptom to the command and switch.</span>
+</div>
+<p>The command line is a scoring opportunity because the questions usually name the symptom. Match the symptom to the command and remember the switch that changes the result.</p>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Command</th><th>What it does</th><th>The exam angle</th></tr></thead>
+<tbody>
+<tr><td><code>ipconfig</code></td><td>Shows IPv4/IPv6 address, subnet mask, gateway, and adapter basics.</td><td>Use first when a Windows host has network connectivity problems.</td></tr>
+<tr><td><code>ipconfig /all</code></td><td>Shows full TCP/IP details including MAC address, DHCP, DNS, and lease data.</td><td>Use when the question asks for detailed adapter configuration.</td></tr>
+<tr><td><code>ipconfig /release</code></td><td>Releases the DHCP lease.</td><td>Use before renewing a bad DHCP address.</td></tr>
+<tr><td><code>ipconfig /renew</code></td><td>Requests a new DHCP lease.</td><td>Use for APIPA or stale DHCP information.</td></tr>
+<tr><td><code>ipconfig /flushdns</code></td><td>Clears the local DNS resolver cache.</td><td>Use when DNS answers changed but the PC still goes to the old address.</td></tr>
+<tr><td><code>ping</code></td><td>Tests basic IP reachability with ICMP echo.</td><td>Confirms whether a host can be reached, but firewalls may block replies.</td></tr>
+<tr><td><code>tracert</code></td><td>Shows the route hop by hop to a destination.</td><td>Use to find where a path breaks.</td></tr>
+<tr><td><code>pathping</code></td><td>Combines route tracing with packet-loss statistics over time.</td><td>Use when you need hop path plus loss data; it takes longer.</td></tr>
+<tr><td><code>netstat</code></td><td>Shows active connections, listening ports, and protocol statistics.</td><td>Use for suspicious connections or port-state questions.</td></tr>
+<tr><td><code>nslookup</code></td><td>Queries DNS records from a DNS server.</td><td>Use when the name, not the IP stack, is the suspect.</td></tr>
+<tr><td><code>hostname</code></td><td>Displays the computer name.</td><td>Quick identity check for scripts, tickets, and domain support.</td></tr>
+<tr><td><code>net use</code></td><td>Maps, lists, or disconnects network drives and shares.</td><td>Use for drive mapping and share connection problems.</td></tr>
+<tr><td><code>net user</code></td><td>Displays or manages local user accounts from the command line.</td><td>Use for local account creation, password, and account status tasks.</td></tr>
+<tr><td><code>chkdsk /f /r</code></td><td>Checks disk filesystem errors; <code>/f</code> fixes errors and <code>/r</code> locates bad sectors and recovers readable data.</td><td>Use for disk corruption, filesystem errors, or suspected bad sectors.</td></tr>
+<tr><td><code>sfc /scannow</code></td><td>Scans and repairs protected Windows system files.</td><td>Use for corrupted or missing Windows files after Windows still boots.</td></tr>
+<tr><td><code>dism</code></td><td>Services and repairs Windows images and component store health.</td><td>Use when the Windows image/component store is unhealthy or before SFC if SFC cannot repair.</td></tr>
+<tr><td><code>diskpart</code></td><td>Command-line disk, partition, and volume management.</td><td>Powerful and dangerous; use for partition work when GUI tools are not enough.</td></tr>
+<tr><td><code>format</code></td><td>Prepares a volume with a filesystem.</td><td>Use after selecting the correct volume; wrong target destroys data.</td></tr>
+<tr><td><code>xcopy</code></td><td>Copies files and directory trees with switches.</td><td>Older tool; fine for simpler scripted copies.</td></tr>
+<tr><td><code>robocopy</code></td><td>Robust copy with resume, retries, mirroring, and better logging.</td><td>Wins for large migrations, unreliable links, and preserving directory trees.</td></tr>
+<tr><td><code>gpupdate /force</code></td><td>Forces Group Policy refresh.</td><td>Use after policy changes or when a machine has not picked up policy.</td></tr>
+<tr><td><code>gpresult</code></td><td>Reports applied Group Policy settings.</td><td>Use to prove which user/computer policies actually applied.</td></tr>
+<tr><td><code>shutdown</code></td><td>Shuts down, restarts, logs off, or schedules power-off behavior.</td><td>Use for scripted or remote restart scenarios.</td></tr>
+<tr><td><code>winver</code></td><td>Shows Windows version and build.</td><td>Use when support depends on release or build number.</td></tr>
+</tbody>
+</table></div>
+<div class="callout trap">
+<span class="callout-title">Pairs people confuse</span>
+<p><code>sfc /scannow</code> repairs protected system files; <code>dism</code> repairs or services the Windows image/component store. <code>xcopy</code> is older and simpler; <code>robocopy</code> is better for resilient directory migrations. <code>tracert</code> gives the route; <code>pathping</code> gives the route plus packet-loss statistics.</p>
+</div>
+</section>
+
+<section id="security">
+<div class="week-head">
+<h2>2.0 Security (28%)</h2>
+<span class="wgoal">Goal: apply the correct control and preserve data, access, and evidence.</span>
+</div>
+<p>Security is tied with operating systems for the largest Core 2 domain. Expect scenario questions: identify the control, apply least privilege, remove malware in order, and protect data correctly.</p>
+<h3>Physical security</h3>
+<ul>
+<li>Bollards stop vehicles from ramming entrances or protected areas.</li>
+<li>An access control vestibule, also called a mantrap, lets one person through after authentication and prevents tailgating.</li>
+<li>Badge readers authenticate possession of an issued credential.</li>
+<li>Video surveillance records activity and deters misconduct.</li>
+<li>Alarm systems alert on unauthorized entry or tampering.</li>
+<li>Motion sensors detect movement in protected areas.</li>
+<li>Door locks are basic physical access control.</li>
+<li>Equipment locks secure laptops, docks, and devices to desks or racks.</li>
+<li>Guards provide human monitoring, challenge, and response.</li>
+<li>Fences define a perimeter and delay entry.</li>
+<li>Lighting deters intruders and improves camera effectiveness.</li>
+<li>Magnetometers detect metal weapons or objects at controlled entrances.</li>
+</ul>
+<h3>Logical security</h3>
+<ul>
+<li>The principle of least privilege means a user or process receives only the access needed to do the job, no more.</li>
+<li>ACLs define who can access an object and what actions they can perform.</li>
+<li>MFA combines factor categories: something you know, something you have, something you are, something you do, and somewhere you are.</li>
+<li>Soft tokens are generated by software such as authenticator applications.</li>
+<li>Hard tokens are physical devices such as smart cards, USB security keys, or hardware one-time-password tokens.</li>
+<li>SMS codes are possession-based but weaker than app or hardware tokens because of SIM-swap and interception risks.</li>
+<li>Authenticator applications generate or approve codes on a trusted device.</li>
+<li>Email-based codes can verify account access but are weaker if the email account is already compromised.</li>
+</ul>
+<h3>Active Directory</h3>
+<ul>
+<li>A login script runs at user sign-in to map drives, set printers, or configure user environment settings.</li>
+<li>A domain centralizes identity, authentication, and policy for managed computers and users.</li>
+<li>Group Policy applies user and computer settings, security baselines, scripts, and update behavior.</li>
+<li>Organizational units group users, computers, or resources so policies and administration can be delegated cleanly.</li>
+<li>A home folder is a user-specific network storage location.</li>
+<li>Folder redirection points known folders, such as Documents, to network or managed locations.</li>
+<li>Security groups assign access based on membership instead of one user at a time.</li>
+</ul>
+<h3>Wireless security</h3>
+<ul>
+<li>WPA3 is newer and stronger than WPA2, especially for password-authenticated networks.</li>
+<li>WPA2 remains common and is acceptable when configured with AES.</li>
+<li>AES is the strong encryption choice; TKIP is older and should be avoided when possible.</li>
+<li>RADIUS provides centralized AAA for network access, commonly with 802.1X.</li>
+<li>TACACS+ is another AAA protocol often associated with network device administration.</li>
+<li>Kerberos is a ticket-based authentication protocol used heavily in Active Directory domains.</li>
+<li>802.1X is port-based network access control for wired or wireless networks, often backed by RADIUS.</li>
+</ul>
+<h3>Malware types</h3>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Malware type</th><th>How it spreads</th><th>Telltale symptom</th></tr></thead>
+<tbody>
+<tr><td>Virus</td><td>Attaches to files or programs and spreads when the host executes.</td><td>Files change, applications misbehave, or antivirus detects infected executables.</td></tr>
+<tr><td>Worm</td><td>Self-replicates across networks without needing a user to run an infected file.</td><td>Rapid network traffic, many infected systems, or sudden service overload.</td></tr>
+<tr><td>Trojan</td><td>Disguises itself as legitimate software or content.</td><td>User installed something useful-looking and then the system changed or backdoor activity appears.</td></tr>
+<tr><td>Ransomware</td><td>Usually delivered by phishing, malicious downloads, or exploited services.</td><td>Files are encrypted and a payment demand appears.</td></tr>
+<tr><td>Rootkit</td><td>Installs deeply to hide processes, files, or attacker control.</td><td>Security tools cannot see what symptoms suggest; unusual persistence after cleanup.</td></tr>
+<tr><td>Keylogger</td><td>Installed by malware, Trojan, or malicious extension.</td><td>Credential theft, suspicious logins, or captured keystrokes.</td></tr>
+<tr><td>Boot sector virus</td><td>Infects boot records or startup areas.</td><td>Boot failures, startup infection warnings, or infection before the OS loads.</td></tr>
+<tr><td>Spyware</td><td>Bundled with software, malicious sites, or deceptive installers.</td><td>Tracking, pop-ups, browser changes, or privacy warnings.</td></tr>
+<tr><td>Cryptominer</td><td>Installed by malware or malicious scripts to mine cryptocurrency.</td><td>High CPU/GPU use, heat, fan noise, and sluggish performance.</td></tr>
+</tbody>
+</table></div>
+<h3>Seven-step CompTIA malware removal process</h3>
+<ol>
+<li>Investigate and verify malware symptoms.</li>
+<li>Quarantine the infected system.</li>
+<li>Disable System Restore in Windows.</li>
+<li>Remediate infected systems: update anti-malware software, then scan and remove.</li>
+<li>Schedule scans and run updates.</li>
+<li>Enable System Restore and create a restore point in Windows.</li>
+<li>Educate the end user.</li>
+</ol>
+<div class="callout trap">
+<span class="callout-title">Order matters</span>
+<p>Do not jump straight to removal. CompTIA wants quarantine before remediation, System Restore disabled before cleaning, and user education after the system is healthy.</p>
+</div>
+<h3>Social engineering and threats</h3>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Threat</th><th>Recognition cue</th></tr></thead>
+<tbody>
+<tr><td>Phishing</td><td>Broad deceptive message that tries to steal credentials or trigger a malicious action.</td></tr>
+<tr><td>Spear phishing</td><td>Targeted phishing aimed at a specific person or group.</td></tr>
+<tr><td>Vishing</td><td>Voice phishing over phone or voice systems.</td></tr>
+<tr><td>Whaling</td><td>Phishing aimed at executives or high-value leaders.</td></tr>
+<tr><td>Shoulder surfing</td><td>Watching someone enter or view sensitive information.</td></tr>
+<tr><td>Tailgating</td><td>Following an authorized person into a secure area without permission.</td></tr>
+<tr><td>Piggybacking</td><td>Entering with another person, often after they knowingly hold the door.</td></tr>
+<tr><td>Impersonation</td><td>Pretending to be someone trusted, such as IT, a vendor, or leadership.</td></tr>
+<tr><td>Dumpster diving</td><td>Searching discarded material for sensitive information.</td></tr>
+<tr><td>Evil twin</td><td>Rogue wireless network that imitates a legitimate SSID.</td></tr>
+<tr><td>On-path attack</td><td>Attacker intercepts or manipulates traffic between two parties.</td></tr>
+<tr><td>Spoofing</td><td>Faking identity, address, caller ID, email sender, or website identity.</td></tr>
+<tr><td>SQL injection</td><td>Input attack that manipulates database queries.</td></tr>
+<tr><td>Cross-site scripting</td><td>Injects script into web content viewed by other users.</td></tr>
+<tr><td>DoS and DDoS</td><td>Denial of service from one source or distributed sources.</td></tr>
+<tr><td>Zero-day</td><td>Attack against a vulnerability before a fix is available or widely deployed.</td></tr>
+<tr><td>Brute force</td><td>Tries many possible passwords or keys.</td></tr>
+<tr><td>Dictionary attack</td><td>Tries likely words, leaked passwords, or wordlist entries.</td></tr>
+<tr><td>Insider threat</td><td>Risk from someone with legitimate internal access.</td></tr>
+</tbody>
+</table></div>
+<h3>NTFS, encryption, and destruction</h3>
+<ul>
+<li>NTFS permissions apply locally and over the network; share permissions apply only when accessing through the share.</li>
+<li>When NTFS and share permissions both apply over a network, the most restrictive effective permission wins.</li>
+<li>UAC prompts for elevation so standard tasks do not run with administrative rights by default.</li>
+<li>BitLocker encrypts entire internal Windows volumes.</li>
+<li>BitLocker To Go encrypts removable drives.</li>
+<li>EFS encrypts individual files or folders for a user within NTFS.</li>
+<li>Shredding destroys paper or media physically.</li>
+<li>Drilling destroys platters or chips by physical damage.</li>
+<li>Degaussing uses a magnetic field to destroy data on magnetic media, but not SSDs.</li>
+<li>Incinerating destroys media by burning.</li>
+<li>A low-level format is deeper sanitization terminology; a standard format is not enough for secure disposal.</li>
+<li>A certificate of destruction proves a disposal vendor destroyed assets.</li>
+<li>Outsourcing to a third party requires trust, documentation, and chain-of-custody control.</li>
+</ul>
+</section>
+
+<section id="swtrouble">
+<div class="week-head">
+<h2>3.0 Software Troubleshooting (23%)</h2>
+<span class="wgoal">Goal: choose the most likely cause and least destructive fix.</span>
+</div>
+<p>Software troubleshooting questions usually describe symptoms. Your job is to pick the most likely cause and the least destructive fix that fits the evidence.</p>
+<h3>Windows symptoms</h3>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Windows symptom</th><th>Likely causes</th><th>Fix path</th></tr></thead>
+<tbody>
+<tr><td>BSOD</td><td>Bad driver, failing hardware, corrupt system files, memory problem, or bad update.</td><td>Note the stop code, boot Safe Mode if needed, roll back driver/update, run memory/storage checks, then <code>sfc /scannow</code> or repair Windows.</td></tr>
+<tr><td>Sluggish performance</td><td>Too many startup apps, low RAM, malware, failing disk, background updates, or resource-heavy app.</td><td>Use Task Manager and Resource Monitor, disable startup items, scan for malware, add resources, update or remove the culprit.</td></tr>
+<tr><td>Boot problems</td><td>Corrupt boot files, failed update, bad disk, wrong boot order, or damaged profile/system files.</td><td>Check boot order and media, use recovery tools, restore, repair Windows, reimage only when lighter fixes fail.</td></tr>
+<tr><td>Frequent shutdowns</td><td>Overheating, bad power, failing hardware, driver crash, or scheduled shutdown.</td><td>Check Event Viewer, temperature, power, drivers, and scheduled tasks.</td></tr>
+<tr><td>Services not starting</td><td>Disabled service, dependency failure, bad credentials, corrupt application, or policy.</td><td>Use <code>services.msc</code>, Event Viewer, service dependencies, restart services, and repair or reinstall the application.</td></tr>
+<tr><td>Applications crashing</td><td>Bad update, missing dependency, incompatible version, corrupt install, low resources, or damaged user profile.</td><td>Verify requirements, update, repair, uninstall/reinstall, test another profile, or roll back update.</td></tr>
+<tr><td>Low memory warnings</td><td>Insufficient RAM, memory leak, too many apps, or pagefile pressure.</td><td>Close apps, reboot, add resources, update leaking software, or increase virtual memory if appropriate.</td></tr>
+<tr><td>USB controller resource warnings</td><td>Too many USB devices, hub power limits, driver/chipset issue, or resource conflict.</td><td>Disconnect devices, use powered hub, update chipset/USB drivers, and check Device Manager.</td></tr>
+<tr><td>System instability</td><td>Drivers, updates, malware, failing hardware, corrupt OS, or overheating.</td><td>Reboot, check logs, update or roll back drivers, scan, run <code>sfc</code>/DISM, restore, repair, or reimage.</td></tr>
+<tr><td>No OS found</td><td>Wrong boot device, disconnected or failed drive, missing boot partition, or corrupt bootloader.</td><td>Check BIOS/UEFI boot order, cables, disk detection, recovery repair, and backups.</td></tr>
+<tr><td>Slow profile load</td><td>Large roaming profile, network delay, corrupt profile, logon scripts, or folder redirection issue.</td><td>Check network, profile size, Event Viewer, scripts, and rebuild Windows profile if needed.</td></tr>
+<tr><td>Time drift</td><td>Wrong time zone, CMOS battery, disabled time service, or domain time sync problem.</td><td>Set time zone, check Windows Time service, domain sync, and CMOS battery.</td></tr>
+</tbody>
+</table></div>
+<h3>Available remedies</h3>
+<ul>
+<li>Reboot to clear temporary state and complete pending changes.</li>
+<li>Restart services when one service is hung but the OS is otherwise stable.</li>
+<li>Uninstall, reinstall, or update applications when the problem follows one app.</li>
+<li>Add resources when CPU, RAM, disk, or storage limits are proven.</li>
+<li>Verify requirements before blaming Windows for an unsupported application.</li>
+<li>Use System File Checker for protected Windows file corruption.</li>
+<li>Repair Windows when system components are damaged but data should remain.</li>
+<li>Restore to a known-good restore point when the problem started after a change.</li>
+<li>Reimage when the system must return to a clean approved baseline.</li>
+<li>Roll back updates when a new patch or driver caused the symptom.</li>
+<li>Rebuild Windows profiles when one user profile is corrupt and other users work normally.</li>
+</ul>
+<h3>PC security symptoms</h3>
+<ul>
+<li>Unable to access the network can be malware, firewall change, proxy tampering, or DNS hijack.</li>
+<li>Desktop alerts can be real security software or fake scareware; verify the source.</li>
+<li>False antivirus alerts are classic rogue security software.</li>
+<li>Altered system files point to malware or unauthorized changes.</li>
+<li>Unwanted notifications often come from browser permission abuse or adware.</li>
+<li>OS update failures can be malware, damaged components, or insufficient space.</li>
+<li>Browser redirection suggests DNS, proxy, extension, or malware compromise.</li>
+<li>Certificate warnings can mean wrong time, captive portal, SSL inspection, spoofing, or on-path attack.</li>
+</ul>
+<h3>Mobile OS and application symptoms</h3>
+<ul>
+<li>Application fails to launch: update the app, check OS version, clear cache, reinstall, or verify service status.</li>
+<li>Application fails to close or crashes: force close, update, reboot, reinstall, or check storage.</li>
+<li>Application fails to update: check account, storage, network, OS support, and app store status.</li>
+<li>Slow to respond: close apps, reboot, free storage, update OS/apps, or check battery health.</li>
+<li>OS fails to update: verify compatibility, charge level, storage, Wi-Fi, and vendor availability.</li>
+<li>Battery life issues: check battery usage, brightness, radios, background apps, and battery health.</li>
+<li>Randomly reboots: suspect OS bugs, overheating, battery failure, bad app, or hardware issue.</li>
+<li>Connectivity issues: toggle airplane mode, verify Wi-Fi/cellular/Bluetooth settings, forget and reconnect, or reset network settings.</li>
+<li>Screen does not autorotate: check rotation lock, sensors, app support, and reboot.</li>
+</ul>
+<h3>Mobile security symptoms</h3>
+<ul>
+<li>High network traffic can indicate sync loops, compromise, tethering, or rogue applications.</li>
+<li>Data-usage limit notification may reveal runaway apps or unauthorized tethering.</li>
+<li>Limited internet connectivity can be captive portal, DNS, VPN, malware, or signal problem.</li>
+<li>No internet connectivity can be radio disabled, account issue, bad APN, Wi-Fi problem, or MDM restriction.</li>
+<li>Fake security warnings are scareware or malicious web notifications.</li>
+<li>Unexpected application behavior suggests malicious, outdated, or corrupted apps.</li>
+<li>Leaked personal files or data can indicate cloud sync exposure, weak permissions, lost device, or compromised account.</li>
+</ul>
+</section>
+
+<section id="procedures">
+<div class="week-head">
+<h2>4.0 Operational Procedures (21%)</h2>
+<span class="wgoal">Goal: behave like a careful technician, not just a clever troubleshooter.</span>
+</div>
+<p>Operational procedures are easy to underestimate. They test how a professional technician documents work, protects people, handles risk, communicates, and follows rules.</p>
+<h3>Documentation</h3>
+<details class="acc" open><summary>Ticketing systems</summary><div class="acc-body">
+<ul>
+<li>User information belongs in the ticket: name, contact, department, location, and availability.</li>
+<li>Device information belongs in the ticket: asset tag, serial number, hostname, OS, application, and warranty status.</li>
+<li>Description of problem should capture what changed, what failed, when it started, and how often it happens.</li>
+<li>Categories route the work to the right queue and support reporting.</li>
+<li>Severity describes impact and urgency.</li>
+<li>Escalation levels show when and where to hand off.</li>
+<li>Clear and concise written communication keeps the next technician from guessing.</li>
+<li>Problem description, progress notes, and problem resolution must be written so someone else can follow the timeline.</li>
+</ul>
+</div></details>
+<details class="acc"><summary>Asset management</summary><div class="acc-body">
+<ul>
+<li>Inventory lists track what exists.</li>
+<li>A database system tracks ownership, status, lifecycle, and history.</li>
+<li>Asset tags and IDs tie the physical device to records.</li>
+<li>Procurement lifecycle covers request, purchase, receive, deploy, maintain, and retire.</li>
+<li>Warranty and licensing records prevent unsupported or illegal use.</li>
+<li>Assigned users show who is responsible for the asset and where it should be.</li>
+</ul>
+</div></details>
+<details class="acc"><summary>Documents to recognize</summary><div class="acc-body">
+<ul>
+<li>Acceptable use policy defines permitted and prohibited technology behavior.</li>
+<li>Network topology diagram shows device and connection layout.</li>
+<li>Regulatory compliance requirements document legal or industry obligations.</li>
+<li>Splash screens can present notices before system or network use.</li>
+<li>Incident reports document security, safety, or operational incidents.</li>
+<li>Standard operating procedures define repeatable approved processes.</li>
+<li>New-user setup checklist standardizes onboarding.</li>
+<li>End-user termination checklist standardizes account, device, and access removal.</li>
+<li>Knowledge base and articles preserve fixes for repeated issues.</li>
+</ul>
+</div></details>
+<h3>Change management</h3>
+<ol>
+<li>Rollback plan.</li>
+<li>Sandbox testing.</li>
+<li>Scope of the change.</li>
+<li>Risk analysis.</li>
+<li>Change board approvals.</li>
+<li>End-user acceptance.</li>
+</ol>
+<div class="callout tip">
+<span class="callout-title">Change-control mindset</span>
+<p>Before touching production, know how to undo the change, prove it in a sandbox, define what is affected, analyze risk, get approval, and confirm users accept the result.</p>
+</div>
+<h3>Backup and recovery</h3>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Backup type</th><th>What it copies</th><th>Restore requires</th></tr></thead>
+<tbody>
+<tr><td>Full</td><td>All selected data every time.</td><td>Only the latest full backup.</td></tr>
+<tr><td>Incremental</td><td>Data changed since the last backup of any type.</td><td>Last full backup plus every incremental since then.</td></tr>
+<tr><td>Differential</td><td>Data changed since the last full backup.</td><td>Last full backup plus the latest differential.</td></tr>
+<tr><td>Synthetic</td><td>A constructed full backup made from earlier full and incremental data, usually on the backup system.</td><td>The synthetic full set presented as a full restore point.</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>The 3-2-1 rule means three copies of data, on two different media types, with one copy off-site.</li>
+<li>Grandfather-father-son rotation uses monthly, weekly, and daily backups.</li>
+<li>On-site backups restore quickly but can be lost in the same disaster as the system.</li>
+<li>Off-site backups protect against site disasters but may restore more slowly.</li>
+<li>Backup testing proves the data can actually be restored; untested backups are guesses.</li>
+</ul>
+<h3>Safety</h3>
+<ul>
+<li>ESD straps and mats reduce electrostatic discharge risk.</li>
+<li>Equipment grounding protects people and components.</li>
+<li>Proper power handling means unplugging equipment, using correct power ratings, and avoiding overloaded circuits.</li>
+<li>Proper component handling and storage means edges, bags, labels, and no stacking abuse.</li>
+<li>Antistatic bags protect components outside the computer.</li>
+<li>Compliance with government regulations covers disposal, safety, privacy, and workplace rules.</li>
+<li>Personal safety includes disconnecting power before repairing, correct lifting technique, electrical fire safety, safety goggles, and an air filtration mask when needed.</li>
+</ul>
+<h3>Environmental impacts</h3>
+<ul>
+<li>MSDS/SDS handling and disposal instructions apply to chemicals, toner, batteries, and hazardous materials.</li>
+<li>Temperature, humidity, and ventilation affect system reliability and electrostatic risk.</li>
+<li>Power surges, brownouts, and blackouts can damage equipment or corrupt data.</li>
+<li>Battery backup gives systems time to shut down or ride through short outages.</li>
+<li>Surge suppressors protect against voltage spikes but are not a replacement for backups or UPS planning.</li>
+</ul>
+<h3>Prohibited content and licensing</h3>
+<ul>
+<li>For prohibited content or security incidents, follow incident response policy and preserve chain of custody.</li>
+<li>First response means identify the issue, report through proper channels, and preserve data and the device.</li>
+<li>Documentation should show who handled evidence, when, where it was stored, and what actions were taken.</li>
+<li>Licenses must be valid and non-expired.</li>
+<li>Personal licenses are not the same as enterprise licenses.</li>
+<li>Open source licenses still have rules; commercial licenses usually define seats, devices, users, and support rights.</li>
+<li>PII, PCI, GDPR, and PHI are data-protection categories that require careful handling, minimum access, and proper reporting.</li>
+</ul>
+<h3>Communication and professionalism</h3>
+<ul>
+<li>Use clear, concise language.</li>
+<li>Avoid jargon and slang unless the audience understands it.</li>
+<li>Maintain a positive attitude even when the fix is slow.</li>
+<li>Use active listening: restate, clarify, and confirm.</li>
+<li>Show cultural sensitivity and do not make assumptions.</li>
+<li>Be punctual and communicate delays early.</li>
+<li>Avoid distractions while working with the user.</li>
+<li>Dealing with difficult customers means staying calm, not arguing, and focusing on the next step.</li>
+<li>Set and meet expectations for time, scope, and follow-up.</li>
+<li>Handle confidential material appropriately and discuss it only with authorized people.</li>
+</ul>
+<h3>Basic scripting</h3>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Script type</th><th>What it is</th><th>Where it runs</th></tr></thead>
+<tbody>
+<tr><td><code>.bat</code></td><td>Batch file using Windows command interpreter commands.</td><td>Windows Command Prompt.</td></tr>
+<tr><td><code>.ps1</code></td><td>PowerShell script for Windows administration and automation.</td><td>PowerShell on Windows and, in modern versions, cross-platform PowerShell.</td></tr>
+<tr><td><code>.vbs</code></td><td>VBScript file used in older Windows automation.</td><td>Windows Script Host.</td></tr>
+<tr><td><code>.sh</code></td><td>Shell script for Unix-like command shells.</td><td>Linux, macOS, and shell environments.</td></tr>
+<tr><td><code>.py</code></td><td>Python script.</td><td>Systems with Python installed.</td></tr>
+<tr><td><code>.js</code></td><td>JavaScript file.</td><td>Browsers for client-side scripts or Node.js for system/server scripts.</td></tr>
+</tbody>
+</table></div>
+<p>Script risks include unintentionally changing system settings, browser or system crashes, and mishandling of resources such as files, memory, credentials, or network calls. Read scripts before running them, test in a safe place, and run with the least privilege that works.</p>
+<h3>Remote access technologies</h3>
+<ul>
+<li>RDP provides graphical Windows remote access; secure it with VPN, MFA, Network Level Authentication, and restricted exposure.</li>
+<li>VPN creates an encrypted tunnel into a private network; secure it with strong authentication and current clients.</li>
+<li>VNC provides graphical remote control; secure it carefully because weak VNC exposure is risky.</li>
+<li>SSH provides encrypted command-line access, common on Linux and network devices; use keys and disable weak passwords when possible.</li>
+<li>RMM tools provide managed monitoring and remote support; protect the console because it has broad control.</li>
+<li>MSRA, Microsoft Remote Assistance, lets a helper assist a user with consent.</li>
+<li>Third-party tools are useful but require licensing, approval, MFA, logging, and vendor trust review.</li>
+</ul>
+</section>
+
+<section id="study-order">
+<div class="week-head">
+<h2>How to study Core 2 if it is your September 4 exam</h2>
+<span class="wgoal">Goal: use the diagnostic, then drill by weight and weakness.</span>
+</div>
+<p>If the booking is Core 2, do not try to casually skim everything. Use the diagnostic first, then drill the domains in weight order while keeping commands and malware order fresh every day.</p>
+<div class="table-scroll"><table class="data-table">
+<thead><tr><th>Day</th><th>Primary work</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td>Day 1</td><td>Take the <a href="practice-exam-4.html">Core 2 diagnostic exam</a> cold, then review every miss.</td><td>Write the top three weak domains in the error log.</td></tr>
+<tr><td>Day 2</td><td>Study Operating Systems and run <a href="drills.html?set=c2-windows">Windows drill</a>.</td><td>Pick the correct Windows tool, edition, filesystem, and install path.</td></tr>
+<tr><td>Day 3</td><td>Run <a href="drills.html?set=c2-cli">command-line drill</a> and repeat missed commands aloud.</td><td>Know the command, switch, and symptom for each command-line item.</td></tr>
+<tr><td>Day 4</td><td>Study Security and run <a href="drills.html?set=c2-security">security drill</a>.</td><td>Recite malware removal steps and explain permissions, MFA, wireless, and encryption.</td></tr>
+<tr><td>Day 5</td><td>Run <a href="drills.html?set=c2-access">access and permissions drill</a>, then rework missed security questions.</td><td>Reduce permission and authentication mistakes.</td></tr>
+<tr><td>Day 6</td><td>Study Software Troubleshooting and run <a href="drills.html?set=c2-swtrouble">software troubleshooting drill</a>.</td><td>Map symptoms to causes and least-destructive fixes.</td></tr>
+<tr><td>Day 7</td><td>Study Operational Procedures and run <a href="drills.html?set=c2-procedures">procedures drill</a>.</td><td>Memorize change management, backup types, safety, documentation, and professionalism.</td></tr>
+<tr><td>Final pass</td><td>Retake missed diagnostic objectives and read the night-before sheet.</td><td>Walk into the exam with recall items automatic.</td></tr>
+</tbody>
+</table></div>
+<div class="btn-row">
+<a class="btn sm" href="drills.html?set=c2-windows">Windows drill</a>
+<a class="btn sm" href="drills.html?set=c2-cli">CLI drill</a>
+<a class="btn sm" href="drills.html?set=c2-security">Security drill</a>
+<a class="btn sm" href="drills.html?set=c2-access">Access drill</a>
+<a class="btn sm" href="drills.html?set=c2-swtrouble">Software troubleshooting drill</a>
+<a class="btn sm" href="drills.html?set=c2-procedures">Procedures drill</a>
+<a class="btn sm" href="practice-exam-4.html">Core 2 diagnostic</a>
+</div>
+</section>
+
+<section id="cheatsheet">
+<div class="week-head">
+<h2>The night-before Core 2 sheet</h2>
+<span class="wgoal">Goal: pure recall without hesitation.</span>
+</div>
+<p>Use this section for pure recall. Cover the answer, say it, then check it. If you cannot say it quickly, drill it again.</p>
+<div class="grid grid-2">
+<div class="card">
+<h3 style="margin-top:0">Malware removal order</h3>
+<ol>
+<li>Investigate and verify malware symptoms.</li>
+<li>Quarantine the infected system.</li>
+<li>Disable System Restore in Windows.</li>
+<li>Remediate infected systems: update anti-malware software, then scan and remove.</li>
+<li>Schedule scans and run updates.</li>
+<li>Enable System Restore and create a restore point in Windows.</li>
+<li>Educate the end user.</li>
+</ol>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Change management order</h3>
+<ol>
+<li>Rollback plan.</li>
+<li>Sandbox testing.</li>
+<li>Scope of the change.</li>
+<li>Risk analysis.</li>
+<li>Change board approvals.</li>
+<li>End-user acceptance.</li>
+</ol>
+</div>
+</div>
+<div class="grid grid-3">
+<div class="card"><h3 style="margin-top:0">Backup types</h3><p>Full copies all selected data. Incremental copies changes since any last backup and restores with full plus all incrementals. Differential copies changes since last full and restores with full plus latest differential. Synthetic builds a new full from prior backup data.</p></div>
+<div class="card"><h3 style="margin-top:0">NTFS vs share</h3><p>NTFS applies locally and over the network. Share applies over the network only. Across the network, combine NTFS and share permissions and the most restrictive wins.</p></div>
+<div class="card"><h3 style="margin-top:0">MFA factors</h3><p>Something you know, something you have, something you are, something you do, and somewhere you are.</p></div>
+<div class="card"><h3 style="margin-top:0">Wireless security</h3><p>Prefer WPA3. If WPA2 is used, prefer AES. Avoid TKIP unless legacy compatibility forces it.</p></div>
+<div class="card"><h3 style="margin-top:0">Filesystem traps</h3><p>FAT32 has a 4 GB single-file limit. NTFS is the Windows security default. exFAT is useful for cross-platform removable storage with large files.</p></div>
+<div class="card"><h3 style="margin-top:0">Partition traps</h3><p>MBR: 4 primary partitions and 2 TB limit. GPT: commonly 128 partitions, supports disks over 2 TB, and needs UEFI to boot Windows.</p></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Ten most-tested commands</h3>
+<p><code>ipconfig /all</code> &middot; <code>ipconfig /flushdns</code> &middot; <code>ping</code> &middot; <code>tracert</code> &middot; <code>pathping</code> &middot; <code>nslookup</code> &middot; <code>net use</code> &middot; <code>sfc /scannow</code> &middot; <code>dism</code> &middot; <code>gpupdate /force</code>.</p>
+<p class="muted">If a question asks for a route, use <code>tracert</code>. If it asks for route plus packet loss, use <code>pathping</code>. If Windows system files are damaged, use <code>sfc /scannow</code>; if the component store/image is damaged, use <code>dism</code>.</p>
+</div>
+<div class="btn-row">
+<a class="btn sm" href="drills.html?set=c2-windows">Windows</a>
+<a class="btn sm" href="drills.html?set=c2-cli">CLI</a>
+<a class="btn sm" href="drills.html?set=c2-security">Security</a>
+<a class="btn sm" href="drills.html?set=c2-access">Access</a>
+<a class="btn sm" href="drills.html?set=c2-swtrouble">Troubleshooting</a>
+<a class="btn sm" href="drills.html?set=c2-procedures">Procedures</a>
+<a class="btn sm" href="tools.html#flashcards">Flashcards</a>
+</div>
+<div class="grid grid-4">
+<div class="card">
+<h3 style="margin-top:0">Access cue</h3>
+<p>Local access only points to NTFS. Network share access points to both NTFS and share rules. Domain access points to groups and policy.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Update cue</h3>
+<p>Small reliability or security patch means quality update. New Windows release or capability level means feature update.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Mobile cue</h3>
+<p>One bad app gets app repair. Whole-device behavior gets OS, storage, battery, network, or management checks.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Procedure cue</h3>
+<p>If the question says production change, think rollback, test, scope, risk, approval, and user acceptance.</p>
+</div>
+</div>
+<div class="callout key">
+<span class="callout-title">Last ten-minute pass</span>
+<ul>
+<li>Say the malware removal order without looking.</li>
+<li>Say the change management order without looking.</li>
+<li>Say the MBR and GPT limits.</li>
+<li>Say the FAT32 single-file limit.</li>
+<li>Say the MFA factor categories.</li>
+<li>Say the NTFS and share permission rule.</li>
+<li>Say the WPA3, WPA2, AES, and TKIP ranking.</li>
+<li>Say which backup restores fastest from the fewest sets.</li>
+<li>Say which backup saves the least storage after a full.</li>
+<li>Say which symptom points to browser redirection.</li>
+<li>Say which symptom points to fake security software.</li>
+<li>Say which tool shows applied Group Policy.</li>
+<li>Say which tool refreshes Group Policy.</li>
+<li>Say which tool queries DNS.</li>
+<li>Say which tool maps a drive.</li>
+<li>Say which tool shows Windows version.</li>
+<li>Say which tool finds hop-by-hop route trouble.</li>
+<li>Say which tool adds packet-loss data to the route.</li>
+<li>Say which macOS tool encrypts the disk.</li>
+<li>Say which macOS tool manages passwords and certificates.</li>
+</ul>
+</div>
+</section>
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>
