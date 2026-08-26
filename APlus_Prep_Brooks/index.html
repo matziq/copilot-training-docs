@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Brooks&rsquo;s A+ Plan &mdash; 9 Days to September 4</title>
-<meta name="description" content="A complete 9-day CompTIA A+ Core 1 (220-1101) training plan: three full practice exams, sixteen topic drills, five domain guides, and interactive study tools.">
+<title>Brooks&rsquo;s A+ Plan &mdash; Pick Your Exam</title>
+<meta name="description" content="Study plans, practice exams, drills, and tools for both CompTIA A+ exams: Core 1 (220-1101) and Core 2 (220-1102). Pick the one you are working on.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/styles.css">
 <script src="assets/app.js"></script>
@@ -15,233 +15,165 @@
 
 <div class="hero">
     <div class="wrap">
-        <div class="eyebrow">CompTIA A+ Core 1 (220-1101) &middot; Friday, September 4, 2026</div>
-        <h1>Nine days. One number: 675.</h1>
-        <p>The A+ is not a test you can talk your way through and it is not a test you need to be a genius
-            to pass. It is a finite list of facts and a repeatable way of thinking about broken computers.
-            Nine days is enough &mdash; if every one of them is spent on the right thing.</p>
-        <div class="hero-stats">
-            <div class="hero-stat"><div class="n" id="heroDays">9</div><div class="l">Days left</div></div>
-            <div class="hero-stat"><div class="n">675</div><div class="l">Passing score</div></div>
-            <div class="hero-stat"><div class="n">90</div><div class="l">Questions in 90 min</div></div>
-            <div class="hero-stat"><div class="n">3</div><div class="l">Full practice exams</div></div>
-        </div>
+        <div class="eyebrow">CompTIA A+ &middot; Two exams, one certification</div>
+        <h1>Which one are you working on today?</h1>
+        <p>The A+ is not one test. Core 1 and Core 2 are separate appointments, separate fees, and
+            separate scores, and you are only certified after passing both. Everything on this site &mdash;
+            the plan, the guides, the drills, the practice exams &mdash; adapts to whichever one you pick.
+            Switch tracks any time from the toggle in the header.</p>
+        <div class="hero-stats" id="heroStats"></div>
     </div>
 </div>
 
 <main id="main"><div class="wrap">
 
-<!-- ================= WHICH EXAM ================= -->
 <section>
-    <div class="callout warn">
-        <span class="callout-title">Read this before you study anything else</span>
-        <p><strong>The A+ is two exams, not one.</strong> Core 1 (220-1101) and Core 2 (220-1102) are separate
-            appointments, separate fees, and separate scores. You are certified only after passing both.
-            This site is built for <strong>Core 1 on September 4</strong>, because that is the one almost
-            everybody sits first.</p>
-        <p style="margin-bottom:0">If your September 4 booking is actually <strong>Core 2</strong>, nothing here is
-            wasted &mdash; go to the <a href="core2.html">Core 2 page</a>, run the six <code>c2-</code> drills,
-            and take the <a href="practice-exam-4.html">Core 2 diagnostic</a> instead. The plan structure is
-            identical; only the content swaps.</p>
+    <div class="chooser" id="chooser">
+        <noscript>
+            <div class="card">
+                <h3 style="margin-top:0">Pick your exam</h3>
+                <p>This page needs JavaScript to show your progress. The two tracks are still here:</p>
+                <div class="btn-row" style="margin-bottom:0">
+                    <a class="btn" href="core1.html">Core 1 (220-1101)</a>
+                    <a class="btn secondary" href="core2.html">Core 2 (220-1102)</a>
+                </div>
+            </div>
+        </noscript>
     </div>
+    <p class="muted center" id="lastUsed" style="margin-top:-.5rem"></p>
+    <div class="btn-row" style="justify-content:center;margin-top:1rem">
+        <a class="btn secondary sm" href="core1.html">Core 1 overview</a>
+        <a class="btn secondary sm" href="core2.html">Core 2 overview</a>
+        <a class="btn ghost sm" href="plan.html">Study plan</a>
+    </div>
+</section>
 
-    <h2>What the exam actually looks like</h2>
+<!-- ================= HOW THE TWO FIT TOGETHER ================= -->
+<section>
+    <h2>How the two exams fit together</h2>
+    <div class="grid grid-2">
+        <div class="card">
+            <h3 style="margin-top:0">The rules</h3>
+            <ul style="margin-bottom:0">
+                <li>Both exams must be passed to earn the certification. There is no partial credit and no
+                    single-exam version of the A+.</li>
+                <li>You can take them in <strong>either order</strong>, and on different days. Most people
+                    take Core 1 first because it is closer to the hardware knowledge people already have.</li>
+                <li>They are priced and booked separately, and each is <strong>90 questions in 90 minutes</strong>.</li>
+                <li>Core 1 passes at <strong>675</strong>. Core 2 passes at <strong>700</strong> &mdash; a
+                    genuinely higher bar, not a rounding difference.</li>
+                <li>Once you pass the second one, the certification is good for <strong>three years</strong>
+                    from that date.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3 style="margin-top:0">They fail for different reasons</h3>
+            <p><strong>Core 1</strong> is mostly recall with one big reasoning domain. People fail it by not
+                memorizing the tables &mdash; ports, RAID minimums, cable limits, DDR pin counts.</p>
+            <p><strong>Core 2</strong> is more evenly spread, and people fail it by skipping Operational
+                Procedures because it is &ldquo;not technical.&rdquo; That domain is 21% of the exam and is
+                pure list-memorization with no hardware knowledge required. It is the cheapest 21% on the
+                entire A+.</p>
+            <p style="margin-bottom:0">The other Core 2 trap is order-of-operations questions: the seven-step
+                malware removal process and the change-management sequence get tested literally.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= SIDE BY SIDE ================= -->
+<section>
+    <h2>Side by side</h2>
     <div class="table-scroll">
         <table class="data-table">
             <thead><tr>
                 <th>&nbsp;</th><th>Core 1 &mdash; 220-1101</th><th>Core 2 &mdash; 220-1102</th>
             </tr></thead>
             <tbody>
+                <tr><td><strong>Covers</strong></td>
+                    <td>Mobile devices, networking, hardware, virtualization and cloud, hardware and network troubleshooting</td>
+                    <td>Operating systems, security, software troubleshooting, operational procedures</td></tr>
                 <tr><td><strong>Questions</strong></td><td>Maximum 90</td><td>Maximum 90</td></tr>
                 <tr><td><strong>Time</strong></td><td>90 minutes</td><td>90 minutes</td></tr>
-                <tr><td><strong>Passing score</strong></td><td><span class="badge accent">675 of 900</span></td><td><span class="badge">700 of 900</span></td></tr>
+                <tr><td><strong>Passing score</strong></td>
+                    <td><span class="badge accent">675 of 900</span></td>
+                    <td><span class="badge teal">700 of 900</span></td></tr>
+                <tr><td><strong>Roughly what that costs</strong></td><td>About 72% correct</td><td>About 75% correct</td></tr>
+                <tr><td><strong>Biggest domain</strong></td>
+                    <td>Troubleshooting, 28%</td>
+                    <td>Operating Systems and Security, 28% each</td></tr>
+                <tr><td><strong>Weighting shape</strong></td>
+                    <td>Lopsided &mdash; two domains are half the exam</td>
+                    <td>Even &mdash; no domain is skippable</td></tr>
                 <tr><td><strong>Question types</strong></td><td colspan="2">Multiple choice (single and multiple response), drag-and-drop, and performance-based questions</td></tr>
                 <tr><td><strong>Wrong-answer penalty</strong></td><td colspan="2"><span class="badge good">None &mdash; never leave anything blank</span></td></tr>
                 <tr><td><strong>Where</strong></td><td colspan="2">Pearson VUE test center or online proctored</td></tr>
-                <tr><td><strong>Valid for</strong></td><td colspan="2">Three years from the date you pass the second exam</td></tr>
             </tbody>
         </table>
     </div>
-    <p class="muted"><small>Two things follow from that table. First, one minute per question is the pace, and
-        performance-based questions at the front will eat five minutes each if you let them &mdash; flag them and
-        come back. Second, because there is no penalty for guessing, a blank answer is strictly worse than a
-        random one. Every question gets an answer.</small></p>
 </section>
 
-<!-- ================= WHERE THE POINTS ARE ================= -->
+<!-- ================= WHAT'S HERE ================= -->
 <section>
-    <h2>Where the points are</h2>
-    <p class="lede">Core 1 has five domains and they are not equal. Two of them are half the exam.</p>
-
-    <div class="grid grid-2" style="margin-bottom:1.5rem">
+    <h2>What you get on each track</h2>
+    <p class="lede">Both tracks are built the same way, so once you learn the rhythm on one, the other
+        works identically.</p>
+    <div class="grid grid-3">
         <div class="card">
-            <h3 style="margin-top:0">Core 1 domain weights</h3>
-            <div class="meter-row"><span class="mlabel">Troubleshooting <strong>28%</strong></span><span class="meter"><i class="bad" data-pct="100"></i></span><span class="mval">largest</span></div>
-            <div class="meter-row"><span class="mlabel">Hardware <strong>25%</strong></span><span class="meter"><i class="amber" data-pct="89"></i></span><span class="mval">memorizable</span></div>
-            <div class="meter-row"><span class="mlabel">Networking <strong>23%</strong></span><span class="meter"><i class="amber" data-pct="82"></i></span><span class="mval">tables</span></div>
-            <div class="meter-row"><span class="mlabel">Mobile Devices <strong>13%</strong></span><span class="meter"><i class="good" data-pct="46"></i></span><span class="mval">vocabulary</span></div>
-            <div class="meter-row"><span class="mlabel">Virtualization &amp; Cloud <strong>11%</strong></span><span class="meter"><i class="good" data-pct="39"></i></span><span class="mval">smallest</span></div>
-            <p class="muted" style="margin:.8rem 0 0"><small>Bars are drawn relative to the largest domain, not to 100% of the exam.</small></p>
+            <div class="card-icon">1</div><h3>A dated study plan</h3>
+            <p style="margin-bottom:0">Day-by-day tasks counting back from your exam date, with checkboxes
+                that save automatically. Core 1 runs 9 days; Core 2 runs 14.</p>
         </div>
-
         <div class="card">
-            <h3 style="margin-top:0">What that means for nine days</h3>
-            <p><strong>Troubleshooting and Hardware are 53% of the exam.</strong> If you knew nothing else and
-                got those two perfect, you would already be close to the line.</p>
-            <p>They also fail in opposite ways. Hardware is pure recall &mdash; pin counts, RAID minimums, cable
-                limits &mdash; so it responds instantly to flashcards. Troubleshooting is scenario reasoning, so it
-                only responds to doing questions and reading why you were wrong.</p>
-            <div class="callout key" style="margin-bottom:0">
-                <span class="callout-title">Strategy in one line</span>
-                <p style="margin-bottom:0">Flashcards for Hardware and Networking. Practice questions for
-                    Troubleshooting. Do not mix the two methods up &mdash; reading a troubleshooting chapter
-                    feels productive and teaches almost nothing.</p>
-            </div>
+            <div class="card-icon amber">2</div><h3>Three practice exams</h3>
+            <p style="margin-bottom:0">Timed, domain-weighted like the real thing, scored on the 100&ndash;900
+                scale against that exam&rsquo;s actual passing mark.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon teal">3</div><h3>Domain guides</h3>
+            <p style="margin-bottom:0">One deep guide per domain, each ending in a night-before cheat sheet
+                of pure recall items.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon good">4</div><h3>Topic drills</h3>
+            <p style="margin-bottom:0">Eight questions on one skill, about ten minutes. The tool for the days
+                between practice exams.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon bad">5</div><h3>Flashcards</h3>
+            <p style="margin-bottom:0">Every pure-recall fact worth memorizing, sorted into decks, with a
+                missed-card list that follows you.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">6</div><h3>Score estimator and error log</h3>
+            <p style="margin-bottom:0">Turn any raw score into a scaled one, and keep a record of every
+                mistake so you stop repeating it.</p>
         </div>
     </div>
+    <div class="btn-row" style="margin-top:1.4rem">
+        <a class="btn secondary" href="drills.html">All drills</a>
+        <a class="btn secondary" href="exams.html">All practice exams</a>
+        <a class="btn secondary" href="tools.html">Study tools</a>
+    </div>
+</section>
 
-    <h3>What 675 actually costs you in questions</h3>
-    <p>CompTIA does not publish its raw-to-scaled conversion, but 675 of 900 lands close to
-        <strong>72% correct</strong>. On a 90-question exam that is about 65 right and 25 wrong.</p>
-    <div class="table-scroll">
-        <table class="data-table">
-            <thead><tr><th>If you get this many right</th><th>Roughly</th><th>Estimated scaled score</th><th>Result</th></tr></thead>
-            <tbody>
-                <tr><td>54 of 90</td><td>60%</td><td>570</td><td><span class="badge bad">Fail</span></td></tr>
-                <tr><td>59 of 90</td><td>65%</td><td>615</td><td><span class="badge bad">Fail</span></td></tr>
-                <tr><td>63 of 90</td><td>70%</td><td>660</td><td><span class="badge amber">15 points short</span></td></tr>
-                <tr><td><strong>65 of 90</strong></td><td><strong>72%</strong></td><td><strong>675</strong></td><td><span class="badge good">Pass</span></td></tr>
-                <tr><td>72 of 90</td><td>80%</td><td>745</td><td><span class="badge good">Comfortable pass</span></td></tr>
-                <tr><td>81 of 90</td><td>90%</td><td>825</td><td><span class="badge good">Not necessary</span></td></tr>
-            </tbody>
-        </table>
+<!-- ================= ADVICE ================= -->
+<section>
+    <h2>If you are deciding what to do first</h2>
+    <div class="callout key">
+        <span class="callout-title">Take a cold practice exam before you study anything</span>
+        <p>On whichever track you pick, day one is a full practice exam taken before you open a single
+            guide. It will feel bad and the score does not matter. Its only job is to tell you which two
+            domains are actually costing you points, because the rest of the plan is built around that
+            answer.</p>
+        <p style="margin-bottom:0">Studying first and then testing tells you nothing. You will have
+            revised the things you already knew and confirmed you know them.</p>
     </div>
     <div class="callout tip">
-        <span class="callout-title">The gap between failing and passing is smaller than it feels</span>
-        <p style="margin-bottom:0">Sixty-five right out of ninety. That is the whole job. It means you can miss
-            an entire quarter of the exam and still walk out certified &mdash; so stop trying to learn everything
-            and start closing the specific gaps the practice exams find. Six extra correct answers is the
-            difference between 660 and 720.</p>
-    </div>
-</section>
-
-<!-- ================= HOW THE PLAN WORKS ================= -->
-<section>
-    <h2>How the next nine days work</h2>
-    <p class="lede">Wednesday August 26 through Thursday September 3, then you sit the exam Friday morning.</p>
-
-    <div class="grid grid-3" style="margin-bottom:1.5rem">
-        <div class="card">
-            <div class="card-icon">1</div>
-            <h3>Test first, study second</h3>
-            <p style="margin-bottom:0">Day 1 is a full practice exam before you have studied anything. It will
-                feel bad. It is also the only way to find out which of the five domains is actually costing
-                you points, and the whole plan is built on that answer.</p>
-        </div>
-        <div class="card">
-            <div class="card-icon amber">2</div>
-            <h3>Three exams, three repairs</h3>
-            <p style="margin-bottom:0">Practice exams on <strong>Aug 26, Aug 29, and Sep 1</strong>. Each one is
-                followed by a repair day aimed squarely at what it exposed. Testing measures; reviewing
-                improves.</p>
-        </div>
-        <div class="card">
-            <div class="card-icon teal">3</div>
-            <h3>Taper, do not cram</h3>
-            <p style="margin-bottom:0">Nothing new after Wednesday September 2. The last day is flashcards,
-                the error log, and sleep. Cramming the night before reliably lowers scores.</p>
-        </div>
-    </div>
-
-    <div class="callout">
-        <span class="callout-title">Why the review matters more than the exam</span>
-        <p style="margin-bottom:0">Taking a practice exam tells you your score. It does not raise it. The gain
-            comes from the hour afterward, when you work out <em>why</em> each miss happened &mdash; a fact you
-            never learned, a fact you knew but read past, or a question you misread. Sort every miss into one
-            of those three buckets and the fix becomes obvious. The
-            <a href="tools.html#errorlog">error log</a> exists for exactly this.</p>
-    </div>
-
-    <div class="card" style="margin-bottom:1.5rem">
-        <h3 style="margin-top:0">Your progress</h3>
-        <div id="progressBox"><p class="muted">Loading&hellip;</p></div>
-    </div>
-
-    <div class="btn-row">
-        <a class="btn lg" href="plan.html">Open the 9-day plan</a>
-        <a class="btn lg secondary" href="exams.html">Go to the practice exams</a>
-    </div>
-</section>
-
-<!-- ================= EVERYTHING HERE ================= -->
-<section>
-    <h2>Everything on this site</h2>
-    <div class="grid grid-3">
-        <a class="card card-link" href="plan.html">
-            <div class="card-icon">1</div><h3>The 9-Day Plan</h3>
-            <p>Day-by-day tasks with checkboxes that save automatically. Start here every morning.</p>
-        </a>
-        <a class="card card-link" href="troubleshooting.html">
-            <div class="card-icon bad">2</div><h3>Troubleshooting <span class="badge bad">28%</span></h3>
-            <p>The six-step methodology, the diagnostic ladder, and the symptom-to-cause tables that carry the largest domain on the exam.</p>
-        </a>
-        <a class="card card-link" href="hardware.html">
-            <div class="card-icon amber">3</div><h3>Hardware <span class="badge amber">25%</span></h3>
-            <p>RAM, storage, RAID, power, motherboards, printers, and displays &mdash; every number you are expected to recall cold.</p>
-        </a>
-        <a class="card card-link" href="networking.html">
-            <div class="card-icon teal">4</div><h3>Networking <span class="badge teal">23%</span></h3>
-            <p>Ports, IP addressing, DNS and DHCP, Wi-Fi standards, SOHO hardening, and which tool the exam wants.</p>
-        </a>
-        <a class="card card-link" href="mobile-cloud.html">
-            <div class="card-icon good">5</div><h3>Mobile &amp; Cloud <span class="badge good">24%</span></h3>
-            <p>Laptop parts and their failure signatures, mobile setup and sync, hypervisors, and the cloud service models.</p>
-        </a>
-        <a class="card card-link" href="core2.html">
-            <div class="card-icon">6</div><h3>Core 2 Map</h3>
-            <p>All four 220-1102 domains, for the second exam &mdash; or for September 4, if Core 2 is the one you booked.</p>
-        </a>
-        <a class="card card-link" href="drills.html">
-            <div class="card-icon teal">7</div><h3>Topic Drills</h3>
-            <p>Sixteen eight-question sets on one skill at a time, with instant scoring and an explanation for every question.</p>
-        </a>
-        <a class="card card-link" href="exams.html">
-            <div class="card-icon amber">8</div><h3>Practice Exams</h3>
-            <p>Three timed 60-question Core 1 exams plus a Core 2 diagnostic, with scaled scoring and full review mode.</p>
-        </a>
-        <a class="card card-link" href="tools.html">
-            <div class="card-icon">9</div><h3>Study Tools</h3>
-            <p>Score estimator, exam timer, 170 flashcards, the port-number reference, and the error log.</p>
-        </a>
-    </div>
-</section>
-
-<!-- ================= EXAM DAY ================= -->
-<section>
-    <h2>Exam day logistics</h2>
-    <div class="grid grid-2">
-        <div class="card">
-            <h3 style="margin-top:0">The night before</h3>
-            <ul style="margin-bottom:0">
-                <li>Confirm the appointment time and whether it is <strong>in-center or online proctored</strong> &mdash; they have completely different rules.</li>
-                <li>Two forms of ID, at least one government-issued with a photo and signature. Names must match the booking exactly.</li>
-                <li>If it is online proctored: run the system test, clear the desk down to bare wood, and check that nothing is on the walls.</li>
-                <li>Print or screenshot the confirmation email with the exam code <strong>220-1101</strong> on it.</li>
-                <li>Stop studying by 8:00 pm. Lights out early.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3 style="margin-top:0">The morning of</h3>
-            <ul style="margin-bottom:0">
-                <li>Eat protein, not just sugar. Do not skip breakfast.</li>
-                <li>Arrive thirty minutes early. Late arrivals get turned away and lose the fee.</li>
-                <li>Warm up on ten flashcards in the car. Do not learn anything new.</li>
-                <li><strong>Do the performance-based questions last.</strong> Flag them, clear the multiple choice, then come back with the time you have left.</li>
-                <li>If a question passes 90 seconds: answer it anyway, flag it, move on.</li>
-                <li>Read the last line first. <em>BEST</em>, <em>FIRST</em>, and <em>MOST LIKELY</em> change the answer.</li>
-                <li>Answer every single question. There is no penalty for being wrong.</li>
-            </ul>
-        </div>
+        <span class="callout-title">Do not study for both at once</span>
+        <p style="margin-bottom:0">Pick the exam with the nearer date, work only that track until you sit
+            it, then switch. The two exams share almost no content, so alternating between them costs you
+            the momentum on both. The switcher in the header is there so the site follows that decision,
+            not so you can bounce between them daily.</p>
     </div>
 </section>
 
@@ -249,60 +181,89 @@
 
 <footer id="footer"></footer>
 
+<script src="assets/data/drills.js"></script>
+<script src="assets/data/drills-c2.js"></script>
 <script>
 (function () {
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("heroDays").textContent = AP.daysLeft();
+    "use strict";
 
-        var box = document.getElementById("progressBox");
-        var checks = AP.store.get("plan", {});
-        var doneTasks = 0;
-        for (var k in checks) { if (Object.prototype.hasOwnProperty.call(checks, k)) doneTasks++; }
-
-        var hist = AP.store.get("history", {});
-        var runs = [];
-        for (var t in hist) { if (Object.prototype.hasOwnProperty.call(hist, t)) runs.push(hist[t]); }
-        runs.sort(function (a, b) { return a.at - b.at; });
-
-        var day = Math.min(AP.PLAN_DAYS, Math.max(1, AP.currentPlanDay()));
-        var dayPct = Math.round(day / AP.PLAN_DAYS * 100);
-        var html = '<div class="meter-row"><span class="mlabel">Day ' + day + " of " + AP.PLAN_DAYS + "</span>" +
-            '<span class="meter"><i data-pct="' + dayPct + '"></i></span>' +
-            '<span class="mval">' + dayPct + "%</span></div>";
-        html += '<div class="meter-row"><span class="mlabel">Plan tasks checked off</span>' +
-            '<span class="meter"><i class="good" data-pct="' + Math.min(100, Math.round(doneTasks / 43 * 100)) + '"></i></span>' +
-            '<span class="mval">' + doneTasks + "</span></div>";
-
-        var drills = AP.store.get("drillScores", {});
-        var drillCount = 0;
-        for (var dk in drills) { if (Object.prototype.hasOwnProperty.call(drills, dk)) drillCount++; }
-        html += '<div class="meter-row"><span class="mlabel">Drill sets completed</span>' +
-            '<span class="meter"><i class="amber" data-pct="' + Math.round(drillCount / 16 * 100) + '"></i></span>' +
-            '<span class="mval">' + drillCount + " / 16</span></div>";
-
-        if (runs.length) {
-            html += '<h4 style="margin-top:1.2rem">Practice exams taken</h4><div class="table-scroll">' +
-                '<table class="data-table"><thead><tr><th>Exam</th><th>Correct</th><th>Scaled</th>' +
-                "<th>Result</th></tr></thead><tbody>";
-            for (var i = 0; i < runs.length; i++) {
-                var r = runs[i];
-                html += "<tr><td>" + AP.escapeHtml(r.title) + "</td><td>" + r.right + " / " + r.total +
-                    " (" + r.pct + "%)</td><td><strong>" + r.scaled + "</strong></td><td>" +
-                    (r.passed ? '<span class="badge good">Pass &middot; needs ' + r.pass + "</span>"
-                              : '<span class="badge bad">' + (r.pass - r.scaled) + " short of " + r.pass + "</span>") +
-                    "</td></tr>";
-            }
-            html += "</tbody></table></div>";
-            var last = runs[runs.length - 1];
-            html += '<p class="muted" style="margin-bottom:0">Most recent: <strong>' + last.scaled +
-                "</strong> &middot; passing is " + last.pass + ".</p>";
-        } else {
-            html += '<p class="muted" style="margin:1rem 0 0">No practice exams recorded yet. ' +
-                'Your first one is <strong>today</strong> &mdash; take it cold, before you study anything. ' +
-                "That score is not a judgment, it is a map.</p>";
+    function statusBlock(p) {
+        var info = p.info;
+        if (p.examsTaken === 0) {
+            return '<div class="cc-status"><span class="badge">Not started</span> ' +
+                '<span class="muted" style="font-size:.86rem">Begin with a cold practice exam.</span></div>';
         }
-        box.innerHTML = html;
-        AP.autoFillMeters(box);
+        var v = AP.verdict(p.best, p.track);
+        var gap = p.best - info.pass;
+        var gapTxt = gap === 0 ? "exactly on the " + info.pass + " line"
+                   : gap > 0 ? gap + " above the " + info.pass + " line"
+                   : Math.abs(gap) + " below the " + info.pass + " line";
+        return '<div class="cc-status"><span class="badge ' + v.cls + '">' + v.label + " \u00b7 best " +
+            p.best + "</span> " +
+            '<span class="muted" style="font-size:.86rem">' +
+            AP.pluralize(p.examsTaken, "practice exam") + " taken \u00b7 " + gapTxt + "." +
+            "</span></div>";
+    }
+
+    function card(t) {
+        var p = AP.trackProgress(t);
+        var info = p.info;
+        var date = AP.examDate(t);
+        var dateNote = AP.isDefaultExamDate(t)
+            ? '<span class="faint">(not booked yet \u2014 set the date on the overview page)</span>'
+            : "";
+
+        var domains = "";
+        for (var i = 0; i < info.domains.length; i++) {
+            domains += "<li><span>" + info.domains[i].num + " &nbsp;" + info.domains[i].name + "</span>" +
+                '<span class="w">' + info.domains[i].weight + "%</span></li>";
+        }
+
+        return '<a class="choice-card ' + (t === "core2" ? "is-core2" : "is-core1") + '" href="' + info.home + '">' +
+            '<div class="cc-code">' + info.code + "</div>" +
+            "<h2>" + info.name + "</h2>" +
+            '<div class="cc-sub">' + info.blurb + "</div>" +
+            '<div class="cc-meta">' +
+            '<div><div class="n">' + p.daysLeft + '</div><div class="l">Days left</div></div>' +
+            '<div><div class="n">' + info.pass + '</div><div class="l">To pass</div></div>' +
+            '<div><div class="n">' + info.domains.length + '</div><div class="l">Domains</div></div>' +
+            '<div><div class="n">' + p.examsTaken + '/3</div><div class="l">Exams taken</div></div>' +
+            "</div>" +
+            '<ul class="cc-domains">' + domains + "</ul>" +
+            '<div class="cc-foot">' + statusBlock(p) +
+            '<p class="muted" style="font-size:.84rem;margin-bottom:.9rem">Exam day: <strong>' +
+            AP.fmtLong(date) + "</strong> " + dateNote + "</p>" +
+            '<span class="btn lg" style="width:100%;text-align:center;justify-content:center">Study ' +
+            info.name + " \u2192</span>" +
+            "</div></a>";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("chooser").innerHTML = card("core1") + card("core2");
+
+        var p1 = AP.trackProgress("core1");
+        var p2 = AP.trackProgress("core2");
+        var examsTaken = p1.examsTaken + p2.examsTaken;
+        var drillsDone = p1.drillDone + p2.drillDone;
+        var drillsTotal = p1.drillTotal + p2.drillTotal;
+        var passed = (p1.passing ? 1 : 0) + (p2.passing ? 1 : 0);
+
+        document.getElementById("heroStats").innerHTML =
+            '<div class="hero-stat"><div class="n">' + p1.daysLeft + '</div><div class="l">Days to Core 1</div></div>' +
+            '<div class="hero-stat"><div class="n">' + passed + '/2</div><div class="l">Exams at passing level</div></div>' +
+            '<div class="hero-stat"><div class="n">' + examsTaken + '</div><div class="l">Practice exam' +
+            (examsTaken === 1 ? "" : "s") + ' taken</div></div>' +
+            '<div class="hero-stat"><div class="n">' + drillsDone + "/" + drillsTotal + '</div><div class="l">Drills completed</div></div>';
+
+        var last = document.getElementById("lastUsed");
+        if (AP.hasChosenTrack()) {
+            var t = AP.track();
+            last.innerHTML = "Last time you were working on <strong>" + AP.TRACKS[t].longName + "</strong>. " +
+                '<a href="' + AP.TRACKS[t].home + '">Pick up where you left off &rarr;</a>';
+        } else {
+            last.innerHTML = "Pick one to begin. You can switch any time from the header, and each track " +
+                "remembers its own progress.";
+        }
     });
 })();
 </script>

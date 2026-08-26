@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="Deep Core 2 study guide for security controls, authentication, malware removal, threats, workstation hardening, data destruction, and SOHO security.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Security</h1>
+<p class="lede">Core 2 domain 2.0 is 28% of the exam &mdash; tied with Operating Systems for the largest domain. A large share is vocabulary &mdash; threat names, attack names, and method names &mdash; which makes it cheap to raise with flashcards, and the rest is procedural order: the malware removal steps the exam tests literally.</p>
+
+<section id="physical">
+  <div class="week-head">
+    <h2>Physical security</h2>
+    <span class="wgoal">Match each physical control to the thing it actually prevents.</span>
+  </div>
+  <p>Physical security is not just locks. It is layered delay, detection, deterrence, and controlled access. The exam often asks which control best stops a very specific threat.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Control</th>
+          <th>Threat it actually stops or reduces</th>
+          <th>Memory hook</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bollards</td>
+          <td>Vehicle ramming into entrances, lobbies, or equipment areas.</td>
+          <td>Posts stop cars, not people.</td>
+        </tr>
+        <tr>
+          <td>Access control vestibule / mantrap</td>
+          <td>Tailgating and uncontrolled entry by forcing one controlled transition at a time.</td>
+          <td>Two doors, one person, verified access.</td>
+        </tr>
+        <tr>
+          <td>Badge reader</td>
+          <td>Unauthorized entry by people without issued credentials.</td>
+          <td>Identifies what the person has.</td>
+        </tr>
+        <tr>
+          <td>Video surveillance</td>
+          <td>Undetected activity and weak incident reconstruction.</td>
+          <td>Detects and records; it does not physically block.</td>
+        </tr>
+        <tr>
+          <td>Alarm systems</td>
+          <td>Unnoticed entry, forced doors, or after-hours movement.</td>
+          <td>Alerting control.</td>
+        </tr>
+        <tr>
+          <td>Motion sensors</td>
+          <td>Movement in areas that should be empty.</td>
+          <td>Detects presence after access controls fail.</td>
+        </tr>
+        <tr>
+          <td>Door locks: key, keypad, biometric, badge</td>
+          <td>Unauthorized room access.</td>
+          <td>Different lock types map to different authentication factors.</td>
+        </tr>
+        <tr>
+          <td>Equipment locks / cable locks</td>
+          <td>Theft of laptops, docks, displays, and small devices.</td>
+          <td>Delay and deter grab-and-go theft.</td>
+        </tr>
+        <tr>
+          <td>Guards</td>
+          <td>Social engineering at entrances, policy violations, and physical incidents.</td>
+          <td>Human verification and response.</td>
+        </tr>
+        <tr>
+          <td>Fences</td>
+          <td>Unauthorized approach to a perimeter or restricted yard.</td>
+          <td>Boundary control.</td>
+        </tr>
+        <tr>
+          <td>Lighting</td>
+          <td>Hidden movement, theft, vandalism, and unsafe walking paths.</td>
+          <td>Deterrence plus visibility.</td>
+        </tr>
+        <tr>
+          <td>Magnetometers</td>
+          <td>Metal weapons or prohibited metal objects entering a controlled area.</td>
+          <td>Airport-style metal detection.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <h3 style="margin-top:0">Staff possession controls</h3>
+      <ul>
+        <li>Key fobs unlock doors or systems using something the user has.</li>
+        <li>Smart cards store certificates or credentials for stronger authentication.</li>
+        <li>Physical keys are simple but easy to copy and hard to audit.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Staff biometric controls</h3>
+      <ul>
+        <li>Retina scans, fingerprints, and palmprints use something the user is.</li>
+        <li>Biometrics reduce sharing but raise enrollment, privacy, and false-rejection concerns.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Defense in depth</h3>
+      <ul>
+        <li>Use multiple layers: fence, lighting, camera, badge reader, mantrap, guard, locked rack.</li>
+        <li>No single control is perfect; layers reduce the chance one failure becomes a breach.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="logical">
+  <div class="week-head">
+    <h2>Logical security and authentication</h2>
+    <span class="wgoal">Keep identities, permissions, and inheritance rules straight.</span>
+  </div>
+  <p>The principle of least privilege means users and services receive only the access required to do their jobs. Access control lists implement that decision on files, folders, printers, shares, and directory objects.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>MFA factor category</th>
+          <th>Meaning</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Something you know</td>
+          <td>A secret memorized by the user.</td>
+          <td>Password, PIN, passphrase, security answer.</td>
+        </tr>
+        <tr>
+          <td>Something you have</td>
+          <td>A physical or logical item in the user&rsquo;s possession.</td>
+          <td>Smart card, hard token, soft token, authenticator app, phone.</td>
+        </tr>
+        <tr>
+          <td>Something you are</td>
+          <td>A biometric characteristic.</td>
+          <td>Fingerprint, retina pattern, face, palmprint.</td>
+        </tr>
+        <tr>
+          <td>Something you do</td>
+          <td>A behavior pattern.</td>
+          <td>Signature dynamics, gesture, typing rhythm.</td>
+        </tr>
+        <tr>
+          <td>Somewhere you are</td>
+          <td>A location-based factor.</td>
+          <td>Trusted GPS area, office network, country, IP range.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Hard tokens are dedicated physical devices, such as smart cards or key fobs. Soft tokens are software-based, such as authenticator apps. SMS codes are common but weaker because of SIM swapping, phone-number takeover, message preview exposure, and phishing. Email-based codes are also vulnerable if the email account is already compromised.</p>
+  <div class="callout key">
+    <span class="callout-title">Active Directory words</span>
+    <p>A domain is the logical boundary for centralized authentication. Organizational units group objects for delegation and Group Policy. Security groups assign permissions. A login script runs at sign-in. A home folder stores user data. Folder redirection moves known folders, such as Documents, to a network location. <code>gpupdate</code> refreshes Group Policy on a client.</p>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Permission type</th>
+          <th>Where it applies</th>
+          <th>Common levels</th>
+          <th>How it combines</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NTFS permissions</td>
+          <td>Files and folders on NTFS volumes, locally or over the network.</td>
+          <td>Full control, modify, read and execute, list folder contents, read, write.</td>
+          <td>Effective access comes from user and group entries; explicit deny usually overrides allow.</td>
+        </tr>
+        <tr>
+          <td>Share permissions</td>
+          <td>Network access through a shared folder.</td>
+          <td>Read, change, full control.</td>
+          <td>When accessing over the network, compare share and NTFS permissions; the most restrictive of the two wins.</td>
+        </tr>
+        <tr>
+          <td>Local access</td>
+          <td>User signs in to the computer and accesses the local path directly.</td>
+          <td>NTFS permissions only.</td>
+          <td>Share permissions do not apply when the share is bypassed locally.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout trap">
+    <span class="callout-title">Classic trap: Full Control share plus Read NTFS</span>
+    <p>If a user has Full Control on the share but only Read on NTFS, the user gets Read over the network. The most restrictive permission wins.</p>
+  </div>
+  <p>Permission inheritance flows from parent folder to child objects unless inheritance is blocked or explicit permissions are assigned. Copying creates a new object that normally inherits permissions from the destination. Moving within the same NTFS volume usually preserves the original permissions. Moving between volumes acts like copy plus delete, so the object inherits permissions from the destination.</p>
+</section>
+
+<section id="wireless">
+  <div class="week-head">
+    <h2>Wireless and network security</h2>
+    <span class="wgoal">Know the secure standard, the broken standards, and the enterprise authentication path.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Wi-Fi encryption</h3>
+      <ul>
+        <li><strong>WPA3</strong> is the best current personal Wi-Fi security choice and uses SAE for stronger password-based authentication.</li>
+        <li><strong>WPA2 with AES/CCMP</strong> is still widely deployed and acceptable when WPA3 is unavailable.</li>
+        <li><strong>WEP</strong> is broken and should not be used.</li>
+        <li><strong>TKIP</strong> was a transitional WPA mechanism and is deprecated; choose AES.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Personal vs Enterprise</h3>
+      <ul>
+        <li>Personal mode uses a pre-shared key, also called PSK.</li>
+        <li>Enterprise mode uses 802.1X with per-user or per-device authentication.</li>
+        <li>Enterprise Wi-Fi normally sends authentication to a RADIUS server.</li>
+        <li>Certificate-based authentication, such as EAP-TLS, proves identity with certificates instead of only passwords.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Protocol</th>
+          <th>What it is for</th>
+          <th>How it differs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RADIUS</td>
+          <td>Centralized authentication, authorization, and accounting for network access, VPN, and 802.1X.</td>
+          <td>Common with Wi-Fi Enterprise; uses shared secrets and typically UDP.</td>
+        </tr>
+        <tr>
+          <td>TACACS+</td>
+          <td>AAA for network device administration, especially routers and switches.</td>
+          <td>Often associated with Cisco; uses TCP and separates authentication, authorization, and accounting more distinctly.</td>
+        </tr>
+        <tr>
+          <td>Kerberos</td>
+          <td>Ticket-based authentication and single sign-on in Windows Active Directory environments.</td>
+          <td>Uses a trusted key distribution center and time-sensitive tickets rather than sending passwords to each service.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A host firewall runs on the endpoint and controls traffic for that machine. A network firewall sits between networks and filters traffic for many devices. Port security on a switch restricts which MAC addresses may use a port. MAC filtering is weak because MAC addresses can be observed and spoofed. Disabling unused switch ports reduces attack surface and prevents casual unauthorized network access.</p>
+</section>
+
+<section id="malware">
+  <div class="week-head">
+    <h2>Malware and removal</h2>
+    <span class="wgoal">Memorize the seven-step order exactly.</span>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Malware type</th>
+          <th>How it spreads</th>
+          <th>The telltale symptom</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Virus</td>
+          <td>Attaches to files or programs and spreads when the infected host file runs.</td>
+          <td>Files change, programs crash, or the same infection follows shared files.</td>
+        </tr>
+        <tr>
+          <td>Worm</td>
+          <td>Self-replicates across networks without needing a host file.</td>
+          <td>Network congestion, repeated connections, and rapid spread to similar systems.</td>
+        </tr>
+        <tr>
+          <td>Trojan</td>
+          <td>Disguises itself as legitimate or desirable software.</td>
+          <td>User installed a fake utility, cracked app, codec, or attachment.</td>
+        </tr>
+        <tr>
+          <td>Ransomware</td>
+          <td>Delivered by phishing, exploit kits, exposed services, or malicious downloads.</td>
+          <td>Files encrypted, ransom note displayed, extensions changed.</td>
+        </tr>
+        <tr>
+          <td>Rootkit</td>
+          <td>Installed through privilege escalation, malware payloads, or compromised boot paths.</td>
+          <td>Security tools cannot see processes, files, drivers, or network activity correctly.</td>
+        </tr>
+        <tr>
+          <td>Keylogger</td>
+          <td>Installed by malware, malicious extensions, or hardware implants.</td>
+          <td>Stolen credentials despite normal-looking sign-in behavior.</td>
+        </tr>
+        <tr>
+          <td>Boot sector virus</td>
+          <td>Infects boot records or boot media and runs before the OS fully loads.</td>
+          <td>Boot errors, infection returns after reinstall attempts, suspicious removable media history.</td>
+        </tr>
+        <tr>
+          <td>Spyware</td>
+          <td>Bundled with software, malicious sites, browser extensions, or Trojans.</td>
+          <td>Tracking, pop-ups, changed home page, unknown browser helpers.</td>
+        </tr>
+        <tr>
+          <td>Cryptominer</td>
+          <td>Installed by malware or scripts to mine cryptocurrency using the victim&rsquo;s resources.</td>
+          <td>High CPU/GPU use, loud fans, heat, and slow performance when idle.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ol>
+    <li>
+      <strong>Investigate and verify malware symptoms.</strong>
+      <p>Confirm the symptoms before making changes. Look for pop-ups, browser redirects, disabled security tools, slow performance, unknown processes, encrypted files, and user reports.</p>
+    </li>
+    <li>
+      <strong>Quarantine the infected systems.</strong>
+      <p>Remove the system from the network or isolate it so malware cannot spread, exfiltrate data, or receive commands while you work.</p>
+    </li>
+    <li>
+      <strong>Disable System Restore in Windows.</strong>
+      <p>Turn off System Restore before remediation because malware can hide in restore points and come back after the visible infection is removed.</p>
+    </li>
+    <li>
+      <strong>Remediate the infected systems.</strong>
+      <p>Update anti-malware software, run scans, remove or quarantine detections, and use offline or recovery tools if the installed OS cannot be trusted.</p>
+    </li>
+    <li>
+      <strong>Schedule scans and run updates.</strong>
+      <p>Patch the operating system, update applications, update signatures, and schedule recurring scans so the same weakness is less likely to return.</p>
+    </li>
+    <li>
+      <strong>Enable System Restore and create a restore point in Windows.</strong>
+      <p>After the system is clean, turn System Restore back on and create a known-good restore point.</p>
+    </li>
+    <li>
+      <strong>Educate the end user.</strong>
+      <p>Explain what likely caused the infection and how to avoid repeating it: phishing attachments, fake downloads, unsafe links, macros, weak passwords, or unapproved software.</p>
+    </li>
+  </ol>
+  <div class="callout key">
+    <span class="callout-title">NEXT means next in this list</span>
+    <p>The exam asks what the technician should do next. Choose the next CompTIA step, not the task you personally want to do.</p>
+    <p>Quarantine comes before remediation. Disable System Restore before removal, then re-enable it and create a restore point after cleanup because malware can hide in restore points.</p>
+  </div>
+  <p>Common tools include Windows Defender Antivirus, third-party anti-malware scanners, the recovery console or Windows Recovery Environment for offline repair, and the software firewall to block unwanted traffic.</p>
+</section>
+
+<section id="threats">
+  <div class="week-head">
+    <h2>Social engineering, threats, and vulnerabilities</h2>
+    <span class="wgoal">Name the attack from the clue words.</span>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Attack</th>
+          <th>How it works</th>
+          <th>How you spot it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Phishing</td>
+          <td>Generic fraudulent message tries to trick users into clicking, opening, paying, or entering credentials.</td>
+          <td>Broad email lure, urgency, suspicious link, mismatched sender.</td>
+        </tr>
+        <tr>
+          <td>Spear phishing</td>
+          <td>Targeted phishing aimed at a specific person, role, or department.</td>
+          <td>Personalized details, internal project names, role-specific request.</td>
+        </tr>
+        <tr>
+          <td>Vishing</td>
+          <td>Voice phishing over phone or voicemail.</td>
+          <td>Caller claims to be bank, help desk, vendor, or executive and asks for secrets or actions.</td>
+        </tr>
+        <tr>
+          <td>Whaling</td>
+          <td>Spear phishing aimed at executives or high-value leaders.</td>
+          <td>CEO, CFO, owner, senior attorney, or executive target.</td>
+        </tr>
+        <tr>
+          <td>Smishing</td>
+          <td>Phishing by SMS or text message.</td>
+          <td>Package, bank, payroll, or MFA text with a link.</td>
+        </tr>
+        <tr>
+          <td>Shoulder surfing</td>
+          <td>Attacker watches a screen, keyboard, badge, or documents.</td>
+          <td>Someone observing credentials in a public or shared space.</td>
+        </tr>
+        <tr>
+          <td>Tailgating</td>
+          <td>Unauthorized person follows an authorized person through a secure door.</td>
+          <td>No interaction needed; attacker slips in behind someone.</td>
+        </tr>
+        <tr>
+          <td>Piggybacking</td>
+          <td>Unauthorized person is knowingly allowed in by an authorized person.</td>
+          <td>Attacker asks someone to hold the door or help carry boxes.</td>
+        </tr>
+        <tr>
+          <td>Impersonation</td>
+          <td>Attacker pretends to be someone trusted.</td>
+          <td>Fake technician, vendor, employee, delivery person, or executive.</td>
+        </tr>
+        <tr>
+          <td>Dumpster diving</td>
+          <td>Attacker searches trash for sensitive documents, labels, media, or notes.</td>
+          <td>Information found from discarded paper or devices.</td>
+        </tr>
+        <tr>
+          <td>Evil twin</td>
+          <td>Rogue wireless access point mimics a legitimate network.</td>
+          <td>Same or similar SSID, captive portal, users connect in public area.</td>
+        </tr>
+        <tr>
+          <td>On-path attack</td>
+          <td>Attacker intercepts or alters traffic between two parties.</td>
+          <td>Unexpected certificate warnings, session hijacking, altered traffic.</td>
+        </tr>
+        <tr>
+          <td>Spoofing</td>
+          <td>Attacker falsifies identity information such as email sender, IP, MAC, caller ID, or DNS.</td>
+          <td>Identity field looks trusted but the source is not legitimate.</td>
+        </tr>
+        <tr>
+          <td>SQL injection</td>
+          <td>Malicious SQL is inserted into application input to query or change a database.</td>
+          <td>Login forms, search boxes, or URL parameters alter database behavior.</td>
+        </tr>
+        <tr>
+          <td>Cross-site scripting</td>
+          <td>Malicious script runs in another user&rsquo;s browser through a vulnerable site.</td>
+          <td>Injected JavaScript, stolen cookies, defaced page, malicious pop-up from trusted site.</td>
+        </tr>
+        <tr>
+          <td>DoS</td>
+          <td>One attacker or source overwhelms a service or host.</td>
+          <td>Service unavailable from resource exhaustion.</td>
+        </tr>
+        <tr>
+          <td>DDoS</td>
+          <td>Many distributed systems overwhelm a target at once.</td>
+          <td>Traffic flood from many locations, often botnet-driven.</td>
+        </tr>
+        <tr>
+          <td>Zero-day attack</td>
+          <td>Exploit uses a vulnerability before a patch is available or widely deployed.</td>
+          <td>Known signatures may not detect it; vendor has no fix yet.</td>
+        </tr>
+        <tr>
+          <td>Brute force</td>
+          <td>Tries many possible passwords or keys until one works.</td>
+          <td>Large number of attempts, often systematic and exhaustive.</td>
+        </tr>
+        <tr>
+          <td>Dictionary attack</td>
+          <td>Tries words, common passwords, and known password lists.</td>
+          <td>Less exhaustive than brute force; based on likely values.</td>
+        </tr>
+        <tr>
+          <td>Insider threat</td>
+          <td>Trusted person misuses authorized access or makes harmful mistakes.</td>
+          <td>Employee, contractor, or partner is the source of risk.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout trap">
+    <span class="callout-title">Phishing family traps</span>
+    <p>Phishing is generic email. Spear phishing is targeted. Whaling targets executives. Vishing uses voice calls. Smishing uses SMS. The exam constantly swaps these terms.</p>
+  </div>
+</section>
+
+<section id="workstation">
+  <div class="week-head">
+    <h2>Securing a workstation</h2>
+    <span class="wgoal">Apply the control closest to the risk: disk, account, boot, user, or app.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Data and passwords</h3>
+      <ul>
+        <li>Use data-at-rest encryption for lost or stolen devices.</li>
+        <li>Prefer long passphrases over short complex passwords.</li>
+        <li>Use complexity, minimum length, failed-attempt lockout, and timeout/screen lock.</li>
+        <li>Password expiration may be required by policy, but forced frequent rotation can encourage weak habits.</li>
+        <li>Set BIOS/UEFI passwords where policy requires protection against firmware changes or unauthorized boot changes.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">User and account behavior</h3>
+      <ul>
+        <li>Lock the screen when stepping away.</li>
+        <li>Secure the workstation and log off from shared systems.</li>
+        <li>Secure or destroy physical documents with sensitive data.</li>
+        <li>Restrict user permissions and use standard user accounts for daily work.</li>
+        <li>Restrict login times where policy requires it.</li>
+        <li>Disable the guest account.</li>
+      </ul>
+    </div>
+  </div>
+  <p>Change default administrator names and passwords on systems and devices. Disable AutoRun/AutoPlay so removable media does not automatically launch untrusted content. User Account Control, or UAC, prompts before actions that require elevation; it is not a replacement for least privilege, but it helps prevent silent administrative changes.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Technology</th>
+          <th>What it encrypts</th>
+          <th>What it requires</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BitLocker</td>
+          <td>Entire fixed OS or data volumes.</td>
+          <td>Supported Windows edition; TPM is preferred for secure key storage, with recovery key backup.</td>
+        </tr>
+        <tr>
+          <td>BitLocker To Go</td>
+          <td>Removable drives such as USB flash drives.</td>
+          <td>Supported Windows edition to create/manage; password or smart-card unlock options.</td>
+        </tr>
+        <tr>
+          <td>EFS</td>
+          <td>Individual files and folders on NTFS volumes.</td>
+          <td>User certificate; recovery agent or certificate backup to avoid data loss.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout key">
+    <span class="callout-title">TPM role</span>
+    <p>The Trusted Platform Module stores cryptographic material and helps measure boot integrity. With BitLocker, it can release keys only when the boot environment matches expected values.</p>
+  </div>
+</section>
+
+<section id="destruction">
+  <div class="week-head">
+    <h2>Data destruction and SOHO hardening</h2>
+    <span class="wgoal">Choose between destroying media, sanitizing media, and hardening the small network.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Physical destruction</h3>
+      <ul>
+        <li>Shredding destroys paper, optical media, and some storage media when using the correct shredder type.</li>
+        <li>Drilling damages platters or chips so the device is not reusable.</li>
+        <li>Degaussing uses a strong magnetic field and is for magnetic media, not SSDs.</li>
+        <li>Incinerating destroys media by burning it under controlled conditions.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Recycling or repurposing</h3>
+      <ul>
+        <li>Erasing or wiping overwrites data so the device can be reused.</li>
+        <li>A quick format removes file-system references but does not reliably remove the underlying data.</li>
+        <li>A standard or full format checks the disk and, on modern Windows, writes zeros to the volume.</li>
+        <li>A low-level format is a drive-level operation or vendor utility concept; use approved wiping tools when policy requires sanitization.</li>
+      </ul>
+    </div>
+  </div>
+  <p>Outsourcing destruction is common when policy requires proof. A certificate of destruction documents what was destroyed, when, by whom, and by which method. It matters for audits and chain of custody.</p>
+  <ol>
+    <li>Change default passwords on the router, access point, modem, and administrator accounts.</li>
+    <li>Update firmware before exposing the device to normal use.</li>
+    <li>Change the SSID to a non-identifying name.</li>
+    <li>Disable SSID broadcast only if policy asks for it, and remember it is weak security because the network can still be discovered.</li>
+    <li>Enable WPA3 where supported; otherwise use WPA2-AES, not WEP or TKIP.</li>
+    <li>Set a strong wireless passphrase.</li>
+    <li>Disable guest access unless it is intentionally required and isolated.</li>
+    <li>Use DHCP reservations for devices that need stable internal addresses.</li>
+    <li>Configure port forwarding or port mapping deliberately and document why each rule exists.</li>
+    <li>Disable unused physical and logical ports.</li>
+    <li>Enable content filtering when policy or family safety requirements call for it.</li>
+    <li>Set a static WAN IP where business services or VPN designs require one.</li>
+    <li>Enable the firewall and verify inbound rules are minimal.</li>
+  </ol>
+  <div class="callout trap">
+    <span class="callout-title">Hidden SSID is not strong security</span>
+    <p>Disabling SSID broadcast may reduce casual visibility, but it does not encrypt traffic or prevent discovery by attackers with wireless tools. WPA3 or WPA2-AES with a strong passphrase is the real protection.</p>
+  </div>
+  <p>Browser security includes installing browsers and extensions from trusted sources, removing unnecessary plug-ins, using password managers, watching for secure connections and valid certificates, enabling pop-up blockers, clearing cache and history when appropriate, using private browsing for local privacy, managing sign-in and browser data synchronization, and considering reputable ad blockers.</p>
+</section>
+
+<section id="cheatsheet">
+  <div class="week-head">
+    <h2>The night-before Security sheet</h2>
+    <span class="wgoal">Drill the exact lists that turn into easy points.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Malware removal order</h3>
+      <ol>
+        <li>Investigate and verify malware symptoms.</li>
+        <li>Quarantine the infected systems.</li>
+        <li>Disable System Restore in Windows.</li>
+        <li>Remediate the infected systems.</li>
+        <li>Schedule scans and run updates.</li>
+        <li>Enable System Restore and create a restore point in Windows.</li>
+        <li>Educate the end user.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Authentication and permissions</h3>
+      <ul>
+        <li>MFA factors: know, have, are, do, somewhere you are.</li>
+        <li>Hard token is physical; soft token is software.</li>
+        <li>SMS is weaker than authenticator apps because phone numbers can be hijacked and messages can be phished.</li>
+        <li>Over the network, NTFS and share permissions combine by most restrictive result.</li>
+        <li>Locally, share permissions do not apply.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Wireless and AAA</h3>
+      <ul>
+        <li>Use WPA3; WPA2-AES is acceptable; WEP and TKIP are dead.</li>
+        <li>RADIUS: network access AAA, common for VPN and 802.1X Wi-Fi.</li>
+        <li>TACACS+: network device administration AAA, common in Cisco environments.</li>
+        <li>Kerberos: ticket-based Active Directory authentication and SSO.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Threat names</h3>
+      <ul>
+        <li>Phishing: generic email lure.</li>
+        <li>Spear phishing: targeted lure.</li>
+        <li>Whaling: executives.</li>
+        <li>Vishing: voice.</li>
+        <li>Smishing: SMS.</li>
+        <li>Evil twin: rogue Wi-Fi pretending to be trusted.</li>
+        <li>On-path: attacker intercepts traffic between parties.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Data destruction</h3>
+      <ul>
+        <li>Physical destruction: shredding, drilling, degaussing, incinerating.</li>
+        <li>Reuse: wiping or erasing, standard/full format, approved vendor tools.</li>
+        <li>Quick format is not sanitization.</li>
+        <li>Degaussing does not sanitize SSD flash memory.</li>
+        <li>Certificate of destruction proves outsourced destruction occurred.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">SOHO hardening</h3>
+      <ul>
+        <li>Change default passwords and update firmware.</li>
+        <li>Change SSID; hidden SSID is weak security.</li>
+        <li>Enable WPA3 or WPA2-AES with a strong passphrase.</li>
+        <li>Disable guest access unless isolated and intentional.</li>
+        <li>Use DHCP reservations for predictable devices.</li>
+        <li>Limit port forwarding, disable unused ports, enable firewall and content filtering.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="btn-row">
+    <a class="btn" href="drills.html?set=c2-security">Security drills</a>
+    <a class="btn secondary" href="drills.html?set=c2-access">Access drills</a>
+    <a class="btn secondary" href="drills.html?set=c2-malware">Malware drills</a>
+    <a class="btn ghost" href="tools.html#flashcards">Flashcards</a>
+  </div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

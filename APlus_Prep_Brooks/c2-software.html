@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Troubleshooting &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="Study Core 2 software troubleshooting symptoms, recovery tools, malware signs, and mobile OS fixes for CompTIA A+ 220-1102.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Software Troubleshooting</h1>
+<p class="lede">Core 2 domain 3.0 is <strong>23% of the exam</strong>. Like Core 1&rsquo;s troubleshooting domain this is scenario-based rather than recall-based &mdash; the exam gives you a symptom and asks for the most likely cause or the correct next action, so the way to raise it is doing questions and reading why you were wrong.</p>
+
+<section id="method">
+<div class="week-head">
+<h2>Applying the methodology to software.</h2>
+<span class="wgoal">Use the same six steps, but translate them into account, update, service, and recovery decisions.</span>
+</div>
+<p>Software troubleshooting is still troubleshooting. The exam changes the symptoms, not the order. Read the wording, decide which step the technician is in, and do not jump to a dramatic fix until the methodology allows it.</p>
+<ol>
+<li>Identify the problem.</li>
+<li>Establish a theory of probable cause.</li>
+<li>Test the theory to determine the cause.</li>
+<li>Establish a plan of action and implement the solution.</li>
+<li>Verify full system functionality and implement preventive measures.</li>
+<li>Document findings, actions, and outcomes.</li>
+</ol>
+<div class="callout key">
+<span class="callout-title">Exam key</span>
+On Core 2, the &quot;what should the technician do NEXT&quot; questions are answered by this list just as they are on Core 1. The cheapest correct first actions in software scenarios are usually <strong>reboot</strong>, <strong>check for updates</strong>, and <strong>verify the user&rsquo;s account and permissions</strong> rather than a reinstall.
+</div>
+<div class="grid grid-3">
+<div class="card">
+<h3 style="margin-top:0">Identify</h3>
+<p>Ask what changed, who is affected, when it started, and whether the symptom follows the user or the device.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Test</h3>
+<p>Use logs, Safe Mode, another profile, another network, or a known-good account to prove the cause before you repair.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Verify</h3>
+<p>After the fix, prove that the original application, sign-in, update, or security control works for the user.</p>
+</div>
+</div>
+</section>
+
+<section id="windows-symptoms">
+<div class="week-head">
+<h2>Windows symptoms and fixes.</h2>
+<span class="wgoal">Match the symptom to the likely software cause before choosing the least destructive repair.</span>
+</div>
+<p>Windows questions often hide the answer in one phrase: after a driver update, only one user, after sign-in, after Patch Tuesday, or when a service is set to disabled. Those phrases tell you whether you are fixing drivers, profiles, services, updates, or system files.</p>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Most likely cause</th>
+<th>Correct action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blue screen of death (BSOD) and stop codes</td>
+<td>Kernel-mode driver fault, bad update, memory fault, or storage corruption. The stop code points to the area to test.</td>
+<td>Record the stop code, disconnect recent devices, boot Safe Mode if needed, roll back the driver or update, then test memory and storage if the crashes continue.</td>
+</tr>
+<tr>
+<td>Sluggish performance</td>
+<td>Startup overload, low RAM, high disk usage, malware, background indexing, or an application consuming CPU.</td>
+<td>Check Task Manager, disable unnecessary startup apps, scan for malware, install updates, and add resources only when monitoring proves a resource shortage.</td>
+</tr>
+<tr>
+<td>Boot problems</td>
+<td>Damaged boot files, failed update, corrupt driver, disk issue, or incorrect boot order.</td>
+<td>Use WinRE Startup Repair first, then Safe Mode, System Restore, boot logs, and bootrec only when boot records are implicated.</td>
+</tr>
+<tr>
+<td>Frequent shutdowns</td>
+<td>Thermal protection, power settings, update restarts, bad driver, or malware.</td>
+<td>Check event logs and temperature, verify power settings, scan for malware, and roll back recent drivers or updates if the timing matches.</td>
+</tr>
+<tr>
+<td>Services not starting</td>
+<td>Service disabled, dependency service stopped, bad credentials, damaged application, or policy restriction.</td>
+<td>Review Services and Event Viewer, start dependencies, correct the service account, set startup type properly, and reinstall the app only after configuration is ruled out.</td>
+</tr>
+<tr>
+<td>Applications crashing</td>
+<td>Corrupt application files, missing update, incompatible OS version, damaged profile data, or insufficient permissions.</td>
+<td>Restart the app, check requirements, apply updates, repair or reinstall the application, and test with a new profile if the crash follows one user.</td>
+</tr>
+<tr>
+<td>Low memory warnings</td>
+<td>Too many running apps, memory leak, insufficient RAM, or page file problem.</td>
+<td>Close or update the offending app, reboot to clear leaks, check Resource Monitor, and add RAM only when usage proves the system is under-provisioned.</td>
+</tr>
+<tr>
+<td>USB controller resource warnings</td>
+<td>Too many devices on one controller, driver conflict, bad hub, or power draw issue.</td>
+<td>Move devices to another port, remove unneeded devices, update chipset and USB drivers, and use a powered hub when power draw is the issue.</td>
+</tr>
+<tr>
+<td>System instability</td>
+<td>Bad driver, corrupt system files, malware, failed update, or failing storage.</td>
+<td>Boot Safe Mode to isolate drivers, scan for malware, run <code>sfc /scannow</code>, check disk health, and roll back the last change if it caused the instability.</td>
+</tr>
+<tr>
+<td>No OS found</td>
+<td>Wrong boot device, missing boot files, disconnected or failed drive, or corrupt partition table.</td>
+<td>Verify boot order and drive detection first, then use WinRE Startup Repair or <code>bootrec</code>. Do not reinstall until the disk and boot files are proven unrecoverable.</td>
+</tr>
+<tr>
+<td>Slow profile load</td>
+<td>Corrupt user profile, huge roaming profile, login script delay, drive mapping timeout, or domain connectivity problem.</td>
+<td>Test another user, disconnect mapped drives, check domain connectivity, review profile size, and rebuild the Windows profile if the problem follows the user profile.</td>
+</tr>
+<tr>
+<td>Time drift</td>
+<td>Wrong time zone, failed Windows Time service, weak CMOS battery, or blocked NTP communication.</td>
+<td>Set the correct time zone, restart Windows Time, resync with NTP, and replace the CMOS battery if time is wrong after power loss.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Available remedies and when each is right</h3>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Remedy</th>
+<th>When it is right</th>
+<th>Exam wording that points to it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reboot</td>
+<td>The system or application is frozen, updates just installed, resources are stuck, or the symptom began after a temporary state change.</td>
+<td>The question asks for the first or simplest step and does not show data loss, security compromise, or failed hardware.</td>
+</tr>
+<tr>
+<td>Restart services</td>
+<td>A Windows feature or application depends on a service that is stopped, disabled, or stuck.</td>
+<td>Service not starting, print spooler issue, update service stopped, dependency error, or Event Viewer service message.</td>
+</tr>
+<tr>
+<td>Uninstall, reinstall, or update applications</td>
+<td>One application is corrupt, incompatible, missing patches, or broken after an update.</td>
+<td>Only one app crashes, a version mismatch is named, or repair from Programs and Features is available.</td>
+</tr>
+<tr>
+<td>Add resources</td>
+<td>Monitoring proves CPU, RAM, storage, or network capacity is consistently exhausted.</td>
+<td>Slow system with Resource Monitor evidence, low memory warnings, or insufficient disk space for updates.</td>
+</tr>
+<tr>
+<td>Verify requirements</td>
+<td>An app will not install, launch, or update on a specific system.</td>
+<td>Question names minimum RAM, CPU, OS build, disk space, TPM, or architecture requirements.</td>
+</tr>
+<tr>
+<td>System File Checker: <code>sfc /scannow</code></td>
+<td>Protected Windows system files may be missing or corrupt.</td>
+<td>System instability, Windows components failing, DLL errors, or unexplained OS behavior after malware or bad shutdown.</td>
+</tr>
+<tr>
+<td>Repair Windows</td>
+<td>Windows installation is damaged but user data and installed apps may be preserved.</td>
+<td>Startup Repair, in-place repair, or recovery options are available and reimaging is not yet justified.</td>
+</tr>
+<tr>
+<td>System Restore</td>
+<td>A recent driver, application, or configuration change broke the system.</td>
+<td>The system worked yesterday, a restore point exists, or the symptom began immediately after a change.</td>
+</tr>
+<tr>
+<td>Reimage</td>
+<td>The device must be returned to a known-good corporate baseline or the OS is too compromised to trust.</td>
+<td>Severe malware, repeated failed repairs, standard corporate image, or many systems need the same clean state.</td>
+</tr>
+<tr>
+<td>Roll back updates</td>
+<td>A Windows update caused a boot, application, driver, or stability problem.</td>
+<td>Symptom began right after Windows Update or Patch Tuesday and other systems with the same update show the issue.</td>
+</tr>
+<tr>
+<td>Roll back device drivers</td>
+<td>A new or updated driver caused crashes, device failure, or BSODs.</td>
+<td>The problem appeared after installing a driver or connecting a new device.</td>
+</tr>
+<tr>
+<td>Rebuild Windows profiles</td>
+<td>The issue follows one user profile but not other users on the same device.</td>
+<td>Slow sign-in, missing desktop, broken Start menu, application settings corrupted, or profile load errors.</td>
+</tr>
+<tr>
+<td>Check date and time</td>
+<td>Authentication, certificates, updates, or cloud sign-in fail because time is wrong.</td>
+<td>Certificate warnings, update failures, MFA or domain sign-in problems, or time drift after power loss.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout trap">
+<span class="callout-title">Classic trap</span>
+<code>sfc /scannow</code> checks protected Windows system files. <code>DISM /Online /Cleanup-Image /RestoreHealth</code> repairs the Windows component store that SFC uses as a source. If SFC cannot repair files, DISM is the next tool before running SFC again. Reimaging is correct when trust or baseline matters, such as severe malware or a corporate standard image. It is a lazy answer when a reboot, rollback, repair, or profile rebuild could solve the stated symptom.
+</div>
+</section>
+
+<section id="boot-repair">
+<div class="week-head">
+<h2>Boot and recovery.</h2>
+<span class="wgoal">Escalate from least destructive to most destructive.</span>
+</div>
+<p>Boot repair questions reward restraint. You always try the least destructive option that could work. A recovery option that preserves user data, profiles, and applications comes before one that removes or replaces them.</p>
+<ol>
+<li><strong>Check the simple external causes.</strong> Remove bootable USB media, verify boot order, confirm the drive is detected, and undo the most recent physical change.</li>
+<li><strong>Use Windows Recovery Environment (WinRE).</strong> WinRE is the menu that exposes Startup Repair, System Restore, Command Prompt, uninstall updates, and startup settings.</li>
+<li><strong>Run Startup Repair.</strong> Choose this when Windows tries to boot but fails because boot files, startup settings, or a failed update are suspected.</li>
+<li><strong>Boot Safe Mode.</strong> Safe Mode loads minimal drivers and services. If the system works there, suspect third-party drivers, services, startup apps, or malware.</li>
+<li><strong>Boot Safe Mode with Networking.</strong> Use it when you need network access to download a driver, update signatures, reach documentation, or remove cloud-managed software.</li>
+<li><strong>Use Last Known Good when the exam offers it.</strong> Treat it as a rollback for a failed driver or configuration after the last successful boot. On modern Windows, System Restore and recovery options are the practical equivalents.</li>
+<li><strong>Enable boot logging.</strong> Boot logging helps identify the driver or service that loads last before failure.</li>
+<li><strong>Disable automatic restart on failure.</strong> Use this when the system restarts too quickly to read the BSOD stop code.</li>
+<li><strong>Use System Restore.</strong> Restore to a point before a bad driver, app, registry, or update change while preserving user data.</li>
+<li><strong>Use <code>bootrec /fixmbr</code>.</strong> Repair the master boot record when MBR corruption or boot-sector malware is suspected on an MBR disk.</li>
+<li><strong>Use <code>bootrec /fixboot</code>.</strong> Write a new boot sector when the boot sector is damaged or incompatible.</li>
+<li><strong>Use <code>bootrec /rebuildbcd</code>.</strong> Rebuild Boot Configuration Data when Windows installations are present but not listed or the BCD store is damaged.</li>
+<li><strong>Reset, repair install, or reimage.</strong> Use these only after less destructive recovery cannot restore a trusted booting system.</li>
+</ol>
+<details class="acc">
+<summary>How to read boot scenario wording</summary>
+<div class="acc-body">
+<p>If the question says the PC restarted after an update, think uninstall update or System Restore. If it says a new driver was installed, think Safe Mode and driver rollback. If it says no operating system is found but the disk is detected, think Startup Repair or BCD repair. If it says the drive is not detected, do not waste time on Windows tools.</p>
+</div>
+</details>
+</section>
+
+<section id="security-symptoms">
+<div class="week-head">
+<h2>PC security symptoms.</h2>
+<span class="wgoal">Quarantine suspicious systems before cleaning them.</span>
+</div>
+<p>Security symptoms overlap with ordinary software problems, but the first decision is containment. If the system may be infected, remove it from the network before scanning or browsing for tools.</p>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Symptom</th>
+<th>What it usually means</th>
+<th>Right first move</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unable to access the network</td>
+<td>Malware changed proxy, DNS, firewall, or adapter settings, or the system was blocked by security tools.</td>
+<td>Quarantine if compromise is possible, then scan and verify IP, DNS, proxy, and firewall settings.</td>
+</tr>
+<tr>
+<td>Desktop alerts</td>
+<td>Potentially unwanted program, fake support tool, or legitimate endpoint protection alert.</td>
+<td>Quarantine if the alert suggests infection, then run approved anti-malware and review the alert source.</td>
+</tr>
+<tr>
+<td>False alerts regarding antivirus protection</td>
+<td>Rogue security software trying to scare the user into installing or paying.</td>
+<td>Quarantine, scan with trusted tools, remove the rogue application, and verify real antivirus status.</td>
+</tr>
+<tr>
+<td>Altered system files or personal files</td>
+<td>Malware, ransomware, unauthorized access, or failed sync process.</td>
+<td>Quarantine immediately, preserve evidence, scan offline if required, and restore from known-good backup only after cleaning.</td>
+</tr>
+<tr>
+<td>Unwanted notifications within the OS</td>
+<td>Browser notification abuse, adware, or unwanted application permissions.</td>
+<td>Reset browser notification permissions, uninstall the suspect app, and scan for adware.</td>
+</tr>
+<tr>
+<td>OS update failures</td>
+<td>Corrupt update components, malware blocking updates, wrong time, or insufficient disk space.</td>
+<td>Check date and storage, scan if compromise is suspected, then repair update components or run DISM and SFC.</td>
+</tr>
+<tr>
+<td>Browser pop-ups and redirection</td>
+<td>Adware, malicious extension, abused notifications, compromised browser profile, proxy change, or DNS hijack.</td>
+<td>Reset browser settings, remove extensions, clear notification permissions, verify DNS and proxy, and scan for malware.</td>
+</tr>
+<tr>
+<td>Certificate warnings</td>
+<td>Wrong date and time, captive portal, proxy inspection, or malicious redirection.</td>
+<td>Check the certificate and system date first, then verify network and browser settings before entering credentials.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout warn">
+<span class="callout-title">Contain first</span>
+A machine showing these symptoms gets <strong>quarantined before anything else</strong>. Remove network access, protect other systems, and then follow the malware process in <a href="c2-security.html#malware">Core 2 security malware removal</a>.
+</div>
+</section>
+
+<section id="mobile-symptoms">
+<div class="week-head">
+<h2>Mobile OS and application issues.</h2>
+<span class="wgoal">Fix apps before resetting the phone.</span>
+</div>
+<p>Mobile troubleshooting is usually an escalation path: close the app, clear temporary data, update, reinstall, reset settings, then factory reset only when the device or account cannot be trusted or ordinary fixes fail.</p>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Issue</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application fails to launch</td>
+<td>Corrupt cache, missing permission, outdated app, unsupported OS version, or low storage.</td>
+<td>Force stop, clear cache, verify permissions and storage, update the app, then reinstall if needed.</td>
+</tr>
+<tr>
+<td>Application fails to close or crashes</td>
+<td>App bug, bad cache, memory pressure, or conflicting update.</td>
+<td>Force close, reboot, clear cache, update or roll back the app, and reinstall if crashes continue.</td>
+</tr>
+<tr>
+<td>Application fails to update</td>
+<td>Low storage, account problem, restricted network, OS too old, or app store issue.</td>
+<td>Check storage space, confirm the account, use Wi-Fi, update the OS, then retry the store update.</td>
+</tr>
+<tr>
+<td>Slow to respond</td>
+<td>Too many background apps, low storage, weak battery health, malware, or outdated OS.</td>
+<td>Close apps, clear cache, free storage, update the OS, scan if available, and soft reset.</td>
+</tr>
+<tr>
+<td>OS fails to update</td>
+<td>Insufficient storage, low battery, unsupported device, poor Wi-Fi, or blocked management profile.</td>
+<td>Charge the device, connect to reliable Wi-Fi, free storage, verify model support, and check management restrictions.</td>
+</tr>
+<tr>
+<td>Battery life issues</td>
+<td>Background location, push sync, bad app, weak signal, aging battery, or high screen brightness.</td>
+<td>Review battery usage, restrict or uninstall the bad app, update the OS, reduce radios or brightness, and replace the battery when degraded.</td>
+</tr>
+<tr>
+<td>Randomly reboots</td>
+<td>Bad OS update, overheating, failing battery, malware, or hardware fault.</td>
+<td>Update the OS, remove recent apps, check temperature and battery health, soft reset, and factory reset only after backup and other fixes fail.</td>
+</tr>
+<tr>
+<td>Connectivity issues: Bluetooth, Wi-Fi, NFC, AirDrop</td>
+<td>Radio disabled, pairing problem, airplane mode, wrong network, permissions, range, or incompatible sharing settings.</td>
+<td>Toggle the radio, forget and re-pair, verify permissions and discovery settings, reset network settings, and update the OS.</td>
+</tr>
+<tr>
+<td>Screen does not autorotate</td>
+<td>Autorotate lock enabled, app does not support rotation, sensor calibration issue, or case obstruction.</td>
+<td>Verify the autorotate lock first, test another app, remove the case, reboot, and update the OS.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="mobile-security">
+<div class="week-head">
+<h2>Mobile security symptoms.</h2>
+<span class="wgoal">Assume a suspect app or account until proven otherwise.</span>
+</div>
+<p>Mobile compromise often looks like poor performance. The exam expects you to connect ads, traffic, and unexpected behavior to app permissions, sideloading, malicious profiles, or stolen account credentials.</p>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Symptom</th>
+<th>What it suggests</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High network traffic</td>
+<td>Malicious or over-permissioned app, background sync loop, tethering abuse, or compromised account.</td>
+<td>Review data usage by app, remove the suspect app, check account sessions, update the OS, and run mobile anti-malware if available.</td>
+</tr>
+<tr>
+<td>Sluggish response time</td>
+<td>Resource-heavy app, malware, low storage, or outdated OS.</td>
+<td>Check battery and storage usage, uninstall suspicious apps, clear cache, update, and scan.</td>
+</tr>
+<tr>
+<td>Data-usage limit notification</td>
+<td>Unexpected background upload or download from an app, sync client, or compromised account.</td>
+<td>Identify the app using data, restrict background data, uninstall if suspicious, and change passwords if account sync is unknown.</td>
+</tr>
+<tr>
+<td>Limited internet connectivity</td>
+<td>Malicious VPN/profile, DNS change, captive portal, weak signal, or carrier restriction.</td>
+<td>Check Wi-Fi and carrier status, remove unknown VPN or management profiles, reset network settings, and update.</td>
+</tr>
+<tr>
+<td>No internet connectivity</td>
+<td>Radio disabled, bad profile, malware network block, unpaid carrier service, or failed update.</td>
+<td>Verify radios and account status, remove suspect profiles, reset network settings, and scan if compromise is possible.</td>
+</tr>
+<tr>
+<td>High number of ads</td>
+<td>Adware, malicious browser notifications, or an app abusing notification permissions.</td>
+<td>Remove suspicious apps, reset browser settings, revoke notifications, and scan.</td>
+</tr>
+<tr>
+<td>Fake security warnings</td>
+<td>Scareware web page, rogue app, or malicious notification permission.</td>
+<td>Do not tap the warning, close the page, clear browser data, remove notification permission, and uninstall the source app.</td>
+</tr>
+<tr>
+<td>Unexpected application behavior</td>
+<td>Compromised app, excessive permissions, sideloaded package, or account takeover.</td>
+<td>Review app permissions, uninstall the suspect app, update the OS, and change the related password.</td>
+</tr>
+<tr>
+<td>Leaked personal files or data</td>
+<td>Compromised cloud account, malicious app permissions, stolen device, or unauthorized backup access.</td>
+<td>Change passwords, revoke sessions, enable MFA, remove suspect apps, scan, and factory reset with restore from a known-good backup in the worst case.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout tip">
+<span class="callout-title">Mobile fix order</span>
+For ordinary app problems, use force stop &rarr; clear cache &rarr; reinstall &rarr; update &rarr; reset. For security problems, preserve data where required, remove the suspect app, change passwords, update, scan, and use a factory reset only when trust cannot be restored.
+</div>
+</section>
+
+<section id="cheatsheet">
+<div class="week-head">
+<h2>The night-before Software Troubleshooting sheet.</h2>
+<span class="wgoal">Memorize the order, then drill scenarios.</span>
+</div>
+<div class="grid grid-2">
+<div class="card">
+<h3 style="margin-top:0">Six methodology steps</h3>
+<ol>
+<li>Identify the problem.</li>
+<li>Establish a theory.</li>
+<li>Test the theory.</li>
+<li>Plan and implement the fix.</li>
+<li>Verify and prevent recurrence.</li>
+<li>Document findings, actions, and outcomes.</li>
+</ol>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Recovery ladder</h3>
+<ol>
+<li>Check boot order and removable media.</li>
+<li>WinRE.</li>
+<li>Startup Repair.</li>
+<li>Safe Mode or Safe Mode with Networking.</li>
+<li>Last Known Good when offered.</li>
+<li>Boot logging.</li>
+<li>Disable automatic restart.</li>
+<li>System Restore.</li>
+<li><code>bootrec /fixmbr</code>, <code>/fixboot</code>, <code>/rebuildbcd</code>.</li>
+<li>Repair, reset, or reimage.</li>
+</ol>
+</div>
+</div>
+<h3>Top fifteen Windows symptom-to-cause pairs</h3>
+<div class="grid grid-3">
+<div class="card"><h3 style="margin-top:0">BSOD</h3><p>Driver, update, memory, or storage fault.</p></div>
+<div class="card"><h3 style="margin-top:0">Sluggish performance</h3><p>Startup load, malware, low RAM, or high disk use.</p></div>
+<div class="card"><h3 style="margin-top:0">Boot loop</h3><p>Failed update, bad driver, or damaged boot files.</p></div>
+<div class="card"><h3 style="margin-top:0">Services fail</h3><p>Disabled service, dependency, credentials, or policy.</p></div>
+<div class="card"><h3 style="margin-top:0">One app crashes</h3><p>App corruption, missing update, requirement, or profile data.</p></div>
+<div class="card"><h3 style="margin-top:0">Low memory</h3><p>Too many apps, memory leak, insufficient RAM, or page file issue.</p></div>
+<div class="card"><h3 style="margin-top:0">USB warnings</h3><p>Controller resources, driver conflict, bad hub, or power draw.</p></div>
+<div class="card"><h3 style="margin-top:0">No OS found</h3><p>Boot order, missing boot files, disconnected drive, or failed disk.</p></div>
+<div class="card"><h3 style="margin-top:0">Slow profile</h3><p>Corrupt profile, roaming profile size, script delay, or mapped drive timeout.</p></div>
+<div class="card"><h3 style="margin-top:0">Time drift</h3><p>Wrong time zone, Windows Time failure, NTP block, or CMOS battery.</p></div>
+<div class="card"><h3 style="margin-top:0">Certificate warning</h3><p>Wrong date, proxy/DNS hijack, captive portal, or malicious redirect.</p></div>
+<div class="card"><h3 style="margin-top:0">Update failure</h3><p>Low storage, wrong time, corrupt components, malware, or blocked service.</p></div>
+<div class="card"><h3 style="margin-top:0">Pop-ups</h3><p>Adware, bad extension, or abused browser notifications.</p></div>
+<div class="card"><h3 style="margin-top:0">Frequent shutdown</h3><p>Heat, power policy, update restart, driver, or malware.</p></div>
+<div class="card"><h3 style="margin-top:0">System instability</h3><p>Driver, corrupt system files, malware, failed update, or storage.</p></div>
+</div>
+<details class="acc">
+<summary><code>sfc</code> vs <code>dism</code></summary>
+<div class="acc-body">
+<p><code>sfc /scannow</code> verifies protected system files. DISM repairs the component store that SFC uses. If SFC cannot fix corruption, run DISM, then run SFC again.</p>
+</div>
+</details>
+<details class="acc">
+<summary>Mobile fix order</summary>
+<div class="acc-body">
+<p>Use force stop &rarr; clear cache &rarr; reinstall &rarr; update &rarr; reset. Factory reset is last because it removes user state and should follow backup and account checks.</p>
+</div>
+</details>
+<h3>Last-minute decision rules</h3>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Question wording</th>
+<th>Best direction</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Only one user has the problem on a shared PC.</td>
+<td>Test another profile, then rebuild the damaged profile if needed.</td>
+<td>The operating system is probably functional; the user profile or permissions are more likely.</td>
+</tr>
+<tr>
+<td>Every user has the problem on one PC.</td>
+<td>Check local services, drivers, updates, application files, and system files.</td>
+<td>The symptom follows the device, not the account.</td>
+</tr>
+<tr>
+<td>Many PCs fail right after the same update.</td>
+<td>Roll back the update, pause deployment, and document the change.</td>
+<td>A shared timing clue points to patch impact, not random corruption.</td>
+</tr>
+<tr>
+<td>The app will not install or update.</td>
+<td>Verify requirements, disk space, OS build, account, and permissions.</td>
+<td>Compatibility and prerequisites come before reinstalling Windows.</td>
+</tr>
+<tr>
+<td>The browser shows certificate warnings.</td>
+<td>Check the date, time, certificate, network, proxy, and DNS settings.</td>
+<td>Wrong time and redirection can make a valid site look unsafe.</td>
+</tr>
+<tr>
+<td>The device is infected or cannot be trusted.</td>
+<td>Quarantine, preserve what policy requires, clean or reimage, then restore from known-good backup.</td>
+<td>Containment and trust matter more than convenience.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="grid grid-3">
+<div class="card">
+<h3 style="margin-top:0">Least destructive</h3>
+<p>Reboot, restart a service, update an app, roll back a driver, or restore before rebuilding.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Proof first</h3>
+<p>Use logs, Resource Monitor, another profile, Safe Mode, and known-good settings to prove your theory.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Trust boundary</h3>
+<p>When malware, data leakage, or altered files appear, quarantine before scan or repair.</p>
+</div>
+</div>
+<details class="acc">
+<summary>When to stop escalating</summary>
+<div class="acc-body">
+<ul>
+<li>If the symptom is gone, verify with the user and document the result.</li>
+<li>If the fix changes security posture, confirm policy and permissions afterward.</li>
+<li>If the device may be infected, do not reconnect it until cleaning or reimaging is complete.</li>
+<li>If the data is important, confirm backup status before reset or reimage.</li>
+<li>If the same symptom repeats on many systems, stop treating it as isolated and look for a shared update, policy, or service.</li>
+<li>If the symptom follows the account, check identity, permissions, and profile data.</li>
+<li>If the symptom follows the hardware, check drivers, storage, memory, and local services.</li>
+</ul>
+</div>
+</details>
+<div class="callout key">
+<span class="callout-title">Final exam filter</span>
+Before picking a destructive answer, ask whether the question gave you evidence that cheaper fixes failed. If not, choose the least destructive action that directly addresses the symptom.
+</div>
+<div class="btn-row">
+<a class="btn" href="drills.html?set=c2-swtrouble">Drill software troubleshooting</a>
+<a class="btn secondary" href="drills.html?set=c2-malware">Drill malware symptoms</a>
+<a class="btn ghost" href="exams.html">Take a practice exam</a>
+</div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

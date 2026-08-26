@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operational Procedures &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="Study Core 2 operational procedures, documentation, change management, backup, safety, privacy, scripting, and remote access for CompTIA A+ 220-1102.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Operational Procedures</h1>
+<p class="lede">Core 2 domain 4.0 is <strong>21% of the exam</strong>. This is the domain people skip because it is not technical, and it is the cheapest domain on the entire A+ to score well in &mdash; it is almost entirely lists and correct order, with no hardware knowledge required at all. Say that plainly: skipping this domain is the single most common avoidable way to fail Core 2.</p>
+
+<section id="documentation">
+<div class="week-head">
+<h2>Documentation and support systems.</h2>
+<span class="wgoal">Good documentation turns one fix into repeatable support.</span>
+</div>
+<p>Operational procedures start with writing down what happened. A good ticket lets another technician understand the user, the device, the business impact, what has already been tried, and how the issue was resolved.</p>
+<h3>Ticketing systems</h3>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Ticket field</th>
+<th>What belongs there</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User information</td>
+<td>Name, contact method, department, location, and affected account.</td>
+<td>Support can reach the right person and verify whether the problem follows the user or device.</td>
+</tr>
+<tr>
+<td>Device information</td>
+<td>Hostname, asset tag, serial number, OS, application version, IP address, and warranty status when useful.</td>
+<td>Accurate device data prevents fixing the wrong endpoint and supports warranty or lifecycle decisions.</td>
+</tr>
+<tr>
+<td>Description of problem</td>
+<td>The user&rsquo;s symptom in plain language plus exact error messages.</td>
+<td>The first description becomes the baseline for testing and verification.</td>
+</tr>
+<tr>
+<td>Categories</td>
+<td>Hardware, software, network, security, access, mobile, printer, or application category.</td>
+<td>Categories route tickets, support reporting, and reveal trends.</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>Business impact, number of users affected, safety or security risk, and urgency.</td>
+<td>Severity drives response time and escalation priority.</td>
+</tr>
+<tr>
+<td>Escalation levels</td>
+<td>Tier, owner, next support group, vendor contact, and when escalation occurred.</td>
+<td>Escalation history prevents duplicate work and proves the correct process was followed.</td>
+</tr>
+<tr>
+<td>Clear and concise written communication</td>
+<td>Short, factual notes without blame, slang, or private commentary.</td>
+<td>Tickets may be read by customers, managers, auditors, and other technicians.</td>
+</tr>
+<tr>
+<td>Problem description</td>
+<td>Scope, start time, recent changes, reproducible steps, and affected services.</td>
+<td>Technicians can establish a theory instead of guessing.</td>
+</tr>
+<tr>
+<td>Progress notes</td>
+<td>Tests performed, results, timestamps, approvals, parts, and communication with the user.</td>
+<td>Progress notes show what has already been ruled out and support handoffs.</td>
+</tr>
+<tr>
+<td>Problem resolution</td>
+<td>Root cause when known, final fix, verification result, preventive action, and closure notes.</td>
+<td>A good resolution becomes a knowledge base article or future search result.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Asset management</h3>
+<ul>
+<li><strong>Inventory lists:</strong> a current list of devices, peripherals, software, and assigned locations.</li>
+<li><strong>Database system:</strong> the searchable source of truth for assets, owners, dates, warranties, and status.</li>
+<li><strong>Asset tags and IDs:</strong> unique labels that connect a physical device to inventory records and tickets.</li>
+<li><strong>Procurement lifecycle:</strong> request, approval, purchase, receiving, deployment, maintenance, refresh, and disposal.</li>
+<li><strong>Warranty and licensing:</strong> coverage dates, support level, licensed users, licensed devices, and proof of entitlement.</li>
+<li><strong>Assigned users:</strong> who has the device, when it was issued, and when it must be returned.</li>
+</ul>
+<h3>Documents and policies</h3>
+<div class="grid grid-2">
+<div class="card">
+<h3 style="margin-top:0">Policies</h3>
+<ul>
+<li>Acceptable use policy.</li>
+<li>Regulatory compliance requirements.</li>
+<li>Splash screens that remind users of monitoring or acceptable use.</li>
+<li>Incident reports for security, safety, or policy events.</li>
+</ul>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Technical documents</h3>
+<ul>
+<li>Network topology diagram.</li>
+<li>Standard operating procedures.</li>
+<li>Knowledge base articles.</li>
+<li>New-user setup checklist.</li>
+<li>End-user termination checklist.</li>
+</ul>
+</div>
+</div>
+<details class="acc">
+<summary>Checklist examples</summary>
+<div class="acc-body">
+<p>A new-user setup checklist commonly includes account creation, group membership, MFA enrollment, device assignment, email, collaboration tools, printers, VPN, and user acceptance. An end-user termination checklist commonly includes account disablement, session revocation, device return, data transfer, license removal, badge return, and documentation.</p>
+</div>
+</details>
+</section>
+
+<section id="change">
+<div class="week-head">
+<h2>Change management.</h2>
+<span class="wgoal">Plan, approve, test, implement, verify, and document.</span>
+</div>
+<p>Change management exists because a technically correct change can still break the business if it is done at the wrong time, without approval, or without a rollback plan.</p>
+<ol>
+<li><strong>Documented business processes:</strong> define the rollback plan, sandbox testing, responsible staff member, communication path, maintenance window, and verification steps.</li>
+<li><strong>Change request forms:</strong> capture the purpose of the change, scope of the change, requested date and time, affected systems, business impact, and implementation details.</li>
+<li><strong>Risk analysis:</strong> identify failure modes, affected users, data risk, security risk, downtime, dependencies, and risk level.</li>
+<li><strong>Change board approvals:</strong> obtain approval from the required business, technical, security, and management reviewers before touching production.</li>
+<li><strong>Sandbox testing:</strong> test the change in a nonproduction environment when possible and record the result.</li>
+<li><strong>Implementation:</strong> make the approved change during the approved window by the assigned responsible staff member.</li>
+<li><strong>End-user acceptance:</strong> verify that the change solved the business need and that affected users can work.</li>
+<li><strong>Documentation:</strong> record the result, deviations, issues, rollback if used, and final approval or closure.</li>
+</ol>
+<div class="callout key">
+<span class="callout-title">Approval before action</span>
+The exam loves asking which step comes first. The answer is nearly always <strong>documenting the plan and getting approval before touching anything</strong>, and a <strong>rollback plan</strong> is required, not optional.
+</div>
+</section>
+
+<section id="backup">
+<div class="week-head">
+<h2>Backup and recovery.</h2>
+<span class="wgoal">Know what each type copies and what restore requires.</span>
+</div>
+<p>Backup questions are mostly order questions. The fastest backup is not always the fastest restore. The right answer depends on recovery time, storage, and how many backup sets must be present.</p>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Backup type</th>
+<th>What it copies</th>
+<th>Backup time</th>
+<th>Restore time</th>
+<th>Restore requires</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full</td>
+<td>All selected data every time.</td>
+<td>Longest backup.</td>
+<td>Fastest restore for one set.</td>
+<td>Full backup only.</td>
+</tr>
+<tr>
+<td>Incremental</td>
+<td>Data changed since the last backup of any type.</td>
+<td>Fastest daily backup.</td>
+<td>Slowest restore.</td>
+<td>The last full backup plus every incremental backup in order.</td>
+</tr>
+<tr>
+<td>Differential</td>
+<td>Data changed since the last full backup.</td>
+<td>Grows longer each day until the next full.</td>
+<td>Faster than incremental.</td>
+<td>The last full backup plus the last differential backup.</td>
+</tr>
+<tr>
+<td>Synthetic</td>
+<td>A new full backup assembled from a previous full and later incremental data, usually on the backup server.</td>
+<td>Reduces production backup window.</td>
+<td>Restores like a full backup.</td>
+<td>The synthetic full backup set created by the backup system.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Rules and rotation</h3>
+<ul>
+<li><strong>3-2-1 rule:</strong> keep three copies of data, on two different media, with one copy off-site.</li>
+<li><strong>Grandfather-father-son:</strong> use daily, weekly, and monthly generations so you can recover from recent mistakes or older corruption.</li>
+<li><strong>On-site backups:</strong> restore quickly but can be lost in the same fire, theft, flood, or ransomware event.</li>
+<li><strong>Off-site backups:</strong> protect against site loss but may restore more slowly depending on bandwidth and access.</li>
+<li><strong>Backup testing:</strong> restore-test backups on a schedule, because an untested backup is not a backup.</li>
+</ul>
+<div class="callout trap">
+<span class="callout-title">Most-tested backup trap</span>
+Incremental restore requires the full backup plus <strong>all</strong> incrementals since that full. Differential restore requires the full backup plus <strong>the last</strong> differential. If the question asks fastest restore, differential beats a long incremental chain.
+</div>
+</section>
+
+<section id="safety">
+<div class="week-head">
+<h2>Safety.</h2>
+<span class="wgoal">Protect people first, then equipment.</span>
+</div>
+<p>Safety answers are often absolute. Remove power before internal repair. Use ESD protection when handling components. Follow government and company rules for hazardous materials and workplace safety.</p>
+<h3>ESD controls</h3>
+<ul>
+<li>Use ESD wrist straps connected to a proper ground.</li>
+<li>Use ESD mats on work surfaces.</li>
+<li>Use equipment grounding and avoid working on carpet when possible.</li>
+<li>Handle components by the edges and avoid touching contacts.</li>
+<li>Store parts in antistatic bags, not ordinary plastic bags.</li>
+<li>Control humidity where possible, because very dry air increases static risk.</li>
+<li>Use proper power handling: shut down, unplug, and discharge stored power where required.</li>
+</ul>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Personal safety item</th>
+<th>Correct action</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disconnect power before repairing a PC</td>
+<td>Shut down, unplug, and remove batteries when the device design allows it.</td>
+<td>Prevents electric shock and accidental short circuits.</td>
+</tr>
+<tr>
+<td>Lifting technique</td>
+<td>Bend the knees, keep the load close, avoid twisting, and get help for heavy equipment.</td>
+<td>Prevents back injury and dropped equipment.</td>
+</tr>
+<tr>
+<td>Electrical fire safety</td>
+<td>Use a <strong>Class C extinguisher</strong> and never use water on energized electrical equipment.</td>
+<td>Water conducts electricity and can injure the technician.</td>
+</tr>
+<tr>
+<td>Safety goggles</td>
+<td>Wear eye protection when cutting, drilling, using compressed air, or working near debris.</td>
+<td>Protects eyes from particles and chemicals.</td>
+</tr>
+<tr>
+<td>Air filtration mask</td>
+<td>Use a mask when dust, toner, mold, or airborne debris may be present.</td>
+<td>Protects lungs from irritants and hazardous particles.</td>
+</tr>
+<tr>
+<td>Government regulations</td>
+<td>Follow workplace safety, environmental, disposal, and handling rules.</td>
+<td>Compliance is mandatory and may be tested directly.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout warn">
+<span class="callout-title">Safety absolutes</span>
+Two things are always the right answer on a safety question: <strong>remove power first</strong>, and <strong>personal safety outweighs the equipment</strong>.
+</div>
+</section>
+
+<section id="environment">
+<div class="week-head">
+<h2>Environmental impacts and controls.</h2>
+<span class="wgoal">Dispose correctly, cool correctly, and choose the right power protection.</span>
+</div>
+<p>Environmental procedure questions connect technology to safety sheets, disposal rules, room conditions, dust control, and power events.</p>
+<h3>Handling and disposal</h3>
+<ul>
+<li><strong>MSDS/SDS documentation:</strong> use safety data sheets for handling, storage, cleanup, and disposal instructions.</li>
+<li><strong>Battery disposal:</strong> recycle through approved channels; do not throw batteries in ordinary trash.</li>
+<li><strong>Toner disposal:</strong> use manufacturer or approved recycling because toner is fine particulate material.</li>
+<li><strong>Other devices and assets:</strong> follow asset disposal, data destruction, recycling, and regulatory requirements.</li>
+</ul>
+<h3>Temperature, humidity, ventilation, and dust</h3>
+<ul>
+<li>Maintain proper temperature so systems do not throttle or shut down.</li>
+<li>Maintain humidity in a safe range: too low increases static, too high encourages corrosion or condensation.</li>
+<li>Keep ventilation clear so heat can leave the system and room.</li>
+<li>Use compressed air carefully to dislodge dust.</li>
+<li>Use a proper electronics or toner-safe vacuum where vacuuming is required.</li>
+<li>Do not use an ordinary household vacuum for toner or sensitive electronics because it can create static or spread fine particles.</li>
+</ul>
+<h3>Power events and protection</h3>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Power issue or device</th>
+<th>What it means</th>
+<th>Correct protection or response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power surge</td>
+<td>A short increase in voltage that can damage components.</td>
+<td>Use a surge suppressor or UPS with surge protection. A surge suppressor does not keep the system running during an outage.</td>
+</tr>
+<tr>
+<td>Brownout</td>
+<td>A drop in voltage where power is present but below normal.</td>
+<td>Use a UPS or power conditioner to provide stable power long enough to save work and shut down.</td>
+</tr>
+<tr>
+<td>Blackout</td>
+<td>Complete loss of power.</td>
+<td>Use a battery backup UPS for temporary runtime and graceful shutdown. A surge strip alone does nothing for a blackout.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout tip">
+<span class="callout-title">UPS vs surge suppressor</span>
+A surge suppressor protects against voltage spikes. A battery backup, or UPS, protects against short outages and many brownouts by giving the system temporary battery power.
+</div>
+</section>
+
+<section id="incident">
+<div class="week-head">
+<h2>Prohibited content, privacy, and licensing.</h2>
+<span class="wgoal">Preserve evidence, report correctly, and respect licensing.</span>
+</div>
+<p>Technicians may encounter prohibited content, regulated data, or licensing problems. The exam does not want a hero investigation. It wants policy, preservation, and reporting.</p>
+<h3>Incident response basics</h3>
+<ul>
+<li><strong>Chain of custody:</strong> track evidence, who handled it, when it was handled, where it was stored, and what changed.</li>
+<li><strong>Documenting the process:</strong> record times, observations, actions, approvals, and handoffs without adding speculation.</li>
+<li><strong>First response:</strong> identify the issue, report through proper channels, preserve data and device, and avoid altering evidence.</li>
+<li><strong>Use of documentation:</strong> update tickets, incident reports, and asset records according to policy.</li>
+<li><strong>Documentation changes:</strong> record what changed, who approved it, and why it was changed.</li>
+</ul>
+<h3>Licensing</h3>
+<ul>
+<li><strong>Valid vs non-expired licenses:</strong> software must be licensed and within its allowed term.</li>
+<li><strong>Personal use license vs corporate use license:</strong> personal licensing usually cannot be used for business deployment.</li>
+<li><strong>Open source vs commercial license:</strong> open source still has license terms; commercial software usually has purchase and usage restrictions.</li>
+<li><strong>DRM:</strong> digital rights management enforces access or copying restrictions.</li>
+<li><strong>EULA:</strong> the end-user license agreement defines what the user or organization may do with the software.</li>
+</ul>
+<h3>Regulated data</h3>
+<ul>
+<li><strong>PII:</strong> personally identifiable information that can identify a person, such as name, address, ID number, or account data.</li>
+<li><strong>PCI:</strong> payment card information and security requirements for cardholder data.</li>
+<li><strong>GDPR:</strong> European privacy regulation covering personal data of people in the European Union and related rights.</li>
+<li><strong>PHI:</strong> protected health information handled by health care, insurance, and related covered entities.</li>
+</ul>
+<div class="callout key">
+<span class="callout-title">Stop, preserve, report</span>
+On any prohibited-content question, the technician&rsquo;s job is to <strong>stop, preserve, and report</strong> &mdash; never to investigate the contents themselves.
+</div>
+</section>
+
+<section id="communication">
+<div class="week-head">
+<h2>Communication and professionalism.</h2>
+<span class="wgoal">Professional behavior is testable, and it is easy points.</span>
+</div>
+<p>CompTIA expects technicians to be clear, respectful, and reliable. These questions are not about being friendly in general; they are about choosing the behavior that lowers stress, protects privacy, and keeps the support process moving.</p>
+<h3>Professional communication</h3>
+<ul>
+<li>Use professional language and avoid jargon, acronyms, and slang.</li>
+<li>Maintain a positive attitude and project confidence without making promises you cannot keep.</li>
+<li>Actively listen, take notes, and avoid interrupting the customer.</li>
+<li>Be culturally sensitive and use appropriate professional titles.</li>
+<li>Be on time or communicate delays as soon as you know about them.</li>
+<li>Avoid distractions: personal calls, texting, social media, talking to coworkers, and personal interruptions.</li>
+</ul>
+<h3>Dealing with difficult customers</h3>
+<ul>
+<li>Do not argue or be defensive.</li>
+<li>Avoid dismissing the customer&rsquo;s problem.</li>
+<li>Avoid being judgmental.</li>
+<li>Clarify statements by asking open-ended questions to narrow the scope.</li>
+<li>Restate the issue to verify understanding.</li>
+<li>Do not disclose experiences via social media.</li>
+</ul>
+<h3>Expectations and follow-up</h3>
+<ul>
+<li>Set and meet expectations and timelines.</li>
+<li>Communicate the status with the customer.</li>
+<li>Offer repair, replacement, or other options when policy allows.</li>
+<li>Provide proper documentation.</li>
+<li>Follow up later to verify satisfaction.</li>
+<li>Deal appropriately with confidential and private materials on a customer&rsquo;s device.</li>
+</ul>
+<div class="callout trap">
+<span class="callout-title">Professionalism trap</span>
+The correct answer is rarely the most technical sentence. It is the one that listens, clarifies, protects privacy, avoids blame, and keeps the customer informed.
+</div>
+</section>
+
+<section id="scripting">
+<div class="week-head">
+<h2>Scripting and remote access.</h2>
+<span class="wgoal">Know file extensions, use cases, risks, and secure remote tools.</span>
+</div>
+<p>The A+ exam does not require you to write advanced scripts. It expects you to recognize common script types, what automation can do, and why untrusted scripts are dangerous.</p>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Script file type</th>
+<th>What it is</th>
+<th>Where it runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.bat</code></td>
+<td>Windows batch file using Command Prompt commands.</td>
+<td>Windows Command Prompt.</td>
+</tr>
+<tr>
+<td><code>.ps1</code></td>
+<td>PowerShell script for Windows administration and cross-platform PowerShell tasks.</td>
+<td>PowerShell on Windows, Linux, or macOS when installed.</td>
+</tr>
+<tr>
+<td><code>.vbs</code></td>
+<td>VBScript file used in older Windows administrative environments.</td>
+<td>Windows Script Host.</td>
+</tr>
+<tr>
+<td><code>.sh</code></td>
+<td>Shell script commonly used for Linux and macOS command automation.</td>
+<td>Bash, Zsh, or another Unix-like shell.</td>
+</tr>
+<tr>
+<td><code>.py</code></td>
+<td>Python script used for automation, data handling, and administration.</td>
+<td>Systems with Python installed.</td>
+</tr>
+<tr>
+<td><code>.js</code></td>
+<td>JavaScript file used for automation or application scripting.</td>
+<td>Browser environments or runtimes such as Node.js.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Common script use cases</h3>
+<ul>
+<li>Basic automation of repetitive administrative tasks.</li>
+<li>Restarting machines after approved maintenance.</li>
+<li>Remapping network drives.</li>
+<li>Installing applications silently or consistently.</li>
+<li>Automating backups.</li>
+<li>Gathering information and data for inventory or troubleshooting.</li>
+<li>Initiating updates.</li>
+</ul>
+<h3>Risks of running scripts</h3>
+<ul>
+<li>Unintentionally changing system settings.</li>
+<li>Causing browser or system crashes.</li>
+<li>Mishandling resources such as CPU, memory, storage, network bandwidth, or files.</li>
+<li>Running malicious commands if the script source is not trusted.</li>
+<li>Applying a change to too many systems because scope was not checked.</li>
+</ul>
+<h3>Remote access technologies</h3>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th>Technology</th>
+<th>Typical port</th>
+<th>Security considerations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RDP</td>
+<td>TCP 3389</td>
+<td>Encrypts sessions but should be restricted, patched, protected with strong authentication, and not exposed directly to the internet.</td>
+</tr>
+<tr>
+<td>VPN</td>
+<td>Varies by protocol</td>
+<td>Creates a secure tunnel to a private network; protect accounts with MFA and least privilege.</td>
+</tr>
+<tr>
+<td>VNC</td>
+<td>TCP 5900 by default</td>
+<td>Often weaker by default; require encryption, strong passwords, and network restrictions.</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>TCP 22</td>
+<td>Secure command-line access; use key-based authentication where possible and restrict administrative access.</td>
+</tr>
+<tr>
+<td>RMM</td>
+<td>Vendor-specific</td>
+<td>Remote monitoring and management tools are powerful; protect consoles, agents, and credentials.</td>
+</tr>
+<tr>
+<td>MSRA</td>
+<td>Windows Remote Assistance</td>
+<td>Requires user consent and is useful for support; verify the helper identity and protect invitations.</td>
+</tr>
+<tr>
+<td>Third-party screen-sharing tools</td>
+<td>Vendor-specific</td>
+<td>Use approved tools, confirm the session code, avoid unattended access unless authorized, and close sessions when done.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="cheatsheet">
+<div class="week-head">
+<h2>The night-before Operational Procedures sheet.</h2>
+<span class="wgoal">Memorize these lists for cheap Core 2 points.</span>
+</div>
+<div class="grid grid-2">
+<div class="card">
+<h3 style="margin-top:0">Backup restore requirements</h3>
+<ul>
+<li>Full: restore the full backup.</li>
+<li>Incremental: restore the full plus every incremental in order.</li>
+<li>Differential: restore the full plus the last differential.</li>
+<li>Synthetic: restore from the constructed full set.</li>
+</ul>
+</div>
+<div class="card">
+<h3 style="margin-top:0">3-2-1 rule</h3>
+<ul>
+<li>Three copies.</li>
+<li>Two different media.</li>
+<li>One off-site.</li>
+<li>Test restores, because untested backups do not count.</li>
+</ul>
+</div>
+</div>
+<h3>Change management order</h3>
+<ol>
+<li>Document the business process and rollback plan.</li>
+<li>Submit the change request with purpose, scope, time, systems, and impact.</li>
+<li>Analyze risk and assign risk level.</li>
+<li>Get change board approvals.</li>
+<li>Test in a sandbox when possible.</li>
+<li>Implement during the approved window.</li>
+<li>Get end-user acceptance.</li>
+<li>Document the result.</li>
+</ol>
+<h3>Ticket fields</h3>
+<ul>
+<li>User information.</li>
+<li>Device information.</li>
+<li>Description of problem.</li>
+<li>Categories.</li>
+<li>Severity.</li>
+<li>Escalation levels.</li>
+<li>Clear and concise written communication.</li>
+<li>Problem description.</li>
+<li>Progress notes.</li>
+<li>Problem resolution.</li>
+</ul>
+<div class="grid grid-3">
+<div class="card">
+<h3 style="margin-top:0">Safety absolutes</h3>
+<p>Remove power first. Personal safety outweighs equipment. Use Class C for electrical fires.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Incident response</h3>
+<p>Preserve chain of custody. Stop, preserve, and report prohibited content.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Regulated data</h3>
+<p>PII, PCI, GDPR, and PHI are privacy and compliance triggers.</p>
+</div>
+</div>
+<details class="acc">
+<summary>Difficult-customer rules</summary>
+<div class="acc-body">
+<p>Do not argue, do not be defensive, do not dismiss the problem, do not judge, ask open-ended questions, restate the issue, and never disclose customer experiences on social media.</p>
+</div>
+</details>
+<details class="acc">
+<summary>Script extensions</summary>
+<div class="acc-body">
+<p><code>.bat</code>, <code>.ps1</code>, <code>.vbs</code>, <code>.sh</code>, <code>.py</code>, and <code>.js</code>. Know the platform and the risk before running any script.</p>
+</div>
+</details>
+<div class="btn-row">
+<a class="btn" href="drills.html?set=c2-procedures">Drill procedures</a>
+<a class="btn secondary" href="drills.html?set=c2-backup">Drill backup</a>
+<a class="btn secondary" href="drills.html?set=c2-scripting">Drill scripting</a>
+<a class="btn ghost" href="tools.html#flashcards">Open flashcards</a>
+</div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

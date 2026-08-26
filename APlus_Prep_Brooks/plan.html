@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The 9-Day Plan &mdash; Brooks&rsquo;s A+ Prep</title>
-<meta name="description" content="A day-by-day 9-day CompTIA A+ Core 1 study plan: a cold baseline exam, targeted domain repair, three timed practice exams, and a proper taper.">
+<title>Study Plan &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="A day-by-day CompTIA A+ study plan for whichever exam you are working on: a cold baseline, targeted domain repair, timed practice exams, and a proper taper.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/styles.css">
 <script src="assets/app.js"></script>
@@ -15,10 +15,8 @@
 
 <main id="main"><div class="wrap">
 
-<h1>The 9-Day Plan</h1>
-<p class="lede">Wednesday August 26 through Thursday September 3. Every day has a job. Three of them are
-    full practice exams, three of them are repairs aimed at what those exams found, and the last one is
-    deliberately easy so you arrive rested.</p>
+<h1 id="planTitle">Study Plan</h1>
+<p class="lede" id="planLede">Loading&hellip;</p>
 
 <div class="card" style="margin:1.5rem 0">
     <div class="meter-row" style="margin-bottom:1rem">
@@ -36,25 +34,25 @@
 <div class="callout tip">
     <span class="callout-title">How to use this</span>
     <p style="margin-bottom:0">Do the day you are on, check the boxes as you go, and stop when you are done.
-        Checkmarks save automatically in this browser. If you miss a day, do not double up the next day
-        &mdash; drop the lowest-value task instead and keep moving. With nine days, momentum beats volume.</p>
+        Checkmarks save automatically in this browser, and each exam keeps its own separate list. If you miss
+        a day, do not double up the next day &mdash; drop the lowest-value task instead and keep moving.
+        Momentum beats volume.</p>
 </div>
 
 <div class="callout warn">
     <span class="callout-title">The one rule that matters most</span>
-    <p style="margin-bottom:0">Never review a practice exam on the same day you take it. Your brain is
-        still defending its answers. Sleep on it, come back the next morning, and you will see mistakes
-        that were invisible the night before. Every exam day in this plan is followed by a repair day for
-        exactly that reason.</p>
+    <p style="margin-bottom:0">Never review a practice exam on the same day you take it. Your brain is still
+        defending its answers. Sleep on it, come back the next morning, and you will see mistakes that were
+        invisible the night before. Every exam day in this plan is followed by a repair day for exactly
+        that reason.</p>
 </div>
 
 <div id="planRoot"></div>
 
 <div class="card" style="margin-top:2rem;border-color:var(--good)">
-    <h2 style="margin-top:0">Friday, September 4 &mdash; Exam Day</h2>
-    <p>No studying. You have done the work. Two forms of ID, arrive thirty minutes early, do the
-        performance-based questions last, and answer every single question even if it is a guess.</p>
-    <p style="margin-bottom:0"><a href="index.html#main">Review the exam-day checklist &rarr;</a></p>
+    <h2 style="margin-top:0" id="examDayHead">Exam Day</h2>
+    <p id="examDayBody">No studying. You have done the work.</p>
+    <p style="margin-bottom:0"><a id="examDayLink" href="core1.html">Review the exam-day checklist &rarr;</a></p>
 </div>
 
 </div></main>
@@ -63,111 +61,231 @@
 
 <script>
 /* ============================================================
-   9-day plan data
-   tag: exam | ts | hw | net | mob | core2 | tools
+   Study plans, one per exam track.
+   tag: exam | ts | hw | net | mob | os | sec | sw | proc | tools
    ============================================================ */
-var BLOCKS = [
-    { n: 1, title: "Days 1\u20133 \u2014 Find the gaps, then attack the biggest one",
-      goal: "A cold baseline, an honest review, and a full day on the two domains that are half the exam.",
-      days: [1, 3] },
-    { n: 2, title: "Days 4\u20136 \u2014 Close the domains one at a time",
-      goal: "Second exam at the midpoint, then Networking and the smaller domains cleaned up.",
-      days: [4, 6] },
-    { n: 3, title: "Days 7\u20139 \u2014 Rehearse, repair, taper",
-      goal: "Dress rehearsal, one last targeted repair, then deliberately back off.",
-      days: [7, 9] }
-];
+var PLANS = {
 
-var PLAN = [
-{ d:1, focus:"Baseline exam \u2014 before you study anything", min:120, isExam:true, tasks:[
-    { tag:"exam", text:"Read the home page. Learn the exam format, the 675 line, and the domain weights. Ten minutes, and it changes how you read every question after this.", href:"index.html" },
-    { tag:"exam", text:"<strong>Practice Exam 1</strong> \u2014 60 questions, 60 minutes, timed, phone in another room. Take it <em>cold</em>. Do not read a guide first.", href:"practice-exam-1.html" },
-    { tag:"tools", text:"Write down your scaled score and your five domain percentages. That is your map for the next eight days.", href:"tools.html#errorlog" },
-    { tag:"exam", text:"Do <em>not</em> review it today. Close the laptop. You will see twice as much tomorrow morning.", href:"" }
-]},
-{ d:2, focus:"Review Exam 1 + the troubleshooting method", min:110, isReview:true, tasks:[
-    { tag:"exam", text:"Review every missed question from Exam 1. Read the full explanation on each one \u2014 including the questions you guessed right, because a lucky guess is not knowledge.", href:"practice-exam-1.html" },
-    { tag:"tools", text:"Log every miss and tag its cause: (a) never knew the fact, (b) knew it and read past it, (c) misread the question. The three causes have three different fixes.", href:"tools.html#errorlog" },
-    { tag:"ts", text:"Read the Troubleshooting guide, especially the six-step methodology and the diagnostic ladder. This is 28% of the exam and the most commonly botched section.", href:"troubleshooting.html#methodology" },
-    { tag:"ts", text:"Drill: Symptom &rarr; Cause, the diagnostic drill", href:"drills.html?set=c1-troubleshooting" },
-    { tag:"tools", text:"Write your two weakest domains at the top of the error log. Tomorrow is built around them.", href:"tools.html#errorlog" }
-]},
-{ d:3, focus:"Hardware \u2014 the memorization day", min:120, tasks:[
-    { tag:"hw", text:"Read the Hardware guide down through storage and RAID. Do not try to memorize on the first pass \u2014 just see the whole map.", href:"hardware.html" },
-    { tag:"hw", text:"Drill: RAM, Storage Interfaces &amp; RAID", href:"drills.html?set=c1-memory-storage" },
-    { tag:"hw", text:"Drill: Power Supplies, Motherboards &amp; CPUs", href:"drills.html?set=c1-power-boards" },
-    { tag:"hw", text:"Memorize the laser printer imaging process in order. Say it out loud until it is automatic: processing, charging, exposing, developing, transferring, fusing, cleaning.", href:"hardware.html#printers" },
-    { tag:"tools", text:"Flashcards: the Hardware Specs and RAID &amp; Storage decks, one full pass each.", href:"tools.html#flashcards" }
-]},
-{ d:4, focus:"PRACTICE EXAM 2 + same-day review", min:150, isExam:true, tasks:[
-    { tag:"exam", text:"<strong>Practice Exam 2</strong> \u2014 60 questions, 60 minutes, timed. Start in the morning while you are fresh.", href:"practice-exam-2.html" },
-    { tag:"exam", text:"Take a real break. An hour minimum, out of the house if you can.", href:"" },
-    { tag:"exam", text:"Then review it. This is the one exception to the sleep-on-it rule \u2014 it is Saturday, you have the time, and there are only five days left.", href:"practice-exam-2.html" },
-    { tag:"tools", text:"Compare your Exam 1 and Exam 2 domain percentages. Anything weak on <em>both</em> is your real problem. Anything that fixed itself was a fluke, not a gap.", href:"tools.html#errorlog" },
-    { tag:"tools", text:"Count how many misses were &ldquo;knew it but read past it.&rdquo; If that number is high, your problem is pacing and care, not knowledge \u2014 and the fix is different.", href:"tools.html#errorlog" }
-]},
-{ d:5, focus:"Networking \u2014 the table day", min:110, tasks:[
-    { tag:"net", text:"Read the Networking guide. It is mostly four tables: ports, cable limits, Wi-Fi standards, and which tool for which job.", href:"networking.html" },
-    { tag:"net", text:"Drill: Ports, Protocols &amp; What Breaks Without Them", href:"drills.html?set=c1-ports" },
-    { tag:"net", text:"Drill: IP Addressing, DHCP, DNS &amp; APIPA", href:"drills.html?set=c1-ipaddressing" },
-    { tag:"net", text:"Drill: Cables, Connectors &amp; Distance Limits", href:"drills.html?set=c1-cabling" },
-    { tag:"tools", text:"Flashcards: the Ports &amp; Protocols deck twice through. Twenty-eight cards, and they are the cheapest points on the exam.", href:"tools.html#flashcards" }
-]},
-{ d:6, focus:"Wireless, mobile, cloud, printers", min:110, tasks:[
-    { tag:"net", text:"Drill: Wi-Fi Standards, Channels &amp; SOHO Setup", href:"drills.html?set=c1-wireless" },
-    { tag:"mob", text:"Read the Mobile &amp; Cloud guide. These two domains are 24% of the exam and almost pure vocabulary \u2014 the cheapest score increase available to you today.", href:"mobile-cloud.html" },
-    { tag:"mob", text:"Drill: Mobile Hardware, Connections &amp; Sync", href:"drills.html?set=c1-mobile" },
-    { tag:"mob", text:"Drill: Hypervisors, Cloud Models &amp; VDI", href:"drills.html?set=c1-cloud" },
-    { tag:"hw", text:"Drill: Printers \u2014 Process, Consumables &amp; Maintenance", href:"drills.html?set=c1-printers" },
-    { tag:"exam", text:"Set up for tomorrow: same start time as your real appointment, quiet room, phone away. Bed by 10:30.", href:"" }
-]},
-{ d:7, focus:"PRACTICE EXAM 3 \u2014 dress rehearsal", min:100, isExam:true, tasks:[
-    { tag:"exam", text:"<strong>Practice Exam 3</strong> \u2014 start at the exact clock time your real exam starts on Friday. Full rehearsal: same room, same chair, same breakfast.", href:"practice-exam-3.html" },
-    { tag:"tools", text:"Record the scaled score. If it is above 675 you are in range. If it is 640\u2013674, you are two days of targeted work away. If it is below 600, focus tomorrow entirely on Troubleshooting and Hardware.", href:"tools.html#errorlog" },
-    { tag:"exam", text:"No review today. Rest tonight.", href:"" }
-]},
-{ d:8, focus:"Final repair \u2014 nothing new after today", min:120, isReview:true, tasks:[
-    { tag:"exam", text:"Review every miss on Exam 3. Read the explanation on all of them, not just the ones that surprised you.", href:"practice-exam-3.html" },
-    { tag:"tools", text:"Reread your entire error log from the top. Cross off anything you now know cold. What is left is your real study list.", href:"tools.html#errorlog" },
-    { tag:"ts", text:"Re-drill your two weakest sets from the whole plan. Repeat drills are worth more than new ones this late.", href:"drills.html" },
-    { tag:"hw", text:"Say the laser printer process, the six troubleshooting steps, and the RAID minimums out loud from memory. If any of them stutter, drill that one now.", href:"hardware.html#cheatsheet" },
-    { tag:"exam", text:"Confirm the appointment: time, location or online-proctored setup, exam code 220-1101, and the two forms of ID. Do this today, not Thursday night.", href:"" }
-]},
-{ d:9, focus:"Taper \u2014 do not cram", min:50, isRest:true, tasks:[
-    { tag:"tools", text:"One relaxed sweep through all eight flashcard decks. Speed, not depth. You are keeping the machinery warm, not learning.", href:"tools.html#flashcards" },
-    { tag:"hw", text:"Read the four night-before cheat sheets once each: Hardware, Networking, Mobile &amp; Cloud, Troubleshooting. Once. Not twice.", href:"hardware.html#cheatsheet" },
-    { tag:"tools", text:"Read the top of your error log one final time. Then close it.", href:"tools.html#errorlog" },
-    { tag:"exam", text:"No practice questions today. None. Cramming the day before a certification exam reliably lowers scores.", href:"" },
-    { tag:"exam", text:"Lay out ID and clothes. Set two alarms. Stop everything by 8:00 pm. Lights out by 10:00.", href:"" }
-]}
-];
+/* ---------------- CORE 1 : 9 days ---------------- */
+core1: {
+    blocks: [
+        { title: "Days 1\u20133 \u2014 Find the gaps, then attack the biggest one",
+          goal: "A cold baseline, an honest review, and a full day on the two domains that are half the exam.",
+          days: [1, 3] },
+        { title: "Days 4\u20136 \u2014 Close the domains one at a time",
+          goal: "Second exam at the midpoint, then Networking and the smaller domains cleaned up.",
+          days: [4, 6] },
+        { title: "Days 7\u20139 \u2014 Rehearse, repair, taper",
+          goal: "Dress rehearsal, one last targeted repair, then deliberately back off.",
+          days: [7, 9] }
+    ],
+    days: [
+    { d:1, focus:"Baseline exam \u2014 before you study anything", min:120, isExam:true, tasks:[
+        { tag:"exam", text:"Read the Core 1 overview. Learn the exam format, the 675 line, and the domain weights. Ten minutes, and it changes how you read every question after this.", href:"core1.html" },
+        { tag:"exam", text:"<strong>Practice Exam 1</strong> \u2014 60 questions, 60 minutes, timed, phone in another room. Take it <em>cold</em>. Do not read a guide first.", href:"practice-exam-1.html" },
+        { tag:"tools", text:"Write down your scaled score and your five domain percentages. That is your map for the next eight days.", href:"tools.html#errorlog" },
+        { tag:"exam", text:"Do <em>not</em> review it today. Close the laptop. You will see twice as much tomorrow morning.", href:"" }
+    ]},
+    { d:2, focus:"Review Exam 1 + the troubleshooting method", min:110, isReview:true, tasks:[
+        { tag:"exam", text:"Review every missed question from Exam 1. Read the full explanation on each one \u2014 including the questions you guessed right, because a lucky guess is not knowledge.", href:"practice-exam-1.html" },
+        { tag:"tools", text:"Log every miss and tag its cause: (a) never knew the fact, (b) knew it and read past it, (c) misread the question. The three causes have three different fixes.", href:"tools.html#errorlog" },
+        { tag:"ts", text:"Read the Troubleshooting guide, especially the six-step methodology and the diagnostic ladder. This is 28% of the exam and the most commonly botched section.", href:"troubleshooting.html#methodology" },
+        { tag:"ts", text:"Drill: Symptom &rarr; Cause, the diagnostic drill", href:"drills.html?set=c1-troubleshooting" },
+        { tag:"tools", text:"Write your two weakest domains at the top of the error log. Tomorrow is built around them.", href:"tools.html#errorlog" }
+    ]},
+    { d:3, focus:"Hardware \u2014 the memorization day", min:120, tasks:[
+        { tag:"hw", text:"Read the Hardware guide down through storage and RAID. Do not try to memorize on the first pass \u2014 just see the whole map.", href:"hardware.html" },
+        { tag:"hw", text:"Drill: RAM, Storage Interfaces &amp; RAID", href:"drills.html?set=c1-memory-storage" },
+        { tag:"hw", text:"Drill: Power Supplies, Motherboards &amp; CPUs", href:"drills.html?set=c1-power-boards" },
+        { tag:"hw", text:"Memorize the laser printer imaging process in order. Say it out loud until it is automatic: processing, charging, exposing, developing, transferring, fusing, cleaning.", href:"hardware.html#printers" },
+        { tag:"tools", text:"Flashcards: the Hardware Specs and RAID &amp; Storage decks, one full pass each.", href:"tools.html#flashcards" }
+    ]},
+    { d:4, focus:"PRACTICE EXAM 2 + same-day review", min:150, isExam:true, tasks:[
+        { tag:"exam", text:"<strong>Practice Exam 2</strong> \u2014 60 questions, 60 minutes, timed. Start in the morning while you are fresh.", href:"practice-exam-2.html" },
+        { tag:"exam", text:"Take a real break. An hour minimum, out of the house if you can.", href:"" },
+        { tag:"exam", text:"Then review it. This is the one exception to the sleep-on-it rule \u2014 there are only five days left and you need the turnaround.", href:"practice-exam-2.html" },
+        { tag:"tools", text:"Compare your Exam 1 and Exam 2 domain percentages. Anything weak on <em>both</em> is your real problem. Anything that fixed itself was a fluke, not a gap.", href:"tools.html#errorlog" },
+        { tag:"tools", text:"Count how many misses were &ldquo;knew it but read past it.&rdquo; If that number is high, your problem is pacing and care, not knowledge \u2014 and the fix is different.", href:"tools.html#errorlog" }
+    ]},
+    { d:5, focus:"Networking \u2014 the table day", min:110, tasks:[
+        { tag:"net", text:"Read the Networking guide. It is mostly four tables: ports, cable limits, Wi-Fi standards, and which tool for which job.", href:"networking.html" },
+        { tag:"net", text:"Drill: Ports, Protocols &amp; What Breaks Without Them", href:"drills.html?set=c1-ports" },
+        { tag:"net", text:"Drill: IP Addressing, DHCP, DNS &amp; APIPA", href:"drills.html?set=c1-ipaddressing" },
+        { tag:"net", text:"Drill: Cables, Connectors &amp; Distance Limits", href:"drills.html?set=c1-cabling" },
+        { tag:"tools", text:"Flashcards: the Ports &amp; Protocols deck twice through. Twenty-eight cards, and they are the cheapest points on the exam.", href:"tools.html#flashcards" }
+    ]},
+    { d:6, focus:"Wireless, mobile, cloud, printers", min:110, tasks:[
+        { tag:"net", text:"Drill: Wi-Fi Standards, Channels &amp; SOHO Setup", href:"drills.html?set=c1-wireless" },
+        { tag:"mob", text:"Read the Mobile &amp; Cloud guide. These two domains are 24% of the exam and almost pure vocabulary \u2014 the cheapest score increase available to you today.", href:"mobile-cloud.html" },
+        { tag:"mob", text:"Drill: Mobile Hardware, Connections &amp; Sync", href:"drills.html?set=c1-mobile" },
+        { tag:"mob", text:"Drill: Hypervisors, Cloud Models &amp; VDI", href:"drills.html?set=c1-cloud" },
+        { tag:"hw", text:"Drill: Printers \u2014 Process, Consumables &amp; Maintenance", href:"drills.html?set=c1-printers" },
+        { tag:"exam", text:"Set up for tomorrow: same start time as your real appointment, quiet room, phone away. Bed by 10:30.", href:"" }
+    ]},
+    { d:7, focus:"PRACTICE EXAM 3 \u2014 dress rehearsal", min:100, isExam:true, tasks:[
+        { tag:"exam", text:"<strong>Practice Exam 3</strong> \u2014 start at the exact clock time your real exam starts. Full rehearsal: same room, same chair, same breakfast.", href:"practice-exam-3.html" },
+        { tag:"tools", text:"Record the scaled score. Above 675 and you are in range. 640\u2013674 and you are two days of targeted work away. Below 600 and tomorrow is entirely Troubleshooting and Hardware.", href:"tools.html#errorlog" },
+        { tag:"exam", text:"No review today. Rest tonight.", href:"" }
+    ]},
+    { d:8, focus:"Final repair \u2014 nothing new after today", min:120, isReview:true, tasks:[
+        { tag:"exam", text:"Review every miss on Exam 3. Read the explanation on all of them, not just the ones that surprised you.", href:"practice-exam-3.html" },
+        { tag:"tools", text:"Reread your entire error log from the top. Cross off anything you now know cold. What is left is your real study list.", href:"tools.html#errorlog" },
+        { tag:"ts", text:"Re-drill your two weakest sets from the whole plan. Repeat drills are worth more than new ones this late.", href:"drills.html" },
+        { tag:"hw", text:"Say the laser printer process, the six troubleshooting steps, and the RAID minimums out loud from memory. If any of them stutter, drill that one now.", href:"hardware.html#cheatsheet" },
+        { tag:"exam", text:"Confirm the appointment: time, location or online-proctored setup, exam code 220-1101, and the two forms of ID. Do this today, not the night before.", href:"" }
+    ]},
+    { d:9, focus:"Taper \u2014 do not cram", min:50, isRest:true, tasks:[
+        { tag:"tools", text:"One relaxed sweep through all eight flashcard decks. Speed, not depth. You are keeping the machinery warm, not learning.", href:"tools.html#flashcards" },
+        { tag:"hw", text:"Read the four night-before cheat sheets once each: Hardware, Networking, Mobile &amp; Cloud, Troubleshooting. Once. Not twice.", href:"hardware.html#cheatsheet" },
+        { tag:"tools", text:"Read the top of your error log one final time. Then close it.", href:"tools.html#errorlog" },
+        { tag:"exam", text:"No practice questions today. None. Cramming the day before a certification exam reliably lowers scores.", href:"" },
+        { tag:"exam", text:"Lay out ID and clothes. Set two alarms. Stop everything by 8:00 pm. Lights out by 10:00.", href:"" }
+    ]}
+    ]
+},
+
+/* ---------------- CORE 2 : 14 days ---------------- */
+core2: {
+    blocks: [
+        { title: "Days 1\u20134 \u2014 Diagnose, then take the biggest domain",
+          goal: "A cold diagnostic, an honest review, then Operating Systems \u2014 28% of the exam.",
+          days: [1, 4] },
+        { title: "Days 5\u20139 \u2014 Security and the first full exam",
+          goal: "The other 28% domain, then a full-length checkpoint and the repair it earns.",
+          days: [5, 9] },
+        { title: "Days 10\u201314 \u2014 The last two domains, rehearse, taper",
+          goal: "Software troubleshooting, the domain everyone skips, then the dress rehearsal.",
+          days: [10, 14] }
+    ],
+    days: [
+    { d:1, focus:"Cold diagnostic \u2014 before you study anything", min:90, isExam:true, tasks:[
+        { tag:"exam", text:"Read the Core 2 overview. Note the 700 passing mark and that the four domains are evenly weighted, so nothing is skippable.", href:"core2.html" },
+        { tag:"exam", text:"<strong>Core 2 Diagnostic</strong> \u2014 40 questions, 45 minutes, timed, phone in another room. Take it <em>cold</em>.", href:"practice-exam-4.html" },
+        { tag:"tools", text:"Write down your scaled score and your four domain percentages. That is the map for the next thirteen days.", href:"tools.html#errorlog" },
+        { tag:"exam", text:"Do <em>not</em> review it today.", href:"" }
+    ]},
+    { d:2, focus:"Review the diagnostic", min:90, isReview:true, tasks:[
+        { tag:"exam", text:"Review every missed question. Read the full explanation on each one, including the ones you guessed right.", href:"practice-exam-4.html" },
+        { tag:"tools", text:"Log every miss and tag its cause: never knew it, knew it and read past it, or misread the question.", href:"tools.html#errorlog" },
+        { tag:"tools", text:"Write your two weakest domains at the top of the log. The next week is built around them.", href:"tools.html#errorlog" },
+        { tag:"proc", text:"Read the Operational Procedures guide. It is 21% of the exam, needs no technical knowledge, and is the single cheapest place to gain points. Do it now while you are fresh.", href:"c2-procedures.html" }
+    ]},
+    { d:3, focus:"Windows editions, files, and partitions", min:110, tasks:[
+        { tag:"os", text:"Read the Operating Systems guide through the end of the boot-methods section.", href:"c2-os.html" },
+        { tag:"os", text:"Memorize the edition matrix: which editions can join a domain, run BitLocker, use gpedit, and host Remote Desktop.", href:"c2-os.html#editions" },
+        { tag:"os", text:"Memorize the FAT32 4 GB single-file limit and the MBR vs GPT limits. These appear on almost every Core 2 exam.", href:"c2-os.html#filesystems" },
+        { tag:"os", text:"Drill: Windows Editions, Tools &amp; Applets", href:"drills.html?set=c2-windows" },
+        { tag:"tools", text:"Flashcards: the Windows Commands deck, one full pass.", href:"tools.html#flashcards" }
+    ]},
+    { d:4, focus:"Windows tools and the command line", min:110, tasks:[
+        { tag:"os", text:"Read the administrative tools and Control Panel sections. The exam gives you a symptom and wants the one tool that solves it.", href:"c2-os.html#tools" },
+        { tag:"os", text:"Drill: Picking the Right Windows Tool", href:"drills.html?set=c2-osadmin" },
+        { tag:"os", text:"Drill: Command Line \u2014 Windows, macOS &amp; Linux", href:"drills.html?set=c2-cli" },
+        { tag:"os", text:"Learn the pairs people confuse: sfc vs dism, xcopy vs robocopy, tracert vs pathping, chkdsk /f vs /r.", href:"c2-os.html#cheatsheet" },
+        { tag:"tools", text:"Flashcards: the Linux &amp; macOS deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:5, focus:"Security part one \u2014 malware and threats", min:110, tasks:[
+        { tag:"sec", text:"Read the Security guide through the end of the threats section.", href:"c2-security.html" },
+        { tag:"sec", text:"Memorize the seven-step malware removal order. Say it out loud until it is automatic \u2014 the exam asks what comes NEXT from a point mid-process.", href:"c2-security.html#malware" },
+        { tag:"sec", text:"Drill: Malware Removal \u2014 What Comes Next", href:"drills.html?set=c2-malware" },
+        { tag:"sec", text:"Drill: Malware, Social Engineering &amp; Removal Order", href:"drills.html?set=c2-security" },
+        { tag:"tools", text:"Flashcards: the Security &amp; Procedures deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:6, focus:"Security part two \u2014 permissions and hardening", min:110, tasks:[
+        { tag:"sec", text:"Read the logical security, workstation, and destruction sections.", href:"c2-security.html#logical" },
+        { tag:"sec", text:"Learn the NTFS vs share permission rule cold: combined over a network, the most restrictive wins. Work through the classic Full Control share plus Read NTFS case.", href:"c2-security.html#logical" },
+        { tag:"sec", text:"Drill: Permissions, Authentication &amp; Hardening", href:"drills.html?set=c2-access" },
+        { tag:"sec", text:"Learn the MFA factor categories and be able to classify any given factor into one.", href:"c2-security.html#logical" },
+        { tag:"exam", text:"Set up for tomorrow: quiet room, phone away, same start time as your real appointment.", href:"" }
+    ]},
+    { d:7, focus:"PRACTICE EXAM 1 \u2014 full length", min:100, isExam:true, tasks:[
+        { tag:"exam", text:"<strong>Core 2 Practice Exam 1</strong> \u2014 60 questions, 60 minutes, timed, one sitting.", href:"practice-exam-5.html" },
+        { tag:"tools", text:"Record the scaled score and compare the four domain percentages against the diagnostic.", href:"tools.html#calc" },
+        { tag:"exam", text:"No review today.", href:"" }
+    ]},
+    { d:8, focus:"Repair what the exam exposed", min:110, isReview:true, tasks:[
+        { tag:"exam", text:"Review every miss. Read the explanation on all of them.", href:"practice-exam-5.html" },
+        { tag:"tools", text:"Log every miss with its cause tag. Anything weak on both the diagnostic and this exam is a real gap, not noise.", href:"tools.html#errorlog" },
+        { tag:"os", text:"Re-drill whichever domain came out lowest.", href:"drills.html" },
+        { tag:"tools", text:"Flashcards: every card you have marked missed so far.", href:"tools.html#flashcards" }
+    ]},
+    { d:9, focus:"Software troubleshooting", min:100, tasks:[
+        { tag:"sw", text:"Read the Software Troubleshooting guide, especially the least-destructive-first recovery ladder.", href:"c2-software.html" },
+        { tag:"sw", text:"Drill: Windows &amp; Mobile Software Symptoms", href:"drills.html?set=c2-swtrouble" },
+        { tag:"sw", text:"Work through the symptom-to-cause table twice. Cover the cause column and quiz yourself down the list.", href:"c2-software.html#windows-symptoms" },
+        { tag:"tools", text:"Flashcards: the Acronyms deck, one full pass.", href:"tools.html#flashcards" }
+    ]},
+    { d:10, focus:"Operational procedures \u2014 the cheap points", min:100, tasks:[
+        { tag:"proc", text:"Reread the Operational Procedures guide properly. You skimmed it on day 2; this time learn it.", href:"c2-procedures.html" },
+        { tag:"proc", text:"Memorize the backup types and exactly what each restore requires. The incremental vs differential question appears on nearly every exam.", href:"c2-procedures.html#backup" },
+        { tag:"proc", text:"Drill: Backups, Safety &amp; Power", href:"drills.html?set=c2-backup" },
+        { tag:"proc", text:"Drill: Safety, Change Management &amp; Professionalism", href:"drills.html?set=c2-procedures" },
+        { tag:"proc", text:"Memorize the change management order and the chain-of-custody first response.", href:"c2-procedures.html#change" }
+    ]},
+    { d:11, focus:"Scripting, remote access, and mixed review", min:90, tasks:[
+        { tag:"proc", text:"Read the scripting and remote access section. Know what each file extension is and the three named risks of running scripts.", href:"c2-procedures.html#scripting" },
+        { tag:"proc", text:"Drill: Scripting &amp; Remote Access", href:"drills.html?set=c2-scripting" },
+        { tag:"tools", text:"Reread your error log from the top and cross off anything you now know cold.", href:"tools.html#errorlog" },
+        { tag:"exam", text:"Set up for tomorrow's dress rehearsal. Bed by 10:30.", href:"" }
+    ]},
+    { d:12, focus:"PRACTICE EXAM 2 \u2014 dress rehearsal", min:100, isExam:true, tasks:[
+        { tag:"exam", text:"<strong>Core 2 Practice Exam 2</strong> \u2014 the hardest of the set. Start at the exact clock time your real exam starts.", href:"practice-exam-6.html" },
+        { tag:"tools", text:"Record the scaled score. Remember the bar is 700, not 675.", href:"tools.html#calc" },
+        { tag:"exam", text:"No review today. Rest tonight.", href:"" }
+    ]},
+    { d:13, focus:"Final repair \u2014 nothing new after today", min:110, isReview:true, tasks:[
+        { tag:"exam", text:"Review every miss on the dress rehearsal.", href:"practice-exam-6.html" },
+        { tag:"tools", text:"Update the error log one last time, then write your final three weak topics at the top.", href:"tools.html#errorlog" },
+        { tag:"sec", text:"Re-drill your two weakest sets. Repeat drills beat new ones this late.", href:"drills.html" },
+        { tag:"sec", text:"Recite from memory: the seven malware-removal steps, the change-management order, the backup restore requirements, and the NTFS-vs-share rule. Any that stutter, drill now.", href:"c2-security.html#cheatsheet" },
+        { tag:"exam", text:"Confirm the appointment: time, location or online-proctored setup, exam code 220-1102, and two forms of ID.", href:"" }
+    ]},
+    { d:14, focus:"Taper \u2014 do not cram", min:50, isRest:true, tasks:[
+        { tag:"tools", text:"One relaxed sweep through all eight flashcard decks. Speed, not depth.", href:"tools.html#flashcards" },
+        { tag:"os", text:"Read the four night-before cheat sheets once each: Operating Systems, Security, Software, Procedures. Once. Not twice.", href:"c2-os.html#cheatsheet" },
+        { tag:"tools", text:"Read the top of your error log one final time. Then close it.", href:"tools.html#errorlog" },
+        { tag:"exam", text:"No practice questions today. None. Cramming the day before reliably lowers scores.", href:"" },
+        { tag:"exam", text:"Lay out ID and clothes. Set two alarms. Stop everything by 8:00 pm. Lights out by 10:00.", href:"" }
+    ]}
+    ]
+}
+};
 
 (function () {
-    var TAGS  = { exam:"Exam", ts:"Troubleshoot", hw:"Hardware", net:"Network", mob:"Mobile/Cloud", core2:"Core 2", tools:"Tools" };
-    var TAGCLS = { exam:"tag-math", ts:"tag-writing", hw:"tag-reading", net:"tag-english",
-                   mob:"tag-science", core2:"tag-test", tools:"tag-test" };
+    "use strict";
+
+    var TAGS = {
+        exam:"Exam", ts:"Troubleshoot", hw:"Hardware", net:"Network", mob:"Mobile/Cloud",
+        os:"Windows", sec:"Security", sw:"Software", proc:"Procedures", tools:"Tools"
+    };
+    var TAGCLS = {
+        exam:"tag-math", ts:"tag-writing", hw:"tag-reading", net:"tag-english", mob:"tag-science",
+        os:"tag-english", sec:"tag-writing", sw:"tag-reading", proc:"tag-science", tools:"tag-test"
+    };
+
+    var track, plan, storeKey;
 
     function totalTasks() {
         var n = 0;
-        for (var i = 0; i < PLAN.length; i++) n += PLAN[i].tasks.length;
+        for (var i = 0; i < plan.days.length; i++) n += plan.days[i].tasks.length;
         return n;
     }
 
     function render() {
         var root = document.getElementById("planRoot");
-        var today = AP.currentPlanDay();
+        var today = AP.currentPlanDay(track);
         var html = "";
 
-        for (var w = 0; w < BLOCKS.length; w++) {
-            var blk = BLOCKS[w];
+        for (var w = 0; w < plan.blocks.length; w++) {
+            var blk = plan.blocks[w];
             html += '<div class="week-head"><h2>' + blk.title + "</h2>" +
                 '<span class="wgoal">' + blk.goal + "</span></div>";
 
-            for (var i = 0; i < PLAN.length; i++) {
-                var day = PLAN[i];
+            for (var i = 0; i < plan.days.length; i++) {
+                var day = plan.days[i];
                 if (day.d < blk.days[0] || day.d > blk.days[1]) continue;
 
-                var date = AP.dateForDay(day.d);
+                var date = AP.dateForDay(day.d, track);
                 var cls = "day-card";
                 if (day.d === today) cls += " is-today";
                 else if (day.d < today) cls += " is-past";
@@ -202,15 +320,15 @@ var PLAN = [
         root.innerHTML = html;
 
         AP.onCheckChange = updateProgress;
-        AP.bindPersistentChecks("plan", root);
-        updateProgress(AP.store.get("plan", {}));
+        AP.bindPersistentChecks(storeKey, root);
+        updateProgress(AP.store.get(storeKey, {}));
         markCompleteDays();
     }
 
     function markCompleteDays() {
-        var state = AP.store.get("plan", {});
-        for (var i = 0; i < PLAN.length; i++) {
-            var day = PLAN[i], all = true;
+        var state = AP.store.get(storeKey, {});
+        for (var i = 0; i < plan.days.length; i++) {
+            var day = plan.days[i], all = true;
             for (var t = 0; t < day.tasks.length; t++) {
                 if (!state["d" + day.d + "-" + t]) { all = false; break; }
             }
@@ -228,25 +346,50 @@ var PLAN = [
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+        track = AP.track();
+        plan = PLANS[track];
+        storeKey = "plan-" + track;
+
+        var info = AP.trackInfo(track);
+        var planDays = AP.planDays(track);
+        var examDate = AP.examDate(track);
+
+        document.getElementById("planTitle").textContent =
+            "The " + planDays + "-Day Plan \u2014 " + info.longName;
+        document.getElementById("planLede").innerHTML =
+            AP.fmtDate(AP.dateForDay(1, track)) + " through " + AP.fmtDate(AP.dateForDay(planDays, track)) +
+            ", then you sit <strong>" + info.longName + "</strong> on " + AP.fmtLong(examDate) + ". " +
+            "Every day has a job. Three of them are practice exams, three are repairs aimed at what those " +
+            "exams found, and the last one is deliberately easy so you arrive rested.";
+
+        document.getElementById("examDayHead").textContent =
+            AP.fmtLong(examDate) + " \u2014 Exam Day";
+        document.getElementById("examDayBody").innerHTML =
+            "No studying. You have done the work. Two forms of ID, arrive thirty minutes early, do the " +
+            "performance-based questions last, and answer every single question even if it is a guess. " +
+            "The exam code is <strong>" + info.code + "</strong> and you need <strong>" + info.pass +
+            "</strong> to pass.";
+        document.getElementById("examDayLink").href = info.home;
+
         render();
 
         document.getElementById("todayBtn").onclick = function () {
-            var d = Math.min(AP.PLAN_DAYS, Math.max(1, AP.currentPlanDay()));
+            var d = Math.min(planDays, Math.max(1, AP.currentPlanDay(track)));
             var node = document.getElementById("day-" + d);
             if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
             else AP.toast("The plan window has passed \u2014 it is exam day.");
         };
         document.getElementById("printBtn").onclick = function () { window.print(); };
         document.getElementById("resetBtn").onclick = function () {
-            if (window.confirm("Uncheck every task in the whole plan?")) {
-                AP.store.set("plan", {});
+            if (window.confirm("Uncheck every task in the " + info.name + " plan?")) {
+                AP.store.set(storeKey, {});
                 render();
-                AP.toast("Plan reset.");
+                AP.toast(info.name + " plan reset.");
             }
         };
 
-        var d = AP.currentPlanDay();
-        if (d >= 1 && d <= AP.PLAN_DAYS) {
+        var d = AP.currentPlanDay(track);
+        if (d >= 1 && d <= planDays) {
             var node = document.getElementById("day-" + d);
             if (node) window.setTimeout(function () {
                 node.scrollIntoView({ behavior: "smooth", block: "center" });

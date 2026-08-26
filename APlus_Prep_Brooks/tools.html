@@ -195,6 +195,8 @@
 <footer id="footer"></footer>
 
 <script src="assets/data/flashcards.js"></script>
+<script src="assets/data/drills.js"></script>
+<script src="assets/data/drills-c2.js"></script>
 <script>
 /* ============================================================
    Port reference data
@@ -295,10 +297,15 @@ var PORTS = [
         document.getElementById("loadPass").onclick = function () {
             var core = document.getElementById("cCore").value;
             document.getElementById("cTotal").value = 90;
-            document.getElementById("cRight").value = core === "core2" ? 68 : 65;
+            document.getElementById("cRight").value = AP.correctNeeded(core, 90);
             calc();
             AP.toast("That is the real exam length and the score you need.");
         };
+        // Default to whichever exam the site is currently set to.
+        var t = AP.track();
+        document.getElementById("cCore").value = t;
+        document.getElementById("cTotal").value = t === "core2" ? 40 : 60;
+        document.getElementById("cRight").value = t === "core2" ? 29 : 43;
         calc();
     }
 

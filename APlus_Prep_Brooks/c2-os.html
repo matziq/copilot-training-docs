@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operating Systems &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="Deep Core 2 study guide for operating systems, Windows administration, file systems, installation, networking, macOS, and Linux.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Operating Systems</h1>
+<p class="lede">Core 2 domain 1.0 is 28% of the exam &mdash; tied for the largest domain on 220-1102. Core 2 passes at 700, a higher bar than Core 1&rsquo;s 675, so there is less room to be weak anywhere.</p>
+
+<section id="editions">
+  <div class="week-head">
+    <h2>Windows editions and upgrades</h2>
+    <span class="wgoal">Know which edition has which feature before you troubleshoot it.</span>
+  </div>
+  <p>CompTIA likes edition questions because they look like troubleshooting but are really feature-boundary questions. If the feature is not licensed in that edition, no amount of driver repair or service restarting will make it appear.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Home</th>
+          <th>Pro</th>
+          <th>Pro for Workstations</th>
+          <th>Enterprise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Domain join</td>
+          <td>No Azure AD or Active Directory domain join for classic business domains</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes, with enterprise management</td>
+        </tr>
+        <tr>
+          <td>BitLocker</td>
+          <td>Device encryption only on supported systems; no full BitLocker management UI</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes, with enterprise recovery and policy control</td>
+        </tr>
+        <tr>
+          <td>Group Policy Editor <code>gpedit.msc</code></td>
+          <td>No local editor</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Remote Desktop host</td>
+          <td>No host; can connect as a client</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Hyper-V</td>
+          <td>No</td>
+          <td>Yes, if CPU virtualization is enabled</td>
+          <td>Yes</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Maximum RAM</td>
+          <td>128 GB on 64-bit Windows 10/11</td>
+          <td>2 TB on 64-bit Windows 10/11</td>
+          <td>6 TB on 64-bit Windows 10/11</td>
+          <td>6 TB on 64-bit Windows 10/11</td>
+        </tr>
+        <tr>
+          <td>Windows Update control</td>
+          <td>Limited pause and active-hours control</td>
+          <td>Deferral, policy, and business update controls</td>
+          <td>Deferral, policy, and business update controls</td>
+          <td>Centralized enterprise update rings and management</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout trap">
+    <span class="callout-title">Classic trap: RDP host vs client</span>
+    <p>Every Windows edition can run the Remote Desktop client and connect to another computer. Windows Home cannot be the Remote Desktop host that accepts inbound RDP sessions.</p>
+    <p>If a home user asks why Remote Desktop cannot be enabled for incoming connections, the answer is edition limitation, not firewall, driver, or service corruption.</p>
+  </div>
+  <div class="callout trap">
+    <span class="callout-title">Classic trap: Home cannot join a domain</span>
+    <p>Windows Home is for consumer workgroups. If a company needs Active Directory domain join, Group Policy, BitLocker management, or RDP host capability, upgrade to Pro or higher.</p>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Upgrade paths</h3>
+      <ul>
+        <li>Home &rarr; Pro is the common edition upgrade path.</li>
+        <li>Pro &rarr; Enterprise normally requires enterprise licensing or activation.</li>
+        <li>Windows 10 &rarr; Windows 11 can be an in-place upgrade only if hardware requirements are met.</li>
+        <li>32-bit &rarr; 64-bit requires a clean install; it is not an in-place architecture upgrade.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">In-place vs clean install</h3>
+      <ul>
+        <li>In-place upgrade preserves installed applications, user files, and most settings.</li>
+        <li>Repair install refreshes Windows system files while trying to preserve apps and data.</li>
+        <li>Clean install wipes the target Windows installation and requires reinstalling apps.</li>
+        <li>Back up user files, license keys, browser data, and application settings before either path.</li>
+      </ul>
+    </div>
+  </div>
+  <p><span class="badge accent">Feature updates</span> install a new Windows build and can change the operating system&rsquo;s feature set. <span class="badge teal">Quality updates</span> are cumulative security, reliability, and bug-fix updates for the current build.</p>
+  <p>A 32-bit Windows installation can address only about 4 GB of RAM total. Hardware reservations usually make usable memory lower than exactly 4 GB. A 64-bit CPU and 64-bit Windows are required to use modern memory capacities.</p>
+  <p>Windows 11 requires a 64-bit CPU, UEFI firmware, Secure Boot capability, and TPM 2.0. If one of those is missing or disabled, the installation check fails before normal upgrade troubleshooting matters.</p>
+</section>
+
+<section id="filesystems">
+  <div class="week-head">
+    <h2>File systems and partitioning</h2>
+    <span class="wgoal">Match the format to the operating system, device, and file-size requirement.</span>
+  </div>
+  <p>The file system determines maximum file size, metadata, permissions, journaling, and cross-platform compatibility. The exam often gives you a USB-drive scenario and asks why a copy fails.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>File system</th>
+          <th>Max file size</th>
+          <th>Max volume size</th>
+          <th>Journaling</th>
+          <th>Permissions support</th>
+          <th>Where it is used</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NTFS</td>
+          <td>Very large; practical Windows limits are far beyond normal desktop files</td>
+          <td>Very large; commonly used for Windows system and data volumes</td>
+          <td>Yes</td>
+          <td>Yes, with ACLs, compression, EFS, quotas, and auditing</td>
+          <td>Windows internal drives, business workstations, servers, BitLocker volumes</td>
+        </tr>
+        <tr>
+          <td>exFAT</td>
+          <td>16 EB class</td>
+          <td>128 PB class</td>
+          <td>No</td>
+          <td>No NTFS-style permissions</td>
+          <td>Large flash drives and SD cards shared between Windows, macOS, cameras, and devices</td>
+        </tr>
+        <tr>
+          <td>FAT32</td>
+          <td>4 GB minus 1 byte</td>
+          <td>2 TB practical limit for many tools and devices</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Older USB drives, firmware update media, broad compatibility scenarios</td>
+        </tr>
+        <tr>
+          <td>ext3/ext4</td>
+          <td>ext3 commonly up to 2 TB; ext4 commonly up to 16 TiB per file</td>
+          <td>ext3 commonly up to 32 TiB; ext4 supports much larger Linux volumes</td>
+          <td>Yes</td>
+          <td>Yes, with Linux ownership and mode bits</td>
+          <td>Linux system and data partitions</td>
+        </tr>
+        <tr>
+          <td>APFS</td>
+          <td>8 EB class</td>
+          <td>8 EB class</td>
+          <td>Metadata journaling and copy-on-write design</td>
+          <td>Yes, with macOS permissions and encryption support</td>
+          <td>Modern macOS, SSDs, Time Machine destinations on recent macOS versions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout key">
+    <span class="callout-title">Memorize FAT32&rsquo;s limit</span>
+    <p>FAT32 has a 4 GB single-file limit. If copying a large ISO, virtual disk, or video to a USB drive fails even though the drive has enough free space, the file system is usually FAT32.</p>
+    <p>The quick fix is to reformat the removable drive as exFAT for broad compatibility or NTFS for Windows features and permissions.</p>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">MBR</h3>
+      <ul>
+        <li>Legacy partitioning style.</li>
+        <li>Allows four primary partitions.</li>
+        <li>Can use an extended partition to contain logical drives.</li>
+        <li>Has a 2 TB disk-size limit for bootable/basic use.</li>
+        <li>Usually paired with BIOS or Legacy/CSM boot.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">GPT</h3>
+      <ul>
+        <li>Modern partitioning style.</li>
+        <li>Supports 128 partitions in Windows without extended/logical workarounds.</li>
+        <li>Supports volumes over 2 TB.</li>
+        <li>Stores redundant partition-table data for resilience.</li>
+        <li>Requires UEFI firmware to boot Windows from the disk.</li>
+      </ul>
+    </div>
+  </div>
+  <p><strong>Primary partitions</strong> can host an operating system or data. <strong>Extended partitions</strong> are MBR containers used to create more than four usable volumes. <strong>Logical drives</strong> live inside an extended partition.</p>
+  <p><strong>Basic disks</strong> are the normal Windows disk type and use primary partitions, extended partitions, or GPT partitions. <strong>Dynamic disks</strong> support software-based spanned, striped, mirrored, and RAID-5 style volumes, but they are less common on modern client systems.</p>
+  <p>A <strong>quick format</strong> creates a new file system structure and marks space as available; it does not thoroughly overwrite all user data. A <strong>full format</strong> checks the disk and, on modern Windows, writes zeros to the volume while preparing the file system. A true wipe or sanitize operation is still the better answer when the goal is secure data removal.</p>
+</section>
+
+<section id="boot">
+  <div class="week-head">
+    <h2>Boot methods and installation</h2>
+    <span class="wgoal">Identify the boot source and the install type before changing firmware settings.</span>
+  </div>
+  <p>Boot problems are often firmware-order problems. Installation problems are often compatibility, driver, or backup-preparation problems.</p>
+  <div class="grid grid-3">
+    <div class="card">
+      <h3 style="margin-top:0">Removable and local boot</h3>
+      <ul>
+        <li>USB flash drive is the most common modern install and recovery method.</li>
+        <li>Optical disc still appears in exam objectives for legacy DVD installation.</li>
+        <li>External or hot-swappable drive can boot diagnostics, recovery media, or portable OS tools.</li>
+        <li>Internal hard drive partition may contain recovery tools or a factory restore image.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Network and internet boot</h3>
+      <ul>
+        <li>PXE boots from the network card and loads deployment or recovery tools from a server.</li>
+        <li>Internet-based recovery downloads the recovery environment from the vendor or OS provider.</li>
+        <li>Network installs need DHCP, network connectivity, and a reachable deployment service.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Firmware settings</h3>
+      <ul>
+        <li>Boot order decides which device the system tries first.</li>
+        <li>UEFI replaces classic BIOS on modern systems.</li>
+        <li>Secure Boot validates bootloaders and blocks untrusted boot code.</li>
+        <li>Legacy/CSM mode is for older operating systems and MBR boot disks.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn">
+    <span class="callout-title">Switching Legacy/CSM to UEFI is not just a toggle</span>
+    <p>Windows installed in Legacy mode on an MBR disk may not boot after switching to UEFI. UEFI boot normally expects GPT partitioning and a UEFI boot entry.</p>
+    <p>Use the proper conversion path, such as <code>mbr2gpt</code> where supported, or perform a clean UEFI/GPT installation.</p>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Installation or recovery choice</th>
+          <th>What it is for</th>
+          <th>What it preserves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Repair install</td>
+          <td>Reinstall Windows system files over the existing installation</td>
+          <td>Attempts to preserve apps, user data, and settings</td>
+        </tr>
+        <tr>
+          <td>Recovery partition</td>
+          <td>Boot vendor or Windows recovery tools from a hidden local partition</td>
+          <td>Depends on option selected; factory recovery may erase data</td>
+        </tr>
+        <tr>
+          <td>Refresh/reset</td>
+          <td>Return Windows to a clean state from Windows Recovery Environment</td>
+          <td>Keep my files preserves user files; Remove everything does not</td>
+        </tr>
+        <tr>
+          <td>Clean install</td>
+          <td>Install a fresh operating system to a target volume</td>
+          <td>Nothing on the target unless backed up or migrated first</td>
+        </tr>
+        <tr>
+          <td>Image deployment</td>
+          <td>Apply a prepared corporate image to many computers</td>
+          <td>Standardized apps and settings in the image; local data must be migrated</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <details class="acc">
+    <summary>Pre-installation checklist</summary>
+    <div class="acc-body">
+      <ul>
+        <li>Verify application support for the target operating system and edition.</li>
+        <li>Verify driver support for storage, network, graphics, printers, scanners, and specialty hardware.</li>
+        <li>Back up user files, desktop data, browser favorites, profiles, and application settings.</li>
+        <li>Record licensing, activation, VPN settings, and line-of-business application requirements.</li>
+        <li>Download third-party storage or network drivers before starting if the installer may not include them.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section id="tools">
+  <div class="week-head">
+    <h2>The administrative tools</h2>
+    <span class="wgoal">For each symptom, know the first Windows tool you would open.</span>
+  </div>
+  <p>The exam does not expect you to memorize every button. It expects you to know the tool&rsquo;s purpose and the command that opens it.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>How to open it</th>
+          <th>The problem it solves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Task Manager</td>
+          <td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd>, or right-click Start</td>
+          <td>Processes ends hung apps; Performance checks CPU/RAM/disk/network; Startup disables startup apps; Users shows sessions; Details shows PIDs; Services starts or stops services.</td>
+        </tr>
+        <tr>
+          <td>MSConfig</td>
+          <td><code>msconfig</code></td>
+          <td>Selective startup, boot options, safe boot settings, and troubleshooting startup configuration.</td>
+        </tr>
+        <tr>
+          <td>Event Viewer</td>
+          <td><code>eventvwr.msc</code></td>
+          <td>Reads application, security, setup, system, and forwarded logs after crashes, service failures, login events, and driver issues.</td>
+        </tr>
+        <tr>
+          <td>Device Manager</td>
+          <td><code>devmgmt.msc</code></td>
+          <td>Driver status, disabled devices, resource conflicts, unknown devices, rollback, update, and uninstall actions.</td>
+        </tr>
+        <tr>
+          <td>Disk Management</td>
+          <td><code>diskmgmt.msc</code></td>
+          <td>Initializes disks, creates partitions, assigns drive letters, formats volumes, and checks basic disk layout.</td>
+        </tr>
+        <tr>
+          <td>Local Users and Groups</td>
+          <td><code>lusrmgr.msc</code></td>
+          <td>Creates local users, resets local group membership, and manages local account properties on supported editions.</td>
+        </tr>
+        <tr>
+          <td>Performance Monitor</td>
+          <td><code>perfmon</code></td>
+          <td>Tracks counters over time for CPU, memory, disk, network, and application performance baselines.</td>
+        </tr>
+        <tr>
+          <td>Resource Monitor</td>
+          <td><code>resmon</code></td>
+          <td>Shows live CPU, memory, disk, and network usage by process when Task Manager is not detailed enough.</td>
+        </tr>
+        <tr>
+          <td>Registry Editor</td>
+          <td><code>regedit</code></td>
+          <td>Views and edits Windows registry keys for advanced configuration and repair.</td>
+        </tr>
+        <tr>
+          <td>Group Policy Editor</td>
+          <td><code>gpedit.msc</code></td>
+          <td>Configures local policy for security settings, scripts, Windows components, and administrative templates on supported editions.</td>
+        </tr>
+        <tr>
+          <td>Task Scheduler</td>
+          <td><code>taskschd.msc</code></td>
+          <td>Creates and troubleshoots scheduled tasks, triggers, actions, and failed automation.</td>
+        </tr>
+        <tr>
+          <td>Services</td>
+          <td><code>services.msc</code></td>
+          <td>Starts, stops, restarts, disables, and changes startup type for Windows services.</td>
+        </tr>
+        <tr>
+          <td>System Information</td>
+          <td><code>msinfo32</code></td>
+          <td>Summarizes hardware resources, components, BIOS mode, installed memory, and software environment.</td>
+        </tr>
+        <tr>
+          <td>Certificate Manager</td>
+          <td><code>certmgr.msc</code></td>
+          <td>Views user certificate stores for trust, client authentication, encryption, and certificate troubleshooting.</td>
+        </tr>
+        <tr>
+          <td>Disk Cleanup</td>
+          <td><code>cleanmgr</code></td>
+          <td>Removes temporary files, update cleanup files, recycle bin content, and other safe disk clutter.</td>
+        </tr>
+        <tr>
+          <td>Disk Defragment/Optimize Drives</td>
+          <td>Search for Optimize Drives, or run <code>dfrgui</code></td>
+          <td>Defragments HDDs and sends trim/optimization commands to SSDs where appropriate.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout key">
+    <span class="callout-title">Most-tested tool picks</span>
+    <p>For A+, the highest-yield tools are Device Manager for drivers, Event Viewer for logs, Disk Management for partitions and drive letters, Task Manager for live processes and startup apps, and Services for background service state.</p>
+  </div>
+  <div class="callout trap">
+    <span class="callout-title">Regedit has no friendly undo</span>
+    <p>Back up the registry, export the key, or create a restore point before making registry changes. A wrong registry edit can stop Windows, apps, services, or drivers from working.</p>
+  </div>
+</section>
+
+<section id="controlpanel">
+  <div class="week-head">
+    <h2>Control Panel and Settings</h2>
+    <span class="wgoal">Know the old applet names and the modern Settings categories.</span>
+  </div>
+  <p>Windows is split between classic Control Panel applets and modern Settings pages. CompTIA names both because real support calls can land in either interface.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Control Panel applet</th>
+          <th>Use it for</th>
+          <th>Exam detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Internet Options</td>
+          <td>Browser-related legacy settings, certificates, proxy, zones, and advanced options</td>
+          <td>Still appears in enterprise and legacy application troubleshooting.</td>
+        </tr>
+        <tr>
+          <td>Devices and Printers</td>
+          <td>Printers, scanners, Bluetooth devices, and device properties</td>
+          <td>Use for default printer, print queue, and printer sharing paths.</td>
+        </tr>
+        <tr>
+          <td>Programs and Features</td>
+          <td>Uninstall desktop applications and turn Windows features on or off</td>
+          <td>Different from Settings &rarr; Apps but overlaps with it.</td>
+        </tr>
+        <tr>
+          <td>Network and Sharing Center</td>
+          <td>Adapter settings, sharing settings, and network status</td>
+          <td>Classic path to IPv4 properties, DNS, gateway, and alternate IP settings.</td>
+        </tr>
+        <tr>
+          <td>System</td>
+          <td>Computer name, domain/workgroup, edition, activation, and system links</td>
+          <td>Modern Windows redirects much of this to Settings &rarr; System.</td>
+        </tr>
+        <tr>
+          <td>Windows Defender Firewall</td>
+          <td>Allow apps, enable or disable firewall, advanced rules</td>
+          <td>Firewall behavior changes by public, private, and domain profile.</td>
+        </tr>
+        <tr>
+          <td>Mail</td>
+          <td>Outlook profiles and data-file configuration</td>
+          <td>Often appears on business desktops with Microsoft Outlook installed.</td>
+        </tr>
+        <tr>
+          <td>Sound</td>
+          <td>Playback, recording, communications, and sound scheme settings</td>
+          <td>Pick output devices and configure microphones here.</td>
+        </tr>
+        <tr>
+          <td>User Accounts</td>
+          <td>Local account type, credential changes, and profile-related options</td>
+          <td>Administrative permissions are required for many account changes.</td>
+        </tr>
+        <tr>
+          <td>Device Manager</td>
+          <td>Hardware and drivers</td>
+          <td>Same destination as <code>devmgmt.msc</code>.</td>
+        </tr>
+        <tr>
+          <td>Indexing Options</td>
+          <td>Search indexing locations and rebuilds</td>
+          <td>Use when Windows search is slow, incomplete, or stale.</td>
+        </tr>
+        <tr>
+          <td>Administrative Tools</td>
+          <td>Shortcut folder for Event Viewer, Services, Task Scheduler, and related tools</td>
+          <td>Called Windows Tools in newer versions.</td>
+        </tr>
+        <tr>
+          <td>File Explorer Options</td>
+          <td>Folder behavior, view settings, search settings</td>
+          <td>Show hidden files and disable Hide extensions for known file types when troubleshooting.</td>
+        </tr>
+        <tr>
+          <td>Power Options</td>
+          <td>Power plans, sleep, display timeout, hibernate, fast startup, USB selective suspend</td>
+          <td>Sleep/suspend and standby reduce power without fully shutting down.</td>
+        </tr>
+        <tr>
+          <td>Ease of Access</td>
+          <td>Accessibility settings such as narrator, magnifier, contrast, keyboard, and mouse assistance</td>
+          <td>Modern Windows calls this Accessibility.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Windows Settings category</th>
+          <th>What you should associate with it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Time and Language</td>
+          <td>Date, time zone, region, keyboard, speech, and language packs.</td>
+        </tr>
+        <tr>
+          <td>Update and Security</td>
+          <td>Windows Update, recovery, activation, backup, and Windows Security in Windows 10.</td>
+        </tr>
+        <tr>
+          <td>Personalization</td>
+          <td>Background, colors, themes, lock screen, taskbar, and Start appearance.</td>
+        </tr>
+        <tr>
+          <td>Apps</td>
+          <td>Installed apps, default apps, optional features, startup apps, and app execution aliases.</td>
+        </tr>
+        <tr>
+          <td>Privacy</td>
+          <td>App permissions for camera, microphone, location, diagnostics, and activity history.</td>
+        </tr>
+        <tr>
+          <td>System</td>
+          <td>Display, sound, notifications, storage, clipboard, remote desktop, and about.</td>
+        </tr>
+        <tr>
+          <td>Devices</td>
+          <td>Bluetooth, printers, mouse, typing, AutoPlay, and USB settings.</td>
+        </tr>
+        <tr>
+          <td>Network and Internet</td>
+          <td>Wi-Fi, Ethernet, VPN, proxy, metered connections, and adapter status.</td>
+        </tr>
+        <tr>
+          <td>Gaming</td>
+          <td>Game bar, captures, and game mode settings.</td>
+        </tr>
+        <tr>
+          <td>Accounts</td>
+          <td>Your info, sign-in options, work or school access, family users, and sync settings.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="networking">
+  <div class="week-head">
+    <h2>Windows networking configuration</h2>
+    <span class="wgoal">Separate identity, profile, addressing, sharing, and remote-access settings.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Workgroup vs domain</h3>
+      <p>A workgroup is peer-to-peer. Each PC manages its own local users, local permissions, and local policies.</p>
+      <p>A domain is centrally managed by Active Directory. Joining a domain changes sign-in options, applies Group Policy, enables domain security groups, and allows centralized authentication.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Network profiles</h3>
+      <p><span class="badge bad">Public</span> is restrictive for untrusted networks. Discovery and inbound sharing are usually blocked.</p>
+      <p><span class="badge good">Private</span> is for trusted home or office networks where discovery and sharing may be allowed.</p>
+      <p><span class="badge teal">Domain</span> is automatically used when the computer authenticates to a domain network.</p>
+    </div>
+  </div>
+  <p>Mapping a network drive connects a drive letter to a shared path. The command-line version is <code>net use Z: \\server\share</code>. Printer sharing follows the same basic idea: the printer is shared from one host or print server, and clients connect to that share.</p>
+  <p>A VPN creates an encrypted tunnel into a remote private network. Configure the VPN type, server name, authentication method, and credentials; then test DNS and routing, not just the connected icon.</p>
+  <p>Proxy settings define an intermediary for web traffic. Metered connections tell Windows to reduce background data use. An alternate IP configuration lets a device use a fallback static IPv4 address when DHCP is unavailable.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Configuration method</th>
+          <th>Best use</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GUI</td>
+          <td>Single workstation changes and visible verification</td>
+          <td>Settings &rarr; Network and Internet, or adapter properties from Control Panel.</td>
+        </tr>
+        <tr>
+          <td><code>netsh</code></td>
+          <td>Legacy command-line network configuration and troubleshooting</td>
+          <td><code>netsh interface ip show config</code> displays adapter IP settings.</td>
+        </tr>
+        <tr>
+          <td>PowerShell</td>
+          <td>Modern scripting and remote administration</td>
+          <td><code>Get-NetIPConfiguration</code> checks adapters; <code>New-NetIPAddress</code> configures static IP details.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="macos-linux">
+  <div class="week-head">
+    <h2>macOS and Linux</h2>
+    <span class="wgoal">Translate Windows thinking into Apple and Linux terms.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">macOS essentials</h3>
+      <ul>
+        <li><strong>Time Machine</strong> performs versioned backups to local or network destinations.</li>
+        <li><strong>FileVault</strong> encrypts the macOS startup disk.</li>
+        <li><strong>Disk Utility</strong> partitions, formats, repairs, and images disks.</li>
+        <li><strong>Keychain</strong> stores passwords, certificates, and secure notes.</li>
+        <li><strong>Spotlight</strong> searches files, apps, email, and metadata.</li>
+        <li><strong>Mission Control</strong> manages windows, desktops, and full-screen spaces.</li>
+        <li><strong>Gatekeeper</strong> helps block untrusted or unsigned software.</li>
+        <li><strong>Force Quit</strong> closes a frozen application.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">macOS install and user details</h3>
+      <ul>
+        <li>App Store installs are curated and update through Apple&rsquo;s store workflow.</li>
+        <li>Third-party installs may use signed packages or disk images from trusted vendors.</li>
+        <li><code>.dmg</code> is a mountable disk image.</li>
+        <li><code>.pkg</code> is an installer package.</li>
+        <li><code>.app</code> is an application bundle.</li>
+        <li>Remote Disc shares an optical drive from another Mac or PC in supported scenarios.</li>
+        <li>iCloud synchronizes Apple ID data, files, photos, keychain data, and device features.</li>
+        <li>Gestures use the trackpad or Magic Mouse for scrolling, zoom, desktop switching, and Mission Control.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout tip">
+    <span class="callout-title">Linux directory map</span>
+    <p><code>/</code> is the root of the file system. <code>/home</code> stores user profiles, <code>/etc</code> stores configuration, <code>/var</code> stores changing service data and logs, <code>/tmp</code> is temporary storage, <code>/bin</code> and <code>/usr/bin</code> store user commands, and <code>/sbin</code> stores system administration commands.</p>
+  </div>
+  <p>Linux package managers install and update software from repositories. Debian and Ubuntu use <code>apt-get</code> or <code>apt</code>. Red Hat-family distributions historically used <code>yum</code>; newer versions commonly use <code>dnf</code>.</p>
+  <p>Linux permissions use owner, group, and others. The numeric mode is octal: read is 4, write is 2, execute is 1, and the values are added for each class. <code>755</code> means owner <code>rwx</code>, group <code>r-x</code>, others <code>r-x</code>. <code>644</code> means owner <code>rw-</code>, group and others <code>r--</code>. <code>600</code> means only the owner can read and write.</p>
+  <p>The root account is the all-powerful administrator. <code>sudo</code> lets an authorized user run a specific command with elevated privileges while preserving accountability. Samba provides SMB/CIFS file and printer sharing so Linux can interoperate with Windows networks.</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>What it does</th>
+          <th>Exam memory hook</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>ls</code></td>
+          <td>Lists files and directories.</td>
+          <td>Think list.</td>
+        </tr>
+        <tr>
+          <td><code>cd</code></td>
+          <td>Changes the current directory.</td>
+          <td>Use <code>cd ..</code> to move up one level.</td>
+        </tr>
+        <tr>
+          <td><code>pwd</code></td>
+          <td>Prints the current working directory.</td>
+          <td>Answers where am I?</td>
+        </tr>
+        <tr>
+          <td><code>mv</code></td>
+          <td>Moves or renames files and directories.</td>
+          <td>Same command for move and rename.</td>
+        </tr>
+        <tr>
+          <td><code>cp</code></td>
+          <td>Copies files or directories.</td>
+          <td>Use recursive options for directories.</td>
+        </tr>
+        <tr>
+          <td><code>rm</code></td>
+          <td>Removes files or directories.</td>
+          <td>Powerful and dangerous; there is no Recycle Bin safety net.</td>
+        </tr>
+        <tr>
+          <td><code>chown</code></td>
+          <td>Changes file owner and group.</td>
+          <td>Ownership is separate from permission bits.</td>
+        </tr>
+        <tr>
+          <td><code>grep</code></td>
+          <td>Searches text for matching patterns.</td>
+          <td>Use it to filter logs and command output.</td>
+        </tr>
+        <tr>
+          <td><code>ps</code></td>
+          <td>Shows running processes.</td>
+          <td>Pair with kill commands in real administration.</td>
+        </tr>
+        <tr>
+          <td><code>df</code></td>
+          <td>Shows free space by mounted file system.</td>
+          <td>Disk free.</td>
+        </tr>
+        <tr>
+          <td><code>du</code></td>
+          <td>Shows disk usage by file or directory.</td>
+          <td>Disk usage.</td>
+        </tr>
+        <tr>
+          <td><code>dd</code></td>
+          <td>Copies and converts raw data blocks.</td>
+          <td>Used carefully for imaging and writing boot media.</td>
+        </tr>
+        <tr>
+          <td><code>cat</code></td>
+          <td>Displays or concatenates file contents.</td>
+          <td>Quickly view a short text file.</td>
+        </tr>
+        <tr>
+          <td><code>find</code></td>
+          <td>Searches the file system for names, types, sizes, times, and more.</td>
+          <td>Find files when you do not know the path.</td>
+        </tr>
+        <tr>
+          <td><code>nano</code></td>
+          <td>Opens a simple terminal text editor.</td>
+          <td>Common beginner-friendly editor.</td>
+        </tr>
+        <tr>
+          <td><code>top</code></td>
+          <td>Displays live process and resource usage.</td>
+          <td>Linux cousin of a live Task Manager view.</td>
+        </tr>
+        <tr>
+          <td><code>man</code></td>
+          <td>Opens manual pages for commands.</td>
+          <td>Use <code>man ls</code> to read command help.</td>
+        </tr>
+        <tr>
+          <td><code>ip</code></td>
+          <td>Shows and configures Linux network interfaces, addresses, and routes.</td>
+          <td>Modern replacement for many <code>ifconfig</code> uses.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="cheatsheet">
+  <div class="week-head">
+    <h2>The night-before Operating Systems sheet</h2>
+    <span class="wgoal">Compress the largest Core 2 domain into fast recall.</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Edition recall</h3>
+      <ul>
+        <li>Home: consumer workgroups; no domain join, no <code>gpedit.msc</code>, no RDP host, no Hyper-V, limited BitLocker management.</li>
+        <li>Pro: domain join, BitLocker, <code>gpedit.msc</code>, RDP host, Hyper-V, stronger update control.</li>
+        <li>Pro for Workstations: Pro plus high-end hardware support, ReFS support, and workstation-class features.</li>
+        <li>Enterprise: Pro features plus enterprise deployment, policy, security, and update management.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Storage recall</h3>
+      <ul>
+        <li>FAT32 has a 4 GB single-file limit.</li>
+        <li>MBR: four primary partitions and 2 TB limit.</li>
+        <li>GPT: 128 Windows partitions, volumes over 2 TB, UEFI boot.</li>
+        <li>Quick format rebuilds metadata; full format checks and overwrites in modern Windows; wipe is for sanitization.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3 style="margin-top:0">Ten tool names</h3>
+      <ul>
+        <li>Device Manager: <code>devmgmt.msc</code></li>
+        <li>Disk Management: <code>diskmgmt.msc</code></li>
+        <li>Event Viewer: <code>eventvwr.msc</code></li>
+        <li>Services: <code>services.msc</code></li>
+        <li>Task Scheduler: <code>taskschd.msc</code></li>
+        <li>Group Policy Editor: <code>gpedit.msc</code></li>
+        <li>Local Users and Groups: <code>lusrmgr.msc</code></li>
+        <li>Certificate Manager: <code>certmgr.msc</code></li>
+        <li>System Information: <code>msinfo32</code></li>
+        <li>Registry Editor: <code>regedit</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Linux and boot recall</h3>
+      <ul>
+        <li><code>chmod 755</code>: owner rwx, group r-x, others r-x.</li>
+        <li><code>chmod 644</code>: owner rw-, group r--, others r--.</li>
+        <li>Boot methods: USB, optical, network/PXE, internet recovery, external/hot-swappable drive, internal recovery partition.</li>
+        <li>Secure Boot requires UEFI and trusted bootloaders.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="btn-row">
+    <a class="btn" href="drills.html?set=c2-windows">Windows drills</a>
+    <a class="btn secondary" href="drills.html?set=c2-cli">CLI drills</a>
+    <a class="btn secondary" href="drills.html?set=c2-osadmin">Admin tools drills</a>
+    <a class="btn ghost" href="tools.html#flashcards">Flashcards</a>
+  </div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

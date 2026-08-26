@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core 2 Practice Exam 2 &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="CompTIA A+ Core 2 (220-1102) dress rehearsal: 60 timed questions across the four domains, with scaled scoring against the 700 passing mark.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+    <h1 class="no-print">Core 2 Practice Exam 2</h1>
+    <p class="lede no-print">Day 12 of the Core 2 plan &mdash; the dress rehearsal. Start at your real appointment time.</p>
+    <div id="app"></div>
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/exam6.js"></script>
+<script src="assets/test-engine.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    AP.Test.mount({
+        el: document.getElementById("app"),
+        testId: "exam6",
+        core: "core2",
+        title: "Core 2 Practice Exam 2 \u2014 Dress Rehearsal",
+        blurb: "The hardest of the Core 2 set, weighted toward multi-clue scenarios where you have to choose the BEST, FIRST, or NEXT action rather than recall a fact. Run it exactly like exam day: same clock time, same room, same breakfast, phone in another room. Passing is 700. Your answers save automatically.",
+        sections: ["exam6"]
+    });
+});
+</script>
+</body>
+</html>

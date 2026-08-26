@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Practice Exams &mdash; Brooks&rsquo;s A+ Prep</title>
-<meta name="description" content="Three timed CompTIA A+ Core 1 practice exams plus a Core 2 diagnostic, with scaled scoring against the 675 passing mark and full review mode.">
+<meta name="description" content="Timed CompTIA A+ practice exams for Core 1 and Core 2, with scaled scoring against the 675 and 700 passing marks and full review mode.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/styles.css">
 <script src="assets/app.js"></script>
@@ -15,35 +15,28 @@
 
 <main id="main"><div class="wrap">
 
-<h1>The Practice Exams</h1>
-<p class="lede">Three Core 1 exams, one for each checkpoint in the nine days, plus a Core 2 diagnostic.
-    Each Core 1 exam is 60 questions in 60 minutes at the same one-minute-per-question pace as the real
-    thing, weighted across the five domains exactly as CompTIA weights them.</p>
+<h1 id="pageTitle">Practice Exams</h1>
+<p class="lede" id="pageLede">Loading&hellip;</p>
 
 <div class="callout warn">
     <span class="callout-title">Take these properly or do not take them at all</span>
     <p style="margin-bottom:0">A practice exam taken with your phone next to you, in three sittings, with
         the clock paused and a browser tab open, tells you nothing except that you can look things up. Sit
         down, put the phone in another room, close every tab, start the clock, and do not stop. The score
-        you get under real conditions is the only number worth having &mdash; and it is the number this
-        entire plan is calibrated against.</p>
+        you get under real conditions is the only number worth having &mdash; and it is the number the whole
+        plan is calibrated against.</p>
 </div>
 
 <div class="grid grid-3" id="examCards" style="margin:1.5rem 0"></div>
 
 <section>
-    <h2>The schedule, and why it is spaced this way</h2>
+    <h2>When to take each one</h2>
     <div class="grid grid-2">
         <div class="card">
-            <h3 style="margin-top:0">When to take each one</h3>
-            <div class="table-scroll"><table class="data-table">
-                <thead><tr><th>Date</th><th>Exam</th><th>Purpose</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>Wed Aug 26</strong></td><td>Practice Exam 1</td><td>Cold baseline, before you study anything. Its job is to find your two weakest domains, not to make you feel good.</td></tr>
-                    <tr><td><strong>Sat Aug 29</strong></td><td>Practice Exam 2</td><td>Midpoint checkpoint. Did three days of targeted work actually move the domains you were weak in?</td></tr>
-                    <tr><td><strong>Tue Sep 1</strong></td><td>Practice Exam 3</td><td>Dress rehearsal. Same clock time as the real appointment, hardest question set of the three.</td></tr>
-                    <tr><td><strong>Fri Sep 4</strong></td><td><span class="badge good">The real 220-1101</span></td><td>The one that counts.</td></tr>
-                </tbody>
+            <h3 style="margin-top:0">The schedule</h3>
+            <div class="table-scroll"><table class="data-table" id="schedTable">
+                <thead><tr><th>Day</th><th>Date</th><th>Exam</th><th>Purpose</th></tr></thead>
+                <tbody id="schedBody"></tbody>
             </table></div>
         </div>
         <div class="card">
@@ -54,7 +47,7 @@
                 happened. Three exams give you three full repair cycles, and each cycle points the next two
                 days of work at something specific rather than at &ldquo;more studying.&rdquo;</p>
             <p style="margin-bottom:0">On the days in between, use the <a href="drills.html">topic drills</a>.
-                Same benefit, ten minutes instead of two hours.</p>
+                Same benefit, ten minutes instead of an hour.</p>
         </div>
     </div>
 </section>
@@ -76,7 +69,7 @@
             <h3 style="margin-top:0">Reading</h3>
             <ul style="margin-bottom:0">
                 <li>Read the <strong>last line first</strong>. <em>BEST</em>, <em>FIRST</em>, <em>NEXT</em>, and <em>MOST LIKELY</em> each change which answer is correct.</li>
-                <li>&ldquo;What should the technician do NEXT&rdquo; almost always means the next step of the six-step methodology, not the cleverest fix.</li>
+                <li>&ldquo;What should the technician do NEXT&rdquo; almost always means the next step of a documented process, not the cleverest fix.</li>
                 <li>Watch for &ldquo;Select TWO&rdquo; and &ldquo;Select THREE.&rdquo; Missing one costs the whole question.</li>
                 <li>Two choices that mean the same thing are usually both wrong.</li>
                 <li><strong>Never leave anything blank.</strong> Four choices, no penalty, so a blind guess is worth 25%.</li>
@@ -93,14 +86,21 @@
             real exam weights questions by difficulty, so no practice test anywhere can produce your exact
             score.</p>
         <p>What this site does is anchor a curve on the two facts that are public &mdash; the 100 to 900
-            range and the passing marks &mdash; so that <strong>72% correct lands on 675</strong>. That makes
-            the number honest as a readiness signal even though it is not an official score.</p>
-        <p style="margin-bottom:0">Read it this way: <span class="badge good">700+</span> means you are ready,
-            <span class="badge good">675&ndash;699</span> means you would probably pass but there is no margin,
-            <span class="badge amber">615&ndash;674</span> means two focused days would get you there, and
-            <span class="badge bad">under 600</span> means the domain breakdown below your score is where all
-            your attention should go.</p>
+            range and the passing marks &mdash; so that <strong>72% correct lands on 675</strong> and
+            <strong>75% lands on 700</strong>. That makes the number honest as a readiness signal even
+            though it is not an official score.</p>
+        <p style="margin-bottom:0">Read it this way, against <em>your exam&rsquo;s</em> mark:
+            <span class="badge good">25+ above</span> means you are ready,
+            <span class="badge good">at or just above</span> means you would probably pass but there is no margin,
+            <span class="badge amber">up to 60 below</span> means two focused days would get you there, and
+            <span class="badge bad">further below</span> means the domain breakdown under your score is where
+            all your attention should go.</p>
     </div>
+</section>
+
+<section>
+    <h2 id="otherTrackHead">The other exam</h2>
+    <div class="card" id="otherTrackCard"></div>
 </section>
 
 </div></main>
@@ -111,41 +111,67 @@
 <script src="assets/data/exam2.js"></script>
 <script src="assets/data/exam3.js"></script>
 <script src="assets/data/exam4.js"></script>
+<script src="assets/data/exam5.js"></script>
+<script src="assets/data/exam6.js"></script>
 <script>
 (function () {
-    var EXAMS = [
-        { key: "exam1", n: 1, core: "core1", date: "Wednesday, August 26", tag: "Baseline", cls: "",
-          href: "practice-exam-1.html",
-          note: "Your real starting point. Take it before you read a single guide \u2014 studying first makes the result useless." },
-        { key: "exam2", n: 2, core: "core1", date: "Saturday, August 29", tag: "Checkpoint", cls: "amber",
-          href: "practice-exam-2.html",
-          note: "Taken after three days aimed squarely at what Exam 1 exposed. Slightly harder question set." },
-        { key: "exam3", n: 3, core: "core1", date: "Tuesday, September 1", tag: "Dress rehearsal", cls: "good",
-          href: "practice-exam-3.html",
-          note: "Three days out, hardest of the three, heavy on BEST and FIRST scenarios. Start at your real appointment time." },
-        { key: "exam4", n: 4, core: "core2", date: "Only if Core 2 is your exam", tag: "Core 2", cls: "teal",
-          href: "practice-exam-4.html",
-          note: "A 40-question 220-1102 diagnostic across all four Core 2 domains. Use it as a baseline if Core 2 is what you booked." }
-    ];
+    "use strict";
 
-    function countQ(key) {
+    var META = {
+        exam1: { n: 1, planDay: 1, tag: "Baseline", cls: "", href: "practice-exam-1.html",
+                 purpose: "Your real starting point. Take it before you read a single guide \u2014 studying first makes the result useless.",
+                 short: "Cold baseline. Its job is to find your two weakest domains." },
+        exam2: { n: 2, planDay: 4, tag: "Checkpoint", cls: "amber", href: "practice-exam-2.html",
+                 purpose: "Taken after three days aimed squarely at what Exam 1 exposed. Slightly harder question set.",
+                 short: "Checkpoint. Did the targeted work move the weak domains?" },
+        exam3: { n: 3, planDay: 7, tag: "Dress rehearsal", cls: "good", href: "practice-exam-3.html",
+                 purpose: "Two days out, hardest of the three, heavy on BEST and FIRST scenarios. Start at your real appointment time.",
+                 short: "Dress rehearsal at your real appointment time." },
+        exam4: { n: 1, planDay: 1, tag: "Diagnostic", cls: "", href: "practice-exam-4.html",
+                 purpose: "A shorter 40-question diagnostic across all four Core 2 domains. Take it cold on day one.",
+                 short: "Cold diagnostic across all four domains." },
+        exam5: { n: 2, planDay: 7, tag: "Full length", cls: "amber", href: "practice-exam-5.html",
+                 purpose: "The first full-length Core 2 exam, taken after a week on Operating Systems and Security.",
+                 short: "Full-length checkpoint after the two biggest domains." },
+        exam6: { n: 3, planDay: 12, tag: "Dress rehearsal", cls: "good", href: "practice-exam-6.html",
+                 purpose: "The hardest of the Core 2 set, heavy on BEST, FIRST, and NEXT scenarios. Start at your real appointment time.",
+                 short: "Dress rehearsal, hardest of the set." }
+    };
+
+    function examStats(key) {
         var e = (window.AP_DATA || {})[key];
-        if (!e) return 0;
+        if (!e) return { q: 0, min: "\u2014" };
         var n = 0;
         for (var u = 0; u < e.units.length; u++) n += e.units[u].questions.length;
-        return n;
+        return { q: n, min: e.timeMinutes };
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+        var track = AP.track();
+        var info = AP.trackInfo(track);
+        var other = track === "core1" ? "core2" : "core1";
+        var otherInfo = AP.trackInfo(other);
         var hist = AP.store.get("history", {});
-        var host = document.getElementById("examCards");
-        var html = "";
 
-        for (var i = 0; i < EXAMS.length; i++) {
-            var t = EXAMS[i];
-            var run = hist[t.key];
-            var q = countQ(t.key);
-            var mins = ((window.AP_DATA || {})[t.key] || {}).timeMinutes || "\u2014";
+        document.getElementById("pageTitle").textContent =
+            info.longName + " \u2014 Practice Exams";
+
+        var totalQ = 0;
+        for (var z = 0; z < info.exams.length; z++) totalQ += examStats(info.exams[z]).q;
+        document.getElementById("pageLede").innerHTML =
+            "Three exams, one for each checkpoint in the " + AP.planDays(track) + "-day plan &mdash; " +
+            totalQ + " questions in total, weighted across the " + info.domains.length +
+            " " + info.name + " domains exactly as CompTIA weights them. Passing is <strong>" +
+            info.pass + "</strong>.";
+
+        /* ---- cards ---- */
+        var html = "";
+        for (var i = 0; i < info.exams.length; i++) {
+            var key = info.exams[i];
+            var m = META[key];
+            var s = examStats(key);
+            var run = hist[key];
+            var date = AP.dateForDay(m.planDay, track);
 
             var status = "";
             if (run) {
@@ -155,17 +181,48 @@
                     run.right + " of " + run.total + " correct &middot; passing is " + run.pass + ".</p></div>";
             }
 
-            html += '<a class="card card-link" href="' + t.href + '">' +
-                '<div class="card-icon ' + t.cls + '">' + t.n + "</div>" +
-                "<h3>" + (t.core === "core2" ? "Core 2 Diagnostic" : "Practice Exam " + t.n) +
-                ' <span class="badge ' + (t.cls || "accent") + '">' + t.tag + "</span></h3>" +
-                '<p class="muted" style="font-size:.86rem;margin-bottom:.5rem"><strong>' + t.date + "</strong></p>" +
-                "<p>" + t.note + "</p>" +
-                '<p class="faint" style="margin-bottom:0"><small>' + q + " questions &middot; " + mins +
-                " minutes &middot; passing " + (t.core === "core2" ? "700" : "675") + "</small></p>" +
+            html += '<a class="card card-link" href="' + m.href + '">' +
+                '<div class="card-icon ' + m.cls + '">' + m.n + "</div>" +
+                "<h3>Exam " + m.n + ' <span class="badge ' + (m.cls || "accent") + '">' + m.tag + "</span></h3>" +
+                '<p class="muted" style="font-size:.86rem;margin-bottom:.5rem"><strong>Day ' + m.planDay +
+                " &middot; " + AP.fmtDate(date) + "</strong></p>" +
+                "<p>" + m.purpose + "</p>" +
+                '<p class="faint" style="margin-bottom:0"><small>' + s.q + " questions &middot; " + s.min +
+                " minutes &middot; passing " + info.pass + "</small></p>" +
                 status + "</a>";
         }
-        host.innerHTML = html;
+        document.getElementById("examCards").innerHTML = html;
+
+        /* ---- schedule table ---- */
+        var rows = "";
+        for (var j = 0; j < info.exams.length; j++) {
+            var k2 = info.exams[j], m2 = META[k2];
+            rows += "<tr><td><strong>Day " + m2.planDay + "</strong></td><td>" +
+                AP.fmtDate(AP.dateForDay(m2.planDay, track)) + "</td><td>Exam " + m2.n + "</td><td>" +
+                m2.short + "</td></tr>";
+        }
+        rows += '<tr><td><strong>Exam day</strong></td><td>' + AP.fmtDate(AP.examDate(track)) +
+            '</td><td><span class="badge good">The real ' + info.code + "</span></td>" +
+            "<td>The one that counts.</td></tr>";
+        document.getElementById("schedBody").innerHTML = rows;
+
+        /* ---- other track ---- */
+        var op = AP.trackProgress(other);
+        var oq = 0;
+        for (var y = 0; y < otherInfo.exams.length; y++) oq += examStats(otherInfo.exams[y]).q;
+        document.getElementById("otherTrackHead").textContent =
+            otherInfo.longName + " has its own exams";
+        document.getElementById("otherTrackCard").innerHTML =
+            "<p>You need both exams to be certified. The " + otherInfo.name + " track has <strong>" +
+            oq + " more practice questions</strong> across three exams, scored against its own <strong>" +
+            otherInfo.pass + "</strong> passing mark.</p>" +
+            (op.examsTaken
+                ? '<p class="muted">You have taken ' + AP.pluralize(op.examsTaken, "exam") +
+                  " there, best scaled score <strong>" + op.best + "</strong>.</p>"
+                : '<p class="muted">You have not taken any of them yet.</p>') +
+            '<div class="btn-row" style="margin-bottom:0">' +
+            '<a class="btn secondary" href="' + otherInfo.home + '">Switch to ' + otherInfo.name + " \u2192</a>" +
+            '<a class="btn ghost" href="index.html">Back to the exam chooser</a></div>';
     });
 })();
 </script>

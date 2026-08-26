@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core 2 Practice Exam 1 &mdash; Brooks&rsquo;s A+ Prep</title>
+<meta name="description" content="CompTIA A+ Core 2 (220-1102) practice exam: 60 timed questions weighted across the four domains, with scaled scoring against the 700 passing mark.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+    <h1 class="no-print">Core 2 Practice Exam 1</h1>
+    <p class="lede no-print">Day 7 of the Core 2 plan &mdash; your first full-length checkpoint.</p>
+    <div id="app"></div>
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/exam5.js"></script>
+<script src="assets/test-engine.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    AP.Test.mount({
+        el: document.getElementById("app"),
+        testId: "exam5",
+        core: "core2",
+        title: "Core 2 Practice Exam 1 \u2014 Full Length",
+        blurb: "Sixty questions in sixty minutes across the four Core 2 domains, weighted the way CompTIA weights them. You have spent the week on Operating Systems and Security, which are 56% of this exam between them \u2014 this is where you find out whether that stuck. Remember the bar here is 700, not 675. Your answers save automatically.",
+        sections: ["exam5"]
+    });
+});
+</script>
+</body>
+</html>

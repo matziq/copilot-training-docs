@@ -165,6 +165,60 @@ section { scroll-margin-top: 90px; }
     padding: .3rem .7rem; border-radius: 100px; font-size: .8rem; font-weight: 650; white-space: nowrap;
 }
 .countdown-pill b { font-size: 1rem; font-weight: 800; }
+a.countdown-pill:hover { text-decoration: none; filter: brightness(1.05); border-color: var(--amber); }
+
+/* ---------- topbar right cluster ---------- */
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: .5rem; flex: 0 0 auto; }
+
+/* ---------- track switcher ---------- */
+.track-switch {
+    display: inline-flex; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 100px; padding: 2px; gap: 2px; flex: 0 0 auto;
+}
+.track-switch button {
+    border: 0; background: transparent; color: var(--text-dim); cursor: pointer;
+    font: inherit; font-size: .78rem; font-weight: 650; white-space: nowrap;
+    padding: .3rem .72rem; border-radius: 100px; line-height: 1.2;
+}
+.track-switch button:hover { color: var(--text); }
+.track-switch button.on {
+    background: var(--accent); color: #fff; box-shadow: 0 1px 2px rgba(20, 25, 45, .18);
+}
+
+/* ---------- exam chooser (root page) ---------- */
+.chooser { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.4rem; margin: 2rem 0; }
+.choice-card {
+    display: flex; flex-direction: column; position: relative;
+    background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius-lg);
+    padding: 1.8rem; color: inherit; transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+}
+.choice-card:hover {
+    text-decoration: none; transform: translateY(-3px);
+    box-shadow: var(--shadow-lg); border-color: var(--accent);
+}
+.choice-card .cc-code {
+    font-size: .74rem; text-transform: uppercase; letter-spacing: .12em;
+    font-weight: 800; color: var(--accent);
+}
+.choice-card.is-core2 .cc-code { color: var(--accent-2); }
+.choice-card h2 { margin: .35rem 0 .1rem; font-size: 1.85rem; }
+.choice-card .cc-sub { color: var(--text-dim); font-size: .95rem; margin-bottom: 1.1rem; }
+.choice-card .cc-meta { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-bottom: 1.1rem; }
+.choice-card .cc-meta div { line-height: 1.2; }
+.choice-card .cc-meta .n { font-size: 1.5rem; font-weight: 800; }
+.choice-card .cc-meta .l {
+    font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-faint); font-weight: 700; margin-top: .2rem;
+}
+.choice-card .cc-domains { list-style: none; padding: 0; margin: 0 0 1.2rem; }
+.choice-card .cc-domains li {
+    display: flex; justify-content: space-between; gap: 1rem;
+    font-size: .86rem; padding: .28rem 0; border-bottom: 1px dashed var(--border);
+}
+.choice-card .cc-domains li:last-child { border-bottom: 0; }
+.choice-card .cc-domains .w { color: var(--text-dim); font-variant-numeric: tabular-nums; font-weight: 650; }
+.choice-card .cc-foot { margin-top: auto; }
+.choice-card .cc-status { margin-bottom: .9rem; }
 
 /* ---------- hero ---------- */
 .hero {
@@ -606,6 +660,13 @@ details.acc .acc-body > :last-child { margin-bottom: 0; }
     }
     .nav.open { display: flex; }
     .nav a { padding: .6rem .8rem; }
+    .topbar-right { gap: .35rem; }
+    .countdown-pill { display: none; }
+    .track-switch button { padding: .3rem .55rem; font-size: .74rem; }
+    .brand-sub { display: none; }
+    .chooser { grid-template-columns: 1fr; gap: 1rem; margin: 1.4rem 0; }
+    .choice-card { padding: 1.35rem; }
+    .choice-card h2 { font-size: 1.55rem; }
     .toc ul { columns: 1; }
     .hero { padding: 2.25rem 0 2.5rem; }
     .hero-stats { gap: 1.4rem; }
