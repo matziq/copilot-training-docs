@@ -42,6 +42,11 @@
             <a href="index.html">exam chooser</a>.</p>
     </div>
 
+    <div class="card" id="dateCard">
+        <h3 style="margin-top:0">When is your Core 1 exam?</h3>
+        <div id="dateBody"></div>
+    </div>
+
     <h2>What the exam actually looks like</h2>
     <div class="table-scroll">
         <table class="data-table">
@@ -265,8 +270,9 @@
             p.daysLeft === 0 ? "Exam day. One number: 675."
                              : AP.pluralize(p.daysLeft, "day") + ". One number: 675.";
 
-        document.getElementById("planRangeLede").textContent =
-            AP.fmtDate(AP.dateForDay(1, TRACK)) + " through " +
+        AP.renderDateEditor("dateBody", TRACK);
+
+        document.getElementById("planRangeLede").textContent =            AP.fmtDate(AP.dateForDay(1, TRACK)) + " through " +
             AP.fmtDate(AP.dateForDay(planDays, TRACK)) + ", then you sit the exam on " +
             AP.fmtDate(examDate) + ".";
         document.getElementById("examDayList").textContent =

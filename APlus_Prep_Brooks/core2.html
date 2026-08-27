@@ -231,39 +231,6 @@
     "use strict";
     var TRACK = "core2";
 
-    function paintDate() {
-        var d = AP.examDate(TRACK);
-        var isDefault = AP.isDefaultExamDate(TRACK);
-        var html = isDefault
-            ? '<div class="callout warn" style="margin-top:0"><span class="callout-title">No date set yet</span>' +
-              "<p style=\"margin-bottom:0\">Core 2 is not booked, so the plan is currently counting back from a " +
-              "placeholder of <strong>" + AP.fmtLong(d) + "</strong> (four weeks after Core 1). Set the real " +
-              "date once you book it and every date on this track updates.</p></div>"
-            : '<p class="muted">Your Core 2 exam is <strong>' + AP.fmtLong(d) + "</strong> &mdash; " +
-              AP.pluralize(AP.daysLeft(TRACK), "day") + " away. The 14-day plan counts back from it.</p>";
-
-        html += '<div class="grid grid-2" style="margin-top:1rem">' +
-            '<div class="field" style="margin-bottom:0"><label for="c2date">Core 2 exam date</label>' +
-            '<input type="date" id="c2date" value="' + AP.toYmd(d) + '"></div>' +
-            '<div class="field" style="margin-bottom:0"><label for="c2save">&nbsp;</label>' +
-            '<div class="btn-row"><button class="btn" id="c2save">Save date</button>' +
-            '<button class="btn ghost" id="c2reset">Reset</button></div></div></div>';
-
-        document.getElementById("dateBody").innerHTML = html;
-
-        document.getElementById("c2save").onclick = function () {
-            var v = document.getElementById("c2date").value;
-            if (!AP.setExamDate(TRACK, v)) { AP.toast("That date did not look right."); return; }
-            AP.toast("Core 2 date saved.");
-            window.location.reload();
-        };
-        document.getElementById("c2reset").onclick = function () {
-            AP.resetExamDate(TRACK);
-            AP.toast("Reset to the default date.");
-            window.location.reload();
-        };
-    }
-
     document.addEventListener("DOMContentLoaded", function () {
         var p = AP.trackProgress(TRACK);
         var planDays = AP.planDays(TRACK);
@@ -276,8 +243,7 @@
             p.daysLeft === 0 ? "Exam day. One number: 700."
                              : AP.pluralize(p.daysLeft, "day") + ". One number: 700.";
 
-        paintDate();
-
+        AP.renderDateEditor("dateBody", TRACK);
         document.getElementById("planRangeLede").textContent =
             AP.fmtDate(AP.dateForDay(1, TRACK)) + " through " +
             AP.fmtDate(AP.dateForDay(planDays, TRACK)) + ", then you sit the exam on " +

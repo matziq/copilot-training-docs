@@ -72,6 +72,7 @@
             blurb: "Hardware, networking, mobile devices, virtualization, and troubleshooting.",
             pass: 675,
             planDays: 9,
+            booked: true,
             home: "core1.html",
             domains: AP.CORE1,
             exams: ["exam1", "exam2", "exam3"],
@@ -91,6 +92,7 @@
             blurb: "Operating systems, security, software troubleshooting, and operational procedures.",
             pass: 700,
             planDays: 14,
+            booked: false,
             home: "core2.html",
             domains: AP.CORE2,
             exams: ["exam4", "exam5", "exam6"],
@@ -128,18 +130,30 @@
     /* ============================================================
        Exam dates
 
-       Core 1 is booked for Friday September 4, 2026. Core 2 has no
-       booking yet, so it defaults to four weeks later and can be
-       changed by the user; the change is persisted.
+       Both exam dates are user-settable and persisted. Core 1 starts
+       from the known Sep 4 2026 booking; Core 2 has no booking yet and
+       starts from a placeholder four weeks later. Either can be changed
+       or reset to its default at any time, and every date on that
+       track — the countdown, the plan window, the exam-day headings —
+       is derived from it.
        ============================================================ */
-    var CORE1_DATE = new Date(2026, 8, 4, 8, 0, 0);      // Fri Sep 4, 2026
-    var CORE2_DEFAULT = new Date(2026, 9, 2, 8, 0, 0);   // Fri Oct 2, 2026
+    var DEFAULT_DATE = {
+        core1: new Date(2026, 8, 4, 8, 0, 0),   // Fri Sep 4, 2026 — booked
+        core2: new Date(2026, 9, 2, 8, 0, 0)    // Fri Oct 2, 2026 — placeholder
+    };
+    var DATE_KEY = { core1: "core1Date", core2: "core2Date" };
+
+    function normTrack(t) { return t === "core2" ? "core2" : "core1"; }
 
     function parseYmd(s) {
         var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || ""));
         if (!m) return null;
-        var d = new Date(+m[1], +m[2] - 1, +m[3], 8, 0, 0);
-        return isNaN(d.getTime()) ? null : d;
+        var y = +m[1], mo = +m[2], da = +m[3];
+        if (mo < 1 || mo > 12 || da < 1 || da > 31) return null;
+        var d = new Date(y, mo - 1, da, 8, 0, 0);
+        // reject rollovers like 2026-02-31
+        if (d.getFullYear() !== y || d.getMonth() !== mo - 1 || d.getDate() !== da) return null;
+        return d;
     }
 
     AP.toYmd = function (d) {
@@ -147,27 +161,28 @@
         return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
     };
 
+    AP.defaultExamDate = function (t) {
+        return new Date(DEFAULT_DATE[normTrack(t)].getTime());
+    };
+
     AP.examDate = function (t) {
-        t = t || AP.track();
-        if (t === "core2") {
-            return parseYmd(AP.store.get("core2Date", null)) || new Date(CORE2_DEFAULT.getTime());
-        }
-        return parseYmd(AP.store.get("core1Date", null)) || new Date(CORE1_DATE.getTime());
+        t = normTrack(t || AP.track());
+        return parseYmd(AP.store.get(DATE_KEY[t], null)) || AP.defaultExamDate(t);
     };
 
     AP.setExamDate = function (t, ymd) {
         var d = parseYmd(ymd);
         if (!d) return false;
-        AP.store.set(t === "core2" ? "core2Date" : "core1Date", ymd);
+        AP.store.set(DATE_KEY[normTrack(t)], AP.toYmd(d));
         return true;
     };
 
     AP.resetExamDate = function (t) {
-        AP.store.remove(t === "core2" ? "core2Date" : "core1Date");
+        AP.store.remove(DATE_KEY[normTrack(t)]);
     };
 
     AP.isDefaultExamDate = function (t) {
-        return !AP.store.get(t === "core2" ? "core2Date" : "core1Date", null);
+        return !AP.store.get(DATE_KEY[normTrack(t)], null);
     };
 
     /* ---------- date helpers ---------- */
@@ -197,6 +212,148 @@
         var d = new Date(AP.planStart(t).getTime());
         d.setDate(d.getDate() + (n - 1));
         return d;
+    };
+
+    /* A date is "unconfirmed" when it is still the built-in default AND that
+       default was never an actual booking. Core 1's default is the real
+       Sep 4 appointment, so it is not a placeholder; Core 2's is. */
+    AP.isPlaceholderDate = function (t) {
+        t = normTrack(t || AP.track());
+        return AP.isDefaultExamDate(t) && !AP.TRACKS[t].booked;
+    };
+
+    // Is the exam date in the past?
+    AP.isPastExam = function (t) {
+        return startOfDay(AP.examDate(t)) < startOfDay(new Date());
+    };
+
+    /* Describes where today sits relative to a track's plan window, so
+       pages can explain themselves instead of silently showing a plan
+       that already started or has not begun. */
+    AP.dateStatus = function (t) {
+        t = normTrack(t || AP.track());
+        var info = AP.TRACKS[t];
+        var left = AP.daysLeft(t);
+        var day = AP.currentPlanDay(t);
+        var planDays = info.planDays;
+
+        if (AP.isPastExam(t)) {
+            return { kind: "past", cls: "warn", title: "That date has passed",
+                     msg: "Your " + info.name + " date was " + AP.fmtLong(AP.examDate(t)) +
+                          ". Set the new one below and the whole plan re-dates itself." };
+        }
+        if (left === 0) {
+            return { kind: "today", cls: "key", title: "Today is exam day",
+                     msg: "Nothing left to study. Go and pass it." };
+        }
+        if (day > planDays) {
+            return { kind: "past", cls: "warn", title: "Plan window has passed",
+                     msg: "The " + planDays + "-day plan window has closed." };
+        }
+        if (day >= 1) {
+            return { kind: "active", cls: "key", title: "You are on day " + day + " of " + planDays,
+                     msg: AP.pluralize(left, "day") + " until " + info.longName + " on " +
+                          AP.fmtLong(AP.examDate(t)) + "." };
+        }
+        var until = 1 - day;
+        return { kind: "upcoming", cls: "tip", title: "The plan starts in " + AP.pluralize(until, "day"),
+                 msg: "Day 1 is " + AP.fmtLong(AP.dateForDay(1, t)) + ", counting back " + planDays +
+                      " days from " + AP.fmtLong(AP.examDate(t)) + ". You can start early, but the " +
+                      "taper at the end is designed to land right before exam day." };
+    };
+
+    /* ============================================================
+       Shared exam-date editor
+
+       Used on the root chooser and on both track overview pages, so
+       there is exactly one implementation of this behavior.
+       host    - element or element id to render into
+       track   - "core1" | "core2"
+       opts.compact  - smaller layout for the chooser cards
+       opts.onSave   - called after a successful change; defaults to
+                       reloading so every derived date on the page updates
+       ============================================================ */
+    AP.renderDateEditor = function (host, track, opts) {
+        var el = typeof host === "string" ? document.getElementById(host) : host;
+        if (!el) return;
+        opts = opts || {};
+        var t = normTrack(track);
+        var info = AP.TRACKS[t];
+        var uid = "dt-" + t + "-" + Math.random().toString(36).slice(2, 7);
+
+        function paint() {
+            var d = AP.examDate(t);
+            var isDefault = AP.isDefaultExamDate(t);
+            var st = AP.dateStatus(t);
+            var html = "";
+
+            if (!opts.compact) {
+                if (AP.isPlaceholderDate(t)) {
+                    html += '<div class="callout warn" style="margin-top:0">' +
+                        '<span class="callout-title">Not booked yet</span>' +
+                        "<p style=\"margin-bottom:0\">This is a placeholder of <strong>" + AP.fmtLong(d) +
+                        "</strong>, four weeks after Core 1. Set the real date once you book it and every " +
+                        "date on this track updates.</p></div>";
+                } else {
+                    html += '<div class="callout ' + st.cls + '" style="margin-top:0">' +
+                        '<span class="callout-title">' + st.title + "</span>" +
+                        '<p style="margin-bottom:0">' + st.msg + "</p></div>";
+                }
+            }
+
+            html += '<div class="date-editor">' +
+                '<div class="field"><label for="' + uid + '">' + info.name + " exam date</label>" +
+                '<input type="date" id="' + uid + '" value="' + AP.toYmd(d) + '"></div>' +
+                '<div class="btn-row">' +
+                '<button class="btn sm" data-act="save">Save</button>' +
+                (isDefault ? "" : '<button class="btn ghost sm" data-act="reset">Use default</button>') +
+                "</div></div>";
+
+            if (opts.compact) {
+                html += '<p class="faint" style="margin:.45rem 0 0;font-size:.78rem">' +
+                    (AP.isPlaceholderDate(t) ? "Placeholder \u2014 " : "") +
+                    AP.pluralize(AP.daysLeft(t), "day") +
+                    " away \u00b7 plan runs " + AP.fmtShort(AP.dateForDay(1, t)) + " to " +
+                    AP.fmtShort(AP.dateForDay(info.planDays, t)) + "</p>";
+            } else {
+                html += '<p class="muted" style="margin:.7rem 0 0;font-size:.87rem">The ' + info.planDays +
+                    "-day plan runs <strong>" + AP.fmtDate(AP.dateForDay(1, t)) + "</strong> through <strong>" +
+                    AP.fmtDate(AP.dateForDay(info.planDays, t)) + "</strong>, ending the day before you sit." +
+                    (isDefault ? "" : " <span class=\"faint\">Default is " +
+                        AP.fmtLong(AP.defaultExamDate(t)) + ".</span>") + "</p>";
+            }
+
+            el.innerHTML = html;
+
+            var input = document.getElementById(uid);
+            var save = el.querySelector('[data-act="save"]');
+            var reset = el.querySelector('[data-act="reset"]');
+
+            function commit() {
+                if (!AP.setExamDate(t, input.value)) {
+                    AP.toast("That date did not look right.");
+                    return;
+                }
+                AP.toast(info.name + " exam date saved.");
+                if (typeof opts.onSave === "function") { opts.onSave(); paint(); }
+                else global.location.reload();
+            }
+
+            save.addEventListener("click", commit);
+            input.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") { e.preventDefault(); commit(); }
+            });
+            if (reset) {
+                reset.addEventListener("click", function () {
+                    AP.resetExamDate(t);
+                    AP.toast("Reset to " + AP.fmtLong(AP.defaultExamDate(t)) + ".");
+                    if (typeof opts.onSave === "function") { opts.onSave(); paint(); }
+                    else global.location.reload();
+                });
+            }
+        }
+
+        paint();
     };
 
     var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

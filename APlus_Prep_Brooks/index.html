@@ -45,6 +45,32 @@
         <a class="btn secondary sm" href="core1.html">Core 1 overview</a>
         <a class="btn secondary sm" href="core2.html">Core 2 overview</a>
         <a class="btn ghost sm" href="plan.html">Study plan</a>
+        <a class="btn ghost sm" href="#dates">Set exam dates</a>
+    </div>
+</section>
+
+<!-- ================= EXAM DATES ================= -->
+<section id="dates">
+    <h2>Your exam dates</h2>
+    <p class="lede">Set the date for either exam and everything that depends on it updates &mdash; the
+        countdown in the header, the study plan window, the practice-exam schedule, and the exam-day
+        heading. The plan always ends the day before you sit.</p>
+    <div class="grid grid-2">
+        <div class="card">
+            <h3 style="margin-top:0">Core 1 <span class="badge accent">220-1101</span></h3>
+            <div id="dateCore1"></div>
+        </div>
+        <div class="card">
+            <h3 style="margin-top:0">Core 2 <span class="badge teal">220-1102</span></h3>
+            <div id="dateCore2"></div>
+        </div>
+    </div>
+    <div class="callout tip">
+        <span class="callout-title">Not booked yet? Put in your best guess</span>
+        <p style="margin-bottom:0">A rough target date is far more useful than no date. The plan needs an
+            end point to count back from, and a date you can see is a date you are more likely to book.
+            Change it whenever the real appointment is confirmed &mdash; nothing you have already done is
+            lost, because your progress is stored separately from the dates.</p>
     </div>
 </section>
 
@@ -209,8 +235,8 @@
         var p = AP.trackProgress(t);
         var info = p.info;
         var date = AP.examDate(t);
-        var dateNote = AP.isDefaultExamDate(t)
-            ? '<span class="faint">(not booked yet \u2014 set the date on the overview page)</span>'
+        var dateNote = AP.isPlaceholderDate(t)
+            ? '<span class="faint">(placeholder \u2014 set it below)</span>'
             : "";
 
         var domains = "";
@@ -239,21 +265,34 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("chooser").innerHTML = card("core1") + card("core2");
+        function repaint() {
+            document.getElementById("chooser").innerHTML = card("core1") + card("core2");
+            paintHero();
+        }
 
-        var p1 = AP.trackProgress("core1");
-        var p2 = AP.trackProgress("core2");
-        var examsTaken = p1.examsTaken + p2.examsTaken;
-        var drillsDone = p1.drillDone + p2.drillDone;
-        var drillsTotal = p1.drillTotal + p2.drillTotal;
-        var passed = (p1.passing ? 1 : 0) + (p2.passing ? 1 : 0);
+        function paintHero() {
+            var p1 = AP.trackProgress("core1");
+            var p2 = AP.trackProgress("core2");
+            var examsTaken = p1.examsTaken + p2.examsTaken;
+            var drillsDone = p1.drillDone + p2.drillDone;
+            var drillsTotal = p1.drillTotal + p2.drillTotal;
+            var passed = (p1.passing ? 1 : 0) + (p2.passing ? 1 : 0);
+            var soonest = Math.min(p1.daysLeft, p2.daysLeft);
+            var soonestName = p1.daysLeft <= p2.daysLeft ? "Core 1" : "Core 2";
 
-        document.getElementById("heroStats").innerHTML =
-            '<div class="hero-stat"><div class="n">' + p1.daysLeft + '</div><div class="l">Days to Core 1</div></div>' +
-            '<div class="hero-stat"><div class="n">' + passed + '/2</div><div class="l">Exams at passing level</div></div>' +
-            '<div class="hero-stat"><div class="n">' + examsTaken + '</div><div class="l">Practice exam' +
-            (examsTaken === 1 ? "" : "s") + ' taken</div></div>' +
-            '<div class="hero-stat"><div class="n">' + drillsDone + "/" + drillsTotal + '</div><div class="l">Drills completed</div></div>';
+            document.getElementById("heroStats").innerHTML =
+                '<div class="hero-stat"><div class="n">' + soonest + '</div><div class="l">Days to ' + soonestName + '</div></div>' +
+                '<div class="hero-stat"><div class="n">' + passed + '/2</div><div class="l">Exams at passing level</div></div>' +
+                '<div class="hero-stat"><div class="n">' + examsTaken + '</div><div class="l">Practice exam' +
+                (examsTaken === 1 ? "" : "s") + ' taken</div></div>' +
+                '<div class="hero-stat"><div class="n">' + drillsDone + "/" + drillsTotal + '</div><div class="l">Drills completed</div></div>';
+        }
+
+        repaint();
+
+        // Both date editors update the cards in place instead of reloading.
+        AP.renderDateEditor("dateCore1", "core1", { compact: true, onSave: repaint });
+        AP.renderDateEditor("dateCore2", "core2", { compact: true, onSave: repaint });
 
         var last = document.getElementById("lastUsed");
         if (AP.hasChosenTrack()) {

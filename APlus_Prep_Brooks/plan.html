@@ -18,6 +18,8 @@
 <h1 id="planTitle">Study Plan</h1>
 <p class="lede" id="planLede">Loading&hellip;</p>
 
+<div id="planStatus"></div>
+
 <div class="card" style="margin:1.5rem 0">
     <div class="meter-row" style="margin-bottom:1rem">
         <span class="mlabel"><strong>Overall progress</strong></span>
@@ -370,6 +372,15 @@ core2: {
             "The exam code is <strong>" + info.code + "</strong> and you need <strong>" + info.pass +
             "</strong> to pass.";
         document.getElementById("examDayLink").href = info.home;
+
+        // Explain where today sits relative to the plan window, and let the
+        // date be corrected right here rather than sending them elsewhere.
+        var st = AP.dateStatus(track);
+        document.getElementById("planStatus").innerHTML =
+            '<div class="callout ' + st.cls + '"><span class="callout-title">' + st.title + "</span>" +
+            "<p>" + st.msg + "</p>" +
+            '<div id="planDateEditor"></div></div>';
+        AP.renderDateEditor("planDateEditor", track, { compact: true });
 
         render();
 
