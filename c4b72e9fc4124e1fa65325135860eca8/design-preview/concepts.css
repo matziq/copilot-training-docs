@@ -1,0 +1,148 @@
+/* Community: a confident, photo-led local tradition. */
+.community { --paper: #faf9f5; --ink: #143e43; --accent: #b34520; --button-ink: #fff; --line: #cbd2ca; background: var(--paper); color: var(--ink); }
+.community h1, .community h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+.community .brand span { font-family: Georgia, 'Times New Roman', serif; }
+.community .button { border-radius: 5px; }
+.community .site-header { border-bottom: 1px solid var(--line); }
+.community-hero { padding: 42px 0 46px; }
+.community-hero .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: center; }
+.community-hero h1 em { font-style: normal; color: var(--accent); }
+.community-hero .intro { margin-top: 28px; max-width: 42ch; }
+.community-hero .date-line { margin-top: 24px; font-size: 15px; font-weight: 700; }
+.community-hero .fine { margin-top: 14px; }
+.community-portrait { position: relative; padding: 0 0 42px; }
+.community-portrait > img { width: 100%; height: 530px; object-fit: cover; border-radius: 140px 4px 4px 4px; object-position: 52% 54%; }
+.photo-note { position: absolute; bottom: 0; left: -26px; background: var(--ink); color: #fff; padding: 23px 30px; width: 88%; }
+.photo-note strong { display: block; font-family: Georgia, serif; font-size: 26px; font-weight: 400; line-height: 1.2; }
+.photo-note span { font-size: 13px; }
+.community .facts-band { border-block: 1px solid var(--line); background: #e9eee8; }
+.community .community-story { background: #e8eee8; }
+.community .section-photo { border-radius: 4px 80px 4px 4px; }
+.community .story-proof { margin-top: 30px; padding-top: 23px; border-top: 1px solid var(--line); }
+.community .story-proof strong { font-size: 22px; }
+.community .registration-line { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); border-block: 1px solid var(--line); margin-top: 34px; }
+.community .registration-line > div { padding: 25px 25px 25px 0; }
+.community .registration-line strong { font-family: Georgia, serif; font-size: 36px; display: block; }
+.community .registration-line span { font-size: 13px; }
+.community .closing { background: var(--ink); color: #fff; }
+.community .closing .button { background: #f5d080; color: var(--ink); }
+.community .closing .button:hover { background: #fff; }
+/* Race day: cobalt race signage, oversized type, and a detachable entry panel. */
+.race-day { --paper: #f6f7fc; --ink: #183eb8; --accent: #e6f16a; --button-ink: #172553; --line: #c5cde5; background: var(--paper); color: #172553; }
+.race-day h1, .race-day h2, .race-day .display { font-family: Impact, 'Arial Narrow', sans-serif; text-transform: uppercase; font-weight: 400; letter-spacing: -.015em; }
+.race-day .site-header { background: #173db6; color: #fff; border-bottom: 1px solid #607bd1; }
+.race-day .brand img { background: #fff; border-radius: 50%; padding: 3px; }
+.race-day .button { border-radius: 0; }
+.race-day .site-header .button:hover, .race-day .race-hero .button:hover { background: #fff; color: #172553; }
+.race-hero { background: #173db6; color: #fff; padding: 44px 0 0; }
+.race-title { display: grid; grid-template-columns: 1.7fr 1fr; gap: 64px; align-items: center; padding-bottom: 42px; }
+.race-title h1 { font-size: clamp(3.4rem, 7vw, 6rem); line-height: .98; }
+.race-title h1 span { color: #e6f16a; }
+.race-title .intro { max-width: 32ch; }
+.race-date { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid #607bd1; font-size: 14px; }
+.race-visual { display: grid; grid-template-columns: 1.6fr 1fr; }
+.race-photo { width: 100%; height: 360px; object-fit: cover; object-position: center 43%; }
+.entry-ticket { background: #e6f16a; color: #172553; padding: 28px 34px; border-left: 2px dashed #173db6; display: flex; flex-direction: column; justify-content: space-between; gap: 15px; }
+.ticket-top { display: flex; justify-content: space-between; align-items: start; font-size: 14px; }
+.ticket-top strong { font-size: 20px; }
+.ticket-price { display: flex; align-items: center; gap: 24px; }
+.ticket-price strong { font-size: 88px; line-height: 1; }
+.ticket-price span { max-width: 13ch; font-size: 14px; }
+.entry-ticket .button { background: #173db6; color: #fff; }
+.race-day .entry-ticket .button:hover { background: #172553; color: #fff; }
+.race-day .facts { border-bottom: 1px solid var(--line); }
+.race-day .schedule li { grid-template-columns: 115px 1fr; padding-block: 22px; }
+.race-day .schedule time { font-size: 28px; font-family: Impact, 'Arial Narrow', sans-serif; color: #173db6; }
+.race-day .route-copy { background: #e9ecf7; padding: 38px; }
+.race-day .route-copy h3 { font-size: 28px; margin-bottom: 20px; }
+.race-day .route-copy p { margin-top: 14px; }
+.race-day .community-band { background: #173db6; color: #fff; padding-block: 58px; }
+.race-day .community-band .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.race-day .community-band p { margin-top: 18px; }
+.race-day .community-band h2 { color: #e6f16a; }
+.race-day .community-band img { width: 100%; height: 300px; object-fit: cover; }
+.race-day .closing { border-top: 1px solid var(--line); background: #e6f16a; }
+.race-day .closing .button { background: #173db6; color: #fff; }
+.race-day .closing .button:hover { background: #172553; }
+/* Lucky: a mint-and-plum neighborhood invitation with the real mascot. */
+.lucky { --paper: #fbfaf6; --ink: #3c254b; --accent: #62377b; --button-ink: #fff; --line: #d6cad9; background: var(--paper); color: var(--ink); font-family: 'Trebuchet MS', Arial, sans-serif; }
+.lucky h1, .lucky h2 { font-family: 'Trebuchet MS', Arial, sans-serif; font-weight: 900; }
+.lucky .button { border-radius: 100px; }
+.lucky .site-header { background: #d9eee1; }
+.lucky .brand span { font-size: 18px; }
+.lucky-hero { background: #d9eee1; padding-block: 24px 48px; }
+.lucky-hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 46px; }
+.lucky-hero h1 { font-size: clamp(3.2rem, 5.2vw, 4.7rem); line-height: 1.04; }
+.lucky-hero h1 span { color: #734283; }
+.lucky-hero .intro { margin-top: 24px; max-width: 39ch; }
+.lucky-hero .date-line { margin-top: 22px; font-weight: 700; font-size: 15px; }
+.lucky-stage { position: relative; display: grid; place-items: center; height: 500px; }
+.lucky-stage::before { content: ''; position: absolute; width: 360px; height: 360px; border-radius: 50%; background: #efca68; }
+.lucky-stage img { position: relative; width: 420px; height: 420px; object-fit: contain; transform: rotate(-5deg); animation: lucky-arrival .8s cubic-bezier(.16, 1, .3, 1) both; }
+.lucky-sticker { position: absolute; right: 0; top: 15px; width: 115px; height: 115px; border: 2px solid #3c254b; border-radius: 50%; display: grid; place-content: center; text-align: center; transform: rotate(11deg); background: #fbfaf6; font-size: 13px; line-height: 1.25; }
+.lucky-sticker strong { font-size: 38px; }
+.lucky-stage .mascot-note { position: absolute; bottom: 15px; left: 12px; background: #3c254b; color: #fff; padding: 10px 24px; border-radius: 5px; transform: rotate(-5deg); font-size: 18px; font-weight: 700; }
+.lucky .facts-band { background: #3c254b; color: #fff; --line: #765e81; }
+.lucky .join-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.lucky .join-layout p { margin-top: 22px; }
+.lucky .photo-pair { position: relative; padding: 10px 48px 70px 0; }
+.lucky .photo-pair > img { width: 100%; aspect-ratio: 1.04; object-fit: cover; border: 10px solid #fff; border-radius: 8px; transform: rotate(-3deg); box-shadow: 0 12px 24px #3c254b18; }
+.lucky .photo-pair figure { position: absolute; width: 48%; bottom: 0; right: 0; background: #efca68; padding: 9px 9px 13px; transform: rotate(7deg); }
+.lucky .photo-pair figure img { width: 100%; aspect-ratio: 1.2; object-fit: cover; }
+.lucky .photo-pair figcaption { font-size: 12px; font-weight: 700; text-align: center; padding-top: 8px; }
+.lucky .bring-list { padding: 0; margin-top: 26px; list-style: none; }
+.lucky .bring-list li { padding: 13px 0; border-bottom: 1px solid var(--line); }
+.lucky .bring-list strong { margin-right: 12px; }
+.lucky .day-section { background: #f0e8f3; }
+.lucky .plan-note { padding: 35px; background: #fbfaf6; border-radius: 28px 28px 70px 28px; }
+.lucky .plan-note h3 { font-size: 28px; }
+.lucky .plan-note p { margin-top: 18px; }
+.lucky .closing { background: #efca68; }
+@keyframes lucky-arrival {
+  from { transform: rotate(-13deg) translateY(12px); }
+  to { transform: rotate(-5deg) translateY(0); }
+}
+@media (max-width: 1000px) {
+  .community-hero .hero-grid { gap: 38px; }
+  .community-portrait > img { height: 480px; }
+  .race-title { gap: 36px; }
+  .entry-ticket { padding: 24px; }
+  .ticket-price { gap: 14px; }
+  .lucky-stage::before { width: 280px; height: 280px; }
+  .lucky-stage img { width: 330px; height: 370px; }
+}
+@media (max-width: 760px) {
+  .community-hero { padding-block: 30px 34px; }
+  .community-hero .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .community-hero h1 { font-size: clamp(2.8rem, 11vw, 4.2rem); }
+  .community-hero .intro { margin-top: 20px; }
+  .community-portrait { padding-bottom: 28px; }
+  .community-portrait > img { height: 360px; border-top-left-radius: 90px; }
+  .photo-note { left: -6px; width: 92%; padding: 18px 22px; }
+  .photo-note strong { font-size: 22px; }
+  .community .registration-line { grid-template-columns: 1fr 1fr; }
+  .community .registration-line > div { padding: 16px 12px 16px 0; }
+  .race-hero { padding-top: 28px; }
+  .race-title, .race-visual { grid-template-columns: 1fr; gap: 24px; }
+  .race-title { padding-bottom: 26px; }
+  .race-title h1 { font-size: clamp(3.1rem, 13vw, 4.8rem); }
+  .race-title .intro { max-width: none; }
+  .race-date { flex-wrap: wrap; font-size: 12px; gap: 6px 20px; }
+  .race-visual { gap: 0; }
+  .race-photo { height: 260px; }
+  .entry-ticket { border-left: 0; border-top: 2px dashed #173db6; }
+  .ticket-price strong { font-size: 68px; }
+  .race-day .route-copy { padding: 25px; }
+  .race-day .community-band .wrap { grid-template-columns: 1fr; gap: 28px; }
+  .lucky-hero { padding-block: 26px 22px; }
+  .lucky-hero .wrap { grid-template-columns: 1fr; gap: 14px; }
+  .lucky-hero h1 { font-size: clamp(2.8rem, 11.6vw, 4.2rem); }
+  .lucky-stage { height: 345px; }
+  .lucky-stage img { width: 300px; height: 320px; }
+  .lucky-stage::before { width: 265px; height: 265px; }
+  .lucky-sticker { width: 92px; height: 92px; top: 5px; right: 0; font-size: 11px; }
+  .lucky-sticker strong { font-size: 30px; }
+  .lucky-stage .mascot-note { bottom: 0; font-size: 15px; }
+  .lucky .join-layout { grid-template-columns: 1fr; gap: 34px; }
+  .lucky .photo-pair { padding-right: 38px; }
+}
