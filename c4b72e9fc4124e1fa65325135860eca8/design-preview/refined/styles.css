@@ -1,0 +1,235 @@
+/* Round three adds art direction to the shared, accessible multi-page controls. */
+.refined .frame { width: min(1280px, calc(100% - 80px)); }
+.refined-header { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; min-height: 100px; border-bottom: 1px solid var(--cp-border); }
+.refined-brand { view-transition-name: race-brand; }
+.refined-brand .wordmark img { width: 42px; height: 42px; }
+.refined-brand .wordmark strong { font-size: 22px; }
+.refined-brand .wordmark span { font-size: 13px; }
+.refined-header .site-nav { justify-content: center; gap: 4px; view-transition-name: race-navigation; }
+.refined-header .site-nav a { padding: 10px 12px; font-size: 14px; min-height: 44px; }
+.refined .refined-header .site-nav [aria-current="page"] { background: var(--cp-bg); color: var(--cp-text); box-shadow: inset 0 -2px var(--cp-accent); border-radius: 0; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.refined-main { padding-top: 40px; }
+.refined h1 { letter-spacing: -.05em; font-weight: 800; }
+.refined .lead { color: var(--cp-text-muted); }
+.refined .button { font-weight: 700; min-height: 50px; }
+.refined .button.small { min-height: 44px; }
+.refined .page-footer { margin-top: 32px; padding: 20px 0 24px; }
+.refined .page-footer a { font-weight: 500; }
+.refined .page-footer .fine { font-size: 12px; }
+.refined .page-intro { margin-bottom: 36px; }
+.refined .page-intro h1 { font-size: clamp(2.6rem, 4.8vw, 4.6rem); max-width: 22ch; line-height: 1.03; }
+.race-date { font-size: 13px; font-weight: 600; letter-spacing: .015em; margin-bottom: 20px; }
+.momentum-hero { display: grid; grid-template-columns: 1.04fr 1fr; gap: 60px; align-items: center; }
+.momentum-copy h1 { font-size: clamp(3.4rem, 6.5vw, 6rem); line-height: .94; max-width: 12ch; }
+.momentum-copy h1 .accent { font-style: italic; font-weight: 750; }
+.momentum-copy .lead { margin-top: 28px; max-width: 38ch; font-size: 17px; }
+.momentum-copy .fine { margin-top: 16px; }
+.momentum-scene { position: relative; isolation: isolate; }
+.momentum-photo { clip-path: polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%); }
+.momentum-photo img { width: 100%; height: 540px; object-fit: cover; object-position: 48% 48%; }
+.momentum-scene figcaption { display: flex; align-items: start; justify-content: space-between; gap: 24px; margin-top: 20px; font-size: 11px; }
+.momentum-scene figcaption strong { color: var(--cp-accent); font-size: 11px; letter-spacing: .06em; }
+.momentum-scene figcaption span { color: var(--cp-text-muted); text-align: right; }
+.race-lanes { position: absolute; inset: 0 0 44px; overflow: hidden; z-index: -1; }
+.race-lanes span { position: absolute; width: 18px; height: 125%; background: var(--cp-accent); transform: rotate(32deg); top: -50px; right: 49px; }
+.race-lanes span:nth-child(2) { right: 85px; }
+.race-lanes span:nth-child(3) { right: 121px; }
+.event-line { display: grid; grid-template-columns: 1.1fr 1fr 1.3fr .7fr; border-block: 1px solid var(--cp-border); margin-top: 36px; padding-block: 20px; gap: 32px; align-items: center; }
+.event-line > time { display: flex; gap: 12px; align-items: baseline; font-size: 30px; line-height: 1.2; letter-spacing: -.04em; font-weight: 750; }
+.event-line time span { font-size: 13px; font-weight: 400; letter-spacing: 0; color: var(--cp-text-muted); }
+.event-line > div { display: flex; flex-direction: column; gap: 4px; }
+.event-line > div strong { font-size: 15px; }
+.event-line > div span { font-size: 13px; color: var(--cp-text-muted); }
+.entry-mini { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; align-items: center; text-decoration: none; color: var(--cp-accent); border-left: 1px solid var(--cp-border); padding-left: 24px; }
+.entry-mini span { font-size: 12px; }
+.entry-mini strong { font-size: 24px; white-space: nowrap; }
+.entry-mini:hover { text-decoration: underline; }
+.momentum .page-footer { border-top: 0; margin-top: 0; }
+.momentum:not(.page-home) .page-footer { border-top: 1px solid var(--cp-border); margin-top: 40px; }
+/* Good company puts a real, manually selectable photograph at the center of the page. */
+.company-heading { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; margin-bottom: 32px; }
+.company-heading h1 { font-size: clamp(3rem, 5.2vw, 5rem); line-height: .98; }
+.company-invitation { padding-bottom: 4px; }
+.company-invitation .lead { max-width: 41ch; font-size: 17px; }
+.company-invitation .actions { margin-top: 22px; }
+.company-stage { position: relative; }
+.company-stage [data-tab-panel] { position: relative; }
+.company-stage [data-tab-panel] > img { width: 100%; height: 430px; object-fit: cover; object-position: 50% 38%; border-radius: 16px; }
+.company-stage [data-tab-panel]:nth-child(2) > img { object-position: 50% 47%; }
+.company-stage [data-tab-panel]:nth-child(3) > img { object-position: 50% 36%; }
+.company-stage figcaption { position: absolute; bottom: 20px; left: 20px; background: var(--cp-surface); color: var(--cp-text); padding: 14px 20px; border-radius: .625rem; max-width: calc(100% - 470px); font-size: 14px; }
+.company-stage figcaption span { display: block; color: var(--cp-text-muted); font-size: 11px; margin-bottom: 4px; }
+.company-controls { position: absolute; bottom: 20px; right: 20px; display: flex; gap: 8px; }
+.company-controls button { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 14px 16px; min-height: 48px; background: var(--cp-surface); color: var(--cp-text); border: 1px solid var(--cp-border); border-radius: .625rem; font-size: 13px; font-weight: 600; }
+.company-controls [aria-selected="true"] { background: var(--cp-accent); border-color: var(--cp-accent); color: var(--cp-accent-fg); }
+.company-controls button:hover { border-color: var(--cp-accent); }
+.company-facts { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px 32px; font-size: 13px; margin-top: 20px; color: var(--cp-text-muted); }
+.company-facts strong { color: var(--cp-text); font-weight: 600; }
+.good-company .page-footer { margin-top: 28px; }
+/* Trackside uses an oversized distance mark and an uncluttered race-information board. */
+.trackside-title { display: flex; align-items: center; justify-content: space-between; gap: 48px; margin-bottom: 32px; }
+.trackside-title h1 { font-size: clamp(3.5rem, 6.6vw, 6.2rem); line-height: .9; font-weight: 850; text-transform: uppercase; letter-spacing: -.05em; }
+.trackside-distance { display: flex; flex-direction: column; align-items: center; justify-content: center; padding-left: 64px; border-left: 1px solid var(--cp-border); }
+.trackside-distance strong { font-size: 124px; font-weight: 850; letter-spacing: -.07em; color: var(--cp-accent); line-height: .9; }
+.trackside-distance > span { font-size: 12px; letter-spacing: .1em; margin-top: 16px; }
+.trackside-board { display: grid; grid-template-columns: 1.05fr 1fr; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 16px; overflow: hidden; }
+.trackside-board figure { display: grid; grid-template-rows: 1fr auto; }
+.trackside-board figure img { width: 100%; height: 468px; object-fit: cover; object-position: 52% 44%; }
+.trackside-board figcaption { padding: 14px 24px; font-size: 12px; color: var(--cp-text-muted); }
+.trackside-invitation { padding: 32px 40px; }
+.trackside-invitation h2 { font-size: 32px; line-height: 1.08; }
+.trackside-invitation .race-date { font-size: 12px; margin-bottom: 16px; color: var(--cp-text-muted); }
+.trackside-invitation .lead { font-size: 16px; margin-top: 16px; }
+.trackside-invitation .actions { gap: 8px 24px; margin-top: 20px; }
+.trackside-invitation .fine { margin-top: 8px; }
+.trackside-details { display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; margin: 24px 0 0; padding-top: 20px; border-top: 1px solid var(--cp-border); }
+.trackside-details dt { font-size: 10px; letter-spacing: .08em; color: var(--cp-text-muted); margin-bottom: 6px; }
+.trackside-details dd { margin: 0; font-size: 13px; line-height: 1.7; font-weight: 600; }
+/* Interior pages keep each concept's identity without repeating the whole homepage. */
+.refined .registration-layout { gap: 56px; }
+.refined .entry-callout { border-radius: .625rem; padding: 36px; }
+.refined .entry-callout h2 { font-size: 28px; }
+.refined .entry-callout .fee-amount { font-size: 80px; }
+.refined .entry-callout :focus-visible { outline-color: var(--cp-accent-fg); }
+.refined .entry-callout .fine { color: var(--cp-accent-fg); }
+.registration-company { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.inner-photo img { width: 100%; height: 530px; object-fit: cover; border-radius: .625rem; }
+.inner-photo figcaption { font-size: 13px; margin-top: 12px; color: var(--cp-text-muted); }
+.registration-includes { margin-top: 24px; font-size: 16px; }
+.trackside .registration-layout { grid-template-columns: .85fr 1.15fr; }
+.refined .pricing th, .refined .pricing td { padding-block: 20px; }
+.schedule-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
+.schedule-top h2 { font-size: 28px; }
+.schedule-top span { font-size: 11px; letter-spacing: .06em; color: var(--cp-text-muted); }
+.refined .timeline { border-top: 1px solid var(--cp-border); }
+.refined .timeline li:first-child { padding-top: 24px; }
+.refined .day-layout { gap: 64px; }
+.calendar-wrap { margin-top: 28px; }
+.refined .panel { background: var(--cp-bg-elevated); }
+.refined .panel > .button { margin-top: 20px; }
+.refined .refined-gallery { gap: 24px; }
+.refined-gallery .photo-button img { height: 360px; }
+.momentum .refined-gallery { grid-template-columns: 1.2fr 1fr 1fr; }
+.good-company .refined-gallery { grid-template-columns: repeat(3, 1fr); }
+.trackside .refined-gallery { grid-template-columns: 1.2fr 1fr 1fr; }
+.refined .community-links { margin-top: 36px; }
+.refined .community-links h3 { font-size: 21px; }
+.refined-faq .page-intro h1 { max-width: 12ch; }
+.refined-faq .lead { font-size: 16px; }
+.refined .faq-list summary { font-weight: 600; padding-block: 24px; }
+.refined-comparison .comparison h1 { max-width: 18ch; font-size: clamp(3rem, 5vw, 4.8rem); line-height: 1; }
+.refined-comparison .comparison-grid img { aspect-ratio: 1.44; }
+.refined-comparison .comparison-grid h2 { font-weight: 750; font-size: 27px; }
+.refined-design-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-top: 36px; margin-top: 36px; border-top: 1px solid var(--cp-border); }
+.refined-design-notes h2 { font-size: 23px; margin-bottom: 16px; }
+.refined-design-notes p { color: var(--cp-text-muted); font-size: 15px; }
+html[data-theme="dark"] .refined :is(.lead, .momentum-scene figcaption span, .event-line time span, .event-line > div span, .company-stage figcaption span, .company-facts, .trackside-board figcaption, .trackside-invitation .race-date, .trackside-details dt, .inner-photo figcaption, .schedule-top span, .refined-design-notes p) { color: var(--cp-text-soft); }
+::view-transition-group(race-brand), ::view-transition-group(race-navigation) { animation-duration: 180ms; }
+::view-transition-old(root) { animation-duration: 140ms; }
+::view-transition-new(root) { animation-duration: 180ms; }
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .momentum-photo, .page-home .company-stage, .page-home .trackside-board { animation: scene-arrive 420ms cubic-bezier(.16, 1, .3, 1) backwards; }
+  .company-stage [data-tab-panel]:not([hidden]) > img { animation: photo-arrive 220ms ease-out backwards; }
+}
+@keyframes scene-arrive { from { transform: translateY(10px); } to { transform: translateY(0); } }
+@keyframes photo-arrive { from { opacity: .7; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+@media (max-width: 1100px) {
+  .refined .frame { width: calc(100% - 48px); }
+  .refined-header { gap: 16px; }
+  .header-entry { display: none; }
+  .refined-header .site-nav a { padding-inline: 10px; }
+  .momentum-hero { gap: 36px; }
+  .momentum-photo img { height: 480px; }
+  .momentum-copy h1 { font-size: clamp(3.6rem, 6.5vw, 5rem); }
+  .event-line { gap: 20px; grid-template-columns: 1fr 1fr 1.2fr .8fr; }
+  .event-line > time { font-size: 24px; flex-wrap: wrap; gap: 4px 10px; }
+  .event-line > div strong { font-size: 14px; }
+  .company-heading { gap: 36px; }
+  .company-stage figcaption { max-width: calc(100% - 430px); }
+  .company-controls button { padding: 12px; gap: 12px; font-size: 12px; }
+  .trackside-invitation { padding: 28px; }
+  .trackside-board figure img { height: 490px; }
+  .trackside-details { gap: 16px; }
+  .refined .registration-layout, .registration-company, .refined .day-layout { gap: 36px; }
+  .refined .refined-gallery { gap: 20px; }
+  .refined-gallery .photo-button img { height: 300px; }
+}
+@media (max-width: 760px) {
+  .refined .frame { width: calc(100% - 40px); }
+  .refined .preview-strip nav { gap: 16px; }
+  .refined-header { grid-template-columns: 1fr auto; min-height: 86px; gap: 0 12px; }
+  .refined-brand { order: 1; }
+  .header-actions { order: 2; justify-content: end; gap: 8px; }
+  .refined-header .site-nav { order: 3; grid-column: 1 / -1; padding: 0; }
+  .refined-header .site-nav.is-open { padding-bottom: 16px; }
+  .refined-header .site-nav a { font-size: 16px; padding: 12px 16px; }
+  .refined-brand .wordmark strong { font-size: 19px; }
+  .refined-brand .wordmark span { font-size: 12px; }
+  .refined-brand .wordmark img { width: 36px; height: 36px; }
+  .refined-main { padding-top: 28px; }
+  .race-date { font-size: 12px; margin-bottom: 18px; }
+  .momentum-hero { grid-template-columns: 1fr; gap: 28px; }
+  .momentum-copy h1 { font-size: clamp(3.4rem, 12.5vw, 4.6rem); max-width: 12ch; }
+  .momentum-copy .lead { font-size: 17px; margin-top: 24px; }
+  .momentum-copy .fine { margin-top: 12px; }
+  .momentum-photo img { height: 380px; }
+  .momentum-scene figcaption { margin-top: 12px; gap: 16px; }
+  .momentum-scene figcaption strong, .momentum-scene figcaption span { font-size: 10px; }
+  .event-line { grid-template-columns: 1fr 1fr; gap: 20px 24px; padding-block: 24px; margin-top: 24px; }
+  .event-line > time { flex-direction: column; align-items: start; font-size: 30px; }
+  .entry-mini { border: 0; padding: 0; justify-content: start; gap: 16px; }
+  .entry-mini strong { font-size: 27px; }
+  .company-heading { grid-template-columns: 1fr; gap: 22px; margin-bottom: 24px; }
+  .company-heading h1 { font-size: clamp(2.7rem, 10.8vw, 4.25rem); }
+  .company-invitation { padding: 0; }
+  .company-invitation .lead { font-size: 17px; }
+  .company-stage [data-tab-panel] > img { height: 340px; object-position: 50% 40%; }
+  .company-stage figcaption { position: static; max-width: none; border-radius: 0; padding: 14px 0; background: var(--cp-bg); font-size: 14px; }
+  .company-stage figcaption span { margin-bottom: 2px; }
+  .company-controls { position: static; gap: 8px; }
+  .company-controls button { flex: 1; min-width: 0; justify-content: center; gap: 0; padding: 12px 8px; font-size: 12px; }
+  .company-controls button span { display: none; }
+  .company-facts { flex-direction: column; gap: 12px; font-size: 13px; padding-top: 20px; margin-top: 24px; border-top: 1px solid var(--cp-border); }
+  .trackside-title { gap: 20px; margin-bottom: 24px; }
+  .trackside-title h1 { font-size: clamp(2.65rem, 10.5vw, 4.5rem); line-height: .98; }
+  .trackside-distance { padding-left: 16px; }
+  .trackside-distance strong { font-size: 55px; }
+  .trackside-distance > span { font-size: 8px; letter-spacing: .02em; margin-top: 8px; white-space: nowrap; }
+  .trackside-board { grid-template-columns: 1fr; }
+  .trackside-board figure img { height: 340px; }
+  .trackside-board figcaption { padding: 12px 20px; }
+  .trackside-invitation { padding: 24px; order: -1; }
+  .trackside-invitation h2 { font-size: 28px; }
+  .trackside-invitation .race-date { font-size: 11px; }
+  .trackside-details { grid-template-columns: 1fr; gap: 16px; }
+  .trackside-details > div { display: grid; grid-template-columns: 56px 1fr; gap: 12px; align-items: start; }
+  .trackside-details dt { padding-top: 4px; }
+  .trackside-invitation .button { width: 100%; }
+  .refined .page-intro h1 { font-size: clamp(2.5rem, 10.5vw, 3.6rem); }
+  .refined .registration-layout, .registration-company, .refined .day-layout { grid-template-columns: 1fr; gap: 28px; }
+  .refined .entry-callout { padding: 28px; }
+  .inner-photo img { height: 330px; }
+  .registration-company > .inner-photo { order: 2; }
+  .refined .pricing th, .refined .pricing td { padding-block: 16px; }
+  .schedule-top h2 { font-size: 25px; }
+  .schedule-top span { font-size: 10px; }
+  .refined .refined-gallery { grid-template-columns: 1fr; gap: 24px; }
+  .refined-gallery .photo-button img { height: 330px; }
+  .refined .page-footer { margin-top: 28px; }
+  .momentum.page-home .page-footer { margin-top: 0; }
+  .refined-design-notes { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 360px) {
+  .refined-brand .wordmark { gap: 8px; }
+  .refined-brand .wordmark strong { font-size: 17px; }
+  .refined-brand .wordmark img { width: 32px; height: 32px; }
+  .header-actions .menu-button { padding-inline: 10px; }
+  .trackside-title { gap: 12px; }
+  .trackside-title h1 { font-size: 37px; }
+  .trackside-distance { padding-left: 12px; }
+  .trackside-distance strong { font-size: 46px; }
+}

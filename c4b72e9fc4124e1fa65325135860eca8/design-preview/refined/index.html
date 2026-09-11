@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<!-- Round three: energetic, contemporary five-page concepts. Previous concepts are preserved. -->
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const theme =
+      param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <script>// Bind before first paint; deferred listeners can miss an incoming page transition.
+(() => {
+  if (!('onpagereveal' in window) || !('onpageswap' in window)) return;
+  const reportTransitionFailure = (error) => {
+    if (error.name === 'AbortError' || error.name === 'InvalidStateError') {
+      console.debug('Optional page animation skipped; standard navigation remains active.');
+      return;
+    }
+    console.error('The optional page animation failed.', error);
+  };
+  const observeTransition = (event) => {
+    if (!event.viewTransition) return;
+    const transition = event.viewTransition;
+    transition.ready.catch(reportTransitionFailure);
+    transition.finished.catch(reportTransitionFailure);
+    transition.updateCallbackDone.catch(reportTransitionFailure);
+  };
+  window.addEventListener('pageswap', observeTransition);
+  window.addEventListener('pagereveal', observeTransition);
+  const style = document.createElement('style');
+  style.textContent = '@view-transition { navigation: auto; } @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }';
+  document.head.append(style);
+})();
+</script>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <title>Three fresh concepts - fun, not overdone | Mini-Cassia Turkey Trot</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <style>:root {
+  color-scheme: light;
+  --cp-bg: #f7f4ef;
+  --cp-bg-elevated: #fcfbf8;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f5f5f5;
+  --cp-border: #dedede;
+  --cp-border-strong: #919191;
+  --cp-text: #242424;
+  --cp-text-muted: #5c5c5c;
+  --cp-text-soft: #6f6f6f;
+  --cp-accent: #b11f4b;
+  --cp-accent-hover: #9a1a41;
+  --cp-accent-soft: rgba(177, 31, 75, 0.08);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: #0078d4;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  --cp-overlay: rgba(255, 255, 255, 0.8);
+  --cp-panel: rgba(255, 255, 255, 0.86);
+  --cp-panel-strong: rgba(255, 255, 255, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(177, 31, 75, 0.12);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #3d3b3a;
+  --cp-bg-elevated: #343231;
+  --cp-surface: #292929;
+  --cp-surface-soft: #2e2e2e;
+  --cp-border: #474747;
+  --cp-border-strong: #5f5f5f;
+  --cp-text: #dedede;
+  --cp-text-muted: #919191;
+  --cp-text-soft: #b0b0b0;
+  --cp-accent: #fd8ea1;
+  --cp-accent-hover: #fb7b91;
+  --cp-accent-soft: rgba(253, 142, 161, 0.14);
+  --cp-accent-fg: #1a1a1a;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #4da6ff;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --cp-overlay: rgba(41, 41, 41, 0.88);
+  --cp-panel: rgba(41, 41, 41, 0.72);
+  --cp-panel-strong: rgba(41, 41, 41, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.04);
+  --cp-highlight: rgba(253, 142, 161, 0.12);
+}
+</style>
+  <link rel="stylesheet" href="../multi-page/site.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="../multi-page/interactions.js" defer></script>
+  <script src="interactions.js" defer></script>
+  <noscript><style>.site-nav { display: flex !important; flex-wrap: wrap; } .menu-button { display: none; }</style></noscript></head>
+<body class="refined refined-comparison">
+<a class="skip" href="#main">Skip to concepts</a>
+<div class="preview-strip"><div class="frame"><span>Unlisted preview &middot; Round three</span><nav aria-label="Earlier concepts"><a class="" href="../multi-page/index.html" data-theme-link>Concepts D&ndash;F</a><a class="" href="../index.html" data-theme-link>Concepts A&ndash;C + review</a></nav></div></div>
+<main id="main" class="frame comparison">
+<header><div class="comparison-brand"><a class="wordmark" href="index.html" data-theme-link><img src="../../media/lucky_128.png" alt="" width="52" height="52"><div><strong>Mini-Cassia Turkey Trot</strong><span>Three more ways to bring the morning to life.</span></div></a><button type="button" class="icon-button theme-button" data-theme-button aria-label="Switch color theme" aria-pressed="false" hidden>
+    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13A9 9 0 0 1 11 3a9 9 0 1 0 10 10Z"/></svg>
+    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"/></svg>
+  </button></div><div class="intro"><h1>More energy.<br><span class="accent">Not more noise.</span></h1><p class="lead">Fun without the cheese. Big photography, confident type, and just enough motion. Still five separate pages in every concept.</p></div></header>
+<div class="comparison-grid"><article><a href="momentum/index.html" data-theme-link aria-label="Open Momentum"><img src="previews/momentum.jpg" alt="Momentum homepage design" width="1440" height="1000"></a><h2><span class="concept-letter">G.</span> Momentum</h2><p>Bold athletic typography, an angled race photograph, and a strong sense of forward motion. High energy, without the visual noise.</p><a class="button" href="momentum/index.html" data-theme-link>Explore Momentum &nearr;</a><nav class="compare-pages" aria-label="Momentum pages"><a class="" href="momentum/registration.html" data-theme-link>Registration</a><a class="" href="momentum/race-day.html" data-theme-link>Race day</a><a class="" href="momentum/community.html" data-theme-link>Community</a><a class="" href="momentum/faqs.html" data-theme-link>FAQs</a></nav><p class="fine">The most energetic direction. A confident race identity that still welcomes walkers.</p></article><article><a href="good-company/index.html" data-theme-link aria-label="Open Good company"><img src="previews/good-company.jpg" alt="Good company homepage design" width="1440" height="1000"></a><h2><span class="concept-letter">H.</span> Good company</h2><p>A big, candid photographic moment with an interactive photo selector. Expressive, friendly, and polished rather than cartoonish.</p><a class="button" href="good-company/index.html" data-theme-link>Explore Good company &nearr;</a><nav class="compare-pages" aria-label="Good company pages"><a class="" href="good-company/registration.html" data-theme-link>Registration</a><a class="" href="good-company/race-day.html" data-theme-link>Race day</a><a class="" href="good-company/community.html" data-theme-link>Community</a><a class="" href="good-company/faqs.html" data-theme-link>FAQs</a></nav><p class="fine">The warmest direction. Visitors can explore the people and atmosphere without an autoplay carousel.</p></article><article><a href="trackside/index.html" data-theme-link aria-label="Open Trackside"><img src="previews/trackside.jpg" alt="Trackside homepage design" width="1440" height="1000"></a><h2><span class="concept-letter">I.</span> Trackside</h2><p>Oversized type, crisp alignment, and a compact race-day information board. A contemporary running-club feel, made approachable.</p><a class="button" href="trackside/index.html" data-theme-link>Explore Trackside &nearr;</a><nav class="compare-pages" aria-label="Trackside pages"><a class="" href="trackside/registration.html" data-theme-link>Registration</a><a class="" href="trackside/race-day.html" data-theme-link>Race day</a><a class="" href="trackside/community.html" data-theme-link>Community</a><a class="" href="trackside/faqs.html" data-theme-link>FAQs</a></nav><p class="fine">The most streamlined direction. Strong visual impact with very little to get in the way.</p></article></div>
+<aside class="comparison-note"><div><h2>My pick: Momentum.</h2><p>It has the strongest first impression without losing the local, welcoming character. Good company is the people-first alternative; Trackside is the cleanest and most direct.</p></div><a class="button secondary" href="momentum/index.html" data-theme-link>Take a closer look &nearr;</a></aside>
+<section class="refined-design-notes"><div><h2>Modern where it matters.</h2><p>Responsive WebP photographs, light and dark modes, native page transitions in supporting browsers, accessible image controls, and reduced-motion support.</p></div><div><h2>Nothing fighting for attention.</h2><p>No automatic slideshows, flashing counters, cartoon takeovers, sound, or scroll tricks. The event and registration stay in focus.</p></div></section>
+<footer class="page-footer"><div><p class="fine">Home &middot; Registration &middot; Race day &middot; Community &middot; FAQs<br>Real HTML pages, not a long landing page or hidden sections.</p><p class="fine">Design previews only &middot; September 11, 2026<br>Original concepts retained. Unlisted/noindex does not mean private.</p></div></footer>
+</main></body></html>
