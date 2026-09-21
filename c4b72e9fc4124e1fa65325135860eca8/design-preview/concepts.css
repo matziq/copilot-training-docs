@@ -33,6 +33,12 @@ html[data-theme="dark"] .community .closing .button { background: #f0a46f; color
 .community .closing { background: var(--ink); color: #fff; }
 .community .closing .button { background: #f5d080; color: var(--ink); }
 .community .closing .button:hover { background: #fff; }
+html[data-colorway] .community .facts-band,
+html[data-colorway] .community .community-story { background: var(--cp-surface-soft); }
+html[data-colorway] .community .photo-note,
+html[data-colorway] .community .closing { background: var(--ink); color: var(--paper); }
+html[data-colorway] .community .closing .button { background: var(--accent); color: var(--button-ink); }
+html[data-colorway] .community .closing .button:hover { background: var(--cp-accent-hover); color: var(--button-ink); }
 /* Race day: cobalt race signage, oversized type, and a detachable entry panel. */
 .race-day { --paper: #f6f7fc; --ink: #183eb8; --accent: #e6f16a; --button-ink: #172553; --line: #c5cde5; background: var(--paper); color: #172553; }
 html[data-theme="dark"] .race-day { --paper: #111a3c; --ink: #e6f16a; --accent: #e6f16a; --button-ink: #172553; --line: #33488f; color: #f6f7fc; }
@@ -76,6 +82,21 @@ html[data-theme="dark"] .race-day .route-copy { background: #16245a; color: #f6f
 html[data-theme="dark"] .race-day .closing { background: #1c2d72; color: #f6f7fc; }
 .race-day .closing .button { background: #173db6; color: #fff; }
 .race-day .closing .button:hover { background: #172553; }
+html[data-colorway] .race-day { color: var(--ink); }
+html[data-colorway] .race-day .site-header,
+html[data-colorway] .race-hero,
+html[data-colorway] .race-day .community-band { background: var(--paper); color: var(--ink); border-color: var(--line); }
+html[data-colorway] .race-title h1 span,
+html[data-colorway] .race-day .community-band h2,
+html[data-colorway] .race-day .schedule time { color: var(--accent); }
+html[data-colorway] .race-date { border-color: var(--line); }
+html[data-colorway] .entry-ticket,
+html[data-colorway] .race-day .closing { background: var(--accent); color: var(--button-ink); border-color: var(--paper); }
+html[data-colorway] .entry-ticket .button,
+html[data-colorway] .race-day .closing .button { background: var(--paper); color: var(--ink); }
+html[data-colorway] .entry-ticket .button:hover,
+html[data-colorway] .race-day .closing .button:hover { background: var(--cp-bg-elevated); color: var(--ink); }
+html[data-colorway] .race-day .route-copy { background: var(--cp-surface); color: var(--cp-text); }
 /* Lucky: a mint-and-plum neighborhood invitation with the real mascot. */
 .lucky { --paper: #fbfaf6; --ink: #3c254b; --accent: #62377b; --button-ink: #fff; --line: #d6cad9; background: var(--paper); color: var(--ink); font-family: 'Trebuchet MS', Arial, sans-serif; }
 html[data-theme="dark"] .lucky { --paper: #21182b; --ink: #fbf7ff; --accent: #d9a8ff; --button-ink: #271331; --line: #5f476b; }
@@ -118,6 +139,17 @@ html[data-theme="dark"] .lucky .plan-note { background: #332340; }
 .lucky .plan-note p { margin-top: 18px; }
 .lucky .closing { background: #efca68; }
 html[data-theme="dark"] .lucky .closing { background: #130d1a; color: #fbf7ff; }
+html[data-colorway] .lucky .site-header,
+html[data-colorway] .lucky-hero,
+html[data-colorway] .lucky .day-section { background: var(--paper); color: var(--ink); }
+html[data-colorway] .lucky-hero h1 span { color: var(--accent); }
+html[data-colorway] .lucky-stage::before,
+html[data-colorway] .lucky .photo-pair figure,
+html[data-colorway] .lucky .closing { background: var(--accent); color: var(--button-ink); }
+html[data-colorway] .lucky-sticker,
+html[data-colorway] .lucky .plan-note { background: var(--cp-surface); color: var(--cp-text); border-color: var(--line); }
+html[data-colorway] .lucky-stage .mascot-note,
+html[data-colorway] .lucky .facts-band { background: var(--ink); color: var(--paper); --line: var(--cp-border); }
 @keyframes lucky-arrival {
   from { transform: rotate(-13deg) translateY(12px); }
   to { transform: rotate(-5deg) translateY(0); }

@@ -52,6 +52,11 @@ code { font-size: 12px; overflow-wrap: anywhere; }
 .table-wrap { overflow-x: auto; }
 .scope-note { padding: 30px 0 54px; color: #4a606a; font-size: 13px; }
 .scope-note p { margin-top: 15px; }
+html[data-colorway] .review-header,
+html[data-colorway] .recommendation { background: var(--cp-surface); }
+html[data-colorway] .review-intro strong,
+html[data-colorway] .priority { color: var(--accent); }
+html[data-colorway] .recommended { background: var(--cp-accent-soft); color: var(--accent); }
 @media (max-width: 900px) {
   .concept-grid { grid-template-columns: 1fr; gap: 40px; }
   .concept-card { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
