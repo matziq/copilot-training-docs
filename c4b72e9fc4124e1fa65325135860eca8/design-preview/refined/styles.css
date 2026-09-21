@@ -124,6 +124,16 @@
 .refined-design-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-top: 36px; margin-top: 36px; border-top: 1px solid var(--cp-border); }
 .refined-design-notes h2 { font-size: 23px; margin-bottom: 16px; }
 .refined-design-notes p { color: var(--cp-text-muted); font-size: 15px; }
+.colorway-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+.colorway-card { background: var(--cp-surface); color: var(--cp-text); border: 1px solid var(--cp-border); border-radius: 16px; padding: 24px; }
+.colorway-card h2 { font-size: 26px; margin-top: 20px; }
+.colorway-card p { color: var(--cp-text-muted); font-size: 15px; }
+.colorway-card .button { margin-top: 18px; }
+.color-swatch { display: grid; grid-template-columns: 1.4fr 1fr .8fr; gap: 8px; min-height: 96px; }
+.color-swatch span { border-radius: .625rem; border: 1px solid var(--cp-border); }
+.color-swatch span:nth-child(1) { background: var(--cp-bg); }
+.color-swatch span:nth-child(2) { background: var(--cp-surface-soft); }
+.color-swatch span:nth-child(3) { background: var(--cp-accent); }
 html[data-theme="dark"] .refined :is(.lead, .momentum-scene figcaption span, .event-line time span, .event-line > div span, .company-stage figcaption span, .company-facts, .trackside-board figcaption, .trackside-invitation .race-date, .trackside-details dt, .inner-photo figcaption, .schedule-top span, .refined-design-notes p) { color: var(--cp-text-soft); }
 ::view-transition-group(race-brand), ::view-transition-group(race-navigation) { animation-duration: 180ms; }
 ::view-transition-old(root) { animation-duration: 140ms; }
@@ -222,6 +232,7 @@ html[data-theme="dark"] .refined :is(.lead, .momentum-scene figcaption span, .ev
   .refined .page-footer { margin-top: 28px; }
   .momentum.page-home .page-footer { margin-top: 0; }
   .refined-design-notes { grid-template-columns: 1fr; gap: 28px; }
+  .colorway-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 360px) {
   .refined-brand .wordmark { gap: 8px; }
