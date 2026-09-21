@@ -88,14 +88,15 @@ function ensureStyle() {
   const style = document.createElement('style');
   style.setAttribute('data-colorway-style', '');
   style.textContent = `
-.colorway-strip { background: var(--cp-surface, var(--paper, #fff)); color: var(--cp-text, var(--ink, #222)); border-bottom: 1px solid var(--cp-border, var(--line, #ddd)); font: 13px/1.4 "Segoe UI", Aptos, Calibri, Arial, sans-serif; }
+.colorway-strip { background: #172553; color: #ffffff; border-bottom: 1px solid rgba(255,255,255,.22); font: 13px/1.4 "Segoe UI", Aptos, Calibri, Arial, sans-serif; }
 .colorway-strip__inner { width: min(1280px, calc(100% - 40px)); min-height: 46px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .colorway-strip__label { font-weight: 750; white-space: nowrap; }
 .colorway-strip__options { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
-.colorway-strip__button { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; border: 1px solid var(--cp-border, var(--line, #ddd)); border-radius: 999px; padding: 5px 10px; background: transparent; color: inherit; font: inherit; font-weight: 650; cursor: pointer; }
-.colorway-strip__button[aria-pressed="true"] { background: var(--cp-accent, var(--accent)); color: var(--cp-accent-fg, var(--button-ink)); border-color: var(--cp-accent, var(--accent)); }
+.colorway-strip__button { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; border: 1px solid rgba(255,255,255,.44); border-radius: 999px; padding: 5px 10px; background: rgba(255,255,255,.08); color: #ffffff; font: inherit; font-weight: 650; cursor: pointer; }
+.colorway-strip__button:hover { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.72); }
+.colorway-strip__button[aria-pressed="true"] { background: #ffffff; color: #172553; border-color: #ffffff; }
 .colorway-strip__swatches { display: inline-flex; gap: 2px; }
-.colorway-strip__swatches span { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(0,0,0,.16); }
+.colorway-strip__swatches span { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,.55); }
 @media (max-width: 760px) {
   .colorway-strip__inner { align-items: flex-start; flex-direction: column; gap: 8px; padding: 8px 0; }
   .colorway-strip__options { justify-content: flex-start; }
