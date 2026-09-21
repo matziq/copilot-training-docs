@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<!-- Master comparison page for every Mini-Cassia Turkey Trot design concept in this unlisted preview. -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const theme =
+      param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <title>All website concepts | Mini-Cassia Turkey Trot</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+:root {
+  color-scheme: light;
+  --cp-bg: #f7f4ef;
+  --cp-bg-elevated: #fcfbf8;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f5f5f5;
+  --cp-border: #dedede;
+  --cp-border-strong: #919191;
+  --cp-text: #242424;
+  --cp-text-muted: #5c5c5c;
+  --cp-text-soft: #6f6f6f;
+  --cp-accent: #b11f4b;
+  --cp-accent-hover: #9a1a41;
+  --cp-accent-soft: rgba(177, 31, 75, 0.08);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: #0078d4;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  --cp-overlay: rgba(255, 255, 255, 0.8);
+  --cp-panel: rgba(255, 255, 255, 0.86);
+  --cp-panel-strong: rgba(255, 255, 255, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(177, 31, 75, 0.12);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #3d3b3a;
+  --cp-bg-elevated: #343231;
+  --cp-surface: #292929;
+  --cp-surface-soft: #2e2e2e;
+  --cp-border: #474747;
+  --cp-border-strong: #5f5f5f;
+  --cp-text: #dedede;
+  --cp-text-muted: #919191;
+  --cp-text-soft: #b0b0b0;
+  --cp-accent: #fd8ea1;
+  --cp-accent-hover: #fb7b91;
+  --cp-accent-soft: rgba(253, 142, 161, 0.14);
+  --cp-accent-fg: #1a1a1a;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #4da6ff;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --cp-overlay: rgba(41, 41, 41, 0.88);
+  --cp-panel: rgba(41, 41, 41, 0.72);
+  --cp-panel-strong: rgba(41, 41, 41, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.04);
+  --cp-highlight: rgba(253, 142, 161, 0.12);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cp-bg);
+  color: var(--cp-text);
+  font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.55;
+}
+a { color: inherit; }
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -120px;
+  z-index: 20;
+  padding: 12px 18px;
+  background: var(--cp-surface);
+  color: var(--cp-text);
+  border: 1px solid var(--cp-border);
+  border-radius: 0.625rem;
+}
+.skip:focus { top: 16px; }
+.frame { width: min(1220px, calc(100% - 40px)); margin: 0 auto; }
+.topbar {
+  border-bottom: 1px solid var(--cp-border);
+  background: var(--cp-bg-elevated);
+}
+.topbar .frame {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 13px;
+  color: var(--cp-text-muted);
+}
+.topbar nav { display: flex; gap: 16px; flex-wrap: wrap; }
+.topbar a { text-underline-offset: 4px; }
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .7fr);
+  gap: 40px;
+  align-items: end;
+  padding: 64px 0 36px;
+}
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--cp-accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -.04em; }
+h1 { max-width: 11ch; font-size: clamp(3.2rem, 7vw, 6.6rem); font-weight: 850; }
+h2 { font-size: clamp(2rem, 3.6vw, 3.4rem); }
+h3 { font-size: 25px; }
+.lead {
+  max-width: 58ch;
+  margin: 24px 0 0;
+  color: var(--cp-text-muted);
+  font-size: 18px;
+}
+.hero-card {
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+}
+.hero-card strong { display: block; font-size: 42px; line-height: 1; }
+.hero-card span { color: var(--cp-text-muted); }
+.jump-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+.pill, .button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.625rem;
+  border: 1px solid var(--cp-border);
+  padding: 10px 14px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.pill { background: var(--cp-surface); color: var(--cp-text); }
+.button { background: var(--cp-accent); border-color: var(--cp-accent); color: var(--cp-accent-fg); }
+.button.secondary { background: transparent; color: var(--cp-text); border-color: var(--cp-border-strong); }
+.button:hover, .pill:hover { border-color: var(--cp-accent); }
+.section {
+  padding: 48px 0;
+  border-top: 1px solid var(--cp-border);
+}
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(220px, .65fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+.section-head p {
+  margin: 0;
+  color: var(--cp-text-muted);
+}
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.concept-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: 16px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+}
+.concept-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.44;
+  object-fit: cover;
+  border-bottom: 1px solid var(--cp-border);
+}
+.concept-card > div { display: flex; flex: 1; flex-direction: column; padding: 22px; }
+.concept-card p { color: var(--cp-text-muted); }
+.concept-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 14px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 8px;
+  border-radius: 0.625rem;
+  background: var(--cp-accent-soft);
+  color: var(--cp-accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+.subnav a { color: var(--cp-text-muted); text-underline-offset: 3px; }
+.colorway-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.colorway-card {
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: 16px;
+  padding: 20px;
+}
+.swatch {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr .85fr;
+  min-height: 82px;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.swatch span {
+  border: 1px solid var(--cp-border);
+  border-radius: 0.625rem;
+  background: var(--cp-surface-soft);
+}
+.swatch span:nth-child(1) { background: var(--cp-bg-elevated); }
+.swatch span:nth-child(3) { background: var(--cp-accent); }
+.recommendation {
+  display: grid;
+  grid-template-columns: minmax(220px, .55fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--cp-bg-elevated);
+  border: 1px solid var(--cp-border);
+  border-radius: 16px;
+}
+.recommendation p { margin: 0; color: var(--cp-text-muted); }
+.page-footer {
+  border-top: 1px solid var(--cp-border);
+  padding: 32px 0 48px;
+  color: var(--cp-text-muted);
+  font-size: 13px;
+}
+.page-footer nav { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+@media (max-width: 920px) {
+  .hero, .section-head, .recommendation { grid-template-columns: 1fr; }
+  .concept-grid, .colorway-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .topbar .frame { align-items: flex-start; flex-direction: column; }
+  .hero { padding-top: 42px; }
+  .concept-grid, .colorway-grid { grid-template-columns: 1fr; }
+  .card-actions .button { width: 100%; }
+}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to concepts</a>
+  <div class="topbar">
+    <div class="frame">
+      <span>Unlisted design preview &middot; Master comparison</span>
+      <nav aria-label="Concept groups">
+        <a href="index.html">Website review</a>
+        <a href="multi-page/index.html">D&ndash;F hub</a>
+        <a href="refined/index.html">G&ndash;I hub</a>
+      </nav>
+    </div>
+  </div>
+  <main id="main">
+    <header class="frame hero">
+      <div>
+        <p class="eyebrow">Mini-Cassia Turkey Trot</p>
+        <h1>All concepts. One page.</h1>
+        <p class="lead">A single comparison board for every mockup round: the original homepage concepts, the multi-page site directions, the refined modern concepts, and the Good company palette studies.</p>
+        <nav class="jump-grid" aria-label="Jump to concept rounds">
+          <a class="pill" href="#round-one">A&ndash;C homepage concepts</a>
+          <a class="pill" href="#round-two">D&ndash;F multi-page concepts</a>
+          <a class="pill" href="#round-three">G&ndash;I refined concepts</a>
+          <a class="pill" href="#colorways">Good company colorways</a>
+        </nav>
+      </div>
+      <aside class="hero-card" aria-label="Preview count">
+        <strong>13</strong>
+        <span>total directions: nine full concepts plus four Good company color studies.</span>
+      </aside>
+    </header>
+    <section class="frame section" id="round-one">
+      <div class="section-head">
+        <h2>A&ndash;C. Homepage concepts</h2>
+        <p>Three single-page homepage directions built from the original review: community warmth, race-day campaign energy, and Lucky-led family personality.</p>
+      </div>
+      <div class="concept-grid">
+        <article class="concept-card">
+          <a href="community.html"><img src="images/community-preview.jpg" alt="Community tradition homepage concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">A</span><span class="tag">Recommended first round</span></p>
+            <h3>Community tradition</h3>
+            <p>A warm, photo-led invitation that feels closest to the event's local tradition.</p>
+            <div class="card-actions"><a class="button" href="community.html">Open concept &rarr;</a></div>
+          </div>
+        </article>
+        <article class="concept-card">
+          <a href="race-day.html"><img src="images/race-day-preview.jpg" alt="Race day energy homepage concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">B</span><span class="tag">Athletic</span></p>
+            <h3>Race day energy</h3>
+            <p>A cobalt race-poster treatment with bold type and a high-contrast entry ticket.</p>
+            <div class="card-actions"><a class="button" href="race-day.html">Open concept &rarr;</a></div>
+          </div>
+        </article>
+        <article class="concept-card">
+          <a href="lucky.html"><img src="images/lucky-preview.jpg" alt="Everybody trots Lucky homepage concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">C</span><span class="tag">Mascot-led</span></p>
+            <h3>Everybody trots</h3>
+            <p>Lucky becomes the friendly host for a playful, family-forward race invitation.</p>
+            <div class="card-actions"><a class="button" href="lucky.html">Open concept &rarr;</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="frame section" id="round-two">
+      <div class="section-head">
+        <h2>D&ndash;F. Multi-page concepts</h2>
+        <p>Three true five-page site structures. Each has Home, Registration, Race day, Community, and FAQs as separate pages.</p>
+      </div>
+      <div class="concept-grid">
+        <article class="concept-card">
+          <a href="multi-page/town-square/index.html"><img src="multi-page/images/town-square.jpg" alt="Town square multi-page concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">D</span><span class="tag">Recommended second round</span></p>
+            <h3>Town square</h3>
+            <p>A traditional community event site with a strong masthead and direct navigation.</p>
+            <div class="card-actions"><a class="button" href="multi-page/town-square/index.html">Open home &rarr;</a><a class="button secondary" href="multi-page/index.html">Compare D&ndash;F</a></div>
+            <nav class="subnav" aria-label="Town square pages"><a href="multi-page/town-square/registration.html">Registration</a><a href="multi-page/town-square/race-day.html">Race day</a><a href="multi-page/town-square/community.html">Community</a><a href="multi-page/town-square/faqs.html">FAQs</a></nav>
+          </div>
+        </article>
+        <article class="concept-card">
+          <a href="multi-page/race-desk/index.html"><img src="multi-page/images/race-desk.jpg" alt="Race desk multi-page concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">E</span><span class="tag">Task-first</span></p>
+            <h3>Race desk</h3>
+            <p>A compact planning hub for visitors who want registration and race-day answers fast.</p>
+            <div class="card-actions"><a class="button" href="multi-page/race-desk/index.html">Open home &rarr;</a><a class="button secondary" href="multi-page/index.html">Compare D&ndash;F</a></div>
+            <nav class="subnav" aria-label="Race desk pages"><a href="multi-page/race-desk/registration.html">Registration</a><a href="multi-page/race-desk/race-day.html">Race day</a><a href="multi-page/race-desk/community.html">Community</a><a href="multi-page/race-desk/faqs.html">FAQs</a></nav>
+          </div>
+        </article>
+        <article class="concept-card">
+          <a href="multi-page/photo-journal/index.html"><img src="multi-page/images/photo-journal.jpg" alt="Photo journal multi-page concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">F</span><span class="tag">Story-led</span></p>
+            <h3>Photo journal</h3>
+            <p>A generous, image-forward five-chapter experience centered on people and memory.</p>
+            <div class="card-actions"><a class="button" href="multi-page/photo-journal/index.html">Open home &rarr;</a><a class="button secondary" href="multi-page/index.html">Compare D&ndash;F</a></div>
+            <nav class="subnav" aria-label="Photo journal pages"><a href="multi-page/photo-journal/registration.html">Registration</a><a href="multi-page/photo-journal/race-day.html">Race day</a><a href="multi-page/photo-journal/community.html">Community</a><a href="multi-page/photo-journal/faqs.html">FAQs</a></nav>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="frame section" id="round-three">
+      <div class="section-head">
+        <h2>G&ndash;I. Refined concepts</h2>
+        <p>Fun but not cheesy: stronger photography, modern typography, cleaner motion, and five separate pages in every concept.</p>
+      </div>
+      <div class="concept-grid">
+        <article class="concept-card">
+          <a href="refined/momentum/index.html"><img src="refined/previews/momentum.jpg" alt="Momentum refined concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">G</span><span class="tag">Recommended third round</span></p>
+            <h3>Momentum</h3>
+            <p>Bold athletic typography and angled photography with confident but restrained energy.</p>
+            <div class="card-actions"><a class="button" href="refined/momentum/index.html">Open home &rarr;</a><a class="button secondary" href="refined/index.html">Compare G&ndash;I</a></div>
+            <nav class="subnav" aria-label="Momentum pages"><a href="refined/momentum/registration.html">Registration</a><a href="refined/momentum/race-day.html">Race day</a><a href="refined/momentum/community.html">Community</a><a href="refined/momentum/faqs.html">FAQs</a></nav>
+          </div>
+        </article>
+        <article class="concept-card">
+          <a href="refined/good-company/index.html"><img src="refined/previews/good-company.jpg" alt="Good company refined concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">H</span><span class="tag">People-first</span></p>
+            <h3>Good company</h3>
+            <p>A large candid photo stage with manual tabs for people, energy, and pace.</p>
+            <div class="card-actions"><a class="button" href="refined/good-company/index.html">Open home &rarr;</a><a class="button secondary" href="refined/good-company-colorways/index.html">Colorways</a></div>
+            <nav class="subnav" aria-label="Good company pages"><a href="refined/good-company/registration.html">Registration</a><a href="refined/good-company/race-day.html">Race day</a><a href="refined/good-company/community.html">Community</a><a href="refined/good-company/faqs.html">FAQs</a></nav>
+          </div>
+        </article>
+        <article class="concept-card">
+          <a href="refined/trackside/index.html"><img src="refined/previews/trackside.jpg" alt="Trackside refined concept" width="1440" height="1000" loading="lazy"></a>
+          <div>
+            <p class="concept-meta"><span class="tag">I</span><span class="tag">Streamlined</span></p>
+            <h3>Trackside</h3>
+            <p>Oversized type, crisp layout, and a compact race-day information board.</p>
+            <div class="card-actions"><a class="button" href="refined/trackside/index.html">Open home &rarr;</a><a class="button secondary" href="refined/index.html">Compare G&ndash;I</a></div>
+            <nav class="subnav" aria-label="Trackside pages"><a href="refined/trackside/registration.html">Registration</a><a href="refined/trackside/race-day.html">Race day</a><a href="refined/trackside/community.html">Community</a><a href="refined/trackside/faqs.html">FAQs</a></nav>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="frame section" id="colorways">
+      <div class="section-head">
+        <h2>Good company colorways</h2>
+        <p>Four palette studies that keep the Good company layout and photography, then change only the color system.</p>
+      </div>
+      <div class="colorway-grid">
+        <article class="colorway-card">
+          <div class="swatch" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h3>Cranberry + wheat</h3>
+          <p>Warm, Thanksgiving-adjacent, and closest to the original refined palette.</p>
+          <p><a class="button" href="refined/good-company-colorways/cranberry-wheat.html">Open colorway &rarr;</a></p>
+        </article>
+        <article class="colorway-card">
+          <div class="swatch" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h3>Sage + copper</h3>
+          <p>Earthy and outdoorsy, with a community-event feel.</p>
+          <p><a class="button" href="refined/good-company-colorways/sage-copper.html">Open colorway &rarr;</a></p>
+        </article>
+        <article class="colorway-card">
+          <div class="swatch" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h3>Midnight + gold</h3>
+          <p>High contrast, polished, and more premium.</p>
+          <p><a class="button" href="refined/good-company-colorways/midnight-gold.html">Open colorway &rarr;</a></p>
+        </article>
+        <article class="colorway-card">
+          <div class="swatch" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h3>Cobalt + volt</h3>
+          <p>The Race day energy palette translated to the Good company layout.</p>
+          <p><a class="button" href="refined/good-company-colorways/cobalt-volt.html">Open colorway &rarr;</a></p>
+        </article>
+      </div>
+      <aside class="recommendation">
+        <h3>Where to start</h3>
+        <p>For a final direction, compare Momentum for energy, Good company for warmth, and Town square for continuity with the existing event identity.</p>
+      </aside>
+    </section>
+  </main>
+  <footer class="frame page-footer">
+    <p>Design previews only. The live Mini-Cassia Turkey Trot site is unchanged by this comparison page. This unlisted page includes noindex/no-referrer metadata, but unlisted does not mean private.</p>
+    <nav aria-label="Related comparison pages"><a href="index.html">Website review</a><a href="multi-page/index.html">D&ndash;F comparison</a><a href="refined/index.html">G&ndash;I comparison</a><a href="refined/good-company-colorways/index.html">Colorway hub</a></nav>
+  </footer>
+</body>
+</html>
