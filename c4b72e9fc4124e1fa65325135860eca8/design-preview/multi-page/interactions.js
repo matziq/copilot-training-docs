@@ -14,6 +14,8 @@ function syncThemeLinks() {
     themeButton.hidden = false;
     themeButton.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
     themeButton.setAttribute('aria-pressed', String(theme === 'dark'));
+    const label = themeButton.querySelector('[data-theme-label]');
+    if (label) label.textContent = theme === 'dark' ? 'Dark' : 'Light';
   }
 }
 

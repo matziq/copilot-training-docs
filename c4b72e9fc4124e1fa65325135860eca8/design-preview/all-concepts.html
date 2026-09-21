@@ -107,6 +107,30 @@ a { color: inherit; }
 }
 .topbar nav { display: flex; gap: 16px; flex-wrap: wrap; }
 .topbar a { text-underline-offset: 4px; }
+.theme-button {
+  position: fixed;
+  z-index: 40;
+  top: 48px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 9px 14px;
+  border: 1px solid var(--cp-border);
+  border-radius: 999px;
+  background: var(--cp-surface);
+  color: var(--cp-text);
+  box-shadow: var(--cp-shadow);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.theme-button .sun { display: none; }
+html[data-theme="dark"] .theme-button .sun { display: inline; }
+html[data-theme="dark"] .theme-button .moon { display: none; }
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(280px, .7fr);
@@ -289,6 +313,9 @@ h3 { font-size: 25px; }
 </head>
 <body>
   <a class="skip" href="#main">Skip to concepts</a>
+  <button type="button" class="theme-button" data-theme-button aria-label="Switch color theme" aria-pressed="false">
+    <span class="moon" aria-hidden="true">☾</span><span class="sun" aria-hidden="true">☀</span><span data-theme-label>Theme</span>
+  </button>
   <div class="topbar">
     <div class="frame">
       <span>Unlisted design preview &middot; Master comparison</span>
@@ -469,5 +496,33 @@ h3 { font-size: 25px; }
     <p>Design previews only. The live Mini-Cassia Turkey Trot site is unchanged by this comparison page. This unlisted page includes noindex/no-referrer metadata, but unlisted does not mean private.</p>
     <nav aria-label="Related comparison pages"><a href="index.html">Website review</a><a href="multi-page/index.html">D&ndash;F comparison</a><a href="refined/index.html">G&ndash;I comparison</a><a href="refined/good-company-colorways/index.html">Colorway hub</a></nav>
   </footer>
+  <script>
+  (() => {
+    const themeButton = document.querySelector('[data-theme-button]');
+    const syncTheme = () => {
+      const theme = document.documentElement.getAttribute('data-theme') || 'light';
+      const currentURL = new URL(window.location.href);
+      currentURL.searchParams.set('scoutTheme', theme);
+      if (window.location.protocol !== 'file:') window.history.replaceState(null, '', currentURL);
+      document.querySelectorAll('a[href]').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || /^(mailto|tel):/i.test(href)) return;
+        const url = new URL(href, window.location.href);
+        if (url.origin !== window.location.origin || !url.pathname.includes('/design-preview/')) return;
+        url.searchParams.set('scoutTheme', theme);
+        link.href = url.href;
+      });
+      themeButton.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+      themeButton.setAttribute('aria-pressed', String(theme === 'dark'));
+      themeButton.querySelector('[data-theme-label]').textContent = theme === 'dark' ? 'Dark' : 'Light';
+    };
+    themeButton.addEventListener('click', () => {
+      const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      syncTheme();
+    });
+    syncTheme();
+  })();
+  </script>
 </body>
 </html>

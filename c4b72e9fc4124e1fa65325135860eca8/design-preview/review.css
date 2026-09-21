@@ -1,5 +1,8 @@
 .review { --paper: #f8fafb; --ink: #213640; --accent: #176875; --button-ink: #fff; --line: #d1dce0; color: var(--ink); background: var(--paper); }
+html[data-theme="dark"] .review { --paper: #16242a; --ink: #f1f7f8; --accent: #76d2df; --button-ink: #102126; --line: #405861; }
 .review-header { border-bottom: 1px solid var(--line); background: #fff; }
+html[data-theme="dark"] .review-header,
+html[data-theme="dark"] .recommendation { background: #203239; }
 .review-header .wrap { min-height: 86px; display: flex; justify-content: space-between; align-items: center; gap: 30px; }
 .review-header .meta { text-align: right; font-size: 13px; }
 .review-header .meta a { display: inline-block; padding-block: 5px; }
@@ -7,6 +10,8 @@
 .review-intro h1 { font-size: clamp(2.8rem, 5.5vw, 4.8rem); letter-spacing: -.04em; }
 .review-intro p { margin-top: 26px; }
 .review-intro strong { color: #176875; }
+html[data-theme="dark"] .review-intro strong,
+html[data-theme="dark"] .priority { color: #76d2df; }
 .review-jump { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 20px; }
 .review-jump a { padding-block: 10px; }
 .concept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -16,6 +21,7 @@
 .concept-card .concept-name { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 22px 0 15px; }
 .concept-card h3 { font-size: 24px; }
 .recommended { background: #d5ebe6; color: #165343; font-size: 11px; font-weight: 700; padding: 4px 9px; }
+html[data-theme="dark"] .recommended { background: #254942; color: #bcf2e6; }
 .concept-card p { font-size: 15px; }
 .concept-card .tradeoff { padding-top: 14px; margin-top: 14px; border-top: 1px solid var(--line); font-size: 13px; }
 .concept-card .text-link { margin-top: 12px; }
@@ -31,6 +37,8 @@
 .finding h3 { font-size: 23px; margin-bottom: 15px; }
 .finding p { font-size: 15px; }
 .finding .evidence { margin-top: 13px; font-size: 13px; color: #4a606a; }
+html[data-theme="dark"] .finding .evidence,
+html[data-theme="dark"] .scope-note { color: #bed1d6; }
 code { font-size: 12px; overflow-wrap: anywhere; }
 .keep { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
 .keep h3 { margin-bottom: 15px; font-size: 24px; }

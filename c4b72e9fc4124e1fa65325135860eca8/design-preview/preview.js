@@ -1,5 +1,54 @@
 const menuButton = document.querySelector('[data-menu-button]');
 const navigation = document.querySelector('[data-navigation]');
+const themeButton = document.querySelector('[data-theme-button]') || (() => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'theme-button';
+  button.setAttribute('data-theme-button', '');
+  button.setAttribute('aria-label', 'Switch color theme');
+  button.setAttribute('aria-pressed', 'false');
+  button.innerHTML = '<span class="moon" aria-hidden="true">☾</span><span class="sun" aria-hidden="true">☀</span><span data-theme-label>Theme</span>';
+  document.body.prepend(button);
+  return button;
+})();
+
+function getPreferredTheme() {
+  const param = new URLSearchParams(window.location.search).get('scoutTheme');
+  return param || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+}
+
+function syncThemeLinks() {
+  const theme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+  document.documentElement.setAttribute('data-theme', theme);
+  const currentURL = new URL(window.location.href);
+  currentURL.searchParams.set('scoutTheme', theme);
+  if (window.location.protocol !== 'file:') window.history.replaceState(null, '', currentURL);
+  document.querySelectorAll('a[href]').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || /^(mailto|tel):/i.test(href)) return;
+    const url = new URL(href, window.location.href);
+    if (url.origin !== window.location.origin || !url.pathname.includes('/design-preview/')) return;
+    url.searchParams.set('scoutTheme', theme);
+    link.href = url.href;
+  });
+  themeButton.hidden = false;
+  themeButton.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+  themeButton.setAttribute('aria-pressed', String(theme === 'dark'));
+  const label = themeButton.querySelector('[data-theme-label]');
+  if (label) label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+}
+
+if (!document.documentElement.getAttribute('data-theme')) {
+  document.documentElement.setAttribute('data-theme', getPreferredTheme());
+}
+
+themeButton.addEventListener('click', () => {
+  const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', nextTheme);
+  syncThemeLinks();
+});
+
+syncThemeLinks();
 
 if (menuButton && navigation) {
   const closeMenu = () => {

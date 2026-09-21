@@ -1,5 +1,11 @@
 /* Community: a confident, photo-led local tradition. */
 .community { --paper: #faf9f5; --ink: #143e43; --accent: #b34520; --button-ink: #fff; --line: #cbd2ca; background: var(--paper); color: var(--ink); }
+html[data-theme="dark"] .community { --paper: #162427; --ink: #f4efe4; --accent: #f0a46f; --button-ink: #24130d; --line: #456064; }
+html[data-theme="dark"] .community .facts-band,
+html[data-theme="dark"] .community .community-story { background: #203337; }
+html[data-theme="dark"] .community .photo-note,
+html[data-theme="dark"] .community .closing { background: #0f1a1d; color: #f4efe4; }
+html[data-theme="dark"] .community .closing .button { background: #f0a46f; color: #24130d; }
 .community h1, .community h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
 .community .brand span { font-family: Georgia, 'Times New Roman', serif; }
 .community .button { border-radius: 5px; }
@@ -29,8 +35,12 @@
 .community .closing .button:hover { background: #fff; }
 /* Race day: cobalt race signage, oversized type, and a detachable entry panel. */
 .race-day { --paper: #f6f7fc; --ink: #183eb8; --accent: #e6f16a; --button-ink: #172553; --line: #c5cde5; background: var(--paper); color: #172553; }
+html[data-theme="dark"] .race-day { --paper: #111a3c; --ink: #e6f16a; --accent: #e6f16a; --button-ink: #172553; --line: #33488f; color: #f6f7fc; }
 .race-day h1, .race-day h2, .race-day .display { font-family: Impact, 'Arial Narrow', sans-serif; text-transform: uppercase; font-weight: 400; letter-spacing: -.015em; }
 .race-day .site-header { background: #173db6; color: #fff; border-bottom: 1px solid #607bd1; }
+html[data-theme="dark"] .race-day .site-header,
+html[data-theme="dark"] .race-hero,
+html[data-theme="dark"] .race-day .community-band { background: #0d1530; color: #f6f7fc; border-color: #33488f; }
 .race-day .brand img { background: #fff; border-radius: 50%; padding: 3px; }
 .race-day .button { border-radius: 0; }
 .race-day .site-header .button:hover, .race-day .race-hero .button:hover { background: #fff; color: #172553; }
@@ -54,6 +64,7 @@
 .race-day .schedule li { grid-template-columns: 115px 1fr; padding-block: 22px; }
 .race-day .schedule time { font-size: 28px; font-family: Impact, 'Arial Narrow', sans-serif; color: #173db6; }
 .race-day .route-copy { background: #e9ecf7; padding: 38px; }
+html[data-theme="dark"] .race-day .route-copy { background: #16245a; color: #f6f7fc; }
 .race-day .route-copy h3 { font-size: 28px; margin-bottom: 20px; }
 .race-day .route-copy p { margin-top: 14px; }
 .race-day .community-band { background: #173db6; color: #fff; padding-block: 58px; }
@@ -62,13 +73,18 @@
 .race-day .community-band h2 { color: #e6f16a; }
 .race-day .community-band img { width: 100%; height: 300px; object-fit: cover; }
 .race-day .closing { border-top: 1px solid var(--line); background: #e6f16a; }
+html[data-theme="dark"] .race-day .closing { background: #1c2d72; color: #f6f7fc; }
 .race-day .closing .button { background: #173db6; color: #fff; }
 .race-day .closing .button:hover { background: #172553; }
 /* Lucky: a mint-and-plum neighborhood invitation with the real mascot. */
 .lucky { --paper: #fbfaf6; --ink: #3c254b; --accent: #62377b; --button-ink: #fff; --line: #d6cad9; background: var(--paper); color: var(--ink); font-family: 'Trebuchet MS', Arial, sans-serif; }
+html[data-theme="dark"] .lucky { --paper: #21182b; --ink: #fbf7ff; --accent: #d9a8ff; --button-ink: #271331; --line: #5f476b; }
 .lucky h1, .lucky h2 { font-family: 'Trebuchet MS', Arial, sans-serif; font-weight: 900; }
 .lucky .button { border-radius: 100px; }
 .lucky .site-header { background: #d9eee1; }
+html[data-theme="dark"] .lucky .site-header,
+html[data-theme="dark"] .lucky-hero,
+html[data-theme="dark"] .lucky .day-section { background: #2b2038; }
 .lucky .brand span { font-size: 18px; }
 .lucky-hero { background: #d9eee1; padding-block: 24px 48px; }
 .lucky-hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 46px; }
@@ -80,9 +96,11 @@
 .lucky-stage::before { content: ''; position: absolute; width: 360px; height: 360px; border-radius: 50%; background: #efca68; }
 .lucky-stage img { position: relative; width: 420px; height: 420px; object-fit: contain; transform: rotate(-5deg); animation: lucky-arrival .8s cubic-bezier(.16, 1, .3, 1) both; }
 .lucky-sticker { position: absolute; right: 0; top: 15px; width: 115px; height: 115px; border: 2px solid #3c254b; border-radius: 50%; display: grid; place-content: center; text-align: center; transform: rotate(11deg); background: #fbfaf6; font-size: 13px; line-height: 1.25; }
+html[data-theme="dark"] .lucky-sticker { border-color: #fbf7ff; background: #21182b; }
 .lucky-sticker strong { font-size: 38px; }
 .lucky-stage .mascot-note { position: absolute; bottom: 15px; left: 12px; background: #3c254b; color: #fff; padding: 10px 24px; border-radius: 5px; transform: rotate(-5deg); font-size: 18px; font-weight: 700; }
 .lucky .facts-band { background: #3c254b; color: #fff; --line: #765e81; }
+html[data-theme="dark"] .lucky .facts-band { background: #130d1a; color: #fbf7ff; --line: #5f476b; }
 .lucky .join-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .lucky .join-layout p { margin-top: 22px; }
 .lucky .photo-pair { position: relative; padding: 10px 48px 70px 0; }
@@ -95,9 +113,11 @@
 .lucky .bring-list strong { margin-right: 12px; }
 .lucky .day-section { background: #f0e8f3; }
 .lucky .plan-note { padding: 35px; background: #fbfaf6; border-radius: 28px 28px 70px 28px; }
+html[data-theme="dark"] .lucky .plan-note { background: #332340; }
 .lucky .plan-note h3 { font-size: 28px; }
 .lucky .plan-note p { margin-top: 18px; }
 .lucky .closing { background: #efca68; }
+html[data-theme="dark"] .lucky .closing { background: #130d1a; color: #fbf7ff; }
 @keyframes lucky-arrival {
   from { transform: rotate(-13deg) translateY(12px); }
   to { transform: rotate(-5deg) translateY(0); }
