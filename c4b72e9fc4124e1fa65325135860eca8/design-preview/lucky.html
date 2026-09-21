@@ -12,13 +12,15 @@ FORM: Mascot-led family concept, one of three requested alternatives. Native det
   <script>
   (() => {
     const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const colorway = new URLSearchParams(window.location.search).get("colorway");
     const theme = param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.setAttribute("data-theme", theme);
+    if (colorway) document.documentElement.setAttribute("data-colorway", colorway);
   })();
   </script>
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <meta name="referrer" content="no-referrer"><title>Everybody trots | MCTT homepage concept</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="shared.css"><link rel="stylesheet" href="concepts.css"><script src="preview.js" defer></script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="shared.css"><link rel="stylesheet" href="concepts.css"><script src="preview.js" defer></script><script src="colorways.js" defer></script>
 </head>
 <body class="lucky">
   <a class="skip" href="#main">Skip to content</a>

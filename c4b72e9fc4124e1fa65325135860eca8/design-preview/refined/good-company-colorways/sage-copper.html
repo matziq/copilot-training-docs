@@ -5,9 +5,11 @@
   <script>
   (() => {
     const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const colorway = new URLSearchParams(window.location.search).get("colorway");
     const theme =
       param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.setAttribute("data-theme", theme);
+    if (colorway) document.documentElement.setAttribute("data-colorway", colorway);
   })();
   </script>
   <script>// Bind before first paint; deferred listeners can miss an incoming page transition.
@@ -96,6 +98,7 @@ html[data-theme="dark"] {
   <script src="../../preview.js" defer></script>
   <script src="../../multi-page/interactions.js" defer></script>
   <script src="../interactions.js" defer></script>
+  <script src="../../colorways.js" defer></script>
   <noscript><style>.site-nav { display: flex !important; flex-wrap: wrap; } .menu-button { display: none; }</style></noscript><style>
 body.colorway-sage-copper { --cp-bg: #f4f3ea; --cp-bg-elevated: #fbfaf2; --cp-surface: #fffffa; --cp-surface-soft: #e9ebdf; --cp-border: #d6d9ca; --cp-border-strong: #7d8a6d; --cp-text: #20231b; --cp-text-muted: #59604e; --cp-text-soft: #6a715f; --cp-accent: #b65a2a; --cp-accent-hover: #99491f; --cp-accent-soft: rgba(182, 90, 42, 0.12); --cp-accent-fg: #ffffff; --cp-link: #8b481f; --cp-panel: rgba(255, 255, 250, 0.88); --cp-panel-strong: rgba(255, 255, 250, 0.97); --cp-highlight: rgba(182, 90, 42, 0.14); }
 html[data-theme="dark"] body.colorway-sage-copper { --cp-bg: #20241d; --cp-bg-elevated: #191d17; --cp-surface: #2a3025; --cp-surface-soft: #30382a; --cp-border: #47513d; --cp-border-strong: #79856c; --cp-text: #eef0e6; --cp-text-muted: #c1c7b4; --cp-text-soft: #d0d5c8; --cp-accent: #e7a15f; --cp-accent-hover: #f0ae70; --cp-accent-soft: rgba(231, 161, 95, 0.16); --cp-accent-fg: #241509; --cp-link: #efb77c; --cp-panel: rgba(42, 48, 37, 0.78); --cp-panel-strong: rgba(42, 48, 37, 0.96); --cp-highlight: rgba(231, 161, 95, 0.14); }

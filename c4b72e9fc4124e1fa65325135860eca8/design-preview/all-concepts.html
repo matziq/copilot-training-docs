@@ -7,9 +7,11 @@
   <script>
   (() => {
     const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const colorway = new URLSearchParams(window.location.search).get("colorway");
     const theme =
       param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.setAttribute("data-theme", theme);
+    if (colorway) document.documentElement.setAttribute("data-colorway", colorway);
   })();
   </script>
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
@@ -310,6 +312,7 @@ h3 { font-size: 25px; }
   .card-actions .button { width: 100%; }
 }
   </style>
+  <script src="colorways.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to concepts</a>

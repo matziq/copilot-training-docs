@@ -8,9 +8,11 @@ GUARDRAILS: No autoplay, fake live data, confetti, stock testimonials, or invent
   <script>
   (() => {
     const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const colorway = new URLSearchParams(window.location.search).get("colorway");
     const theme =
       param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.setAttribute("data-theme", theme);
+    if (colorway) document.documentElement.setAttribute("data-colorway", colorway);
   })();
   </script>
   <script>// Bind before first paint; deferred listeners can miss an incoming page transition.
@@ -99,6 +101,7 @@ html[data-theme="dark"] {
   <script src="../../preview.js" defer></script>
   <script src="../../multi-page/interactions.js" defer></script>
   <script src="../interactions.js" defer></script>
+  <script src="../../colorways.js" defer></script>
   <noscript><style>.site-nav { display: flex !important; flex-wrap: wrap; } .menu-button { display: none; }</style></noscript></head>
 <body class="refined good-company page-faqs">
 <a class="skip" href="#main">Skip to content</a>

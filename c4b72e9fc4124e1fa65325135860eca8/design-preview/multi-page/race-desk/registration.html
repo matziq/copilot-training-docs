@@ -8,9 +8,11 @@ Preview only; original production routes are unchanged. -->
   <script>
   (() => {
     const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const colorway = new URLSearchParams(window.location.search).get("colorway");
     const theme =
       param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.setAttribute("data-theme", theme);
+    if (colorway) document.documentElement.setAttribute("data-colorway", colorway);
   })();
   </script>
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
@@ -73,6 +75,7 @@ html[data-theme="dark"] {
   <link rel="stylesheet" href="../site.css">
   <link rel="stylesheet" href="../layouts.css"><script src="../../preview.js" defer></script>
   <script src="../interactions.js" defer></script>
+  <script src="../../colorways.js" defer></script>
   <noscript><style>.site-nav { display: flex !important; flex-wrap: wrap; } .menu-button { display: none; }</style></noscript></head>
 <body class="race-desk page-registration">
 <a class="skip" href="#main">Skip to content</a>
