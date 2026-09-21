@@ -246,7 +246,7 @@ h3 { font-size: 25px; }
 }
 .swatch {
   display: grid;
-  grid-template-columns: 1.5fr 1fr .85fr;
+  grid-template-columns: repeat(3, 1fr);
   min-height: 82px;
   gap: 8px;
   margin-bottom: 18px;
@@ -254,10 +254,8 @@ h3 { font-size: 25px; }
 .swatch span {
   border: 1px solid var(--cp-border);
   border-radius: 0.625rem;
-  background: var(--cp-surface-soft);
 }
-.swatch span:nth-child(1) { background: var(--cp-bg-elevated); }
-.swatch span:nth-child(3) { background: var(--cp-accent); }
+.swatch span:nth-child(1), .swatch span:nth-child(4) { grid-column: span 2; }
 .recommendation {
   display: grid;
   grid-template-columns: minmax(220px, .55fr) minmax(0, 1fr);
@@ -437,25 +435,25 @@ h3 { font-size: 25px; }
       </div>
       <div class="colorway-grid">
         <article class="colorway-card">
-          <div class="swatch" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="swatch" aria-label="Cranberry + wheat sample colors"><span style="background:#fbf5ec"></span><span style="background:#f6eadb"></span><span style="background:#a51f3f"></span><span style="background:#2d211c"></span><span style="background:#3b2b24"></span><span style="background:#ff8aa3"></span></div>
           <h3>Cranberry + wheat</h3>
           <p>Warm, Thanksgiving-adjacent, and closest to the original refined palette.</p>
           <p><a class="button" href="refined/good-company-colorways/cranberry-wheat.html">Open colorway &rarr;</a></p>
         </article>
         <article class="colorway-card">
-          <div class="swatch" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="swatch" aria-label="Sage + copper sample colors"><span style="background:#f4f3ea"></span><span style="background:#e9ebdf"></span><span style="background:#b65a2a"></span><span style="background:#20241d"></span><span style="background:#30382a"></span><span style="background:#e7a15f"></span></div>
           <h3>Sage + copper</h3>
           <p>Earthy and outdoorsy, with a community-event feel.</p>
           <p><a class="button" href="refined/good-company-colorways/sage-copper.html">Open colorway &rarr;</a></p>
         </article>
         <article class="colorway-card">
-          <div class="swatch" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="swatch" aria-label="Midnight + gold sample colors"><span style="background:#f4f0e6"></span><span style="background:#ebe5d7"></span><span style="background:#8f5b00"></span><span style="background:#111722"></span><span style="background:#202b3d"></span><span style="background:#f3bd4f"></span></div>
           <h3>Midnight + gold</h3>
           <p>High contrast, polished, and more premium.</p>
           <p><a class="button" href="refined/good-company-colorways/midnight-gold.html">Open colorway &rarr;</a></p>
         </article>
         <article class="colorway-card">
-          <div class="swatch" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="swatch" aria-label="Cobalt + volt sample colors"><span style="background:#f6f7fc"></span><span style="background:#edf0fb"></span><span style="background:#183eb8"></span><span style="background:#111a3c"></span><span style="background:#1c2d72"></span><span style="background:#e6f16a"></span></div>
           <h3>Cobalt + volt</h3>
           <p>The Race day energy palette translated to the Good company layout.</p>
           <p><a class="button" href="refined/good-company-colorways/cobalt-volt.html">Open colorway &rarr;</a></p>

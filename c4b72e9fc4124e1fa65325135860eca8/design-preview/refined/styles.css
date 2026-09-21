@@ -129,11 +129,9 @@
 .colorway-card h2 { font-size: 26px; margin-top: 20px; }
 .colorway-card p { color: var(--cp-text-muted); font-size: 15px; }
 .colorway-card .button { margin-top: 18px; }
-.color-swatch { display: grid; grid-template-columns: 1.4fr 1fr .8fr; gap: 8px; min-height: 96px; }
+.color-swatch { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; min-height: 96px; }
 .color-swatch span { border-radius: .625rem; border: 1px solid var(--cp-border); }
-.color-swatch span:nth-child(1) { background: var(--cp-bg); }
-.color-swatch span:nth-child(2) { background: var(--cp-surface-soft); }
-.color-swatch span:nth-child(3) { background: var(--cp-accent); }
+.color-swatch span:nth-child(1), .color-swatch span:nth-child(4) { grid-column: span 2; }
 html[data-theme="dark"] .refined :is(.lead, .momentum-scene figcaption span, .event-line time span, .event-line > div span, .company-stage figcaption span, .company-facts, .trackside-board figcaption, .trackside-invitation .race-date, .trackside-details dt, .inner-photo figcaption, .schedule-top span, .refined-design-notes p) { color: var(--cp-text-soft); }
 ::view-transition-group(race-brand), ::view-transition-group(race-navigation) { animation-duration: 180ms; }
 ::view-transition-old(root) { animation-duration: 140ms; }
