@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design AI-Powered Business Solutions &mdash; AB-100 Prep</title>
+<meta name="description" content="AB-100 study guide for Domain 2, Design AI-powered business solutions: agent types, Copilot Studio orchestration and topics, Foundry Tools, extensibility with declarative and custom engine agents, MCP, Computer Use, and prebuilt Dynamics 365 and Microsoft 365 agents.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Design AI-Powered Business Solutions</h1>
+<p class="lede">Domain 2 is where the exam stops asking &ldquo;should we use AI?&rdquo; and starts asking &ldquo;which building block, wired how?&rdquo; It carries 25&ndash;30% of the score on the outline in effect until November 15, 2026, rising to 30&ndash;35% on the upcoming November 16, 2026 outline. Expect scenario questions that make you choose between agent types, orchestration modes, extensibility patterns, Foundry Tools, and prebuilt Dynamics 365 or Microsoft 365 capabilities.</p>
+
+<div class="btn-row">
+  <a class="btn sm" href="#obj-2-1">2.1 Design AI and agents</a>
+  <a class="btn sm secondary" href="#obj-2-1-d365">2.1 Dynamics 365 and apps</a>
+  <a class="btn sm secondary" href="#obj-2-2">2.2 Design extensibility</a>
+  <a class="btn sm secondary" href="#obj-2-3">2.3 Prebuilt agents and apps</a>
+  <a class="btn sm ghost" href="#cheat">Cheat sheet</a>
+</div>
+
+<section id="obj-2-1">
+  <div class="week-head"><h2>2.1 Design AI and agents: agent types, orchestration, and building blocks</h2><span class="wgoal">Pick the right agent pattern, orchestration mode, and component for a stated requirement.</span></div>
+  <p>An architect on this exam is judged on fit. Most wrong answers in Domain 2 are real Microsoft features used in the wrong place. Start every scenario by asking three questions: <strong>who or what starts the work</strong> (a person, an event, a schedule), <strong>how much autonomy is acceptable</strong> (answer only, act with approval, act alone), and <strong>where the data lives</strong> (Dataverse, SharePoint, an external API, a legacy UI).</p>
+
+  <h3>Agent types and how they start</h3>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Prompt-and-response agent <span class="badge accent">reactive</span></h3><p>A user asks; the agent answers, usually grounded in knowledge sources. Little or no side effect on systems of record. Examples: an HR policy Q&amp;A agent, a product-spec lookup agent.</p><p><strong>Trigger:</strong> a user message in a channel (Teams, Microsoft 365 Copilot, web chat).</p></div>
+    <div class="card"><h3 style="margin-top:0">Task agent <span class="badge good">acts on request</span></h3><p>A user asks the agent to <em>do</em> something: create a case, book time off, update an opportunity. It calls tools, connectors, or flows and returns a result. A human is in the loop for every run.</p><p><strong>Trigger:</strong> a user message that maps to a tool or topic.</p></div>
+    <div class="card"><h3 style="margin-top:0">Autonomous agent <span class="badge amber">event-driven</span></h3><p>Runs without a person typing. It reacts to events or schedules, plans steps with generative orchestration, and acts within guardrails such as approvals, scoped connections, and instructions.</p><p><strong>Trigger:</strong> event triggers such as a new email, a new Dataverse row, a file added to SharePoint, or a recurrence schedule.</p></div>
+  </div>
+  <div class="callout key"><span class="callout-title">Design principle</span><p>Autonomy is a risk dial, not a feature checkbox. The more autonomous the agent, the more you need least-privilege connections, human approval steps for sensitive actions, telemetry, and clear instructions on what the agent must never do. Autonomous triggers rely on generative orchestration, because the agent must plan without a user utterance to match.</p></div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>&ldquo;Process every incoming invoice email overnight with no user involved&rdquo; is an autonomous agent with an event trigger, not a task agent. &ldquo;Let a seller ask the agent to log a call&rdquo; is a task agent. Watch for the word that tells you who initiates.</p></div>
+
+  <h3>Copilot Studio topics, system topics, and fallback</h3>
+  <p>A <strong>topic</strong> is an authored conversation path: trigger, nodes (messages, questions, conditions, tool calls, generative answers), and variables. Use topics where you need deterministic control, such as regulated wording, multi-step data capture, or a guaranteed escalation path.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>System topic</th><th>When it fires</th><th>Design use</th></tr>
+  </thead><tbody>
+    <tr><td>Conversation Start</td><td>When the agent first engages the user</td><td>Greeting and capability statement. In Teams it effectively runs once per user, because Teams reuses the conversation ID.</td></tr>
+    <tr><td>Conversational boosting</td><td>When no authored topic matches</td><td>Holds the generative answers node; knowledge added at the agent level is used here. This is the default &ldquo;answer from knowledge&rdquo; safety net.</td></tr>
+    <tr><td>Fallback</td><td>When the agent can&rsquo;t understand the utterance with enough confidence</td><td>Rephrase prompts, call an external Q&amp;A service through a flow, or escalate after repeated misses.</td></tr>
+    <tr><td>Escalate</td><td>When the user asks for a person or a topic redirects to it</td><td>Hand off to a live representative, for example through Dynamics 365 Contact Center.</td></tr>
+    <tr><td>End of Conversation, Error, Sign in, Multiple topics matched</td><td>Redirects, errors, authentication needs, ambiguous intent</td><td>Satisfaction survey, graceful error messages, user authentication, disambiguation.</td></tr>
+  </tbody></table></div>
+  <div class="callout tip"><span class="callout-title">Remember</span><p>System topics can be turned off but not deleted. Customize them only after the end-to-end conversation works. Copilot Studio supports a large but finite number of topics per agent, so offloading thousands of single-turn Q&amp;A pairs to knowledge or an external service through the Fallback topic is a valid architecture.</p></div>
+
+  <h3>Standard NLU vs CLU vs generative orchestration</h3>
+  <p>Copilot Studio separates <strong>generative orchestration</strong> (the default for new agents) from <strong>classic orchestration</strong>. Classic orchestration offers three language-understanding options: standard NLU, NLU+, and Azure conversational language understanding (CLU).</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Option</th><th>How intent is recognized</th><th>Choose it when</th><th>Watch out for</th></tr>
+  </thead><tbody>
+    <tr><td><span class="badge accent">Generative orchestration</span></td><td>A language model reads topic, tool, knowledge, and agent <em>descriptions</em>, builds a plan, and can chain several in one turn</td><td>Multi-intent requests, broad scope, autonomous triggers, connected or child agents, automatic slot filling</td><td>Quality depends on clear descriptions and instructions; less deterministic; consumes generative capacity</td></tr>
+    <tr><td><span class="badge good">Standard NLU</span></td><td>Trigger phrases (a handful of short phrases per topic) plus regex and list entities</td><td>Small, predictable agents that need repeatable routing and low setup effort</td><td>One topic per turn; knowledge only as fallback; tools only when called from a topic</td></tr>
+    <tr><td><span class="badge good">NLU+</span></td><td>Enhanced, trained model using larger sets of training phrases and entities</td><td>Large enterprise agents with many topics and entities that need high accuracy; voice agents benefit from the training data</td><td>More training data to curate and maintain</td></tr>
+    <tr><td><span class="badge amber">CLU</span></td><td>An Azure AI Language CLU project recognizes intents and entities; Copilot Studio maps them to topics through an Analyze Text system topic</td><td>You already own or need a custom-trained CLU model, need languages or entity types beyond the built-in options, or want one NLU model shared across channels</td><td>Requires classic orchestration; switching removes existing trigger phrases (save a snapshot first); extra Azure resource to manage through ALM</td></tr>
+  </tbody></table></div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>In classic mode, knowledge is a fallback and tools run only when a topic calls them. In generative mode, the agent can call tools and search knowledge proactively based on their descriptions. If a scenario says &ldquo;the agent ignores the new tool,&rdquo; the fix is usually a better name and description (generative) or an explicit call from a topic (classic).</p></div>
+  <div class="callout key"><span class="callout-title">Hybrid pattern</span><p>Some regulated teams keep classic orchestration for deterministic routing but put an AI prompt inside Conversational boosting to classify intent and redirect to a topic. This blends predictability with flexible understanding and is a good answer when a scenario demands both.</p></div>
+
+  <h3>Agents vs agent flows vs Power Automate cloud flows</h3>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Agent</h3><p>Reasoning and conversation. Uses instructions, knowledge, tools, and topics to decide what to do. Non-deterministic by nature.</p></div>
+    <div class="card"><h3 style="margin-top:0">Agent flow</h3><p>A deterministic, step-by-step workflow built and managed in Copilot Studio. Same connector ecosystem as Power Automate, billed with Copilot Studio capacity, and callable by an agent as a tool. Can include AI actions and human approvals.</p></div>
+    <div class="card"><h3 style="margin-top:0">Power Automate cloud flow</h3><p>Deterministic automation owned in Power Automate, licensed with Power Automate. Good for existing enterprise automations that an agent should reuse rather than rebuild.</p></div>
+  </div>
+  <p>Rule of thumb: let the agent decide <em>what</em>; let a flow guarantee <em>how</em>. Anything that must happen the same way every time, such as posting a journal, writing an audit record, or sending a regulated notice, belongs in a flow the agent calls, not in free-form model output.</p>
+
+  <h3>Prompt actions (AI Builder prompts)</h3>
+  <p>A prompt is a reusable, parameterized natural-language instruction with typed inputs and an output (text or JSON) that runs on a managed language model. You build prompts in the prompt builder (reachable from AI hub in Power Apps and Power Automate, or from the Tools page in Copilot Studio) and reuse them in:</p>
+  <ul>
+    <li><strong>Copilot Studio</strong> as a prompt tool the agent or a topic can call.</li>
+    <li><strong>Agent flows and cloud flows</strong> as a &ldquo;Run a prompt&rdquo; step.</li>
+    <li><strong>Canvas apps</strong> as a Power Fx function (call the prompt by name with <code>.Predict()</code>).</li>
+    <li><strong>Dataverse low-code plug-ins</strong> for server-side enrichment.</li>
+  </ul>
+  <p>Prompts can be grounded on Dataverse data and can use code interpreter or document inputs, depending on configuration. Choose a prompt when the task is a bounded transformation (classify, extract, summarize, rewrite) that should behave consistently across apps. Admins can turn the AI prompts feature on or off per environment in the Power Platform admin center.</p>
+
+  <h3>Propose Foundry Tools for a requirement</h3>
+  <p>Foundry Tools (formerly Azure AI services) are prebuilt, task-specific AI capabilities. Pick the narrowest tool that meets the requirement; it is usually cheaper, more deterministic, and easier to govern than a general model.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Requirement cue</th><th>Foundry Tool</th><th>Notes</th></tr>
+  </thead><tbody>
+    <tr><td>Sentiment, key phrases, entities, PII detection, summarization, custom intent (CLU), question answering</td><td>Azure AI Language</td><td>CLU and question answering can feed Copilot Studio in classic orchestration.</td></tr>
+    <tr><td>Speech to text, text to speech, call transcription, speech translation, custom voice</td><td>Azure AI Speech</td><td>Underpins voice and IVR scenarios.</td></tr>
+    <tr><td>Image tagging, OCR on photos, spatial analysis, image captions</td><td>Azure AI Vision</td><td>For general imagery rather than business forms.</td></tr>
+    <tr><td>Invoices, receipts, IDs, tax forms, known layouts, high-volume deterministic extraction</td><td>Azure Document Intelligence</td><td>Prebuilt and custom-trained models; cost-effective and repeatable for standard documents.</td></tr>
+    <tr><td>Variable or unfamiliar documents, schema defined in natural language, audio/video/images too, RAG-ready Markdown, per-field confidence</td><td>Azure Content Understanding</td><td>Generative extraction with grounding and confidence scores for targeted human review.</td></tr>
+    <tr><td>Translate text or whole documents while preserving format; custom terminology</td><td>Azure AI Translator</td><td>Use for multilingual agents and content pipelines.</td></tr>
+    <tr><td>Detect harmful text or images, prompt injection, jailbreak attempts, groundedness issues</td><td>Azure AI Content Safety</td><td>Prompt Shields lives here; pair with content filters.</td></tr>
+    <tr><td>Enterprise search, vector or hybrid retrieval, semantic ranking for RAG over large corpora</td><td>Azure AI Search</td><td>The retrieval layer for custom grounding at scale.</td></tr>
+  </tbody></table></div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>Document Intelligence vs Content Understanding is a favorite distractor pair. Standard invoices at volume with a prebuilt model: Document Intelligence. Contracts that vary wildly, with fields you describe in plain language and want confidence scores for: Content Understanding.</p></div>
+
+  <h3>Data processing for AI models and grounding</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Pipeline</h3><ol>
+      <li><strong>Ingest</strong> from source systems with permissions preserved.</li>
+      <li><strong>Clean and normalize</strong>: remove duplicates, stale versions, boilerplate.</li>
+      <li><strong>Extract</strong> text and structure (Document Intelligence or Content Understanding).</li>
+      <li><strong>Chunk</strong> by semantic boundaries such as headings or sections, with modest overlap.</li>
+      <li><strong>Embed</strong> each chunk with an embedding model.</li>
+      <li><strong>Index</strong> vectors plus keywords and metadata (Azure AI Search).</li>
+      <li><strong>Retrieve</strong> with hybrid search and semantic ranking, filtered by user access.</li>
+      <li><strong>Refresh</strong> on a schedule or change feed.</li>
+    </ol></div>
+    <div class="card"><h3 style="margin-top:0">Architect choices</h3><ul>
+      <li>Chunks too large dilute relevance; too small lose context.</li>
+      <li>Metadata (department, region, effective date) enables security trimming and freshness filters.</li>
+      <li>Hybrid (keyword + vector) beats either alone for part numbers, codes, and names.</li>
+      <li>Use the same embedding model at index and query time; changing it means re-indexing.</li>
+      <li>For Copilot Studio, built-in knowledge sources (SharePoint, Dataverse, files, websites, connectors) handle much of this for you; go custom with Azure AI Search when scale, ranking, or control demands it.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="obj-2-1-d365">
+  <div class="week-head"><h2>2.1 continued: apps, Well-Architected, and Dynamics 365 Copilot design</h2><span class="wgoal">Embed AI in Power Apps and Dynamics 365 the way the platform expects.</span></div>
+
+  <h3>AI components in a Power Apps canvas app</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Options</h3><ul>
+      <li><strong>Prompts as Power Fx functions</strong> for summarize, classify, or extract inside a business process.</li>
+      <li><strong>AI Builder models</strong> such as document processing, receipt and business card reading, object detection, and text recognition controls.</li>
+      <li><strong>Copilot control / embedded agent</strong> so users can chat with app data or a Copilot Studio agent in context.</li>
+      <li><strong>Copilot-assisted authoring</strong> for makers (generate apps, formulas, and screens from natural language).</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Design questions</h3><ul>
+      <li>Is the AI step a <em>transformation</em> (prompt) or a <em>conversation</em> (agent)?</li>
+      <li>Should a person confirm the AI output before it is saved?</li>
+      <li>Which capacity or credits pay for the calls?</li>
+      <li>Is the feature available in the environment&rsquo;s region, and is it enabled by admins?</li>
+    </ul></div>
+  </div>
+
+  <h3>Code-first generative pages and agent feed</h3>
+  <p><strong>Generative pages</strong> let a maker describe a page in natural language (optionally with an image) and have the app agent generate React code for a model-driven app page bound to Dataverse tables, connectors, or custom APIs. Generated pages are solution-aware, so they move through ALM with the app. Choose them when a model-driven app needs a modern, custom page faster than hand-coding a component.</p>
+  <p><strong>Agent feed</strong> turns a model-driven app into a supervision surface: agents create actionable tasks that users review, validate, and complete inside the app. Agents are added from the app designer&rsquo;s Agents tab and must use the Power Apps MCP server to post tasks. Choose it when autonomous agents do work that people must oversee in the same app where they already work.</p>
+  <div class="callout warn"><span class="callout-title">Volatility warning</span><p>Agent feed and parts of generative pages have been in preview with changing prerequisites. On the exam, focus on the purpose (human oversight of agent work; AI-generated pages that stay solution-aware), not on dates or UI steps.</p></div>
+
+  <h3>Power Platform Well-Architected for intelligent workloads</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Pillar</th><th>Concern</th><th>Intelligent-workload example</th></tr>
+  </thead><tbody>
+    <tr><td>Reliability</td><td>Resiliency, availability, recovery</td><td>Graceful fallback when a model or connector is throttled; retry policies in flows; escalation path when the agent fails.</td></tr>
+    <tr><td>Security</td><td>Confidentiality, integrity, availability</td><td>Least-privilege connections, end-user authentication, DLP policies, protection against prompt injection.</td></tr>
+    <tr><td>Operational Excellence</td><td>Holistic observability, DevOps, ALM</td><td>Solutions and pipelines, environment strategy, Copilot Studio analytics, Application Insights telemetry.</td></tr>
+    <tr><td>Performance Efficiency</td><td>Scale and responsiveness</td><td>Right-sized models, fewer chained calls, efficient retrieval, capacity planning for credits.</td></tr>
+    <tr><td>Experience Optimization</td><td>Usable, accessible, effective experiences</td><td>Conversation design, clear disclosure that AI is involved, citations, easy handoff to a person.</td></tr>
+  </tbody></table></div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>Power Platform Well-Architected has <strong>five</strong> pillars and swaps Azure&rsquo;s Cost Optimization for <strong>Experience Optimization</strong>. Do not pick &ldquo;Cost Optimization&rdquo; as a Power Platform pillar.</p></div>
+
+  <h3>Copilot in Dynamics 365 customer experience and service apps</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Business terms</h3><p>Teach Copilot your vocabulary. In Copilot Studio, open the app&rsquo;s Copilot agent (for Sales, &ldquo;Copilot in Dynamics 365 Sales&rdquo;), then add <strong>glossary</strong> terms with descriptions and <strong>synonyms</strong> that map alternative names to table columns. Example: map &ldquo;deal size&rdquo; to a custom revenue column on opportunity so sellers can ask in their own words.</p></div>
+    <div class="card"><h3 style="margin-top:0">Customizations</h3><p>Extend the in-app Copilot through Copilot Studio: add topics, knowledge sources, prompts, connectors, or plugins; configure which fields feed record summaries and &ldquo;what&rsquo;s new&rdquo; recent-change views (which depend on audit history); and adjust email drafting and case summary settings in app settings.</p></div>
+  </div>
+
+  <h3>Connectors for Copilot in Dynamics 365 Sales</h3>
+  <p>Copilot in Sales becomes more useful when sellers can reach data outside Dataverse. Design options include:</p>
+  <ul>
+    <li><strong>SharePoint</strong> for product brochures, price lists, and pitch decks. Admins can limit Copilot to specific SharePoint folders; results respect each user&rsquo;s SharePoint permissions; common Office files and PDFs are supported.</li>
+    <li><strong>Microsoft 365 data</strong> such as email and meetings for account and opportunity context.</li>
+    <li><strong>Power Platform connectors and Copilot Studio extensions</strong> to bring in external CRM, ERP, or partner data on demand.</li>
+  </ul>
+  <div class="callout warn"><span class="callout-title">Prerequisites that show up in scenarios</span><p>Data loss prevention policies must allow the connectors Copilot needs. If the region has no local Azure OpenAI endpoint, an admin must consent to cross-geo data movement in the Power Platform admin center. Turning on Copilot happens both at the environment level and in Sales app settings.</p></div>
+
+  <h3>Agents integrated with Dynamics 365 Contact Center channels</h3>
+  <p>A Copilot Studio agent can be the first responder on digital messaging and voice channels in Dynamics 365 Contact Center. The maker builds and publishes the agent and connects it to the omnichannel instance; the contact center admin configures workstreams, queues, routing, and phone numbers. When the customer needs a person, the agent escalates and passes the conversation history and context variables, so the representative doesn&rsquo;t restart the conversation.</p>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Digital channels</h3><p>Chat, SMS, social, and messaging apps through workstreams. The agent handles self-service and hands off via the Escalate topic.</p></div>
+    <div class="card"><h3 style="margin-top:0">Voice / IVR</h3><p>Turn on voice in the agent&rsquo;s settings. Speech recognition, DTMF, barge-in, and silence handling matter. Real-time voice agents are an option for more natural calls.</p></div>
+    <div class="card"><h3 style="margin-top:0">Smart escalation</h3><p>Check representative and queue availability before escalating; offer a callback or continued self-service when wait times are long.</p></div>
+  </div>
+</section>
+
+<section id="obj-2-2">
+  <div class="week-head"><h2>2.2 Design extensibility</h2><span class="wgoal">Decide how to extend Copilot and agents: configure, connect, or bring your own engine.</span></div>
+
+  <h3>Agents in Microsoft 365 Copilot: declarative vs custom engine</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Factor</th><th>Declarative agent</th><th>Custom engine agent</th></tr>
+  </thead><tbody>
+    <tr><td>Orchestrator and model</td><td>Microsoft 365 Copilot&rsquo;s orchestrator and models</td><td>Your own orchestration and models (Foundry Models, fine-tuned, small language models)</td></tr>
+    <tr><td>What you supply</td><td>Instructions, knowledge (SharePoint, OneDrive, Teams, Copilot connectors), actions (API plugins, MCP)</td><td>Orchestration logic, models, knowledge, tools, and hosting</td></tr>
+    <tr><td>Proactive / autonomous</td><td>User-initiated only</td><td>Can act on events without user input</td></tr>
+    <tr><td>Channels</td><td>Microsoft 365 apps</td><td>Microsoft 365 plus external channels</td></tr>
+    <tr><td>Compliance</td><td>Inherits Microsoft 365 security, compliance, and responsible AI controls</td><td>You own security, compliance, and responsible AI for the custom parts</td></tr>
+    <tr><td>Build tools</td><td>Agent Builder in Copilot, Copilot Studio, Microsoft 365 Agents Toolkit</td><td>Copilot Studio (its own orchestration), Microsoft 365 Agents SDK, Microsoft Foundry</td></tr>
+  </tbody></table></div>
+  <div class="callout key"><span class="callout-title">Decision rule</span><p>Start declarative when the work lives in Microsoft 365 and Copilot&rsquo;s reasoning is good enough. Move to a custom engine agent only when you need custom orchestration, specific or fine-tuned models, proactive behavior, external channels, or multi-system business rules. Custom engines cost more to build, host, and govern.</p></div>
+
+  <h3>Custom models in Microsoft Foundry</h3>
+  <p>Microsoft Foundry hosts the model catalog (Foundry Models), fine-tuning, evaluation, and Foundry Agent Service. Design a custom model only when prompting plus grounding fails a measured quality bar, when you need a consistent domain style or format, or when a smaller fine-tuned model can cut cost and latency at volume. Plan for training data governance, evaluation sets, safety evaluation, and versioned deployments. A model router can send each request to the most suitable model to balance cost and quality.</p>
+
+  <h3>Agent extensibility in Copilot Studio</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Mechanism</th><th>What it adds</th><th>Choose it when</th></tr>
+  </thead><tbody>
+    <tr><td>Power Platform connectors (prebuilt and custom)</td><td>Hundreds of SaaS and enterprise actions; custom connectors wrap your REST APIs with OpenAPI</td><td>A stable API exists and you want DLP-governed, reusable access</td></tr>
+    <tr><td>Agent flows / cloud flows as tools</td><td>Deterministic multi-step automation</td><td>Sequence, approvals, or guaranteed outcomes matter</td></tr>
+    <tr><td>Prompt tools</td><td>Reusable AI transformations</td><td>Bounded summarize/classify/extract tasks</td></tr>
+    <tr><td>REST API tools</td><td>Direct calls described by an OpenAPI spec</td><td>Lightweight integration without a full connector lifecycle</td></tr>
+    <tr><td>MCP servers</td><td>Tools and resources that the server describes and updates dynamically</td><td>Many evolving tools, an existing MCP server, or reuse across MCP-compatible clients</td></tr>
+    <tr><td>Child agents</td><td>Sub-agents managed inside the same agent</td><td>Split a large agent into focused parts owned by one team</td></tr>
+    <tr><td>Connected agents and A2A</td><td>Delegation to separately built and published agents, including Foundry agents and agents that speak Agent2Agent (A2A)</td><td>Multi-agent solutions across teams or platforms, each with its own lifecycle</td></tr>
+    <tr><td>Computer Use</td><td>UI automation of websites and desktop apps</td><td>No API exists</td></tr>
+  </tbody></table></div>
+
+  <h3>MCP in Copilot Studio</h3>
+  <p>Model Context Protocol is an open standard that lets an agent discover and call capabilities exposed by a server. Of MCP&rsquo;s primitives (tools, resources, prompts), Copilot Studio uses <strong>tools</strong> and <strong>resources</strong>. When the server adds, changes, or removes a tool, the agent sees the change without the maker redefining each action, which is the key advantage over describing every connector action by hand.</p>
+  <ul>
+    <li>Connect an existing server with the MCP onboarding wizard (recommended) or through a custom connector built from an OpenAPI schema.</li>
+    <li>Use Microsoft-provided MCP servers (for example Dataverse, Outlook) where available; Dataverse access through MCP honors Dataverse security roles.</li>
+    <li>Because MCP connections surface as connectors, DLP policies and environment governance still apply.</li>
+  </ul>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>MCP connects an agent to <em>tools and data</em>. A2A connects an agent to <em>another agent</em>. If the scenario is &ldquo;delegate the whole subtask to a partner&rsquo;s agent that has its own reasoning,&rdquo; think connected agents or A2A, not MCP.</p></div>
+
+  <h3>Computer Use in Copilot Studio</h3>
+  <p>Computer Use lets an agent operate websites and Windows desktop apps through a virtual mouse and keyboard, driven by a vision-and-reasoning model. You describe the task in natural language; it adapts to minor UI changes better than recorded selectors. Typical uses: data entry into a legacy system, invoice keying, data extraction from portals without APIs.</p>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Design controls</h3><ul>
+      <li>Choose where it runs: a hosted browser or your own registered machines.</li>
+      <li>Restrict allowed websites and apps; enforce HTTPS.</li>
+      <li>Store credentials securely rather than in instructions.</li>
+      <li>Add human review for high-impact steps; test with the built-in test pane.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Trade-offs</h3><ul>
+      <li>Billed per step, so long UI journeys get expensive.</li>
+      <li>Slower and less deterministic than an API.</li>
+      <li>On-screen content can carry injected instructions; scope access tightly.</li>
+      <li>Prefer connectors or MCP when an API exists; use Computer Use as the last mile.</li>
+    </ul></div>
+  </div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>Computer Use vs Power Automate desktop flows (RPA): desktop flows replay recorded, deterministic steps and suit stable, high-volume UIs. Computer Use reasons about the screen and tolerates change but costs more per run. If the UI never changes and runs thousands of times a day, recorded RPA is often more cost-effective.</p></div>
+
+  <h3>Agent behaviors: reasoning and voice</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Deep reasoning</h3><p>Reasoning models think through complex, multistep problems before answering. In Copilot Studio, you invoke reasoning for specific steps in the agent&rsquo;s instructions (using the keyword <em>reason</em>). Use it for analysis-heavy tasks, such as comparing contract clauses or root-cause analysis, not for simple lookups, because it adds latency and cost.</p></div>
+    <div class="card"><h3 style="margin-top:0">Voice</h3><p>Voice-enabled agents serve phone and IVR scenarios. Design for spoken prompts, DTMF input, barge-in, silence detection, latency, and short responses. Real-time voice agents provide more natural turn-taking. Publish to telephony through Dynamics 365 Contact Center or Azure Communication Services.</p></div>
+  </div>
+
+  <h3>Agents in Microsoft 365: Teams and SharePoint</h3>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Teams</h3><p>Agents in personal chat, group chats, channels, and meetings. Users @mention the agent in context. Good for team helpdesks and meeting follow-ups. Publish from Copilot Studio to Teams and Microsoft 365 Copilot.</p></div>
+    <div class="card"><h3 style="margin-top:0">SharePoint agents</h3><p>Created directly from a site, library, or selected files. Scoped to that content and to each user&rsquo;s permissions. Fastest path to a Q&amp;A agent over a curated document set.</p></div>
+    <div class="card"><h3 style="margin-top:0">Agent Builder in Copilot</h3><p>Lightweight declarative agents built by information workers. Govern with admin controls in the Microsoft 365 admin center.</p></div>
+  </div>
+  <div class="callout tip"><span class="callout-title">Remember</span><p>SharePoint grounding never overrides permissions. If users can&rsquo;t open a file, the agent can&rsquo;t use it for them. Oversharing is a governance problem to fix in SharePoint (and with Microsoft Purview), not in the agent.</p></div>
+</section>
+
+<section id="obj-2-3">
+  <div class="week-head"><h2>2.3 Orchestrate prebuilt agents and apps</h2><span class="wgoal">Use what Microsoft already ships before building anything custom.</span></div>
+  <p>The &ldquo;buy before build&rdquo; instinct is heavily rewarded. When a prebuilt Copilot feature or agent meets the requirement, it is usually the best answer because it is supported, secured, and maintained by Microsoft.</p>
+
+  <h3>AI in Dynamics 365 finance and supply chain apps</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Capability</th><th>Where</th><th>What it does</th></tr>
+  </thead><tbody>
+    <tr><td>Generative help and guidance</td><td>All finance and operations apps</td><td>Copilot sidecar answers how-to questions from product documentation (plus knowledge you add).</td></tr>
+    <tr><td>AI summaries</td><td>Finance and operations pages</td><td>Personalized summaries of key information, such as overdue invoices for a vendor.</td></tr>
+    <tr><td>Workflow history summary</td><td>Workflow history page</td><td>Summarizes approval history for any workflow document type.</td></tr>
+    <tr><td>Collections coordinator and customer page summaries</td><td>Dynamics 365 Finance</td><td>Summaries of customer credit and collections context, plus drafted reminder text.</td></tr>
+    <tr><td>Demand plan analysis, workload insights</td><td>Dynamics 365 Supply Chain Management</td><td>Natural-language analysis of demand trends and warehouse workload.</td></tr>
+    <tr><td>Time Entry, Expense, and Approvals agents</td><td>Project Operations and finance and operations apps</td><td>Agents that draft time entries, build expense reports from receipts, and streamline approvals.</td></tr>
+  </tbody></table></div>
+
+  <h3>AI in Dynamics 365 customer experience and service apps</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Sales</h3><ul>
+      <li>Record summaries and recent-change highlights for leads, opportunities, and accounts.</li>
+      <li>Meeting preparation, email drafting, and question answering over CRM data.</li>
+      <li>Agents for lead research and qualification that work autonomously and hand results to sellers.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Customer Service and Contact Center</h3><ul>
+      <li>Ask a question, auto and proactive prompts, case and conversation summaries, email drafting.</li>
+      <li>Agents that triage cases, identify customer intent, and draft knowledge articles from resolved cases.</li>
+      <li>Copilot Studio agents as front-line self-service on chat and voice with escalation.</li>
+    </ul></div>
+  </div>
+  <p>Because Dynamics 365 customer engagement apps are model-driven apps on Dataverse, they also inherit platform AI such as form-fill assistance, timeline highlights, and the in-app Copilot chat.</p>
+
+  <h3>Propose Microsoft 365 agents for scenarios</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Scenario</th><th>Best first proposal</th></tr>
+  </thead><tbody>
+    <tr><td>Deep research across web and work data</td><td>Microsoft 365 Copilot&rsquo;s prebuilt reasoning agents (such as Researcher and Analyst)</td></tr>
+    <tr><td>Sellers live in Outlook and Teams but the CRM is Dynamics 365 or Salesforce</td><td>Microsoft 365 Copilot for Sales</td></tr>
+    <tr><td>Service reps work in Outlook and Teams against Dynamics 365, Salesforce, ServiceNow, or another CRM</td><td>Microsoft 365 Copilot for Service</td></tr>
+    <tr><td>Q&amp;A over a single site or document set</td><td>SharePoint agent</td></tr>
+    <tr><td>Team-specific helper with custom instructions</td><td>Declarative agent built in Agent Builder or Copilot Studio</td></tr>
+  </tbody></table></div>
+
+  <h3>Configure Microsoft 365 Copilot for Sales and for Service</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Copilot for Sales</h3><ul>
+      <li>Deploy the app to Outlook and Teams through the Microsoft 365 admin center or Teams admin center.</li>
+      <li>Connect to the CRM (Dynamics 365 or Salesforce) and choose which fields and record types appear.</li>
+      <li>Configure email summaries, meeting preparation, and saving activities back to the CRM.</li>
+      <li>Extend with Copilot Studio or connectors for extra data sources.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Copilot for Service</h3><ul>
+      <li>Connect to the existing CRM and knowledge sources (for example, knowledge bases and SharePoint).</li>
+      <li>Surface case summaries and drafted replies in Outlook and Teams; save interactions to the CRM.</li>
+      <li>Optionally embed the Copilot experience in a non-Microsoft agent desktop.</li>
+      <li>Govern via the admin experience and the CRM&rsquo;s own security model.</li>
+    </ul></div>
+  </div>
+  <div class="callout trap"><span class="callout-title">Exam trap</span><p>&ldquo;Copilot in Dynamics 365 Sales&rdquo; runs inside the Sales Hub app. &ldquo;Microsoft 365 Copilot for Sales&rdquo; brings CRM context into Outlook and Teams and works with Salesforce too. If sellers refuse to leave Outlook, or the CRM isn&rsquo;t Dynamics 365, pick the Microsoft 365 offering.</p></div>
+
+  <h3>Power Platform AI features, including AI hub</h3>
+  <p><strong>AI hub</strong> in Power Apps and Power Automate is the starting point for AI Builder capabilities: prompts (with a prompt library of templates by job type and task), prebuilt models (document processing, text recognition, sentiment, and similar), and custom models you train. Pair it with Copilot in Power Apps, Power Automate, and Power Pages for makers, Copilot Studio for agents, and managed environment controls in the Power Platform admin center to govern who can use which AI features.</p>
+
+  <h3>Finance and operations agent chats with additional knowledge sources</h3>
+  <p>To let users chat with structured finance and operations data, add it as a knowledge source in Copilot Studio. Two patterns:</p>
+  <ul>
+    <li><strong>Virtual entities</strong> expose finance and operations data live in Dataverse without copying it.</li>
+    <li><strong>Native Dataverse tables</strong> populated through dual-write or another sync, then added as knowledge.</li>
+  </ul>
+  <p>Either can ground Copilot for finance and operations apps, custom agents, or Microsoft 365 Copilot agents. Answers respect what each user can access.</p>
+
+  <h3>Knowledge sources for in-app help and guidance (Finance and SCM)</h3>
+  <ol>
+    <li>Open Copilot Studio in the Dataverse environment linked to the finance and operations environment.</li>
+    <li>Open the agent named <em>Copilot for finance and operations apps</em>.</li>
+    <li>On the Knowledge tab, upload files (for example PDF or Word) such as internal procedures; they flow to the out-of-box Conversational boosting topic.</li>
+    <li>For SharePoint or other source types, add your own topic with a generative answers node.</li>
+    <li>Optionally enable AI general knowledge, which is off by default and raises the risk of incorrect answers.</li>
+  </ol>
+  <div class="callout warn"><span class="callout-title">Watch out</span><p>The help-and-guidance topic assumes its knowledge is about using the product. Adding unrelated content can make answers imply false product behavior. Virtual entities are not supported as knowledge for generative help and guidance; use them for data-chat agents instead.</p></div>
+</section>
+
+<section id="cheat">
+  <div class="week-head"><h2>Night-before cheat sheet</h2><span class="wgoal">The highest-yield pairings for Domain 2.</span></div>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Agent type by trigger</h3><ul>
+      <li>User asks, agent answers: prompt-and-response.</li>
+      <li>User asks, agent acts: task agent.</li>
+      <li>Event or schedule, no user: autonomous agent (generative orchestration).</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Orchestration</h3><ul>
+      <li>Generative: descriptions drive routing; multi-intent; default.</li>
+      <li>Standard NLU: trigger phrases; simple and deterministic.</li>
+      <li>NLU+: high-accuracy enterprise classic option.</li>
+      <li>CLU: Azure AI Language model; classic only.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Topics</h3><ul>
+      <li>Conversational boosting: generative answers when no topic matches.</li>
+      <li>Fallback: low-confidence understanding.</li>
+      <li>Escalate: hand off to a person.</li>
+      <li>System topics: turn off, never delete.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Foundry Tools</h3><ul>
+      <li>Standard forms at volume: Document Intelligence.</li>
+      <li>Variable docs, NL schema, confidence: Content Understanding.</li>
+      <li>Retrieval for RAG: Azure AI Search.</li>
+      <li>Prompt injection and harm: Content Safety.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Extensibility</h3><ul>
+      <li>Declarative: Copilot&rsquo;s brain, your instructions, knowledge, actions.</li>
+      <li>Custom engine: your orchestrator and models; proactive; external channels.</li>
+      <li>MCP: tools and resources. A2A/connected agents: other agents.</li>
+      <li>No API: Computer Use (adaptive) or desktop flows (recorded).</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Prebuilt first</h3><ul>
+      <li>Outlook/Teams sellers or Salesforce: Microsoft 365 Copilot for Sales.</li>
+      <li>In-app CRM Copilot vocabulary: glossary and synonyms in Copilot Studio.</li>
+      <li>F&amp;O data chat: virtual entities or Dataverse tables as knowledge.</li>
+      <li>F&amp;O help: upload files to the Copilot for finance and operations apps agent.</li>
+      <li>Power Platform Well-Architected: five pillars, Experience Optimization (not Cost).</li>
+    </ul></div>
+  </div>
+  <div class="callout key"><span class="callout-title">Final reminder</span><p>When two answers both work, the exam usually prefers the one that is prebuilt, least privileged, governed by existing controls (DLP, Purview, managed environments), and simplest to maintain through solutions and pipelines.</p></div>
+</section>
+
+<div class="btn-row"><a class="btn" href="drills.html?set=d-2-1">Drill 2.1</a> <a class="btn secondary" href="drills.html?set=d-2-2">Drill 2.2</a> <a class="btn secondary" href="drills.html?set=d-2-3">Drill 2.3</a></div>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

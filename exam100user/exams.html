@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Exams &mdash; AB-100 Prep</title>
+<meta name="description" content="Three timed AB-100 practice exams with estimated scaled scoring against the 700 passing mark and full review mode.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>AB-100 &mdash; Practice Exams</h1>
+<p class="lede" id="pageLede">Loading&hellip;</p>
+
+<div class="callout warn">
+    <span class="callout-title">Take these under real conditions</span>
+    <p style="margin-bottom:0">Phone in another room, no notes, no tabs, clock running. A score earned with Microsoft Learn
+        open in another tab measures your search skills, not your readiness.</p>
+</div>
+
+<div class="grid grid-3" id="examCards" style="margin:1.5rem 0"></div>
+
+<section>
+    <h2>When to take each one</h2>
+    <div class="table-scroll"><table class="data-table">
+        <thead><tr><th>Day</th><th>Date</th><th>Exam</th><th>Purpose</th></tr></thead>
+        <tbody id="schedBody"></tbody>
+    </table></div>
+</section>
+
+<section>
+    <h2>Exam-day habits to rehearse now</h2>
+    <div class="grid grid-2">
+        <div class="card">
+            <h3 style="margin-top:0">Pacing</h3>
+            <ul style="margin-bottom:0">
+                <li>Budget about <strong>two minutes per question</strong>. Case studies take longer, so bank time on short items.</li>
+                <li>Be at the halfway point by the halfway mark. Check twice, not constantly.</li>
+                <li>If a question passes three minutes, answer it, flag it, and move on.</li>
+                <li>Finish each case study before leaving it; the real exam may not let you return.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3 style="margin-top:0">Reading architect questions</h3>
+            <ul style="margin-bottom:0">
+                <li>List the constraints first: data residency, cost, time to value, skills on the team, existing licenses.</li>
+                <li><em>Minimize development effort</em> usually points to a prebuilt or low-code option.</li>
+                <li><em>Full control of the model or orchestration</em> usually points to Microsoft Foundry.</li>
+                <li>An option that meets the goal but breaks a governance requirement is wrong, no matter how elegant.</li>
+                <li><strong>Never leave anything blank.</strong> There is no penalty for a wrong answer.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>How the score is estimated</h2>
+    <div class="card">
+        <p>Microsoft reports AB-100 results on a <strong>1&ndash;1,000</strong> scale and passes at <strong>700</strong>.
+            The conversion from raw answers is not published, and questions can be weighted differently, so no practice
+            test can produce your exact score.</p>
+        <p style="margin-bottom:0">This site anchors a curve so that <strong>70% correct lands on 700</strong>. Read it as a
+            readiness signal: <span class="badge good">780+</span> ready, <span class="badge good">700&ndash;779</span>
+            likely pass with little margin, <span class="badge amber">640&ndash;699</span> close, and
+            <span class="badge bad">below 640</span> means the domain breakdown is where to focus.</p>
+    </div>
+    <div class="callout tip">
+        <span class="callout-title">Both outlines are covered</span>
+        <p style="margin-bottom:0">Each exam has about 17 Plan, 16 Design, and 17 Deploy questions. That is a balanced mix
+            between the current outline (Deploy-heavy) and the upcoming November 16, 2026 outline (Plan-heavy). The results
+            screen shows your per-domain percentage next to the weight for your exam date.</p>
+    </div>
+</section>
+
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/exam1.js"></script>
+<script src="assets/data/exam2.js"></script>
+<script src="assets/data/exam3.js"></script>
+<script>
+(function () {
+    "use strict";
+    var META = {
+        exam1: { n: 1, planDay: 1, tag: "Baseline", cls: "", href: "practice-exam-1.html",
+                 purpose: "Your starting point. Take it before you read a guide so the result shows your real gaps.",
+                 short: "Cold baseline across all three domains." },
+        exam2: { n: 2, planDay: 11, tag: "Checkpoint", cls: "amber", href: "practice-exam-2.html",
+                 purpose: "After the Plan week and most of the Design week. Did the targeted work move your weak domain?",
+                 short: "Midpoint checkpoint." },
+        exam3: { n: 3, planDay: 18, tag: "Dress rehearsal", cls: "good", href: "practice-exam-3.html",
+                 purpose: "Hardest of the three, with a mini case study. Take it at your real appointment time.",
+                 short: "Dress rehearsal at your appointment time." }
+    };
+    function stats(key) {
+        var e = (window.AP_DATA || {})[key];
+        if (!e) return { q: 0, min: "\u2014" };
+        var n = 0;
+        for (var u = 0; u < e.units.length; u++) n += e.units[u].questions.length;
+        return { q: n, min: e.timeMinutes };
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        var hist = AP.store.get("history", {}), keys = AP.EXAM.exams, total = 0, html = "", rows = "";
+        for (var z = 0; z < keys.length; z++) total += stats(keys[z]).q;
+        document.getElementById("pageLede").innerHTML = "Three timed exams, one per checkpoint in the " + AP.planDays() +
+            "-day plan &mdash; " + total + " original questions across the three domains. Passing is <strong>700</strong>.";
+
+        for (var i = 0; i < keys.length; i++) {
+            var m = META[keys[i]], s = stats(keys[i]), run = hist[keys[i]];
+            var status = run ? '<div class="callout ' + (run.passed ? "key" : "warn") + '" style="margin:.9rem 0 0">' +
+                '<span class="callout-title">' + (run.passed ? "Passed" : "Completed") + "</span>" +
+                '<p style="margin-bottom:0">Scaled <strong>' + run.scaled + "</strong> &middot; " + run.right + " of " +
+                run.total + " correct.</p></div>" : "";
+            html += '<a class="card card-link" href="' + m.href + '"><div class="card-icon ' + m.cls + '">' + m.n + "</div>" +
+                "<h3>Exam " + m.n + ' <span class="badge ' + (m.cls || "accent") + '">' + m.tag + "</span></h3>" +
+                '<p class="muted" style="font-size:.86rem;margin-bottom:.5rem"><strong>Day ' + m.planDay + " &middot; " +
+                AP.fmtDate(AP.dateForDay(m.planDay)) + "</strong></p><p>" + m.purpose + "</p>" +
+                '<p class="faint" style="margin-bottom:0"><small>' + s.q + " questions &middot; " + s.min +
+                " minutes &middot; passing 700</small></p>" + status + "</a>";
+            rows += "<tr><td><strong>Day " + m.planDay + "</strong></td><td>" + AP.fmtDate(AP.dateForDay(m.planDay)) +
+                "</td><td>Exam " + m.n + "</td><td>" + m.short + "</td></tr>";
+        }
+        rows += "<tr><td><strong>Exam day</strong></td><td>" + AP.fmtDate(AP.examDate()) +
+            '</td><td><span class="badge good">The real AB-100</span></td><td>The one that counts.</td></tr>';
+        document.getElementById("examCards").innerHTML = html;
+        document.getElementById("schedBody").innerHTML = rows;
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan AI-Powered Business Solutions &mdash; AB-100 Prep</title>
+<meta name="description" content="AB-100 study guide for Domain 1, Plan AI-powered business solutions: requirements and grounding data, overall AI strategy, multi-agent design, custom models, prompt guidance, and ROI, TCO, and build vs buy vs extend decisions.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Plan AI-Powered Business Solutions</h1>
+<p class="lede">Domain 1 is where the architect earns their title: deciding <em>whether</em> AI fits, <em>which</em> Microsoft platform should carry it, and <em>whether</em> it pays off. It carries a weight of 25&ndash;30% on the outline in effect until November 15, 2026, rising to 35&ndash;40% on the upcoming November 16, 2026 outline, which makes it the largest domain on the new exam. Expect scenario questions that hand you a business problem and ask for the BEST or MOST cost-effective approach.</p>
+
+<div class="btn-row">
+  <a class="btn sm" href="#obj-1-1">1.1 Analyze requirements</a>
+  <a class="btn sm" href="#obj-1-2">1.2 Design AI strategy</a>
+  <a class="btn sm" href="#obj-1-3">1.3 Costs and benefits</a>
+  <a class="btn sm secondary" href="#cheat">Cheat sheet</a>
+</div>
+
+<div class="callout key"><span class="callout-title">How to think on Domain 1</span><p>Microsoft&rsquo;s own adoption guidance repeats one rule: choose the option that meets the requirement with the <strong>least customization and the least operational responsibility</strong>. Use what exists, then configure, then extend, and only then build. Most wrong answers on this domain are technically possible but over-engineered.</p></div>
+
+<!-- ============================ 1.1 ============================ -->
+<section id="obj-1-1">
+  <div class="week-head"><h2>1.1 Analyze requirements for AI-powered business solutions</h2><span class="wgoal">Decide whether an agent fits the task, judge whether the grounding data is fit for purpose, and shape data so other AI systems can use it.</span></div>
+
+  <h3>Assess agents for task automation, data analytics, and decision-making</h3>
+  <p>Before you pick a product, classify the work. An agent is a good fit when the task involves language, judgment over unstructured content, or multistep coordination across systems. It is a poor fit when a deterministic rule, a report, or a classic workflow already solves the problem more cheaply and predictably.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Work pattern</th><th>Good agent signals</th><th>Red flags (use something simpler)</th><th>Typical Microsoft fit</th></tr>
+  </thead><tbody>
+    <tr><td>Task automation</td><td>Unstructured inputs (email, forms, chat), variable steps, needs to call several systems, human hands off repetitive triage.</td><td>Fixed inputs and fixed steps with no interpretation; a cloud flow or business rule is enough.</td><td>Copilot Studio agent with agent flows or tools; autonomous agents triggered by events.</td></tr>
+    <tr><td>Data analytics</td><td>Users ask ad hoc natural-language questions over governed data; need summaries and explanations, not just numbers.</td><td>Same KPI every week for the same audience; a Power BI report is cheaper and auditable.</td><td>Copilot in Power BI or Fabric data agents; Microsoft 365 Copilot over shared files.</td></tr>
+    <tr><td>Decision-making</td><td>Recommendation with explanation where a human approves; many weak signals to weigh.</td><td>High-stakes, regulated decisions requiring full explainability with no human review.</td><td>Agent recommends, human approves (human in the loop); predictive models in Foundry or AI Builder for scoring.</td></tr>
+  </tbody></table></div>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Autonomy level</h3><p>Map each task to <strong>assist</strong> (suggests), <strong>act with approval</strong> (drafts and waits), or <strong>act autonomously</strong> (executes within guardrails). Higher autonomy demands stronger identity, logging, and rollback.</p></div>
+    <div class="card"><h3 style="margin-top:0">Measurable outcome</h3><p>Every candidate task needs a baseline: handling time, error rate, backlog size, or conversion. No baseline means no ROI story later in 1.3.</p></div>
+    <div class="card"><h3 style="margin-top:0">Risk and reversibility</h3><p>Ask what happens if the agent is wrong. Reversible, low-impact actions are good first candidates; irreversible financial or legal actions need approvals.</p></div>
+  </div>
+
+  <h3>Review grounding data</h3>
+  <p>Generative answers are only as good as the content the agent retrieves. Grounding data review is a requirements activity, not a post-launch fix. The exam lists five quality dimensions; know what each one means and how you would test it.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Dimension</th><th>Question to ask</th><th>How you check it</th><th>Typical remediation</th></tr>
+  </thead><tbody>
+    <tr><td><span class="badge accent">Accuracy</span></td><td>Is the content factually correct?</td><td>Sample documents against the system of record; have subject matter experts validate.</td><td>Fix at the source, assign content owners, remove contradicting copies.</td></tr>
+    <tr><td><span class="badge accent">Relevance</span></td><td>Does it actually answer the questions users will ask?</td><td>Build a test question set from real tickets or chats and measure retrieval hits.</td><td>Narrow the knowledge scope; exclude unrelated libraries; add missing content.</td></tr>
+    <tr><td><span class="badge accent">Timeliness</span></td><td>Is it current, and how quickly do changes reach the agent?</td><td>Check last-modified dates, refresh or index schedules, and versioning.</td><td>Archive outdated policies; set review dates; choose live connections over static uploads when freshness matters.</td></tr>
+    <tr><td><span class="badge accent">Cleanliness</span></td><td>Is it free of duplicates, noise, broken formatting, and conflicting versions?</td><td>Look for duplicate files, scanned images without text, inconsistent terms.</td><td>Deduplicate, convert to text-friendly formats, standardize terminology, add metadata.</td></tr>
+    <tr><td><span class="badge accent">Availability</span></td><td>Can the agent reach it securely, with the right permissions, when needed?</td><td>Confirm connectors, authentication, licensing, network paths, and permission trimming.</td><td>Use supported connectors; fix oversharing before launch; plan for source outages.</td></tr>
+  </tbody></table></div>
+  <div class="callout warn"><span class="callout-title">Oversharing is an availability problem too</span><p>Microsoft 365 Copilot and SharePoint-grounded agents respect the user&rsquo;s existing permissions. If a site is shared with everyone, the agent can surface it to everyone. Review permissions and sensitivity labels with Microsoft Purview <em>before</em> broad rollout, not after a leak.</p></div>
+
+  <h3>Organize business solution data for other AI systems</h3>
+  <p>Architects increasingly design data once and serve it to many AI consumers: Microsoft 365 Copilot, Copilot Studio agents, Foundry agents, and analytics. Good organization makes data discoverable, permission-aware, and chunkable.</p>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Structure and semantics</h3><ul>
+      <li>Keep transactional business data in <strong>Dataverse</strong> or the system of record with clear table and column descriptions; AI uses names and descriptions to reason.</li>
+      <li>Unify analytical data in <strong>Microsoft Fabric / OneLake</strong> and expose curated semantic models.</li>
+      <li>Define a shared business glossary so &ldquo;customer,&rdquo; &ldquo;account,&rdquo; and &ldquo;case&rdquo; mean the same thing everywhere.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Access paths for AI</h3><ul>
+      <li><strong>Microsoft 365 Copilot connectors</strong> bring external content into Microsoft Graph so Copilot and agents can ground on it.</li>
+      <li><strong>Azure AI Search</strong> indexes (chunked, vectorized, with metadata filters) serve Foundry and Copilot Studio retrieval.</li>
+      <li><strong>Connectors, APIs, and MCP servers</strong> expose live actions and data to agents.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Document hygiene for retrieval</h3><ul>
+      <li>Prefer text-based formats with headings; break giant documents into topic-sized sections.</li>
+      <li>Tag content with owner, product, region, and effective date metadata.</li>
+      <li>One authoritative version per policy.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Governance carried with the data</h3><ul>
+      <li>Sensitivity labels and permissions must travel with the content into indexes.</li>
+      <li>Record lineage so you can explain where an answer came from.</li>
+      <li>Classify data residency needs early; they constrain region choices later.</li>
+    </ul></div>
+  </div>
+  <div class="callout trap"><span class="callout-title">Exam traps for 1.1</span><p>&ldquo;Use AI&rdquo; is not always the answer. If a scenario describes a fixed, rule-based process, the BEST answer is often a flow or business rule, not an agent.</p><p>Do not confuse <em>relevance</em> (does it answer the question) with <em>accuracy</em> (is it correct) or <em>timeliness</em> (is it current). Scenario wording such as &ldquo;last year&rsquo;s price list&rdquo; points to timeliness; &ldquo;three conflicting versions&rdquo; points to cleanliness.</p><p>Fine-tuning does not fix bad grounding data. Fix the data first.</p></div>
+  <div class="btn-row"><a class="btn sm" href="drills.html?set=d-1-1">Drill 1.1</a></div>
+</section>
+
+<!-- ============================ 1.2 ============================ -->
+<section id="obj-1-2">
+  <div class="week-head"><h2>1.2 Design overall AI strategy</h2><span class="wgoal">Follow the CAF AI adoption path, pick the right platform for each agent, plan multi-agent designs, and set standards for prompts, models, and the AI Center of Excellence.</span></div>
+  <div class="btn-row">
+    <a class="btn sm ghost" href="#caf">CAF adoption</a>
+    <a class="btn sm ghost" href="#platform">Platform choice</a>
+    <a class="btn sm ghost" href="#multiagent">Multi-agent</a>
+    <a class="btn sm ghost" href="#prebuilt">Prebuilt agents</a>
+    <a class="btn sm ghost" href="#constraints">Constraints</a>
+    <a class="btn sm ghost" href="#knowledge">Knowledge in Copilot Studio</a>
+    <a class="btn sm ghost" href="#custom-models">Custom models and SLMs</a>
+    <a class="btn sm ghost" href="#prompts">Prompts</a>
+    <a class="btn sm ghost" href="#coe">AI CoE</a>
+    <a class="btn sm ghost" href="#d365">Multiple D365 apps</a>
+  </div>
+
+  <h3 id="caf">Cloud Adoption Framework AI adoption process</h3>
+  <p>The Cloud Adoption Framework (CAF) for Azure treats AI as an adoption journey. The current guidance starts with an executive <strong>AI strategy</strong> foundation, then moves through <strong>Plan</strong>, <strong>Ready</strong>, and a combined <strong>Govern, Secure, Manage</strong> stage. Each step builds on the one before.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Stage</th><th>Core question</th><th>Architect deliverables</th></tr>
+  </thead><tbody>
+    <tr><td><span class="badge accent">Strategy</span></td><td>Where can AI create value, and is it worth it?</td><td>Executive sponsorship and an AI charter with business outcomes and decision rights; central ownership of AI policy (for example an AI CoE); approved workforce access paired with training; prioritized use cases; choice between enhancing individual efficiency and automating business functionality; data foundation needs.</td></tr>
+    <tr><td><span class="badge accent">Plan</span></td><td>How do we move use cases into production?</td><td>Skills assessment and gap plan, proofs of concept, delivery roadmap, responsible AI checkpoints, resourcing.</td></tr>
+    <tr><td><span class="badge accent">Ready</span></td><td>Is the environment prepared?</td><td>How AI workloads fit into the Azure landing zone (networking, identity, regions, quotas); Power Platform environment strategy; reference architectures.</td></tr>
+    <tr><td><span class="badge accent">Govern</span></td><td>What rules apply and how do we enforce them?</td><td>Responsible AI policies, risk assessment, Azure Policy and Power Platform DLP, model and agent inventory.</td></tr>
+    <tr><td><span class="badge accent">Secure</span></td><td>How do we protect AI assets and data?</td><td>Identity for agents, threat protection, data protection with Purview, prompt-injection mitigations.</td></tr>
+    <tr><td><span class="badge accent">Manage</span></td><td>How do we operate it over time?</td><td>Monitoring, cost management, model lifecycle and retirement, business continuity.</td></tr>
+  </tbody></table></div>
+  <p>CAF also publishes an <strong>AI agent adoption</strong> series that applies the same thinking to agents across four areas: plan for agents (business plan, technology plan, organizational readiness, data architecture), govern and secure agents, build agents, and manage agents.</p>
+  <div class="callout tip"><span class="callout-title">CAF decision rule worth memorizing</span><p>CAF guidance says to approve the AI solution that meets requirements with the <strong>least operational responsibility</strong>: SaaS (Microsoft 365 Copilot, extensibility, Copilot Studio) before PaaS (Foundry, Fabric, Azure Machine Learning) before infrastructure (bring your own model on VMs or AKS). Infrastructure should not be the default.</p></div>
+
+  <h3>Strategy for building AI and agents</h3>
+  <p>CAF frames two broad purposes. <strong>Enhance individual efficiency</strong>: Microsoft 365 Copilot, in-product Copilots (Dynamics 365, Power Platform, Fabric, GitHub, Azure), and role-based Copilots and agents. <strong>Automate business functionality</strong>: agents built with Microsoft 365 Copilot extensibility, Copilot Studio, or Foundry. A sound agent strategy also defines which teams may build what (makers versus pro developers), which environments they build in, how agents are approved and published, and how success is measured.</p>
+
+  <h3 id="platform">Build custom agents vs extend Microsoft 365 Copilot</h3>
+  <p>This is the most tested decision in the domain. Start where the users already work and move right only when a requirement forces you to.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Option</th><th>Orchestrator and model</th><th>Choose it when</th><th>Trade-offs</th></tr>
+  </thead><tbody>
+    <tr><td><strong>Declarative agent</strong> for Microsoft 365 Copilot (Agent Builder, Copilot Studio, or Microsoft 365 Agents Toolkit)</td><td>Copilot&rsquo;s own orchestrator and foundation models</td><td>Users live in Microsoft 365 apps; you need custom instructions, knowledge (SharePoint, OneDrive, Teams, Copilot connectors), and some actions; you want to inherit Microsoft 365 security, compliance, and responsible AI controls.</td><td>No choice of model or orchestration; user-initiated only (no proactive triggers); requires Microsoft 365 Copilot licensing or metered usage.</td></tr>
+    <tr><td><strong>Copilot Studio custom agent</strong></td><td>Copilot Studio generative orchestration (managed SaaS)</td><td>Low-code business process automation; multiple channels (Teams, web, Microsoft 365 Copilot, contact center); autonomous triggers; agent flows; connectors to Dataverse and 1,000+ services; makers own it.</td><td>Billed by usage (Copilot Credits); governed through Power Platform environments and DLP; less control than pro-code.</td></tr>
+    <tr><td><strong>Custom engine agent</strong> built pro-code with <strong>Microsoft Foundry</strong> (Foundry Agent Service) or the Microsoft 365 Agents SDK</td><td>Your own orchestration and your choice of models (LLM, SLM, fine-tuned, industry)</td><td>Complex business logic, specific or fine-tuned models, multimodal needs, strict latency/scale requirements, external channels, group collaboration in Teams channels or meetings.</td><td>You own hosting, security, compliance, responsible AI evaluation, and ALM; needs pro-developer skills.</td></tr>
+  </tbody></table></div>
+  <div class="callout key"><span class="callout-title">Fast picker</span><p>&ldquo;Inside Microsoft 365, use Copilot&rsquo;s brain&rdquo; &rarr; declarative agent. &ldquo;Low-code, many channels, business process, autonomous&rdquo; &rarr; Copilot Studio. &ldquo;Bring my own model or orchestration, full control&rdquo; &rarr; Foundry custom engine agent. A Copilot Studio or Foundry agent can still be surfaced <em>inside</em> Microsoft 365 Copilot and Teams.</p></div>
+
+  <h3 id="multiagent">Multi-agent solutions with Microsoft 365 Copilot, Copilot Studio, and Foundry</h3>
+  <p>Split work into multiple agents when one agent&rsquo;s instructions, tools, or knowledge become too broad to orchestrate reliably, when different teams own different domains, or when parts need different models or security boundaries. Do not split just because you can; every hop adds latency, cost, and failure points.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Pattern</th><th>How it works</th><th>Microsoft building blocks</th></tr>
+  </thead><tbody>
+    <tr><td>Orchestrator with specialists</td><td>A primary agent receives the request and delegates to specialist agents chosen by their descriptions.</td><td>Copilot Studio <strong>child agents</strong> (lightweight, inside the parent) and <strong>connected agents</strong> (separately published Copilot Studio agents, Foundry agents, Fabric data agents, Microsoft 365 Agents SDK agents, or A2A agents).</td></tr>
+    <tr><td>Front door in Microsoft 365</td><td>Users start in Microsoft 365 Copilot or Teams; specialized agents do the domain work.</td><td>Copilot Studio or custom engine agents published to Microsoft 365 Copilot and Teams.</td></tr>
+    <tr><td>Sequential pipeline</td><td>Each agent transforms the output of the previous one (intake, enrich, validate, act).</td><td>Agent flows in Copilot Studio; workflows in Foundry Agent Service.</td></tr>
+    <tr><td>Concurrent fan-out</td><td>Several agents work on the same input in parallel; results are merged.</td><td>Pro-code orchestration in Foundry.</td></tr>
+    <tr><td>Handoff</td><td>Control passes to the agent (or human) best suited for the next step.</td><td>Copilot Studio transfer to agent or to a human in Dynamics 365 Contact Center.</td></tr>
+    <tr><td>Cross-platform collaboration</td><td>Agents built on different frameworks or by other vendors cooperate.</td><td><strong>Agent2Agent (A2A)</strong> protocol: agents discover each other through an agent card and delegate tasks.</td></tr>
+  </tbody></table></div>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">A2A: agent &harr; agent</h3><p>An open protocol for one agent to discover another (via its agent card), delegate a task, and receive results, regardless of who built it or where it runs. Use it when the other party is an <em>agent</em> with its own reasoning.</p></div>
+    <div class="card"><h3 style="margin-top:0">MCP: agent &harr; tools and data</h3><p>Model Context Protocol standardizes how an agent discovers and calls <em>tools, resources, and prompts</em> exposed by an MCP server. Use it when you want to plug reusable capabilities into many agents (Copilot Studio, Foundry, Microsoft 365 Copilot).</p></div>
+  </div>
+  <div class="callout warn"><span class="callout-title">Connecting external agents shifts responsibility to you</span><p>When a Copilot Studio agent delegates to an external agent, you are responsible for data flows and data sharing, the external agent&rsquo;s quality and security, permissions and approvals, and observability, identity, traceability, and human oversight. Write precise descriptions for every child or connected agent; the orchestrator routes based on them.</p></div>
+
+  <h3 id="prebuilt">Use cases for prebuilt agents</h3>
+  <p>Prebuilt agents deliver value fastest because Microsoft owns the model, orchestration, and updates. Check them first in every build-vs-buy discussion.</p>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Microsoft 365 Copilot</h3><p>Built-in agents such as Researcher (multistep research across work data and web) and Analyst (data analysis over files), plus agents in Teams and SharePoint, cover knowledge work without custom development.</p></div>
+    <div class="card"><h3 style="margin-top:0">Dynamics 365 and role-based</h3><p>Sales, customer service, contact center, finance, and supply chain apps include agents for qualification, case handling, knowledge, and supplier communication. Role-based Copilots and agents serve sales, service, finance, and security roles.</p></div>
+    <div class="card"><h3 style="margin-top:0">Templates</h3><p>Copilot Studio and Foundry offer agent templates. A template is a starting point you customize and own; it is not the same as a Microsoft-maintained prebuilt agent.</p></div>
+  </div>
+
+  <h3 id="constraints">Solution rules and constraints: Copilot Studio, Foundry, Foundry Tools</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Platform</th><th>What it is for</th><th>Constraints to design around</th></tr>
+  </thead><tbody>
+    <tr><td><strong>Copilot Studio</strong></td><td>SaaS low-code agents, topics, tools, knowledge, agent flows, multichannel publishing.</td><td>Lives in a Power Platform environment (region, Dataverse, DLP policies, managed environments); usage billed in Copilot Credits; documented limits on orchestration and knowledge sources; connector availability and authentication; ALM through solutions and pipelines.</td></tr>
+    <tr><td><strong>Microsoft Foundry</strong></td><td>PaaS for pro-code agents and AI apps: Foundry Models catalog, Foundry Agent Service, evaluations, fine-tuning, model router, content safety.</td><td>Azure subscription, RBAC, and networking; model availability differs by region and deployment type; quota (tokens per minute) and throughput planning; you own evaluation, monitoring, and responsible AI testing; pay for model usage and supporting services.</td></tr>
+    <tr><td><strong>Foundry Tools</strong> (formerly Azure AI services)</td><td>Prebuilt APIs for language, speech, vision, translation, document intelligence, and content safety, plus Azure AI Search for retrieval.</td><td>Task-specific, not general reasoning; per-transaction or tier pricing; regional availability; some features need custom training data (for example custom extraction or classification models).</td></tr>
+  </tbody></table></div>
+
+  <h3 id="knowledge">Generative AI and knowledge sources in Copilot Studio agents</h3>
+  <p><strong>Generative orchestration</strong> is the default. The agent picks topics, tools, child or connected agents, and knowledge by their <em>descriptions</em>, can combine several in one answer, and generates questions to fill missing inputs. <strong>Classic orchestration</strong> routes by trigger phrases to a single topic and uses knowledge mainly as a fallback (the conversational boosting system topic).</p>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Common knowledge sources</h3><ul>
+      <li>Public websites</li>
+      <li>SharePoint sites and OneDrive files (answers are trimmed to the signed-in user&rsquo;s permissions)</li>
+      <li>Uploaded files</li>
+      <li>Dataverse tables</li>
+      <li>Microsoft 365 Copilot connectors and enterprise systems through connectors</li>
+      <li>Azure AI Search and other custom data</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Design choices</h3><ul>
+      <li>Allow or block the model&rsquo;s <strong>general knowledge</strong>; block it when answers must come only from approved sources.</li>
+      <li>Write clear knowledge descriptions so the orchestrator searches the right source.</li>
+      <li>Use authored topics for business-critical, deterministic paths; let generative answers handle the long tail.</li>
+      <li>Uploaded files are a snapshot; live sources stay current.</li>
+    </ul></div>
+  </div>
+
+  <h3 id="custom-models">When to create custom AI models</h3>
+  <p>Customize in increasing order of cost and effort. Move to the next rung only when evaluation shows the current rung cannot meet the requirement.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Approach</th><th>Solves</th><th>Does not solve</th><th>Choose when</th></tr>
+  </thead><tbody>
+    <tr><td><span class="badge good">1. Prompt engineering</span></td><td>Tone, format, task framing, simple rules.</td><td>Missing or private knowledge.</td><td>Always first; cheapest and fastest to change.</td></tr>
+    <tr><td><span class="badge good">2. Retrieval-augmented generation (RAG)</span></td><td>Answers grounded in current, private, permission-aware content with citations.</td><td>Consistent style or narrow specialized behavior at scale.</td><td>Knowledge changes often or must be cited; the most common enterprise answer.</td></tr>
+    <tr><td><span class="badge amber">3. Fine-tuning</span></td><td>Consistent style or schema, better tool selection, shorter prompts, specializing a smaller model to match a larger one.</td><td>Fresh facts (training is a snapshot); fine-tuning does not replace retrieval for changing knowledge.</td><td>You have quality labeled examples, prompts are bloated with few-shot examples, or latency/cost needs a smaller model.</td></tr>
+    <tr><td><span class="badge bad">4. Custom or trained model</span></td><td>Prediction, classification, anomaly detection, or domain tasks no foundation model handles.</td><td>Anything a prebuilt service already covers.</td><td>Unique data and a non-generative task; use Azure Machine Learning, Fabric data science, Foundry Tools custom models, or AI Builder.</td></tr>
+  </tbody></table></div>
+
+  <h3>Customized small language models (SLMs)</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Factor</th><th>Small language model (for example the Phi family)</th><th>Large language model</th></tr>
+  </thead><tbody>
+    <tr><td>Best at</td><td>Narrow, well-defined tasks: classification, extraction, routing, short summaries.</td><td>Broad reasoning, open-ended generation, complex multistep planning.</td></tr>
+    <tr><td>Cost and latency</td><td>Lower per call; fast.</td><td>Higher per call; slower.</td></tr>
+    <tr><td>Deployment</td><td>Can run on devices, at the edge, or offline; easier to fine-tune.</td><td>Usually cloud-hosted.</td></tr>
+    <tr><td>Typical scenario</td><td>Factory-floor assistant with intermittent connectivity; high-volume ticket tagging; on-device privacy.</td><td>Contract analysis, research agents, multi-tool orchestration.</td></tr>
+  </tbody></table></div>
+  <p>A common pattern is to fine-tune an SLM on outputs from a larger model (teacher&ndash;student distillation) so a high-volume task runs cheaper while keeping acceptable quality, then validate against a held-out evaluation set.</p>
+
+  <h3 id="prompts">Prompt library guidelines</h3>
+  <p>A prompt library turns individual tricks into organizational assets. Treat prompts like code.</p>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">What every entry needs</h3><ul>
+      <li>Clear name, purpose, and business owner</li>
+      <li>Target audience or role and the app or agent it is tested with</li>
+      <li>Input variables and an example of good output</li>
+      <li>Version number, last review date, and change history</li>
+      <li>Data sensitivity note (what may and may not be pasted in)</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">How to run the library</h3><ul>
+      <li>Approval and review before publishing; retire stale prompts</li>
+      <li>Categorize by department and task so people find them</li>
+      <li>Retest when models or orchestrators change</li>
+      <li>Collect usage and feedback to promote the best prompts</li>
+      <li>Share through built-in prompt gallery features and training</li>
+    </ul></div>
+  </div>
+
+  <h3>Prompt engineering guidelines</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Technique</th><th>What to do</th><th>Why it helps</th></tr>
+  </thead><tbody>
+    <tr><td>Goal, context, source, expectations</td><td>State the task, the background, which data to use, and the desired format and tone (the structure Microsoft teaches for Microsoft 365 Copilot prompts).</td><td>Removes ambiguity for end-user prompts.</td></tr>
+    <tr><td>System message or agent instructions</td><td>Define role, scope, boundaries, refusal behavior, and tone up front.</td><td>Consistent behavior across conversations.</td></tr>
+    <tr><td>Few-shot examples</td><td>Show one to a few input/output pairs.</td><td>Teaches format without training.</td></tr>
+    <tr><td>Clear structure and delimiters</td><td>Separate instructions from content with headings or markers.</td><td>Reduces confusion and some injection risk.</td></tr>
+    <tr><td>Decompose the task</td><td>Ask for steps in order or chain smaller prompts.</td><td>Improves accuracy on complex work.</td></tr>
+    <tr><td>Ground and cite</td><td>Instruct the model to answer only from provided sources and say when it doesn&rsquo;t know.</td><td>Reduces fabricated answers.</td></tr>
+    <tr><td>Specify output format</td><td>Ask for a table, JSON schema, or word limit.</td><td>Makes output usable by people and downstream systems.</td></tr>
+    <tr><td>Iterate and evaluate</td><td>Test against a fixed question set and compare versions.</td><td>Evidence instead of opinion.</td></tr>
+  </tbody></table></div>
+
+  <h3 id="coe">Microsoft AI Center of Excellence elements</h3>
+  <p>CAF describes the AI CoE as an internal team that prevents fragmented, ungoverned AI adoption and provides business and technical consultation.</p>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Building the team</h3><ol>
+      <li>Secure executive sponsorship (steering committee, access to leadership)</li>
+      <li>Appoint a dedicated AI CoE leader</li>
+      <li>Assemble a multidisciplinary team: business leaders, data scientists, ML engineers, governance, security, and AI operations experts</li>
+      <li>Decide placement; extend an existing Cloud CoE when one exists instead of creating a silo</li>
+      <li>Define the operating model: centralized early, moving to advisory as maturity grows</li>
+    </ol></div>
+    <div class="card"><h3 style="margin-top:0">Responsibilities</h3><ul>
+      <li>Define AI strategy</li>
+      <li>Create intake and prioritization workflows for use cases</li>
+      <li>Define and enforce AI standards, including responsible AI</li>
+      <li>Lead pilot projects</li>
+      <li>Develop AI skills</li>
+      <li>Develop reusable assets (templates, patterns, prompt libraries)</li>
+      <li>Measure and report outcomes (adoption, compliance, cycle time)</li>
+      <li>Optionally manage shared AI services</li>
+    </ul></div>
+  </div>
+
+  <h3 id="d365">AI solutions that span multiple Dynamics 365 apps</h3>
+  <p>Cross-app scenarios, such as quote-to-cash or case-to-field-service, need a shared data layer and a coordinated agent design.</p>
+  <ul>
+    <li><strong>Dataverse</strong> is the common data platform for customer engagement apps; finance and operations data can be surfaced through virtual tables and dual-write.</li>
+    <li>Use each app&rsquo;s built-in Copilot and agents first, then add a Copilot Studio agent (or connected agents) to orchestrate steps that cross app boundaries.</li>
+    <li>Keep one business glossary across apps so AI interprets entities consistently.</li>
+    <li>Plan security roles per app; an agent should never see more than the user or its own identity is allowed to.</li>
+    <li>Plan end-to-end testing and ALM across all participating apps (covered in Domain 3).</li>
+  </ul>
+
+  <div class="callout trap"><span class="callout-title">Exam traps for 1.2</span><p>Declarative agents use <em>Copilot&rsquo;s</em> orchestrator and models. If the scenario requires a specific or fine-tuned model, custom orchestration, or proactive triggers, a declarative agent is wrong.</p><p>A2A connects agents to agents; MCP connects agents to tools and data. Swapping them is a classic distractor.</p><p>Fine-tuning is not the way to add frequently changing knowledge; RAG is.</p><p>The AI CoE should build on an existing Cloud CoE where possible and evolve from centralized to advisory, not the reverse.</p><p>A template is not a prebuilt agent: you own and maintain what you build from a template.</p></div>
+  <div class="btn-row"><a class="btn sm" href="drills.html?set=d-1-2">Drill 1.2</a></div>
+</section>
+
+<!-- ============================ 1.3 ============================ -->
+<section id="obj-1-3">
+  <div class="week-head"><h2>1.3 Evaluate costs and benefits</h2><span class="wgoal">Build a credible ROI case with full TCO, choose build, buy, or extend, and use model router to balance cost and quality.</span></div>
+
+  <h3>ROI criteria, including total cost of ownership</h3>
+  <p>ROI = (total benefits &minus; total costs) &divide; total costs, over a defined period. Present payback period alongside it. The most common architecture mistake is counting license price as the whole cost.</p>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0"><span class="badge good">Benefits</span></h3><ul>
+      <li>Time saved per task &times; volume &times; loaded labor rate (only if the time is redeployed)</li>
+      <li>Cost avoidance: fewer escalations, less outsourcing, deferred hiring</li>
+      <li>Revenue impact: faster response, higher conversion, upsell</li>
+      <li>Quality: lower error and rework rates, better first-contact resolution</li>
+      <li>Risk reduction: compliance, fewer missed obligations</li>
+      <li>Experience: CSAT, employee satisfaction, retention</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0"><span class="badge bad">TCO components</span></h3><ul>
+      <li>Licenses (per user) and consumption (Copilot Credits, model tokens, metered usage)</li>
+      <li>Azure services: AI Search, storage, networking, monitoring</li>
+      <li>Build: design, development, integration, testing</li>
+      <li>Data preparation and ongoing content curation</li>
+      <li>Change management, training, and adoption programs</li>
+      <li>Governance, security, and responsible AI reviews</li>
+      <li>Operations: monitoring, evaluation, model upgrades, support</li>
+    </ul></div>
+  </div>
+
+  <h3>ROI analysis for a business process</h3>
+  <ol>
+    <li><strong>Baseline</strong> the current process: volume, handling time, cost per transaction, error rate.</li>
+    <li><strong>Define the target state</strong>: which steps the agent assists or automates and the expected deflection or time reduction.</li>
+    <li><strong>Estimate benefits</strong> conservatively, with a ramp-up curve for adoption.</li>
+    <li><strong>Estimate TCO</strong> for every component above over the same period (often three years).</li>
+    <li><strong>Calculate</strong> ROI and payback; run sensitivity analysis on adoption and accuracy.</li>
+    <li><strong>Pilot and measure</strong> real metrics, then update the model before scaling.</li>
+  </ol>
+  <details class="acc"><summary>Worked example: invoice exception handling</summary><div class="acc-body">
+    <p>Woodgrove processes 10,000 invoice exceptions per year at 20 minutes each. An agent drafts the resolution and a clerk approves it, cutting handling to 8 minutes. That saves 2,000 hours. At a loaded rate of $50 per hour, gross benefit is $100,000 per year.</p>
+    <p>Annual TCO estimate: consumption $15,000, Azure services $5,000, build amortized over three years $20,000, operations and governance $10,000, training $5,000, total $55,000.</p>
+    <p>ROI = ($100,000 &minus; $55,000) &divide; $55,000 &asymp; 82% per year. If adoption reaches only 50%, benefit drops to $50,000 and ROI turns negative, which is why sensitivity analysis and a pilot matter. (Numbers are illustrative only.)</p>
+  </div></details>
+
+  <h3>Build vs buy vs extend</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Option</th><th>Examples</th><th>Choose when</th><th>Cost and risk profile</th></tr>
+  </thead><tbody>
+    <tr><td><span class="badge good">Buy</span> (use prebuilt)</td><td>Microsoft 365 Copilot and its built-in agents, Dynamics 365 Copilot features and agents, role-based Copilots.</td><td>A standard capability covers 80% or more of the need; speed to value matters; the process is not a differentiator.</td><td>Lowest build cost and operational burden; licensing cost; limited customization; Microsoft maintains it.</td></tr>
+    <tr><td><span class="badge amber">Extend</span></td><td>Declarative agents, Copilot connectors, Copilot Studio agents with connectors and tools, customizing Dynamics 365 Copilot.</td><td>Prebuilt is close but needs your data, terminology, or actions.</td><td>Moderate cost; you maintain the extensions; inherits much of the platform&rsquo;s security and compliance.</td></tr>
+    <tr><td><span class="badge bad">Build</span></td><td>Foundry custom engine agents, fine-tuned or custom models, custom orchestration.</td><td>The capability is a competitive differentiator, needs unique models or logic, or no product fits.</td><td>Highest build and run cost; full ownership of quality, security, responsible AI, and ALM; greatest flexibility.</td></tr>
+  </tbody></table></div>
+
+  <h3>Model router: send each request to the most suitable model</h3>
+  <p><strong>Model router</strong> in Microsoft Foundry is deployed like a single chat model. It evaluates each prompt (complexity, reasoning need, task type) in real time and forwards it to an underlying model, so simple prompts go to small, cheap models and hard prompts go to larger reasoning models.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Routing mode</th><th>Behavior</th><th>Fits</th></tr>
+  </thead><tbody>
+    <tr><td>Balanced (default)</td><td>Weighs cost and quality dynamically.</td><td>General-purpose workloads; start here.</td></tr>
+    <tr><td>Quality</td><td>Favors the most capable models.</td><td>Complex reasoning or critical outputs.</td></tr>
+    <tr><td>Cost</td><td>Favors cheaper models and escalates only when needed.</td><td>High-volume, budget-sensitive workloads.</td></tr>
+  </tbody></table></div>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="margin-top:0">Design levers</h3><ul>
+      <li><strong>Model subset</strong>: limit routing to approved models for cost, compliance, or data-zone reasons; new models are not added automatically.</li>
+      <li><strong>Automatic failover</strong> to the next suitable model; include at least two models in a subset to benefit.</li>
+      <li>Azure Policy deployment rules for Foundry models also govern which models a router can include.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Watch-outs</h3><ul>
+      <li>The effective context window is limited by the smallest model in the pool.</li>
+      <li>Responses can vary in style because different models answer; evaluate outputs per mode.</li>
+      <li>Monitor routing distribution to confirm the cost savings you promised.</li>
+    </ul></div>
+  </div>
+
+  <div class="callout trap"><span class="callout-title">Exam traps for 1.3</span><p>TCO is more than licensing. Answers that ignore data preparation, change management, or operations are incomplete.</p><p>Time saved is not money saved unless the time is redeployed or costs actually fall.</p><p>&ldquo;Build&rdquo; is rarely the MOST cost-effective answer when a prebuilt or extendable product meets the requirement.</p><p>Model router balances cost and quality across models; it does not replace content filters, retrieval, or evaluation.</p></div>
+  <div class="btn-row"><a class="btn sm" href="drills.html?set=d-1-3">Drill 1.3</a></div>
+</section>
+
+<!-- ============================ Cheat sheet ============================ -->
+<section id="cheat">
+  <div class="week-head"><h2>Night-before cheat sheet</h2><span class="wgoal">The decisions and lists most likely to appear in Domain 1 questions.</span></div>
+  <div class="grid grid-3">
+    <div class="card"><h3 style="margin-top:0">Grounding data: 5 dimensions</h3><ul>
+      <li>Accuracy: correct</li>
+      <li>Relevance: answers the real questions</li>
+      <li>Timeliness: current</li>
+      <li>Cleanliness: no duplicates or conflicts</li>
+      <li>Availability: reachable with the right permissions</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">CAF AI adoption</h3><ul>
+      <li>Strategy (lead, centralize governance, workforce access)</li>
+      <li>Plan</li>
+      <li>Ready (landing zone)</li>
+      <li>Govern, Secure, Manage</li>
+      <li>Least operational responsibility wins: SaaS &gt; PaaS &gt; IaaS</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Extend vs build</h3><ul>
+      <li>Declarative agent: Copilot&rsquo;s model and orchestrator, Microsoft 365 apps</li>
+      <li>Copilot Studio: low-code, multichannel, autonomous, Copilot Credits</li>
+      <li>Foundry custom engine: your model and orchestration, full ownership</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Customization ladder</h3><ol>
+      <li>Prompt engineering</li>
+      <li>RAG (fresh, private, cited knowledge)</li>
+      <li>Fine-tuning (style, schema, tools, smaller model)</li>
+      <li>Custom trained model (unique, non-generative tasks)</li>
+    </ol></div>
+    <div class="card"><h3 style="margin-top:0">Multi-agent</h3><ul>
+      <li>Child agent: lightweight, inside the parent</li>
+      <li>Connected agent: separate agent (Copilot Studio, Foundry, Fabric, Agents SDK, A2A)</li>
+      <li>A2A = agent to agent</li>
+      <li>MCP = agent to tools and data</li>
+      <li>Routing depends on good descriptions</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">AI CoE</h3><ul>
+      <li>Sponsor, leader, multidisciplinary team</li>
+      <li>Build on the Cloud CoE</li>
+      <li>Centralized first, advisory later</li>
+      <li>Strategy, intake, standards, pilots, skills, reusable assets, outcomes</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">SLM vs LLM</h3><ul>
+      <li>SLM: narrow, cheap, fast, edge/offline, easy to fine-tune</li>
+      <li>LLM: broad reasoning and open-ended generation</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">ROI and TCO</h3><ul>
+      <li>ROI = (benefits &minus; costs) &divide; costs</li>
+      <li>Baseline, target, benefits, TCO, calculate, pilot</li>
+      <li>TCO: licenses, consumption, Azure, build, data, change, governance, ops</li>
+      <li>Buy &gt; extend &gt; build unless differentiating</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Model router</h3><ul>
+      <li>Modes: Balanced (default), Quality, Cost</li>
+      <li>Model subset for approved models</li>
+      <li>Automatic failover</li>
+      <li>Context window = smallest model in the pool</li>
+    </ul></div>
+  </div>
+  <div class="callout key"><span class="callout-title">Generative vs classic orchestration in one line</span><p>Generative picks topics, tools, agents, and knowledge by <em>description</em> and can combine them; classic matches <em>trigger phrases</em> to one topic and falls back to knowledge.</p></div>
+</section>
+
+<div class="btn-row"><a class="btn" href="drills.html?set=d-1-1">Drill 1.1</a><a class="btn secondary" href="drills.html?set=d-1-2">Drill 1.2</a><a class="btn secondary" href="drills.html?set=d-1-3">Drill 1.3</a></div>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

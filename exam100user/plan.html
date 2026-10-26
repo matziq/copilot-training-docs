@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study Plan &mdash; AB-100 Prep</title>
+<meta name="description" content="A dated 21-day study plan for Microsoft Exam AB-100 that counts back from your exam date, with saved checkboxes.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1 id="planTitle">Study Plan</h1>
+<p class="lede" id="planLede">Loading&hellip;</p>
+
+<div id="planStatus"></div>
+
+<div class="card" style="margin:1.5rem 0">
+    <div class="meter-row" style="margin-bottom:1rem">
+        <span class="mlabel"><strong>Overall progress</strong></span>
+        <span class="meter"><i class="good" id="progMeter" data-pct="0"></i></span>
+        <span class="mval" id="progTxt">0 / 0</span>
+    </div>
+    <div class="btn-row">
+        <button class="btn" id="todayBtn">Jump to today</button>
+        <button class="btn secondary" id="printBtn">Print the plan</button>
+        <button class="btn ghost" id="resetBtn">Clear all checkboxes</button>
+    </div>
+</div>
+
+<div class="callout tip">
+    <span class="callout-title">How to use this</span>
+    <p style="margin-bottom:0">Do the day you are on, check the boxes as you go, and stop when you are done. Each day is
+        about 60&ndash;120 minutes. If you miss a day, do not double up &mdash; drop the lowest-value task and keep moving.
+        If your exam is before November 16, 2026, spend extra time on the Deploy days; on or after that date, lean into Plan and Design.</p>
+</div>
+
+<div class="callout warn">
+    <span class="callout-title">The rule that matters most</span>
+    <p style="margin-bottom:0">Review every practice exam the day <em>after</em> you take it, and read the explanation for
+        every question, including the ones you got right. Architect questions are about why the other three options
+        are worse; that reasoning is what transfers to the real exam.</p>
+</div>
+
+<div id="planRoot"></div>
+
+<div class="card" style="margin-top:2rem;border-color:var(--good)">
+    <h2 style="margin-top:0" id="examDayHead">Exam Day</h2>
+    <p id="examDayBody">No studying. You have done the work.</p>
+    <p style="margin-bottom:0"><a href="index.html#main">Review the exam-day checklist &rarr;</a></p>
+</div>
+
+</div></main>
+
+<footer id="footer"></footer>
+
+<script>
+/* tag: exam | plan | design | deploy | tools | learn */
+var PLAN = {
+    blocks: [
+        { title: "Week 1 \u2014 Baseline and Plan", goal: "Find your gaps, then build the strategy and requirements vocabulary the whole exam leans on.", days: [1, 7] },
+        { title: "Week 2 \u2014 Design", goal: "Agent types, Copilot Studio, Foundry, extensibility, and the Dynamics 365 prebuilt agents.", days: [8, 14] },
+        { title: "Week 3 \u2014 Deploy, rehearse, taper", goal: "Monitoring, testing, ALM, and governance, then a dress rehearsal and a deliberate taper.", days: [15, 21] }
+    ],
+    days: [
+    { d:1, focus:"Orientation + baseline exam", min:150, isExam:true, tasks:[
+        { tag:"learn", text:"Read the overview and the official study guide. Note which outline applies to your date.", href:"index.html" },
+        { tag:"exam", text:"<strong>Practice Exam 1</strong> \u2014 50 questions, 100 minutes, timed, cold. Do not study first.", href:"practice-exam-1.html" },
+        { tag:"tools", text:"Write down your scaled score and your three domain percentages.", href:"tools.html#errorlog" }
+    ]},
+    { d:2, focus:"Review Exam 1", min:90, isReview:true, tasks:[
+        { tag:"exam", text:"Review every question in Exam 1, including correct ones. Read both explanation paragraphs.", href:"practice-exam-1.html" },
+        { tag:"tools", text:"Log each miss in the error log with its cause: never knew it, misread the constraint, or picked a more complex option than needed.", href:"tools.html#errorlog" },
+        { tag:"learn", text:"Take Microsoft&rsquo;s free practice assessment once to see the official question style.", href:"https://learn.microsoft.com/en-us/credentials/certifications/exams/ab-100/" }
+    ]},
+    { d:3, focus:"Plan 1.1 \u2014 Analyze requirements", min:90, tasks:[
+        { tag:"plan", text:"Read the Plan guide, objective 1.1: business requirements, grounding data quality, Copilot vs. custom agent fit.", href:"guide-plan.html#obj-1-1" },
+        { tag:"plan", text:"Drill 1.1", href:"drills.html?set=d-1-1" },
+        { tag:"tools", text:"Flashcards: Plan: Strategy &amp; ROI deck, one pass.", href:"tools.html#flashcards" }
+    ]},
+    { d:4, focus:"Plan 1.2 \u2014 AI strategy", min:100, tasks:[
+        { tag:"plan", text:"Read objective 1.2: Cloud Adoption Framework for AI, AI Center of Excellence, build vs. buy vs. extend, model selection, multi-agent strategy.", href:"guide-plan.html#obj-1-2" },
+        { tag:"plan", text:"Drill 1.2", href:"drills.html?set=d-1-2" },
+        { tag:"learn", text:"Skim Microsoft Learn: Cloud Adoption Framework AI adoption scenario.", href:"https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/ai/" }
+    ]},
+    { d:5, focus:"Plan 1.3 \u2014 Costs and benefits", min:90, tasks:[
+        { tag:"plan", text:"Read objective 1.3: ROI, TCO, licensing and consumption models, when AI is the wrong tool.", href:"guide-plan.html#obj-1-3" },
+        { tag:"plan", text:"Drill 1.3", href:"drills.html?set=d-1-3" },
+        { tag:"plan", text:"Read the Plan cheat sheet out loud.", href:"guide-plan.html#cheat" }
+    ]},
+    { d:6, focus:"Plan repair day", min:75, isReview:true, tasks:[
+        { tag:"plan", text:"Redo any Plan drill under 75%.", href:"drills.html" },
+        { tag:"tools", text:"Work your error log: re-read the guide section for every Plan miss.", href:"tools.html#errorlog" },
+        { tag:"tools", text:"Flashcards: Exam Facts &amp; Strategy deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:7, focus:"Light day", min:45, isRest:true, tasks:[
+        { tag:"tools", text:"One pass through every flashcard deck you have touched. Nothing new.", href:"tools.html#flashcards" }
+    ]},
+    { d:8, focus:"Design 2.1 \u2014 Agents and Copilot Studio", min:120, tasks:[
+        { tag:"design", text:"Read objective 2.1 first half: agent types, topics, orchestration options, agent flows, prompt actions.", href:"guide-design.html#obj-2-1" },
+        { tag:"tools", text:"Flashcards: Copilot Studio deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:9, focus:"Design 2.1 \u2014 Foundry and data", min:120, tasks:[
+        { tag:"design", text:"Finish objective 2.1: Foundry Tools selection, grounding and retrieval, Power Platform AI components.", href:"guide-design.html#obj-2-1" },
+        { tag:"design", text:"Drill 2.1", href:"drills.html?set=d-2-1" },
+        { tag:"tools", text:"Flashcards: Microsoft Foundry &amp; Models deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:10, focus:"Design 2.2 \u2014 Extensibility", min:110, tasks:[
+        { tag:"design", text:"Read objective 2.2: declarative vs. custom engine agents, connectors and tools, MCP, A2A, Computer Use.", href:"guide-design.html#obj-2-2" },
+        { tag:"design", text:"Drill 2.2", href:"drills.html?set=d-2-2" },
+        { tag:"tools", text:"Flashcards: Microsoft 365 Copilot &amp; Extensibility deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:11, focus:"PRACTICE EXAM 2", min:130, isExam:true, tasks:[
+        { tag:"exam", text:"<strong>Practice Exam 2</strong> \u2014 timed, no notes.", href:"practice-exam-2.html" },
+        { tag:"tools", text:"Compare domain percentages with Exam 1. Weak on both = real gap.", href:"tools.html#errorlog" }
+    ]},
+    { d:12, focus:"Review Exam 2 + Design 2.3", min:120, isReview:true, tasks:[
+        { tag:"exam", text:"Review every question in Exam 2 and log misses.", href:"practice-exam-2.html" },
+        { tag:"design", text:"Read objective 2.3: Dynamics 365 finance, supply chain, sales, service, Contact Center, and Copilot for Sales/Service.", href:"guide-design.html#obj-2-3" },
+        { tag:"design", text:"Drill 2.3", href:"drills.html?set=d-2-3" }
+    ]},
+    { d:13, focus:"Design repair day", min:90, isReview:true, tasks:[
+        { tag:"design", text:"Redo any Design drill under 75%.", href:"drills.html" },
+        { tag:"design", text:"Read the Design cheat sheet.", href:"guide-design.html#cheat" },
+        { tag:"tools", text:"Flashcards: Dynamics 365 &amp; Power Platform AI deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:14, focus:"Light day", min:45, isRest:true, tasks:[
+        { tag:"tools", text:"Use the decision reference in Tools and quiz yourself on each row.", href:"tools.html#reference" }
+    ]},
+    { d:15, focus:"Deploy 3.1 + 3.2 \u2014 Monitor and test", min:120, tasks:[
+        { tag:"deploy", text:"Read objectives 3.1 and 3.2: analytics, telemetry, feedback loops, evaluations, test strategy.", href:"guide-deploy.html#obj-3-1" },
+        { tag:"deploy", text:"Drill 3.1", href:"drills.html?set=d-3-1" },
+        { tag:"deploy", text:"Drill 3.2", href:"drills.html?set=d-3-2" }
+    ]},
+    { d:16, focus:"Deploy 3.3 \u2014 ALM", min:110, tasks:[
+        { tag:"deploy", text:"Read objective 3.3: solutions, environments, environment variables, connection references, pipelines, Foundry and Dynamics 365 ALM.", href:"guide-deploy.html#obj-3-3" },
+        { tag:"deploy", text:"Drill 3.3", href:"drills.html?set=d-3-3" },
+        { tag:"tools", text:"Flashcards: ALM &amp; Monitoring deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:17, focus:"Deploy 3.4 \u2014 Responsible AI, security, governance", min:110, tasks:[
+        { tag:"deploy", text:"Read objective 3.4: Responsible AI principles, agent identity, DLP, Purview, prompt injection defenses, data residency.", href:"guide-deploy.html#obj-3-4" },
+        { tag:"deploy", text:"Drill 3.4", href:"drills.html?set=d-3-4" },
+        { tag:"tools", text:"Flashcards: Security, Governance &amp; Responsible AI deck.", href:"tools.html#flashcards" }
+    ]},
+    { d:18, focus:"PRACTICE EXAM 3 \u2014 dress rehearsal", min:130, isExam:true, tasks:[
+        { tag:"exam", text:"<strong>Practice Exam 3</strong> at your real appointment time. Hardest of the three.", href:"practice-exam-3.html" },
+        { tag:"tools", text:"Record the score. 750+ means you are ready; 700&ndash;750 means targeted repair; below 700, focus on the weakest domain.", href:"tools.html#calc" }
+    ]},
+    { d:19, focus:"Review Exam 3 + final repair", min:110, isReview:true, tasks:[
+        { tag:"exam", text:"Review every question in Exam 3.", href:"practice-exam-3.html" },
+        { tag:"tools", text:"Re-drill the two weakest objectives from your error log.", href:"drills.html" }
+    ]},
+    { d:20, focus:"Cheat sheets + flashcards", min:75, isRest:true, tasks:[
+        { tag:"learn", text:"Read all three cheat sheets.", href:"guide-plan.html#cheat" },
+        { tag:"tools", text:"One full flashcard pass, missed cards only on the second round.", href:"tools.html#flashcards" }
+    ]},
+    { d:21, focus:"Taper", min:30, isRest:true, tasks:[
+        { tag:"tools", text:"Skim the error log once. No new material.", href:"tools.html#errorlog" },
+        { tag:"exam", text:"Check ID, test setup or travel, and set two alarms. Stop by early evening.", href:"" }
+    ]}
+    ]
+};
+
+(function () {
+    "use strict";
+    var TAGS = { exam:"Exam", plan:"Plan", design:"Design", deploy:"Deploy", tools:"Tools", learn:"Learn" };
+    var TAGCLS = { exam:"tag-math", plan:"tag-reading", design:"tag-english", deploy:"tag-writing", tools:"tag-test", learn:"tag-science" };
+    var storeKey = "plan";
+
+    function totalTasks() {
+        var n = 0;
+        for (var i = 0; i < PLAN.days.length; i++) n += PLAN.days[i].tasks.length;
+        return n;
+    }
+
+    function render() {
+        var root = document.getElementById("planRoot");
+        var today = AP.currentPlanDay();
+        var html = "";
+        for (var w = 0; w < PLAN.blocks.length; w++) {
+            var blk = PLAN.blocks[w];
+            html += '<div class="week-head"><h2>' + blk.title + '</h2><span class="wgoal">' + blk.goal + "</span></div>";
+            for (var i = 0; i < PLAN.days.length; i++) {
+                var day = PLAN.days[i];
+                if (day.d < blk.days[0] || day.d > blk.days[1]) continue;
+                var cls = "day-card" + (day.d === today ? " is-today" : (day.d < today ? " is-past" : ""));
+                var hrs = day.min >= 120 ? (Math.floor(day.min / 60) + " hr" + (day.min % 60 ? " " + (day.min % 60) + " min" : "")) : day.min + " min";
+                var extra = day.isExam ? ' <span class="badge amber">Full exam</span>' :
+                    day.isReview ? ' <span class="badge teal">Repair day</span>' :
+                    day.isRest ? ' <span class="badge good">Light</span>' : "";
+                html += '<div class="' + cls + '" id="day-' + day.d + '"><div class="day-head">' +
+                    '<span class="day-chip">Day ' + day.d + "</span>" +
+                    '<span class="day-date">' + AP.fmtDate(AP.dateForDay(day.d)) + "</span>" +
+                    '<span class="day-focus">' + day.focus + extra + "</span>" +
+                    '<span class="day-time">' + hrs + "</span></div>";
+                for (var t = 0; t < day.tasks.length; t++) {
+                    var task = day.tasks[t], key = "d" + day.d + "-" + t;
+                    var ext = /^https?:/.test(task.href);
+                    var label = '<span class="tag ' + TAGCLS[task.tag] + '">' + TAGS[task.tag] + "</span>" + task.text;
+                    if (task.href) label += ' <a href="' + task.href + '"' + (ext ? ' target="_blank" rel="noopener"' : "") +
+                        ' style="font-size:.85em">open &rarr;</a>';
+                    html += '<div class="task"><input type="checkbox" id="' + key + '" data-key="' + key + '">' +
+                        '<label for="' + key + '">' + label + "</label></div>";
+                }
+                html += "</div>";
+            }
+        }
+        root.innerHTML = html;
+        AP.onCheckChange = updateProgress;
+        AP.bindPersistentChecks(storeKey, root);
+        updateProgress(AP.store.get(storeKey, {}));
+    }
+
+    function markCompleteDays(state) {
+        for (var i = 0; i < PLAN.days.length; i++) {
+            var day = PLAN.days[i], all = true;
+            for (var t = 0; t < day.tasks.length; t++) if (!state["d" + day.d + "-" + t]) { all = false; break; }
+            var node = document.getElementById("day-" + day.d);
+            if (node) node.classList.toggle("all-done", all);
+        }
+    }
+
+    function updateProgress(state) {
+        var done = 0, total = totalTasks();
+        for (var k in state) if (Object.prototype.hasOwnProperty.call(state, k)) done++;
+        AP.fillMeter(document.getElementById("progMeter"), Math.round(done / total * 100));
+        document.getElementById("progTxt").textContent = done + " / " + total;
+        markCompleteDays(state);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var planDays = AP.planDays(), examDate = AP.examDate();
+        document.getElementById("planTitle").textContent = "The " + planDays + "-Day Plan \u2014 AB-100";
+        document.getElementById("planLede").innerHTML =
+            AP.fmtDate(AP.dateForDay(1)) + " through " + AP.fmtDate(AP.dateForDay(planDays)) +
+            ", then you sit <strong>AB-100</strong> on " + AP.fmtLong(examDate) + ". One week per domain, three practice " +
+            "exams, a repair day after each, and a light final day so you arrive rested.";
+        document.getElementById("examDayHead").textContent = AP.fmtLong(examDate) + " \u2014 Exam Day";
+        document.getElementById("examDayBody").innerHTML =
+            "No studying. Bring matching ID, read every requirement in each scenario, finish each case study before leaving it, " +
+            "and answer every question. You need <strong>700</strong> to pass.";
+
+        document.getElementById("planStatus").innerHTML =
+            '<div class="card"><h3 style="margin-top:0">Your exam date</h3><div id="planDateEditor"></div></div>';
+        AP.renderDateEditor("planDateEditor");
+
+        render();
+
+        document.getElementById("todayBtn").onclick = function () {
+            var d = Math.min(planDays, Math.max(1, AP.currentPlanDay()));
+            var node = document.getElementById("day-" + d);
+            if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
+        };
+        document.getElementById("printBtn").onclick = function () { window.print(); };
+        document.getElementById("resetBtn").onclick = function () {
+            if (window.confirm("Uncheck every task in the plan?")) {
+                AP.store.set(storeKey, {});
+                render();
+                AP.toast("Plan reset.");
+            }
+        };
+        var d = AP.currentPlanDay();
+        if (d >= 1 && d <= planDays) {
+            var node = document.getElementById("day-" + d);
+            if (node) window.setTimeout(function () { node.scrollIntoView({ behavior: "smooth", block: "center" }); }, 350);
+        }
+    });
+})();
+</script>
+</body>
+</html>

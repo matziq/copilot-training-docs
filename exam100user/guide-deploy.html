@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deploy AI-Powered Business Solutions &mdash; AB-100 Prep</title>
+<meta name="description" content="AB-100 study guide for Domain 3, Deploy AI-powered business solutions: monitoring and tuning agents, testing, application lifecycle management, and responsible AI, security, and governance.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+
+<h1>Deploy AI-Powered Business Solutions</h1>
+<p class="lede">Domain 3 carries a weight of 40&ndash;45% on the outline in effect until November 15, 2026, which makes it the largest domain on the exam. On the upcoming November 16, 2026 outline it drops to 20&ndash;25%, but the skills stay the same: monitor and tune agents, test them, move them safely through environments, and keep them secure, governed, and responsible.</p>
+
+<div class="btn-row">
+  <a class="btn secondary" href="#obj-3-1">3.1 Monitor and tune</a>
+  <a class="btn secondary" href="#obj-3-2">3.2 Testing</a>
+  <a class="btn secondary" href="#obj-3-3">3.3 ALM</a>
+  <a class="btn secondary" href="#obj-3-4">3.4 Responsible AI and security</a>
+  <a class="btn ghost" href="#cheat">Cheat sheet</a>
+</div>
+
+<section id="obj-3-1">
+  <div class="week-head"><h2>3.1 Analyze, monitor, and tune AI-powered business solutions</h2><span class="wgoal">Pick the right monitoring tool for each layer, read the metrics correctly, and turn telemetry into a concrete tuning action.</span></div>
+  <p>An architect does not monitor &ldquo;the agent&rdquo; as a single box. Every solution has layers: the conversation experience, the orchestration and tools, the model, the grounding data, and the platform it runs on. Each layer has a different tool that sees it best. Exam scenarios usually describe a symptom and ask which tool or which change gets you to the root cause fastest.</p>
+
+  <h3>Monitoring tools by layer</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Tool</th><th>What it shows</th><th>Reach for it when</th></tr>
+  </thead><tbody>
+    <tr><td>Copilot Studio analytics</td><td>Built-in dashboards for sessions, engagement, resolution, escalation, abandonment, CSAT, topic usage, generative answer quality, and autonomous agent runs.</td><td>The business wants KPIs for a Copilot Studio agent with no extra setup, or you need to find which topics drive escalations.</td></tr>
+    <tr><td>Application Insights (Azure Monitor)</td><td>Custom telemetry: events, traces, dependencies, failures, and latency, queryable with Kusto (KQL) and usable for alerts and workbooks.</td><td>You need retention beyond built-in analytics, custom events from topics, alerting, or correlation with other Azure components. Copilot Studio agents can send telemetry to an Application Insights resource you connect in settings.</td></tr>
+    <tr><td>Microsoft Foundry observability</td><td>Tracing of agent runs (each model call, tool call, and retrieval step), continuous or scheduled evaluations, and monitoring dashboards for quality, safety, token usage, and latency.</td><td>A pro-code agent built on Foundry Agent Service or Foundry Models is giving poor answers and you need to see which step in the chain failed.</td></tr>
+    <tr><td>Power Platform admin center</td><td>Environment-level capacity, Copilot Studio and Power Automate usage, managed environment insights, data policies, and tenant-wide inventory of agents and apps.</td><td>Admins need cross-environment visibility, consumption tracking, or governance reports rather than per-agent conversation quality.</td></tr>
+    <tr><td>Microsoft 365 admin center (Copilot reports)</td><td>Microsoft 365 Copilot readiness and usage reports, active users by app, and agent usage in Microsoft 365.</td><td>Leadership asks about adoption of Microsoft 365 Copilot or declarative agents across the organization.</td></tr>
+    <tr><td>Microsoft Purview</td><td>Audit logs of Copilot and agent interactions, DSPM for AI risk reports, and sensitive data in prompts and responses.</td><td>The question is about compliance, oversharing, or who did what&mdash;not about answer quality.</td></tr>
+    <tr><td>Dynamics 365 and Contact Center analytics</td><td>Case, conversation, and handoff analytics on the service side, including how bot-to-human transfers perform.</td><td>You need end-to-end service metrics that cover both the agent and the human representative after escalation.</td></tr>
+  </tbody></table></div>
+
+  <h3>Key agent metrics</h3>
+  <p>Know what each metric means and, more importantly, what a bad value usually points to. In Copilot Studio, a session becomes <strong>engaged</strong> when it triggers a custom topic or enters a system topic such as Escalate, Fallback, or Conversational Boosting. Resolution, escalation, and abandonment are measured against engaged sessions.</p>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Metric</th><th>Definition</th><th>A bad value usually means</th></tr>
+  </thead><tbody>
+    <tr><td>Engagement rate</td><td>Share of sessions that became engaged.</td><td>Users don&rsquo;t know what the agent can do, or topic and knowledge coverage has gaps.</td></tr>
+    <tr><td>Resolution rate</td><td>Share of engaged sessions that ended resolved, either confirmed by the user or implied by the flow.</td><td>Answers are wrong, incomplete, or the agent can&rsquo;t complete the action the user needs.</td></tr>
+    <tr><td>Escalation rate</td><td>Share of engaged sessions handed to a human.</td><td>Missing topics, missing actions, or policy-required handoffs. Not always bad&mdash;some escalation is by design.</td></tr>
+    <tr><td>Abandonment rate</td><td>Share of engaged sessions that ended without resolution or escalation after a period of inactivity.</td><td>Confusing conversation design, slow responses, loops, or excessive questions.</td></tr>
+    <tr><td>CSAT</td><td>Average customer satisfaction score from the end-of-conversation survey.</td><td>Perceived quality issues; read alongside comments and transcripts.</td></tr>
+    <tr><td>Latency</td><td>Time to first response and total response time, often tracked as median and P95.</td><td>Large prompts, too many sequential tool calls, slow connectors, or an oversized model.</td></tr>
+    <tr><td>Token usage</td><td>Input and output tokens per run or per conversation.</td><td>Over-long instructions, too much retrieved context, verbose output, or retry loops&mdash;all of which drive cost.</td></tr>
+    <tr><td>Groundedness</td><td>How well a response is supported by the retrieved source content.</td><td>Hallucination risk: weak retrieval, stale or poor-quality knowledge, or instructions that allow answering from general knowledge.</td></tr>
+    <tr><td>Thumbs up/down and comments</td><td>Explicit user reactions captured per response.</td><td>The fastest qualitative signal for prioritizing the backlog.</td></tr>
+  </tbody></table></div>
+
+  <h3>Analyze the backlog and user feedback</h3>
+  <p>Feedback is only useful when it becomes prioritized work. A practical loop looks like this:</p>
+  <ol>
+    <li><strong>Collect:</strong> thumbs up/down reactions, CSAT surveys, free-text comments, transcripts, escalation reasons from human representatives, and support tickets about the agent.</li>
+    <li><strong>Cluster:</strong> group issues by theme (missing knowledge, wrong answer, failed action, tone, latency). AI-based tools help here&mdash;Copilot Studio surfaces themes and improvement suggestions from analytics, and you can use generative AI to summarize and categorize large volumes of transcripts or comments.</li>
+    <li><strong>Size:</strong> weight each cluster by volume and by business impact (for example, revenue-bearing or compliance-sensitive flows first).</li>
+    <li><strong>Fix:</strong> add or correct knowledge, refine instructions, add a topic or tool, adjust the model or retrieval settings, or route to a human by design.</li>
+    <li><strong>Verify:</strong> rerun your regression test set and evaluations, then watch the same metric after release.</li>
+  </ol>
+  <div class="callout tip"><span class="callout-title">Architect mindset</span><p>Tie every tuning change to a metric you expect to move. &ldquo;Add a returns-policy knowledge source to lift resolution rate for the Returns theme&rdquo; is a plan. &ldquo;Make the agent better&rdquo; is not.</p></div>
+
+  <h3>Interpret telemetry: symptom to fix</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Symptom</th><th>Likely cause</th><th>Tuning action</th></tr>
+  </thead><tbody>
+    <tr><td>Low engagement, high Fallback hits</td><td>Users ask about things the agent has no topic or knowledge for.</td><td>Mine Fallback utterances, add knowledge sources or topics, improve the greeting so users know the scope.</td></tr>
+    <tr><td>High escalation on one topic</td><td>Topic can&rsquo;t finish the task (missing action, missing data, or authentication gap).</td><td>Add a tool, connector, or agent flow; verify authentication; redesign the topic.</td></tr>
+    <tr><td>High abandonment mid-conversation</td><td>Too many questions, loops, or long waits.</td><td>Use slot filling and entity extraction, reduce turns, shorten tool chains, set user expectations.</td></tr>
+    <tr><td>Fluent but wrong answers; low groundedness</td><td>Retrieval returns irrelevant or stale content, or the model fills gaps from general knowledge.</td><td>Clean and refresh grounding data, tighten instructions to answer only from sources, improve chunking and indexing.</td></tr>
+    <tr><td>Latency spikes at peak</td><td>Throttling, slow back-end connectors, or serialized tool calls.</td><td>Check dependency timings in traces, add capacity or provisioned throughput, cache stable data, parallelize calls.</td></tr>
+    <tr><td>Token usage rising week over week</td><td>Instructions or retrieved context keep growing; conversation history isn&rsquo;t trimmed.</td><td>Trim instructions, cap retrieved chunks, summarize history, consider a smaller model through a model router.</td></tr>
+    <tr><td>Tool call errors in traces</td><td>Schema drift, expired credentials, or the model passing wrong parameters.</td><td>Fix connection references or secrets, tighten tool descriptions, add input validation.</td></tr>
+    <tr><td>Safety filter blocks increase</td><td>Attack attempts or legitimate content that trips thresholds.</td><td>Review blocked samples, adjust filter configuration within policy, update instructions; never just disable filters.</td></tr>
+  </tbody></table></div>
+  <div class="callout trap"><span class="callout-title">Exam traps</span><ul>
+    <li>Resolution and escalation rates are calculated from <em>engaged</em> sessions, not all sessions.</li>
+    <li>A high escalation rate is not automatically a failure&mdash;regulated processes may require human handoff.</li>
+    <li>Copilot Studio analytics answers &ldquo;how is this agent doing.&rdquo; The Microsoft 365 admin center answers &ldquo;how is Copilot adoption going.&rdquo; Purview answers &ldquo;was data handled correctly.&rdquo;</li>
+    <li>When the question says &ldquo;see which step in the agent&rsquo;s chain failed,&rdquo; the answer is tracing, not a dashboard KPI.</li>
+  </ul></div>
+</section>
+
+<section id="obj-3-2">
+  <div class="week-head"><h2>3.2 Manage the testing of AI-powered business solutions</h2><span class="wgoal">Design a repeatable test process with measurable pass criteria for agents and custom models.</span></div>
+  <p>Generative AI is non-deterministic, so testing shifts from &ldquo;exact expected output&rdquo; to &ldquo;output meets criteria.&rdquo; You still need traditional functional tests for flows, connectors, and integrations, but you add evaluation sets scored by metrics, often using an AI judge plus human review.</p>
+
+  <h3>Test process for agents</h3>
+  <div class="grid grid-3">
+    <div class="card"><h3>1. Define criteria</h3><p>Translate requirements into measurable targets: task completion, groundedness threshold, maximum latency, zero critical safety failures, escalation behavior for out-of-scope requests.</p></div>
+    <div class="card"><h3>2. Build test sets</h3><p>Cover happy paths, edge cases, ambiguous phrasings, multi-turn conversations, out-of-scope questions, adversarial prompts, and each user role or persona.</p></div>
+    <div class="card"><h3>3. Run and score</h3><p>Use the Copilot Studio test pane for interactive debugging and agent evaluation with test sets for batch runs; use Foundry evaluations for pro-code agents and models.</p></div>
+    <div class="card"><h3>4. Human review</h3><p>Subject matter experts review a sample, especially low-scoring and high-risk cases, to calibrate the automated judge.</p></div>
+    <div class="card"><h3>5. Gate the release</h3><p>Make evaluation results a pipeline gate. A release proceeds only when scores meet thresholds and show no regression against the current production baseline.</p></div>
+    <div class="card"><h3>6. Monitor in production</h3><p>Keep evaluating sampled production traffic so drift in data, models, or user behavior is caught early.</p></div>
+  </div>
+
+  <h3>Test types and metrics</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Test type</th><th>What it proves</th><th>Typical metrics</th></tr>
+  </thead><tbody>
+    <tr><td>Functional / topic tests</td><td>Triggers fire, variables fill, branches route correctly.</td><td>Pass/fail per scenario, trigger accuracy.</td></tr>
+    <tr><td>Quality evaluation</td><td>Answers are correct and useful.</td><td>Groundedness, relevance, coherence, fluency, similarity to a reference answer.</td></tr>
+    <tr><td>Agent and tool evaluation</td><td>The agent picks the right tool with the right inputs and finishes the task.</td><td>Intent resolution, task adherence, task completion, tool call accuracy.</td></tr>
+    <tr><td>Safety and red teaming</td><td>The agent resists misuse and doesn&rsquo;t produce harmful content.</td><td>Defect rate for hate and unfairness, sexual, violence, self-harm, jailbreak and indirect attack success rate.</td></tr>
+    <tr><td>Performance and load</td><td>The solution meets response targets at expected volume.</td><td>P50/P95 latency, throughput, throttling errors, cost per conversation.</td></tr>
+    <tr><td>User acceptance testing</td><td>Business users agree the agent does the job.</td><td>Task success, CSAT from pilot users, qualitative feedback.</td></tr>
+  </tbody></table></div>
+
+  <h3>Foundry evaluations</h3>
+  <p>Microsoft Foundry evaluation applies evaluators to a test dataset, to responses generated from test inputs, or to production traces. Results show aggregate scores and per-row explanations so you can compare versions.</p>
+  <div class="grid grid-2">
+    <div class="card"><h3>Quality evaluators</h3><ul>
+      <li><strong>Groundedness:</strong> is the response supported by the provided context?</li>
+      <li><strong>Relevance:</strong> does it address the user&rsquo;s question?</li>
+      <li><strong>Coherence:</strong> is it logically organized and consistent?</li>
+      <li><strong>Fluency:</strong> is the language natural and grammatically correct?</li>
+      <li><strong>Similarity and NLP metrics</strong> (for example F1, BLEU) when you have reference answers.</li>
+    </ul></div>
+    <div class="card"><h3>Safety and agent evaluators</h3><ul>
+      <li><strong>Risk and safety:</strong> hate and unfairness, sexual, violence, self-harm, protected material, indirect attack.</li>
+      <li><strong>Agent behavior:</strong> intent resolution, task adherence, task completion.</li>
+      <li><strong>Tool use:</strong> tool call accuracy and related evaluators.</li>
+      <li>Combine them: a RAG agent needs retrieval and groundedness plus safety; an action-taking agent needs tool and task evaluators plus safety.</li>
+    </ul></div>
+  </div>
+
+  <h3>Validation criteria for custom AI models</h3>
+  <p>When the solution includes a custom or fine-tuned model (for example a classification model or a fine-tuned small language model), define acceptance criteria before training starts:</p>
+  <ul>
+    <li><strong>Baseline:</strong> compare against the current process, a rules-based approach, or the base model without tuning. A custom model must beat the baseline by enough to justify its cost.</li>
+    <li><strong>Holdout data:</strong> keep a test set the model never sees during training or tuning, drawn from the same distribution as production data. Never report results on training data.</li>
+    <li><strong>Precision:</strong> of the items the model flagged, how many were correct. Prioritize when false positives are expensive (for example, blocking legitimate invoices).</li>
+    <li><strong>Recall:</strong> of the items that should have been flagged, how many the model caught. Prioritize when misses are expensive (for example, fraud or safety cases).</li>
+    <li><strong>F1 score:</strong> the harmonic mean of precision and recall; a single number when both matter.</li>
+    <li><strong>Fairness and robustness:</strong> check performance across user segments, languages, and noisy inputs.</li>
+    <li><strong>Operational criteria:</strong> latency, cost per call, and model size relative to the deployment target.</li>
+  </ul>
+
+  <h3>Copilot prompt best practices</h3>
+  <p>Good test prompts and good production instructions follow the same rules. A clear prompt includes a <strong>goal</strong>, <strong>context</strong>, <strong>expectations</strong> for format and tone, and <strong>sources</strong> to use. Beyond that:</p>
+  <ul>
+    <li>Be specific and give examples of the desired output.</li>
+    <li>Tell the model what to do, not just what to avoid.</li>
+    <li>Break complex work into steps and iterate in conversation.</li>
+    <li>For agent instructions, state scope, refusal behavior, and when to hand off to a human.</li>
+    <li>Version prompts and instructions with the solution so tests can be rerun against a known state.</li>
+  </ul>
+
+  <h3>End-to-end testing across Dynamics 365 apps</h3>
+  <p>Many business processes cross app boundaries. Lead-to-cash may start in Dynamics 365 Sales, continue to an order in Supply Chain Management, and finish with invoicing in Finance; a service case may trigger a field service work order. An end-to-end test plan should:</p>
+  <ul>
+    <li>Follow a full business process from trigger to outcome, including the Copilot or agent steps inside each app.</li>
+    <li>Use realistic, non-production data that is consistent across the apps (same customers, products, and IDs).</li>
+    <li>Test the integration points: dual-write or virtual tables, Power Automate flows, connectors, and agent handoffs.</li>
+    <li>Run under real security roles so each step proves the user or agent only sees the data it should.</li>
+    <li>Include failure paths: unavailable connector, rejected approval, or a human taking over from the agent.</li>
+    <li>Automate regression where possible (for example, the Regression Suite Automation Tool for finance and operations apps and Power Apps Test Engine for model-driven and canvas apps).</li>
+  </ul>
+
+  <h3>Generating test cases with Copilot</h3>
+  <p>Copilot and other generative AI tools speed up test design: ask them to produce varied user utterances for each topic, edge cases, multi-turn scripts, adversarial prompts, and synthetic data records. Copilot Studio can also generate test sets for agent evaluation from the agent&rsquo;s knowledge and topics. The architect&rsquo;s strategy should include guardrails:</p>
+  <ul>
+    <li>Have subject matter experts review and approve generated cases and expected answers.</li>
+    <li>Use synthetic or masked data; don&rsquo;t paste production personal data into prompts.</li>
+    <li>Mix generated cases with real (anonymized) user transcripts so coverage reflects how people actually talk.</li>
+    <li>Store test sets with the solution so they version alongside the agent.</li>
+  </ul>
+  <div class="callout trap"><span class="callout-title">Exam traps</span><ul>
+    <li>Evaluating on the same data used to tune the model inflates scores. The answer is always a separate holdout set.</li>
+    <li>&ldquo;Missing fraud is unacceptable&rdquo; points to recall. &ldquo;Analysts are drowning in false alarms&rdquo; points to precision.</li>
+    <li>Groundedness measures support by the provided sources; relevance measures whether the answer addresses the question. An answer can be relevant but ungrounded.</li>
+    <li>The test pane is for interactive debugging; it isn&rsquo;t a regression strategy on its own.</li>
+  </ul></div>
+</section>
+
+<section id="obj-3-3">
+  <div class="week-head"><h2>3.3 Design the ALM process for AI-powered business solutions</h2><span class="wgoal">Move agents, models, and data through environments in a controlled, repeatable, and auditable way.</span></div>
+  <p>Application lifecycle management (ALM) governs a solution from idea through development, testing, deployment, operation, and retirement. For AI solutions, ALM has to cover four things together: the <strong>agent and app components</strong>, the <strong>models</strong>, the <strong>prompts and instructions</strong>, and the <strong>data</strong> that grounds or trains them.</p>
+
+  <h3>Power Platform and Copilot Studio ALM building blocks</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Building block</th><th>Purpose</th><th>Remember</th></tr>
+  </thead><tbody>
+    <tr><td>Solutions</td><td>Containers that package agents, topics, flows, connectors, tables, environment variables, and connection references for transport.</td><td>Build in a custom solution with your own publisher prefix, not the default solution.</td></tr>
+    <tr><td>Unmanaged solution</td><td>The editable form used in development.</td><td>Lives in dev and in source control.</td></tr>
+    <tr><td>Managed solution</td><td>Locked, versioned package deployed to test and production.</td><td>Deploy managed downstream; remove it cleanly by uninstalling. Don&rsquo;t edit directly in production.</td></tr>
+    <tr><td>Environment variables</td><td>Values that change per environment (URLs, site addresses, feature flags, Key Vault secret references).</td><td>Read-only to the agent at run time; set the value per target environment during deployment.</td></tr>
+    <tr><td>Connection references</td><td>Pointers that let components use a connection without hard-binding to one user&rsquo;s credentials.</td><td>Map to the right connection (often a service account or service principal) in each environment.</td></tr>
+    <tr><td>Power Platform pipelines</td><td>In-product, admin-governed deployments from dev to test to prod.</td><td>Easiest path for makers; supports approvals and pre-deployment steps. Target environments must be managed environments.</td></tr>
+    <tr><td>Azure DevOps or GitHub Actions</td><td>Pro-code CI/CD with Power Platform Build Tools or the Power Platform CLI.</td><td>Choose when you need source control, branching, automated tests, and custom gates.</td></tr>
+  </tbody></table></div>
+
+  <h3>Environment strategy</h3>
+  <div class="grid grid-3">
+    <div class="card"><h3>Development</h3><p>Makers build in unmanaged solutions. Use personal developer environments or a shared dev environment per project. Keep test data synthetic.</p></div>
+    <div class="card"><h3>Test / UAT</h3><p>Managed solution only. Run evaluations, end-to-end tests, and user acceptance with production-like (but protected) data.</p></div>
+    <div class="card"><h3>Production</h3><p>Managed solution only, deployed through a pipeline. Changes come from source, never from direct edits.</p></div>
+  </div>
+  <p><strong>Managed environments</strong> add governance on top: sharing limits, solution checker enforcement, usage insights, IP firewall and other security controls, and the ability to act as pipeline targets. Combine them with environment groups and rules to apply consistent policy across many environments.</p>
+
+  <h3>ALM for Copilot Studio agents, connectors, and actions</h3>
+  <ul>
+    <li>Create the agent inside a custom solution from day one; add required objects (topics, flows, custom connectors, environment variables) before export.</li>
+    <li>Parameterize anything environment-specific: knowledge source URLs, API endpoints, Application Insights connection strings, and channel display name suffixes all belong in environment variables.</li>
+    <li>Custom connectors and their connection references travel in the solution; credentials do not. Set up connections in each environment.</li>
+    <li>Agent flows and Power Automate cloud flows used as actions should be solution-aware so they deploy with the agent.</li>
+    <li>Add a pre-deployment approval or automated review (solution checker, evaluation gate) to the pipeline stage before production.</li>
+    <li>After deployment, publish the agent in the target environment and confirm channel configuration and authentication settings.</li>
+  </ul>
+
+  <h3>ALM for Foundry Agent Service and custom models</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3>Foundry agents</h3><ul>
+      <li>Keep agent definitions (instructions, tools, model deployment, knowledge connections) as code in source control.</li>
+      <li>Use separate Foundry projects or resources per environment, deployed with infrastructure as code (Bicep or Terraform).</li>
+      <li>Version agents and prompts; record which model version each agent version uses.</li>
+      <li>Run Foundry evaluations in CI/CD and block promotion if quality or safety scores regress.</li>
+      <li>Use managed identities and Key Vault rather than embedding keys.</li>
+    </ul></div>
+    <div class="card"><h3>Custom and fine-tuned models</h3><ul>
+      <li><strong>Versioning:</strong> every model version links to its training data version, code, hyperparameters, and evaluation results.</li>
+      <li><strong>Registries:</strong> store approved model versions in a registry so they can be shared and promoted across workspaces and environments.</li>
+      <li><strong>Deployment strategy:</strong> deploy a new version alongside the old (blue-green or a staged slot) and shift traffic gradually; keep rollback ready.</li>
+      <li><strong>Evaluation gates:</strong> promotion requires passing holdout metrics and safety evaluation.</li>
+      <li><strong>Base model updates:</strong> plan for model version retirement; pin versions and retest before upgrading.</li>
+    </ul></div>
+  </div>
+
+  <h3>ALM for data used in AI models and agents</h3>
+  <ul>
+    <li>Treat grounding content and training data as versioned assets: know which version of a knowledge base or dataset an agent or model was tested with.</li>
+    <li>Promote reference and configuration data with tools such as the Configuration Migration tool or data packages rather than manual entry.</li>
+    <li>Use masked, synthetic, or subset data in non-production environments; respect the same residency and sensitivity rules as production.</li>
+    <li>Automate index refresh and data quality checks, and include them in the pipeline so stale data doesn&rsquo;t silently degrade answers.</li>
+    <li>Record lineage so you can trace an answer or prediction back to the source data that produced it.</li>
+  </ul>
+
+  <h3>ALM for AI in Dynamics 365</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>App family</th><th>How customizations move</th><th>AI-specific considerations</th></tr>
+  </thead><tbody>
+    <tr><td>Finance and supply chain (finance and operations apps)</td><td>X++ code and metadata are built into deployable packages. Historically, packages were uploaded to the Lifecycle Services (LCS) asset library and applied to sandbox, then production. With the unified experience, environments are managed in the Power Platform admin center and unified packages (Dataverse solutions plus X++ models) are deployed with the Power Platform CLI or Azure DevOps tasks.</td><td>Copilot features are enabled through Feature management and Dataverse configuration; agent extensions and Copilot Studio customizations travel as Dataverse solutions. Test each One Version update for changes to Copilot behavior.</td></tr>
+    <tr><td>Customer experience and service (Sales, Customer Service, Contact Center)</td><td>Standard Dataverse ALM: unmanaged in dev, managed solutions downstream, deployed with pipelines, Azure DevOps, or GitHub.</td><td>Copilot settings, prompts, knowledge sources, and agent configurations should be packaged or scripted per environment; some admin settings are configured per environment rather than carried in solutions, so document and automate them.</td></tr>
+  </tbody></table></div>
+  <div class="callout trap"><span class="callout-title">Exam traps</span><ul>
+    <li>Production gets <strong>managed</strong> solutions. If a choice suggests exporting unmanaged to production, it&rsquo;s wrong.</li>
+    <li>Environment variables hold values; connection references hold connections. Secrets belong in Azure Key Vault, referenced by a secret-type environment variable.</li>
+    <li>Power Platform pipelines require managed environments as targets.</li>
+    <li>Don&rsquo;t build in the default solution or the default environment for anything you plan to promote.</li>
+    <li>For pro-code agents, the &ldquo;pipeline gate&rdquo; answer is an automated evaluation run with thresholds, not a manual chat test.</li>
+  </ul></div>
+</section>
+
+<section id="obj-3-4">
+  <div class="week-head"><h2>3.4 Design responsible AI, security, governance, risk management, and compliance</h2><span class="wgoal">Apply Microsoft&rsquo;s responsible AI principles and layer identity, data, model, and platform controls around every agent.</span></div>
+
+  <h3>Microsoft Responsible AI Standard: six principles</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Principle</th><th>What it asks</th><th>How it shows up in a design</th></tr>
+  </thead><tbody>
+    <tr><td>Fairness</td><td>AI systems treat people equitably.</td><td>Evaluate results across demographics and segments; remove biased features; review automated decisions.</td></tr>
+    <tr><td>Reliability and safety</td><td>Systems perform consistently and safely, including in unexpected conditions.</td><td>Evaluations, content filters, fallbacks, human handoff, monitoring, and rollback plans.</td></tr>
+    <tr><td>Privacy and security</td><td>Systems protect data and resist attack.</td><td>Least privilege, encryption, sensitivity labels, DLP, data minimization, prompt attack defenses.</td></tr>
+    <tr><td>Inclusiveness</td><td>Systems empower and engage everyone.</td><td>Accessible channels, multiple languages, voice options, and plain-language responses.</td></tr>
+    <tr><td>Transparency</td><td>People understand the system&rsquo;s capabilities and limits.</td><td>Disclose that users are talking to AI, cite sources, publish limitations, explain decisions.</td></tr>
+    <tr><td>Accountability</td><td>People remain accountable for AI systems.</td><td>Named owners and sponsors, approval workflows, impact assessments, audit trails, and a Center of Excellence.</td></tr>
+  </tbody></table></div>
+
+  <h3>Security for agents</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3>Identity and authentication</h3><ul>
+      <li>Authenticate users with Microsoft Entra ID so the agent knows who is asking and can apply their permissions.</li>
+      <li><strong>Microsoft Entra Agent ID</strong> gives agents their own identities in the directory, so they can be inventoried, governed, assigned a sponsor, covered by Conditional Access, and disabled like any other identity.</li>
+      <li>Prefer managed identities and federated credentials to stored secrets.</li>
+      <li>Decide deliberately between acting <em>on behalf of the user</em> (user&rsquo;s permissions) and acting <em>as the agent</em> (its own permissions, typical for autonomous agents).</li>
+    </ul></div>
+    <div class="card"><h3>Least privilege and connector governance</h3><ul>
+      <li>Grant agents only the scopes, tables, and actions they need; review access periodically.</li>
+      <li><strong>Data policies (DLP)</strong> in the Power Platform admin center group connectors into business, non-business, and blocked, and can restrict specific actions or endpoints.</li>
+      <li>Govern custom connectors and MCP servers the same way: approve, classify, and restrict.</li>
+      <li>Control who can create and share agents with managed environments, sharing limits, and environment security groups.</li>
+      <li>Require human approval for high-impact actions (payments, deletions, external communications).</li>
+    </ul></div>
+  </div>
+
+  <h3>Governance with Microsoft Purview</h3>
+  <ul>
+    <li><strong>Sensitivity labels:</strong> Microsoft 365 Copilot and agents respect labels and permissions on content; labeled content keeps its protection, and responses can inherit the most restrictive label of their sources.</li>
+    <li><strong>Data loss prevention:</strong> Purview DLP can restrict how Copilot processes items with specific labels or sensitive information types.</li>
+    <li><strong>Audit:</strong> Copilot and agent interactions are captured in the unified audit log for investigation.</li>
+    <li><strong>DSPM for AI:</strong> Data Security Posture Management for AI shows how AI apps and agents use sensitive data, flags oversharing risks, and offers one-click policies.</li>
+    <li><strong>Retention, eDiscovery, and Communication Compliance:</strong> apply to Copilot prompts and responses for legal and regulatory needs.</li>
+  </ul>
+
+  <h3>Model security and AI vulnerabilities</h3>
+  <div class="table-scroll"><table class="data-table"><thead>
+    <tr><th>Threat</th><th>What happens</th><th>Mitigation</th></tr>
+  </thead><tbody>
+    <tr><td>Direct prompt injection / jailbreak</td><td>A user crafts input to override system instructions or bypass safety rules.</td><td>Prompt Shields for user prompt attacks, content filters, strong system instructions, output validation.</td></tr>
+    <tr><td>Indirect prompt injection</td><td>Malicious instructions hide in documents, emails, or web pages the agent retrieves.</td><td>Prompt Shields document attack detection, spotlighting to mark external content as lower trust, least-privilege tools, human approval for actions.</td></tr>
+    <tr><td>Harmful content</td><td>The model generates hate, sexual, violent, or self-harm content.</td><td>Content filters with configured severity thresholds on input and output; safety evaluations before release.</td></tr>
+    <tr><td>Data exfiltration and oversharing</td><td>The agent reveals data the user shouldn&rsquo;t see.</td><td>Permission-trimmed retrieval, sensitivity labels, DLP, restricted knowledge scope.</td></tr>
+    <tr><td>Training data poisoning</td><td>Tampered tuning data degrades or backdoors a model.</td><td>Controlled access to datasets, data validation, lineage, and approval before training.</td></tr>
+    <tr><td>Model theft or tampering</td><td>Model artifacts or endpoints are accessed or changed without authorization.</td><td>Private endpoints, RBAC on registries and deployments, managed identities, Defender for Cloud AI threat protection.</td></tr>
+    <tr><td>Excessive agency</td><td>An agent takes harmful actions because it has too many permissions.</td><td>Least privilege, scoped tools, approval steps, rate limits.</td></tr>
+  </tbody></table></div>
+
+  <h3>Data residency and movement</h3>
+  <p>Copilot Studio and Power Platform generative AI features rely on Azure OpenAI and related services that may not be hosted in every geography. For environments outside the United States, a Power Platform or Dynamics 365 administrator may need to allow <strong>data movement across regions</strong> in the environment&rsquo;s Generative AI features settings in the Power Platform admin center. Points to know:</p>
+  <ul>
+    <li>The setting is per environment and requires administrator consent to the terms.</li>
+    <li>Data that already moved while the setting was on isn&rsquo;t pulled back by turning it off.</li>
+    <li>Related settings, such as Bing search, depend on data movement being allowed where the checkbox is shown.</li>
+    <li>For Foundry, choose the region and deployment type deliberately: global and data zone deployments can process data outside a single region, while regional (standard) deployments keep processing in that region.</li>
+    <li>Document residency requirements during planning; they constrain which features and regions you can use.</li>
+  </ul>
+
+  <h3>Access controls on grounding and tuning data</h3>
+  <ul>
+    <li>Ground on sources that enforce user permissions (SharePoint, Dataverse security roles, Azure AI Search with security trimming) so users only receive answers from content they can already access.</li>
+    <li>Fix oversharing at the source before broad rollout; an agent surfaces whatever permissions already allow.</li>
+    <li>Restrict who can read, change, or export tuning datasets with Azure RBAC, and keep them in storage with private networking and encryption.</li>
+    <li>Separate duties: data stewards approve datasets; ML engineers train; release managers promote.</li>
+  </ul>
+
+  <h3>Audit trails for model and data changes</h3>
+  <ul>
+    <li>Version and log every change to prompts, instructions, models, and datasets, including who approved it.</li>
+    <li>Use Purview audit for Copilot and agent activity, Dataverse auditing for record and configuration changes, and Azure activity logs for resource changes.</li>
+    <li>Keep evaluation results with each release so you can show the evidence behind a go-live decision.</li>
+    <li>Route logs to a central workspace (Log Analytics or Microsoft Sentinel) for retention and investigation.</li>
+  </ul>
+  <div class="callout trap"><span class="callout-title">Exam traps</span><ul>
+    <li>&ldquo;Instructions hidden in an uploaded document&rdquo; is <em>indirect</em> prompt injection; the control is Prompt Shields document detection plus spotlighting, not just a stricter system prompt.</li>
+    <li>Turning off cross-region data movement doesn&rsquo;t reverse data that already moved.</li>
+    <li>Agents don&rsquo;t bypass permissions; oversharing is a permissions problem to fix at the source.</li>
+    <li>Match the principle: biased loan approvals = fairness; disclosing AI use = transparency; named owner and approvals = accountability.</li>
+    <li>DLP data policies in the Power Platform admin center govern connectors; Purview DLP governs sensitive content. Know which one the scenario needs.</li>
+  </ul></div>
+  <div class="callout key"><span class="callout-title">Defense in depth</span><p>No single control is enough. A secure agent design layers identity (Entra ID and Agent ID), platform governance (managed environments and DLP), data protection (Purview labels and DLP), model protection (content filters and Prompt Shields), human oversight, and monitoring with audit.</p></div>
+</section>
+
+<section id="cheat">
+  <div class="week-head"><h2>Night-before cheat sheet</h2><span class="wgoal">Fast recall for Domain 3.</span></div>
+  <div class="grid grid-2">
+    <div class="card"><h3>Which tool?</h3><ul>
+      <li>Agent KPIs: Copilot Studio analytics.</li>
+      <li>Custom telemetry and alerts: Application Insights.</li>
+      <li>Step-by-step run debugging: Foundry tracing.</li>
+      <li>Quality and safety scores: Foundry evaluations.</li>
+      <li>Copilot adoption: Microsoft 365 admin center.</li>
+      <li>Capacity and governance: Power Platform admin center.</li>
+      <li>Sensitive data and audit: Microsoft Purview.</li>
+    </ul></div>
+    <div class="card"><h3>Metrics</h3><ul>
+      <li>Engaged = custom topic or Escalate, Fallback, Conversational Boosting.</li>
+      <li>Resolution, escalation, abandonment = share of engaged sessions.</li>
+      <li>CSAT = end-of-conversation survey.</li>
+      <li>Groundedness = supported by sources.</li>
+      <li>Token usage and latency drive cost and experience.</li>
+    </ul></div>
+    <div class="card"><h3>Testing</h3><ul>
+      <li>Precision: avoid false positives.</li>
+      <li>Recall: avoid misses.</li>
+      <li>F1: balance of both.</li>
+      <li>Always a holdout set and a baseline.</li>
+      <li>Evaluations become pipeline gates.</li>
+      <li>Generated test cases need human review.</li>
+    </ul></div>
+    <div class="card"><h3>ALM</h3><ul>
+      <li>Dev = unmanaged; test and prod = managed.</li>
+      <li>Environment variables = values; connection references = connections.</li>
+      <li>Pipelines need managed environment targets.</li>
+      <li>Azure DevOps / GitHub for pro-code CI/CD.</li>
+      <li>Models: version, register, evaluate, stage, roll back.</li>
+      <li>F&amp;O: deployable packages (LCS) or unified packages (Power Platform admin center).</li>
+    </ul></div>
+    <div class="card"><h3>Responsible AI</h3><ol>
+      <li>Fairness</li>
+      <li>Reliability and safety</li>
+      <li>Privacy and security</li>
+      <li>Inclusiveness</li>
+      <li>Transparency</li>
+      <li>Accountability</li>
+    </ol></div>
+    <div class="card"><h3>Security and residency</h3><ul>
+      <li>Prompt Shields: user prompt attacks and document attacks.</li>
+      <li>Content filters: harmful content categories with thresholds.</li>
+      <li>Entra Agent ID: agents as governed identities.</li>
+      <li>DLP data policies: connector classification.</li>
+      <li>DSPM for AI: AI data risk visibility.</li>
+      <li>Cross-region data movement: per environment, admin consent, not reversible.</li>
+    </ul></div>
+  </div>
+  <p class="muted"><span class="badge accent">Weight</span> 40&ndash;45% through November 15, 2026 <span class="badge amber">Changing</span> 20&ndash;25% from November 16, 2026</p>
+</section>
+
+<div class="btn-row"><a class="btn" href="drills.html?set=d-3-1">Drill 3.1</a> <a class="btn secondary" href="drills.html?set=d-3-2">Drill 3.2</a> <a class="btn secondary" href="drills.html?set=d-3-3">Drill 3.3</a> <a class="btn secondary" href="drills.html?set=d-3-4">Drill 3.4</a></div>
+
+</div></main>
+
+<footer id="footer"></footer>
+</body>
+</html>

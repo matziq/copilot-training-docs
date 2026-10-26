@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Exam 3 &mdash; AB-100 Prep</title>
+<meta name="description" content="AB-100 practice exam 3: 50 timed original questions across Plan, Design, and Deploy, with estimated scaled scoring and full review.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="topbar"></header>
+
+<main id="main"><div class="wrap">
+    <h1 class="no-print">Practice Exam 3</h1>
+    <p class="lede no-print">The dress rehearsal. Take it at your real appointment time.</p>
+    <div id="app"></div>
+</div></main>
+
+<footer id="footer"></footer>
+
+<script src="assets/data/exam3.js"></script>
+<script src="assets/test-engine.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    AP.Test.mount({
+        el: document.getElementById("app"),
+        testId: "exam3",
+        core: "ab100",
+        title: "Practice Exam 3 \u2014 Dress rehearsal",
+        blurb: "The hardest set: fifty multi-constraint architect scenarios, including a short case study, in 100 minutes. Treat it exactly like the real exam.",
+        sections: ["exam3"]
+    });
+});
+</script>
+</body>
+</html>
