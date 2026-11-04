@@ -1,0 +1,4 @@
+﻿Goal: Draft a short follow-up for leadership.
+Context: I am Alex Morgan preparing for the November 9 review; it has not happened yet.
+Source: Use the verified brief and pasted Sources A, B and C. If they conflict, use the sources.
+Expectation: State recorded facts, open decisions and actions. Date each status where possible; flag later status as unknown. Mark missing owners and due dates 'to confirm.' Cite source labels. Draft only; do not send, schedule or update anything.

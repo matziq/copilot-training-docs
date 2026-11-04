@@ -1,0 +1,1 @@
+﻿Check every slide for unsupported dates, owners, approvals, recommendations or completed work. List the exact claim and source gap; leave supported claims intact.

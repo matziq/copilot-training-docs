@@ -1,0 +1,1 @@
+﻿In a fresh Preview test with no case text or other sources provided, what is the current stock on hand? Do not guess if the source is unavailable.

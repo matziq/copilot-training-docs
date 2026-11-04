@@ -1,0 +1,4 @@
+﻿Goal: Compare the launch paths for the November 9 leadership review.
+Context: I am Alex Morgan. Leadership has not made the launch decision.
+Source: Use Sources A, B and C and the checked brief in this chat. Add no outside facts.
+Expectation: Make a table of each path's recorded status, evidence common to both paths, missing information needed to compare consequences, and decision required. Label facts and unknowns, cite sources, and do not recommend a path or invent benefits, costs or probabilities.

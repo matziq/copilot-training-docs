@@ -1,0 +1,4 @@
+﻿Goal: Prepare me for the November 9 leadership review.
+Context: I am Alex Morgan. The launch baseline and later proposal must stay distinct.
+Source: Use only pasted Sources A, B and C. Cite each fact by source label.
+Expectation: Give the purpose, three key facts, open decisions and two questions. Treat the November 2 update as a snapshot and flag unknowns.

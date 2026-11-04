@@ -1,0 +1,4 @@
+﻿Goal: Create a five-slide outline for the November 9 leadership review.
+Context: I am Alex Morgan preparing a neutral discussion; the review has not happened.
+Source: Use Sources A, B and C plus the checked brief and comparison in this chat.
+Expectation: Build five distinct slides: review purpose, approved baseline versus proposal, readiness by workstream, evidence gaps, and leadership questions. For each, give a takeaway, supporting source labels and one question for leaders. Keep the decision open; invent no owners, approvals or outcomes.

@@ -1,0 +1,4 @@
+﻿Goal: Brief me on the project update.
+Context: I am Alex Morgan preparing regional leaders for the November 9 review.
+Source: Use only pasted Sources A, B and C. Name the source for each fact.
+Expectation: Give a one-line summary, three key points, risks and open decisions. Separate facts, proposals and unknowns; use the November 2 status and flag gaps.
