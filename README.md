@@ -1,5 +1,16 @@
 # Training Documentation Framework
 
+## Published site
+
+This repository is the canonical source for the training documentation site at
+<https://copilotdocs.org/>. GitHub Pages publishes the `main` branch from the
+repository root; no build step or Actions artifact deployment is used. The
+`CNAME` file binds this site to `copilotdocs.org`.
+
+The former project-site routes under `/copilot-training-docs/` are served using
+GitHub Pages' native project-domain redirect. Keep customer-specific, unlisted
+pages out of public navigation and indexes.
+
 A plug-and-play HTML/CSS/JS documentation template inspired by modern training course designs — featuring collapsible exercise cards, color-coded numbered steps, copy-able prompt blocks, power-move callouts, and module headers with time estimates.
 
 ## Quick Start
