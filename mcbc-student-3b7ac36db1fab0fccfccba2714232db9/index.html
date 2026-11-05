@@ -511,6 +511,8 @@ details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) 
   .hero-chevron,.chev{display:none}
   .savebox{padding:12px}
 }
+
+.skill-source{max-height:36rem;overflow:auto;margin:10px 0 0;padding:12px;border:1px solid var(--cp-border);border-radius:6px;background:var(--cp-code-bg);color:var(--cp-code-fg);font:.8rem/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
 </style></head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">Molson Coors · Global Business Services</span><p class="bar-title">Copilot Chat Basic: Student Guide</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button></div></header>
@@ -805,7 +807,234 @@ Sources A and B are real public sources; Source C and the business scenario are 
 <p><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory">Microsoft Learn: Copilot personalization and memory</a> · <a href="https://support.microsoft.com/topic/b3231eae-9e60-4b3c-ac58-81fddbe56279">Microsoft Support: manage Copilot memory</a></p>
 <details class="step recommendation" id="save-preference-1"><summary><span><span class="rec-label">Recommended memory</span><strong>A safe language and style preference</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only if this is genuinely your preference. It contains no confidential case information.</p><div class="savebox"><button aria-label="Copy recommended memory" class="copy" type="button">Copy</button><pre>I prefer concise, plain-English summaries in US English.</pre></div></div></details><details class="step recommendation" id="save-preference-2"><summary><span><span class="rec-label">Recommended memory</span><strong>A safe output-format preference</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only if this table format is useful across your work. Missing values should still be marked, not invented.</p><div class="savebox"><button aria-label="Copy recommended memory" class="copy" type="button">Copy</button><pre>I prefer action summaries in a table with Action, Owner, Due date, and Evidence columns.</pre></div></div></details><details class="step recommendation" id="save-preference-3"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Source-first answers</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Consider for recurring source-based work. This does not grant Copilot access to other information or make an answer automatically correct.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When I ask you to work from a supplied source, use only the permitted source for factual claims. Ask for necessary missing inputs. Distinguish facts, assumptions, and suggestions; label unsupported claims [CHECK]; show important calculations.</pre></div></div></details><details class="step recommendation" id="save-preference-4"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Keep approvals with people</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Consider if draft-versus-approval distinctions matter in your recurring work. Your organization's actual approval process still governs.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When helping me with operational work, treat outputs as drafts. Flag actions that need human approval, and do not imply that a payment, record change, policy, or decision has been approved.</pre></div></div></details><div class="section-nav"><a href="#prompting">Previous section</a><a href="#tips">Next section</a></div>
 </div>
-</details><details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Practical habits plus quick links to every exercise.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><p>Expand a technique, then apply it to the fictional exercises.</p><details class="step" id="copilot-trick-1"><summary><span>Ask for questions before answers</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>For an unclear request, have Copilot ask for missing requirements before it drafts. Give the answers in the same conversation so the final result uses them.</p></div></details><details class="step" id="copilot-trick-2"><summary><span>Define what brief means</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Name a maximum length and output shape: six lines, three bullets, or a table with specified columns. Words such as quick and concise leave room for interpretation.</p></div></details><details class="step" id="copilot-trick-3"><summary><span>Change one thing in a follow-up</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Ask for a different format, audience, tone, or level of detail one change at a time. Review whether the factual content stayed grounded after each revision.</p></div></details><details class="step" id="copilot-trick-4"><summary><span>Separate facts, assumptions, and unknowns</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Require visible labels for unsupported claims and missing inputs. A plausible explanation is not proof; a suggested owner is not an assigned owner.</p></div></details><details class="step" id="copilot-trick-5"><summary><span>Challenge the answer with evidence</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Ask which claims are directly supported and which are not. Compare its evidence against the actual source rather than relying on Copilot's own confidence.</p></div></details><details class="step" id="copilot-trick-6"><summary><span>Recalculate important numbers</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Ask to see intermediate calculations, then independently check important totals and thresholds. AI output does not approve a payment, record change, or accounting entry.</p></div></details><details class="step" id="copilot-trick-7"><summary><span>Keep the thread, fence the source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use the same conversation for related follow-ups. When changing exercises, paste the new practice source and make the allowed source explicit so earlier examples do not leak into the new task.</p></div></details><details class="step" id="copilot-trick-8"><summary><span>Review before saving or sharing</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Check recipients, sensitive content, source accuracy, and your organization's rules before using an output. Save only safe, durable preferences or recurring work instructions, not case-specific data.</p></div></details><details class="step" id="tips-by-exercise"><summary><span>Tips &amp; facts by exercise</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ol class="tip-index"><li><strong>Exercise 01:</strong> <a href="#d01-tip">Tip</a> · <a href="#d01-fact">Did you know?</a></li><li><strong>Exercise 02:</strong> <a href="#d02-tip">Tip</a> · <a href="#d02-fact">Did you know?</a></li><li><strong>Exercise 03:</strong> <a href="#d03-tip">Tip</a> · <a href="#d03-fact">Did you know?</a></li><li><strong>Exercise 04:</strong> <a href="#d04-tip">Tip</a> · <a href="#d04-fact">Did you know?</a></li><li><strong>Exercise 05:</strong> <a href="#d05-tip">Tip</a> · <a href="#d05-fact">Did you know?</a></li><li><strong>Exercise 06:</strong> <a href="#d06-tip">Tip</a> · <a href="#d06-fact">Did you know?</a></li><li><strong>Exercise 07:</strong> <a href="#d07-tip">Tip</a> · <a href="#d07-fact">Did you know?</a></li><li><strong>Exercise 08:</strong> <a href="#d08-tip">Tip</a> · <a href="#d08-fact">Did you know?</a></li><li><strong>Exercise 09:</strong> <a href="#d09-tip">Tip</a> · <a href="#d09-fact">Did you know?</a></li><li><strong>Exercise 10:</strong> <a href="#d10-tip">Tip</a> · <a href="#d10-fact">Did you know?</a></li></ol></div></details><div class="section-nav"><a href="#memory">Previous section</a><a href="#wrap-up">Next section</a></div></div></details><details class="section instr" id="wrap-up">
+</details><details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Practical habits, Skills, and quick links to every exercise.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><p>Expand a technique, then apply it to the fictional exercises.</p><details class="step" id="copilot-trick-1"><summary><span>Ask for questions before answers</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>For an unclear request, have Copilot ask for missing requirements before it drafts. Give the answers in the same conversation so the final result uses them.</p></div></details><details class="step" id="copilot-trick-2"><summary><span>Define what brief means</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Name a maximum length and output shape: six lines, three bullets, or a table with specified columns. Words such as quick and concise leave room for interpretation.</p></div></details><details class="step" id="copilot-trick-3"><summary><span>Change one thing in a follow-up</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Ask for a different format, audience, tone, or level of detail one change at a time. Review whether the factual content stayed grounded after each revision.</p></div></details><details class="step" id="copilot-trick-4"><summary><span>Separate facts, assumptions, and unknowns</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Require visible labels for unsupported claims and missing inputs. A plausible explanation is not proof; a suggested owner is not an assigned owner.</p></div></details><details class="step" id="copilot-trick-5"><summary><span>Challenge the answer with evidence</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Ask which claims are directly supported and which are not. Compare its evidence against the actual source rather than relying on Copilot's own confidence.</p></div></details><details class="step" id="copilot-trick-6"><summary><span>Recalculate important numbers</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Ask to see intermediate calculations, then independently check important totals and thresholds. AI output does not approve a payment, record change, or accounting entry.</p></div></details><details class="step" id="copilot-trick-7"><summary><span>Keep the thread, fence the source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use the same conversation for related follow-ups. When changing exercises, paste the new practice source and make the allowed source explicit so earlier examples do not leak into the new task.</p></div></details><details class="step" id="copilot-trick-8"><summary><span>Review before saving or sharing</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Check recipients, sensitive content, source accuracy, and your organization's rules before using an output. Save only safe, durable preferences or recurring work instructions, not case-specific data.</p></div></details><details class="step" id="skills"><summary><span>Skills</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Skills are reusable workflow definitions. These SKILL.md files are included as reference text only; this guide does not install or activate them or add capabilities to Copilot Chat (Basic).</p><details class="hint" id="skill-copilot-student-guide"><summary><span><strong>copilot-student-guide</strong> · SKILL.md</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><pre class="skill-source">---
+name: copilot-student-guide
+description: &gt;-
+  Build a customer-branded Copilot student training guide using the exact MCBC/ELC layout:
+  collapsible sections, sidebar navigation, light/dark and autumn/winter/spring/summer
+  themes, AI history and an unlabeled comic, license-appropriate exercises, copy-ready
+  prompts, and matching practice-source files with Copy/Open buttons. Use for "build a
+  Copilot student guide," "repeat the MCBC training design," "create customer Copilot
+  training," or /copilot-student-guide. Collect customer name, Copilot license type,
+  class length, and audience makeup before authoring; support unlisted GitHub Pages publishing.
+---
+
+# Copilot student guide
+
+Produce **one student-facing HTML5 guide plus one file per practice source**, using
+the bundled template, not an approximation of it. This is the finalized MCBC design,
+derived from the ELC training layout. Do not silently substitute the older demo-guide
+template. No instructor edition, presentation, or overlapping prompt guide unless
+explicitly requested.
+
+## 1. Intake: ask, do not guess
+
+Use `ask_user`, one question at a time, for each missing item below. Reuse an answer
+already supplied in the current request; do not make the user repeat it.
+
+1. **Customer name:** "What customer is this training for?"
+2. **Copilot license:** "Which Copilot license will the audience use?" Choices:
+   "Copilot Chat (Basic), work account without the Microsoft 365 Copilot add-on",
+   "Microsoft 365 Copilot, paid add-on",
+   "Mixed licenses",
+   "Not sure".
+3. **Class length:** "How many minutes is the class?" Choices: "30", "45", "60",
+   "90", "120". Accept a different positive duration or hours and convert to minutes.
+4. **Audience makeup:** "Who will attend? Include the roles and approximate mix,
+   such as 60% users, 25% managers, and 15% champions." Freeform: users, managers,
+   executives, champions, technical staff, and mixed groups are all valid.
+
+These are questions for the **future training run**, not questions to ask while
+installing this skill. Do not launch four independent questions concurrently.
+
+After these four, ask only for a material missing decision. Class date/time is
+optional: if not supplied, ask for the date to anchor the AI anniversary, or use
+the current date explicitly as a preparation-date anniversary. Never invent the
+class date, timezone, meeting link, company policy, license, or participant data.
+For "Not sure," resolve licensing with the user or a provided administrator
+statement before authoring feature-dependent exercises. For mixed licenses,
+default to a Basic-compatible common core and clearly label optional licensed
+extensions; confirm if the user instead wants separate learning tracks.
+
+Use customer branding from their official site or supplied assets; do not assume
+a customer domain or use real customer operational data. Reuse an established
+fictional training world only after reading its source and verifying permission.
+
+## 2. Start with the actual design
+
+Read [design-contract.md](references/design-contract.md) and
+[content-and-license.md](references/content-and-license.md).
+The template's CSS and JavaScript are the actual final guide's CSS/JS, not a rewrite.
+
+Run the scaffold script from this skill's directory, using absolute Windows paths:
+
+```powershell
+python "&lt;skill-dir&gt;\scripts\new_guide.py" --customer "Example Company" --license "Copilot Chat (Basic)" --minutes 90 --audience "Users, managers, and champions" --output "D:\AI_Output\Example_Copilot_Student_Guide.html"
+```
+
+The script deliberately produces an **unfinished scaffold**, not a completed class.
+Replace every `{{UPPERCASE_SLOT}}` and `[AUTHOR: ...]` block before delivery.
+Read `assets\exercise.html` and clone its markup for each exercise.
+Do not invent new component classes or rebuild the layout. Use `apply_patch` for
+authored content and code. Use asset-copy tools for binary images.
+
+Default output: `D:\AI_Output\&lt;Customer&gt;_Copilot_Student_Guide.html`, with practice
+sources in `D:\AI_Output\&lt;Customer&gt;_practice_sources\`. A linked package necessarily
+has companion assets; this does not authorize multiple student-guide editions.
+
+### Fixed section order
+
+`overview -&gt; intro -&gt; start -&gt; d01...dNN -&gt; prompting -&gt; memory -&gt; tips -&gt; wrap-up -&gt; about-guide`
+
+- Every top-level section is `&lt;details class="section ..."&gt;` with a direct summary.
+  Hero and Intro may start open. All exercise subsections, tips, facts, and
+  recommendations are collapsible as in the exercise template.
+- **Intro:** the heading "This day in AI history," a concise, verified dated item
+  with a primary source, optionally one short parameter-comparison note, then the
+  comic immediately below it. **No "A quick AI laugh," image caption, comic label,
+  introduction, explanation, or takeaway text.** Keep useful image alt text.
+- Reuse the bundled original comic unless a new one is requested. For a new comic,
+  use image generation only when the user's request authorizes creating an image.
+  Do not silently promise an image that was not generated.
+- Combine access, license scope, and safe practice into **one short Start here**.
+  Do not reintroduce a separate "Copilot Chat Basic: what this guide uses" section.
+- **Prompting and safety**, then **Memory and custom instructions**, immediately
+  precede **Copilot tips &amp; tricks**. Do not put these earlier in the document.
+- Rebuild the TOC, Previous/Next links, and tips index from the actual sections.
+  IDs are stable and unique; no orphan anchors.
+
+## 3. Adapt the class, not the layout
+
+Follow the audience and timing guidance in `content-and-license.md`. Select useful
+tasks for this customer's industry and audience. Do not keep MCBC's finance
+examples merely because they exist in the source design.
+
+Use fictional identities, operational facts, prices, mail, records, identifiers,
+and figures. Explicitly label the scenario fictional. Public references may be
+real. No personal, internal customer, or confidential Microsoft information.
+
+Each exercise includes: purpose/persona, practice source, GCSE starting prompt,
+plain-prose follow-ups, "What to check," a tip, a verified "Did you know?" fact,
+and a safe, explicitly recommended memory or custom instruction where useful.
+Use first-person prompts and put the fictional persona in the source.
+
+Starting prompts have four consecutive labeled lines: **Goal**, **Context**,
+**Source**, **Expectation**. No blank lines between them. Each prompt has a
+short "What this prompt does" blurb immediately above its prompt box. Follow-ups
+do not repeat GCSE. Use US English, explicit date formats, and source-based
+checks; never imply that a chat draft approves or executes an action.
+
+Audit every prompt against the exact source available at that point. Classify
+YES/PARTIAL/NO internally, fix missing source evidence, and resolve failures.
+Check every figure, threshold boundary, date, recipient, and requested quote.
+Preserve a planted unsupported claim only when deliberately teaching verification.
+Changing a source requires rechecking dependent prompts and regenerating its file.
+Do not require a separate agent for this audit.
+
+## 4. One matching file for every practice source
+
+Keep the full source text and existing **Copy** button. Add **Open TXT**, **Open CSV**,
+**Open PDF**, or **Open HTML** beside it, using the exact `.pb-actions` / `.openfile`
+markup in the exercise template. Use a relative local URL, `target="_blank"`, and
+`rel="noopener"`; do not turn Open into an upload action.
+
+**Default to UTF-8 TXT** for lossless reproduction, including structured sources.
+Choose CSV for a single clean table, HTML for multiple tables or mail, or PDF for
+document-like practice when helpful. Do not strip policies, context, caveats, or
+analyst identity to make a CSV fit: use TXT/HTML instead. Opening CSV may download
+it in some browsers; label the actual format rather than promising an inline view.
+
+The file and the copied source must agree exactly in content. Derive files from
+the final `&lt;pre&gt;` text rather than maintaining two independently authored versions.
+Normalize line endings only for TXT comparisons. For CSV/HTML/PDF, compare all
+context, cells, dates, identifiers, caveats, and quantities after format extraction.
+Use an existing permitted PDF tool; invoke the matching skill when applicable.
+Nothing in this skill authorizes uploading confidential data or using an unlicensed
+Copilot feature. Pasting remains the default exercise method even with file copies.
+
+## 5. Verify before delivering or publishing
+
+```powershell
+python "&lt;skill-dir&gt;\scripts\verify_guide.py" "D:\AI_Output\&lt;Customer&gt;_Copilot_Student_Guide.html"
+python "&lt;skill-dir&gt;\scripts\verify_guide.py" "D:\AI_Output\&lt;Customer&gt;_Copilot_Student_Guide.html" --browser
+```
+
+The first command needs only Python's standard library. The second requires an
+existing Playwright installation and Edge and checks actual interactions and
+all eight appearance combinations at mobile/tablet/desktop sizes. If unavailable, use
+available browser tooling for the same checks; do not skip them silently.
+Check the console and actual visible layout too, including button contrast,
+copy-button/text overlap, keyboard access, and source-file opening.
+
+Also manually verify content coverage, license eligibility, sources, timing, brand
+colors, fictionalization, accessible contrast, and lack of old-customer remnants.
+Test a clipboard copy against the source, not a success toast alone.
+No placeholder, broken anchor, missing file, or unsupported licensing claim may ship.
+
+## 6. Publish only the intended deliverables
+
+For this user's training-guide workflow, publish the completed guide and source
+files to their GitHub Pages site unless the current request opts out. Never
+interpret this as permission to publish the skill itself or private reference
+material. Follow [publishing.md](references/publishing.md).
+
+Use a cryptographically random unlisted address, no homepage/sitemap links, and
+noindex metadata. Explain that public Pages and its public source repo are **not
+private** and that exclusion from search cannot be guaranteed, especially for raw
+TXT/CSV/PDF resources without HTTP indexing headers. Do not advertise "secure" or
+"non-searchable" as a guarantee. Never publish sensitive training inputs.
+
+Keep the local guide and deployed guide synchronized. Confirm live deployment
+and every source URL, then open/reload the relevant browser preview. Clean up
+only the specific temporary files and worktree created by this run.
+
+Deliver a concise response with the live guide and repository/commit links, the
+local path, and the unlisted-versus-private caveat. Do not enumerate routine
+checks unless requested. If publishing is blocked, clearly state that it is not live.
+
+## Official product research (dynamic)
+
+Do not freeze current feature entitlements or model sizes into this skill.
+Use available Microsoft Learn tools; retrieve their schemas before invoking
+deferred tools. Official HTTPS documentation via a web fetch is also appropriate.
+
+| Need | Search |
+|---|---|
+| License boundary | Microsoft Copilot Chat vs Microsoft 365 Copilot licensing |
+| Data handling | Microsoft 365 Copilot enterprise data protection web search |
+| Personalization | Copilot memory custom instructions availability licensing |
+| Feature exercise | Product name, exact feature, licensing, prerequisites |
+
+If Learn MCP is unavailable and CLI lookup is needed:
+
+| MCP action | CLI equivalent |
+|---|---|
+| `microsoft_docs_search(query="...")` | `npx @microsoft/learn-cli search "..."` |
+| `microsoft_docs_fetch(url="...")` | `npx @microsoft/learn-cli fetch "..."` |
+| `microsoft_code_sample_search(query="...", language="...")` | `npx @microsoft/learn-cli code-search "..." --language ...` |
+
+Use the least invasive available method; no package installation just to repeat
+information already retrieved from an official page.
+</pre></div></details><details class="hint" id="skill-leadership-copilot-deck"><summary><span><strong>leadership-copilot-deck</strong> · SKILL.md</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><pre class="skill-source">---
+name: leadership-copilot-deck
+description: "Build or extend a hands-on Microsoft Copilot &amp; AI training deck for any\ncustomer's leadership team. It uses a premium editorial design, a demo-and-workflow\nstructure, Morph card step-through animations and prompt highlighting."
+---
+
+1. GATHER INPUTS
+Ask once, in a single round, and skip anything already provided.
+- Customer name and audience (for example, "Regional Leadership Team")
+- Session date and delivery mode (in person, Microsoft Teams or hybrid)
+- Brand: use the customer's brand kit or template if available; otherwise use the
+  default palette in section 3
+- Demos to cover (default: the seven listed in section 2) and the level of each
+- Name of the fictional scenario for exercises (default: "Project Aurora")
+Never ask about session length.
+
+2. DECK STRUCTURE
+1. Title: dark left half with a full-bleed photo on the right and a thin accent divider.
+   - Accent label: CUSTOMER NAME
+   - Serif title: "Executive Session: Microsoft Copilot &amp; AI"
+   - Line: "&lt;Audience&gt; · </pre></div></details></div></details><details class="step" id="tips-by-exercise"><summary><span>Tips &amp; facts by exercise</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ol class="tip-index"><li><strong>Exercise 01:</strong> <a href="#d01-tip">Tip</a> · <a href="#d01-fact">Did you know?</a></li><li><strong>Exercise 02:</strong> <a href="#d02-tip">Tip</a> · <a href="#d02-fact">Did you know?</a></li><li><strong>Exercise 03:</strong> <a href="#d03-tip">Tip</a> · <a href="#d03-fact">Did you know?</a></li><li><strong>Exercise 04:</strong> <a href="#d04-tip">Tip</a> · <a href="#d04-fact">Did you know?</a></li><li><strong>Exercise 05:</strong> <a href="#d05-tip">Tip</a> · <a href="#d05-fact">Did you know?</a></li><li><strong>Exercise 06:</strong> <a href="#d06-tip">Tip</a> · <a href="#d06-fact">Did you know?</a></li><li><strong>Exercise 07:</strong> <a href="#d07-tip">Tip</a> · <a href="#d07-fact">Did you know?</a></li><li><strong>Exercise 08:</strong> <a href="#d08-tip">Tip</a> · <a href="#d08-fact">Did you know?</a></li><li><strong>Exercise 09:</strong> <a href="#d09-tip">Tip</a> · <a href="#d09-fact">Did you know?</a></li><li><strong>Exercise 10:</strong> <a href="#d10-tip">Tip</a> · <a href="#d10-fact">Did you know?</a></li></ol></div></details><div class="section-nav"><a href="#memory">Previous section</a><a href="#wrap-up">Next section</a></div></div></details><details class="section instr" id="wrap-up">
 <summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Wrap-up and sources<span>Choose one technique, check the evidence, and keep the human decision.</span></h2><span class="ipill">Finish</span></summary>
 <div class="ibody">
 <p>Choose one repeatable task. Write its Goal, Context, Source, and Expectation; run a fictional or approved example; ask a specific follow-up; then verify the answer and save only safe, reusable guidance.</p>
