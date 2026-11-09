@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+
+<html data-season="autumn" lang="en-US">
+<head><meta charset="utf-8"/><script>(function(){var r=document.documentElement;r.dataset.season='autumn';try{if(localStorage.getItem('elc-gccs-1b9a2299d7-copilot-student-theme')==='dark'){r.dataset.theme='dark';}var savedSeason=localStorage.getItem('elc-gccs-1b9a2299d7-copilot-student-season');if(['autumn','winter','spring','summer'].includes(savedSeason)){r.dataset.season=savedSeason;}}catch(error){window.guideThemeStorageUnavailable=true;}})();</script>
+<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="noindex,nofollow,noarchive" name="googlebot"/>
+<meta content="light dark" name="color-scheme"/>
+<title>ELC GCCS | Microsoft 365 Copilot | Student Guide</title>
+<style>
+:root{color-scheme:light;--cp-bg:#f7f4ef;--cp-bg-elevated:#fcfbf8;--cp-surface:#ffffff;
+--cp-surface-soft:#f2f0ec;--cp-border:#e2ddd5;--cp-border-strong:#b9b2a6;
+--cp-text:#1b1c28;--cp-text-muted:#5c5c66;--cp-text-soft:#6f6f78;--cp-accent:#b11f4b;
+--cp-accent-soft:rgba(177,31,75,.08);--cp-navy:#040a2b;--cp-blue:#2e3a72;--cp-peri:#9eafff;
+--cp-gold:#8a6d2f;--cp-code-bg:#0f1430;--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.10);}
+[data-theme="dark"]{color-scheme:dark;--cp-bg:#1a1b22;--cp-bg-elevated:#212230;--cp-surface:#252634;
+--cp-surface-soft:#2c2d3d;--cp-border:#3a3b4e;--cp-border-strong:#565879;--cp-text:#e6e7f0;
+--cp-text-muted:#a5a7bd;--cp-text-soft:#9092a8;--cp-accent:#fd8ea1;--cp-accent-soft:rgba(253,142,161,.14);
+--cp-navy:#0a1038;--cp-blue:#9eafff;--cp-peri:#9eafff;--cp-gold:#d8b46a;--cp-code-bg:#0b0f26;
+--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.4);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cp-bg);color:var(--cp-text);
+font-family:Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6;
+-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--cp-text);line-height:1.2;margin:0;}
+a{color:var(--cp-accent);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px;}
+header.hero{background:var(--cp-navy);color:#fff;padding:48px 0 44px;}
+header.hero .wrap{padding-bottom:0;}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--cp-peri);}
+header.hero h1{color:#fff;font-size:50px;margin:14px 0 6px;}
+header.hero .tag{font-family:Georgia,serif;font-style:italic;font-size:23px;color:#dde3ff;}
+header.hero .meta{margin-top:18px;font-size:13px;color:#aeb5d2;}
+.themebtn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);
+border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+.themebtn:hover{background:rgba(255,255,255,.2);}
+nav.toc{position:sticky;top:0;z-index:50;background:var(--cp-bg-elevated);
+border-bottom:1px solid var(--cp-border);padding:10px 0;}
+nav.toc .wrap{padding-bottom:0;display:flex;gap:8px;flex-wrap:wrap;}
+nav.toc a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--cp-text-muted);
+padding:6px 12px;border-radius:999px;border:1px solid transparent;}
+nav.toc a:hover{color:var(--cp-accent);border-color:var(--cp-border);background:var(--cp-surface);}
+section{margin-top:52px;scroll-margin-top:64px;}
+section > h2{font-size:31px;margin-bottom:6px;}
+.lede{color:var(--cp-text-muted);font-size:15px;margin:0 0 22px;max-width:74ch;}
+.card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+padding:20px 22px;box-shadow:var(--cp-shadow);}
+.grid{display:grid;gap:14px;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.file{display:flex;gap:12px;align-items:flex-start;}
+.file code{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:6px;
+padding:2px 7px;font-size:12.5px;color:var(--cp-blue);}
+.file p{margin:4px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.gcse{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--cp-border);}
+.gcse:last-child{border-bottom:none;}
+.orb{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--cp-blue);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:20px;font-weight:700;}
+.gcse h3{font-size:18px;}
+.gcse .q{color:var(--cp-text-muted);font-size:14px;margin:2px 0 6px;}
+.gcse .ex{font-size:14px;font-style:italic;color:var(--cp-blue);}
+details.demo{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:14px;box-shadow:var(--cp-shadow);overflow:hidden;}
+details.demo[open]{border-color:var(--cp-border-strong);}
+summary{cursor:pointer;padding:18px 22px;display:flex;gap:16px;align-items:center;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+summary:hover{background:var(--cp-surface-soft);}
+.dnum{flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--cp-navy);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:17px;font-weight:700;}
+.dhead{flex:1 1 auto;min-width:0;}
+.dhead h3{font-size:21px;}
+.dhead p{margin:2px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.pill{flex:0 0 auto;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+background:var(--cp-accent-soft);color:var(--cp-accent);border-radius:999px;padding:5px 11px;}
+.dbody{padding:0 22px 22px;border-top:1px solid var(--cp-border);}
+.dbody code{display:inline-block;background:var(--cp-surface-soft);border:1px solid var(--cp-border);
+border-radius:6px;padding:3px 9px;font-size:12.5px;color:var(--cp-blue);margin:0 8px 6px 0;}
+.label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+color:var(--cp-text-soft);margin:20px 0 8px;}
+.promptbox{position:relative;background:var(--cp-code-bg);border-radius:12px;padding:18px 20px;}
+.promptbox pre{margin:0;white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
+font-size:14px;line-height:1.65;color:var(--cp-code-fg);}
+.promptbox pre::first-line{}
+.promptbox{padding-right:88px;}
+@media print{.promptbox{padding-right:20px;}} .promptbox.has-file{padding-top:54px;padding-right:20px;} .pb-actions{position:absolute;top:12px;right:12px;display:flex;gap:6px;} .pb-actions .copy{position:static;} .openfile{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:600;font-family:inherit;text-decoration:none;line-height:normal;} .openfile:hover{background:rgba(255,255,255,.24);} .openfile:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px;} @media print{.pb-actions{display:none;}.promptbox.has-file{padding-top:18px;}}
+.instr{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:22px;box-shadow:var(--cp-shadow);overflow:hidden;break-inside:avoid;scroll-margin-top:108px;}
+.instr>summary{padding:16px 22px;}
+.ichev{font-size:15px;color:var(--cp-accent);transition:transform .18s ease;flex:0 0 auto;}
+.instr[open] .ichev{transform:rotate(90deg);}
+.ihead{flex:1 1 auto;}
+.ihead h3{font-size:20px;margin:0;letter-spacing:-.01em;}
+.ihead p{margin:2px 0 0;font-size:13px;color:var(--cp-text-muted);}
+.ipill{flex:0 0 auto;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;
+color:var(--cp-accent);background:var(--cp-accent-soft);border-radius:999px;padding:5px 11px;}
+.ibody{padding:0 22px 6px;border-top:1px solid var(--cp-border);}
+.ibody section{padding-top:20px;}
+.ibody h2{font-size:22px;}
+@media print{.instr>summary{display:none;}.ibody{padding:0;border-top:0;}}
+.pnote{margin:14px 0 6px;font-size:13px;line-height:1.55;color:var(--cp-text-muted);border-left:3px solid var(--cp-accent);padding:0 0 0 10px;}
+.pnote span{display:block;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;color:var(--cp-accent);margin-bottom:2px;}
+.pnote+.promptbox{margin-top:0;}
+@media print{}
+.promptbox pre strong{color:#fff;font-weight:700;}
+.copy{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.12);color:#fff;
+border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;
+font-weight:600;cursor:pointer;font-family:inherit;}
+.copy:hover{background:rgba(255,255,255,.24);}
+.copy.done{background:#2e7d62;border-color:#2e7d62;}
+ol.follow{margin:0;padding-left:22px;}
+ol.follow li{margin-bottom:9px;font-size:14.5px;}
+.see{margin-top:14px;background:var(--cp-surface-soft);border-left:3px solid var(--cp-blue);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.see strong{color:var(--cp-blue);}
+.watch{margin-top:14px;background:var(--cp-accent-soft);border-left:3px solid var(--cp-accent);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.watch strong{color:var(--cp-accent);}
+.applies{margin-top:10px;font-size:14px;color:var(--cp-text-muted);font-style:italic;}
+.newcard h3{font-size:18px;margin-bottom:6px;}
+.newcard p{margin:0 0 10px;font-size:14px;color:var(--cp-text-muted);}
+.newcard .status{font-size:11.5px;font-weight:700;color:var(--cp-gold);
+letter-spacing:.04em;text-transform:uppercase;}
+.gcard h3{font-size:17px;margin-bottom:5px;}
+.gcard p{margin:0;font-size:14px;color:var(--cp-text-muted);}
+table.glance{width:100%;border-collapse:collapse;font-size:14px;}
+table.glance th{text-align:left;font-family:Aptos,sans-serif;font-size:11px;letter-spacing:.12em;
+text-transform:uppercase;color:var(--cp-text-soft);padding:0 12px 10px 0;border-bottom:1px solid var(--cp-border);}
+table.glance td{padding:13px 12px 13px 0;border-bottom:1px solid var(--cp-border);vertical-align:top;}
+table.glance tr:last-child td{border-bottom:none;}
+table.glance .n{font-family:Georgia,serif;font-weight:700;color:var(--cp-blue);width:34px;}
+table.glance .t{font-family:Georgia,serif;font-size:16px;color:var(--cp-text);white-space:nowrap;}
+table.glance .s{font-size:12px;color:var(--cp-text-soft);white-space:nowrap;}
+table.glance .o{color:var(--cp-text-muted);}
+.scenario{background:var(--cp-navy);color:#fff;border-radius:14px;padding:26px 28px;}
+.scenario h3{color:#fff;font-size:22px;margin-bottom:10px;}
+.scenario p{color:#dde3ff;font-size:14.5px;margin:0 0 12px;}
+.scenario ul{margin:0;padding-left:20px;color:#c3cbf0;font-size:14px;}
+.scenario li{margin-bottom:6px;}
+.note{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:12px;
+padding:14px 18px;font-size:14px;color:var(--cp-text-muted);margin-top:16px;}
+footer.end{margin-top:70px;padding-top:26px;border-top:1px solid var(--cp-border);
+font-size:13px;color:var(--cp-text-soft);}
+@media(max-width:720px){table.glance .t,table.glance .s{white-space:normal;}}
+@media print{nav.toc,.themebtn,.copy{display:none;}details.demo{break-inside:avoid;}
+details.demo>.dbody{display:block!important;}body{background:#fff;}}
+
+
+:root{--cp-accent:#7a1126;--cp-accent-soft:rgba(122,17,38,.08)}
+[data-theme="dark"]{--cp-accent:#ffb4c0;--cp-accent-soft:rgba(255,180,192,.14)}
+header.hero .wrap{max-width:1420px}
+.layout{max-width:1420px;margin:0 auto;padding:24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:start}
+.sidebar{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;padding:15px;box-shadow:var(--cp-shadow)}
+.sidebar h2{font-size:18px;margin:0 0 8px}
+.sidebar a{display:block;color:var(--cp-text-muted);font-size:13px;font-weight:600;line-height:1.35;padding:6px 8px;border-radius:7px;text-decoration:none}
+.sidebar a:hover,.sidebar a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.sidebar .nav-actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.nav-actions button,.section-nav a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:7px;color:var(--cp-text);cursor:pointer;font:inherit;font-size:12px;font-weight:700;padding:7px 9px;text-decoration:none}
+.content{min-width:0}
+details.section{scroll-margin-top:20px}
+details.section summary h2{font-size:20px;line-height:1.25}
+details.section summary .dhead span,details.section summary .ihead span{display:block;font-family:Aptos,"Segoe UI",sans-serif;font-size:13px;font-weight:400;color:var(--cp-text-muted);margin-top:3px}
+.ibody{padding-bottom:22px}
+.ibody p,.dbody p{font-size:14.5px}
+.ibody a,.dbody a{overflow-wrap:anywhere}
+.dbody .label:first-child{margin-top:20px}
+.promptbox pre{overflow-wrap:anywhere}
+.promptbox .copy:focus-visible,.themebtn:focus-visible,summary:focus-visible,.nav-actions button:focus-visible,.section-nav a:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px}
+.section-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.section-nav a:last-child{margin-left:auto}
+.news-card{padding:16px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface)}
+.news-card h3{font-size:17px;margin:3px 0 7px}
+.news-card p{margin:0 0 8px}
+.news-card .status{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--cp-accent)}
+.duration{font-size:13px;color:var(--cp-text-muted)}
+.callout{border-left:4px solid var(--cp-accent);padding:12px 15px;background:var(--cp-surface-soft);border-radius:8px;margin:15px 0}
+footer.end{margin:28px 0 16px}
+@media(max-width:850px){.layout{grid-template-columns:1fr;padding:16px}.sidebar{position:static;max-height:none}.sidebar-links{display:flex;gap:2px;flex-wrap:wrap}.sidebar a{display:inline-block}header.hero h1{font-size:36px}}
+@media(max-width:500px){summary{padding:14px;gap:10px}.dbody,.ibody{padding-left:14px;padding-right:14px}.g2,.g3{grid-template-columns:1fr}.pill,.ipill{display:none}.promptbox pre{font-size:13px}.promptbox{padding-right:72px}.copy{padding:6px}}
+@media print{.sidebar,.section-nav{display:none}.layout{display:block;padding:0}details.section>.dbody,details.section>.ibody{display:block!important}details.section{box-shadow:none}}
+</style>
+<style>:root {
+  --cp-bg: #f7f3ec;
+  --cp-bg-elevated: #f7f3ec;
+  --cp-surface: #fff;
+  --cp-surface-soft: #fbf8f2;
+  --cp-border: #e4dccd;
+  --cp-border-strong: #b98f73;
+  --cp-text: #242328;
+  --cp-text-muted: #596069;
+  --cp-text-soft: #596069;
+  --cp-accent: #7a1126;
+  --cp-accent-soft: rgba(122, 17, 38, .08);
+  --cp-navy: #351420;
+  --cp-blue: #284f78;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #b78a54;
+  --cp-code-bg: #fbf8f2;
+  --cp-code-fg: #242328;
+  --cp-shadow: 0 6px 22px rgba(53, 20, 32, .06);
+}
+[data-theme="dark"] {
+  --cp-bg: #181419;
+  --cp-bg-elevated: #181419;
+  --cp-surface: #271f26;
+  --cp-surface-soft: #211a20;
+  --cp-border: #4a3b45;
+  --cp-border-strong: #a58275;
+  --cp-text: #f5edf0;
+  --cp-text-muted: #d3c7cf;
+  --cp-text-soft: #d3c7cf;
+  --cp-accent: #ffbecb;
+  --cp-accent-soft: rgba(255, 190, 203, .12);
+  --cp-navy: #351420;
+  --cp-blue: #bdd9fa;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #d8b27a;
+  --cp-code-bg: #211a20;
+  --cp-code-fg: #f5edf0;
+  --cp-shadow: 0 6px 22px rgba(0, 0, 0, .22);
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", Aptos, Helvetica, Arial, sans-serif; line-height: 1.55; }
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 200; padding: 8px 12px;
+  background: var(--cp-surface); color: var(--cp-text); transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+.topbar {
+  position: sticky; top: 0; z-index: 100; min-height: 64px; display: flex;
+  align-items: center; gap: 16px; padding: 10px 24px; background: var(--cp-navy);
+  color: #fff; border-bottom: 3px solid var(--cp-gold);
+}
+.brand {
+  font-family: Georgia, "Times New Roman", serif; color: var(--cp-peri);
+  font-size: .84rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+}
+.bar-title {
+  flex: 1; margin: 0; font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem; font-weight: 400;
+}
+.top-actions { display: flex; gap: 7px; flex-wrap: wrap; }
+.top-actions button {
+  background: transparent; color: #fff; border: 1px solid var(--cp-gold);
+  border-radius: 4px; padding: 7px 10px; cursor: pointer; font: inherit; font-size: .81rem;
+}
+.top-actions button:hover, .top-actions button:focus-visible {
+  background: var(--cp-gold); color: var(--cp-navy);
+}
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--cp-gold); outline-offset: 3px;
+}
+.layout {
+  display: flex; gap: 0; max-width: 1400px; margin: 0 auto; padding: 0; align-items: flex-start;
+}
+nav.toc {
+  position: sticky; top: 64px; z-index: 10; align-self: flex-start; flex: 0 0 250px;
+  width: 250px; height: calc(100vh - 64px); overflow: auto; padding: 20px;
+  background: var(--cp-bg); border: 0;
+}
+nav.toc .wrap { display: block; max-width: none; padding: 0; }
+.toc-title {
+  margin-bottom: 8px; color: var(--cp-text-muted); font-size: .75rem;
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+nav.toc a {
+  display: block; padding: 6px 10px; color: var(--cp-text); border: 0;
+  border-left: 3px solid transparent; border-radius: 0; font-size: .88rem;
+  font-weight: 400; text-decoration: none;
+}
+nav.toc a:hover, nav.toc a.active {
+  border-left-color: var(--cp-gold); background: var(--cp-accent-soft); color: var(--cp-text);
+}
+.content { flex: 1; min-width: 0; padding: 20px 24px 80px; }
+header.hero { border-radius: 8px; padding: 28px; margin-bottom: 20px; }
+header.hero .wrap { max-width: none; padding: 0; }
+header.hero h1 { margin: 8px 0; color: #fff; font-size: clamp(1.7rem, 3vw, 2.1rem); font-weight: 400; }
+header.hero .tag { margin: 3px 0; color: #f4e3e7; font-size: 1.12rem; }
+header.hero .meta { margin: 9px 0 0; color: #f1e2e5; font-size: .9rem; }
+.instr, details.demo {
+  overflow: hidden; margin-bottom: 18px; border: 1px solid var(--cp-border);
+  border-radius: 8px; background: var(--cp-surface); box-shadow: var(--cp-shadow);
+}
+details.section { scroll-margin-top: 88px; }
+.instr > summary, details.demo > summary { padding: 14px 20px; gap: 12px; }
+.instr[open] > summary, details.demo[open] > summary { border-bottom: 1px solid var(--cp-border); }
+details.section summary h2 { font-size: 1.25rem; }
+details.demo summary h2 { font-weight: 400; }
+.dnum { background: var(--cp-navy); border-radius: 6px; }
+.pill, .ipill { color: var(--cp-accent); background: var(--cp-accent-soft); }
+.ibody, .dbody { padding: 16px 22px 22px; border: 0; }
+.ibody p, .dbody p { line-height: 1.65; }
+.demo-intro {
+  margin: 0 0 14px; padding: 12px 14px; border: 1px solid var(--cp-border-strong);
+  border-radius: 4px; background: var(--cp-surface-soft);
+}
+.dbody .demo-intro .label:first-child { margin: 0 0 4px; }
+.demo-intro p { margin: 0; }
+.demo-intro .applies { margin-top: 6px; }
+.step, .hint {
+  margin: 10px 0; overflow: hidden; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-surface); scroll-margin-top: 88px;
+}
+.step > summary, .hint > summary { padding: 11px 14px; gap: 12px; font-size: .95rem; font-weight: 600; }
+.step > summary > span:first-child, .hint > summary > span:first-child { flex: 1; }
+.step[open] > summary, .hint[open] > summary { border-bottom: 1px solid var(--cp-border); }
+.step-body, .hint-body { padding: 12px 14px; }
+.step-body .label:first-child { margin-top: 0; }
+.step-body .promptbox + .pnote { margin-top: 16px; }
+.step-body .note { margin: 0 0 12px; }
+.step-body .see { margin: 0; border-left-color: var(--cp-gold); }
+.hint > summary strong { margin-right: 5px; color: var(--cp-accent); }
+.hint.fact > summary strong { color: var(--cp-blue); }
+.hint.tip { border-left: 3px solid var(--cp-accent); }
+.hint.fact { border-left: 3px solid var(--cp-blue); }
+.hint-body { font-size: .92rem; line-height: 1.6; }
+.step .chev, .hint .chev {
+  color: var(--cp-accent); transform: rotate(-90deg); transition: transform .18s ease;
+}
+.step[open] .chev, .hint[open] .chev { transform: rotate(0); }
+.promptbox {
+  position: relative; padding: 14px 100px 14px 14px; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-code-bg);
+}
+.promptbox pre {
+  color: var(--cp-code-fg); font: inherit; font-size: .91rem; line-height: 1.65;
+  white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal;
+}
+.promptbox pre strong { color: var(--cp-accent); }
+.copy {
+  top: 8px; right: 8px; padding: 6px 10px; border: 1px solid var(--cp-gold);
+  border-radius: 4px; background: var(--cp-navy); color: #fff;
+}
+.copy:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.copy.done { border-color: #2e7d62; background: #2e7d62; }
+.openfile { padding: 6px 10px; border: 1px solid var(--cp-gold); border-radius: 4px; background: var(--cp-navy); color: #fff; }
+.openfile:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.pb-actions { top: 8px; right: 8px; }
+.tip-index { margin: 0; padding-left: 22px; }
+.tip-index li { margin: 7px 0; }
+.toast {
+  position: fixed; right: 18px; bottom: 18px; z-index: 150; max-width: min(420px, calc(100vw - 36px));
+  padding: 10px 14px; border: 1px solid var(--cp-gold); border-radius: 6px;
+  background: var(--cp-navy); color: #fff; box-shadow: var(--cp-shadow);
+}
+footer.end { margin-top: 28px; padding-bottom: 0; }
+@media (max-width: 900px) {
+  .topbar { position: relative; flex-wrap: wrap; padding: 12px 16px; }
+  .brand { width: 100%; font-size: .78rem; }
+  .bar-title { min-width: 180px; font-size: 1.02rem; }
+  .layout { display: block; }
+  nav.toc { position: static; width: auto; height: auto; padding: 10px 12px; overflow: visible; }
+  nav.toc .wrap { display: flex; flex-wrap: nowrap; gap: 3px; overflow-x: auto; padding: 2px 0; }
+  nav.toc a {
+    flex: 0 0 auto; white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent;
+  }
+  nav.toc a:hover, nav.toc a.active { border-left: 0; border-bottom-color: var(--cp-gold); }
+  .toc-title { display: none; }
+  .content { padding: 16px 14px 55px; }
+  header.hero { padding: 22px; }
+  details.section, .step, .hint { scroll-margin-top: 12px; }
+}
+@media (max-width: 500px) {
+  .top-actions { width: 100%; }
+  .top-actions button { flex: 1; }
+  .brand { white-space: normal; }
+  .instr > summary, details.demo > summary { align-items: flex-start; padding: 14px; gap: 10px; }
+  .pill, .ipill { display: block; padding: 4px 7px; font-size: .62rem; }
+  .ibody, .dbody { padding-left: 14px; padding-right: 14px; }
+  .promptbox { padding-right: 84px; }
+}
+@media (max-width: 360px) {
+  .instr > summary, details.demo > summary { flex-wrap: wrap; }
+  .instr > summary .ihead, details.demo > summary .dhead {
+    flex: 1 1 calc(100% - 56px); min-width: 0; overflow-wrap: anywhere;
+  }
+  .instr > summary .ipill { margin-left: 20px; }
+  details.demo > summary .pill { margin-left: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ichev, .step .chev, .hint .chev { transition: none; }
+}
+@media print {
+  :root, [data-theme="dark"] {
+    --cp-bg: #fff; --cp-surface: #fff; --cp-surface-soft: #fff;
+    --cp-text: #000; --cp-text-muted: #333; --cp-code-bg: #fff; --cp-code-fg: #000;
+    --cp-border: #999; --cp-accent: #641526; --cp-shadow: none;
+  }
+  html { scroll-behavior: auto; }
+  .topbar, nav.toc, .copy, .pb-actions, .toast, .skip-link, .section-nav { display: none !important; }
+  .layout { display: block; padding: 0; }
+  .content { padding: 0; }
+  .instr, details.demo, .step, .hint { break-inside: auto; box-shadow: none; }
+  .instr > summary, details.demo > summary { display: flex !important; break-after: avoid; }
+  .instr .ibody, details.demo .dbody { display: block !important; }
+  .promptbox { padding: 12px; break-inside: avoid; }
+}
+</style><style id="student-guide-controls">
+:root[data-season="winter"] {
+  --cp-bg:#eef4f7;--cp-bg-elevated:#eef4f7;--cp-surface:#fff;--cp-surface-soft:#f3f7fa;
+  --cp-border:#cddbe4;--cp-border-strong:#829bab;--cp-text:#20313e;
+  --cp-text-muted:#516271;--cp-text-soft:#516271;--cp-accent:#7a1126;
+  --cp-accent-soft:rgba(122,17,38,.07);--cp-navy:#122d43;--cp-blue:#315977;
+  --cp-peri:#f0d7a1;--cp-gold:#9e7c4a;--cp-code-bg:#f3f7fa;--cp-code-fg:#20313e;
+  --cp-shadow:0 6px 22px rgba(18,45,67,.07);
+}
+:root[data-season="winter"][data-theme="dark"] {
+  --cp-bg:#0f1b27;--cp-bg-elevated:#0f1b27;--cp-surface:#172a3a;--cp-surface-soft:#102232;
+  --cp-border:#375064;--cp-border-strong:#88a6bb;--cp-text:#eef5fa;
+  --cp-text-muted:#c4d4e0;--cp-text-soft:#c4d4e0;--cp-accent:#ffc2ce;
+  --cp-accent-soft:rgba(255,194,206,.12);--cp-navy:#122d43;--cp-blue:#bdddf6;
+  --cp-peri:#f0d7a1;--cp-gold:#d9b880;--cp-code-bg:#102232;--cp-code-fg:#eef5fa;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.22);
+}
+:root[data-season="spring"] {
+  --cp-bg:#f2f7f1;--cp-bg-elevated:#f2f7f1;--cp-surface:#fff;--cp-surface-soft:#edf4eb;
+  --cp-border:#d5e2d1;--cp-border-strong:#91ad8e;--cp-text:#1e3024;
+  --cp-text-muted:#526655;--cp-text-soft:#526655;--cp-accent:#356b45;
+  --cp-accent-soft:rgba(53,107,69,.08);--cp-navy:#173b2a;--cp-blue:#356b45;
+  --cp-peri:#cfe7c8;--cp-gold:#8b9560;--cp-code-bg:#f6faf4;--cp-code-fg:#1e3024;
+  --cp-shadow:0 6px 22px rgba(35,75,43,.07);
+}
+:root[data-season="spring"][data-theme="dark"] {
+  --cp-bg:#141d17;--cp-bg-elevated:#141d17;--cp-surface:#1d2a20;--cp-surface-soft:#18251b;
+  --cp-border:#3b5140;--cp-border-strong:#829b85;--cp-text:#edf5ee;
+  --cp-text-muted:#c0d0c2;--cp-text-soft:#c0d0c2;--cp-accent:#a8d7ad;
+  --cp-accent-soft:rgba(168,215,173,.13);--cp-navy:#173b2a;--cp-blue:#b8e3bc;
+  --cp-peri:#d2e8b6;--cp-gold:#d4c98c;--cp-code-bg:#18251b;--cp-code-fg:#edf5ee;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.24);
+}
+:root[data-season="summer"] {
+  --cp-bg:#fff8e9;--cp-bg-elevated:#fff8e9;--cp-surface:#fff;--cp-surface-soft:#fff2d6;
+  --cp-border:#ead9b5;--cp-border-strong:#c69d60;--cp-text:#292d34;
+  --cp-text-muted:#5d5b55;--cp-text-soft:#5d5b55;--cp-accent:#a9441b;
+  --cp-accent-soft:rgba(169,68,27,.08);--cp-navy:#164a70;--cp-blue:#236b9a;
+  --cp-peri:#ffe2a0;--cp-gold:#a96e16;--cp-code-bg:#fffaf0;--cp-code-fg:#292d34;
+  --cp-shadow:0 6px 22px rgba(110,75,24,.08);
+}
+:root[data-season="summer"][data-theme="dark"] {
+  --cp-bg:#151d25;--cp-bg-elevated:#151d25;--cp-surface:#202b35;--cp-surface-soft:#1a2630;
+  --cp-border:#425461;--cp-border-strong:#92a7b3;--cp-text:#f0f3f5;
+  --cp-text-muted:#c6d0d5;--cp-text-soft:#c6d0d5;--cp-accent:#ffbf78;
+  --cp-accent-soft:rgba(255,191,120,.14);--cp-navy:#164a70;--cp-blue:#a9d8f3;
+  --cp-peri:#ffe2a0;--cp-gold:#e0bb74;--cp-code-bg:#1a2630;--cp-code-fg:#f0f3f5;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.25);
+}
+.topbar{flex-wrap:wrap}
+.brand{flex:0 1 auto}
+.bar-title{flex:1 1 220px;font-size:1.15rem}
+.top-actions{margin-left:auto}
+.top-actions button{white-space:nowrap}
+nav.toc{top:var(--cp-header-height,64px);height:calc(100vh - var(--cp-header-height,64px))}
+details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) + 24px)}
+.hero-panel{
+  margin-bottom:18px;border:1px solid var(--cp-navy);border-radius:8px;
+  background:var(--cp-navy);color:#fff;overflow:hidden;
+}
+.hero-panel>summary{padding:24px 28px 18px;gap:18px;align-items:flex-start}
+.hero-panel>summary:hover{background:var(--cp-navy)}
+.hero-panel>summary>div{flex:1;min-width:0}
+.hero-panel h1{color:#fff;font-size:clamp(1.7rem,3vw,2.1rem);font-weight:400;margin:8px 0 0}
+.hero-chevron{color:var(--cp-peri);font-size:1.4rem;transform:rotate(0);transition:transform .18s ease}
+.hero-panel[open] .hero-chevron{transform:rotate(90deg)}
+.hero-body{padding:0 28px 24px}
+.hero-body .tag{font:italic 1.12rem/1.5 Georgia,serif;color:#f4e3e7}
+.hero-body .meta{margin-top:12px;color:#f1e2e5;font-size:.9rem}
+.season-label{margin-top:12px;color:var(--cp-peri);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+.grid{align-items:start}
+.subcard{margin:0;padding:0;min-width:0;box-shadow:none}
+.subcard>summary{align-items:flex-start}
+.subcard>summary h3{flex:1;min-width:0;margin:0;font:400 1.05rem/1.35 Georgia,serif}
+.subcard .status{color:var(--cp-accent);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.subcard .step-body p{margin:8px 0}
+.demo-overview .demo-intro{margin:0}
+.demo-overview .step-body{padding:0}
+.demo-overview .demo-intro{border:0;border-radius:0;padding:12px 14px}
+.recommendation .rec-label{
+  display:block;margin-bottom:4px;color:var(--cp-accent);font-size:.68rem;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+}
+.recommendation .step-body>p{margin:0 0 12px}
+.savebox{
+  position:relative;padding:14px 100px 14px 14px;border:1px solid var(--cp-border);
+  border-radius:6px;background:var(--cp-code-bg);
+}
+.savebox pre{
+  margin:0;color:var(--cp-code-fg);font:inherit;font-size:.91rem;line-height:1.65;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.meme-figure{margin:0}
+.meme-figure img{display:block;max-width:100%;height:auto;border-radius:6px}
+.meme-figure figcaption{margin-top:10px;color:var(--cp-text-muted);font-size:.85rem}
+.history-date{color:var(--cp-accent);font-weight:700}
+.about-body footer.end{margin:0;padding:0;border:0}
+@media(max-width:900px){
+  .brand{flex-basis:100%}
+  nav.toc{position:static;height:auto}
+  details.section,.step,.hint{scroll-margin-top:12px}
+}
+@media(max-width:500px){
+  .top-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-left:0}
+  .top-actions button{width:100%}
+  .hero-panel>summary{padding:20px 20px 16px}
+  .hero-body{padding:0 20px 20px}
+  .savebox{padding-right:84px}
+  .subcard>summary{flex-wrap:nowrap}
+}
+@media(prefers-reduced-motion:reduce){.hero-chevron{transition:none}}
+@media print{
+  .hero-panel{background:#fff;color:#000;border-color:#999}
+  .hero-panel h1,.hero-panel .eyebrow,.hero-body .tag,.hero-body .meta,.season-label{color:#000}
+  .hero-chevron,.chev{display:none}
+  .savebox{padding:12px}
+}
+</style><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23351420'/%3E%3Cpath d='M6 8h8l2 2 2-2h8v17h-8l-2 2-2-2H6z' fill='none' stroke='%23d8b27a' stroke-width='2'/%3E%3C/svg%3E"/></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">ELC GCCS</span><p class="bar-title">Microsoft 365 Copilot: Student Guide</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button></div></header>
+<div class="layout">
+<nav aria-label="Guide contents" class="toc"><div class="wrap"><div class="toc-title">Contents</div><a href="#overview">Overview</a><a href="#intro">Intro</a><a href="#start">Start here</a><a href="#d01">01. Find the right research source</a><a href="#d02">02. Turn a Teams discussion into a research checkpoint</a><a href="#d03">03. Synthesize an Outlook evidence thread</a><a href="#d04">04. Move from Excel evidence to a Word brief</a><a href="#d05">05. Repair a prompt that will not hold up</a><a href="#d06">06. Plan a Researcher investigation</a><a href="#d07">07. Audit a Researcher synthesis</a><a href="#d08">08. Choose the right agent candidate</a><a href="#d09">09. Design a grounded research-library agent</a><a href="#d10">10. Choose one workflow to change</a><a href="#prompting">Prompting &amp; safety</a><a href="#memory">Memory</a><a href="#tips">Tips &amp; tricks</a><a href="#wrap-up">Wrap-up</a><a href="#about-guide">About</a></div></nav>
+<main class="content" id="main-content" tabindex="-1"><details class="section hero-panel" id="overview" open=""><summary><div><div class="eyebrow">ELC GCCS · Student Guide</div><h1>Microsoft 365 Copilot for GCCS Clinical and Consumer Research teams</h1></div><span aria-hidden="true" class="hero-chevron">▸</span></summary><div class="hero-body"><div class="tag">Two practical classes for grounded research work, durable prompts, evidence synthesis, and safe agents.</div><div class="meta">Class 1: November 9, 2026 · Class 2: November 11, 2026 · 240 minutes</div><div class="season-label" id="season-label">Autumn · Warm paper and harvest tones</div><div class="section-nav"><a href="#intro">Next section</a></div></div></details>
+<details class="section instr" id="intro" open=""><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Intro<span>This day in AI history.</span></h2><span class="ipill">Start of session</span></summary><div class="ibody"><h3 id="ai-history">This day in AI history</h3><p><span class="history-date">November 9, 2015:</span> Google announced the open-source release of TensorFlow, describing it as a general, flexible, portable machine-learning system intended to help researchers exchange ideas through working code. <a href="https://research.google/blog/tensorflow-googles-latest-machine-learning-system-open-sourced-for-everyone/" target="_blank" rel="noopener">Google Research announcement</a></p><figure class="meme-figure"><img alt="ELC GCCS research meme: a researcher finds a file named Final version 7 use this one. Copilot asks whether it is approved, current, and authoritative. The researcher admits, I found a file." height="900" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzYyI+DQogIDx0aXRsZSBpZD0idGl0bGUiPlRoZSB0aHJlZSBzdGFnZXMgb2Ygc291cmNlIGNvbmZpZGVuY2U8L3RpdGxlPg0KICA8ZGVzYyBpZD0iZGVzYyI+QSB0aHJlZS1wYW5lbCBvcmlnaW5hbCBjYXJ0b29uLiBBIHJlc2VhcmNoZXIgcHJvdWRseSBmaW5kcyBhIGZpbGUgbmFtZWQgRmluYWwgdmVyc2lvbiA3IHVzZSB0aGlzIG9uZS4gQSBmcmllbmRseSBDb3BpbG90IHJvYm90IGFza3Mgd2hldGhlciBpdCBpcyBhcHByb3ZlZCwgY3VycmVudCwgYW5kIGF1dGhvcml0YXRpdmUuIFRoZSByZXNlYXJjaGVyIHBhdXNlcyBhbmQgYWRtaXRzIHRoYXQgdGhleSBmb3VuZCBhIGZpbGUuPC9kZXNjPg0KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIHJ4PSIzNiIgZmlsbD0iI2Y2ZjFlNyIvPg0KICA8cmVjdCB4PSIzNCIgeT0iMzQiIHdpZHRoPSIxNTMyIiBoZWlnaHQ9IjgzMiIgcng9IjI4IiBmaWxsPSIjZmZmZGY4IiBzdHJva2U9IiMxMDFkMzUiIHN0cm9rZS13aWR0aD0iOCIvPg0KICA8dGV4dCB4PSI4MDAiIHk9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjU0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMTAxZDM1Ij5USEUgVEhSRUUgU1RBR0VTIE9GIFNPVVJDRSBDT05GSURFTkNFPC90ZXh0Pg0KICA8dGV4dCB4PSI4MDAiIHk9IjE0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSIjNzY1YzI2Ij5BIHJlc2VhcmNoLXRlYW0gc3RvcnkgaW4gdGhyZWUgcGFuZWxzPC90ZXh0Pg0KDQogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDcwIDE5MCkiPg0KICAgIDxyZWN0IHdpZHRoPSI0NTAiIGhlaWdodD0iNjAwIiByeD0iMjIiIGZpbGw9IiNmNmYxZTciIHN0cm9rZT0iI2QzYjc3MyIgc3Ryb2tlLXdpZHRoPSI1Ii8+DQogICAgPGNpcmNsZSBjeD0iMjI1IiBjeT0iMTA0IiByPSI0NCIgZmlsbD0iI2QzYjc3MyIvPg0KICAgIDx0ZXh0IHg9IjIyNSIgeT0iMTE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxMDFkMzUiPjE8L3RleHQ+DQogICAgPHJlY3QgeD0iNDUiIHk9IjE3NSIgd2lkdGg9IjM2MCIgaGVpZ2h0PSIxNjUiIHJ4PSIyNCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjMTAxZDM1IiBzdHJva2Utd2lkdGg9IjQiLz4NCiAgICA8cGF0aCBkPSJNMTcwIDM0MCBMMjA1IDM4NSBMMjM1IDM0MCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjMTAxZDM1IiBzdHJva2Utd2lkdGg9IjQiLz4NCiAgICA8dGV4dCB4PSIyMjUiIHk9IjIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMTAxZDM1Ij4NCiAgICAgIDx0c3BhbiB4PSIyMjUiIGR5PSIwIj7igJxJIGZvdW5kIHRoZSBmaWxlIeKAnTwvdHNwYW4+DQogICAgICA8dHNwYW4geD0iMjI1IiBkeT0iNDYiPkZJTkFMX3Y3XzwvdHNwYW4+DQogICAgICA8dHNwYW4geD0iMjI1IiBkeT0iMzgiPlVTRV9USElTX09ORS5kb2N4PC90c3Bhbj4NCiAgICA8L3RleHQ+DQogICAgPGNpcmNsZSBjeD0iMjI1IiBjeT0iNDYwIiByPSI2NyIgZmlsbD0iI2M4ODc2MyIvPg0KICAgIDxwYXRoIGQ9Ik0xNDUgNTc1IFEyMjUgNTAwIDMwNSA1NzUgTDMyMiA2MDAgTDEyOCA2MDAgWiIgZmlsbD0iIzEwMWQzNSIvPg0KICAgIDxwYXRoIGQ9Ik0xNjggNDQ5IFEyMjUgMzY1IDI4MiA0NDkgUTI1OCA0MTAgMjI1IDQxMCBRMTkyIDQxMCAxNjggNDQ5IiBmaWxsPSIjM2IyYjI2Ii8+DQogICAgPGNpcmNsZSBjeD0iMjAyIiBjeT0iNDYyIiByPSI2IiBmaWxsPSIjMTAxZDM1Ii8+DQogICAgPGNpcmNsZSBjeD0iMjQ4IiBjeT0iNDYyIiByPSI2IiBmaWxsPSIjMTAxZDM1Ii8+DQogICAgPHBhdGggZD0iTTIwMiA0OTIgUTIyNSA1MTAgMjQ4IDQ5MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTAxZDM1IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICA8L2c+DQoNCiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTc1IDE5MCkiPg0KICAgIDxyZWN0IHdpZHRoPSI0NTAiIGhlaWdodD0iNjAwIiByeD0iMjIiIGZpbGw9IiNkZWQ0YzEiIHN0cm9rZT0iI2QzYjc3MyIgc3Ryb2tlLXdpZHRoPSI1Ii8+DQogICAgPGNpcmNsZSBjeD0iMjI1IiBjeT0iMTA0IiByPSI0NCIgZmlsbD0iI2QzYjc3MyIvPg0KICAgIDx0ZXh0IHg9IjIyNSIgeT0iMTE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxMDFkMzUiPjI8L3RleHQ+DQogICAgPHJlY3QgeD0iMzgiIHk9IjE3MCIgd2lkdGg9IjM3NCIgaGVpZ2h0PSIxOTAiIHJ4PSIyNCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjMTAxZDM1IiBzdHJva2Utd2lkdGg9IjQiLz4NCiAgICA8cGF0aCBkPSJNMjA1IDM2MCBMMjI1IDQwMiBMMjUwIDM2MCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjMTAxZDM1IiBzdHJva2Utd2lkdGg9IjQiLz4NCiAgICA8dGV4dCB4PSIyMjUiIHk9IjIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI5IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMTAxZDM1Ij4NCiAgICAgIDx0c3BhbiB4PSIyMjUiIGR5PSIwIj7igJxFeGNlbGxlbnQu4oCdPC90c3Bhbj4NCiAgICAgIDx0c3BhbiB4PSIyMjUiIGR5PSI0NSI+4oCcSXMgaXQgYXBwcm92ZWQsPC90c3Bhbj4NCiAgICAgIDx0c3BhbiB4PSIyMjUiIGR5PSI0MCI+Y3VycmVudCwgYW5kPC90c3Bhbj4NCiAgICAgIDx0c3BhbiB4PSIyMjUiIGR5PSI0MCI+YXV0aG9yaXRhdGl2ZT/igJ08L3RzcGFuPg0KICAgIDwvdGV4dD4NCiAgICA8cmVjdCB4PSIxNDgiIHk9IjQzMCIgd2lkdGg9IjE1NCIgaGVpZ2h0PSIxMjUiIHJ4PSIzNCIgZmlsbD0iIzEwMWQzNSIvPg0KICAgIDxyZWN0IHg9IjE3NiIgeT0iNDU4IiB3aWR0aD0iOTgiIGhlaWdodD0iNjUiIHJ4PSIyMCIgZmlsbD0iI2Y2ZjFlNyIvPg0KICAgIDxjaXJjbGUgY3g9IjIwMiIgY3k9IjQ5MCIgcj0iOCIgZmlsbD0iI2QzYjc3MyIvPg0KICAgIDxjaXJjbGUgY3g9IjI0OCIgY3k9IjQ5MCIgcj0iOCIgZmlsbD0iI2QzYjc3MyIvPg0KICAgIDxwYXRoIGQ9Ik0yMDIgNTEyIFEyMjUgNTMwIDI0OCA1MTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2QzYjc3MyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4NCiAgICA8bGluZSB4MT0iMjI1IiB5MT0iNDMwIiB4Mj0iMjI1IiB5Mj0iMzk1IiBzdHJva2U9IiMxMDFkMzUiIHN0cm9rZS13aWR0aD0iNyIvPg0KICAgIDxjaXJjbGUgY3g9IjIyNSIgY3k9IjM4NSIgcj0iMTIiIGZpbGw9IiNkM2I3NzMiIHN0cm9rZT0iIzEwMWQzNSIgc3Ryb2tlLXdpZHRoPSI1Ii8+DQogICAgPGxpbmUgeDE9IjE0OCIgeTE9IjQ3OCIgeDI9IjEyMCIgeTI9IjQ1MiIgc3Ryb2tlPSIjMTAxZDM1IiBzdHJva2Utd2lkdGg9IjE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4NCiAgICA8bGluZSB4MT0iMzAyIiB5MT0iNDc4IiB4Mj0iMzMwIiB5Mj0iNDUyIiBzdHJva2U9IiMxMDFkMzUiIHN0cm9rZS13aWR0aD0iMTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICA8L2c+DQoNCiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTA4MCAxOTApIj4NCiAgICA8cmVjdCB3aWR0aD0iNDUwIiBoZWlnaHQ9IjYwMCIgcng9IjIyIiBmaWxsPSIjMTAxZDM1IiBzdHJva2U9IiNkM2I3NzMiIHN0cm9rZS13aWR0aD0iNSIvPg0KICAgIDxjaXJjbGUgY3g9IjIyNSIgY3k9IjEwNCIgcj0iNDQiIGZpbGw9IiNkM2I3NzMiLz4NCiAgICA8dGV4dCB4PSIyMjUiIHk9IjExNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMTAxZDM1Ij4zPC90ZXh0Pg0KICAgIDxyZWN0IHg9IjQ1IiB5PSIxODUiIHdpZHRoPSIzNjAiIGhlaWdodD0iMTUwIiByeD0iMjQiIGZpbGw9IiNmZmZkZjgiIHN0cm9rZT0iI2QzYjc3MyIgc3Ryb2tlLXdpZHRoPSI0Ii8+DQogICAgPHBhdGggZD0iTTE3NSAzMzUgTDIwNSAzODAgTDIzNSAzMzUiIGZpbGw9IiNmZmZkZjgiIHN0cm9rZT0iI2QzYjc3MyIgc3Ryb2tlLXdpZHRoPSI0Ii8+DQogICAgPHRleHQgeD0iMjI1IiB5PSIyNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzEwMWQzNSI+DQogICAgICA8dHNwYW4geD0iMjI1IiBkeT0iMCI+4oCc4oCmSSBmb3VuZDwvdHNwYW4+DQogICAgICA8dHNwYW4geD0iMjI1IiBkeT0iNDgiPmEgZmlsZS7igJ08L3RzcGFuPg0KICAgIDwvdGV4dD4NCiAgICA8Y2lyY2xlIGN4PSIyMjUiIGN5PSI0NzAiIHI9IjY3IiBmaWxsPSIjYzg4NzYzIi8+DQogICAgPHBhdGggZD0iTTE0NSA1ODUgUTIyNSA1MTAgMzA1IDU4NSBMMzIyIDYwMCBMMTI4IDYwMCBaIiBmaWxsPSIjZjZmMWU3Ii8+DQogICAgPHBhdGggZD0iTTE2OCA0NTkgUTIyNSAzNzUgMjgyIDQ1OSBRMjU4IDQyMCAyMjUgNDIwIFExOTIgNDIwIDE2OCA0NTkiIGZpbGw9IiMzYjJiMjYiLz4NCiAgICA8Y2lyY2xlIGN4PSIyMDIiIGN5PSI0NzIiIHI9IjYiIGZpbGw9IiMxMDFkMzUiLz4NCiAgICA8Y2lyY2xlIGN4PSIyNDgiIGN5PSI0NzIiIHI9IjYiIGZpbGw9IiMxMDFkMzUiLz4NCiAgICA8cGF0aCBkPSJNMjAyIDUxMCBMMjQ4IDUxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTAxZDM1IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICAgIDxwYXRoIGQ9Ik0xNjUgNDIwIFExMzUgMzg1IDE1MCAzNTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZlYTZjNyIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4NCiAgICA8cGF0aCBkPSJNMjg1IDQyMCBRMzE1IDM4NSAzMDAgMzU1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2ZWE2YzciIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+DQogIDwvZz4NCg0KICA8dGV4dCB4PSI4MDAiIHk9Ijg0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMxIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNzY1YzI2Ij5XaGVuIENvcGlsb3QgYXNrcyB0aGUgZm9sbG93LXVwIHlvdXIgZm9sZGVyIHN0cnVjdHVyZSBhdm9pZGVkLjwvdGV4dD4NCjwvc3ZnPg0K" width="1600"/></figure><div class="section-nav"><div class="section-nav"><a href="#overview">Previous section</a><a href="#start">Next section</a></div></div></div></details>
+<details class="section instr" id="start"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Start here: Microsoft 365 Copilot<span>Access, scope, and safe practice.</span></h2><span class="ipill">Start here</span></summary><div class="ibody"><div class="callout"><strong>Two connected classes, one fictional research world.</strong> Class 1 is Monday, November 9, 2026; Class 2 is Wednesday, November 11, 2026. Each class is 120 minutes. Project Aurora, every identity, and every operational fact in this guide are fictional.</div>
+<div class="grid g2">
+<details class="step subcard" open><summary><h3>Class 1 · Copilot in the flow of research work</h3><span class="status">120 minutes</span></summary><div class="step-body"><ol class="quicklist"><li><strong>0:00-0:10</strong> Welcome and WorkIQ icebreaker</li><li><strong>0:10-0:25</strong> Where Copilot helps, grounding, and safe use</li><li><strong>0:25-0:40</strong> Exercise 01: SharePoint source selection</li><li><strong>0:40-0:58</strong> Exercise 02: Teams checkpoint recap</li><li><strong>0:58-1:16</strong> Exercise 03: Outlook evidence thread</li><li><strong>1:16-1:40</strong> Exercise 04: Excel evidence to Word brief</li><li><strong>1:40-1:55</strong> Participant practice and debrief</li><li><strong>1:55-2:00</strong> Close and setup for Class 2</li></ol></div></details>
+<details class="step subcard" open><summary><h3>Class 2 · Prompting, Researcher, and agents</h3><span class="status">120 minutes</span></summary><div class="step-body"><ol class="quicklist"><li><strong>0:00-0:08</strong> Recap and WorkIQ warmup</li><li><strong>0:08-0:30</strong> Exercise 05: GCSE prompt repair</li><li><strong>0:30-1:10</strong> Exercises 06-07: Researcher plan and audit</li><li><strong>1:10-1:15</strong> Stretch break</li><li><strong>1:15-1:45</strong> Exercises 08-09: Agent candidate and build</li><li><strong>1:45-1:55</strong> Exercise 10: Workflow commitment</li><li><strong>1:55-2:00</strong> Office hours and close</li></ol></div></details>
+</div>
+<details class="step"><summary><span>WorkIQ icebreakers</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p><strong>Class 1:</strong> “Look at my calendar for this week. Without naming people or revealing meeting details, describe it as a movie genre and give it a fun title.”</p><p><strong>Class 2:</strong> “Based on my recent work activity, invent a harmless award I might win this week. Do not quote messages or name anyone.”</p><p>Share only the playful title or award in chat. Do not share underlying work details.</p></div></details>
+<p>Everyone in this approximately 80-person GCCS audience has a Microsoft 365 Copilot license, with experience ranging from first-time users to experienced practitioners. Sign in with your ELC work account. The Microsoft 365 Copilot experience supports work-grounded chat and embedded app experiences, but exact features depend on tenant configuration, permissions, rollout, and policy. Use only permitted sources. Verify citations, calculations, recipients, and claims. Keep every exercise draft-only.</p>
+<p><a href="https://learn.microsoft.com/en-us/copilot/plan/microsoft-copilot-requirements" target="_blank" rel="noopener">Microsoft Copilot requirements</a> · <a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Enterprise data protection</a></p><div class="section-nav"><div class="section-nav"><a href="#intro">Previous section</a><a href="#d01">Next section</a></div></div></div></details>
+<details class="section demo" id="d01">
+<summary><span class="dnum">01</span><h2 class="dhead">Find the right research source<span>Ground a response in the correct SharePoint content.</span></h2><span class="pill">Copilot Chat + SharePoint</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d01-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice selecting authoritative sources, separating current documents from superseded drafts, and asking Copilot to show its evidence.</p><div class="applies">Who it's for: Clinical and consumer researchers who work across shared research libraries</div></div></div></details>
+<details class="step" id="d01-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d01-research-library-map.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL PRACTICE SCENARIO
+Persona: Jordan Lee, consumer insights researcher.
+Practice date: November 9, 2026.
+
+SharePoint library: Aurora Skin Comfort Study
+
+1. /01_Governance/Aurora_Study_Charter_APPROVED_2026-10-12.docx
+Status: Approved. Defines the study objective, population, decision owners, and allowed claims.
+
+2. /02_Protocol/Aurora_Protocol_v3_APPROVED_2026-10-20.docx
+Status: Current approved protocol. Primary endpoint: change in self-reported skin comfort after 14 days. Target sample: 120 participants.
+
+3. /02_Protocol/Archive/Aurora_Protocol_v2_DRAFT_2026-10-04.docx
+Status: Superseded draft. Target sample: 90 participants. Do not use for current study decisions.
+
+4. /03_Fieldwork/Aurora_Fieldwork_Status_2026-11-06.xlsx
+Status: Current operational snapshot. Enrolled: 84. Completed day 14: 52. Withdrawn: 4. Data cleaning has not started.
+
+5. /04_Analysis/Aurora_Preliminary_Notes_2026-11-07.docx
+Status: Analyst working notes, not quality checked. Contains an unsupported sentence: &quot;The formula clearly improves comfort for all users.&quot;
+
+6. /05_Readouts/Aurora_Final_Readout_TEMPLATE.pptx
+Status: Blank template. No study results.
+
+Library rule: Prefer approved and current documents. Treat operational snapshots as dated. Do not use superseded drafts, templates, or unverified analyst notes as final evidence.</pre></div></div></details>
+<details class="step" id="d01-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Creates a source map before asking for conclusions, reducing the chance that an old draft or unsupported note becomes evidence.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Tell me which files I should use to prepare an accurate status brief for the Aurora Skin Comfort Study.
+<strong>Context:</strong> I am Jordan Lee, a consumer insights researcher preparing for a study checkpoint.
+<strong>Source:</strong> Use only the pasted library map. Apply the library rule and cite each file by name.
+<strong>Expectation:</strong> Classify each file as authoritative, useful with a date caveat, or exclude. Then give the approved sample target, current enrollment, completed day-14 count, and three unknowns. Do not infer efficacy.</pre></div></div></details>
+<details class="step" id="d01-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Checks whether Copilot can detect a conflict between an approved protocol and an older draft.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Which file contains the current sample target, and why should the 90-participant figure be excluded?</pre></div><div class="pnote"><span>What this prompt does</span>Tests whether Copilot distinguishes an unsupported conclusion from verified evidence.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Audit the sentence about improving comfort for all users. Explain exactly why it is unsupported and what evidence would be needed.</pre></div></div></details>
+<details class="step" id="d01-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected evidence:</strong> The approved target is 120; 84 are enrolled; 52 completed day 14; 4 withdrew. The status is dated November 6, data cleaning has not started, and no efficacy conclusion is supported.</div></div></details>
+<details class="hint tip" id="d01-tip"><summary><span>Tip: Name the source hierarchy</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Tell Copilot which documents are approved, current, superseded, or unverified. A folder name alone does not establish authority.</div></details>
+<details class="hint fact" id="d01-fact"><summary><span>Did you know? Copilot respects existing permissions</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft states that Copilot applies the user's identity, permissions, sensitivity labels, retention policies, and administrative settings. <a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d01-recommendation"><summary><span><span class="rec-label">Recommended current-chat instruction</span><strong>Evidence before conclusions</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use this in the current chat. Do not save project names, study facts, participant information, or other sensitive material as memory.</p><div class="savebox"><button aria-label="Copy recommended current-chat instruction" class="copy" type="button">Copy</button><pre>Prefer approved and current sources. Label dated snapshots, exclude superseded drafts, and identify unsupported claims before drafting conclusions.</pre></div></div></details>
+<div class="section-nav"><a href="#start">Previous section</a><a href="#d02">Next section</a></div></div>
+</details>
+<details class="section demo" id="d02">
+<summary><span class="dnum">02</span><h2 class="dhead">Turn a Teams discussion into a research checkpoint<span>Separate observations, decisions, actions, and unresolved questions.</span></h2><span class="pill">Teams</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d02-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice reviewing a meeting transcript without converting discussion into decisions that were never made.</p><div class="applies">Who it's for: Researchers, project leads, and managers who need reliable meeting follow-through</div></div></div></details>
+<details class="step" id="d02-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d02-teams-transcript.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL PRACTICE TRANSCRIPT
+Meeting: Aurora study checkpoint
+Date: November 9, 2026
+Participants: Jordan Lee (Research), Priya Shah (Analytics), Morgan Chen (Operations)
+
+Jordan: We have 84 enrolled and 52 day-14 completions in the November 6 status file.
+Morgan: Recruitment is slower than the original weekly plan. We may need another recruiting channel, but I have not confirmed feasibility or cost.
+Priya: The preliminary notes should not be used for conclusions. Data cleaning has not started, and the primary endpoint has not been analyzed.
+Jordan: Agreed. For Wednesday, let&#x27;s bring a factual status and a list of decisions needed.
+Morgan: I can ask the recruiting vendor for options and timing by November 10 at 3:00 PM Eastern Time.
+Priya: I will draft the data-quality checklist by November 11 at noon Eastern Time.
+Jordan: We still need someone to confirm whether the checkpoint date changes. No owner was assigned in this meeting.
+Morgan: We did not approve a new recruiting channel today.
+Jordan: Correct. We only agreed to gather options.</pre></div></div></details>
+<details class="step" id="d02-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Produces a structured recap while preserving the distinction between discussion, assigned actions, and unmade decisions.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Create a reliable checkpoint recap from this transcript.
+<strong>Context:</strong> I am Jordan Lee and need a draft for the research team to review.
+<strong>Source:</strong> Use only the pasted transcript. Quote or cite the speaker for decisions and commitments.
+<strong>Expectation:</strong> Return four sections: factual status, decisions made, assigned actions with owner and due date, and unresolved questions. Explicitly state what was not approved. Draft only; do not send or assign anything.</pre></div></div></details>
+<details class="step" id="d02-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Challenges the recap for accidental overstatement.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>List any statement in your recap that could be mistaken for an approved decision. Rewrite it more precisely.</pre></div><div class="pnote"><span>What this prompt does</span>Creates a concise manager-ready version without losing uncertainty.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Condense the recap to 120 words while preserving every owner, due date, unknown, and non-decision.</pre></div></div></details>
+<details class="step" id="d02-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected evidence:</strong> Morgan will request vendor options by November 10 at 3:00 PM ET; Priya will draft a checklist by November 11 at noon ET. No new channel or checkpoint-date change was approved, and no owner was assigned for the date decision.</div></div></details>
+<details class="hint tip" id="d02-tip"><summary><span>Tip: Ask for a non-decision section</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">A recap is safer when it explicitly records proposals that were discussed but not approved.</div></details>
+<details class="hint fact" id="d02-fact"><summary><span>Did you know? Post-meeting grounding depends on meeting capture</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents that transcription or recording must be configured for Copilot to reference meeting content after a Teams meeting ends. <a href="https://learn.microsoft.com/en-us/copilot/plan/microsoft-copilot-requirements" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d02-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Make meeting uncertainty visible</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>This is a stable working preference, not meeting data. Save it only if personalization is available and permitted by your organization.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When summarizing meetings, separate facts, decisions, proposed ideas, assigned actions, and unresolved questions. Never infer an owner or approval.</pre></div></div></details>
+<div class="section-nav"><a href="#d01">Previous section</a><a href="#d03">Next section</a></div></div>
+</details>
+<details class="section demo" id="d03">
+<summary><span class="dnum">03</span><h2 class="dhead">Synthesize an Outlook evidence thread<span>Draft a precise response without inventing consensus.</span></h2><span class="pill">Outlook</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d03-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice summarizing a threaded discussion, identifying the latest position, and drafting a reviewable reply.</p><div class="applies">Who it's for: Researchers and managers coordinating with analytics and operations partners</div></div></div></details>
+<details class="step" id="d03-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d03-outlook-thread.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL PRACTICE EMAIL THREAD
+Subject: Aurora recruiting options
+
+From: Morgan Chen
+Sent: November 9, 2026, 4:18 PM Eastern Time
+To: Jordan Lee; Priya Shah
+I asked the vendor for two options: extend the current channel by one week, or add a second channel. They will respond by November 10 at 3:00 PM ET. No cost or feasibility information is available yet.
+
+From: Jordan Lee
+Sent: November 9, 2026, 4:35 PM Eastern Time
+To: Morgan Chen; Priya Shah
+Thanks. Please do not interpret this as approval to change recruiting. We need the vendor response and an impact assessment first.
+
+From: Priya Shah
+Sent: November 9, 2026, 5:02 PM Eastern Time
+To: Jordan Lee; Morgan Chen
+For analysis integrity, I also need the proposed channel&#x27;s screening method and whether it changes the participant mix. I can review those details after the vendor responds.
+
+From: Morgan Chen
+Sent: November 9, 2026, 5:20 PM Eastern Time
+To: Jordan Lee; Priya Shah
+Understood. I will forward the vendor response when received. I have not committed to either option.</pre></div></div></details>
+<details class="step" id="d03-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Finds the latest state of the thread and drafts a response that keeps the decision open.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Summarize this email thread and draft my reply.
+<strong>Context:</strong> I am Jordan Lee. The audience is Morgan and Priya, and the tone should be concise and collaborative.
+<strong>Source:</strong> Use only the pasted email thread. Preserve timestamps and attribute commitments to the sender.
+<strong>Expectation:</strong> First give the latest status, open evidence, and commitments. Then draft a reply of no more than 130 words that confirms next steps without approving either recruiting option. Draft only; do not send.</pre></div></div></details>
+<details class="step" id="d03-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Checks whether the draft accidentally creates a decision.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Audit the draft for language that could imply approval, urgency not present in the thread, or an owner who did not volunteer.</pre></div><div class="pnote"><span>What this prompt does</span>Adapts the same evidence for a manager without restarting.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Create a three-bullet manager update: status, evidence needed, and next checkpoint. Keep the decision open.</pre></div></div></details>
+<details class="step" id="d03-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected evidence:</strong> The vendor response is due November 10 at 3:00 PM ET. Cost, feasibility, screening method, and participant-mix impact are unknown. Morgan has not committed to either option.</div></div></details>
+<details class="hint tip" id="d03-tip"><summary><span>Tip: Anchor on the latest message</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Ask Copilot to preserve chronology and identify the newest commitment. Long threads often contain positions that later messages refine.</div></details>
+<details class="hint fact" id="d03-fact"><summary><span>Did you know? Mailbox-grounded experiences need Exchange Online</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft lists an Exchange Online mailbox as a requirement for experiences that use email, calendar, meeting, or other mailbox data. <a href="https://learn.microsoft.com/en-us/copilot/plan/microsoft-copilot-requirements" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d03-recommendation"><summary><span><span class="rec-label">Recommended current-chat instruction</span><strong>Keep correspondence draft-only</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use this when drafting a sensitive response. Review recipients, claims, attachments, and tone before sending.</p><div class="savebox"><button aria-label="Copy recommended current-chat instruction" class="copy" type="button">Copy</button><pre>Draft only. Preserve chronology, attribute commitments, identify missing evidence, and never turn a proposal into an approval.</pre></div></div></details>
+<div class="section-nav"><a href="#d02">Previous section</a><a href="#d04">Next section</a></div></div>
+</details>
+<details class="section demo" id="d04">
+<summary><span class="dnum">04</span><h2 class="dhead">Move from Excel evidence to a Word brief<span>Calculate carefully, then write for a decision-maker.</span></h2><span class="pill">Excel + Word</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d04-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice checking a small study table, stating calculation limits, and turning verified figures into a concise Word-ready brief.</p><div class="applies">Who it's for: Researchers and analysts who move between quantitative evidence and narrative readouts</div></div></div></details>
+<details class="step" id="d04-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d04-study-table.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL PRACTICE DATA
+Aurora Skin Comfort Study operational snapshot
+Snapshot date: November 6, 2026
+
+Region | Enrolled | Day-14 completed | Withdrawn
+North | 24 | 16 | 1
+South | 22 | 13 | 2
+East  | 20 | 12 | 1
+West  | 18 | 11 | 0
+
+Approved target sample: 120
+Important limitations:
+- These are operational counts, not efficacy results.
+- Day-14 completion rate should use enrolled as the denominator unless the user specifies another denominator.
+- Counts have not completed data cleaning or quality review.
+- Regional differences must not be interpreted as product performance.
+- No demographic or outcome data is included.</pre></div></div></details>
+<details class="step" id="d04-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Requests transparent arithmetic and a narrative that does not confuse operational progress with study outcomes.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Analyze this operational snapshot and prepare a short Word-ready status brief.
+<strong>Context:</strong> I am a researcher updating a manager on recruitment and day-14 completion progress.
+<strong>Source:</strong> Use only the pasted table and limitations. Show the arithmetic for totals and percentages.
+<strong>Expectation:</strong> Calculate total enrolled, total completed, total withdrawn, enrollment versus target, and overall day-14 completion rate using enrolled as the denominator. Then write a 150-word brief with a headline, three bullets, limitations, and two questions. Do not claim efficacy or regional performance.</pre></div></div></details>
+<details class="step" id="d04-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Tests boundary conditions in the calculations.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Recalculate each region&#x27;s completion rate to one decimal place and verify that the regional counts sum to the totals. Flag any denominator ambiguity.</pre></div><div class="pnote"><span>What this prompt does</span>Turns the checked analysis into a concise executive artifact.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Rewrite the brief for a senior research leader in 90 words. Keep the snapshot date and every limitation visible.</pre></div></div></details>
+<details class="step" id="d04-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected arithmetic:</strong> 84 enrolled, 52 completed, 4 withdrawn, 70.0% of the 120 target enrolled, and 61.9% day-14 completion using 52 divided by 84. These figures are operational and uncleaned.</div></div></details>
+<details class="hint tip" id="d04-tip"><summary><span>Tip: Ask Copilot to show its work</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">For calculations, require the formula, denominator, rounding rule, and a cross-check against the source totals.</div></details>
+<details class="hint fact" id="d04-fact"><summary><span>Did you know? Embedded Copilot features require the licensed experience</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents that the paid Microsoft Copilot license unlocks embedded Copilot features in Word, Excel, Outlook, and Teams, subject to app and tenant requirements. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d04-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Show quantitative assumptions</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>This is a stable analytical preference. Do not save study values, participant details, or confidential thresholds.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>For quantitative work, show formulas, denominators, rounding, snapshot dates, and limitations. Distinguish operational metrics from outcome evidence.</pre></div></div></details>
+<div class="section-nav"><a href="#d03">Previous section</a><a href="#d05">Next section</a></div></div>
+</details>
+<details class="section demo" id="d05">
+<summary><span class="dnum">05</span><h2 class="dhead">Repair a prompt that will not hold up<span>Turn a vague request into a grounded GCSE prompt.</span></h2><span class="pill">Copilot Chat</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d05-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice Goal, Context, Source, and Expectation while keeping the request proportional to the evidence.</p><div class="applies">Who it's for: Everyone who wants repeatable, reviewable results</div></div></div></details>
+<details class="step" id="d05-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d05-prompt-repair.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL PRACTICE PROMPT
+
+Original request:
+&quot;Review all our Aurora research and tell leadership whether the product works. Make it persuasive and email it today.&quot;
+
+Available evidence in this exercise:
+- Approved protocol with a 120-participant target and a day-14 self-reported comfort endpoint.
+- November 6 operational counts: 84 enrolled, 52 day-14 completions, 4 withdrawals.
+- A transcript stating data cleaning and endpoint analysis have not started.
+- No outcome table, statistical analysis, safety review, approved claim language, leadership recipient list, or email authorization.
+
+Task boundary:
+The learner may draft a status brief and a list of evidence needed. The learner may not claim efficacy, approve language, identify recipients, or send an email.</pre></div></div></details>
+<details class="step" id="d05-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Transforms an overbroad, action-oriented prompt into a safe request that matches the available evidence.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Rewrite the original request as a strong GCSE prompt.
+<strong>Context:</strong> I am preparing leadership for an Aurora study checkpoint, not a final efficacy decision.
+<strong>Source:</strong> Use only the available-evidence list and task boundary in the pasted source.
+<strong>Expectation:</strong> Produce one four-line GCSE prompt that requests a factual status brief, names the missing evidence, and stays draft-only. Then explain the five most important corrections you made.</pre></div></div></details>
+<details class="step" id="d05-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Tests whether the repaired prompt still asks for unsupported claims.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Red-team the repaired prompt. Identify any wording that could still invite an efficacy claim, invented recipient, or unauthorized action.</pre></div><div class="pnote"><span>What this prompt does</span>Practices iteration instead of restarting.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Revise only the expectation line so the output includes a claim-evidence-unknown table and a human-review checklist.</pre></div></div></details>
+<details class="step" id="d05-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected repair:</strong> The new prompt should ask for status, not efficacy; name the limited sources; surface missing evidence; and say draft only. It must not ask Copilot to email anyone.</div></div></details>
+<details class="hint tip" id="d05-tip"><summary><span>Tip: Iterate on one line</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">When the answer is close, revise the weakest GCSE line instead of replacing the whole prompt. This preserves useful context.</div></details>
+<details class="hint fact" id="d05-fact"><summary><span>Did you know? Your prompt and response receive enterprise data protection</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft states that prompts and responses in organizational Copilot experiences receive enterprise data protection, while organizational policy and permissions still apply. <a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d05-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Use GCSE by default</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>This preference describes a working method and contains no case data.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When my request is ambiguous, help me clarify Goal, Context, Source, and Expectation before producing a high-stakes deliverable.</pre></div></div></details>
+<div class="section-nav"><a href="#d04">Previous section</a><a href="#d06">Next section</a></div></div>
+</details>
+<details class="section demo" id="d06">
+<summary><span class="dnum">06</span><h2 class="dhead">Plan a Researcher investigation<span>Build an evidence plan across internal and public sources.</span></h2><span class="pill">Researcher</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d06-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice scoping a multi-step investigation before asking for a polished synthesis.</p><div class="applies">Who it's for: Clinical and consumer researchers preparing a literature-plus-internal evidence review</div></div></div></details>
+<details class="step" id="d06-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d06-researcher-brief.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL RESEARCHER BRIEF
+Project: Aurora skin comfort evidence scan
+Requester: Jordan Lee, Consumer Insights
+Decision date: November 18, 2026
+
+Research question:
+What evidence should the team examine before interpreting a 14-day self-reported skin-comfort endpoint, and which internal gaps prevent a conclusion today?
+
+Internal facts available:
+- Approved protocol: 120-participant target; primary endpoint is change in self-reported skin comfort after 14 days.
+- November 6 snapshot: 84 enrolled; 52 completed day 14; 4 withdrawn.
+- Data cleaning and endpoint analysis have not started.
+- No outcome table, statistical analysis plan excerpt, adverse-event summary, subgroup plan, or approved claims language is available in this packet.
+
+Requested public-source scope:
+- Prefer peer-reviewed reviews, standards, regulator guidance, and primary research.
+- Focus on patient/consumer-reported outcomes, short-duration cosmetic studies, missing data, measurement validity, and overgeneralization.
+- Record publication date, source type, population, method, and limitations.
+- Do not use public evidence to invent Aurora results.
+
+Output boundary:
+This is an evidence-planning exercise, not medical advice, regulatory approval, or a product claim.</pre></div></div></details>
+<details class="step" id="d06-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Asks Researcher to expose its plan, source strategy, and stopping conditions before synthesizing.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Create a research plan for the Aurora evidence scan.
+<strong>Context:</strong> I am Jordan Lee preparing a decision-quality research brief for November 18, 2026.
+<strong>Source:</strong> Use the pasted internal brief as the authoritative statement of Aurora facts. Use public web sources only for general methods and external evidence, with links and citations.
+<strong>Expectation:</strong> Propose research subquestions, inclusion and exclusion criteria, a source hierarchy, search terms, an evidence table schema, and stopping conditions. Separate internal facts, public evidence, and unanswered Aurora questions. Do not draft a conclusion yet.</pre></div></div></details>
+<details class="step" id="d06-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Tightens the plan around evidence quality.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Rank the planned source types from strongest to weakest for this question and explain what each can and cannot establish.</pre></div><div class="pnote"><span>What this prompt does</span>Creates a checkpoint before Researcher spends time on a broad search.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Identify the three highest-risk ambiguities in my request and ask concise clarifying questions before continuing.</pre></div></div></details>
+<details class="step" id="d06-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected plan:</strong> It should include measurement validity, missing data, population fit, duration, analysis readiness, and limitations. Aurora facts must remain separate from public methodological evidence.</div></div></details>
+<details class="hint tip" id="d06-tip"><summary><span>Tip: Approve the plan before the synthesis</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">For a complex investigation, inspect the proposed questions and source hierarchy first. A polished answer cannot repair a poorly scoped search.</div></details>
+<details class="hint fact" id="d06-fact"><summary><span>Did you know? Researcher is a licensed Microsoft Copilot capability</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft lists Researcher among the additional capabilities available with the paid Microsoft Copilot license, subject to rollout and tenant controls. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d06-recommendation"><summary><span><span class="rec-label">Recommended current-chat instruction</span><strong>Separate internal and public evidence</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use this for the investigation. Do not save project details or research questions as memory.</p><div class="savebox"><button aria-label="Copy recommended current-chat instruction" class="copy" type="button">Copy</button><pre>Keep internal facts, public evidence, analyst inference, and unanswered questions in separate labeled sections. Cite every material claim.</pre></div></div></details>
+<div class="section-nav"><a href="#d05">Previous section</a><a href="#d07">Next section</a></div></div>
+</details>
+<details class="section demo" id="d07">
+<summary><span class="dnum">07</span><h2 class="dhead">Audit a Researcher synthesis<span>Trace claims back to evidence and expose gaps.</span></h2><span class="pill">Researcher</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d07-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice reviewing citations, checking source fit, and turning uncertainty into next research actions.</p><div class="applies">Who it's for: Researchers and managers who must defend how a synthesis was produced</div></div></div></details>
+<details class="step" id="d07-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d07-researcher-audit.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL DRAFT SYNTHESIS FOR AUDIT
+
+Claim 1: &quot;The Aurora study is on track because 84 participants are enrolled.&quot;
+Support noted: November 6 operational snapshot.
+
+Claim 2: &quot;A 14-day self-reported endpoint is sufficient to prove durable product efficacy.&quot;
+Support noted: No citation recorded.
+
+Claim 3: &quot;Four withdrawals demonstrate a low withdrawal rate.&quot;
+Support noted: 4 withdrawals and 84 enrolled; no benchmark or reason-for-withdrawal data.
+
+Claim 4: &quot;The product improves skin comfort for all users.&quot;
+Support noted: Preliminary analyst note; endpoint analysis has not started.
+
+Claim 5: &quot;Public literature can help assess measurement validity and common study limitations.&quot;
+Support noted: Public methods literature, to be cited and evaluated for population and design fit.
+
+Known internal constraints:
+- Approved target is 120.
+- 52 participants completed day 14.
+- Data cleaning and endpoint analysis have not started.
+- No subgroup results, adverse-event summary, statistical results, or approved claims language are in the packet.</pre></div></div></details>
+<details class="step" id="d07-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Turns a plausible-looking synthesis into a claim-by-claim evidence audit.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Audit this draft synthesis for evidence quality and overstatement.
+<strong>Context:</strong> I am reviewing a Researcher output before it is shared with research leadership.
+<strong>Source:</strong> Use the pasted draft and constraints. If using public sources to explain a method, cite them, but do not use them to create Aurora results.
+<strong>Expectation:</strong> Create a table with claim, evidence status, exact problem, corrected wording, and next evidence needed. Use Supported, Partially supported, or Unsupported. End with the three most important reviewer questions.</pre></div></div></details>
+<details class="step" id="d07-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Checks citation fit rather than citation presence.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>For every public citation you used, explain whether its population, duration, outcome, and method fit the claim. Flag indirect evidence.</pre></div><div class="pnote"><span>What this prompt does</span>Produces a short, defensible leadership summary.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Draft a 100-word evidence-status update that includes only supported internal facts and clearly labeled unknowns.</pre></div></div></details>
+<details class="step" id="d07-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected audit:</strong> Claim 1 is only partial because enrollment alone does not establish schedule performance. Claims 2 and 4 are unsupported. Claim 3 lacks a benchmark and withdrawal reasons. Claim 5 is a valid methods use if citations fit.</div></div></details>
+<details class="hint tip" id="d07-tip"><summary><span>Tip: Check whether a citation supports this claim</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">A real citation can still be the wrong evidence. Compare population, intervention, outcome, duration, and method before accepting it.</div></details>
+<details class="hint fact" id="d07-fact"><summary><span>Did you know? Web search has distinct data-handling practices</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft explains that web queries are generated from prompts, sent to Bing without user or tenant identifiers, and handled separately from Microsoft 365 data. <a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d07-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Audit citation fit</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>This is a general research-quality preference and contains no study data.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>For each material claim, show the supporting source and assess population, method, date, and limitation fit. Label indirect or missing evidence.</pre></div></div></details>
+<div class="section-nav"><a href="#d06">Previous section</a><a href="#d08">Next section</a></div></div>
+</details>
+<details class="section demo" id="d08">
+<summary><span class="dnum">08</span><h2 class="dhead">Choose the right agent candidate<span>Score workflows before building anything.</span></h2><span class="pill">Copilot Chat</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d08-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice distinguishing a good grounded-agent candidate from a one-off prompt or an unsafe automation request.</p><div class="applies">Who it's for: Researchers, managers, champions, and knowledge owners</div></div></div></details>
+<details class="step" id="d08-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d08-agent-candidates.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL AGENT CANDIDATES
+
+A. Study Library Navigator
+Answers recurring questions about approved protocols, templates, and study-status files in one governed SharePoint library. Must cite files and respect permissions. No actions.
+
+B. Final Claims Approver
+Reads draft study results and automatically approves consumer-facing product claims. Would require scientific, legal, regulatory, and brand authority.
+
+C. Weekly Evidence Briefing Assistant
+Creates a draft weekly summary from a defined SharePoint folder. Separates new documents, changed decisions, risks, and missing evidence. Human reviews before distribution.
+
+D. One-Time Meeting Recap
+Summarizes a single supplied transcript for one project checkpoint.
+
+E. Participant Data Explorer
+Answers unrestricted questions across row-level participant records, including sensitive data, without a defined access model or approved purpose.
+
+Scoring criteria:
+- Repeats often
+- Has a stable audience and job
+- Has a bounded, maintained knowledge source
+- Can cite evidence
+- Has clear human review
+- Avoids authority it should not have
+- Has an owner who can test and maintain it</pre></div></div></details>
+<details class="step" id="d08-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Applies a repeatability, grounding, authority, and ownership test before anyone opens Agent Builder.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Rank these workflows as good agent candidate, better as ordinary Copilot, or do not build as described.
+<strong>Context:</strong> I am helping a research team choose one safe, high-value agent pilot.
+<strong>Source:</strong> Use only the candidate descriptions and scoring criteria in the pasted source.
+<strong>Expectation:</strong> Score each candidate from 0 to 2 on every criterion, explain the classification, and recommend one pilot. Identify required controls, owner, test cases, and a fallback if Agent Builder is unavailable.</pre></div></div></details>
+<details class="step" id="d08-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Challenges the recommended candidate for hidden risk.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Red-team the recommended pilot for overbroad access, stale sources, misleading citations, and authority creep.</pre></div><div class="pnote"><span>What this prompt does</span>Turns the assessment into a concise stakeholder pitch.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Write a 90-second pilot pitch covering user, problem, source boundary, expected value, human review, and success measure.</pre></div></div></details>
+<details class="step" id="d08-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected classification:</strong> A and C are plausible agent candidates; D is better as an ordinary Copilot prompt. B and E should not be built as described because authority and data boundaries are unacceptable.</div></div></details>
+<details class="hint tip" id="d08-tip"><summary><span>Tip: Start with the job, not the technology</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">A good agent has a recurring job, bounded knowledge, a clear owner, and tests. A one-time request is usually just a prompt.</div></details>
+<details class="hint fact" id="d08-fact"><summary><span>Did you know? Agent capabilities depend on license and billing</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents different agent options for Copilot Chat, usage billing, and licensed Microsoft Copilot. Tenant-data grounding can introduce licensing, metering, and admin requirements. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d08-recommendation"><summary><span><span class="rec-label">Recommended current-chat instruction</span><strong>Evaluate before building</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use this assessment habit for the current design conversation.</p><div class="savebox"><button aria-label="Copy recommended current-chat instruction" class="copy" type="button">Copy</button><pre>Before proposing an agent, test repeatability, source boundaries, citations, human review, authority, ownership, and maintenance.</pre></div></div></details>
+<div class="section-nav"><a href="#d07">Previous section</a><a href="#d09">Next section</a></div></div>
+</details>
+<details class="section demo" id="d09">
+<summary><span class="dnum">09</span><h2 class="dhead">Design a grounded research-library agent<span>Write instructions, boundaries, and tests for a SharePoint agent.</span></h2><span class="pill">Agent Builder / SharePoint</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d09-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice building a narrow agent that answers from an approved library and refuses unsupported requests.</p><div class="applies">Who it's for: Research knowledge owners and Copilot champions</div></div></div></details>
+<details class="step" id="d09-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d09-agent-library.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL AGENT KNOWLEDGE INVENTORY
+Agent name: GCCS Research Library Guide
+Owner: Taylor Brooks, Research Knowledge Manager
+Review cadence: Monthly, first business day
+
+Allowed SharePoint source:
+/GCCS-Training/Aurora-Approved-Library/
+
+Included content:
+- Approved study charters
+- Current approved protocols
+- Data dictionaries
+- Standard research templates
+- Quality-review checklists
+- Final approved readouts
+
+Excluded content:
+- Archive folders
+- Draft protocols
+- Row-level participant data
+- Unreviewed analyst notes
+- Email and chat
+- Personal OneDrive files
+
+Agent job:
+Help authorized users find and understand approved research materials. Cite the file and date. Distinguish policy, template, protocol, and study result.
+
+Agent must not:
+- Approve claims, studies, protocols, or communications
+- Infer participant-level information
+- Treat templates as completed evidence
+- Answer from excluded or unavailable sources
+- Send, publish, or change content
+
+Required tests:
+1. Normal question with an approved source
+2. Conflicting approved and archived files
+3. Missing-source question
+4. Request for participant data
+5. Request to approve a claim
+6. Stale-document test after the monthly review date</pre></div></div></details>
+<details class="step" id="d09-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Creates a complete, testable agent instruction set instead of relying on a broad description.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Draft the configuration for the GCCS Research Library Guide.
+<strong>Context:</strong> I am Taylor Brooks, the fictional knowledge owner responsible for a safe pilot.
+<strong>Source:</strong> Use only the pasted inventory. Do not assume access to any source not listed.
+<strong>Expectation:</strong> Create a concise name, description, instruction set, source boundary, refusal behavior, citation format, three starter prompts, owner checklist, and pass/fail expectations for all six tests. Draft only; do not publish or share the agent.</pre></div></div></details>
+<details class="step" id="d09-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Tests the instructions against a missing or prohibited source.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Simulate tests 3, 4, and 5. Show the ideal refusal and the safe next step for each.</pre></div><div class="pnote"><span>What this prompt does</span>Checks whether the design can remain trustworthy over time.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Create a monthly maintenance checklist covering source changes, stale content, permissions, failed tests, owner sign-off, and user feedback.</pre></div></div></details>
+<details class="step" id="d09-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected boundaries:</strong> The agent should use only the approved library, cite file and date, exclude archives and participant data, refuse approvals and actions, and disclose when evidence is unavailable.</div></div></details>
+<details class="hint tip" id="d09-tip"><summary><span>Tip: Test refusals before sharing</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">A happy-path answer proves very little. Test missing sources, conflicting versions, prohibited data, and requests outside the agent's authority.</div></details>
+<details class="hint fact" id="d09-fact"><summary><span>Did you know? Everyday SharePoint work and advanced work have different requirements</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents that everyday Copilot in SharePoint capabilities are included with a Microsoft 365 Copilot license, while advanced work at scale can require Copilot Credits and admin setup. <a href="https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-get-started" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d09-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Disclose source boundaries</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>This is a stable agent-design preference. Do not save source paths or confidential library names in personal memory.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>For agent designs, state the allowed sources, excluded sources, authority limits, citation format, owner, review cadence, and refusal tests.</pre></div></div></details>
+<div class="section-nav"><a href="#d08">Previous section</a><a href="#d10">Next section</a></div></div>
+</details>
+<details class="section demo" id="d10">
+<summary><span class="dnum">10</span><h2 class="dhead">Choose one workflow to change<span>Leave with a bounded experiment and an office-hours question.</span></h2><span class="pill">Copilot Chat</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d10-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Convert the class into one practical, measurable workflow experiment rather than a broad intention to use AI more.</p><div class="applies">Who it's for: All participants</div></div></div></details>
+<details class="step" id="d10-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_practice_sources/d10-workflow-canvas.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>WORKFLOW COMMITMENT CANVAS
+
+My recurring task:
+Who receives the output:
+Current inputs and where they live:
+Current time or friction:
+What Copilot may draft, summarize, compare, or organize:
+What Copilot must not decide or do:
+Evidence I will verify:
+Human reviewer:
+Success measure for the next two weeks:
+Smallest first test:
+What I will bring to office hours:
+
+Good first-test examples:
+- Turn one approved research packet into a cited status brief.
+- Convert one transcript into decisions, actions, and unknowns.
+- Compare two approved protocol versions and list changed sections.
+- Draft an evidence plan before starting a Researcher investigation.
+
+Avoid as a first test:
+- Unbounded access to sensitive participant data.
+- Automatic approval, sending, publishing, or record changes.
+- A workflow with no source owner or review step.</pre></div></div></details>
+<details class="step" id="d10-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Produces a small, measurable adoption plan with source and authority boundaries.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Help me define one Copilot workflow experiment for the next two weeks.
+<strong>Context:</strong> I am choosing a recurring research task from my real role, but I will keep sensitive details out of this training chat.
+<strong>Source:</strong> Use the pasted workflow canvas and examples. Ask me for placeholders rather than confidential details.
+<strong>Expectation:</strong> Interview me with no more than five questions, then produce a completed canvas, a first-test prompt, a verification checklist, and one focused office-hours question. Keep the experiment draft-only and measurable.</pre></div></div></details>
+<details class="step" id="d10-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Checks whether the experiment is still too large.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Cut the experiment to the smallest test that can be completed in 20 minutes with one permitted source.</pre></div><div class="pnote"><span>What this prompt does</span>Defines evidence of value without relying on enthusiasm.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Create a before-and-after measure for time, quality, verification effort, and rework. Do not invent baseline numbers.</pre></div></div></details>
+<details class="step" id="d10-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected plan:</strong> One recurring task, one permitted source set, one output, one human reviewer, one measurable test, and explicit boundaries. Bring the source, prompt, output, and verification questions to office hours.</div></div></details>
+<details class="hint tip" id="d10-tip"><summary><span>Tip: Make the first experiment boring</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">The best pilot is frequent, bounded, and easy to verify. Save complex automation for after the team trusts the underlying workflow.</div></details>
+<details class="hint fact" id="d10-fact"><summary><span>Did you know? Copilot output still needs human review</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft describes Copilot as applying organizational controls and permissions, but generated responses can still require source checking and human judgment before action. <a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d10-recommendation"><summary><span><span class="rec-label">Recommended memory</span><strong>A safe stable preference</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Memory and personalization are preview features and may be disabled. Save only a general preference, never customer, participant, study, health, or confidential information.</p><div class="savebox"><button aria-label="Copy recommended memory" class="copy" type="button">Copy</button><pre>I prefer concise, evidence-labeled drafts that separate facts, assumptions, unknowns, and next questions.</pre></div></div></details>
+<div class="section-nav"><a href="#d09">Previous section</a><a href="#prompting">Next section</a></div></div>
+</details>
+<details class="section instr" id="prompting"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Prompting and safety<span>Clear instructions; evidence before action.</span></h2><span class="ipill">Core habits</span></summary><div class="ibody"><div class="grid g2"><div class="card"><h3>Goal</h3><p>What outcome do I need?</p></div><div class="card"><h3>Context</h3><p>Who am I, who is the audience, and what decision or moment matters?</p></div><div class="card"><h3>Source</h3><p>Which evidence is allowed, authoritative, current, and available?</p></div><div class="card"><h3>Expectation</h3><p>What format, length, checks, boundaries, and next step should the answer include?</p></div></div>
+<div class="callout"><strong>Iterate instead of restarting.</strong> Ask Copilot to challenge assumptions, show calculations, compare a claim with its citation, expose unknowns, or revise one weak GCSE line.</div>
+<details class="step"><summary><span>Research safety checklist</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ul class="quicklist"><li>Use the minimum permitted source set.</li><li>Distinguish approved, current, dated, draft, archived, and unverified material.</li><li>Check population, method, date, and limitation fit for every important citation.</li><li>Do not paste personal, participant-level, regulated, or confidential data into an unapproved exercise.</li><li>Do not let a draft approve, send, publish, assign, or change a record.</li><li>Follow ELC policy and the controls available in your tenant; this guide does not replace them.</li></ul></div></details><div class="section-nav"><div class="section-nav"><a href="#d10">Previous section</a><a href="#memory">Next section</a></div></div></div></details>
+<details class="section instr" id="memory"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Memory and custom instructions<span>Optional, safe personalization.</span></h2><span class="ipill">Optional</span></summary><div class="ibody"><p>Copilot personalization and memory are preview capabilities and can be disabled by tenant or user controls. Microsoft says memory can include saved memories, details inferred from chat history, and custom instructions. Use these only for stable, nonsensitive preferences.</p>
+<div class="grid g3"><details class="step subcard"><summary><h3>Good memory</h3><span class="status">Stable preference</span></summary><div class="step-body"><p>“I prefer concise, evidence-labeled drafts that separate facts, assumptions, unknowns, and questions.”</p></div></details><details class="step subcard"><summary><h3>Good custom instruction</h3><span class="status">Working method</span></summary><div class="step-body"><p>“For quantitative work, show formulas, denominators, rounding, snapshot dates, and limitations.”</p></div></details><details class="step subcard"><summary><h3>Keep in the current chat</h3><span class="status">Case constraint</span></summary><div class="step-body"><p>Study names, project facts, participant information, recipients, dates, claims, and confidential thresholds.</p></div></details></div>
+<p><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Microsoft Learn: personalization and memory</a></p><div class="section-nav"><div class="section-nav"><a href="#prompting">Previous section</a><a href="#tips">Next section</a></div></div></div></details>
+<details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Useful habits and exercise shortcuts.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><ol class="tip-index"><li><a href="#d01-tip">Map source authority before asking for a conclusion.</a></li><li><a href="#d02-tip">Record non-decisions as explicitly as decisions.</a></li><li><a href="#d03-tip">Anchor a thread summary on the latest message.</a></li><li><a href="#d04-tip">Require formulas, denominators, and limitations.</a></li><li><a href="#d05-tip">Repair one GCSE line instead of restarting.</a></li><li><a href="#d06-tip">Approve a Researcher plan before synthesis.</a></li><li><a href="#d07-tip">Audit citation fit, not just citation presence.</a></li><li><a href="#d08-tip">Use ordinary Copilot for one-time work.</a></li><li><a href="#d09-tip">Test agent refusals and stale sources.</a></li><li><a href="#d10-tip">Make the first workflow experiment small and measurable.</a></li></ol><div class="section-nav"><div class="section-nav"><a href="#memory">Previous section</a><a href="#wrap-up">Next section</a></div></div></div></details>
+<details class="section instr" id="wrap-up"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Wrap-up and sources<span>Choose one technique and verify the evidence.</span></h2><span class="ipill">Finish</span></summary><div class="ibody"><h3>Before you leave</h3><ol class="quicklist"><li>Choose one recurring workflow and complete Exercise 10.</li><li>Run the smallest test with one permitted source.</li><li>Bring the source, prompt, output, verification notes, and one question to office hours.</li></ol>
+<h3>Official references</h3><ul class="quicklist"><li><a href="https://learn.microsoft.com/en-us/copilot/plan/microsoft-copilot-requirements" target="_blank" rel="noopener">Microsoft Copilot requirements</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Enterprise data protection</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide" target="_blank" rel="noopener">Agents admin guide for Microsoft 365</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-get-started" target="_blank" rel="noopener">Copilot in SharePoint</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Personalization and memory</a></li></ul><div class="section-nav"><div class="section-nav"><a href="#tips">Previous section</a><a href="#about-guide">Next section</a></div></div></div></details>
+<details class="section instr" id="about-guide"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">About this student guide<span>Fictional practice and responsible use.</span></h2><span class="ipill">Student guide</span></summary><div class="ibody"><div class="about-body"><p>This student guide is for ELC GCCS training on November 9 and November 11, 2026. It is not an instructor edition, policy statement, scientific conclusion, or authorization to use a feature or data source.</p><p>All personas, studies, transcripts, email, figures, files, and workflows are fictional. Public product references link to Microsoft Learn or the identified primary source. Product availability, names, licensing, previews, tenant settings, and controls can change.</p><footer class="end">Use permitted sources, verify important output, protect sensitive information, and keep a human accountable for every decision and action.</footer></div><div class="section-nav"><div class="section-nav"><a href="#wrap-up">Previous section</a></div></div></div></details>
+</main></div>
+<div aria-atomic="true" aria-live="polite" class="toast" hidden="" id="guide-status" role="status"></div><script>(() => {
+  'use strict';
+  const root = document.documentElement;
+  const theme = document.getElementById('themebtn');
+  const toast = document.getElementById('guide-status');
+  const topbar = document.querySelector('.topbar');
+  const sections = Array.from(document.querySelectorAll('main > details.section'));
+  const links = Array.from(document.querySelectorAll('nav.toc a'));
+  const themeKey = 'elc-gccs-1b9a2299d7-copilot-student-theme';
+  const seasonKey = 'elc-gccs-1b9a2299d7-copilot-student-season';
+  let toastTimer;
+
+  function announce(message) {
+    toast.textContent = message;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 5000);
+  }
+
+  function updateTheme() {
+    const dark = root.dataset.theme === 'dark';
+    theme.textContent = dark ? 'Mode: Dark' : 'Mode: Light';
+    theme.setAttribute('aria-pressed', String(dark));
+    theme.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  updateTheme();
+  if (window.guideThemeStorageUnavailable) {
+    announce('Appearance preferences cannot be loaded or saved in this browser.');
+  }
+  theme.addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark';
+    if (dark) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    updateTheme();
+    try {
+      localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+    } catch (error) {
+      console.warn('Theme preference could not be saved:', error);
+      announce('Theme changed, but this browser cannot save the preference.');
+    }
+  });
+
+
+  const season = document.getElementById('seasonbtn');
+  const seasons = ['autumn', 'winter', 'spring', 'summer'];
+  const seasonLabels = {
+    autumn: 'Autumn · Warm paper and harvest tones',
+    winter: 'Winter · Cool blues and crisp neutrals',
+    spring: 'Spring · Fresh greens and soft new-growth tones',
+    summer: 'Summer · Sunny golds and clear coastal blues'
+  };
+  function updateSeason() {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    const next = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    season.textContent = 'Season: ' + current[0].toUpperCase() + current.slice(1);
+    season.setAttribute('aria-label', 'Seasonal theme: ' + current[0].toUpperCase() + current.slice(1) +
+      '. Activate to switch to ' + next[0].toUpperCase() + next.slice(1) + '.');
+    document.getElementById('season-label').textContent = seasonLabels[current];
+  }
+  updateSeason();
+  season.addEventListener('click', () => {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    root.dataset.season = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    updateSeason();
+    try {
+      localStorage.setItem(seasonKey, root.dataset.season);
+    } catch (error) {
+      console.warn('Season preference could not be saved:', error);
+      announce('Season changed, but this browser cannot save the preference.');
+    }
+  });
+  function updateHeaderHeight() {
+    root.style.setProperty('--cp-header-height', topbar.offsetHeight + 'px');
+  }
+  new ResizeObserver(updateHeaderHeight).observe(topbar);
+  updateHeaderHeight();
+
+  const panels = Array.from(document.querySelectorAll('details'));
+  document.getElementById('expandall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = true; });
+    announce('All sections and steps expanded.');
+  });
+  document.getElementById('collapseall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = false; });
+    announce('All sections and steps collapsed.');
+  });
+
+  function setActive(id) {
+    const target = document.getElementById(id);
+    const section = target && target.closest('details.section');
+    const sectionId = section ? section.id : id;
+    links.forEach(link => {
+      const active = link.getAttribute('href') === '#' + sectionId;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function navigate(id, updateHistory, moveFocus) {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    let node = target;
+    while (node && node !== document.body) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
+    if (updateHistory) {
+      try {
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+      } catch (error) {
+        console.warn('Could not update the section link:', error);
+        announce('The section opened, but its link could not be saved.');
+      }
+    }
+    target.scrollIntoView({ block: 'start' });
+    setActive(id);
+    if (moveFocus) {
+      const focusTarget = target.matches('details') ? target.querySelector(':scope > summary') : target;
+      if (focusTarget && typeof focusTarget.focus === 'function') focusTarget.focus({ preventScroll: true });
+    }
+    return true;
+  }
+
+  function hashId() {
+    if (!location.hash || location.hash === '#') return '';
+    try {
+      return decodeURIComponent(location.hash.slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return '';
+    }
+  }
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    let id;
+    try {
+      id = decodeURIComponent(link.getAttribute('href').slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return;
+    }
+    if (id && document.getElementById(id)) {
+      event.preventDefault();
+      navigate(id, true, true);
+    }
+  });
+  const initialId = hashId();
+  if (initialId) requestAnimationFrame(() => { navigate(initialId, false, false); });
+  window.addEventListener('hashchange', () => {
+    const id = hashId();
+    if (id) navigate(id, false, false);
+  });
+
+  let scrollPending = false;
+  window.addEventListener('scroll', () => {
+    if (scrollPending) return;
+    scrollPending = true;
+    requestAnimationFrame(() => {
+      const stickyOffset = getComputedStyle(topbar).position === 'sticky' ? topbar.offsetHeight : 0;
+      let selected = null;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= stickyOffset + 28) selected = section;
+      });
+      if (selected) setActive(selected.id);
+      scrollPending = false;
+    });
+  }, { passive: true });
+
+  function legacyCopy(value, button) {
+    const area = document.createElement('textarea');
+    area.value = value;
+    area.setAttribute('readonly', '');
+    area.setAttribute('aria-hidden', 'true');
+    area.style.position = 'fixed';
+    area.style.left = '-10000px';
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (error) {
+      console.warn('Clipboard fallback failed:', error);
+    } finally {
+      area.remove();
+      button.focus({ preventScroll: true });
+    }
+    return copied;
+  }
+
+  document.querySelectorAll('.promptbox .copy, .savebox .copy').forEach(button => {
+    button.addEventListener('click', async () => {
+      const text = button.closest('.promptbox, .savebox').querySelector('pre').textContent;
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          console.warn('Clipboard API failed; trying the browser fallback:', error);
+        }
+      }
+      if (!copied) copied = legacyCopy(text, button);
+      if (!copied) {
+        button.textContent = 'Select text to copy';
+        announce('Copy was blocked. Select the text in the box and copy it manually.');
+      } else {
+        button.textContent = 'Copied';
+        button.classList.add('done');
+        announce('Copied to clipboard.');
+      }
+      setTimeout(() => {
+        button.textContent = 'Copy';
+        button.classList.remove('done');
+      }, 2200);
+    });
+  });
+
+  let printState = null;
+  window.addEventListener('beforeprint', () => {
+    if (!printState) printState = panels.map(panel => ({ panel, open: panel.open }));
+    panels.forEach(panel => { panel.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    if (!printState) return;
+    printState.forEach(saved => { saved.panel.open = saved.open; });
+    printState = null;
+  });
+})();
+</script></body></html>
