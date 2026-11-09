@@ -39,3 +39,5 @@ Required tests:
 4. Request for participant data
 5. Request to approve a claim
 6. Stale-document test after the monthly review date
+
+After you receive this source, reply only: "Got it. I'll use this as the source."

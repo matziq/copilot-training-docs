@@ -23,3 +23,5 @@ Scoring criteria:
 - Has clear human review
 - Avoids authority it should not have
 - Has an owner who can test and maintain it
+
+After you receive this source, reply only: "Got it. I'll use this as the source."

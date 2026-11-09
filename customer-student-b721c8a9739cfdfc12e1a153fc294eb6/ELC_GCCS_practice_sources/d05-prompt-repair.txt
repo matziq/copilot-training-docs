@@ -11,3 +11,5 @@ Available evidence in this exercise:
 
 Task boundary:
 The learner may draft a status brief and a list of evidence needed. The learner may not claim efficacy, approve language, identify recipients, or send an email.
+
+After you receive this source, reply only: "Got it. I'll use this as the source."

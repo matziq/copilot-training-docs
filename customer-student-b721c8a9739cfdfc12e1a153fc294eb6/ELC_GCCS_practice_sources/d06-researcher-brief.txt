@@ -20,3 +20,5 @@ Requested public-source scope:
 
 Output boundary:
 This is an evidence-planning exercise, not medical advice, regulatory approval, or a product claim.
+
+After you receive this source, reply only: "Got it. I'll use this as the source."

@@ -22,3 +22,5 @@ Avoid as a first test:
 - Unbounded access to sensitive participant data.
 - Automatic approval, sending, publishing, or record changes.
 - A workflow with no source owner or review step.
+
+After you receive this source, reply only: "Got it. I'll use this as the source."
