@@ -269,6 +269,22 @@ nav.toc a {
 nav.toc a:hover, nav.toc a.active {
   border-left-color: var(--cp-gold); background: var(--cp-accent-soft); color: var(--cp-text);
 }
+[data-navigation="compact"] nav.toc {
+  flex-basis: 72px; width: 72px; padding: 20px 8px;
+}
+[data-navigation="compact"] nav.toc .toc-title {
+  overflow: hidden; font-size: 0; text-align: center;
+}
+[data-navigation="compact"] nav.toc .toc-title::after {
+  content: "Menu"; font-size: .68rem;
+}
+[data-navigation="compact"] nav.toc a {
+  overflow: hidden; padding: 8px 4px; font-size: 0; text-align: center;
+}
+[data-navigation="compact"] nav.toc a::after {
+  content: attr(data-short); font-size: .74rem; font-weight: 700; letter-spacing: .03em;
+}
+[data-navigation="hidden"] nav.toc { display: none; }
 .content { flex: 1; min-width: 0; padding: 20px 24px 80px; }
 header.hero { border-radius: 8px; padding: 28px; margin-bottom: 20px; }
 header.hero .wrap { max-width: none; padding: 0; }
@@ -513,7 +529,7 @@ details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) 
 }
 </style><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23351420'/%3E%3Cpath d='M6 8h8l2 2 2-2h8v17h-8l-2 2-2-2H6z' fill='none' stroke='%23d8b27a' stroke-width='2'/%3E%3C/svg%3E"/></head>
 <body>
-<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">GCCS</span><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button></div></header>
+<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">GCCS</span><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Show compact navigation" aria-pressed="false" id="navbtn" type="button">Navigation: Full</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button></div></header>
 <div class="layout">
 <nav aria-label="Guide contents" class="toc"><div class="wrap"><div class="toc-title">Contents</div><a href="#overview">Overview</a><a href="#intro">Intro</a><a href="#start">Start here</a><a href="#d01">01. Find the right research source</a><a href="#d02">02. Turn a Teams discussion into a research checkpoint</a><a href="#d03">03. Synthesize an Outlook evidence thread</a><a href="#d04">04. Move from Excel evidence to a Word brief</a><a href="#d05">05. Repair a prompt that will not hold up</a><a href="#d06">06. Plan a Researcher investigation</a><a href="#d07">07. Audit a Researcher synthesis</a><a href="#d08">08. Choose the right agent candidate</a><a href="#d09">09. Design a grounded research-library agent</a><a href="#d10">10. Choose one workflow to change</a><a href="#prompting">Prompting &amp; safety</a><a href="#memory">Memory</a><a href="#tips">Tips &amp; tricks</a><a href="#wrap-up">Wrap-up</a><a href="#about-guide">About</a></div></nav>
 <main class="content" id="main-content" tabindex="-1"><details class="section hero-panel" id="overview" open=""><summary><div><h1>GCCS</h1></div><span aria-hidden="true" class="hero-chevron">▸</span></summary><div class="hero-body"><div class="tag">Part 1 of 2: grounded research work in Microsoft 365 Copilot.</div><div class="meta">November 9, 2026</div><div class="season-label" id="season-label">Autumn · Warm paper and harvest tones</div><div class="section-nav"><a href="#intro">Next section</a></div></div></details>
@@ -914,7 +930,7 @@ After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as t
 <details class="section instr" id="memory"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Memory and custom instructions<span>Optional, safe personalization.</span></h2><span class="ipill">Optional</span></summary><div class="ibody"><p>Copilot personalization and memory are preview capabilities and can be disabled by tenant or user controls. Microsoft says memory can include saved memories, details inferred from chat history, and custom instructions. Use these only for stable, nonsensitive preferences.</p>
 <div class="grid g3"><details class="step subcard"><summary><h3>Good memory</h3><span class="status">Stable preference</span></summary><div class="step-body"><p>“I prefer concise, evidence-labeled drafts that separate facts, assumptions, unknowns, and questions.”</p></div></details><details class="step subcard"><summary><h3>Good custom instruction</h3><span class="status">Working method</span></summary><div class="step-body"><p>“For quantitative work, show formulas, denominators, rounding, snapshot dates, and limitations.”</p></div></details><details class="step subcard"><summary><h3>Keep in the current chat</h3><span class="status">Case constraint</span></summary><div class="step-body"><p>Study names, project facts, participant information, recipients, dates, claims, and confidential thresholds.</p></div></details></div>
 <p><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Microsoft Learn: personalization and memory</a></p><div class="section-nav"><div class="section-nav"><a href="#prompting">Previous section</a><a href="#tips">Next section</a></div></div></div></details>
-<details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Useful habits and exercise shortcuts.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><ol class="tip-index"><li><a href="#d01-tip">Map source authority before asking for a conclusion.</a></li><li><a href="#d02-tip">Record non-decisions as explicitly as decisions.</a></li><li><a href="#d03-tip">Anchor a thread summary on the latest message.</a></li><li><a href="#d04-tip">Require formulas, denominators, and limitations.</a></li><li><a href="#d05-tip">Repair one GCSE line instead of restarting.</a></li><li><a href="#d06-tip">Approve a Researcher plan before synthesis.</a></li><li><a href="#d07-tip">Audit citation fit, not just citation presence.</a></li><li><a href="#d08-tip">Use ordinary Copilot for one-time work.</a></li><li><a href="#d09-tip">Test agent refusals and stale sources.</a></li><li><a href="#d10-tip">Make the first workflow experiment small and measurable.</a></li></ol><div class="section-nav"><div class="section-nav"><a href="#memory">Previous section</a><a href="#wrap-up">Next section</a></div></div></div></details>
+<details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Useful habits and exercise shortcuts.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><details class="step" id="colorize-tip"><summary><span>Use “Colorize” after the content is correct</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p><strong>Colorize is most useful as a follow-up to a grounded answer.</strong> Ask Copilot to add restrained visual status markers without changing the source-based wording, citations, or conclusions.</p><div class="promptbox"><button aria-label="Copy Colorize follow-up prompt" class="copy" type="button">Copy</button><pre>Colorize the previous response using accessible status markers: supported, needs review, and unsupported. Preserve the source-based wording and citations. Include a text label for every status so meaning does not depend on color alone.</pre></div><p>Check that the visual treatment reflects the evidence. Color can improve scanning, but it does not add confidence or support that is missing from the source.</p></div></details><ol class="tip-index"><li><a href="#colorize-tip">Use Colorize only after the source-grounded content is correct.</a></li><li><a href="#d01-tip">Map source authority before asking for a conclusion.</a></li><li><a href="#d02-tip">Record non-decisions as explicitly as decisions.</a></li><li><a href="#d03-tip">Anchor a thread summary on the latest message.</a></li><li><a href="#d04-tip">Require formulas, denominators, and limitations.</a></li><li><a href="#d05-tip">Repair one GCSE line instead of restarting.</a></li><li><a href="#d06-tip">Approve a Researcher plan before synthesis.</a></li><li><a href="#d07-tip">Audit citation fit, not just citation presence.</a></li><li><a href="#d08-tip">Use ordinary Copilot for one-time work.</a></li><li><a href="#d09-tip">Test agent refusals and stale sources.</a></li><li><a href="#d10-tip">Make the first workflow experiment small and measurable.</a></li></ol><div class="section-nav"><div class="section-nav"><a href="#memory">Previous section</a><a href="#wrap-up">Next section</a></div></div></div></details>
 <details class="section instr" id="wrap-up"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Wrap-up and sources<span>Choose one technique and verify the evidence.</span></h2><span class="ipill">Finish</span></summary><div class="ibody"><h3>Before you leave</h3><ol class="quicklist"><li>Choose one recurring workflow and complete Exercise 10.</li><li>Run the smallest test with one permitted source.</li><li>Bring the source, prompt, output, verification notes, and one question to office hours.</li></ol>
 <h3>Official references</h3><ul class="quicklist"><li><a href="https://learn.microsoft.com/en-us/copilot/plan/microsoft-copilot-requirements" target="_blank" rel="noopener">Microsoft Copilot requirements</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Enterprise data protection</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide" target="_blank" rel="noopener">Agents admin guide for Microsoft 365</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-get-started" target="_blank" rel="noopener">Copilot in SharePoint</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Personalization and memory</a></li></ul><div class="section-nav"><div class="section-nav"><a href="#tips">Previous section</a><a href="#about-guide">Next section</a></div></div></div></details>
 <details class="section instr" id="about-guide"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">About this student guide<span>Fictional practice and responsible use.</span></h2><span class="ipill">Student guide</span></summary><div class="ibody"><div class="about-body"><p>This student guide is for ELC GCCS training on November 9 and November 11, 2026. It is not an instructor edition, policy statement, scientific conclusion, or authorization to use a feature or data source.</p><p>All personas, studies, transcripts, email, figures, files, and workflows are fictional. Public product references link to Microsoft Learn or the identified primary source. Product availability, names, licensing, previews, tenant settings, and controls can change.</p><footer class="end">Use permitted sources, verify important output, protect sensitive information, and keep a human accountable for every decision and action.</footer></div><div class="section-nav"><div class="section-nav"><a href="#wrap-up">Previous section</a></div></div></div></details>
@@ -927,8 +943,10 @@ After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as t
   const topbar = document.querySelector('.topbar');
   const sections = Array.from(document.querySelectorAll('main > details.section'));
   const links = Array.from(document.querySelectorAll('nav.toc a'));
+  const navigation = document.getElementById('navbtn');
   const themeKey = 'elc-gccs-1b9a2299d7-copilot-student-theme';
   const seasonKey = 'elc-gccs-1b9a2299d7-copilot-student-season';
+  const navigationKey = 'elc-gccs-1b9a2299d7-copilot-student-navigation';
   let toastTimer;
 
   function announce(message) {
@@ -958,6 +976,37 @@ After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as t
     } catch (error) {
       console.warn('Theme preference could not be saved:', error);
       announce('Theme changed, but this browser cannot save the preference.');
+    }
+  });
+
+  const navigationStates = ['full', 'compact', 'hidden'];
+  const navigationShortLabels = ['OV', 'IN', 'ST', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'PR', 'ME', 'TI', 'WR', 'AB'];
+  links.forEach((link, index) => {
+    link.dataset.short = navigationShortLabels[index] || String(index + 1);
+  });
+  function updateNavigation() {
+    const current = navigationStates.includes(root.dataset.navigation) ? root.dataset.navigation : 'full';
+    const next = navigationStates[(navigationStates.indexOf(current) + 1) % navigationStates.length];
+    navigation.textContent = 'Navigation: ' + current[0].toUpperCase() + current.slice(1);
+    navigation.setAttribute('aria-label', 'Show ' + next + ' navigation');
+    navigation.setAttribute('aria-pressed', String(current !== 'full'));
+  }
+  try {
+    const savedNavigation = localStorage.getItem(navigationKey);
+    if (navigationStates.includes(savedNavigation)) root.dataset.navigation = savedNavigation;
+  } catch (error) {
+    console.warn('Navigation preference could not be loaded:', error);
+  }
+  updateNavigation();
+  navigation.addEventListener('click', () => {
+    const current = navigationStates.includes(root.dataset.navigation) ? root.dataset.navigation : 'full';
+    root.dataset.navigation = navigationStates[(navigationStates.indexOf(current) + 1) % navigationStates.length];
+    updateNavigation();
+    try {
+      localStorage.setItem(navigationKey, root.dataset.navigation);
+    } catch (error) {
+      console.warn('Navigation preference could not be saved:', error);
+      announce('Navigation changed, but this browser cannot save the preference.');
     }
   });
 
