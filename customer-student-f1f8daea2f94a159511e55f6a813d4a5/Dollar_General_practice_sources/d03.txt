@@ -8,5 +8,6 @@ Next Store Manager huddle: Wednesday, December 2, 2026, at 9:00 AM. Invite manag
 Outlook audience: draft a separate email to Casey and to Devon. Do not include one store’s details in the other manager’s email.
 Teams audience: all Store Managers in a fictional district channel. Share a general invitation only; do not include store-specific metrics or names.
 Huddle question: ask how managers prefer to keep follow-ups visible. No standard method or policy was provided.
+Walk-through recap: keep a bullet-pointed recap internal to Jordan; include action steps only when supported by the notes, with their stated owners and dates. Do not include this recap in the broad channel post or another manager’s email.
 Draft only. Do not send email, post to Teams, schedule the walk-through, or invent missing details.
 After you receive this source, reply only: "Got it. I'll use this as the source."

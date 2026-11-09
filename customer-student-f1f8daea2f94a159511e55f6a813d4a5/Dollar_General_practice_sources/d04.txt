@@ -1,7 +1,17 @@
 FICTIONAL TRAINING SCENARIO — not Dollar General operational data
-Facilitator: Jordan Reyes, fictional District Manager
-Goal: prepare one question for the next Store Manager huddle about making visit follow-ups useful without adding unnecessary work.
-Available discussion time: 10 minutes.
-Not provided: huddle date, participating roles, applicable district guidance, and whether the group wants an open discussion question or a poll.
-Do not assume policy, select a required practice, or draft huddle materials until the missing details that affect the answer are clarified.
+District Manager: Jordan Reyes (fictional)
+Planning window: 8:00 AM–5:00 PM local time.
+Starting address: [ENTER YOUR STARTING ADDRESS PRIVATELY IN THE CURRENT APPROVED CHAT; NOT INCLUDED IN THIS PUBLIC SOURCE]
+Store stops — public store addresses supplied for this route-planning exercise:
+1. 1514 Highway 31 W, Goodlettsville, TN 37072
+2. 2174 Gallatin Pike N, Madison, TN 37115
+3. 601 Gallatin Pike N, Madison, TN 37115
+4. 287 New Shackle Island Rd, Hendersonville, TN 37075
+5. 104 Brittan St, Hendersonville, TN 37075
+Goal: minimize total driving and maximize useful in-store time across five visits.
+Not provided: planning date, visit duration by store, fixed appointments, store hours, meal/break needs, whether the day must end back at the starting address, or an approved routing-data source.
+Ask for any missing details that materially change the plan before calculating a schedule. Do not invent traffic, road conditions, store hours, or appointment constraints.
+When supported by current map data, show the recommended stop order, each drive leg's estimated time and distance, arrival/departure times, visit blocks, total driving, total in-store time, break/buffer, and estimated finish. Identify the map source and when it was checked; label estimates and assumptions.
+If reliable route data are unavailable, say so and request a route estimate or map source instead of claiming an optimized route.
+Do not repeat or save the private starting address in the answer, memory, or reusable custom instructions. The route and schedule are drafts; the learner verifies them and makes all decisions.
 After you receive this source, reply only: "Got it. I'll use this as the source."
