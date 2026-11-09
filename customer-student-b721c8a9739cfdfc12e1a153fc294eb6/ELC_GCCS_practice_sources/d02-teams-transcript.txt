@@ -2,7 +2,6 @@ FICTIONAL PRACTICE TRANSCRIPT
 Meeting: Aurora study checkpoint
 Date: November 9, 2026
 Participants: Jordan Lee (Research), Priya Shah (Analytics), Morgan Chen (Operations)
-
 Jordan: We have 84 enrolled and 52 day-14 completions in the November 6 status file.
 Morgan: Recruitment is slower than the original weekly plan. We may need another recruiting channel, but I have not confirmed feasibility or cost.
 Priya: The preliminary notes should not be used for conclusions. Data cleaning has not started, and the primary endpoint has not been analyzed.
@@ -12,5 +11,4 @@ Priya: I will draft the data-quality checklist by November 11 at noon Eastern Ti
 Jordan: We still need someone to confirm whether the checkpoint date changes. No owner was assigned in this meeting.
 Morgan: We did not approve a new recruiting channel today.
 Jordan: Correct. We only agreed to gather options.
-
 After you receive this source, reply only: "Got it. I'll use this as the source."
