@@ -1,0 +1,22 @@
+FICTIONAL PROMPT REPAIR CARD
+Owner: Lukas Becker, EMEA Retail Education Coordinator (fictional)
+Weak prompt:
+"Write something about the new serum training."
+What Lukas actually needs:
+- An invitation message for EMEA retail advisors
+- Sessions: Tuesday, December 8, 2026 and Thursday, December 10, 2026
+- Format: virtual, 45 minutes each
+- Audience: advisors in London, Paris, and Dubai stores
+- Tone: warm, clear, and short enough to read on a phone
+- Must include: what advisors will learn and how to choose a session
+- Must not include: product claims beyond the approved list
+What advisors will learn:
+- The Lumen Dew product story in plain language
+- Answers to the five most common customer questions
+Approved claims (fictional):
+- "Hydrates for up to 24 hours"
+- "Suitable for daily use, morning and evening"
+Unknown details:
+- Session start times (not yet confirmed)
+- Registration link (not yet available)
+After you receive this source, reply only: "Got it. I'll use this as the source."

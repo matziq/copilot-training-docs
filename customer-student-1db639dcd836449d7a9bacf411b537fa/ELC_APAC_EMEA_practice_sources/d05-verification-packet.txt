@@ -1,0 +1,12 @@
+FICTIONAL VERIFICATION PACKET
+Part A - Approved source (fact sheet excerpt)
+Product: Lumen Dew Hydrating Serum (fictional), 30 ml
+APAC in-store date: Tuesday, January 12, 2027 (Singapore, Sydney, Seoul)
+EMEA in-store date: Tuesday, February 2, 2027 (London, Paris, Dubai)
+Approved claims:
+- "Hydrates for up to 24 hours"
+- "Suitable for daily use, morning and evening"
+Dubai store count: not yet confirmed
+Part B - Draft newsletter paragraph to check
+"Lumen Dew Hydrating Serum arrives in Singapore, Sydney, and Seoul on January 12, 2027, followed by London, Paris, and Dubai on February 2, 2027. Clinically proven to reduce fine lines by 30%, it hydrates for up to 48 hours and is suitable for daily use. It will be available in all 40 Dubai stores."
+After you receive this source, reply only: "Got it. I'll use this as the source."
