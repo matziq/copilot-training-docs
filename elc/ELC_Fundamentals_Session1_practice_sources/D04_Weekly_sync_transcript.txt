@@ -1,0 +1,18 @@
+TEAMS MEETING TRANSCRIPT EXCERPT
+Meeting: Project Juniper weekly sync
+Date: Tuesday, November 17, 2026, 10:00 AM ET
+Attendees: Priya Natarajan, Marcus Bell, Elena Ruiz, Tom Okafor, Grace Lin, Jordan Avery
+[10:01] Priya Natarajan: Let's start with signage. Grace, where are we on the claims review?
+[10:02] Grace Lin: I approved four of the five signage claims. The claim "visibly brighter skin in 7 days" is not approved because it needs supporting test data. Tom, please remove it from the signage.
+[10:03] Tom Okafor: Understood. I'll send the revised signage files to Marcus by Thursday, November 19.
+[10:05] Marcus Bell: The third West store is still open. I could ask the Portland store, but I haven't contacted them yet.
+[10:06] Priya Natarajan: Marcus, please contact the Portland store and report back by Friday, November 20.
+[10:06] Marcus Bell: Will do.
+[10:08] Elena Ruiz: Budget check: we have committed USD 81,500 of the USD 96,000 budget so far.
+[10:10] Tom Okafor: Idea: maybe we add a gift-with-purchase card to every bag?
+[10:11] Priya Natarajan: Interesting, but let's not decide today. It would need a budget check first.
+[10:12] Jordan Avery: For ambassador training, how about Monday, November 23?
+[10:13] Marcus Bell: That might work. I need to check the ambassador agency's availability first.
+[10:15] Priya Natarajan: Decision: we will send a results report every Monday, starting Monday, November 30. Jordan, can you set up the report template?
+[10:15] Jordan Avery: Yes. I'll have the template ready by Wednesday, November 25.
+After you receive this source, reply only: "Got it. I'll use this as the source."
