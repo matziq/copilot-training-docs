@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html data-navigation="full" data-season="autumn" lang="en-US">
-<head><meta charset="utf-8"/><script>(function(){var r=document.documentElement;r.dataset.season='autumn';try{if(localStorage.getItem('elc-60ff356d23-copilot-student-theme')==='dark'){r.dataset.theme='dark';}var savedSeason=localStorage.getItem('elc-60ff356d23-copilot-student-season');if(['autumn','winter','spring','summer'].includes(savedSeason)){r.dataset.season=savedSeason;}var savedNavigation=localStorage.getItem('elc-60ff356d23-copilot-student-navigation');if(['full','compact','hidden'].includes(savedNavigation)){r.dataset.navigation=savedNavigation;}}catch(error){window.guideThemeStorageUnavailable=true;}})();</script>
+<head><meta charset="utf-8"/><script>(function(){var r=document.documentElement;r.dataset.season='autumn';try{if(localStorage.getItem('elc-60ff356d23-copilot-student-animations')==='off'){r.dataset.animations='off';}if(localStorage.getItem('elc-60ff356d23-copilot-student-theme')==='dark'){r.dataset.theme='dark';}var savedSeason=localStorage.getItem('elc-60ff356d23-copilot-student-season');if(['autumn','winter','spring','summer'].includes(savedSeason)){r.dataset.season=savedSeason;}var savedNavigation=localStorage.getItem('elc-60ff356d23-copilot-student-navigation');if(['full','compact','hidden'].includes(savedNavigation)){r.dataset.navigation=savedNavigation;}}catch(error){window.guideThemeStorageUnavailable=true;}})();</script>
 <meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="noindex,nofollow,noarchive" name="googlebot"/>
 <meta content="light dark" name="color-scheme"/>
 <title>ELC | Copilot Fundamentals Session 1: Prompt Foundations | Student Guide</title>
@@ -587,6 +587,12 @@ details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) 
   .subcard>summary{flex-wrap:nowrap}
 }
 @media(prefers-reduced-motion:reduce){.hero-chevron{transition:none}.season-effects{display:none}}
+:root[data-animations="off"]{scroll-behavior:auto}
+:root[data-animations="off"] .season-effects{display:none}
+:root[data-animations="off"] .ichev,
+:root[data-animations="off"] .step .chev,
+:root[data-animations="off"] .hint .chev,
+:root[data-animations="off"] .hero-chevron{transition:none}
 @media print{
   .hero-panel{background:#fff;color:#000;border-color:#999}
   .hero-panel h1,.hero-panel .eyebrow,.hero-body .tag,.hero-body .meta,.season-label{color:#000}
@@ -595,7 +601,7 @@ details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) 
 }
 </style><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23351420'/%3E%3Cpath d='M6 8h8l2 2 2-2h8v17h-8l-2 2-2-2H6z' fill='none' stroke='%23d8b27a' stroke-width='2'/%3E%3C/svg%3E"/></head>
 <body>
-<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">ELC</span><p class="bar-title">Copilot Fundamentals: Student Guide</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button></div></header>
+<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">ELC</span><p class="bar-title">Copilot Fundamentals: Student Guide</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button><button aria-label="Animations" aria-pressed="true" id="animationsbtn" type="button">Animations: On</button></div></header>
 <div class="layout">
 <div class="toc-column"><button aria-label="Collapse navigation" aria-pressed="false" class="toc-toggle" id="navbtn" type="button">Navigation: Full</button><nav aria-label="Guide contents" class="toc"><div class="wrap"><div class="toc-title">Contents</div><a href="#overview">Overview</a><a href="#d01">Demo 01. Your first prompt in Copilot Chat</a><a href="#d02">Demo 02. Repair a weak prompt with GCSE</a><a href="#d03">Demo 03. Summarize an email thread and draft a reply</a><a href="#d04">Demo 04. Recap a Teams meeting</a><a href="#d05">Demo 05. Verify the output and catch errors</a><a href="#prompting">Prompting &amp; safety</a><a href="#memory">Memory</a><a href="#tips">Tips &amp; tricks</a><a href="#wrap-up">Wrap-up</a><a href="#about-guide">About</a></div></nav></div>
 <main class="content" id="main-content" tabindex="-1"><div class="guide-tools" role="search"><div class="guide-search"><label for="guide-search">Find a prompt or topic</label><input autocomplete="off" id="guide-search" placeholder="Search prompts, Outlook, Teams, verification..." type="search"/></div><div aria-label="Popular topics" class="topic-links"><a href="#d01">Copilot Chat</a><a href="#d02">GCSE prompts</a><a href="#d03">Outlook</a><a href="#d04">Teams</a><a href="#d05">Verify output</a><a href="#prompting">Responsible use</a><a href="#tips">Tips</a></div><ul aria-live="polite" class="search-results" id="search-results"></ul></div><details class="section hero-panel" id="overview" open=""><summary><div><div class="eyebrow">The Estée Lauder Companies · Student Guide</div><h1>Copilot Fundamentals Session 1: Prompt Foundations</h1></div><span aria-hidden="true" class="hero-chevron">▸</span></summary><div class="hero-body"><div class="tag">Build confidence with Microsoft Copilot: where to find it, what it can do, and how to write effective prompts. Practice responsible use and verify outputs in Copilot Chat, Outlook, and Teams.</div><div class="meta">Thursday, November 12, 2026 · 9:00 AM EST · Copilot Chat, Outlook, and Teams</div><div class="season-label" id="season-label">Autumn · Warm paper and harvest tones</div><div class="section-nav"><a href="#d01">Next section</a></div></div></details>
@@ -798,6 +804,7 @@ After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as t
   const themeKey = 'elc-60ff356d23-copilot-student-theme';
   const seasonKey = 'elc-60ff356d23-copilot-student-season';
   const navigationKey = 'elc-60ff356d23-copilot-student-navigation';
+  const animationsKey = 'elc-60ff356d23-copilot-student-animations';
   let toastTimer;
 
   function announce(message) {
@@ -834,6 +841,7 @@ After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as t
   const season = document.getElementById('seasonbtn');
   const seasonEffects = document.getElementById('season-effects');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const animations = document.getElementById('animationsbtn');
   const seasons = ['autumn', 'winter', 'spring', 'summer'];
   const seasonIcons = {
     autumn: ['🍂', '🍁'],
@@ -855,11 +863,39 @@ After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as t
       '. Activate to switch to ' + next[0].toUpperCase() + next.slice(1) + '.');
     document.getElementById('season-label').textContent = seasonLabels[current];
   }
-  function playSeasonEffect(current) {
+  function stopSeasonEffect() {
     clearTimeout(seasonEffectTimer);
     seasonEffects.replaceChildren();
     delete seasonEffects.dataset.season;
-    if (reducedMotion.matches) return;
+  }
+  function animationsEnabled() {
+    return root.dataset.animations !== 'off' && !reducedMotion.matches;
+  }
+  function updateAnimations() {
+    const enabled = animationsEnabled();
+    animations.textContent = reducedMotion.matches ? 'Animations: Off (system)' :
+      'Animations: ' + (enabled ? 'On' : 'Off');
+    animations.setAttribute('aria-pressed', String(enabled));
+    animations.disabled = reducedMotion.matches;
+    animations.title = reducedMotion.matches ? 'Animations are off because your system prefers reduced motion.' :
+      'Toggle loading and seasonal theme animations.';
+    if (!enabled) stopSeasonEffect();
+  }
+  updateAnimations();
+  reducedMotion.addEventListener('change', updateAnimations);
+  animations.addEventListener('click', () => {
+    root.dataset.animations = root.dataset.animations === 'off' ? 'on' : 'off';
+    updateAnimations();
+    try {
+      localStorage.setItem(animationsKey, root.dataset.animations);
+    } catch (error) {
+      console.warn('Animation preference could not be saved:', error);
+      announce('Animations changed, but this browser cannot save the preference.');
+    }
+  });
+  function playSeasonEffect(current) {
+    stopSeasonEffect();
+    if (!animationsEnabled()) return;
     seasonEffects.dataset.season = current;
     if (current === 'summer') {
       const sun = document.createElement('span');
@@ -879,10 +915,7 @@ After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as t
         seasonEffects.append(particle);
       }
     }
-    seasonEffectTimer = setTimeout(() => {
-      seasonEffects.replaceChildren();
-      delete seasonEffects.dataset.season;
-    }, 5200);
+    seasonEffectTimer = setTimeout(stopSeasonEffect, 5200);
   }
   updateSeason();
   season.addEventListener('click', () => {

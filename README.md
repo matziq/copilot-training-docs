@@ -138,6 +138,14 @@ Place this bar above a group of cards:
 
 ## Customization
 
+### Student guide motion preferences
+
+The ELC student guide's top-bar **Animations** button turns seasonal effects,
+disclosure transitions, and smooth scrolling on or off. The preference is saved
+in the browser and restored before rendering, including on reload. System
+reduced-motion preferences always take priority. Keep both published ELC guide
+copies identical when updating their controls.
+
 ### Colors
 
 All colors live as CSS custom properties in `:root` at the top of `css/styles.css`. Change them once and the whole theme updates:
