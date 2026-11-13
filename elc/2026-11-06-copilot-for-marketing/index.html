@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+<html data-season="autumn" lang="en-US">
+<head><meta charset="utf-8"/><script>(function(){var r=document.documentElement;r.dataset.season='autumn';try{if(localStorage.getItem('elc-60ff356d23-copilot-student-theme')==='dark'){r.dataset.theme='dark';}var savedSeason=localStorage.getItem('elc-60ff356d23-copilot-student-season');if(['autumn','winter','spring','summer'].includes(savedSeason)){r.dataset.season=savedSeason;}}catch(error){window.guideThemeStorageUnavailable=true;}})();</script>
+<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="noindex,nofollow,noarchive" name="googlebot"/>
+<meta content="light dark" name="color-scheme"/>
+<title>ELC | Copilot | Student Guide</title>
+<style>
+:root{color-scheme:light;--cp-bg:#f7f4ef;--cp-bg-elevated:#fcfbf8;--cp-surface:#ffffff;
+--cp-surface-soft:#f2f0ec;--cp-border:#e2ddd5;--cp-border-strong:#b9b2a6;
+--cp-text:#1b1c28;--cp-text-muted:#5c5c66;--cp-text-soft:#6f6f78;--cp-accent:#b11f4b;
+--cp-accent-soft:rgba(177,31,75,.08);--cp-navy:#040a2b;--cp-blue:#2e3a72;--cp-peri:#9eafff;
+--cp-gold:#8a6d2f;--cp-code-bg:#0f1430;--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.10);}
+[data-theme="dark"]{color-scheme:dark;--cp-bg:#1a1b22;--cp-bg-elevated:#212230;--cp-surface:#252634;
+--cp-surface-soft:#2c2d3d;--cp-border:#3a3b4e;--cp-border-strong:#565879;--cp-text:#e6e7f0;
+--cp-text-muted:#a5a7bd;--cp-text-soft:#9092a8;--cp-accent:#fd8ea1;--cp-accent-soft:rgba(253,142,161,.14);
+--cp-navy:#0a1038;--cp-blue:#9eafff;--cp-peri:#9eafff;--cp-gold:#d8b46a;--cp-code-bg:#0b0f26;
+--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.4);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cp-bg);color:var(--cp-text);
+font-family:Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6;
+-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--cp-text);line-height:1.2;margin:0;}
+a{color:var(--cp-accent);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px;}
+header.hero{background:var(--cp-navy);color:#fff;padding:48px 0 44px;}
+header.hero .wrap{padding-bottom:0;}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--cp-peri);}
+header.hero h1{color:#fff;font-size:50px;margin:14px 0 6px;}
+header.hero .tag{font-family:Georgia,serif;font-style:italic;font-size:23px;color:#dde3ff;}
+header.hero .meta{margin-top:18px;font-size:13px;color:#aeb5d2;}
+.themebtn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);
+border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+.themebtn:hover{background:rgba(255,255,255,.2);}
+nav.toc{position:sticky;top:0;z-index:50;background:var(--cp-bg-elevated);
+border-bottom:1px solid var(--cp-border);padding:10px 0;}
+nav.toc .wrap{padding-bottom:0;display:flex;gap:8px;flex-wrap:wrap;}
+nav.toc a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--cp-text-muted);
+padding:6px 12px;border-radius:999px;border:1px solid transparent;}
+nav.toc a:hover{color:var(--cp-accent);border-color:var(--cp-border);background:var(--cp-surface);}
+section{margin-top:52px;scroll-margin-top:64px;}
+section > h2{font-size:31px;margin-bottom:6px;}
+.lede{color:var(--cp-text-muted);font-size:15px;margin:0 0 22px;max-width:74ch;}
+.card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+padding:20px 22px;box-shadow:var(--cp-shadow);}
+.grid{display:grid;gap:14px;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.file{display:flex;gap:12px;align-items:flex-start;}
+.file code{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:6px;
+padding:2px 7px;font-size:12.5px;color:var(--cp-blue);}
+.file p{margin:4px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.gcse{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--cp-border);}
+.gcse:last-child{border-bottom:none;}
+.orb{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--cp-blue);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:20px;font-weight:700;}
+.gcse h3{font-size:18px;}
+.gcse .q{color:var(--cp-text-muted);font-size:14px;margin:2px 0 6px;}
+.gcse .ex{font-size:14px;font-style:italic;color:var(--cp-blue);}
+details.demo{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:14px;box-shadow:var(--cp-shadow);overflow:hidden;}
+details.demo[open]{border-color:var(--cp-border-strong);}
+summary{cursor:pointer;padding:18px 22px;display:flex;gap:16px;align-items:center;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+summary:hover{background:var(--cp-surface-soft);}
+.dnum{flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--cp-navy);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:17px;font-weight:700;}
+.dhead{flex:1 1 auto;min-width:0;}
+.dhead h3{font-size:21px;}
+.dhead p{margin:2px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.pill{flex:0 0 auto;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+background:var(--cp-accent-soft);color:var(--cp-accent);border-radius:999px;padding:5px 11px;}
+.dbody{padding:0 22px 22px;border-top:1px solid var(--cp-border);}
+.dbody code{display:inline-block;background:var(--cp-surface-soft);border:1px solid var(--cp-border);
+border-radius:6px;padding:3px 9px;font-size:12.5px;color:var(--cp-blue);margin:0 8px 6px 0;}
+.label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+color:var(--cp-text-soft);margin:20px 0 8px;}
+.promptbox{position:relative;background:var(--cp-code-bg);border-radius:12px;padding:18px 20px;}
+.promptbox pre{margin:0;white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
+font-size:14px;line-height:1.65;color:var(--cp-code-fg);}
+.promptbox pre::first-line{}
+.promptbox{padding-right:88px;}
+@media print{.promptbox{padding-right:20px;}} .promptbox.has-file{padding-top:54px;padding-right:20px;} .pb-actions{position:absolute;top:12px;right:12px;display:flex;gap:6px;} .pb-actions .copy{position:static;} .openfile{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:600;font-family:inherit;text-decoration:none;line-height:normal;} .openfile:hover{background:rgba(255,255,255,.24);} .openfile:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px;} @media print{.pb-actions{display:none;}.promptbox.has-file{padding-top:18px;}}
+.instr{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:22px;box-shadow:var(--cp-shadow);overflow:hidden;break-inside:avoid;scroll-margin-top:108px;}
+.instr>summary{padding:16px 22px;}
+.ichev{font-size:15px;color:var(--cp-accent);transition:transform .18s ease;flex:0 0 auto;}
+.instr[open] .ichev{transform:rotate(90deg);}
+.ihead{flex:1 1 auto;}
+.ihead h3{font-size:20px;margin:0;letter-spacing:-.01em;}
+.ihead p{margin:2px 0 0;font-size:13px;color:var(--cp-text-muted);}
+.ipill{flex:0 0 auto;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;
+color:var(--cp-accent);background:var(--cp-accent-soft);border-radius:999px;padding:5px 11px;}
+.ibody{padding:0 22px 6px;border-top:1px solid var(--cp-border);}
+.ibody section{padding-top:20px;}
+.ibody h2{font-size:22px;}
+@media print{.instr>summary{display:none;}.ibody{padding:0;border-top:0;}}
+.pnote{margin:14px 0 6px;font-size:13px;line-height:1.55;color:var(--cp-text-muted);border-left:3px solid var(--cp-accent);padding:0 0 0 10px;}
+.pnote span{display:block;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;color:var(--cp-accent);margin-bottom:2px;}
+.pnote+.promptbox{margin-top:0;}
+@media print{}
+.promptbox pre strong{color:#fff;font-weight:700;}
+.copy{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.12);color:#fff;
+border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;
+font-weight:600;cursor:pointer;font-family:inherit;}
+.copy:hover{background:rgba(255,255,255,.24);}
+.copy.done{background:#2e7d62;border-color:#2e7d62;}
+ol.follow{margin:0;padding-left:22px;}
+ol.follow li{margin-bottom:9px;font-size:14.5px;}
+.see{margin-top:14px;background:var(--cp-surface-soft);border-left:3px solid var(--cp-blue);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.see strong{color:var(--cp-blue);}
+.watch{margin-top:14px;background:var(--cp-accent-soft);border-left:3px solid var(--cp-accent);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.watch strong{color:var(--cp-accent);}
+.applies{margin-top:10px;font-size:14px;color:var(--cp-text-muted);font-style:italic;}
+.newcard h3{font-size:18px;margin-bottom:6px;}
+.newcard p{margin:0 0 10px;font-size:14px;color:var(--cp-text-muted);}
+.newcard .status{font-size:11.5px;font-weight:700;color:var(--cp-gold);
+letter-spacing:.04em;text-transform:uppercase;}
+.gcard h3{font-size:17px;margin-bottom:5px;}
+.gcard p{margin:0;font-size:14px;color:var(--cp-text-muted);}
+table.glance{width:100%;border-collapse:collapse;font-size:14px;}
+table.glance th{text-align:left;font-family:Aptos,sans-serif;font-size:11px;letter-spacing:.12em;
+text-transform:uppercase;color:var(--cp-text-soft);padding:0 12px 10px 0;border-bottom:1px solid var(--cp-border);}
+table.glance td{padding:13px 12px 13px 0;border-bottom:1px solid var(--cp-border);vertical-align:top;}
+table.glance tr:last-child td{border-bottom:none;}
+table.glance .n{font-family:Georgia,serif;font-weight:700;color:var(--cp-blue);width:34px;}
+table.glance .t{font-family:Georgia,serif;font-size:16px;color:var(--cp-text);white-space:nowrap;}
+table.glance .s{font-size:12px;color:var(--cp-text-soft);white-space:nowrap;}
+table.glance .o{color:var(--cp-text-muted);}
+.scenario{background:var(--cp-navy);color:#fff;border-radius:14px;padding:26px 28px;}
+.scenario h3{color:#fff;font-size:22px;margin-bottom:10px;}
+.scenario p{color:#dde3ff;font-size:14.5px;margin:0 0 12px;}
+.scenario ul{margin:0;padding-left:20px;color:#c3cbf0;font-size:14px;}
+.scenario li{margin-bottom:6px;}
+.note{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:12px;
+padding:14px 18px;font-size:14px;color:var(--cp-text-muted);margin-top:16px;}
+footer.end{margin-top:70px;padding-top:26px;border-top:1px solid var(--cp-border);
+font-size:13px;color:var(--cp-text-soft);}
+@media(max-width:720px){table.glance .t,table.glance .s{white-space:normal;}}
+@media print{nav.toc,.themebtn,.copy{display:none;}details.demo{break-inside:avoid;}
+details.demo>.dbody{display:block!important;}body{background:#fff;}}
+
+
+:root{--cp-accent:#7a1126;--cp-accent-soft:rgba(122,17,38,.08)}
+[data-theme="dark"]{--cp-accent:#ffb4c0;--cp-accent-soft:rgba(255,180,192,.14)}
+header.hero .wrap{max-width:1420px}
+.layout{max-width:1420px;margin:0 auto;padding:24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:start}
+.sidebar{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;padding:15px;box-shadow:var(--cp-shadow)}
+.sidebar h2{font-size:18px;margin:0 0 8px}
+.sidebar a{display:block;color:var(--cp-text-muted);font-size:13px;font-weight:600;line-height:1.35;padding:6px 8px;border-radius:7px;text-decoration:none}
+.sidebar a:hover,.sidebar a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.sidebar .nav-actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.nav-actions button,.section-nav a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:7px;color:var(--cp-text);cursor:pointer;font:inherit;font-size:12px;font-weight:700;padding:7px 9px;text-decoration:none}
+.content{min-width:0}
+details.section{scroll-margin-top:20px}
+details.section summary h2{font-size:20px;line-height:1.25}
+details.section summary .dhead span,details.section summary .ihead span{display:block;font-family:Aptos,"Segoe UI",sans-serif;font-size:13px;font-weight:400;color:var(--cp-text-muted);margin-top:3px}
+.ibody{padding-bottom:22px}
+.ibody p,.dbody p{font-size:14.5px}
+.ibody a,.dbody a{overflow-wrap:anywhere}
+.dbody .label:first-child{margin-top:20px}
+.promptbox pre{overflow-wrap:anywhere}
+.promptbox .copy:focus-visible,.themebtn:focus-visible,summary:focus-visible,.nav-actions button:focus-visible,.section-nav a:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px}
+.section-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.section-nav a:last-child{margin-left:auto}
+.news-card{padding:16px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface)}
+.news-card h3{font-size:17px;margin:3px 0 7px}
+.news-card p{margin:0 0 8px}
+.news-card .status{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--cp-accent)}
+.duration{font-size:13px;color:var(--cp-text-muted)}
+.callout{border-left:4px solid var(--cp-accent);padding:12px 15px;background:var(--cp-surface-soft);border-radius:8px;margin:15px 0}
+footer.end{margin:28px 0 16px}
+@media(max-width:850px){.layout{grid-template-columns:1fr;padding:16px}.sidebar{position:static;max-height:none}.sidebar-links{display:flex;gap:2px;flex-wrap:wrap}.sidebar a{display:inline-block}header.hero h1{font-size:36px}}
+@media(max-width:500px){summary{padding:14px;gap:10px}.dbody,.ibody{padding-left:14px;padding-right:14px}.g2,.g3{grid-template-columns:1fr}.pill,.ipill{display:none}.promptbox pre{font-size:13px}.promptbox{padding-right:72px}.copy{padding:6px}}
+@media print{.sidebar,.section-nav{display:none}.layout{display:block;padding:0}details.section>.dbody,details.section>.ibody{display:block!important}details.section{box-shadow:none}}
+</style>
+<style>:root {
+  --cp-bg: #f7f3ec;
+  --cp-bg-elevated: #f7f3ec;
+  --cp-surface: #fff;
+  --cp-surface-soft: #fbf8f2;
+  --cp-border: #e4dccd;
+  --cp-border-strong: #b98f73;
+  --cp-text: #242328;
+  --cp-text-muted: #596069;
+  --cp-text-soft: #596069;
+  --cp-accent: #7a1126;
+  --cp-accent-soft: rgba(122, 17, 38, .08);
+  --cp-navy: #351420;
+  --cp-blue: #284f78;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #b78a54;
+  --cp-code-bg: #fbf8f2;
+  --cp-code-fg: #242328;
+  --cp-shadow: 0 6px 22px rgba(53, 20, 32, .06);
+}
+[data-theme="dark"] {
+  --cp-bg: #181419;
+  --cp-bg-elevated: #181419;
+  --cp-surface: #271f26;
+  --cp-surface-soft: #211a20;
+  --cp-border: #4a3b45;
+  --cp-border-strong: #a58275;
+  --cp-text: #f5edf0;
+  --cp-text-muted: #d3c7cf;
+  --cp-text-soft: #d3c7cf;
+  --cp-accent: #ffbecb;
+  --cp-accent-soft: rgba(255, 190, 203, .12);
+  --cp-navy: #351420;
+  --cp-blue: #bdd9fa;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #d8b27a;
+  --cp-code-bg: #211a20;
+  --cp-code-fg: #f5edf0;
+  --cp-shadow: 0 6px 22px rgba(0, 0, 0, .22);
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", Aptos, Helvetica, Arial, sans-serif; line-height: 1.55; }
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 200; padding: 8px 12px;
+  background: var(--cp-surface); color: var(--cp-text); transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+.topbar {
+  position: sticky; top: 0; z-index: 100; min-height: 64px; display: flex;
+  align-items: center; gap: 16px; padding: 10px 24px; background: var(--cp-navy);
+  color: #fff; border-bottom: 3px solid var(--cp-gold);
+}
+.brand {
+  font-family: Georgia, "Times New Roman", serif; color: var(--cp-peri);
+  font-size: .84rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+}
+.bar-title {
+  flex: 1; margin: 0; font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem; font-weight: 400;
+}
+.top-actions { display: flex; gap: 7px; flex-wrap: wrap; }
+.top-actions button {
+  background: transparent; color: #fff; border: 1px solid var(--cp-gold);
+  border-radius: 4px; padding: 7px 10px; cursor: pointer; font: inherit; font-size: .81rem;
+}
+.top-actions button:hover, .top-actions button:focus-visible {
+  background: var(--cp-gold); color: var(--cp-navy);
+}
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--cp-gold); outline-offset: 3px;
+}
+.layout {
+  display: flex; gap: 0; max-width: 1400px; margin: 0 auto; padding: 0; align-items: flex-start;
+}
+nav.toc {
+  position: sticky; top: 64px; z-index: 10; align-self: flex-start; flex: 0 0 250px;
+  width: 250px; height: calc(100vh - 64px); overflow: auto; padding: 20px;
+  background: var(--cp-bg); border: 0;
+}
+nav.toc .wrap { display: block; max-width: none; padding: 0; }
+.toc-title {
+  margin-bottom: 8px; color: var(--cp-text-muted); font-size: .75rem;
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+nav.toc a {
+  display: block; padding: 6px 10px; color: var(--cp-text); border: 0;
+  border-left: 3px solid transparent; border-radius: 0; font-size: .88rem;
+  font-weight: 400; text-decoration: none;
+}
+nav.toc a:hover, nav.toc a.active {
+  border-left-color: var(--cp-gold); background: var(--cp-accent-soft); color: var(--cp-text);
+}
+.content { flex: 1; min-width: 0; padding: 20px 24px 80px; }
+header.hero { border-radius: 8px; padding: 28px; margin-bottom: 20px; }
+header.hero .wrap { max-width: none; padding: 0; }
+header.hero h1 { margin: 8px 0; color: #fff; font-size: clamp(1.7rem, 3vw, 2.1rem); font-weight: 400; }
+header.hero .tag { margin: 3px 0; color: #f4e3e7; font-size: 1.12rem; }
+header.hero .meta { margin: 9px 0 0; color: #f1e2e5; font-size: .9rem; }
+.instr, details.demo {
+  overflow: hidden; margin-bottom: 18px; border: 1px solid var(--cp-border);
+  border-radius: 8px; background: var(--cp-surface); box-shadow: var(--cp-shadow);
+}
+details.section { scroll-margin-top: 88px; }
+.instr > summary, details.demo > summary { padding: 14px 20px; gap: 12px; }
+.instr[open] > summary, details.demo[open] > summary { border-bottom: 1px solid var(--cp-border); }
+details.section summary h2 { font-size: 1.25rem; }
+details.demo summary h2 { font-weight: 400; }
+.dnum { background: var(--cp-navy); border-radius: 6px; }
+.pill, .ipill { color: var(--cp-accent); background: var(--cp-accent-soft); }
+.ibody, .dbody { padding: 16px 22px 22px; border: 0; }
+.ibody p, .dbody p { line-height: 1.65; }
+.demo-intro {
+  margin: 0 0 14px; padding: 12px 14px; border: 1px solid var(--cp-border-strong);
+  border-radius: 4px; background: var(--cp-surface-soft);
+}
+.dbody .demo-intro .label:first-child { margin: 0 0 4px; }
+.demo-intro p { margin: 0; }
+.demo-intro .applies { margin-top: 6px; }
+.step, .hint {
+  margin: 10px 0; overflow: hidden; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-surface); scroll-margin-top: 88px;
+}
+.step > summary, .hint > summary { padding: 11px 14px; gap: 12px; font-size: .95rem; font-weight: 600; }
+.step > summary > span:first-child, .hint > summary > span:first-child { flex: 1; }
+.step[open] > summary, .hint[open] > summary { border-bottom: 1px solid var(--cp-border); }
+.step-body, .hint-body { padding: 12px 14px; }
+.step-body .label:first-child { margin-top: 0; }
+.step-body .promptbox + .pnote { margin-top: 16px; }
+.step-body .note { margin: 0 0 12px; }
+.step-body .see { margin: 0; border-left-color: var(--cp-gold); }
+.hint > summary strong { margin-right: 5px; color: var(--cp-accent); }
+.hint.fact > summary strong { color: var(--cp-blue); }
+.hint.tip { border-left: 3px solid var(--cp-accent); }
+.hint.fact { border-left: 3px solid var(--cp-blue); }
+.hint-body { font-size: .92rem; line-height: 1.6; }
+.step .chev, .hint .chev {
+  color: var(--cp-accent); transform: rotate(-90deg); transition: transform .18s ease;
+}
+.step[open] .chev, .hint[open] .chev { transform: rotate(0); }
+.promptbox {
+  position: relative; padding: 14px 100px 14px 14px; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-code-bg);
+}
+.promptbox pre {
+  color: var(--cp-code-fg); font: inherit; font-size: .91rem; line-height: 1.65;
+  white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal;
+}
+.promptbox pre strong { color: var(--cp-accent); }
+.copy {
+  top: 8px; right: 8px; padding: 6px 10px; border: 1px solid var(--cp-gold);
+  border-radius: 4px; background: var(--cp-navy); color: #fff;
+}
+.copy:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.copy.done { border-color: #2e7d62; background: #2e7d62; }
+.openfile { padding: 6px 10px; border: 1px solid var(--cp-gold); border-radius: 4px; background: var(--cp-navy); color: #fff; }
+.openfile:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.pb-actions { top: 8px; right: 8px; }
+.tip-index { margin: 0; padding-left: 22px; }
+.tip-index li { margin: 7px 0; }
+.toast {
+  position: fixed; right: 18px; bottom: 18px; z-index: 150; max-width: min(420px, calc(100vw - 36px));
+  padding: 10px 14px; border: 1px solid var(--cp-gold); border-radius: 6px;
+  background: var(--cp-navy); color: #fff; box-shadow: var(--cp-shadow);
+}
+footer.end { margin-top: 28px; padding-bottom: 0; }
+@media (max-width: 900px) {
+  .topbar { position: relative; flex-wrap: wrap; padding: 12px 16px; }
+  .brand { width: 100%; font-size: .78rem; }
+  .bar-title { min-width: 180px; font-size: 1.02rem; }
+  .layout { display: block; }
+  nav.toc { position: static; width: auto; height: auto; padding: 10px 12px; overflow: visible; }
+  nav.toc .wrap { display: flex; flex-wrap: nowrap; gap: 3px; overflow-x: auto; padding: 2px 0; }
+  nav.toc a {
+    flex: 0 0 auto; white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent;
+  }
+  nav.toc a:hover, nav.toc a.active { border-left: 0; border-bottom-color: var(--cp-gold); }
+  .toc-title { display: none; }
+  .content { padding: 16px 14px 55px; }
+  header.hero { padding: 22px; }
+  details.section, .step, .hint { scroll-margin-top: 12px; }
+}
+@media (max-width: 500px) {
+  .top-actions { width: 100%; }
+  .top-actions button { flex: 1; }
+  .brand { white-space: normal; }
+  .instr > summary, details.demo > summary { align-items: flex-start; padding: 14px; gap: 10px; }
+  .pill, .ipill { display: block; padding: 4px 7px; font-size: .62rem; }
+  .ibody, .dbody { padding-left: 14px; padding-right: 14px; }
+  .promptbox { padding-right: 84px; }
+}
+@media (max-width: 360px) {
+  .instr > summary, details.demo > summary { flex-wrap: wrap; }
+  .instr > summary .ihead, details.demo > summary .dhead {
+    flex: 1 1 calc(100% - 56px); min-width: 0; overflow-wrap: anywhere;
+  }
+  .instr > summary .ipill { margin-left: 20px; }
+  details.demo > summary .pill { margin-left: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ichev, .step .chev, .hint .chev { transition: none; }
+}
+@media print {
+  :root, [data-theme="dark"] {
+    --cp-bg: #fff; --cp-surface: #fff; --cp-surface-soft: #fff;
+    --cp-text: #000; --cp-text-muted: #333; --cp-code-bg: #fff; --cp-code-fg: #000;
+    --cp-border: #999; --cp-accent: #641526; --cp-shadow: none;
+  }
+  html { scroll-behavior: auto; }
+  .topbar, nav.toc, .copy, .pb-actions, .toast, .skip-link, .section-nav { display: none !important; }
+  .layout { display: block; padding: 0; }
+  .content { padding: 0; }
+  .instr, details.demo, .step, .hint { break-inside: auto; box-shadow: none; }
+  .instr > summary, details.demo > summary { display: flex !important; break-after: avoid; }
+  .instr .ibody, details.demo .dbody { display: block !important; }
+  .promptbox { padding: 12px; break-inside: avoid; }
+}
+</style><style id="student-guide-controls">
+:root[data-season="winter"] {
+  --cp-bg:#eef4f7;--cp-bg-elevated:#eef4f7;--cp-surface:#fff;--cp-surface-soft:#f3f7fa;
+  --cp-border:#cddbe4;--cp-border-strong:#829bab;--cp-text:#20313e;
+  --cp-text-muted:#516271;--cp-text-soft:#516271;--cp-accent:#7a1126;
+  --cp-accent-soft:rgba(122,17,38,.07);--cp-navy:#122d43;--cp-blue:#315977;
+  --cp-peri:#f0d7a1;--cp-gold:#9e7c4a;--cp-code-bg:#f3f7fa;--cp-code-fg:#20313e;
+  --cp-shadow:0 6px 22px rgba(18,45,67,.07);
+}
+:root[data-season="winter"][data-theme="dark"] {
+  --cp-bg:#0f1b27;--cp-bg-elevated:#0f1b27;--cp-surface:#172a3a;--cp-surface-soft:#102232;
+  --cp-border:#375064;--cp-border-strong:#88a6bb;--cp-text:#eef5fa;
+  --cp-text-muted:#c4d4e0;--cp-text-soft:#c4d4e0;--cp-accent:#ffc2ce;
+  --cp-accent-soft:rgba(255,194,206,.12);--cp-navy:#122d43;--cp-blue:#bdddf6;
+  --cp-peri:#f0d7a1;--cp-gold:#d9b880;--cp-code-bg:#102232;--cp-code-fg:#eef5fa;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.22);
+}
+:root[data-season="spring"] {
+  --cp-bg:#f2f7f1;--cp-bg-elevated:#f2f7f1;--cp-surface:#fff;--cp-surface-soft:#edf4eb;
+  --cp-border:#d5e2d1;--cp-border-strong:#91ad8e;--cp-text:#1e3024;
+  --cp-text-muted:#526655;--cp-text-soft:#526655;--cp-accent:#356b45;
+  --cp-accent-soft:rgba(53,107,69,.08);--cp-navy:#173b2a;--cp-blue:#356b45;
+  --cp-peri:#cfe7c8;--cp-gold:#8b9560;--cp-code-bg:#f6faf4;--cp-code-fg:#1e3024;
+  --cp-shadow:0 6px 22px rgba(35,75,43,.07);
+}
+:root[data-season="spring"][data-theme="dark"] {
+  --cp-bg:#141d17;--cp-bg-elevated:#141d17;--cp-surface:#1d2a20;--cp-surface-soft:#18251b;
+  --cp-border:#3b5140;--cp-border-strong:#829b85;--cp-text:#edf5ee;
+  --cp-text-muted:#c0d0c2;--cp-text-soft:#c0d0c2;--cp-accent:#a8d7ad;
+  --cp-accent-soft:rgba(168,215,173,.13);--cp-navy:#173b2a;--cp-blue:#b8e3bc;
+  --cp-peri:#d2e8b6;--cp-gold:#d4c98c;--cp-code-bg:#18251b;--cp-code-fg:#edf5ee;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.24);
+}
+:root[data-season="summer"] {
+  --cp-bg:#fff8e9;--cp-bg-elevated:#fff8e9;--cp-surface:#fff;--cp-surface-soft:#fff2d6;
+  --cp-border:#ead9b5;--cp-border-strong:#c69d60;--cp-text:#292d34;
+  --cp-text-muted:#5d5b55;--cp-text-soft:#5d5b55;--cp-accent:#a9441b;
+  --cp-accent-soft:rgba(169,68,27,.08);--cp-navy:#164a70;--cp-blue:#236b9a;
+  --cp-peri:#ffe2a0;--cp-gold:#a96e16;--cp-code-bg:#fffaf0;--cp-code-fg:#292d34;
+  --cp-shadow:0 6px 22px rgba(110,75,24,.08);
+}
+:root[data-season="summer"][data-theme="dark"] {
+  --cp-bg:#151d25;--cp-bg-elevated:#151d25;--cp-surface:#202b35;--cp-surface-soft:#1a2630;
+  --cp-border:#425461;--cp-border-strong:#92a7b3;--cp-text:#f0f3f5;
+  --cp-text-muted:#c6d0d5;--cp-text-soft:#c6d0d5;--cp-accent:#ffbf78;
+  --cp-accent-soft:rgba(255,191,120,.14);--cp-navy:#164a70;--cp-blue:#a9d8f3;
+  --cp-peri:#ffe2a0;--cp-gold:#e0bb74;--cp-code-bg:#1a2630;--cp-code-fg:#f0f3f5;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.25);
+}
+.topbar{flex-wrap:wrap}
+.brand{flex:0 1 auto}
+.bar-title{flex:1 1 220px;font-size:1.15rem}
+.top-actions{margin-left:auto}
+.top-actions button{white-space:nowrap}
+nav.toc{top:var(--cp-header-height,64px);height:calc(100vh - var(--cp-header-height,64px))}
+details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) + 24px)}
+.hero-panel{
+  margin-bottom:18px;border:1px solid var(--cp-navy);border-radius:8px;
+  background:var(--cp-navy);color:#fff;overflow:hidden;
+}
+.hero-panel>summary{padding:24px 28px 18px;gap:18px;align-items:flex-start}
+.hero-panel>summary:hover{background:var(--cp-navy)}
+.hero-panel>summary>div{flex:1;min-width:0}
+.hero-panel h1{color:#fff;font-size:clamp(1.7rem,3vw,2.1rem);font-weight:400;margin:8px 0 0}
+.hero-chevron{color:var(--cp-peri);font-size:1.4rem;transform:rotate(0);transition:transform .18s ease}
+.hero-panel[open] .hero-chevron{transform:rotate(90deg)}
+.hero-body{padding:0 28px 24px}
+.hero-body .tag{font:italic 1.12rem/1.5 Georgia,serif;color:#f4e3e7}
+.hero-body .meta{margin-top:12px;color:#f1e2e5;font-size:.9rem}
+.season-label{margin-top:12px;color:var(--cp-peri);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+.grid{align-items:start}
+.subcard{margin:0;padding:0;min-width:0;box-shadow:none}
+.subcard>summary{align-items:flex-start}
+.subcard>summary h3{flex:1;min-width:0;margin:0;font:400 1.05rem/1.35 Georgia,serif}
+.subcard .status{color:var(--cp-accent);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.subcard .step-body p{margin:8px 0}
+.demo-overview .demo-intro{margin:0}
+.demo-overview .step-body{padding:0}
+.demo-overview .demo-intro{border:0;border-radius:0;padding:12px 14px}
+.recommendation .rec-label{
+  display:block;margin-bottom:4px;color:var(--cp-accent);font-size:.68rem;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+}
+.recommendation .step-body>p{margin:0 0 12px}
+.savebox{
+  position:relative;padding:14px 100px 14px 14px;border:1px solid var(--cp-border);
+  border-radius:6px;background:var(--cp-code-bg);
+}
+.savebox pre{
+  margin:0;color:var(--cp-code-fg);font:inherit;font-size:.91rem;line-height:1.65;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.meme-figure{margin:0}
+.meme-figure img{display:block;max-width:100%;height:auto;border-radius:6px}
+.meme-figure figcaption{margin-top:10px;color:var(--cp-text-muted);font-size:.85rem}
+.history-date{color:var(--cp-accent);font-weight:700}
+.about-body footer.end{margin:0;padding:0;border:0}
+@media(max-width:900px){
+  .brand{flex-basis:100%}
+  nav.toc{position:static;height:auto}
+  details.section,.step,.hint{scroll-margin-top:12px}
+}
+@media(max-width:500px){
+  .top-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-left:0}
+  .top-actions button{width:100%}
+  .hero-panel>summary{padding:20px 20px 16px}
+  .hero-body{padding:0 20px 20px}
+  .savebox{padding-right:84px}
+  .subcard>summary{flex-wrap:nowrap}
+}
+@media(prefers-reduced-motion:reduce){.hero-chevron{transition:none}}
+@media print{
+  .hero-panel{background:#fff;color:#000;border-color:#999}
+  .hero-panel h1,.hero-panel .eyebrow,.hero-body .tag,.hero-body .meta,.season-label{color:#000}
+  .hero-chevron,.chev{display:none}
+  .savebox{padding:12px}
+}
+</style><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23351420'/%3E%3Cpath d='M6 8h8l2 2 2-2h8v17h-8l-2 2-2-2H6z' fill='none' stroke='%23d8b27a' stroke-width='2'/%3E%3C/svg%3E"/><style id="elc-prompt-layout">
+.promptbox:not(.has-file){padding:44px 16px 16px;}
+.promptbox pre.gcse-prompt{white-space:normal;line-height:1.58;}
+.promptbox pre.gcse-prompt .prompt-field{
+  display:grid;grid-template-columns:7.4em minmax(0,1fr);gap:.75rem;
+  align-items:start;margin:0 0 .62em;
+}
+.promptbox pre.gcse-prompt .prompt-field:last-child{margin-bottom:0;}
+.promptbox pre.gcse-prompt .prompt-field strong{color:var(--cp-accent);}
+.promptbox pre.gcse-prompt .prompt-field>span{min-width:0;overflow-wrap:anywhere;}
+@media(max-width:500px){
+  .promptbox:not(.has-file){padding:44px 12px 12px;}
+  .promptbox pre.gcse-prompt .prompt-field{grid-template-columns:6.25em minmax(0,1fr);gap:.5rem;}
+}
+@media print{.promptbox:not(.has-file){padding:12px;}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">ELC</span><p class="bar-title">Copilot: Student Guide</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button></div></header>
+<div class="layout">
+<nav aria-label="Guide contents" class="toc"><div class="wrap"><div class="toc-title">Contents</div><a href="#overview">Overview</a>
+<a href="#intro">Intro</a>
+<a href="#start">Start here</a>
+<a href="#d01">Launch-readiness huddle</a>
+<a href="#d02">Audience hypothesis</a>
+<a href="#d03">Multi-channel launch</a>
+<a href="#d04">Campaign performance</a>
+<a href="#prompting">Prompting and safety</a>
+<a href="#memory">Memory and custom instructions</a>
+<a href="#tips">Copilot tips and tricks</a>
+<a href="#wrap-up">Wrap-up</a>
+<a href="#about-guide">About this guide</a></div></nav>
+<main class="content" id="main-content" tabindex="-1"><details class="section hero-panel" id="overview" open=""><summary><div><div class="eyebrow">ELC · Student Guide</div><h1>Copilot for Marketing</h1></div><span aria-hidden="true" class="hero-chevron">▸</span></summary><div class="hero-body"><div class="tag">Hands-on marketing practice with fictional briefs, keyboard-ready prompts, and source checks.</div><div class="meta">Sample plan · 60 minutes</div><div class="season-label" id="season-label">Autumn · Warm paper and harvest tones</div><div class="section-nav"><a href="#intro">Next section</a></div></div></details>
+<details class="section instr" id="intro" open=""><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Intro<span>This day in AI history.</span></h2><span class="ipill">Start of session</span></summary><div class="ibody"><h3 id="ai-history">This day in AI history</h3><p>On November 6, 2023, OpenAI announced GPT-4 Turbo at its first DevDay, including a 128,000-token context window and new developer products. <a href="https://openai.com/index/new-models-and-developer-products-announced-at-devday/" target="_blank" rel="noopener">Read the dated announcement</a>.</p><figure class="meme-figure"><img alt="Two-panel comic: a marketer asks an AI to make a launch email warmer. The AI turns on a space heater, then turns it off when the marketer clarifies she meant a friendlier tone." height="1024" src="ELC_AI_Marketing_Comic.png?v=42c5b658dd58" width="1536"/></figure><div class="section-nav"><a href="#overview">Previous: Overview</a> <a href="#start">Next: Start here</a></div></div></details>
+<details class="section instr" id="start"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Start here: Copilot<span>Access, scope, and safe practice.</span></h2><span class="ipill">Start here</span></summary><div class="ibody"><p>These exercises use fictional text pasted into chat. They do not depend on connected work data, file upload, agents, or actions. Use only the Copilot experience and work account approved by your organization; feature and data availability depend on license and tenant settings.</p>
+<p>Do not paste real customer, employee, campaign, or confidential information. The practice cases are fictional. Treat every output as a draft for human review, not an approval, claim substantiation, or executed action.</p>
+<div class="step"><div class="label">60-minute sample plan</div><div class="step-body"><ul><li>Start and safe setup: 5 min</li><li><a href="#d01">Launch-readiness huddle</a>: 10 min</li><li><a href="#d02">Audience hypothesis</a>: 10 min</li><li><a href="#d03">Multi-channel launch</a>: 12 min</li><li><a href="#d04">Campaign performance</a>: 12 min</li><li><a href="#prompting">Prompting and safety</a>: 5 min</li><li><a href="#memory">Memory and custom instructions</a>: 2 min</li><li><a href="#tips">Tips</a>: 2 min</li><li><a href="#wrap-up">Wrap-up</a>: 2 min</li></ul><p>Total: 60 minutes. Adjust the timing to fit your session.</p></div></div>
+<div class="step"><div class="label">Official references</div><div class="step-body"><ul><li><a href="https://learn.microsoft.com/en-us/copilot/plan/copilot-overview" target="_blank" rel="noopener">Microsoft Copilot overview and license scope</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Microsoft enterprise data protection</a></li><li><a href="https://www.elcompanies.com/en/" target="_blank" rel="noopener">The Estée Lauder Companies official site</a></li></ul></div></div><div class="section-nav"><a href="#intro">Previous: Intro</a> <a href="#d01">Next: Launch-readiness huddle</a></div></div></details>
+<details class="section demo" id="d01">
+<summary><span class="dnum">01</span><h2 class="dhead">Prepare a launch-readiness huddle<span>Separate the approved baseline from proposals and open evidence.</span></h2><span class="pill">Chat · paste-in</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d01-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Turn a short launch case into a source-grounded marketing huddle brief without turning a proposal into a decision.</p><div class="applies">Who it's for: Alex Morgan, a fictional regional marketing team member preparing for a leadership review.</div></div></div></details><details class="step" id="d01-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_practice_sources/d01-luminara-readiness.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>Practice persona: Alex Morgan, a fictional regional marketing team member.
+Practice date: November 6, 2026.
+
+Source A — Project Luminara leadership review invitation
+Review date: November 9, 2026. Purpose: review readiness for a fictional seasonal skincare launch in the UK, Ireland, and the Nordics. Baseline target launch: November 23, 2026. Leadership must decide whether to keep the baseline or request a revised plan after readiness evidence is reviewed. The invitation alone does not authorize a launch-date change.
+
+Source B — Project Luminara project update, November 2, 2026
+Brand team: creative review due November 6; approval is not yet confirmed. Commercial team: UK retailer artwork due November 10. Supply team: stock-readiness confirmation due November 12; confirmation has not been received. Nordic localization: Norwegian packaging translation remains open; no owner or completion date is recorded in this update. Proposal: consider moving the launch to November 30 if localization cannot be resolved. This is a proposal, not an approved decision.
+
+Source C — Project Luminara leadership note, November 2, 2026
+The approved baseline remains November 23. No revised launch date has been approved. Bring creative approval, stock confirmation, and localization status to the November 9 review. A localization owner and due date still need to be agreed. Do not attribute a decision to an individual without evidence.</pre></div></div></details><details class="step" id="d01-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>This prompt asks Copilot to synthesize a small case while keeping the approved date, proposed date, and unresolved evidence distinct.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Help me prepare for the November 9 leadership review.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am Alex Morgan. I am preparing for the November 9, 2026 review of a fictional seasonal skincare launch.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the pasted Project Luminara case. Separate approved decisions, proposals, open items, and missing evidence.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Give me the purpose, three key facts, open decisions, and two questions to ask. Cite the source for each fact and flag anything missing or uncertain.</span></span></pre></div></div></details><details class="step" id="d01-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>A source check catches an attractive but unsupported conclusion before the brief is reused.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Verify the date and milestone status in the case.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am Alex Morgan preparing the November 9, 2026 leadership review.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use the same pasted Project Luminara case and the previous answer; do not add outside facts.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>List confirmed dates separately from proposals, show the supporting source for each, and do not treat a due date as proof of completion.</span></span></pre></div><div class="pnote"><span>What this prompt does</span>This adapts the verified brief for a live discussion without implying approval or execution.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Turn the verified case into a short speaking note.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am Alex Morgan preparing to speak at the November 9, 2026 leadership review.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the same pasted Project Luminara case and facts already checked in this chat.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Write a 60-second speaking note that ends with the unresolved evidence and owner/date questions. Do not imply the launch date changed.</span></span></pre></div></div></details><details class="step" id="d01-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul><li>November 23 remains the approved baseline; November 30 is only a proposal.</li><li>Creative approval, stock confirmation, and Norwegian localization are still open or unconfirmed.</li><li>The source does not name a localization owner or completion date.</li><li>No decision or statement is attributed to a person without evidence.</li></ul></div></div></details><details class="hint tip" id="d01-tip"><summary><span>Tip: Separate status from decision</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Ask for separate labels such as <strong>approved</strong>, <strong>proposed</strong>, and <strong>open</strong>. A confident summary is not a new approval.</div></details><details class="hint fact" id="d01-fact"><summary><span>Did you know? The date boundary is explicit</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">In this fictional case, November 23 is the approved baseline, while November 30 is only a proposal. Both dates appear in the source, but they do not have the same status.</div></details><details class="step recommendation" id="d01-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Keep status summaries evidence-based</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Optional: use this only if it matches your real work. Do not save fictional project details.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When summarizing project status, separate approved decisions, proposals, open items, and missing evidence. Do not infer owners or decisions.</pre></div></div></details><div class="section-nav"><a href="#start">Previous: Start here</a> <a href="#d02">Next: Audience hypothesis</a></div></div>
+</details>
+<details class="section demo" id="d02">
+<summary><span class="dnum">02</span><h2 class="dhead">Build an evidence-led audience hypothesis<span>Find audience needs without inventing demographics or prevalence.</span></h2><span class="pill">Chat · paste-in</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d02-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice turning a small, synthetic set of customer-style comments into clearly labeled segment hypotheses and research questions.</p><div class="applies">Who it's for: A fictional marketing researcher working with a practice-only qualitative snapshot.</div></div></div></details><details class="step" id="d02-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_practice_sources/d02-synthetic-audience-notes.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>Practice source: synthetic qualitative notes for keyboard practice only. These are not real customer comments, ELC research, or a representative sample. The file contains no demographic or market-size data.
+
+Product context: a fictional evening skincare routine called Project Luminara. No product benefits, price, or launch date are established by these notes.
+
+R01: "I want a short routine after work."
+R02: "Tell me plainly what each product does; I do not want a complicated ritual."
+R03: "I ignore claims like 'overnight transformation'; tell me what is actually in it."
+R04: "I forget steps when I travel; a compact routine matters."
+R05: "I am not looking for a new routine; a clear one-step addition feels manageable."
+R06: "I want a gift that feels thoughtful, but I need to know what is in the box."
+R07: "Refill options are interesting only if I can find refills where I shop."
+R08: "I pay attention to scent; fragrance-free options are easier for me."
+
+Limitations: eight fictional notes are not a population estimate, preference ranking, or proof of purchase intent. Do not infer age, gender, income, ethnicity, skin condition, location, or other demographics.</pre></div></div></details><details class="step" id="d02-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>This adapts a marketing persona-building exercise into an evidence-led task: describe needs, not imagined people.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Create provisional audience need-state hypotheses from the practice notes.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing researcher exploring messages for a fictional evening skincare routine.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the pasted synthetic notes. Treat each note as a fictional quote; do not infer demographics, market size, or purchase intent.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Suggest up to three need-state hypotheses in a table with a neutral label, supporting participant IDs and exact phrases, one message hypothesis, and one uncertainty to validate. Mark each hypothesis as unvalidated.</span></span></pre></div></div></details><details class="step" id="d02-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>This asks Copilot to challenge its own framing instead of making a polished guess sound like research.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Stress-test the audience labels and message hypotheses.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing researcher reviewing provisional audience hypotheses.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the same pasted synthetic notes and the hypotheses in the previous answer.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Identify any stereotype, unsupported demographic assumption, or claim beyond the notes, then rewrite the affected labels and hypotheses neutrally.</span></span></pre></div><div class="pnote"><span>What this prompt does</span>A useful hypothesis points to a practical validation step, not a budget decision.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Create interview questions to test the strongest audience hypothesis.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing researcher planning a follow-up interview.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the same pasted synthetic notes and the strongest hypothesis from the previous answer.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Write three open-ended questions. For each, describe an answer that would support the hypothesis and one that would weaken it.</span></span></pre></div></div></details><details class="step" id="d02-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul><li>Every need-state is tied to participant IDs and exact words in the source.</li><li>Labels describe a possible need, not a real person or demographic segment.</li><li>No prevalence, market size, purchase intent, or ranking is invented.</li><li>All results are called hypotheses that need validation.</li></ul></div></div></details><details class="hint tip" id="d02-tip"><summary><span>Tip: Keep the evidence column</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Ask for participant IDs and exact phrases beside each insight. If a statement has no evidence cell, treat it as a question to test rather than a finding.</div></details><details class="hint fact" id="d02-fact"><summary><span>Did you know? Eight notes are not a market estimate</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">The source contains eight synthetic notes and no representative-sampling or demographic data. They can support practice hypotheses, not a claim about how common a preference is.</div></details><details class="step recommendation" id="d02-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Label audience evidence and hypotheses</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Optional: keep this as a work-style preference, not as stored customer research.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When developing audience segments, distinguish source evidence from hypotheses. Do not infer demographic traits or prevalence when the source does not provide them.</pre></div></div></details><div class="section-nav"><a href="#d01">Previous: Launch-readiness huddle</a> <a href="#d03">Next: Multi-channel launch</a></div></div>
+</details>
+<details class="section demo" id="d03">
+<summary><span class="dnum">03</span><h2 class="dhead">Adapt a launch idea across channels<span>Create channel-ready drafts while protecting product facts.</span></h2><span class="pill">Chat · paste-in</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d03-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice the multi-channel adaptation pattern from the marketing prompt guide using a fully fictional brief and explicit claim limits.</p><div class="applies">Who it's for: A fictional ELC marketing team member drafting practice copy for an invented product.</div></div></div></details><details class="step" id="d03-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_practice_sources/d03-fictional-launch-brief.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>Practice source: fictional product brief for keyboard practice only. It is not an ELC product or approved marketing copy.
+
+Product name: Luminara Evening Ritual.
+Product format: a fictional three-piece skincare set: cleanser, moisturizer, and face oil.
+Approved practice facts: the set is intended for an evening routine. The fictional moisturizer ingredient list includes glycerin and squalane.
+Audience: not specified.
+Launch date and availability: not approved or supplied.
+Price: not supplied.
+Approved efficacy, clinical, environmental, or sourcing claims: none supplied.
+Brand voice: calm, clear, and sensory without exaggerating.
+
+Do not claim a clinical result, treatment, transformation, sustainability benefit, or launch availability. Do not invent a quote, price, ingredient, testimonial, or proof point. The output is a draft for review, not approved advertising.</pre></div></div></details><details class="step" id="d03-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>This reuses the multi-channel marketing prompt pattern while making the factual boundary and output limits explicit.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Draft a small set of channel-specific launch messages for a fictional skincare set.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing writer. The audience and launch date are not supplied, so keep the copy general and flag what needs approval.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the pasted practice brief for product facts. Do not invent claims, price, availability, testimonials, or audience details.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Write an Instagram caption of no more than 40 words, a LinkedIn post of no more than 55 words, and an email subject line of no more than 40 characters plus preview text of no more than 45 characters. Add factual details that need confirmation before publication.</span></span></pre></div></div></details><details class="step" id="d03-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>A claim-by-claim audit makes it easier to spot invented benefits or availability.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Audit the draft for unsupported product claims.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing writer checking a draft before human review.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the same pasted fictional product brief and the draft in the previous answer.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>For each factual statement, cite the exact supporting line. Remove or flag unsupported content and report each item's word or character count.</span></span></pre></div><div class="pnote"><span>What this prompt does</span>This varies the creative without relaxing the source boundary.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Create two alternate tones for the channel copy.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing writer refining draft channel copy.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the same pasted fictional product brief and the copy in the previous answer.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Provide one editorial and one concise alternative. Preserve the factual and channel limits and do not add a launch date.</span></span></pre></div></div></details><details class="step" id="d03-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul><li>The set contains only the cleanser, moisturizer, and face oil named in the brief.</li><li>Glycerin and squalane are attributed only to the fictional moisturizer ingredient list.</li><li>No efficacy, clinical, sustainability, sourcing, price, audience, or availability claims appear.</li><li>All three channel limits are checked and the result is still marked as a draft.</li></ul></div></div></details><details class="hint tip" id="d03-tip"><summary><span>Tip: Treat limits as testable</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Ask Copilot to report a word or character count, then verify the exact platform limit yourself. Keep each channel's count separate.</div></details><details class="hint fact" id="d03-fact"><summary><span>Did you know? A draft is not approval</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">The source supplies no approved efficacy claim, price, audience, or launch date. Leaving those details out is a correct result, not a gap to fill with a plausible-sounding guess.</div></details><details class="step recommendation" id="d03-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Draft with substantiation boundaries</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Optional: use this only for your own recurring drafting preferences; follow your organization's review process.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>For marketing drafts, use only the product facts I provide, flag claims that need substantiation, and preserve requested channel limits. Mark drafts as drafts.</pre></div></div></details><div class="section-nav"><a href="#d02">Previous: Audience hypothesis</a> <a href="#d04">Next: Campaign performance</a></div></div>
+</details>
+<details class="section demo" id="d04">
+<summary><span class="dnum">04</span><h2 class="dhead">Read a campaign performance snapshot<span>Check arithmetic and keep attributed ROAS in context.</span></h2><span class="pill">Chat · paste-in</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d04-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Calculate a small campaign snapshot by hand-in-the-loop prompting, then decide what the data can and cannot support.</p><div class="applies">Who it's for: A fictional marketing analyst reviewing synthetic pilot results.</div></div></div></details><details class="step" id="d04-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_practice_sources/d04-campaign-performance.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>Practice source: synthetic campaign data for keyboard practice only. Currency: USD. Reporting period: October 1-31, 2026.
+
+Campaign | Spend | Platform-attributed revenue | Attributed orders
+Email - Evening ritual | 1200 | 7800 | 156
+Paid social - Evening ritual | 3600 | 12600 | 210
+Search - Branded routine | 2400 | 10800 | 180
+Creator sampling | 1800 | 4500 | 90
+
+Definitions and limitations:
+ROAS = platform-attributed revenue divided by spend.
+The revenue values use last-click attribution and are not an estimate of incremental revenue.
+Production costs, product margin, returns, audience overlap, and customer acquisition cost are not provided.
+The data is fictional; do not recommend a real budget change from it.</pre></div></div></details><details class="step" id="d04-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>This turns a performance-analysis prompt into a checkable calculation instead of an unsupported budget recommendation.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Summarize the synthetic campaign results and calculate ROAS transparently.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing analyst preparing a practice-only readout for October 1-31, 2026.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the pasted table and definitions. Treat all revenue as platform-attributed, last-click, and non-incremental.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Show total spend, total attributed revenue, total orders, blended ROAS, and each campaign's ROAS to two decimal places. Show the formula, identify the leader by ROAS and by revenue separately, and state what the data cannot prove.</span></span></pre></div></div></details><details class="step" id="d04-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>A second calculation makes the underlying arithmetic visible and catches metric mix-ups.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Recalculate the campaign totals and ROAS.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing analyst checking a practice readout.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the same pasted campaign table, definitions, and the previous answer.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Show the arithmetic for every total and ROAS, identify any mismatch with the first answer, and distinguish the revenue leader from the ROAS leader.</span></span></pre></div><div class="pnote"><span>What this prompt does</span>A next step can be useful without pretending that last-click revenue proves incremental impact.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre class="gcse-prompt"><span class="prompt-field"><strong>Goal:</strong> <span>Suggest careful next analyses or experiments.</span></span>
+<span class="prompt-field"><strong>Context:</strong> <span>I am a fictional marketing analyst planning what to investigate next.</span></span>
+<span class="prompt-field"><strong>Source:</strong> <span>Use only the same pasted campaign table and definitions; do not treat attributed revenue as incremental impact.</span></span>
+<span class="prompt-field"><strong>Expectation:</strong> <span>Suggest two low-risk analyses or experiments and name the additional data each needs. Do not recommend a budget shift or claim causality.</span></span></pre></div></div></details><details class="step" id="d04-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul><li>Total spend is $9,000; attributed revenue is $35,700; attributed orders are 636.</li><li>Blended ROAS is $35,700 / $9,000 = 3.97x.</li><li>Email has the highest ROAS at 6.50x; paid social has the highest attributed revenue at $12,600.</li><li>Creator sampling has the lowest ROAS at 2.50x, but margin, incrementality, returns, and audience overlap are unknown.</li><li>No real budget move is justified by this fictional last-click snapshot alone.</li></ul></div></div></details><details class="hint tip" id="d04-tip"><summary><span>Tip: Ask for formulas, not just rankings</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Specify the numerator, denominator, rounding, and whether you want the largest value or best ratio. Those are different questions.</div></details><details class="hint fact" id="d04-fact"><summary><span>Did you know? Revenue is not incrementality</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">The source defines $35,700 as platform-attributed revenue and says the attribution is last-click, not incremental. That is why a 3.97x blended ROAS is not proof of profit or causal lift.</div></details><details class="step recommendation" id="d04-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Make metric math auditable</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Optional: use this for future analysis preferences, not as a saved copy of this fictional dataset.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When analyzing marketing metrics, show the formula and arithmetic, check totals, and distinguish attributed results from incremental impact.</pre></div></div></details><div class="section-nav"><a href="#d03">Previous: Multi-channel launch</a> <a href="#prompting">Next: Prompting and safety</a></div></div>
+</details>
+<details class="section instr" id="prompting"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Prompting and safety<span>Clear instructions; evidence before action.</span></h2><span class="ipill">Core habits</span></summary><div class="ibody"><p>Use GCSE to make a prompt easy to check: <strong>Goal</strong> (what you need), <strong>Context</strong> (who you are and how you will use it), <strong>Source</strong> (what evidence to use), and <strong>Expectation</strong> (format, audience, length, or limits). Microsoft Learn teaches the same four elements for effective Copilot prompts.</p>
+<div class="step"><div class="label">A quick source-check routine</div><div class="step-body"><ol><li>Ask for source phrases beside facts or calculations.</li><li>Check dates, names, figures, limits, and decision status against the pasted source.</li><li>Ask Copilot to mark missing evidence instead of filling the gap.</li><li>Review any draft before using it; a chat response does not approve or send anything.</li></ol><p>Keep to your organization's data-handling rules. Copilot features and available data sources vary by license and tenant settings.</p><p><a href="https://learn.microsoft.com/en-us/training/modules/write-effective-prompts-do-more-prompting/" target="_blank" rel="noopener">Microsoft Learn: Write effective prompts</a></p></div></div><div class="section-nav"><a href="#d04">Previous: Campaign performance</a> <a href="#memory">Next: Memory and custom instructions</a></div></div></details>
+<details class="section instr" id="memory"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Memory and custom instructions<span>Optional, safe personalization.</span></h2><span class="ipill">Optional</span></summary><div class="ibody"><p>Memory or custom instructions are optional and are not needed for these exercises. Availability and controls depend on the Copilot experience and your organization's settings. Do not save fictional identities, project facts, customer research, or confidential information.</p>
+<details class="step recommendation" id="safe-custom-instruction"><summary><span><span class="rec-label">Optional custom instruction</span><strong>Make marketing drafts easy to verify</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only if it reflects a real, stable preference. If personalization is unavailable, paste it into the current chat instead.</p><div class="savebox"><button aria-label="Copy safe custom instruction" class="copy" type="button">Copy</button><pre>For marketing drafts, use only the facts I provide, label assumptions, flag claims needing substantiation, and preserve requested channel limits.</pre></div></div></details>
+<p><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Microsoft Learn: Copilot personalization and memory</a></p><div class="section-nav"><a href="#prompting">Previous: Prompting and safety</a> <a href="#tips">Next: Copilot tips and tricks</a></div></div></details>
+<details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Useful habits and exercise shortcuts.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><details class="hint tip" id="tip-source"><summary><span>Keep the source visible</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Paste the complete fictional source before the starting prompt. Use <a href="#d01">the readiness case</a> to practice separating a decision from a proposal.</div></details>
+<details class="hint tip" id="tip-iterate"><summary><span>Iterate without losing the boundary</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Use follow-ups to audit, shorten, or adapt an answer. Keep the same source and factual limits in the thread; see <a href="#d03">the channel adaptation exercise</a>.</div></details>
+<details class="hint tip" id="tip-evidence"><summary><span>Ask for evidence beside the idea</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Pair each audience hypothesis with participant IDs and exact phrases in <a href="#d02">the research exercise</a>. A plausible marketing insight is still a hypothesis until validated.</div></details>
+<details class="hint tip" id="tip-math"><summary><span>Check the math yourself</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">For metrics, specify the formula and show the arithmetic. In <a href="#d04">the campaign snapshot</a>, revenue and ROAS answer different questions.</div></details><div class="section-nav"><a href="#memory">Previous: Memory and custom instructions</a> <a href="#wrap-up">Next: Wrap-up</a></div></div></details>
+<details class="section instr" id="wrap-up"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Wrap-up and sources<span>Choose one technique and verify the evidence.</span></h2><span class="ipill">Finish</span></summary><div class="ibody"><p>Choose one real marketing task you can practice safely: identify the approved source, write a GCSE prompt, and name the facts or claims a person must verify before using the draft. Keep real customer and campaign data out unless your organization has approved that use.</p><p>For license boundaries and data protection, consult the <a href="https://learn.microsoft.com/en-us/copilot/plan/copilot-overview" target="_blank" rel="noopener">Copilot overview</a> and your organization's administrator. A generated answer is not approval to publish, spend, or contact anyone.</p><div class="section-nav"><a href="#tips">Previous: Copilot tips and tricks</a> <a href="#about-guide">Next: About this guide</a></div></div></details>
+<details class="section instr" id="about-guide"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">About this student guide<span>Fictional practice and responsible use.</span></h2><span class="ipill">Student guide</span></summary><div class="ibody"><p>This student guide is a practice resource for an ELC marketing audience. The Project Luminara case, product brief, audience notes, participant quotes, and campaign data are fictional and are not ELC customer or operational information. The fictional product names and claims are not approved product facts.</p><p>Verify any real-world marketing claim, product detail, date, and metric with its authorized source and review process. Follow your organization's Copilot, privacy, and records policies. This guide does not promise a specific license feature.</p><p>Public references: <a href="https://www.elcompanies.com/en/" target="_blank" rel="noopener">The Estée Lauder Companies</a>; <a href="https://learn.microsoft.com/en-us/copilot/plan/copilot-overview" target="_blank" rel="noopener">Microsoft Copilot overview</a>; <a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">enterprise data protection</a>.</p><div class="section-nav"><a href="#wrap-up">Previous: Wrap-up</a></div></div></details>
+</main></div>
+<div aria-atomic="true" aria-live="polite" class="toast" hidden="" id="guide-status" role="status"></div><script>(() => {
+  'use strict';
+  const root = document.documentElement;
+  const theme = document.getElementById('themebtn');
+  const toast = document.getElementById('guide-status');
+  const topbar = document.querySelector('.topbar');
+  const sections = Array.from(document.querySelectorAll('main > details.section'));
+  const links = Array.from(document.querySelectorAll('nav.toc a'));
+  const themeKey = 'elc-60ff356d23-copilot-student-theme';
+  const seasonKey = 'elc-60ff356d23-copilot-student-season';
+  let toastTimer;
+
+  function announce(message) {
+    toast.textContent = message;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 5000);
+  }
+
+  function updateTheme() {
+    const dark = root.dataset.theme === 'dark';
+    theme.textContent = dark ? 'Mode: Dark' : 'Mode: Light';
+    theme.setAttribute('aria-pressed', String(dark));
+    theme.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  updateTheme();
+  if (window.guideThemeStorageUnavailable) {
+    announce('Appearance preferences cannot be loaded or saved in this browser.');
+  }
+  theme.addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark';
+    if (dark) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    updateTheme();
+    try {
+      localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+    } catch (error) {
+      console.warn('Theme preference could not be saved:', error);
+      announce('Theme changed, but this browser cannot save the preference.');
+    }
+  });
+
+
+  const season = document.getElementById('seasonbtn');
+  const seasons = ['autumn', 'winter', 'spring', 'summer'];
+  const seasonLabels = {
+    autumn: 'Autumn · Warm paper and harvest tones',
+    winter: 'Winter · Cool blues and crisp neutrals',
+    spring: 'Spring · Fresh greens and soft new-growth tones',
+    summer: 'Summer · Sunny golds and clear coastal blues'
+  };
+  function updateSeason() {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    const next = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    season.textContent = 'Season: ' + current[0].toUpperCase() + current.slice(1);
+    season.setAttribute('aria-label', 'Seasonal theme: ' + current[0].toUpperCase() + current.slice(1) +
+      '. Activate to switch to ' + next[0].toUpperCase() + next.slice(1) + '.');
+    document.getElementById('season-label').textContent = seasonLabels[current];
+  }
+  updateSeason();
+  season.addEventListener('click', () => {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    root.dataset.season = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    updateSeason();
+    try {
+      localStorage.setItem(seasonKey, root.dataset.season);
+    } catch (error) {
+      console.warn('Season preference could not be saved:', error);
+      announce('Season changed, but this browser cannot save the preference.');
+    }
+  });
+  function updateHeaderHeight() {
+    root.style.setProperty('--cp-header-height', topbar.offsetHeight + 'px');
+  }
+  new ResizeObserver(updateHeaderHeight).observe(topbar);
+  updateHeaderHeight();
+
+  const panels = Array.from(document.querySelectorAll('details'));
+  document.getElementById('expandall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = true; });
+    announce('All sections and steps expanded.');
+  });
+  document.getElementById('collapseall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = false; });
+    announce('All sections and steps collapsed.');
+  });
+
+  function setActive(id) {
+    const target = document.getElementById(id);
+    const section = target && target.closest('details.section');
+    const sectionId = section ? section.id : id;
+    links.forEach(link => {
+      const active = link.getAttribute('href') === '#' + sectionId;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function navigate(id, updateHistory, moveFocus) {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    let node = target;
+    while (node && node !== document.body) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
+    if (updateHistory) {
+      try {
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+      } catch (error) {
+        console.warn('Could not update the section link:', error);
+        announce('The section opened, but its link could not be saved.');
+      }
+    }
+    target.scrollIntoView({ block: 'start' });
+    setActive(id);
+    if (moveFocus) {
+      const focusTarget = target.matches('details') ? target.querySelector(':scope > summary') : target;
+      if (focusTarget && typeof focusTarget.focus === 'function') focusTarget.focus({ preventScroll: true });
+    }
+    return true;
+  }
+
+  function hashId() {
+    if (!location.hash || location.hash === '#') return '';
+    try {
+      return decodeURIComponent(location.hash.slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return '';
+    }
+  }
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    let id;
+    try {
+      id = decodeURIComponent(link.getAttribute('href').slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return;
+    }
+    if (id && document.getElementById(id)) {
+      event.preventDefault();
+      navigate(id, true, true);
+    }
+  });
+  const initialId = hashId();
+  if (initialId) requestAnimationFrame(() => { navigate(initialId, false, false); });
+  window.addEventListener('hashchange', () => {
+    const id = hashId();
+    if (id) navigate(id, false, false);
+  });
+
+  let scrollPending = false;
+  window.addEventListener('scroll', () => {
+    if (scrollPending) return;
+    scrollPending = true;
+    requestAnimationFrame(() => {
+      const stickyOffset = getComputedStyle(topbar).position === 'sticky' ? topbar.offsetHeight : 0;
+      let selected = null;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= stickyOffset + 28) selected = section;
+      });
+      if (selected) setActive(selected.id);
+      scrollPending = false;
+    });
+  }, { passive: true });
+
+  function legacyCopy(value, button) {
+    const area = document.createElement('textarea');
+    area.value = value;
+    area.setAttribute('readonly', '');
+    area.setAttribute('aria-hidden', 'true');
+    area.style.position = 'fixed';
+    area.style.left = '-10000px';
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (error) {
+      console.warn('Clipboard fallback failed:', error);
+    } finally {
+      area.remove();
+      button.focus({ preventScroll: true });
+    }
+    return copied;
+  }
+
+  document.querySelectorAll('.promptbox .copy, .savebox .copy').forEach(button => {
+    button.addEventListener('click', async () => {
+      const text = button.closest('.promptbox, .savebox').querySelector('pre').textContent;
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          console.warn('Clipboard API failed; trying the browser fallback:', error);
+        }
+      }
+      if (!copied) copied = legacyCopy(text, button);
+      if (!copied) {
+        button.textContent = 'Select text to copy';
+        announce('Copy was blocked. Select the text in the box and copy it manually.');
+      } else {
+        button.textContent = 'Copied';
+        button.classList.add('done');
+        announce('Copied to clipboard.');
+      }
+      setTimeout(() => {
+        button.textContent = 'Copy';
+        button.classList.remove('done');
+      }, 2200);
+    });
+  });
+
+  let printState = null;
+  window.addEventListener('beforeprint', () => {
+    if (!printState) printState = panels.map(panel => ({ panel, open: panel.open }));
+    panels.forEach(panel => { panel.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    if (!printState) return;
+    printState.forEach(saved => { saved.panel.open = saved.open; });
+    printState = null;
+  });
+})();
+</script></body></html>

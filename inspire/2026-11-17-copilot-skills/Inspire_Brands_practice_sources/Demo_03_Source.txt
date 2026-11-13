@@ -1,0 +1,19 @@
+Practice packet: promotional-material request workflow
+Persona: support-center process coordinator.
+Audience: site coordinators submitting promotional-material requests.
+Document purpose: a draft process guide for review by the process owner.
+Document title: Promotional-material request checklist.
+Process owner: operations support lead.
+Effective date: not supplied; approval status: draft, not approved.
+Request intake: include site ID, item description, quantity requested, needed-by date, and requester role.
+Validation: process coordinator checks that all five intake fields are present; ask for missing fields before routing.
+Routing: complete requests go to the operations support lead for review; urgent requests must be labeled urgent and explained, not automatically approved.
+Fulfillment: logistics coordinator confirms availability and provides an estimated delivery date only after review.
+Records: capture the request ID, reviewer decision, and logistics confirmation in the team's approved request log.
+Exception: a missing needed-by date prevents a readiness statement; do not invent that date.
+Example request M301: site R101; menu inserts; quantity 120; needed-by November 24, 2026; requester role: site coordinator; status: ready for review, not approved.
+Example request M302: site R102; counter cards; quantity 80; needed-by not supplied; requester role: site coordinator; status: incomplete.
+Required sections: Purpose; Required inputs; Steps; Exceptions; Review checklist.
+Reusable skill name: request-procedure-draft.
+Writing rules: plain US English; numbered steps; no legal, food-safety, or company-policy claims beyond this packet; keep the document marked Draft and the effective date Not supplied.
+After you receive this source, reply only: "Got it. I'll use this as the source."

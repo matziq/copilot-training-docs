@@ -1,0 +1,14 @@
+Practice packet: weekly operations brief
+Persona: regional operations coordinator preparing an internal review.
+Audience: operations managers; tone: concise, neutral, action-oriented.
+Reporting date: November 16, 2026.
+Skill name: weekly-ops-brief.
+Required output: Overview; Exceptions table; Next actions; Missing information.
+Site R101: training checklist complete; packaging delivery pending; owner: logistics lead; due: November 18, 2026.
+Site R102: training checklist pending; owner: training lead; due: November 17, 2026; packaging delivery complete.
+Site R103: training checklist complete; packaging delivery complete; owner: site manager; no open action.
+Rules: Use only the supplied packet. Preserve site IDs, owners, statuses, and dates. Ask for the reporting date when missing. Mark other absent details "Not supplied." Never infer completion, send messages, approve work, or claim an attachment exists.
+Reusable workflow: confirm inputs; extract completed and pending items; draft the four required sections; check every statement against the packet; return a draft for human review.
+Quality checks: both pending items must appear; site R103 must not receive an invented open action; the reporting date must remain separate from due dates.
+Reuse boundary: Keep the workflow in the skill. Provide current site records in each new conversation; do not save site records as skill instructions.
+After you receive this source, reply only: "Got it. I'll use this as the source."

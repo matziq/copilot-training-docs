@@ -1,0 +1,13 @@
+FICTIONAL TRAINING SCENARIO: VELVET FROST KPI BLOCK REQUEST
+Requested by: Jonas Brunner, Brand Manager, Austria (fictional)
+Date: Tuesday, November 10, 2026
+Workbook: ELC_DACH_Velvet_Frost_Campaign_Practice.xlsx, table CampaignData (same data as exercise 01)
+Request: add a market summary block on a new sheet named KPI_Summary.
+Rows: DE, AT, CH, then a Total row.
+Columns: Market, Spend_EUR, Revenue_EUR, Conversions, ROAS, CPA_EUR, ROAS_Status
+ROAS_Status rule: "Meets" when ROAS is at least 3.0; otherwise "Below".
+Also add the same four KPIs by channel as a second block below the market block.
+Rules: use formulas that reference the CampaignData table. Do not type numbers by hand.
+Formatting: ROAS with two decimals, CPA as EUR with two decimals, and highlight "Below" in light red.
+Caveat: Revenue is attributed online revenue (last click, 7-day window).
+After you receive this source, reply only: "Got it. I'll use this as the source."

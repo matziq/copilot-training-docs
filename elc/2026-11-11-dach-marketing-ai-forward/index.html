@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+
+<html data-navigation="full" data-season="autumn" lang="en-US">
+<head><meta charset="utf-8"/><script>(function(){var r=document.documentElement;r.dataset.season='autumn';try{if(localStorage.getItem('elc-60ff356d23-copilot-student-theme')==='dark'){r.dataset.theme='dark';}var savedSeason=localStorage.getItem('elc-60ff356d23-copilot-student-season');if(['autumn','winter','spring','summer'].includes(savedSeason)){r.dataset.season=savedSeason;}var savedNavigation=localStorage.getItem('elc-60ff356d23-copilot-student-navigation');if(['full','compact','hidden'].includes(savedNavigation)){r.dataset.navigation=savedNavigation;}}catch(error){window.guideThemeStorageUnavailable=true;}})();</script>
+<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="noindex,nofollow,noarchive" name="googlebot"/>
+<meta content="light dark" name="color-scheme"/>
+<title>ELC | Microsoft 365 Copilot (paid add-on) | Student Guide</title>
+<style>
+:root{color-scheme:light;--cp-bg:#f7f4ef;--cp-bg-elevated:#fcfbf8;--cp-surface:#ffffff;
+--cp-surface-soft:#f2f0ec;--cp-border:#e2ddd5;--cp-border-strong:#b9b2a6;
+--cp-text:#1b1c28;--cp-text-muted:#5c5c66;--cp-text-soft:#6f6f78;--cp-accent:#b11f4b;
+--cp-accent-soft:rgba(177,31,75,.08);--cp-navy:#040a2b;--cp-blue:#2e3a72;--cp-peri:#9eafff;
+--cp-gold:#8a6d2f;--cp-code-bg:#0f1430;--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.10);}
+[data-theme="dark"]{color-scheme:dark;--cp-bg:#1a1b22;--cp-bg-elevated:#212230;--cp-surface:#252634;
+--cp-surface-soft:#2c2d3d;--cp-border:#3a3b4e;--cp-border-strong:#565879;--cp-text:#e6e7f0;
+--cp-text-muted:#a5a7bd;--cp-text-soft:#9092a8;--cp-accent:#fd8ea1;--cp-accent-soft:rgba(253,142,161,.14);
+--cp-navy:#0a1038;--cp-blue:#9eafff;--cp-peri:#9eafff;--cp-gold:#d8b46a;--cp-code-bg:#0b0f26;
+--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.4);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cp-bg);color:var(--cp-text);
+font-family:Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6;
+-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--cp-text);line-height:1.2;margin:0;}
+a{color:var(--cp-accent);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px;}
+header.hero{background:var(--cp-navy);color:#fff;padding:48px 0 44px;}
+header.hero .wrap{padding-bottom:0;}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--cp-peri);}
+header.hero h1{color:#fff;font-size:50px;margin:14px 0 6px;}
+header.hero .tag{font-family:Georgia,serif;font-style:italic;font-size:23px;color:#dde3ff;}
+header.hero .meta{margin-top:18px;font-size:13px;color:#aeb5d2;}
+.themebtn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);
+border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+.themebtn:hover{background:rgba(255,255,255,.2);}
+nav.toc{position:sticky;top:0;z-index:50;background:var(--cp-bg-elevated);
+border-bottom:1px solid var(--cp-border);padding:10px 0;}
+nav.toc .wrap{padding-bottom:0;display:flex;gap:8px;flex-wrap:wrap;}
+nav.toc a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--cp-text-muted);
+padding:6px 12px;border-radius:999px;border:1px solid transparent;}
+nav.toc a:hover{color:var(--cp-accent);border-color:var(--cp-border);background:var(--cp-surface);}
+section{margin-top:52px;scroll-margin-top:64px;}
+section > h2{font-size:31px;margin-bottom:6px;}
+.lede{color:var(--cp-text-muted);font-size:15px;margin:0 0 22px;max-width:74ch;}
+.card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+padding:20px 22px;box-shadow:var(--cp-shadow);}
+.grid{display:grid;gap:14px;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.file{display:flex;gap:12px;align-items:flex-start;}
+.file code{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:6px;
+padding:2px 7px;font-size:12.5px;color:var(--cp-blue);}
+.file p{margin:4px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.gcse{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--cp-border);}
+.gcse:last-child{border-bottom:none;}
+.orb{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--cp-blue);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:20px;font-weight:700;}
+.gcse h3{font-size:18px;}
+.gcse .q{color:var(--cp-text-muted);font-size:14px;margin:2px 0 6px;}
+.gcse .ex{font-size:14px;font-style:italic;color:var(--cp-blue);}
+details.demo{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:14px;box-shadow:var(--cp-shadow);overflow:hidden;}
+details.demo[open]{border-color:var(--cp-border-strong);}
+summary{cursor:pointer;padding:18px 22px;display:flex;gap:16px;align-items:center;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+summary:hover{background:var(--cp-surface-soft);}
+.dnum{flex:0 0 auto;width:72px;height:42px;border-radius:10px;background:var(--cp-navy);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:14px;line-height:1;white-space:nowrap;font-weight:700;}
+.dhead{flex:1 1 auto;min-width:0;}
+.dhead h3{font-size:21px;}
+.dhead p{margin:2px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.pill{flex:0 0 auto;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+background:var(--cp-accent-soft);color:var(--cp-accent);border-radius:999px;padding:5px 11px;}
+.dbody{padding:0 22px 22px;border-top:1px solid var(--cp-border);}
+.dbody code{display:inline-block;background:var(--cp-surface-soft);border:1px solid var(--cp-border);
+border-radius:6px;padding:3px 9px;font-size:12.5px;color:var(--cp-blue);margin:0 8px 6px 0;}
+.label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+color:var(--cp-text-soft);margin:20px 0 8px;}
+.promptbox{position:relative;background:var(--cp-code-bg);border-radius:12px;padding:18px 20px;}
+.promptbox pre{margin:0;white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
+font-size:14px;line-height:1.65;color:var(--cp-code-fg);}
+.promptbox pre::first-line{}
+.promptbox{padding-right:88px;}
+@media print{.promptbox{padding-right:20px;}} .promptbox.has-file{padding-top:54px;padding-right:20px;} .pb-actions{position:absolute;top:12px;right:12px;display:flex;gap:6px;} .pb-actions .copy{position:static;} .openfile{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:600;font-family:inherit;text-decoration:none;line-height:normal;} .openfile:hover{background:rgba(255,255,255,.24);} .openfile:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px;} @media print{.pb-actions{display:none;}.promptbox.has-file{padding-top:18px;}}
+.instr{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:22px;box-shadow:var(--cp-shadow);overflow:hidden;break-inside:avoid;scroll-margin-top:108px;}
+.instr>summary{padding:16px 22px;}
+.ichev{font-size:15px;color:var(--cp-accent);transition:transform .18s ease;flex:0 0 auto;}
+.instr[open] .ichev{transform:rotate(90deg);}
+.ihead{flex:1 1 auto;}
+.ihead h3{font-size:20px;margin:0;letter-spacing:-.01em;}
+.ihead p{margin:2px 0 0;font-size:13px;color:var(--cp-text-muted);}
+.ipill{flex:0 0 auto;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;
+color:var(--cp-accent);background:var(--cp-accent-soft);border-radius:999px;padding:5px 11px;}
+.ibody{padding:0 22px 6px;border-top:1px solid var(--cp-border);}
+.ibody section{padding-top:20px;}
+.ibody h2{font-size:22px;}
+@media print{.instr>summary{display:none;}.ibody{padding:0;border-top:0;}}
+.pnote{margin:14px 0 6px;font-size:13px;line-height:1.55;color:var(--cp-text-muted);border-left:3px solid var(--cp-accent);padding:0 0 0 10px;}
+.pnote span{display:block;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;color:var(--cp-accent);margin-bottom:2px;}
+.pnote+.promptbox{margin-top:0;}
+@media print{}
+.promptbox pre strong{color:#fff;font-weight:700;}
+.copy{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.12);color:#fff;
+border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;
+font-weight:600;cursor:pointer;font-family:inherit;}
+.copy:hover{background:rgba(255,255,255,.24);}
+.copy.done{background:#2e7d62;border-color:#2e7d62;}
+ol.follow{margin:0;padding-left:22px;}
+ol.follow li{margin-bottom:9px;font-size:14.5px;}
+.see{margin-top:14px;background:var(--cp-surface-soft);border-left:3px solid var(--cp-blue);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.see strong{color:var(--cp-blue);}
+.watch{margin-top:14px;background:var(--cp-accent-soft);border-left:3px solid var(--cp-accent);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.watch strong{color:var(--cp-accent);}
+.applies{margin-top:10px;font-size:14px;color:var(--cp-text-muted);font-style:italic;}
+.newcard h3{font-size:18px;margin-bottom:6px;}
+.newcard p{margin:0 0 10px;font-size:14px;color:var(--cp-text-muted);}
+.newcard .status{font-size:11.5px;font-weight:700;color:var(--cp-gold);
+letter-spacing:.04em;text-transform:uppercase;}
+.gcard h3{font-size:17px;margin-bottom:5px;}
+.gcard p{margin:0;font-size:14px;color:var(--cp-text-muted);}
+table.glance{width:100%;border-collapse:collapse;font-size:14px;}
+table.glance th{text-align:left;font-family:Aptos,sans-serif;font-size:11px;letter-spacing:.12em;
+text-transform:uppercase;color:var(--cp-text-soft);padding:0 12px 10px 0;border-bottom:1px solid var(--cp-border);}
+table.glance td{padding:13px 12px 13px 0;border-bottom:1px solid var(--cp-border);vertical-align:top;}
+table.glance tr:last-child td{border-bottom:none;}
+table.glance .n{font-family:Georgia,serif;font-weight:700;color:var(--cp-blue);width:34px;}
+table.glance .t{font-family:Georgia,serif;font-size:16px;color:var(--cp-text);white-space:nowrap;}
+table.glance .s{font-size:12px;color:var(--cp-text-soft);white-space:nowrap;}
+table.glance .o{color:var(--cp-text-muted);}
+.scenario{background:var(--cp-navy);color:#fff;border-radius:14px;padding:26px 28px;}
+.scenario h3{color:#fff;font-size:22px;margin-bottom:10px;}
+.scenario p{color:#dde3ff;font-size:14.5px;margin:0 0 12px;}
+.scenario ul{margin:0;padding-left:20px;color:#c3cbf0;font-size:14px;}
+.scenario li{margin-bottom:6px;}
+.note{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:12px;
+padding:14px 18px;font-size:14px;color:var(--cp-text-muted);margin-top:16px;}
+footer.end{margin-top:70px;padding-top:26px;border-top:1px solid var(--cp-border);
+font-size:13px;color:var(--cp-text-soft);}
+@media(max-width:720px){table.glance .t,table.glance .s{white-space:normal;}}
+@media print{nav.toc,.themebtn,.copy{display:none;}details.demo{break-inside:avoid;}
+details.demo>.dbody{display:block!important;}body{background:#fff;}}
+
+
+:root{--cp-accent:#7a1126;--cp-accent-soft:rgba(122,17,38,.08)}
+[data-theme="dark"]{--cp-accent:#ffb4c0;--cp-accent-soft:rgba(255,180,192,.14)}
+header.hero .wrap{max-width:1420px}
+.layout{max-width:1420px;margin:0 auto;padding:24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:start}
+.sidebar{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;padding:15px;box-shadow:var(--cp-shadow)}
+.sidebar h2{font-size:18px;margin:0 0 8px}
+.sidebar a{display:block;color:var(--cp-text-muted);font-size:13px;font-weight:600;line-height:1.35;padding:6px 8px;border-radius:7px;text-decoration:none}
+.sidebar a:hover,.sidebar a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.sidebar .nav-actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.nav-actions button,.section-nav a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:7px;color:var(--cp-text);cursor:pointer;font:inherit;font-size:12px;font-weight:700;padding:7px 9px;text-decoration:none}
+.guide-tools{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.guide-search{display:flex;gap:8px;align-items:center}
+.guide-search label{font-size:12px;font-weight:700;color:var(--cp-text-muted);white-space:nowrap}
+.guide-search input{flex:1;min-width:0;background:var(--cp-bg);border:1px solid var(--cp-border-strong);border-radius:8px;color:var(--cp-text);font:inherit;font-size:14px;padding:9px 11px}
+.guide-search input:focus-visible{outline:3px solid var(--cp-accent);outline-offset:2px}
+.topic-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.topic-links a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:999px;color:var(--cp-text);font-size:12px;font-weight:700;padding:6px 10px;text-decoration:none}
+.topic-links a:hover,.topic-links a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent);border-color:var(--cp-accent)}
+.search-results{display:none;margin:10px 0 0;padding:0;list-style:none;border-top:1px solid var(--cp-border)}
+.search-results.has-results{display:block}
+.search-results li{margin-top:7px}
+.search-results a{display:block;color:var(--cp-text);font-size:13px;padding:6px 8px;border-radius:7px;text-decoration:none}
+.search-results a:hover,.search-results a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.search-empty{color:var(--cp-text-muted);font-size:13px;margin:10px 0 0}
+.search-match{outline:2px solid var(--cp-accent);outline-offset:3px}
+.content{min-width:0}
+details.section{scroll-margin-top:20px}
+details.section summary h2{font-size:20px;line-height:1.25}
+details.section summary .dhead span,details.section summary .ihead span{display:block;font-family:Aptos,"Segoe UI",sans-serif;font-size:13px;font-weight:400;color:var(--cp-text-muted);margin-top:3px}
+.ibody{padding-bottom:22px}
+.ibody p,.dbody p{font-size:14.5px}
+.ibody a,.dbody a{overflow-wrap:anywhere}
+.dbody .label:first-child{margin-top:20px}
+.promptbox pre{overflow-wrap:anywhere}
+.promptbox .copy:focus-visible,.themebtn:focus-visible,summary:focus-visible,.nav-actions button:focus-visible,.section-nav a:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px}
+.section-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.section-nav a:last-child{margin-left:auto}
+.news-card{padding:16px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface)}
+.news-card h3{font-size:17px;margin:3px 0 7px}
+.news-card p{margin:0 0 8px}
+.news-card .status{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--cp-accent)}
+.duration{font-size:13px;color:var(--cp-text-muted)}
+.callout{border-left:4px solid var(--cp-accent);padding:12px 15px;background:var(--cp-surface-soft);border-radius:8px;margin:15px 0}
+footer.end{margin:28px 0 16px}
+@media(max-width:850px){.layout{grid-template-columns:1fr;padding:16px}.sidebar{position:static;max-height:none}.sidebar-links{display:flex;gap:2px;flex-wrap:wrap}.sidebar a{display:inline-block}header.hero h1{font-size:36px}}
+@media(max-width:500px){.guide-search{display:block}.guide-search label{display:block;margin-bottom:5px}.guide-search input{width:100%}summary{padding:14px;gap:10px}.dbody,.ibody{padding-left:14px;padding-right:14px}.g2,.g3{grid-template-columns:1fr}.pill,.ipill{display:none}.promptbox pre{font-size:13px}.promptbox{padding-right:72px}.copy{padding:6px}}
+@media print{.sidebar,.section-nav{display:none}.layout{display:block;padding:0}details.section>.dbody,details.section>.ibody{display:block!important}details.section{box-shadow:none}}
+</style>
+<style>:root {
+  --cp-bg: #f7f3ec;
+  --cp-bg-elevated: #f7f3ec;
+  --cp-surface: #fff;
+  --cp-surface-soft: #fbf8f2;
+  --cp-border: #e4dccd;
+  --cp-border-strong: #b98f73;
+  --cp-text: #242328;
+  --cp-text-muted: #596069;
+  --cp-text-soft: #596069;
+  --cp-accent: #7a1126;
+  --cp-accent-soft: rgba(122, 17, 38, .08);
+  --cp-navy: #351420;
+  --cp-blue: #284f78;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #b78a54;
+  --cp-code-bg: #fbf8f2;
+  --cp-code-fg: #242328;
+  --cp-shadow: 0 6px 22px rgba(53, 20, 32, .06);
+}
+[data-theme="dark"] {
+  --cp-bg: #181419;
+  --cp-bg-elevated: #181419;
+  --cp-surface: #271f26;
+  --cp-surface-soft: #211a20;
+  --cp-border: #4a3b45;
+  --cp-border-strong: #a58275;
+  --cp-text: #f5edf0;
+  --cp-text-muted: #d3c7cf;
+  --cp-text-soft: #d3c7cf;
+  --cp-accent: #ffbecb;
+  --cp-accent-soft: rgba(255, 190, 203, .12);
+  --cp-navy: #351420;
+  --cp-blue: #bdd9fa;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #d8b27a;
+  --cp-code-bg: #211a20;
+  --cp-code-fg: #f5edf0;
+  --cp-shadow: 0 6px 22px rgba(0, 0, 0, .22);
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", Aptos, Helvetica, Arial, sans-serif; line-height: 1.55; }
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 200; padding: 8px 12px;
+  background: var(--cp-surface); color: var(--cp-text); transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+.topbar {
+  position: sticky; top: 0; z-index: 100; min-height: 64px; display: flex;
+  align-items: center; gap: 16px; padding: 10px 24px; background: var(--cp-navy);
+  color: #fff; border-bottom: 3px solid var(--cp-gold);
+}
+.brand {
+  font-family: Georgia, "Times New Roman", serif; color: var(--cp-peri);
+  font-size: .84rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+}
+.bar-title {
+  flex: 1; margin: 0; font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem; font-weight: 400;
+}
+.top-actions { display: flex; gap: 7px; flex-wrap: wrap; }
+.top-actions button {
+  background: transparent; color: #fff; border: 1px solid var(--cp-gold);
+  border-radius: 4px; padding: 7px 10px; cursor: pointer; font: inherit; font-size: .81rem;
+}
+.top-actions button:hover, .top-actions button:focus-visible {
+  background: var(--cp-gold); color: var(--cp-navy);
+}
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--cp-gold); outline-offset: 3px;
+}
+.layout {
+  display: flex; gap: 0; width: 100%; max-width: none; margin: 0; padding: 0; align-items: flex-start;
+}
+.toc-column {
+  flex: 0 0 250px; width: 250px; position: sticky; top: var(--cp-header-height,64px);
+  align-self: flex-start; height: calc(100vh - var(--cp-header-height,64px));
+  overflow: auto; background: var(--cp-bg);
+}
+.toc-toggle {
+  display: block; width: 34px; height: 30px; margin: 10px 0 0 16px; padding: 0;
+  color: var(--cp-text); background: var(--cp-surface); border: 1px solid var(--cp-border);
+  border-radius: 5px; cursor: pointer; font: inherit; font-size: 0;
+}
+.toc-toggle::before {
+  content: ""; display: inline-block; width: 14px; height: 12px;
+  border: 1px solid currentColor; border-radius: 2px;
+  background: linear-gradient(to right, currentColor 0 3px, transparent 3px 100%);
+  vertical-align: middle;
+}
+.toc-toggle:hover,.toc-toggle:focus-visible { color: var(--cp-accent); border-color: var(--cp-accent); }
+.toc-toggle:focus-visible { outline: 3px solid var(--cp-gold); outline-offset: 3px; }
+nav.toc {
+  position: static; z-index: 10; width: 250px; height: auto; overflow: visible; padding: 10px 20px 20px;
+  background: var(--cp-bg); border: 0;
+}
+nav.toc .wrap { display: block; max-width: none; padding: 0; }
+.toc-title {
+  margin-bottom: 8px; color: var(--cp-text-muted); font-size: .75rem;
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+nav.toc a {
+  display: block; padding: 6px 10px; color: var(--cp-text); border: 0;
+  border-left: 3px solid transparent; border-radius: 0; font-size: .88rem;
+  font-weight: 400; text-decoration: none;
+}
+nav.toc a:hover, nav.toc a.active {
+  border-left-color: var(--cp-gold); background: var(--cp-accent-soft); color: var(--cp-text);
+}
+[data-navigation="compact"] .toc-column { flex-basis: 72px; width: 72px; }
+[data-navigation="compact"] nav.toc { width: 72px; padding: 10px 8px 20px; }
+[data-navigation="compact"] .toc-toggle { margin-left: 19px; }
+[data-navigation="compact"] nav.toc .toc-title {
+  overflow: hidden; font-size: 0; text-align: center;
+}
+[data-navigation="compact"] nav.toc .toc-title::after { content: "Menu"; font-size: .68rem; }
+[data-navigation="compact"] nav.toc a {
+  overflow: hidden; padding: 8px 4px; font-size: 0; text-align: center;
+}
+[data-navigation="compact"] nav.toc a::after {
+  content: attr(data-short); font-size: .74rem; font-weight: 700; letter-spacing: .03em;
+}
+[data-navigation="hidden"] .toc-column { flex-basis: 52px; width: 52px; }
+[data-navigation="hidden"] nav.toc { display: none; }
+[data-navigation="hidden"] .toc-toggle { margin-left: 9px; }
+.content { flex: 1; min-width: 0; padding: 20px 24px 80px; }
+header.hero { border-radius: 8px; padding: 28px; margin-bottom: 20px; }
+header.hero .wrap { max-width: none; padding: 0; }
+header.hero h1 { margin: 8px 0; color: #fff; font-size: clamp(1.7rem, 3vw, 2.1rem); font-weight: 400; }
+header.hero .tag { margin: 3px 0; color: #f4e3e7; font-size: 1.12rem; }
+header.hero .meta { margin: 9px 0 0; color: #f1e2e5; font-size: .9rem; }
+.instr, details.demo {
+  overflow: hidden; margin-bottom: 18px; border: 1px solid var(--cp-border);
+  border-radius: 8px; background: var(--cp-surface); box-shadow: var(--cp-shadow);
+}
+details.section { scroll-margin-top: 88px; }
+.instr > summary, details.demo > summary { padding: 14px 20px; gap: 12px; }
+.instr[open] > summary, details.demo[open] > summary { border-bottom: 1px solid var(--cp-border); }
+details.section summary h2 { font-size: 1.25rem; }
+details.demo summary h2 { font-weight: 400; }
+.dnum { background: var(--cp-navy); border-radius: 6px; }
+.pill, .ipill { color: var(--cp-accent); background: var(--cp-accent-soft); }
+.ibody, .dbody { padding: 16px 22px 22px; border: 0; }
+.ibody p, .dbody p { line-height: 1.65; }
+.demo-intro {
+  margin: 0 0 14px; padding: 12px 14px; border: 1px solid var(--cp-border-strong);
+  border-radius: 4px; background: var(--cp-surface-soft);
+}
+.dbody .demo-intro .label:first-child { margin: 0 0 4px; }
+.demo-intro p { margin: 0; }
+.demo-intro .applies { margin-top: 6px; }
+.step, .hint {
+  margin: 10px 0; overflow: hidden; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-surface); scroll-margin-top: 88px;
+}
+.step > summary, .hint > summary { padding: 11px 14px; gap: 12px; font-size: .95rem; font-weight: 600; }
+.step > summary > span:first-child, .hint > summary > span:first-child { flex: 1; }
+.step[open] > summary, .hint[open] > summary { border-bottom: 1px solid var(--cp-border); }
+.step-body, .hint-body { padding: 12px 14px; }
+.step-body .label:first-child { margin-top: 0; }
+.step-body .promptbox + .pnote { margin-top: 16px; }
+.step-body .note { margin: 0 0 12px; }
+.step-body .see { margin: 0; border-left-color: var(--cp-gold); }
+.hint > summary strong { margin-right: 5px; color: var(--cp-accent); }
+.hint.fact > summary strong { color: var(--cp-blue); }
+.hint.tip,.tip-feature{border:2px solid var(--cp-accent);border-left-width:6px;box-shadow:0 4px 14px color-mix(in srgb,var(--cp-accent) 18%,transparent)}
+.hint.tip>summary,.tip-feature>summary{background:var(--cp-accent-soft);color:var(--cp-text)}
+.hint.tip>summary::before,.tip-feature>summary::before{content:"TIP";flex:0 0 auto;background:var(--cp-accent);border-radius:999px;color:var(--cp-on-accent);font-size:.68rem;font-weight:800;letter-spacing:.08em;padding:4px 7px}
+.hint.tip[open]>.hint-body,.tip-feature[open]>.step-body{background:color-mix(in srgb,var(--cp-accent-soft) 48%,var(--cp-surface))}
+.hint.fact { border-left: 3px solid var(--cp-blue); }
+.hint-body { font-size: .92rem; line-height: 1.6; }
+.step .chev, .hint .chev {
+  color: var(--cp-accent); transform: rotate(-90deg); transition: transform .18s ease;
+}
+.step[open] .chev, .hint[open] .chev { transform: rotate(0); }
+.promptbox {
+  position: relative; padding: 14px 100px 14px 14px; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-code-bg);
+}
+.promptbox pre {
+  color: var(--cp-code-fg); font: inherit; font-size: .91rem; line-height: 1.65;
+  white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal;
+}
+.promptbox.has-file { padding-top: 48px; }
+.promptbox.has-file pre { line-height: 1.45; }
+.promptbox pre strong { color: var(--cp-accent); }
+.copy {
+  top: 8px; right: 8px; padding: 6px 10px; border: 1px solid var(--cp-gold);
+  border-radius: 4px; background: var(--cp-navy); color: #fff;
+}
+.copy:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.copy.done { border-color: #2e7d62; background: #2e7d62; }
+.openfile { padding: 6px 10px; border: 1px solid var(--cp-gold); border-radius: 4px; background: var(--cp-navy); color: #fff; }
+.openfile:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.pb-actions { top: 8px; right: 8px; }
+.tip-index { margin: 0; padding-left: 22px; }
+.tip-index li { margin: 7px 0; }
+.toast {
+  position: fixed; right: 18px; bottom: 18px; z-index: 150; max-width: min(420px, calc(100vw - 36px));
+  padding: 10px 14px; border: 1px solid var(--cp-gold); border-radius: 6px;
+  background: var(--cp-navy); color: #fff; box-shadow: var(--cp-shadow);
+}
+footer.end { margin-top: 28px; padding-bottom: 0; }
+@media (max-width: 900px) {
+  .topbar { position: relative; flex-wrap: wrap; padding: 12px 16px; }
+  .brand { width: 100%; font-size: .78rem; }
+  .bar-title { min-width: 180px; font-size: 1.02rem; }
+  .layout { display: block; }
+  .toc-column,
+  [data-navigation="compact"] .toc-column,
+  [data-navigation="hidden"] .toc-column {
+    position: static; width: auto; height: auto; flex-basis: auto;
+  }
+  .toc-toggle,
+  [data-navigation="compact"] .toc-toggle,
+  [data-navigation="hidden"] .toc-toggle { margin: 8px 12px 0; }
+  nav.toc { position: static; width: auto; height: auto; padding: 10px 12px; overflow: visible; }
+  [data-navigation="compact"] nav.toc { width: auto; padding: 10px 12px; }
+  nav.toc .wrap { display: flex; flex-wrap: nowrap; gap: 3px; overflow-x: auto; padding: 2px 0; }
+  nav.toc a {
+    flex: 0 0 auto; white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent;
+  }
+  [data-navigation="compact"] nav.toc a {
+    padding: 6px 12px; font-size: .88rem; text-align: left;
+  }
+  [data-navigation="compact"] nav.toc a::after { content: none; }
+  nav.toc a:hover, nav.toc a.active { border-left: 0; border-bottom-color: var(--cp-gold); }
+  .toc-title { display: none; }
+  .content { padding: 16px 14px 55px; }
+  header.hero { padding: 22px; }
+  details.section, .step, .hint { scroll-margin-top: 12px; }
+}
+@media (max-width: 500px) {
+  .top-actions { width: 100%; }
+  .top-actions button { flex: 1; }
+  .brand { white-space: normal; }
+  .instr > summary, details.demo > summary { align-items: flex-start; padding: 14px; gap: 10px; }
+  details.demo > summary { flex-wrap: wrap; }
+  details.demo > summary .dhead { flex: 1 1 calc(100% - 82px); min-width: 0; overflow-wrap: anywhere; }
+  details.demo > summary .pill { margin-left: 82px; max-width: calc(100% - 82px); box-sizing: border-box; }
+  .pill, .ipill { display: block; padding: 4px 7px; font-size: .62rem; }
+  .ibody, .dbody { padding-left: 14px; padding-right: 14px; }
+  .promptbox { padding-right: 84px; }
+}
+@media (max-width: 360px) {
+  .instr > summary { flex-wrap: wrap; }
+  .instr > summary .ihead {
+    flex: 1 1 calc(100% - 56px); min-width: 0; overflow-wrap: anywhere;
+  }
+  .instr > summary .ipill { margin-left: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ichev, .step .chev, .hint .chev { transition: none; }
+}
+@media print {
+  :root, [data-theme="dark"] {
+    --cp-bg: #fff; --cp-surface: #fff; --cp-surface-soft: #fff;
+    --cp-text: #000; --cp-text-muted: #333; --cp-code-bg: #fff; --cp-code-fg: #000;
+    --cp-border: #999; --cp-accent: #641526; --cp-shadow: none;
+  }
+  html { scroll-behavior: auto; }
+  .topbar, .toc-column, .copy, .pb-actions, .toast, .skip-link, .section-nav { display: none !important; }
+  .layout { display: block; padding: 0; }
+  .content { padding: 0; }
+  .instr, details.demo, .step, .hint { break-inside: auto; box-shadow: none; }
+  .instr > summary, details.demo > summary { display: flex !important; break-after: avoid; }
+  .instr .ibody, details.demo .dbody { display: block !important; }
+  .promptbox { padding: 12px; break-inside: avoid; }
+}
+</style><style id="student-guide-controls">
+:root[data-season="winter"] {
+  --cp-bg:#eef4f7;--cp-bg-elevated:#eef4f7;--cp-surface:#fff;--cp-surface-soft:#f3f7fa;
+  --cp-border:#cddbe4;--cp-border-strong:#829bab;--cp-text:#20313e;
+  --cp-text-muted:#516271;--cp-text-soft:#516271;--cp-accent:#7a1126;
+  --cp-accent-soft:rgba(122,17,38,.07);--cp-navy:#122d43;--cp-blue:#315977;
+  --cp-peri:#f0d7a1;--cp-gold:#9e7c4a;--cp-code-bg:#f3f7fa;--cp-code-fg:#20313e;
+  --cp-shadow:0 6px 22px rgba(18,45,67,.07);
+}
+:root[data-season="winter"][data-theme="dark"] {
+  --cp-bg:#0f1b27;--cp-bg-elevated:#0f1b27;--cp-surface:#172a3a;--cp-surface-soft:#102232;
+  --cp-border:#375064;--cp-border-strong:#88a6bb;--cp-text:#eef5fa;
+  --cp-text-muted:#c4d4e0;--cp-text-soft:#c4d4e0;--cp-accent:#ffc2ce;
+  --cp-accent-soft:rgba(255,194,206,.12);--cp-navy:#122d43;--cp-blue:#bdddf6;
+  --cp-peri:#f0d7a1;--cp-gold:#d9b880;--cp-code-bg:#102232;--cp-code-fg:#eef5fa;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.22);
+}
+:root[data-season="spring"] {
+  --cp-bg:#f2f7f1;--cp-bg-elevated:#f2f7f1;--cp-surface:#fff;--cp-surface-soft:#edf4eb;
+  --cp-border:#d5e2d1;--cp-border-strong:#91ad8e;--cp-text:#1e3024;
+  --cp-text-muted:#526655;--cp-text-soft:#526655;--cp-accent:#356b45;
+  --cp-accent-soft:rgba(53,107,69,.08);--cp-navy:#173b2a;--cp-blue:#356b45;
+  --cp-peri:#cfe7c8;--cp-gold:#8b9560;--cp-code-bg:#f6faf4;--cp-code-fg:#1e3024;
+  --cp-shadow:0 6px 22px rgba(35,75,43,.07);
+}
+:root[data-season="spring"][data-theme="dark"] {
+  --cp-bg:#141d17;--cp-bg-elevated:#141d17;--cp-surface:#1d2a20;--cp-surface-soft:#18251b;
+  --cp-border:#3b5140;--cp-border-strong:#829b85;--cp-text:#edf5ee;
+  --cp-text-muted:#c0d0c2;--cp-text-soft:#c0d0c2;--cp-accent:#a8d7ad;
+  --cp-accent-soft:rgba(168,215,173,.13);--cp-navy:#173b2a;--cp-blue:#b8e3bc;
+  --cp-peri:#d2e8b6;--cp-gold:#d4c98c;--cp-code-bg:#18251b;--cp-code-fg:#edf5ee;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.24);
+}
+:root[data-season="summer"] {
+  --cp-bg:#fff8e9;--cp-bg-elevated:#fff8e9;--cp-surface:#fff;--cp-surface-soft:#fff2d6;
+  --cp-border:#ead9b5;--cp-border-strong:#c69d60;--cp-text:#292d34;
+  --cp-text-muted:#5d5b55;--cp-text-soft:#5d5b55;--cp-accent:#a9441b;
+  --cp-accent-soft:rgba(169,68,27,.08);--cp-navy:#164a70;--cp-blue:#236b9a;
+  --cp-peri:#ffe2a0;--cp-gold:#a96e16;--cp-code-bg:#fffaf0;--cp-code-fg:#292d34;
+  --cp-shadow:0 6px 22px rgba(110,75,24,.08);
+}
+:root[data-season="summer"][data-theme="dark"] {
+  --cp-bg:#151d25;--cp-bg-elevated:#151d25;--cp-surface:#202b35;--cp-surface-soft:#1a2630;
+  --cp-border:#425461;--cp-border-strong:#92a7b3;--cp-text:#f0f3f5;
+  --cp-text-muted:#c6d0d5;--cp-text-soft:#c6d0d5;--cp-accent:#ffbf78;
+  --cp-accent-soft:rgba(255,191,120,.14);--cp-navy:#164a70;--cp-blue:#a9d8f3;
+  --cp-peri:#ffe2a0;--cp-gold:#e0bb74;--cp-code-bg:#1a2630;--cp-code-fg:#f0f3f5;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.25);
+}
+.topbar{flex-wrap:wrap}
+.brand{flex:0 1 auto}
+.bar-title{flex:1 1 220px;font-size:1.15rem}
+.top-actions{margin-left:auto}
+.top-actions button{white-space:nowrap}
+details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) + 24px)}
+.hero-panel{
+  margin-bottom:18px;border:1px solid var(--cp-navy);border-radius:8px;
+  background:var(--cp-navy);color:#fff;overflow:hidden;
+}
+.hero-panel>summary{padding:24px 28px 18px;gap:18px;align-items:flex-start}
+.hero-panel>summary:hover{background:var(--cp-navy)}
+.hero-panel>summary>div{flex:1;min-width:0}
+.hero-panel h1{color:#fff;font-size:clamp(1.7rem,3vw,2.1rem);font-weight:400;margin:8px 0 0}
+.hero-chevron{color:var(--cp-peri);font-size:1.4rem;transform:rotate(0);transition:transform .18s ease}
+.hero-panel[open] .hero-chevron{transform:rotate(90deg)}
+.hero-body{padding:0 28px 24px}
+.hero-body .tag{font:italic 1.12rem/1.5 Georgia,serif;color:#f4e3e7}
+.hero-body .meta{margin-top:12px;color:#f1e2e5;font-size:.9rem}
+.season-label{margin-top:12px;color:var(--cp-peri);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+.grid{align-items:start}
+.subcard{margin:0;padding:0;min-width:0;box-shadow:none}
+.subcard>summary{align-items:flex-start}
+.subcard>summary h3{flex:1;min-width:0;margin:0;font:400 1.05rem/1.35 Georgia,serif}
+.subcard .status{color:var(--cp-accent);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.subcard .step-body p{margin:8px 0}
+.demo-overview .demo-intro{margin:0}
+.demo-overview .step-body{padding:0}
+.demo-overview .demo-intro{border:0;border-radius:0;padding:12px 14px}
+.recommendation .rec-label{
+  display:block;margin-bottom:4px;color:var(--cp-accent);font-size:.68rem;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+}
+.recommendation .step-body>p{margin:0 0 12px}
+.savebox{
+  position:relative;padding:14px 100px 14px 14px;border:1px solid var(--cp-border);
+  border-radius:6px;background:var(--cp-code-bg);
+}
+.savebox pre{
+  margin:0;color:var(--cp-code-fg);font:inherit;font-size:.91rem;line-height:1.65;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.meme-figure{margin:0}
+.meme-figure img{display:block;max-width:100%;height:auto;border-radius:6px}
+.meme-figure figcaption{margin-top:10px;color:var(--cp-text-muted);font-size:.85rem}
+.history-date{color:var(--cp-accent);font-weight:700}
+.about-body footer.end{margin:0;padding:0;border:0}
+@media(max-width:900px){
+  .brand{flex-basis:100%}
+  details.section,.step,.hint{scroll-margin-top:12px}
+}
+@media(max-width:500px){
+  .top-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-left:0}
+  .top-actions button{width:100%}
+  .hero-panel>summary{padding:20px 20px 16px}
+  .hero-body{padding:0 20px 20px}
+  .savebox{padding-right:84px}
+  .subcard>summary{flex-wrap:nowrap}
+}
+@media(prefers-reduced-motion:reduce){.hero-chevron{transition:none}}
+@media print{
+  .hero-panel{background:#fff;color:#000;border-color:#999}
+  .hero-panel h1,.hero-panel .eyebrow,.hero-body .tag,.hero-body .meta,.season-label{color:#000}
+  .hero-chevron,.chev{display:none}
+  .savebox{padding:12px}
+}
+</style><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23351420'/%3E%3Cpath d='M6 8h8l2 2 2-2h8v17h-8l-2 2-2-2H6z' fill='none' stroke='%23d8b27a' stroke-width='2'/%3E%3C/svg%3E"/></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">ELC</span><p class="bar-title">Microsoft 365 Copilot (paid add-on): Student Guide</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button></div></header>
+<div class="layout">
+<div class="toc-column"><button aria-label="Collapse navigation" aria-pressed="false" class="toc-toggle" id="navbtn" type="button">Navigation: Full</button><nav aria-label="Guide contents" class="toc"><div class="wrap"><div class="toc-title">Contents</div><a href="#overview">Overview</a><a href="#d01">Demo 01. Analyze a campaign in Excel</a><a href="#d02">Demo 02. Add a KPI block to the existing workbook</a><a href="#d03">Demo 03. Find and assess resources in SharePoint</a><a href="#d04">Demo 04. Build a five-slide story in PowerPoint</a><a href="#prompting">Prompting &amp; safety</a><a href="#memory">Memory</a><a href="#tips">Tips &amp; tricks</a><a href="#wrap-up">Wrap-up</a><a href="#about-guide">About</a></div></nav></div>
+<main class="content" id="main-content" tabindex="-1"><div class="guide-tools" role="search"><div class="guide-search"><label for="guide-search">Find a prompt or topic</label><input autocomplete="off" id="guide-search" placeholder="Search prompts, Excel, SharePoint, PowerPoint..." type="search"/></div><div aria-label="Popular topics" class="topic-links"><a href="#d01">Excel analysis</a><a href="#d02">Workbook KPI block</a><a href="#d03">SharePoint resources</a><a href="#d04">PowerPoint story</a><a href="#prompting">GCSE prompting</a><a href="#tips">Tips</a></div><ul aria-live="polite" class="search-results" id="search-results"></ul></div><details class="section hero-panel" id="overview" open=""><summary><div><div class="eyebrow">ELC · Student Guide</div><h1>AI Forward: Copilot Training for the DACH Marketing Community</h1></div><span aria-hidden="true" class="hero-chevron">▸</span></summary><div class="hero-body"><div class="tag">AI Forward: hands-on Copilot for marketers. Analyze a campaign in Excel, extend the workbook, find trustworthy resources in SharePoint, and build a five-slide story in PowerPoint.</div><div class="meta">Wednesday, November 11, 2026 · 8:00 AM MST</div><div class="season-label" id="season-label">Autumn · Warm paper and harvest tones</div><div class="section-nav"><a href="#d01">Next section</a></div></div></details>
+
+
+<details class="section demo" id="d01">
+<summary><span class="dnum">Demo 01</span><h2 class="dhead">Analyze a campaign in Excel<span>Turn a raw KPI table into clear, checked insights.</span></h2><span class="pill">Copilot in Excel</span></summary>
+<div class="dbody">
+<details class="step" id="d01-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p><strong>Practice workbook:</strong> <a href="ELC_DACH_Marketing_practice_sources/ELC_DACH_Velvet_Frost_Campaign_Practice.xlsx" download>Download ELC_DACH_Velvet_Frost_Campaign_Practice.xlsx</a>. Save it to your OneDrive, open it in Excel, and select the Copilot icon. No Copilot in Excel? Paste the source below into Copilot Chat instead.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_DACH_Marketing_practice_sources/d01-velvet-frost-campaign-data.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL TRAINING SCENARIO: VELVET FROST HOLIDAY CAMPAIGN, DACH
+Brand: Maison Aurel (fictional), Velvet Frost Lip Collection (fictional)
+Prepared by: Lena Hofmann, Media Analytics Manager, DACH (fictional)
+Prepared on: Tuesday, November 10, 2026
+Flight: Monday, October 5, 2026 - Sunday, November 1, 2026 (4 weeks)
+Markets: DE = Germany, AT = Austria, CH = Switzerland. All money in EUR for training simplicity.
+Campaign data (one row per market and channel):
+Market,Channel,Spend_EUR,Impressions,Clicks,Conversions,Revenue_EUR
+DE,Paid Social,48000,6400000,51200,1280,134400
+DE,Paid Search,36000,1200000,60000,1500,157500
+DE,Online Video,42000,5600000,16800,420,46200
+DE,Retail Media,30000,2000000,24000,960,115200
+AT,Paid Social,14000,1750000,15750,350,37100
+AT,Paid Search,11000,380000,19000,470,49350
+AT,Online Video,12000,1500000,4500,110,12100
+AT,Retail Media,8000,520000,6240,250,29500
+CH,Paid Social,18000,1900000,17100,410,47150
+CH,Paid Search,15000,450000,24750,610,70150
+CH,Online Video,16000,1800000,5400,120,14400
+CH,Retail Media,10000,640000,7680,300,37500
+Campaign targets:
+- ROAS target: at least 3.0 (Revenue_EUR divided by Spend_EUR)
+- CPA target: at most EUR 40 (Spend_EUR divided by Conversions)
+KPI definitions: CTR = Clicks / Impressions. CPM = Spend_EUR / Impressions x 1,000. CPA = Spend_EUR / Conversions. ROAS = Revenue_EUR / Spend_EUR.
+Caveats: Revenue is attributed online revenue (last click, 7-day window). Brand-lift study results are not available yet; expected Monday, December 7, 2026.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d01-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Asks Copilot to calculate the standard media KPIs, compare them with the targets, and explain the result in plain language.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Analyze the Velvet Frost campaign results and tell me which channels and markets meet the ROAS and CPA targets.
+<strong>Context:</strong> I am preparing a performance review for the DACH marketing leadership team, so I need a clear view of what worked and what did not.
+<strong>Source:</strong> Use only the campaign data, targets, KPI definitions, and caveats in this workbook or the pasted source.
+<strong>Expectation:</strong> Give me a table with ROAS and CPA by channel, the campaign total, and three plain-language insights. Do not speculate about brand impact.</pre></div></div></details>
+<details class="step" id="d01-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Moves from a total to the row-level detail and asks for the outliers.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Which market and channel combination has the lowest ROAS and which has the highest? Show the numbers you used.</pre></div><div class="pnote"><span>What this prompt does</span>Asks for a chart you could reuse in the story deck.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Create a chart that compares ROAS by channel against the 3.0 target.</pre></div></div></details>
+<details class="step" id="d01-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Total:</strong> spend EUR 260,000, revenue EUR 750,550, ROAS 2.89 (misses the 3.0 target), CPA EUR 38.35 (meets the EUR 40 target), 6,780 conversions.</li><li><strong>Paid Social:</strong> spend EUR 80,000, revenue EUR 218,650, ROAS 2.73 (misses 3.0), CPA EUR 39.22 (meets EUR 40), CTR 0.84%.</li><li><strong>Paid Search:</strong> spend EUR 62,000, revenue EUR 277,000, ROAS 4.47 (meets 3.0), CPA EUR 24.03 (meets EUR 40), CTR 5.11%.</li><li><strong>Online Video:</strong> spend EUR 70,000, revenue EUR 72,700, ROAS 1.04 (misses 3.0), CPA EUR 107.69 (misses EUR 40), CTR 0.30%.</li><li><strong>Retail Media:</strong> spend EUR 48,000, revenue EUR 182,200, ROAS 3.80 (meets 3.0), CPA EUR 31.79 (meets EUR 40), CTR 1.20%.</li><li><strong>Lowest row:</strong> CH Online Video, ROAS 0.90. <strong>Highest row:</strong> CH Paid Search, ROAS 4.68.</li><li>Copilot should not claim that Online Video built awareness or brand lift; the source says that study is not available yet.</li></ul></div></div></details>
+<details class="hint tip" id="d01-tip"><summary><span>E. Tip: Format the data as a table</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><p>Copilot in Excel works best with a clean range: one header row, no blank rows, and consistent data types. The practice workbook already formats the data as an Excel table named <strong>CampaignData</strong>. Save it to OneDrive or SharePoint so Copilot can work with it. If you do not see Copilot in Excel, use the Copilot Chat fallback: paste the source and the same prompt.</p></div></details>
+<details class="hint fact" id="d01-fact"><summary><span>F. Did you know? Copilot in Excel can also make PivotTables</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><p>Besides formulas and charts, Copilot in Excel can create PivotTables, highlight, sort, and filter data, and import data from other workbooks. <a href="https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel" target="_blank" rel="noopener">Get started with Copilot in Excel</a></p></div></details>
+<details class="step recommendation" id="d01-recommendation"><summary><span><span class="rec-label">G. Recommended custom instruction</span><strong>Show your calculations</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable, nonsensitive working preference.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When you calculate numbers for me, show the formula or the inputs you used so I can check them.</pre></div></div></details>
+<div class="section-nav"><a href="#overview">Previous section</a><a href="#d02">Next section</a></div></div>
+</details>
+<details class="section demo" id="d02">
+<summary><span class="dnum">Demo 02</span><h2 class="dhead">Add a KPI block to the existing workbook<span>Extend the workbook with formulas, not retyped numbers.</span></h2><span class="pill">Copilot in Excel</span></summary>
+<div class="dbody">
+<details class="step" id="d02-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_DACH_Marketing_practice_sources/d02-kpi-block-spec.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL TRAINING SCENARIO: VELVET FROST KPI BLOCK REQUEST
+Requested by: Jonas Brunner, Brand Manager, Austria (fictional)
+Date: Tuesday, November 10, 2026
+Workbook: ELC_DACH_Velvet_Frost_Campaign_Practice.xlsx, table CampaignData (same data as exercise 01)
+Request: add a market summary block on a new sheet named KPI_Summary.
+Rows: DE, AT, CH, then a Total row.
+Columns: Market, Spend_EUR, Revenue_EUR, Conversions, ROAS, CPA_EUR, ROAS_Status
+ROAS_Status rule: &quot;Meets&quot; when ROAS is at least 3.0; otherwise &quot;Below&quot;.
+Also add the same four KPIs by channel as a second block below the market block.
+Rules: use formulas that reference the CampaignData table. Do not type numbers by hand.
+Formatting: ROAS with two decimals, CPA as EUR with two decimals, and highlight &quot;Below&quot; in light red.
+Caveat: Revenue is attributed online revenue (last click, 7-day window).
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d02-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Asks Copilot to build a structured summary block with live formulas and a target status flag.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Add a KPI summary block to this workbook as described in the request.
+<strong>Context:</strong> The block will be reused every week, so it must recalculate when the CampaignData table changes.
+<strong>Source:</strong> Use the CampaignData table and the block request only.
+<strong>Expectation:</strong> Create the KPI_Summary sheet with formulas, the status rule, and the requested formatting, then tell me which cells you added.</pre></div></div></details>
+<details class="step" id="d02-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Checks the block against the raw data, which is the fastest way to catch a wrong range.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Check that the Total row equals the sum of the CampaignData table for spend, revenue, and conversions. Tell me if anything does not match.</pre></div><div class="pnote"><span>What this prompt does</span>Adds a simple what-if view without changing the source data.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Add one more row that shows ROAS for all channels except Online Video, and label it as a what-if view.</pre></div></div></details>
+<details class="step" id="d02-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>DE:</strong> spend EUR 156,000, revenue EUR 453,300, ROAS 2.91, CPA EUR 37.50.</li><li><strong>AT:</strong> spend EUR 45,000, revenue EUR 128,050, ROAS 2.85, CPA EUR 38.14.</li><li><strong>CH:</strong> spend EUR 59,000, revenue EUR 169,200, ROAS 2.87, CPA EUR 40.97.</li><li>The block's total row must equal the raw data: EUR 260,000 spend and EUR 750,550 revenue. If it does not, a formula range is wrong.</li><li>Status column: all three markets show "Below" (each is under 3.0). In the channel block, only Paid Search and Retail Media show "Meets".</li><li>Without Online Video, the other three channels return ROAS 3.57. This is a what-if view, not a forecast.</li><li>Click into a few cells and read the formulas. Confirm that Copilot added formulas rather than typed-in numbers.</li></ul></div></div></details>
+<details class="hint tip" id="d02-tip"><summary><span>E. Tip: Ask for formulas, then inspect them</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><p>Say <strong>"use formulas"</strong> so the block recalculates when data changes. Then click a few cells and read the formula bar. A total that does not match the raw data usually means a range or filter is wrong. In Copilot Chat, ask for the formulas as text and paste them yourself.</p></div></details>
+<details class="hint fact" id="d02-fact"><summary><span>F. Did you know? Copilot opens from the lower right</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><p>In current Excel versions, you open Copilot from the Copilot icon in the lower right of the window. If you do not see it, your subscription or organization settings may not include it. <a href="https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel" target="_blank" rel="noopener">Microsoft Support: Copilot in Excel</a></p></div></details>
+<details class="step recommendation" id="d02-recommendation"><summary><span><span class="rec-label">G. Recommended memory</span><strong>Preferred KPI formats</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Safe to save: a formatting preference, not campaign data.</p><div class="savebox"><button aria-label="Copy recommended memory" class="copy" type="button">Copy</button><pre>Remember that I format ROAS with two decimals and money as EUR with two decimals.</pre></div></div></details>
+<div class="section-nav"><a href="#d01">Previous section</a><a href="#d03">Next section</a></div></div>
+</details>
+<details class="section demo" id="d03">
+<summary><span class="dnum">Demo 03</span><h2 class="dhead">Find and assess resources in SharePoint<span>Separate current, approved sources from outdated ones.</span></h2><span class="pill">Copilot in SharePoint or Copilot Chat</span></summary>
+<div class="dbody">
+<details class="step" id="d03-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_DACH_Marketing_practice_sources/d03-dach-marketing-hub-resources.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL TRAINING SCENARIO: DACH MARKETING HUB SITE, RESOURCE LIST
+Site: DACH Marketing Hub (fictional SharePoint site)
+Exported by: Sophie Keller, Marketing Operations, Switzerland (fictional)
+Exported on: Tuesday, November 10, 2026
+R1 | FY27 Media KPI Definitions and Targets | Owner: Lena Hofmann | Updated: Monday, September 7, 2026 | Status: Approved | ROAS target 3.0, CPA target EUR 40
+R2 | FY25 DACH Media Benchmarks deck | Owner: former agency team | Updated: Friday, March 15, 2024 | Status: Archived | ROAS target 2.5
+R3 | Velvet Frost Brand Messaging Guide | Owner: Brand Team DACH | Updated: Thursday, August 20, 2026 | Status: Approved | Key message: &quot;Frosted color, velvet comfort&quot;
+R4 | Agency Recap Velvet Frost Week 3 | Owner: Media agency (fictional) | Updated: Friday, October 23, 2026 | Status: Final for week 3 only | Covers October 5 - October 25, 2026
+R5 | DACH Media Plan Q4 2026 | Owner: not listed | Updated: Wednesday, July 1, 2026 | Status: Unknown | Planned budget EUR 250,000
+R6 | Velvet Frost Creative Test Results | Owner: Jonas Brunner | Updated: Monday, November 9, 2026 | Status: Draft, not reviewed | Claims video drove brand lift
+R7 | Retail Store Training Calendar 2027 | Owner: Retail Education | Updated: Monday, November 2, 2026 | Status: Approved | Store staff training dates
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d03-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Asks Copilot to triage the resources by trust and relevance, and invites it to ask questions first.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Assess which resources I should use to build a Velvet Frost campaign results story.
+<strong>Context:</strong> The story goes to DACH marketing leadership, so I need current, approved sources and I must avoid outdated targets.
+<strong>Source:</strong> Use only the resource list from the DACH Marketing Hub site.
+<strong>Expectation:</strong> Sort each resource into Use, Check first, Do not use, or Not relevant, with one reason based on owner, date, status, or conflict. Ask any clarifying questions before responding.</pre></div></div></details>
+<details class="step" id="d03-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Surfaces conflicts that could put a wrong number into the story.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Do any of these resources conflict with each other? Name the conflict and which source should win.</pre></div><div class="pnote"><span>What this prompt does</span>Turns the review into an action you can send, without sending it.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Draft a short message to Sophie Keller asking who owns the DACH Media Plan Q4 2026 and whether it is current. Do not send anything.</pre></div></div></details>
+<details class="step" id="d03-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Use:</strong> R1 (FY27 KPI definitions, current, owner Lena Hofmann) and R3 (Velvet Frost brand messaging, approved).</li><li><strong>Do not use:</strong> R2 (FY25 benchmark deck with a ROAS target of 2.5, superseded by R1's 3.0) and R6 (draft creative test results, not reviewed).</li><li><strong>Check first:</strong> R4 (agency recap, last updated before the flight ended) and R5 (DACH media plan, no owner listed).</li><li><strong>Not relevant:</strong> R7 (retail store training calendar).</li><li>Copilot should point out the conflict between ROAS 2.5 and ROAS 3.0, and should not treat a draft as approved.</li></ul></div></div></details>
+<details class="hint tip" id="d03-tip"><summary><span>E. Tip: Owner, date, status, conflict</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><p>For every source, check four things: <strong>who owns it, when it was updated, whether it is approved, and whether it conflicts with another source.</strong> On a real site, Copilot in SharePoint can summarize and compare files you can access. Always open the file before you reuse a number from it.</p></div></details>
+<details class="hint fact" id="d03-fact"><summary><span>F. Did you know? Copilot in SharePoint is rolling out</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><p>Copilot in SharePoint requires a Microsoft 365 Copilot license. General availability rollout started on September 30, 2026. Everyday capabilities are included, while some advanced work uses Copilot Credits. <a href="https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-get-started" target="_blank" rel="noopener">Get started with Copilot in SharePoint</a></p></div></details>
+<details class="step recommendation" id="d03-recommendation"><summary><span><span class="rec-label">G. Recommended custom instruction</span><strong>Flag outdated sources</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable, nonsensitive working method.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When you use documents, tell me each document&#x27;s last updated date and flag anything older than 12 months or marked as draft.</pre></div></div></details>
+<div class="section-nav"><a href="#d02">Previous section</a><a href="#d04">Next section</a></div></div>
+</details>
+<details class="section demo" id="d04">
+<summary><span class="dnum">Demo 04</span><h2 class="dhead">Build a five-slide story in PowerPoint<span>From checked numbers to a leadership-ready storyline.</span></h2><span class="pill">Copilot in PowerPoint</span></summary>
+<div class="dbody">
+<details class="step" id="d04-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_DACH_Marketing_practice_sources/d04-story-brief.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL TRAINING SCENARIO: VELVET FROST RESULTS STORY BRIEF
+Prepared by: Lena Hofmann, Media Analytics Manager, DACH (fictional)
+Date: Tuesday, November 10, 2026
+Audience: DACH marketing leadership, 15-minute review on Monday, November 16, 2026
+Template: use the organization&#x27;s PowerPoint template or Brand Kit if available
+Verified results (from the KPI_Summary sheet):
+- Total spend EUR 260,000; revenue EUR 750,550; ROAS 2.89 against a 3.0 target; CPA EUR 38.35 against EUR 40
+- Paid Search ROAS 4.47; Retail Media ROAS 3.80; Paid Social ROAS 2.73; Online Video ROAS 1.04
+- Without Online Video, ROAS would be 3.57 (what-if view, not a forecast)
+- Brand-lift study not available until Monday, December 7, 2026
+Approved key message: &quot;Frosted color, velvet comfort&quot;
+Storyline:
+1. Title: Velvet Frost DACH, what we learned
+2. Results against target
+3. What worked: Paid Search and Retail Media
+4. What did not: Online Video, with the brand-lift caveat
+5. Proposal for leadership: test moving part of the Online Video budget to Paid Search after the brand-lift results, and decide on Monday, December 14, 2026
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d04-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Gives Copilot in PowerPoint the audience, storyline, and checked numbers so the draft starts close to final.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Create a five-slide presentation that tells the Velvet Frost DACH results story.
+<strong>Context:</strong> I will present it to DACH marketing leadership in a 15-minute review, and they need a clear proposal to decide on.
+<strong>Source:</strong> Use only the verified results, caveat, key message, and storyline in the story brief.
+<strong>Expectation:</strong> Follow the five-slide storyline exactly, with one headline and no more than four bullets per slide. Add speaker notes. Do not invent quotes, images of people, or brand-lift claims.</pre></div></div></details>
+<details class="step" id="d04-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Strengthens the headlines so leadership gets the point from titles alone.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Rewrite each slide title as a full-sentence takeaway, such as a headline a busy leader can read in five seconds.</pre></div><div class="pnote"><span>What this prompt does</span>Turns the results slide into a visual.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>On the results slide, add a simple chart or table comparing ROAS by channel with the 3.0 target.</pre></div></div></details>
+<details class="step" id="d04-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li>Exactly five slides, in the storyline order from the brief.</li><li>The numbers match the brief: ROAS 2.89 against a 3.0 target; Paid Search ROAS 4.47; Online Video ROAS 1.04.</li><li>No invented quotes, logos, images of real people, or brand-lift claims.</li><li>The recommendation is labeled a proposal for leadership to decide, not a decision.</li><li>The deck uses your organization's template or Brand Kit if available. Check fonts, colors, and logos before sharing.</li></ul></div></div></details>
+<details class="hint tip" id="d04-tip"><summary><span>E. Tip: Use your brand, then review it</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><p>When you create a presentation with Copilot, choose <strong>Select brand</strong> if your organization has a Brand Kit, or start from your corporate template. The DACH brand master was not available for this guide, so check fonts, colors, logos, and images against your brand rules before you share the deck.</p></div></details>
+<details class="hint fact" id="d04-fact"><summary><span>F. Did you know? Copilot in PowerPoint can start from a file</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body"><p>Copilot in PowerPoint can create a presentation from a prompt or from a file you reference, and it can apply your organization's Brand Kit when one is available. <a href="https://support.microsoft.com/en-us/powerpoint/copilot/create-a-new-presentation-with-copilot-in-powerpoint" target="_blank" rel="noopener">Create a new presentation with Copilot in PowerPoint</a></p></div></details>
+<details class="step recommendation" id="d04-recommendation"><summary><span><span class="rec-label">G. Recommended custom instruction</span><strong>Executive slide style</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable, nonsensitive style preference.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>For leadership slides, use full-sentence takeaway titles, no more than four bullets per slide, and put details in the speaker notes.</pre></div></div></details>
+<div class="section-nav"><a href="#d03">Previous section</a><a href="#prompting">Next section</a></div></div>
+</details>
+<details class="section instr" id="prompting"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Prompting and safety<span>Clear instructions; evidence before action.</span></h2><span class="ipill">Core habits</span></summary><div class="ibody"><p>Copilot is built on large language models (LLMs). An LLM breaks text into small units called tokens and predicts likely text based on context. Grounding gives it the right source, such as your workbook or a document; a good prompt tells it what to do with that source. <a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5" target="_blank" rel="noopener">Microsoft prompt guidance</a> · <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-are-large-language-models-llms" target="_blank" rel="noopener">What are LLMs?</a></p>
+<div class="grid g2"><div class="card"><h3>Goal</h3><p>What do I want Copilot to do?</p></div><div class="card"><h3>Context</h3><p>Why do I need it, and who is the audience?</p></div><div class="card"><h3>Source</h3><p>Which data or files should Copilot use, and nothing else?</p></div><div class="card"><h3>Expectation</h3><p>What format, length, tone, and boundaries should the answer follow?</p></div></div>
+<div class="callout"><strong>Iterate instead of restarting.</strong> Stay in the same chat and ask Copilot to show its calculation, shorten, change a chart, list unknowns, or fix one weak GCSE line.</div>
+<details class="step"><summary><span>Responsible use checklist</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ul class="quicklist"><li>Sign in with your work account so enterprise data protection applies.</li><li>Share only the minimum information the task needs.</li><li>Recalculate or spot-check key numbers before they go into a deck.</li><li>Check that a source is current and approved before you reuse it.</li><li>Use only approved brand and product claims in anything external.</li><li>Review, edit, and own the final version. A draft never sends or approves anything.</li><li>Follow your company's policy and your tenant's controls; this guide does not replace them.</li></ul></div></details><div class="section-nav"><a href="#d04">Previous section</a><a href="#memory">Next section</a></div></div></details>
+<details class="section instr" id="memory"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Memory and custom instructions<span>Optional, safe personalization.</span></h2><span class="ipill">Optional</span></summary><div class="ibody"><p>Copilot personalization and memory can include saved memories, details from chat history, and custom instructions. These features may be in preview, can be turned off by your organization or by you, and may not be available to everyone. Use them only for stable, nonsensitive preferences.</p>
+<div class="grid g3"><details class="step subcard"><summary><h3>Good memory</h3><span class="status">Stable preference</span></summary><div class="step-body"><p>“I format ROAS with two decimals and money as EUR.”</p></div></details><details class="step subcard"><summary><h3>Good custom instruction</h3><span class="status">Working method</span></summary><div class="step-body"><p>“Show the formula or inputs you used whenever you calculate a KPI.”</p></div></details><details class="step subcard"><summary><h3>Keep in the current chat</h3><span class="status">Task detail</span></summary><div class="step-body"><p>Campaign figures, budgets, targets, names, and anything confidential.</p></div></details></div>
+<p><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Microsoft Learn: personalization and memory</a></p><div class="section-nav"><a href="#prompting">Previous section</a><a href="#tips">Next section</a></div></div></details>
+<details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Useful habits and exercise shortcuts.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><details class="step tip-feature" id="clarifying-questions-tip"><summary><span>Ask clarifying questions before Copilot answers</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Add <strong>“Ask any clarifying questions before responding.”</strong> when the answer depends on details you might have left out, such as audience, scope, source, format, or dates.</p><p>This gives Copilot permission to pause, point out what is unclear, and ask for what it needs instead of silently filling gaps. It can reduce assumptions and rework, but it does not replace checking the source or reviewing the final output.</p><div class="promptbox"><button aria-label="Copy clarifying questions instruction" class="copy" type="button">Copy</button><pre>Ask any clarifying questions before responding.</pre></div></div></details><details class="step tip-feature" id="same-chat-tip"><summary><span>Keep refining in the same chat</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p><strong>Follow-ups build on what Copilot already knows from the conversation.</strong> Ask it to change a chart, add a column, or tighten a slide instead of starting over. Start a new chat when you switch to an unrelated topic so old details do not leak into new work.</p><div class="promptbox"><button aria-label="Copy refine follow-up prompt" class="copy" type="button">Copy</button><pre>Keep the same numbers, but make this shorter and easier for a leadership audience to scan.</pre></div></div></details>    <ol class="tip-index"><li><a href="#clarifying-questions-tip">Ask clarifying questions before Copilot answers.</a></li><li><a href="#same-chat-tip">Keep refining in the same chat.</a></li><li><a href="#d01-tip">Format the data as a table.</a></li><li><a href="#d02-tip">Ask for formulas, then inspect them.</a></li><li><a href="#d03-tip">Owner, date, status, conflict.</a></li><li><a href="#d04-tip">Use your brand, then review it.</a></li></ol><div class="section-nav"><a href="#memory">Previous section</a><a href="#wrap-up">Next section</a></div></div></details>
+<details class="section instr" id="wrap-up"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Wrap-up and sources<span>Choose one technique and verify the evidence.</span></h2><span class="ipill">Finish</span></summary><div class="ibody"><h3>Before you leave</h3><ol class="quicklist"><li>Pick one real, nonsensitive report you build every month and try one GCSE prompt in Excel.</li><li>Before reusing a shared file, check its owner, date, status, and conflicts.</li><li>Build your next update deck from verified numbers, then review the brand and every claim.</li></ol>
+<h3>Official references</h3><ul class="quicklist"><li><a href="https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel" target="_blank" rel="noopener">Get started with Copilot in Excel</a></li><li><a href="https://support.microsoft.com/en-us/powerpoint/copilot/create-a-new-presentation-with-copilot-in-powerpoint" target="_blank" rel="noopener">Create a presentation with Copilot in PowerPoint</a></li><li><a href="https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-get-started" target="_blank" rel="noopener">Get started with Copilot in SharePoint</a></li><li><a href="https://support.microsoft.com/en-us/sharepoint/copilot-in-sharepoint/copilot-in-sharepoint-an-overview" target="_blank" rel="noopener">Copilot in SharePoint overview</a></li><li><a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5" target="_blank" rel="noopener">Get started writing prompts</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Enterprise data protection</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Personalization and memory</a></li></ul><div class="section-nav"><a href="#tips">Previous section</a><a href="#about-guide">Next section</a></div></div></details>
+<details class="section instr" id="about-guide"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">About this student guide<span>Sources and responsible use.</span></h2><span class="ipill">Student guide</span></summary><div class="ibody"><div class="about-body"><p>This student guide supports AI Forward: Copilot Training for the DACH Marketing Community on Wednesday, November 11, 2026, at 8:00 AM MST. It was prepared on Tuesday, November 10, 2026. It is not an instructor edition, policy statement, or authorization to use a feature or data source.</p><p>All brands, personas, sites, files, dates, figures, and claims in the practice scenario are fictional. Public product references link to Microsoft Learn, Microsoft Support, Microsoft Azure, or the identified primary source. Product names, availability, licensing, previews, tenant settings, and controls can change.</p><footer class="end">Use permitted sources, verify important output, protect sensitive information, and keep a human accountable for every decision and action.</footer></div><div class="section-nav"><a href="#wrap-up">Previous section</a></div></div></details>
+</main></div>
+<div aria-atomic="true" aria-live="polite" class="toast" hidden="" id="guide-status" role="status"></div><script>(() => {
+  'use strict';
+  const root = document.documentElement;
+  const theme = document.getElementById('themebtn');
+  const toast = document.getElementById('guide-status');
+  const topbar = document.querySelector('.topbar');
+  const sections = Array.from(document.querySelectorAll('main > details.section'));
+  const links = Array.from(document.querySelectorAll('nav.toc a'));
+  links.forEach((link, index) => {
+    if (!link.dataset.short) link.dataset.short = String(index + 1).padStart(2, '0');
+  });
+  const searchInput = document.getElementById('guide-search');
+  const searchResults = document.getElementById('search-results');
+  const searchable = Array.from(document.querySelectorAll('details.section, details.step, details.hint'))
+    .filter(node => node.id);
+  function updateSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    searchable.forEach(node => node.classList.remove('search-match'));
+    searchResults.replaceChildren();
+    if (!query) {
+      searchResults.classList.remove('has-results');
+      return;
+    }
+    const matches = searchable.filter(node => node.textContent.toLowerCase().includes(query)).slice(0, 10);
+    if (!matches.length) {
+      const empty = document.createElement('li');
+      empty.className = 'search-empty';
+      empty.textContent = 'No matching prompts or topics.';
+      searchResults.append(empty);
+      searchResults.classList.add('has-results');
+      return;
+    }
+    matches.forEach(node => {
+      const item = document.createElement('li');
+      const result = document.createElement('a');
+      result.href = '#' + node.id;
+      result.textContent = node.querySelector(':scope > summary')?.textContent.trim() || node.id;
+      item.append(result);
+      searchResults.append(item);
+    });
+    searchResults.classList.add('has-results');
+  }
+  searchInput.addEventListener('input', updateSearch);
+  searchResults.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (link) searchInput.value = '';
+  });
+  const themeKey = 'elc-60ff356d23-copilot-student-theme';
+  const seasonKey = 'elc-60ff356d23-copilot-student-season';
+  const navigationKey = 'elc-60ff356d23-copilot-student-navigation';
+  let toastTimer;
+
+  function announce(message) {
+    toast.textContent = message;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 5000);
+  }
+
+  function updateTheme() {
+    const dark = root.dataset.theme === 'dark';
+    theme.textContent = dark ? 'Mode: Dark' : 'Mode: Light';
+    theme.setAttribute('aria-pressed', String(dark));
+    theme.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  updateTheme();
+  if (window.guideThemeStorageUnavailable) {
+    announce('Appearance preferences cannot be loaded or saved in this browser.');
+  }
+  theme.addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark';
+    if (dark) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    updateTheme();
+    try {
+      localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+    } catch (error) {
+      console.warn('Theme preference could not be saved:', error);
+      announce('Theme changed, but this browser cannot save the preference.');
+    }
+  });
+
+
+  const season = document.getElementById('seasonbtn');
+  const seasons = ['autumn', 'winter', 'spring', 'summer'];
+  const seasonLabels = {
+    autumn: 'Autumn · Warm paper and harvest tones',
+    winter: 'Winter · Cool blues and crisp neutrals',
+    spring: 'Spring · Fresh greens and soft new-growth tones',
+    summer: 'Summer · Sunny golds and clear coastal blues'
+  };
+  function updateSeason() {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    const next = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    season.textContent = 'Season: ' + current[0].toUpperCase() + current.slice(1);
+    season.setAttribute('aria-label', 'Seasonal theme: ' + current[0].toUpperCase() + current.slice(1) +
+      '. Activate to switch to ' + next[0].toUpperCase() + next.slice(1) + '.');
+    document.getElementById('season-label').textContent = seasonLabels[current];
+  }
+  updateSeason();
+  season.addEventListener('click', () => {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    root.dataset.season = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    updateSeason();
+    try {
+      localStorage.setItem(seasonKey, root.dataset.season);
+    } catch (error) {
+      console.warn('Season preference could not be saved:', error);
+      announce('Season changed, but this browser cannot save the preference.');
+    }
+  });
+
+  const navigation = document.getElementById('navbtn');
+  const navigationStates = ['full', 'compact', 'hidden'];
+  function updateNavigation() {
+    const current = navigationStates.includes(root.dataset.navigation) ? root.dataset.navigation : 'full';
+    const next = navigationStates[(navigationStates.indexOf(current) + 1) % navigationStates.length];
+    const labels = { full: 'Full', compact: 'Compact', hidden: 'Hidden' };
+    const actions = {
+      full: 'Show compact navigation',
+      compact: 'Hide navigation',
+      hidden: 'Expand navigation'
+    };
+    navigation.textContent = 'Navigation: ' + labels[current];
+    navigation.setAttribute('aria-label', actions[current]);
+    navigation.setAttribute('title', actions[current]);
+    navigation.setAttribute('aria-pressed', String(current !== 'full'));
+    navigation.dataset.nextNavigation = next;
+  }
+  updateNavigation();
+  navigation.addEventListener('click', () => {
+    root.dataset.navigation = navigation.dataset.nextNavigation || 'full';
+    updateNavigation();
+    try {
+      localStorage.setItem(navigationKey, root.dataset.navigation);
+    } catch (error) {
+      console.warn('Navigation preference could not be saved:', error);
+      announce('Navigation changed, but this browser cannot save the preference.');
+    }
+  });
+
+  function updateHeaderHeight() {
+    root.style.setProperty('--cp-header-height', topbar.offsetHeight + 'px');
+  }
+  new ResizeObserver(updateHeaderHeight).observe(topbar);
+  updateHeaderHeight();
+
+  const panels = Array.from(document.querySelectorAll('details'));
+  document.getElementById('expandall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = true; });
+    announce('All sections and steps expanded.');
+  });
+  document.getElementById('collapseall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = false; });
+    announce('All sections and steps collapsed.');
+  });
+
+  function setActive(id) {
+    const target = document.getElementById(id);
+    const section = target && target.closest('details.section');
+    const sectionId = section ? section.id : id;
+    links.forEach(link => {
+      const active = link.getAttribute('href') === '#' + sectionId;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function navigate(id, updateHistory, moveFocus) {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    let node = target;
+    while (node && node !== document.body) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
+    if (updateHistory) {
+      try {
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+      } catch (error) {
+        console.warn('Could not update the section link:', error);
+        announce('The section opened, but its link could not be saved.');
+      }
+    }
+    target.scrollIntoView({ block: 'start' });
+    setActive(id);
+    if (moveFocus) {
+      const focusTarget = target.matches('details') ? target.querySelector(':scope > summary') : target;
+      if (focusTarget && typeof focusTarget.focus === 'function') focusTarget.focus({ preventScroll: true });
+    }
+    return true;
+  }
+
+  function hashId() {
+    if (!location.hash || location.hash === '#') return '';
+    try {
+      return decodeURIComponent(location.hash.slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return '';
+    }
+  }
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    let id;
+    try {
+      id = decodeURIComponent(link.getAttribute('href').slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return;
+    }
+    if (id && document.getElementById(id)) {
+      event.preventDefault();
+      navigate(id, true, true);
+    }
+  });
+  const initialId = hashId();
+  if (initialId) requestAnimationFrame(() => { navigate(initialId, false, false); });
+  window.addEventListener('hashchange', () => {
+    const id = hashId();
+    if (id) navigate(id, false, false);
+  });
+
+  let scrollPending = false;
+  window.addEventListener('scroll', () => {
+    if (scrollPending) return;
+    scrollPending = true;
+    requestAnimationFrame(() => {
+      const stickyOffset = getComputedStyle(topbar).position === 'sticky' ? topbar.offsetHeight : 0;
+      let selected = null;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= stickyOffset + 28) selected = section;
+      });
+      if (selected) setActive(selected.id);
+      scrollPending = false;
+    });
+  }, { passive: true });
+
+  function legacyCopy(value, button) {
+    const area = document.createElement('textarea');
+    area.value = value;
+    area.setAttribute('readonly', '');
+    area.setAttribute('aria-hidden', 'true');
+    area.style.position = 'fixed';
+    area.style.left = '-10000px';
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (error) {
+      console.warn('Clipboard fallback failed:', error);
+    } finally {
+      area.remove();
+      button.focus({ preventScroll: true });
+    }
+    return copied;
+  }
+
+  document.querySelectorAll('.promptbox .copy, .savebox .copy').forEach(button => {
+    button.addEventListener('click', async () => {
+      const text = button.closest('.promptbox, .savebox').querySelector('pre').textContent;
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          console.warn('Clipboard API failed; trying the browser fallback:', error);
+        }
+      }
+      if (!copied) copied = legacyCopy(text, button);
+      if (!copied) {
+        button.textContent = 'Select text to copy';
+        announce('Copy was blocked. Select the text in the box and copy it manually.');
+      } else {
+        button.textContent = 'Copied';
+        button.classList.add('done');
+        announce('Copied to clipboard.');
+      }
+      setTimeout(() => {
+        button.textContent = 'Copy';
+        button.classList.remove('done');
+      }, 2200);
+    });
+  });
+
+  let printState = null;
+  window.addEventListener('beforeprint', () => {
+    if (!printState) printState = panels.map(panel => ({ panel, open: panel.open }));
+    panels.forEach(panel => { panel.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    if (!printState) return;
+    printState.forEach(saved => { saved.panel.open = saved.open; });
+    printState = null;
+  });
+})();
+</script></body></html>
