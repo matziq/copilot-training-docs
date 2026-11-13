@@ -1,0 +1,45 @@
+FICTIONAL TRAINING CONTENT - Estee Lauder Companies GSM Copilot training, October 2026. All people, suppliers, prices, and documents are invented.
+
+FICTIONAL TEAMS CONTENT
+Workspace: Project Luminous - GSM Launch Readiness
+Today: Monday 26 October 2026
+Decision meeting: Thursday 29 October 2026, 2:00 PM Eastern
+
+MEETING TRANSCRIPT EXTRACT - FRIDAY 23 OCTOBER
+
+Maya Chen, Global Supplier Strategy Manager:
+"We need one recommendation for Thursday: keep Aurelia as the primary decoration supplier, move the full volume to the alternate, or use a controlled dual-source plan. I do not want the group debating three different versions of the facts."
+
+Elena Ruiz, Packaging Engineering:
+"Aurelia's latest line trial passed visual inspection. The unresolved item is the 48-hour adhesion result. The lab expects that result Tuesday by noon."
+
+Marcus Lee, Supply Planning:
+"The launch requires 1.2 million decorated units. Aurelia has confirmed 850,000 units by the required ship window. Northstar Components can cover 350,000 units, but only if we reserve capacity by Wednesday at 3:00 PM."
+
+Priya Nair, Responsible Sourcing:
+"Aurelia's corrective action plan is still open. Two documentation items remain: subcontractor training evidence and the updated grievance log. Aurelia committed to send both by Tuesday at 5:00 PM."
+
+Jon Bell, Finance:
+"The dual-source model adds an estimated $0.08 per unit compared with the current plan. That estimate excludes expedited freight."
+
+Maya:
+"Marcus, reserve the Northstar capacity provisionally. Elena, bring the adhesion result. Priya, confirm whether the two documents close the corrective action or only advance it. I will prepare the decision brief."
+
+CHANNEL POSTS - MONDAY 26 OCTOBER
+
+08:12 - Marcus:
+"Northstar confirmed the 350,000-unit hold through Thursday 29 October at 3:00 PM Eastern. No purchase commitment has been issued."
+
+09:05 - Elena:
+"The lab moved the adhesion result from Tuesday noon to Tuesday 4:00 PM. No change to the test method."
+
+09:44 - Priya:
+"Aurelia says the two documents will arrive Tuesday. Review will still require one business day after receipt, so the corrective action cannot be considered closed before Wednesday."
+
+10:18 - Jon:
+"Correction to Friday: the $0.08 estimate already includes standard freight but not expedited freight."
+
+10:42 - Maya:
+"Please keep the Thursday meeting focused on the launch decision. Longer-term supplier development can be a separate workstream. We need the launch decision by 2:45 PM Thursday so the team has time to preserve the Northstar option before the 3:00 PM hold expires."
+
+NOTE: No message in this extract confirms that the adhesion test passed, the corrective action closed, or the Northstar capacity was purchased.

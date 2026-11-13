@@ -26,6 +26,9 @@ strings and section hashes. Previously shared raw source and asset URLs remain
 available unchanged. `/elc/` now opens its menu instead of the former duplicate
 Fundamentals guide. The legacy custom-domain path
 `/copilot-training-docs/6f0d9c72a4b1483ba793ab4a1d2e6f85/` is also supported.
+Training-subfolder URLs from the earlier hub publication remain aliases too.
+Some of those historical paths contain preparation or scenario dates; those
+path names are retained for compatibility, not presented as class dates.
 
 All menu, relocated guide, and redirect HTML includes both robots and
 googlebot `noindex,nofollow,noarchive` metadata. Keep customer routes out of

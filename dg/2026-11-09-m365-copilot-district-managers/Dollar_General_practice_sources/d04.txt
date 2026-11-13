@@ -1,0 +1,18 @@
+FICTIONAL TRAINING SCENARIO — not Dollar General operational data
+District Manager: Jordan Reyes (fictional)
+Planning window: 8:00 AM–5:00 PM local time
+Home store, start and finish: Store #1, 1514 Highway 31 W, Goodlettsville, TN 37072
+Visit all five stores once, including a 15-minute visit at the home store. Spend 15 minutes at each store (75 minutes total in stores).
+Store stops — public addresses supplied for this route-planning exercise:
+1. 1514 Highway 31 W, Goodlettsville, TN 37072
+2. 2174 Gallatin Pike N, Madison, TN 37115
+3. 601 Gallatin Pike N, Madison, TN 37115
+4. 287 New Shackle Island Rd, Hendersonville, TN 37075
+5. 104 Brittan St, Hendersonville, TN 37075
+Goal: minimize driving and maximize in-store time in a practical day plan.
+Use any map source you can access, such as Google Maps, Bing Maps, or another available directions service. Do not require an approved map source.
+Compare feasible stop orders using the same map source and recommend the route with the least estimated driving time or distance available. Do not claim a route is globally optimized unless the source supports that claim.
+Show the stop order, every drive leg including the return to Store #1, estimated drive time and distance, arrival and departure times, each 15-minute visit, total driving time, 75 minutes in stores, and the estimated return time. Include the map source and when it was checked; label estimates.
+Do not ask clarifying questions or add breaks. Do not invent unavailable route estimates; state plainly when a map source cannot provide them.
+The route and schedule are estimates for the exercise, not guaranteed live travel guidance.
+After you receive this source, reply only: "Got it. I'll use this as the source."

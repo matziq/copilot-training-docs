@@ -174,6 +174,8 @@ class BrowserChecks(unittest.TestCase):
             "6f0d9c72a4b1483ba793ab4a1d2e6f85/": "elc/2026-10-20-leading-with-copilot/index.html",
             "copilot-training-docs/6f0d9c72a4b1483ba793ab4a1d2e6f85/": "elc/2026-10-20-leading-with-copilot/index.html",
             "customer-student-9a655f298d2ec6e3eb100255b3d5d377/": "inspire/2026-11-17-copilot-skills/index.html",
+            "dg/2026-11-09-m365-copilot-district-managers/": "dg/undated-m365-copilot/index.html",
+            "lids/2026-06-22-m365-copilot-demo-guide/": "lids/undated-leadership-demos/index.html",
         }
         for old, new in cases.items():
             page.goto(f"{self.base}/{old}?class=revisit#d01")
