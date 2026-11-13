@@ -1,0 +1,16 @@
+Practice packet: packaging pilot review
+Persona: program coordinator preparing a leadership update.
+Audience: support-center managers; purpose: review readiness, not approve a rollout.
+Review date: November 17, 2026.
+Pilot: packaging checklist refresh; scope: sites P201, P202, P203, and P204.
+P201: checklist complete; supplier confirmation received; owner: site coordinator.
+P202: checklist complete; supplier confirmation received; owner: site coordinator.
+P203: checklist complete; supplier confirmation pending; owner: supply lead; follow-up due November 18, 2026.
+P204: checklist pending; supplier confirmation received; owner: training lead; follow-up due November 19, 2026.
+Decision context: managers will decide the next review date; that date is not yet supplied.
+Required storyboard: four slides - Purpose and scope; Readiness snapshot; Open dependencies; Discussion and next actions.
+Slide rules: one headline and no more than three bullets per slide; add speaker notes with the source site IDs; preserve pending statuses; no sales, savings, ROI, launch-date, or approval claims.
+Visual direction: clean internal presentation; use a small readiness table rather than invented photos or charts.
+Reusable skill name: pilot-review-storyboard.
+Reuse boundary: Store the narrative structure and checks in the skill; supply a new pilot packet for each run.
+After you receive this source, reply only: "Got it. I'll use this as the source."

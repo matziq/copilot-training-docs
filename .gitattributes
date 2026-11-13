@@ -1,0 +1,8 @@
+# Preserve published guide dependencies exactly, including their original line endings.
+inspire/*/** -text
+elc/2026-*/** -text
+elc/undated-*/** -text
+mcbc/*/** -text
+dg/*/** -text
+lids/*/** -text
+rcg/*/** -text

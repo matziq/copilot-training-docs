@@ -1,0 +1,12 @@
+FICTIONAL TRAINING SCENARIO: DACH MARKETING HUB SITE, RESOURCE LIST
+Site: DACH Marketing Hub (fictional SharePoint site)
+Exported by: Sophie Keller, Marketing Operations, Switzerland (fictional)
+Exported on: Tuesday, November 10, 2026
+R1 | FY27 Media KPI Definitions and Targets | Owner: Lena Hofmann | Updated: Monday, September 7, 2026 | Status: Approved | ROAS target 3.0, CPA target EUR 40
+R2 | FY25 DACH Media Benchmarks deck | Owner: former agency team | Updated: Friday, March 15, 2024 | Status: Archived | ROAS target 2.5
+R3 | Velvet Frost Brand Messaging Guide | Owner: Brand Team DACH | Updated: Thursday, August 20, 2026 | Status: Approved | Key message: "Frosted color, velvet comfort"
+R4 | Agency Recap Velvet Frost Week 3 | Owner: Media agency (fictional) | Updated: Friday, October 23, 2026 | Status: Final for week 3 only | Covers October 5 - October 25, 2026
+R5 | DACH Media Plan Q4 2026 | Owner: not listed | Updated: Wednesday, July 1, 2026 | Status: Unknown | Planned budget EUR 250,000
+R6 | Velvet Frost Creative Test Results | Owner: Jonas Brunner | Updated: Monday, November 9, 2026 | Status: Draft, not reviewed | Claims video drove brand lift
+R7 | Retail Store Training Calendar 2027 | Owner: Retail Education | Updated: Monday, November 2, 2026 | Status: Approved | Store staff training dates
+After you receive this source, reply only: "Got it. I'll use this as the source."

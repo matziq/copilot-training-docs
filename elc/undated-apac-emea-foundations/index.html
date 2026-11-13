@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+
+<html data-navigation="full" data-season="autumn" lang="en-US">
+<head><meta charset="utf-8"/><script>(function(){var r=document.documentElement;r.dataset.season='autumn';try{if(localStorage.getItem('elc-apac-emea-ff9843f413-copilot-student-theme')==='dark'){r.dataset.theme='dark';}var savedSeason=localStorage.getItem('elc-apac-emea-ff9843f413-copilot-student-season');if(['autumn','winter','spring','summer'].includes(savedSeason)){r.dataset.season=savedSeason;}var savedNavigation=localStorage.getItem('elc-apac-emea-ff9843f413-copilot-student-navigation');if(['full','compact','hidden'].includes(savedNavigation)){r.dataset.navigation=savedNavigation;}}catch(error){window.guideThemeStorageUnavailable=true;}})();</script>
+<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="noindex,nofollow,noarchive" name="googlebot"/>
+<meta content="light dark" name="color-scheme"/>
+<title>ELC APAC &amp; EMEA | Microsoft Copilot Chat | Student Guide</title>
+<style>
+:root{color-scheme:light;--cp-bg:#f7f4ef;--cp-bg-elevated:#fcfbf8;--cp-surface:#ffffff;
+--cp-surface-soft:#f2f0ec;--cp-border:#e2ddd5;--cp-border-strong:#b9b2a6;
+--cp-text:#1b1c28;--cp-text-muted:#5c5c66;--cp-text-soft:#6f6f78;--cp-accent:#b11f4b;
+--cp-accent-soft:rgba(177,31,75,.08);--cp-navy:#040a2b;--cp-blue:#2e3a72;--cp-peri:#9eafff;
+--cp-gold:#8a6d2f;--cp-code-bg:#0f1430;--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.10);}
+[data-theme="dark"]{color-scheme:dark;--cp-bg:#1a1b22;--cp-bg-elevated:#212230;--cp-surface:#252634;
+--cp-surface-soft:#2c2d3d;--cp-border:#3a3b4e;--cp-border-strong:#565879;--cp-text:#e6e7f0;
+--cp-text-muted:#a5a7bd;--cp-text-soft:#9092a8;--cp-accent:#fd8ea1;--cp-accent-soft:rgba(253,142,161,.14);
+--cp-navy:#0a1038;--cp-blue:#9eafff;--cp-peri:#9eafff;--cp-gold:#d8b46a;--cp-code-bg:#0b0f26;
+--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.4);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cp-bg);color:var(--cp-text);
+font-family:Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6;
+-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--cp-text);line-height:1.2;margin:0;}
+a{color:var(--cp-accent);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px;}
+header.hero{background:var(--cp-navy);color:#fff;padding:48px 0 44px;}
+header.hero .wrap{padding-bottom:0;}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--cp-peri);}
+header.hero h1{color:#fff;font-size:50px;margin:14px 0 6px;}
+header.hero .tag{font-family:Georgia,serif;font-style:italic;font-size:23px;color:#dde3ff;}
+header.hero .meta{margin-top:18px;font-size:13px;color:#aeb5d2;}
+.themebtn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);
+border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+.themebtn:hover{background:rgba(255,255,255,.2);}
+nav.toc{position:sticky;top:0;z-index:50;background:var(--cp-bg-elevated);
+border-bottom:1px solid var(--cp-border);padding:10px 0;}
+nav.toc .wrap{padding-bottom:0;display:flex;gap:8px;flex-wrap:wrap;}
+nav.toc a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--cp-text-muted);
+padding:6px 12px;border-radius:999px;border:1px solid transparent;}
+nav.toc a:hover{color:var(--cp-accent);border-color:var(--cp-border);background:var(--cp-surface);}
+section{margin-top:52px;scroll-margin-top:64px;}
+section > h2{font-size:31px;margin-bottom:6px;}
+.lede{color:var(--cp-text-muted);font-size:15px;margin:0 0 22px;max-width:74ch;}
+.card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+padding:20px 22px;box-shadow:var(--cp-shadow);}
+.grid{display:grid;gap:14px;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.file{display:flex;gap:12px;align-items:flex-start;}
+.file code{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:6px;
+padding:2px 7px;font-size:12.5px;color:var(--cp-blue);}
+.file p{margin:4px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.gcse{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--cp-border);}
+.gcse:last-child{border-bottom:none;}
+.orb{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--cp-blue);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:20px;font-weight:700;}
+.gcse h3{font-size:18px;}
+.gcse .q{color:var(--cp-text-muted);font-size:14px;margin:2px 0 6px;}
+.gcse .ex{font-size:14px;font-style:italic;color:var(--cp-blue);}
+details.demo{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:14px;box-shadow:var(--cp-shadow);overflow:hidden;}
+details.demo[open]{border-color:var(--cp-border-strong);}
+summary{cursor:pointer;padding:18px 22px;display:flex;gap:16px;align-items:center;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+summary:hover{background:var(--cp-surface-soft);}
+.dnum{flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--cp-navy);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:17px;font-weight:700;}
+.dhead{flex:1 1 auto;min-width:0;}
+.dhead h3{font-size:21px;}
+.dhead p{margin:2px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.pill{flex:0 0 auto;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+background:var(--cp-accent-soft);color:var(--cp-accent);border-radius:999px;padding:5px 11px;}
+.dbody{padding:0 22px 22px;border-top:1px solid var(--cp-border);}
+.dbody code{display:inline-block;background:var(--cp-surface-soft);border:1px solid var(--cp-border);
+border-radius:6px;padding:3px 9px;font-size:12.5px;color:var(--cp-blue);margin:0 8px 6px 0;}
+.label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+color:var(--cp-text-soft);margin:20px 0 8px;}
+.promptbox{position:relative;background:var(--cp-code-bg);border-radius:12px;padding:18px 20px;}
+.promptbox pre{margin:0;white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
+font-size:14px;line-height:1.65;color:var(--cp-code-fg);}
+.promptbox pre::first-line{}
+.promptbox{padding-right:88px;}
+@media print{.promptbox{padding-right:20px;}} .promptbox.has-file{padding-top:54px;padding-right:20px;} .pb-actions{position:absolute;top:12px;right:12px;display:flex;gap:6px;} .pb-actions .copy{position:static;} .openfile{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:600;font-family:inherit;text-decoration:none;line-height:normal;} .openfile:hover{background:rgba(255,255,255,.24);} .openfile:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px;} @media print{.pb-actions{display:none;}.promptbox.has-file{padding-top:18px;}}
+.instr{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:22px;box-shadow:var(--cp-shadow);overflow:hidden;break-inside:avoid;scroll-margin-top:108px;}
+.instr>summary{padding:16px 22px;}
+.ichev{font-size:15px;color:var(--cp-accent);transition:transform .18s ease;flex:0 0 auto;}
+.instr[open] .ichev{transform:rotate(90deg);}
+.ihead{flex:1 1 auto;}
+.ihead h3{font-size:20px;margin:0;letter-spacing:-.01em;}
+.ihead p{margin:2px 0 0;font-size:13px;color:var(--cp-text-muted);}
+.ipill{flex:0 0 auto;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;
+color:var(--cp-accent);background:var(--cp-accent-soft);border-radius:999px;padding:5px 11px;}
+.ibody{padding:0 22px 6px;border-top:1px solid var(--cp-border);}
+.ibody section{padding-top:20px;}
+.ibody h2{font-size:22px;}
+@media print{.instr>summary{display:none;}.ibody{padding:0;border-top:0;}}
+.pnote{margin:14px 0 6px;font-size:13px;line-height:1.55;color:var(--cp-text-muted);border-left:3px solid var(--cp-accent);padding:0 0 0 10px;}
+.pnote span{display:block;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;color:var(--cp-accent);margin-bottom:2px;}
+.pnote+.promptbox{margin-top:0;}
+@media print{}
+.promptbox pre strong{color:#fff;font-weight:700;}
+.copy{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.12);color:#fff;
+border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;
+font-weight:600;cursor:pointer;font-family:inherit;}
+.copy:hover{background:rgba(255,255,255,.24);}
+.copy.done{background:#2e7d62;border-color:#2e7d62;}
+ol.follow{margin:0;padding-left:22px;}
+ol.follow li{margin-bottom:9px;font-size:14.5px;}
+.see{margin-top:14px;background:var(--cp-surface-soft);border-left:3px solid var(--cp-blue);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.see strong{color:var(--cp-blue);}
+.watch{margin-top:14px;background:var(--cp-accent-soft);border-left:3px solid var(--cp-accent);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.watch strong{color:var(--cp-accent);}
+.applies{margin-top:10px;font-size:14px;color:var(--cp-text-muted);font-style:italic;}
+.newcard h3{font-size:18px;margin-bottom:6px;}
+.newcard p{margin:0 0 10px;font-size:14px;color:var(--cp-text-muted);}
+.newcard .status{font-size:11.5px;font-weight:700;color:var(--cp-gold);
+letter-spacing:.04em;text-transform:uppercase;}
+.gcard h3{font-size:17px;margin-bottom:5px;}
+.gcard p{margin:0;font-size:14px;color:var(--cp-text-muted);}
+table.glance{width:100%;border-collapse:collapse;font-size:14px;}
+table.glance th{text-align:left;font-family:Aptos,sans-serif;font-size:11px;letter-spacing:.12em;
+text-transform:uppercase;color:var(--cp-text-soft);padding:0 12px 10px 0;border-bottom:1px solid var(--cp-border);}
+table.glance td{padding:13px 12px 13px 0;border-bottom:1px solid var(--cp-border);vertical-align:top;}
+table.glance tr:last-child td{border-bottom:none;}
+table.glance .n{font-family:Georgia,serif;font-weight:700;color:var(--cp-blue);width:34px;}
+table.glance .t{font-family:Georgia,serif;font-size:16px;color:var(--cp-text);white-space:nowrap;}
+table.glance .s{font-size:12px;color:var(--cp-text-soft);white-space:nowrap;}
+table.glance .o{color:var(--cp-text-muted);}
+.scenario{background:var(--cp-navy);color:#fff;border-radius:14px;padding:26px 28px;}
+.scenario h3{color:#fff;font-size:22px;margin-bottom:10px;}
+.scenario p{color:#dde3ff;font-size:14.5px;margin:0 0 12px;}
+.scenario ul{margin:0;padding-left:20px;color:#c3cbf0;font-size:14px;}
+.scenario li{margin-bottom:6px;}
+.note{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:12px;
+padding:14px 18px;font-size:14px;color:var(--cp-text-muted);margin-top:16px;}
+footer.end{margin-top:70px;padding-top:26px;border-top:1px solid var(--cp-border);
+font-size:13px;color:var(--cp-text-soft);}
+@media(max-width:720px){table.glance .t,table.glance .s{white-space:normal;}}
+@media print{nav.toc,.themebtn,.copy{display:none;}details.demo{break-inside:avoid;}
+details.demo>.dbody{display:block!important;}body{background:#fff;}}
+
+
+:root{--cp-accent:#7a1126;--cp-accent-soft:rgba(122,17,38,.08)}
+[data-theme="dark"]{--cp-accent:#ffb4c0;--cp-accent-soft:rgba(255,180,192,.14)}
+header.hero .wrap{max-width:1420px}
+.layout{max-width:1420px;margin:0 auto;padding:24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:start}
+.sidebar{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;padding:15px;box-shadow:var(--cp-shadow)}
+.sidebar h2{font-size:18px;margin:0 0 8px}
+.sidebar a{display:block;color:var(--cp-text-muted);font-size:13px;font-weight:600;line-height:1.35;padding:6px 8px;border-radius:7px;text-decoration:none}
+.sidebar a:hover,.sidebar a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.sidebar .nav-actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.nav-actions button,.section-nav a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:7px;color:var(--cp-text);cursor:pointer;font:inherit;font-size:12px;font-weight:700;padding:7px 9px;text-decoration:none}
+.guide-tools{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.guide-search{display:flex;gap:8px;align-items:center}
+.guide-search label{font-size:12px;font-weight:700;color:var(--cp-text-muted);white-space:nowrap}
+.guide-search input{flex:1;min-width:0;background:var(--cp-bg);border:1px solid var(--cp-border-strong);border-radius:8px;color:var(--cp-text);font:inherit;font-size:14px;padding:9px 11px}
+.guide-search input:focus-visible{outline:3px solid var(--cp-accent);outline-offset:2px}
+.topic-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.topic-links a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:999px;color:var(--cp-text);font-size:12px;font-weight:700;padding:6px 10px;text-decoration:none}
+.topic-links a:hover,.topic-links a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent);border-color:var(--cp-accent)}
+.search-results{display:none;margin:10px 0 0;padding:0;list-style:none;border-top:1px solid var(--cp-border)}
+.search-results.has-results{display:block}
+.search-results li{margin-top:7px}
+.search-results a{display:block;color:var(--cp-text);font-size:13px;padding:6px 8px;border-radius:7px;text-decoration:none}
+.search-results a:hover,.search-results a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.search-empty{color:var(--cp-text-muted);font-size:13px;margin:10px 0 0}
+.search-match{outline:2px solid var(--cp-accent);outline-offset:3px}
+.content{min-width:0}
+details.section{scroll-margin-top:20px}
+details.section summary h2{font-size:20px;line-height:1.25}
+details.section summary .dhead span,details.section summary .ihead span{display:block;font-family:Aptos,"Segoe UI",sans-serif;font-size:13px;font-weight:400;color:var(--cp-text-muted);margin-top:3px}
+.ibody{padding-bottom:22px}
+.ibody p,.dbody p{font-size:14.5px}
+.ibody a,.dbody a{overflow-wrap:anywhere}
+.dbody .label:first-child{margin-top:20px}
+.promptbox pre{overflow-wrap:anywhere}
+.promptbox .copy:focus-visible,.themebtn:focus-visible,summary:focus-visible,.nav-actions button:focus-visible,.section-nav a:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px}
+.section-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.section-nav a:last-child{margin-left:auto}
+.news-card{padding:16px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface)}
+.news-card h3{font-size:17px;margin:3px 0 7px}
+.news-card p{margin:0 0 8px}
+.news-card .status{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--cp-accent)}
+.duration{font-size:13px;color:var(--cp-text-muted)}
+.callout{border-left:4px solid var(--cp-accent);padding:12px 15px;background:var(--cp-surface-soft);border-radius:8px;margin:15px 0}
+footer.end{margin:28px 0 16px}
+@media(max-width:850px){.layout{grid-template-columns:1fr;padding:16px}.sidebar{position:static;max-height:none}.sidebar-links{display:flex;gap:2px;flex-wrap:wrap}.sidebar a{display:inline-block}header.hero h1{font-size:36px}}
+@media(max-width:500px){.guide-search{display:block}.guide-search label{display:block;margin-bottom:5px}.guide-search input{width:100%}summary{padding:14px;gap:10px}.dbody,.ibody{padding-left:14px;padding-right:14px}.g2,.g3{grid-template-columns:1fr}.pill,.ipill{display:none}.promptbox pre{font-size:13px}.promptbox{padding-right:72px}.copy{padding:6px}}
+@media print{.sidebar,.section-nav{display:none}.layout{display:block;padding:0}details.section>.dbody,details.section>.ibody{display:block!important}details.section{box-shadow:none}}
+</style>
+<style>:root {
+  --cp-bg: #f7f3ec;
+  --cp-bg-elevated: #f7f3ec;
+  --cp-surface: #fff;
+  --cp-surface-soft: #fbf8f2;
+  --cp-border: #e4dccd;
+  --cp-border-strong: #b98f73;
+  --cp-text: #242328;
+  --cp-text-muted: #596069;
+  --cp-text-soft: #596069;
+  --cp-accent: #7a1126;
+  --cp-accent-soft: rgba(122, 17, 38, .08);
+  --cp-navy: #351420;
+  --cp-blue: #284f78;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #b78a54;
+  --cp-code-bg: #fbf8f2;
+  --cp-code-fg: #242328;
+  --cp-shadow: 0 6px 22px rgba(53, 20, 32, .06);
+}
+[data-theme="dark"] {
+  --cp-bg: #181419;
+  --cp-bg-elevated: #181419;
+  --cp-surface: #271f26;
+  --cp-surface-soft: #211a20;
+  --cp-border: #4a3b45;
+  --cp-border-strong: #a58275;
+  --cp-text: #f5edf0;
+  --cp-text-muted: #d3c7cf;
+  --cp-text-soft: #d3c7cf;
+  --cp-accent: #ffbecb;
+  --cp-accent-soft: rgba(255, 190, 203, .12);
+  --cp-navy: #351420;
+  --cp-blue: #bdd9fa;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #d8b27a;
+  --cp-code-bg: #211a20;
+  --cp-code-fg: #f5edf0;
+  --cp-shadow: 0 6px 22px rgba(0, 0, 0, .22);
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", Aptos, Helvetica, Arial, sans-serif; line-height: 1.55; }
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 200; padding: 8px 12px;
+  background: var(--cp-surface); color: var(--cp-text); transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+.topbar {
+  position: sticky; top: 0; z-index: 100; min-height: 64px; display: flex;
+  align-items: center; gap: 16px; padding: 10px 24px; background: var(--cp-navy);
+  color: #fff; border-bottom: 3px solid var(--cp-gold);
+}
+.brand {
+  font-family: Georgia, "Times New Roman", serif; color: var(--cp-peri);
+  font-size: .84rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+}
+.bar-title {
+  flex: 1; margin: 0; font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem; font-weight: 400;
+}
+.top-actions { display: flex; gap: 7px; flex-wrap: wrap; }
+.top-actions button {
+  background: transparent; color: #fff; border: 1px solid var(--cp-gold);
+  border-radius: 4px; padding: 7px 10px; cursor: pointer; font: inherit; font-size: .81rem;
+}
+.top-actions button:hover, .top-actions button:focus-visible {
+  background: var(--cp-gold); color: var(--cp-navy);
+}
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--cp-gold); outline-offset: 3px;
+}
+.layout {
+  display: flex; gap: 0; width: 100%; max-width: none; margin: 0; padding: 0; align-items: flex-start;
+}
+.toc-column {
+  flex: 0 0 250px; width: 250px; position: sticky; top: var(--cp-header-height,64px);
+  align-self: flex-start; height: calc(100vh - var(--cp-header-height,64px));
+  overflow: auto; background: var(--cp-bg);
+}
+.toc-toggle {
+  display: block; width: 34px; height: 30px; margin: 10px 0 0 16px; padding: 0;
+  color: var(--cp-text); background: var(--cp-surface); border: 1px solid var(--cp-border);
+  border-radius: 5px; cursor: pointer; font: inherit; font-size: 0;
+}
+.toc-toggle::before {
+  content: ""; display: inline-block; width: 14px; height: 12px;
+  border: 1px solid currentColor; border-radius: 2px;
+  background: linear-gradient(to right, currentColor 0 3px, transparent 3px 100%);
+  vertical-align: middle;
+}
+.toc-toggle:hover,.toc-toggle:focus-visible { color: var(--cp-accent); border-color: var(--cp-accent); }
+.toc-toggle:focus-visible { outline: 3px solid var(--cp-gold); outline-offset: 3px; }
+nav.toc {
+  position: static; z-index: 10; width: 250px; height: auto; overflow: visible; padding: 10px 20px 20px;
+  background: var(--cp-bg); border: 0;
+}
+nav.toc .wrap { display: block; max-width: none; padding: 0; }
+.toc-title {
+  margin-bottom: 8px; color: var(--cp-text-muted); font-size: .75rem;
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+nav.toc a {
+  display: block; padding: 6px 10px; color: var(--cp-text); border: 0;
+  border-left: 3px solid transparent; border-radius: 0; font-size: .88rem;
+  font-weight: 400; text-decoration: none;
+}
+nav.toc a:hover, nav.toc a.active {
+  border-left-color: var(--cp-gold); background: var(--cp-accent-soft); color: var(--cp-text);
+}
+[data-navigation="compact"] .toc-column { flex-basis: 72px; width: 72px; }
+[data-navigation="compact"] nav.toc { width: 72px; padding: 10px 8px 20px; }
+[data-navigation="compact"] .toc-toggle { margin-left: 19px; }
+[data-navigation="compact"] nav.toc .toc-title {
+  overflow: hidden; font-size: 0; text-align: center;
+}
+[data-navigation="compact"] nav.toc .toc-title::after { content: "Menu"; font-size: .68rem; }
+[data-navigation="compact"] nav.toc a {
+  overflow: hidden; padding: 8px 4px; font-size: 0; text-align: center;
+}
+[data-navigation="compact"] nav.toc a::after {
+  content: attr(data-short); font-size: .74rem; font-weight: 700; letter-spacing: .03em;
+}
+[data-navigation="hidden"] .toc-column { flex-basis: 52px; width: 52px; }
+[data-navigation="hidden"] nav.toc { display: none; }
+[data-navigation="hidden"] .toc-toggle { margin-left: 9px; }
+.content { flex: 1; min-width: 0; padding: 20px 24px 80px; }
+header.hero { border-radius: 8px; padding: 28px; margin-bottom: 20px; }
+header.hero .wrap { max-width: none; padding: 0; }
+header.hero h1 { margin: 8px 0; color: #fff; font-size: clamp(1.7rem, 3vw, 2.1rem); font-weight: 400; }
+header.hero .tag { margin: 3px 0; color: #f4e3e7; font-size: 1.12rem; }
+header.hero .meta { margin: 9px 0 0; color: #f1e2e5; font-size: .9rem; }
+.instr, details.demo {
+  overflow: hidden; margin-bottom: 18px; border: 1px solid var(--cp-border);
+  border-radius: 8px; background: var(--cp-surface); box-shadow: var(--cp-shadow);
+}
+details.section { scroll-margin-top: 88px; }
+.instr > summary, details.demo > summary { padding: 14px 20px; gap: 12px; }
+.instr[open] > summary, details.demo[open] > summary { border-bottom: 1px solid var(--cp-border); }
+details.section summary h2 { font-size: 1.25rem; }
+details.demo summary h2 { font-weight: 400; }
+.dnum { background: var(--cp-navy); border-radius: 6px; }
+.pill, .ipill { color: var(--cp-accent); background: var(--cp-accent-soft); }
+.ibody, .dbody { padding: 16px 22px 22px; border: 0; }
+.ibody p, .dbody p { line-height: 1.65; }
+.demo-intro {
+  margin: 0 0 14px; padding: 12px 14px; border: 1px solid var(--cp-border-strong);
+  border-radius: 4px; background: var(--cp-surface-soft);
+}
+.dbody .demo-intro .label:first-child { margin: 0 0 4px; }
+.demo-intro p { margin: 0; }
+.demo-intro .applies { margin-top: 6px; }
+.step, .hint {
+  margin: 10px 0; overflow: hidden; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-surface); scroll-margin-top: 88px;
+}
+.step > summary, .hint > summary { padding: 11px 14px; gap: 12px; font-size: .95rem; font-weight: 600; }
+.step > summary > span:first-child, .hint > summary > span:first-child { flex: 1; }
+.step[open] > summary, .hint[open] > summary { border-bottom: 1px solid var(--cp-border); }
+.step-body, .hint-body { padding: 12px 14px; }
+.step-body .label:first-child { margin-top: 0; }
+.step-body .promptbox + .pnote { margin-top: 16px; }
+.step-body .note { margin: 0 0 12px; }
+.step-body .see { margin: 0; border-left-color: var(--cp-gold); }
+.hint > summary strong { margin-right: 5px; color: var(--cp-accent); }
+.hint.fact > summary strong { color: var(--cp-blue); }
+.hint.tip,.tip-feature{border:2px solid var(--cp-accent);border-left-width:6px;box-shadow:0 4px 14px color-mix(in srgb,var(--cp-accent) 18%,transparent)}
+.hint.tip>summary,.tip-feature>summary{background:var(--cp-accent-soft);color:var(--cp-text)}
+.hint.tip>summary::before,.tip-feature>summary::before{content:"TIP";flex:0 0 auto;background:var(--cp-accent);border-radius:999px;color:var(--cp-on-accent);font-size:.68rem;font-weight:800;letter-spacing:.08em;padding:4px 7px}
+.hint.tip[open]>.hint-body,.tip-feature[open]>.step-body{background:color-mix(in srgb,var(--cp-accent-soft) 48%,var(--cp-surface))}
+.hint.fact { border-left: 3px solid var(--cp-blue); }
+.hint-body { font-size: .92rem; line-height: 1.6; }
+.step .chev, .hint .chev {
+  color: var(--cp-accent); transform: rotate(-90deg); transition: transform .18s ease;
+}
+.step[open] .chev, .hint[open] .chev { transform: rotate(0); }
+.promptbox {
+  position: relative; padding: 14px 100px 14px 14px; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-code-bg);
+}
+.promptbox pre {
+  color: var(--cp-code-fg); font: inherit; font-size: .91rem; line-height: 1.65;
+  white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal;
+}
+.promptbox.has-file { padding-top: 48px; }
+.promptbox.has-file pre { line-height: 1.45; }
+.promptbox pre strong { color: var(--cp-accent); }
+.copy {
+  top: 8px; right: 8px; padding: 6px 10px; border: 1px solid var(--cp-gold);
+  border-radius: 4px; background: var(--cp-navy); color: #fff;
+}
+.copy:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.copy.done { border-color: #2e7d62; background: #2e7d62; }
+.openfile { padding: 6px 10px; border: 1px solid var(--cp-gold); border-radius: 4px; background: var(--cp-navy); color: #fff; }
+.openfile:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.pb-actions { top: 8px; right: 8px; }
+.tip-index { margin: 0; padding-left: 22px; }
+.tip-index li { margin: 7px 0; }
+.toast {
+  position: fixed; right: 18px; bottom: 18px; z-index: 150; max-width: min(420px, calc(100vw - 36px));
+  padding: 10px 14px; border: 1px solid var(--cp-gold); border-radius: 6px;
+  background: var(--cp-navy); color: #fff; box-shadow: var(--cp-shadow);
+}
+footer.end { margin-top: 28px; padding-bottom: 0; }
+@media (max-width: 900px) {
+  .topbar { position: relative; flex-wrap: wrap; padding: 12px 16px; }
+  .brand { width: 100%; font-size: .78rem; }
+  .bar-title { min-width: 180px; font-size: 1.02rem; }
+  .layout { display: block; }
+  .toc-column,
+  [data-navigation="compact"] .toc-column,
+  [data-navigation="hidden"] .toc-column {
+    position: static; width: auto; height: auto; flex-basis: auto;
+  }
+  .toc-toggle,
+  [data-navigation="compact"] .toc-toggle,
+  [data-navigation="hidden"] .toc-toggle { margin: 8px 12px 0; }
+  nav.toc { position: static; width: auto; height: auto; padding: 10px 12px; overflow: visible; }
+  [data-navigation="compact"] nav.toc { width: auto; padding: 10px 12px; }
+  nav.toc .wrap { display: flex; flex-wrap: nowrap; gap: 3px; overflow-x: auto; padding: 2px 0; }
+  nav.toc a {
+    flex: 0 0 auto; white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent;
+  }
+  [data-navigation="compact"] nav.toc a {
+    padding: 6px 12px; font-size: .88rem; text-align: left;
+  }
+  [data-navigation="compact"] nav.toc a::after { content: none; }
+  nav.toc a:hover, nav.toc a.active { border-left: 0; border-bottom-color: var(--cp-gold); }
+  .toc-title { display: none; }
+  .content { padding: 16px 14px 55px; }
+  header.hero { padding: 22px; }
+  details.section, .step, .hint { scroll-margin-top: 12px; }
+}
+@media (max-width: 500px) {
+  .top-actions { width: 100%; }
+  .top-actions button { flex: 1; }
+  .brand { white-space: normal; }
+  .instr > summary, details.demo > summary { align-items: flex-start; padding: 14px; gap: 10px; }
+  .pill, .ipill { display: block; padding: 4px 7px; font-size: .62rem; }
+  .ibody, .dbody { padding-left: 14px; padding-right: 14px; }
+  .promptbox { padding-right: 84px; }
+}
+@media (max-width: 360px) {
+  .instr > summary, details.demo > summary { flex-wrap: wrap; }
+  .instr > summary .ihead, details.demo > summary .dhead {
+    flex: 1 1 calc(100% - 56px); min-width: 0; overflow-wrap: anywhere;
+  }
+  .instr > summary .ipill { margin-left: 20px; }
+  details.demo > summary .pill { margin-left: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ichev, .step .chev, .hint .chev { transition: none; }
+}
+@media print {
+  :root, [data-theme="dark"] {
+    --cp-bg: #fff; --cp-surface: #fff; --cp-surface-soft: #fff;
+    --cp-text: #000; --cp-text-muted: #333; --cp-code-bg: #fff; --cp-code-fg: #000;
+    --cp-border: #999; --cp-accent: #641526; --cp-shadow: none;
+  }
+  html { scroll-behavior: auto; }
+  .topbar, .toc-column, .copy, .pb-actions, .toast, .skip-link, .section-nav { display: none !important; }
+  .layout { display: block; padding: 0; }
+  .content { padding: 0; }
+  .instr, details.demo, .step, .hint { break-inside: auto; box-shadow: none; }
+  .instr > summary, details.demo > summary { display: flex !important; break-after: avoid; }
+  .instr .ibody, details.demo .dbody { display: block !important; }
+  .promptbox { padding: 12px; break-inside: avoid; }
+}
+</style><style id="student-guide-controls">
+:root[data-season="winter"] {
+  --cp-bg:#eef4f7;--cp-bg-elevated:#eef4f7;--cp-surface:#fff;--cp-surface-soft:#f3f7fa;
+  --cp-border:#cddbe4;--cp-border-strong:#829bab;--cp-text:#20313e;
+  --cp-text-muted:#516271;--cp-text-soft:#516271;--cp-accent:#7a1126;
+  --cp-accent-soft:rgba(122,17,38,.07);--cp-navy:#122d43;--cp-blue:#315977;
+  --cp-peri:#f0d7a1;--cp-gold:#9e7c4a;--cp-code-bg:#f3f7fa;--cp-code-fg:#20313e;
+  --cp-shadow:0 6px 22px rgba(18,45,67,.07);
+}
+:root[data-season="winter"][data-theme="dark"] {
+  --cp-bg:#0f1b27;--cp-bg-elevated:#0f1b27;--cp-surface:#172a3a;--cp-surface-soft:#102232;
+  --cp-border:#375064;--cp-border-strong:#88a6bb;--cp-text:#eef5fa;
+  --cp-text-muted:#c4d4e0;--cp-text-soft:#c4d4e0;--cp-accent:#ffc2ce;
+  --cp-accent-soft:rgba(255,194,206,.12);--cp-navy:#122d43;--cp-blue:#bdddf6;
+  --cp-peri:#f0d7a1;--cp-gold:#d9b880;--cp-code-bg:#102232;--cp-code-fg:#eef5fa;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.22);
+}
+:root[data-season="spring"] {
+  --cp-bg:#f2f7f1;--cp-bg-elevated:#f2f7f1;--cp-surface:#fff;--cp-surface-soft:#edf4eb;
+  --cp-border:#d5e2d1;--cp-border-strong:#91ad8e;--cp-text:#1e3024;
+  --cp-text-muted:#526655;--cp-text-soft:#526655;--cp-accent:#356b45;
+  --cp-accent-soft:rgba(53,107,69,.08);--cp-navy:#173b2a;--cp-blue:#356b45;
+  --cp-peri:#cfe7c8;--cp-gold:#8b9560;--cp-code-bg:#f6faf4;--cp-code-fg:#1e3024;
+  --cp-shadow:0 6px 22px rgba(35,75,43,.07);
+}
+:root[data-season="spring"][data-theme="dark"] {
+  --cp-bg:#141d17;--cp-bg-elevated:#141d17;--cp-surface:#1d2a20;--cp-surface-soft:#18251b;
+  --cp-border:#3b5140;--cp-border-strong:#829b85;--cp-text:#edf5ee;
+  --cp-text-muted:#c0d0c2;--cp-text-soft:#c0d0c2;--cp-accent:#a8d7ad;
+  --cp-accent-soft:rgba(168,215,173,.13);--cp-navy:#173b2a;--cp-blue:#b8e3bc;
+  --cp-peri:#d2e8b6;--cp-gold:#d4c98c;--cp-code-bg:#18251b;--cp-code-fg:#edf5ee;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.24);
+}
+:root[data-season="summer"] {
+  --cp-bg:#fff8e9;--cp-bg-elevated:#fff8e9;--cp-surface:#fff;--cp-surface-soft:#fff2d6;
+  --cp-border:#ead9b5;--cp-border-strong:#c69d60;--cp-text:#292d34;
+  --cp-text-muted:#5d5b55;--cp-text-soft:#5d5b55;--cp-accent:#a9441b;
+  --cp-accent-soft:rgba(169,68,27,.08);--cp-navy:#164a70;--cp-blue:#236b9a;
+  --cp-peri:#ffe2a0;--cp-gold:#a96e16;--cp-code-bg:#fffaf0;--cp-code-fg:#292d34;
+  --cp-shadow:0 6px 22px rgba(110,75,24,.08);
+}
+:root[data-season="summer"][data-theme="dark"] {
+  --cp-bg:#151d25;--cp-bg-elevated:#151d25;--cp-surface:#202b35;--cp-surface-soft:#1a2630;
+  --cp-border:#425461;--cp-border-strong:#92a7b3;--cp-text:#f0f3f5;
+  --cp-text-muted:#c6d0d5;--cp-text-soft:#c6d0d5;--cp-accent:#ffbf78;
+  --cp-accent-soft:rgba(255,191,120,.14);--cp-navy:#164a70;--cp-blue:#a9d8f3;
+  --cp-peri:#ffe2a0;--cp-gold:#e0bb74;--cp-code-bg:#1a2630;--cp-code-fg:#f0f3f5;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.25);
+}
+.topbar{flex-wrap:wrap}
+.brand{flex:0 1 auto}
+.bar-title{flex:1 1 220px;font-size:1.15rem}
+.top-actions{margin-left:auto}
+.top-actions button{white-space:nowrap}
+details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) + 24px)}
+.hero-panel{
+  margin-bottom:18px;border:1px solid var(--cp-navy);border-radius:8px;
+  background:var(--cp-navy);color:#fff;overflow:hidden;
+}
+.hero-panel>summary{padding:24px 28px 18px;gap:18px;align-items:flex-start}
+.hero-panel>summary:hover{background:var(--cp-navy)}
+.hero-panel>summary>div{flex:1;min-width:0}
+.hero-panel h1{color:#fff;font-size:clamp(1.7rem,3vw,2.1rem);font-weight:400;margin:8px 0 0}
+.hero-chevron{color:var(--cp-peri);font-size:1.4rem;transform:rotate(0);transition:transform .18s ease}
+.hero-panel[open] .hero-chevron{transform:rotate(90deg)}
+.hero-body{padding:0 28px 24px}
+.hero-body .tag{font:italic 1.12rem/1.5 Georgia,serif;color:#f4e3e7}
+.hero-body .meta{margin-top:12px;color:#f1e2e5;font-size:.9rem}
+.season-label{margin-top:12px;color:var(--cp-peri);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+.grid{align-items:start}
+.subcard{margin:0;padding:0;min-width:0;box-shadow:none}
+.subcard>summary{align-items:flex-start}
+.subcard>summary h3{flex:1;min-width:0;margin:0;font:400 1.05rem/1.35 Georgia,serif}
+.subcard .status{color:var(--cp-accent);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.subcard .step-body p{margin:8px 0}
+.demo-overview .demo-intro{margin:0}
+.demo-overview .step-body{padding:0}
+.demo-overview .demo-intro{border:0;border-radius:0;padding:12px 14px}
+.recommendation .rec-label{
+  display:block;margin-bottom:4px;color:var(--cp-accent);font-size:.68rem;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+}
+.recommendation .step-body>p{margin:0 0 12px}
+.savebox{
+  position:relative;padding:14px 100px 14px 14px;border:1px solid var(--cp-border);
+  border-radius:6px;background:var(--cp-code-bg);
+}
+.savebox pre{
+  margin:0;color:var(--cp-code-fg);font:inherit;font-size:.91rem;line-height:1.65;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.meme-figure{margin:0}
+.meme-figure img{display:block;max-width:100%;height:auto;border-radius:6px}
+.meme-figure figcaption{margin-top:10px;color:var(--cp-text-muted);font-size:.85rem}
+.history-date{color:var(--cp-accent);font-weight:700}
+.about-body footer.end{margin:0;padding:0;border:0}
+@media(max-width:900px){
+  .brand{flex-basis:100%}
+  details.section,.step,.hint{scroll-margin-top:12px}
+}
+@media(max-width:500px){
+  .top-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-left:0}
+  .top-actions button{width:100%}
+  .hero-panel>summary{padding:20px 20px 16px}
+  .hero-body{padding:0 20px 20px}
+  .savebox{padding-right:84px}
+  .subcard>summary{flex-wrap:nowrap}
+}
+@media(prefers-reduced-motion:reduce){.hero-chevron{transition:none}}
+@media print{
+  .hero-panel{background:#fff;color:#000;border-color:#999}
+  .hero-panel h1,.hero-panel .eyebrow,.hero-body .tag,.hero-body .meta,.season-label{color:#000}
+  .hero-chevron,.chev{display:none}
+  .savebox{padding:12px}
+}
+</style><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23351420'/%3E%3Cpath d='M6 8h8l2 2 2-2h8v17h-8l-2 2-2-2H6z' fill='none' stroke='%23d8b27a' stroke-width='2'/%3E%3C/svg%3E"/></head>
+<body><div data-customer-menu style="padding:10px 16px;background:#0b1f3a;color:#fff;font:14px/1.5 system-ui,sans-serif;position:relative;z-index:1"><a href="../index.html" style="color:#fff;text-decoration:underline">Back to The Estee Lauder Companies training menu</a></div>
+<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">ELC APAC &amp; EMEA</span><p class="bar-title">Microsoft Copilot Chat: Student Guide</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button></div></header>
+<div class="layout">
+<div class="toc-column"><button aria-label="Collapse navigation" aria-pressed="false" class="toc-toggle" id="navbtn" type="button">Navigation: Full</button><nav aria-label="Guide contents" class="toc"><div class="wrap"><div class="toc-title">Contents</div><a href="#overview">Overview</a><a href="#start">Start here</a><a href="#d01">01. Your first prompt in Copilot Chat</a><a href="#d02">02. Repair a weak prompt with GCSE</a><a href="#d03">03. Summarize an email thread and draft a reply</a><a href="#d04">04. Recap a Teams meeting</a><a href="#d05">05. Verify the output and catch errors</a><a href="#prompting">Prompting &amp; safety</a><a href="#memory">Memory</a><a href="#tips">Tips &amp; tricks</a><a href="#wrap-up">Wrap-up</a><a href="#about-guide">About</a></div></nav></div>
+<main class="content" id="main-content" tabindex="-1"><div class="guide-tools" role="search"><div class="guide-search"><label for="guide-search">Find a prompt or topic</label><input autocomplete="off" id="guide-search" placeholder="Search prompts, Outlook, Teams, GCSE..." type="search"/></div><div aria-label="Popular topics" class="topic-links"><a href="#start">Where to find Copilot</a><a href="#d01">Copilot Chat</a><a href="#d02">GCSE prompts</a><a href="#d03">Outlook</a><a href="#d04">Teams</a><a href="#d05">Verify output</a><a href="#prompting">Responsible use</a><a href="#tips">Tips</a></div><ul aria-live="polite" class="search-results" id="search-results"></ul></div><details class="section hero-panel" id="overview" open=""><summary><div><div class="eyebrow">ELC APAC &amp; EMEA · Student Guide</div><h1>Copilot Fundamentals: Prompt Foundations for APAC and EMEA</h1></div><span aria-hidden="true" class="hero-chevron">▸</span></summary><div class="hero-body"><div class="tag">Copilot Fundamentals Session 1: Prompt Foundations. Find Copilot, write effective prompts, use it responsibly, and verify what it gives you in Chat, Outlook, and Teams.</div><div class="meta">Session 1 · Prepared November 10, 2026 · 60 minutes</div><div class="season-label" id="season-label">Autumn · Warm paper and harvest tones</div><div class="section-nav"><a href="#start">Next section</a></div></div></details>
+<details class="section instr" id="start"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Start here: Microsoft Copilot Chat<span>Access, scope, and safe practice.</span></h2><span class="ipill">Start here</span></summary><div class="ibody"><div class="callout"><strong>One hour, five hands-on exercises, one fictional launch.</strong> Project Solstice, the Lumen Dew Hydrating Serum, and every person, email, meeting, date, and figure in this guide are fictional. The class is for ELC colleagues in APAC and EMEA.</div>
+<div class="grid g2">
+<details class="step subcard" open><summary><h3>Agenda · 60 minutes</h3><span class="status">Session 1</span></summary><div class="step-body"><ol class="quicklist"><li><strong>0:00-0:10</strong> What Copilot is, where to find it, and how LLMs work</li><li><strong>0:10-0:15</strong> GCSE prompting</li><li><strong>0:15-0:20</strong> Safe and responsible use</li><li><strong>0:20-0:28</strong> Exercise 01: First prompt in Copilot Chat</li><li><strong>0:28-0:35</strong> Exercise 02: GCSE prompt repair</li><li><strong>0:35-0:42</strong> Exercise 03: Outlook thread and reply</li><li><strong>0:42-0:49</strong> Exercise 04: Teams meeting recap</li><li><strong>0:49-0:55</strong> Exercise 05: Verify the output</li><li><strong>0:55-1:00</strong> Wrap-up and questions</li></ol></div></details>
+<details class="step subcard" open><summary><h3>Where to find Copilot</h3><span class="status">Work account</span></summary><div class="step-body"><ul class="quicklist"><li><strong>Web:</strong> copilot.cloud.microsoft</li><li><strong>App:</strong> the Microsoft Copilot app</li><li><strong>Browser:</strong> Microsoft Edge</li><li><strong>Outlook:</strong> Copilot Chat beside your mail</li><li><strong>Teams:</strong> Copilot Chat in Teams</li></ul><p>Sign in with your ELC work account and look for the enterprise data protection indicator.</p></div></details>
+</div>
+<details class="step"><summary><span>Which license does this guide assume?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Every core exercise works with <strong>Microsoft Copilot Chat</strong>, which is available to work accounts and uses web data plus the content you paste, upload, or have open in Outlook and Teams. Notes marked <strong>Optional for Microsoft 365 Copilot license holders</strong> describe extras such as grounding in your mailbox, files, and meetings. If you are unsure which you have, follow the core steps. Features also depend on tenant settings, rollout, and policy.</p></div></details>
+<details class="step"><summary><span>Safe practice in one minute</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ul class="quicklist"><li>Use the fictional sources in this guide; do not paste confidential, personal, or customer data into practice chats.</li><li>Follow ELC policy for real work.</li><li>Check names, numbers, dates, and claims before you share anything.</li><li>Copilot drafts; you decide. Nothing in a chat sends, approves, or publishes on its own.</li></ul></div></details>
+<p><a href="https://learn.microsoft.com/en-us/copilot/plan/copilot-overview" target="_blank" rel="noopener">Microsoft Copilot overview</a> · <a href="https://learn.microsoft.com/en-us/copilot/plan/microsoft-copilot-requirements" target="_blank" rel="noopener">Microsoft Copilot requirements</a> · <a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Enterprise data protection</a></p><div class="section-nav"><div class="section-nav"><a href="#overview">Previous section</a><a href="#d01">Next section</a></div></div></div></details>
+<details class="section demo" id="d01">
+<summary><span class="dnum">01</span><h2 class="dhead">Your first prompt in Copilot Chat<span>Find Copilot, paste a source, and get a grounded briefing.</span></h2><span class="pill">Copilot Chat</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d01-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Open Microsoft Copilot Chat with your work account, give it one short source, and turn it into a briefing you could use on your first day on a project.</p><div class="applies">Who it's for: Everyone, especially first-time Copilot users</div></div></div></details>
+<details class="step" id="d01-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_APAC_EMEA_practice_sources/d01-launch-fact-sheet.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL TRAINING SCENARIO: PROJECT SOLSTICE
+Prepared by: Mei Tanaka, Regional Education Lead, APAC (fictional)
+Date: Tuesday, November 10, 2026
+Product: Lumen Dew Hydrating Serum (fictional), 30 ml
+Launch windows:
+- APAC wave: Singapore, Sydney, Seoul - in store from Tuesday, January 12, 2027
+- EMEA wave: London, Paris, Dubai - in store from Tuesday, February 2, 2027
+Retail advisor training:
+- Virtual sessions, 45 minutes each
+- APAC sessions: Tuesday, December 1, 2026 and Thursday, December 3, 2026
+- EMEA sessions: Tuesday, December 8, 2026 and Thursday, December 10, 2026
+Training goals:
+- Explain the product story in plain language
+- Answer the five most common customer questions
+- Use only the approved claims list
+Approved claims (fictional):
+- &quot;Hydrates for up to 24 hours&quot;
+- &quot;Suitable for daily use, morning and evening&quot;
+Not approved:
+- Any medical claim, percentage result, or &quot;clinically proven&quot; wording
+Open items:
+- Seoul translation of training cards due Friday, November 20, 2026
+- Dubai store count not yet confirmed
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d01-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Turns a short fact sheet into a briefing that stays inside the source and flags what is still unknown.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Give me a short briefing on Project Solstice.
+<strong>Context:</strong> I just joined the regional launch team and will attend the first APAC retail training session.
+<strong>Source:</strong> Use only the pasted fact sheet. If something is not in it, say it is unknown.
+<strong>Expectation:</strong> Give me five bullets, then a table with Region, Cities, In-store date, and Training dates, then a list of open items. Keep it under 200 words.</pre></div></div></details>
+<details class="step" id="d01-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Reshapes the same facts for a different moment without adding anything new.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Rewrite the briefing as three sentences I could say aloud at the start of a team call. Keep every date unchanged.</pre></div><div class="pnote"><span>What this prompt does</span>Uses the gaps in the source to prepare better questions.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Based only on the open items and gaps in the fact sheet, list up to four questions I should ask Mei Tanaka before the first APAC session.</pre></div></div></details>
+<details class="step" id="d01-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected briefing:</strong> APAC in store on January 12, 2027 (Singapore, Sydney, Seoul); EMEA in store on February 2, 2027 (London, Paris, Dubai); APAC training December 1 and 3, 2026; EMEA training December 8 and 10, 2026; two approved claims only. The Dubai store count must stay <em>not confirmed</em>, and the Seoul translation stays due November 20, 2026. Remove anything Copilot added that is not in the fact sheet.</div></div></details>
+<details class="hint tip" id="d01-tip"><summary><span>Tip: Know where Copilot lives</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft Copilot Chat is available at <strong>copilot.cloud.microsoft</strong>, in the Microsoft Copilot app, in Microsoft Edge, and inside Outlook and Teams. Sign in with your ELC work account so your chats are covered by enterprise data protection.</div></details>
+<details class="hint fact" id="d01-fact"><summary><span>Did you know? Copilot Chat can work with content you give it</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft describes Copilot Chat as grounded in web data and able to work with content you paste, upload, or have open in Outlook and Teams. Grounding in your mailbox, files, and meetings requires a Microsoft 365 Copilot license. <a href="https://learn.microsoft.com/en-us/copilot/plan/copilot-overview" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d01-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Stay inside my source</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>This is a general working preference that is safe to save. Do not save project names, product details, or dates.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When I paste a source, use only that source and label anything it does not cover as unknown.</pre></div></div></details>
+<div class="section-nav"><a href="#start">Previous section</a><a href="#d02">Next section</a></div></div>
+</details>
+<details class="section demo" id="d02">
+<summary><span class="dnum">02</span><h2 class="dhead">Repair a weak prompt with GCSE<span>Turn a vague request into Goal, Context, Source, and Expectation.</span></h2><span class="pill">Copilot Chat</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d02-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>See how the same request improves when you state the goal, the context, the allowed source, and the expected output, and let Copilot ask questions when details are missing.</p><div class="applies">Who it's for: Everyone who writes requests, messages, or plans</div></div></div></details>
+<details class="step" id="d02-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_APAC_EMEA_practice_sources/d02-prompt-repair-card.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL PROMPT REPAIR CARD
+Owner: Lukas Becker, EMEA Retail Education Coordinator (fictional)
+Weak prompt:
+&quot;Write something about the new serum training.&quot;
+What Lukas actually needs:
+- An invitation message for EMEA retail advisors
+- Sessions: Tuesday, December 8, 2026 and Thursday, December 10, 2026
+- Format: virtual, 45 minutes each
+- Audience: advisors in London, Paris, and Dubai stores
+- Tone: warm, clear, and short enough to read on a phone
+- Must include: what advisors will learn and how to choose a session
+- Must not include: product claims beyond the approved list
+What advisors will learn:
+- The Lumen Dew product story in plain language
+- Answers to the five most common customer questions
+Approved claims (fictional):
+- &quot;Hydrates for up to 24 hours&quot;
+- &quot;Suitable for daily use, morning and evening&quot;
+Unknown details:
+- Session start times (not yet confirmed)
+- Registration link (not yet available)
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d02-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Rebuilds a weak prompt with all four GCSE parts and invites Copilot to ask about missing details before drafting.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Rewrite the weak prompt on the card as a strong GCSE prompt, then use it to draft the invitation.
+<strong>Context:</strong> I coordinate retail education for EMEA and want a message advisors will read and act on.
+<strong>Source:</strong> Use only the pasted prompt repair card.
+<strong>Expectation:</strong> Show the improved prompt with labeled Goal, Context, Source, and Expectation lines. Then draft the invitation in under 120 words, use only approved claims, and use clear placeholders for start times and the registration link. Ask any clarifying questions before responding.</pre></div></div></details>
+<details class="step" id="d02-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Adapts the draft for a mobile chat message while keeping the guardrails.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Shorten the invitation to under 60 words for a team chat message. Keep the placeholders and use only approved claims.</pre></div><div class="pnote"><span>What this prompt does</span>Explains what actually made the prompt better so you can repeat it.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Compare the weak prompt and the improved prompt. In three bullets, explain which GCSE part changed the result the most and why.</pre></div></div></details>
+<details class="step" id="d02-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected result:</strong> Copilot may first ask about start times, the registration link, or the preferred sign-off; answering with placeholders is fine. The invitation should name December 8 and December 10, 2026, say 45 minutes and virtual, name London, Paris, and Dubai, explain what advisors will learn, and use bracketed placeholders such as [start time] and [registration link]. It must not invent times or links or add claims beyond the two approved ones.</div></div></details>
+<details class="hint tip" id="d02-tip"><summary><span>Tip: Let Copilot ask first</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Adding <strong>“Ask any clarifying questions before responding.”</strong> gives Copilot permission to pause and request missing details instead of guessing. It reduces rework, but you still check the final draft. See the <a href="#clarifying-questions-tip">clarifying questions tip</a>.</div></details>
+<details class="hint fact" id="d02-fact"><summary><span>Did you know? GCSE comes from Microsoft&#x27;s own prompt guidance</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft's guidance says prompts can include four parts: Goal (what you want), Context (why and who is involved), Source (what information Copilot should use), and Expectations (how Copilot should respond). Only a clear goal is required. <a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5" target="_blank" rel="noopener">Microsoft Support</a></div></details>
+<details class="step recommendation" id="d02-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Placeholders, not guesses</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable, nonsensitive preference that is safe to save.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When details such as dates, times, names, or links are missing, use clear bracketed placeholders instead of inventing them.</pre></div></div></details>
+<div class="section-nav"><a href="#d01">Previous section</a><a href="#d03">Next section</a></div></div>
+</details>
+<details class="section demo" id="d03">
+<summary><span class="dnum">03</span><h2 class="dhead">Summarize an email thread and draft a reply<span>Pull commitments out of a thread and write a safe draft.</span></h2><span class="pill">Outlook</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d03-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Use Copilot Chat in Outlook, or Copilot Chat in your browser, to find who committed to what and by when, then draft a reply you review before sending.</p><div class="applies">Who it's for: Anyone who manages busy email threads across regions</div></div></div></details>
+<details class="step" id="d03-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_APAC_EMEA_practice_sources/d03-outlook-thread.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL EMAIL THREAD
+Subject: Solstice APAC training - studio and materials
+Message 1
+From: Priya Nair, Training Operations, Singapore (fictional)
+To: Mei Tanaka; Daniel Cho
+Sent: Monday, November 16, 2026
+Hi Mei, the Singapore studio is booked to record the December 1 session. I need the final slide files by Wednesday, November 25, 2026 to load them. Can you confirm who owns the Seoul translation?
+Message 2
+From: Daniel Cho, Retail Lead, Seoul (fictional)
+To: Priya Nair; Mei Tanaka
+Sent: Tuesday, November 17, 2026
+I own the Seoul translation. Our vendor can deliver the Korean training cards on Friday, November 20, 2026 if we receive the final English text by Wednesday, November 18, 2026.
+Message 3
+From: Mei Tanaka, Regional Education Lead, APAC (fictional)
+To: Priya Nair; Daniel Cho
+Sent: Tuesday, November 17, 2026
+Thanks both. I will send the final English text to Daniel by Wednesday, November 18. Priya, the slides will follow by Tuesday, November 24. Still open: Sydney asked whether the December 3 session can start one hour later. I have not decided.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d03-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Separates commitments from open questions and drafts a reply without making a decision that was never made.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Summarize this email thread and draft my reply to Priya and Daniel.
+<strong>Context:</strong> I am replying as Mei Tanaka, the fictional APAC education lead in this thread, and I want everyone aligned on dates.
+<strong>Source:</strong> Use only the pasted email thread.
+<strong>Expectation:</strong> Give a three-sentence summary, a table of commitments with Owner, Commitment, and Due date, and a list of open questions. Then draft a short reply that confirms the commitments. Keep the Sydney start-time question open. This is a draft only; do not imply it was sent.</pre></div></div></details>
+<details class="step" id="d03-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Improves tone and length while protecting the facts.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Make the reply friendlier and under 80 words. Keep every date and owner unchanged.</pre></div><div class="pnote"><span>What this prompt does</span>Looks for the weak link in the plan.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Using only the thread, explain what could cause the Korean training cards to miss Friday, November 20, 2026, and what I should watch for.</pre></div></div></details>
+<details class="step" id="d03-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected commitments:</strong> Daniel owns the Seoul translation; the vendor delivers on November 20, 2026 only if the English text arrives by November 18, 2026. Mei sends the English text by November 18 and the slides by November 24. Priya needs the slides by November 25, and the studio is booked for the December 1 session. The Sydney request for a later December 3 start is <em>undecided</em>. Check that the reply does not decide it.</div></div></details>
+<details class="hint tip" id="d03-tip"><summary><span>Tip: Use the email you have open</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Copilot Chat in Outlook can work with the message you have open, so you do not always need to copy and paste. In this class, paste the fictional thread so everyone works from the same source. Optional for Microsoft 365 Copilot license holders: Copilot can also find and summarize mail across your mailbox, depending on your license and settings.</div></details>
+<details class="hint fact" id="d03-fact"><summary><span>Did you know? Verify before you send</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft's prompt guidance notes that Copilot is built on large language models, which are designed to predict and generate text. That is why a draft reply still needs a human check of names, dates, and commitments before it goes out. <a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5" target="_blank" rel="noopener">Microsoft Support</a></div></details>
+<details class="step recommendation" id="d03-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Email reply style</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable writing preference. Never save recipients, thread details, or dates.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When drafting email replies, keep them under 120 words, write dates as Month Day, Year, and list owners next to each action.</pre></div></div></details>
+<div class="section-nav"><a href="#d02">Previous section</a><a href="#d04">Next section</a></div></div>
+</details>
+<details class="section demo" id="d04">
+<summary><span class="dnum">04</span><h2 class="dhead">Recap a Teams meeting<span>Separate decisions, actions, and open questions.</span></h2><span class="pill">Teams</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d04-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Turn a meeting transcript into a recap for people who missed it, without turning ideas into decisions or assigning tasks nobody accepted.</p><div class="applies">Who it's for: Meeting organizers, project leads, and anyone sharing follow-ups</div></div></div></details>
+<details class="step" id="d04-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_APAC_EMEA_practice_sources/d04-teams-transcript.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL TEAMS MEETING TRANSCRIPT
+Meeting: Solstice EMEA training check-in
+Date: Wednesday, November 18, 2026
+Attendees (all fictional): Lukas Becker, EMEA Retail Education; Amélie Durand, Paris Store Trainer; Omar Haddad, Dubai Retail Manager; Sophie Clarke, London Training Lead
+[00:01] Lukas: The goal today is to lock the EMEA session plan for December 8 and December 10.
+[00:03] Sophie: London can host the December 8 session. I will test the Teams webinar link by Friday, November 27.
+[00:06] Amélie: Paris advisors prefer December 10. I need French versions of the training cards by Monday, November 30.
+[00:09] Omar: The Dubai store count is still not confirmed. I expect an answer from the regional office by Tuesday, November 24.
+[00:12] Lukas: I will ask Mei whether the APAC translation vendor can also help with French.
+[00:14] Amélie: Could we add a live product demo on camera?
+[00:15] Lukas: Good idea, but we need to check it against the approved claims first. Let&#x27;s not decide today.
+[00:17] Lukas: Decision: two sessions. Sophie leads December 8 and Amélie leads December 10.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d04-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Creates a recap that keeps decisions, accepted actions, and open ideas clearly apart.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Recap this meeting for EMEA colleagues who missed it.
+<strong>Context:</strong> I attended the meeting and need to post a clear recap in our team channel.
+<strong>Source:</strong> Use only the pasted transcript.
+<strong>Expectation:</strong> List decisions, then an action table with Owner, Action, and Due date, then open questions. Keep it under 200 words. Do not turn ideas into decisions, and leave a due date blank when none was given.</pre></div></div></details>
+<details class="step" id="d04-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Adapts the recap for one audience.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Write a three-sentence Teams chat post from the recap for the Paris store team.</pre></div><div class="pnote"><span>What this prompt does</span>Stress-tests the recap for misleading wording.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>List anything in the recap that could be misread as a decision, and quote the transcript line that shows its actual status.</pre></div></div></details>
+<details class="step" id="d04-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected recap:</strong> The only decision is two sessions, with Sophie leading December 8 and Amélie leading December 10. Actions: Sophie tests the webinar link by November 27, 2026; Lukas asks Mei about French translation help (no due date). Open: French training cards needed by November 30, 2026 (no owner yet), the Dubai store count (answer expected by November 24, 2026), and the live product demo (not decided).</div></div></details>
+<details class="hint tip" id="d04-tip"><summary><span>Tip: Ideas are not decisions</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Meeting recaps often promote a suggestion into a decision. Ask Copilot to quote the line behind each decision and action, then check that no task was assigned to someone who did not accept it.</div></details>
+<details class="hint fact" id="d04-fact"><summary><span>Did you know? Organizers control Copilot in Teams meetings</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents settings that let Copilot in Teams meetings and events run during and after the meeting or only during the meeting. When organizers turn Copilot off for a meeting, recording and transcription are also turned off. Copilot in meetings depends on your license and policy. <a href="https://learn.microsoft.com/en-us/microsoftteams/copilot-teams-transcription" target="_blank" rel="noopener">Microsoft Learn</a></div></details>
+<details class="step recommendation" id="d04-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Recap structure</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable format preference that is safe to save.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>For meeting recaps, separate decisions, actions with owners and due dates, and open questions. Do not invent owners or dates.</pre></div></div></details>
+<div class="section-nav"><a href="#d03">Previous section</a><a href="#d05">Next section</a></div></div>
+</details>
+<details class="section demo" id="d05">
+<summary><span class="dnum">05</span><h2 class="dhead">Verify the output and catch errors<span>Check a draft against its source before it reaches anyone.</span></h2><span class="pill">Copilot Chat</span></summary>
+<div class="dbody"><details class="step demo-overview" id="d05-overview"><summary><span>What you'll practice · Who it's for</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="demo-intro"><div class="label">What it does</div><p>Practice responsible use by checking a polished-sounding draft against an approved source and correcting unsupported or wrong claims.</p><div class="applies">Who it's for: Everyone who shares Copilot output with others</div></div></div></details>
+<details class="step" id="d05-source"><summary><span>1. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I&apos;ll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_APAC_EMEA_practice_sources/d05-verification-packet.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>FICTIONAL VERIFICATION PACKET
+Part A - Approved source (fact sheet excerpt)
+Product: Lumen Dew Hydrating Serum (fictional), 30 ml
+APAC in-store date: Tuesday, January 12, 2027 (Singapore, Sydney, Seoul)
+EMEA in-store date: Tuesday, February 2, 2027 (London, Paris, Dubai)
+Approved claims:
+- &quot;Hydrates for up to 24 hours&quot;
+- &quot;Suitable for daily use, morning and evening&quot;
+Dubai store count: not yet confirmed
+Part B - Draft newsletter paragraph to check
+&quot;Lumen Dew Hydrating Serum arrives in Singapore, Sydney, and Seoul on January 12, 2027, followed by London, Paris, and Dubai on February 2, 2027. Clinically proven to reduce fine lines by 30%, it hydrates for up to 48 hours and is suitable for daily use. It will be available in all 40 Dubai stores.&quot;
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details>
+<details class="step" id="d05-start"><summary><span>Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Checks each claim in a draft against an approved source and produces a corrected version.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Check the draft paragraph in Part B against the approved source in Part A.
+<strong>Context:</strong> I review content before it goes to retail teams and must catch anything unsupported.
+<strong>Source:</strong> Treat Part A as the only source of truth and Part B as the draft under review.
+<strong>Expectation:</strong> Make a table with each claim from Part B, a status of Supported, Not supported, or Contradicted, and the Part A evidence. Then write a corrected paragraph that uses only Part A. Do not add new facts.</pre></div></div></details>
+<details class="step" id="d05-followups"><summary><span>Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Prioritizes the errors by real-world risk.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Rank the problems you found from highest to lowest risk if this paragraph reached customers, and explain each in one sentence.</pre></div><div class="pnote"><span>What this prompt does</span>Turns the lesson into a reusable habit.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Write a five-item checklist I can reuse before sharing any Copilot draft with others.</pre></div></div></details>
+<details class="step" id="d05-check"><summary><span>What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><strong>Expected findings:</strong> The cities and both in-store dates are supported. “Clinically proven to reduce fine lines by 30%” is not supported and is not an approved claim. “Up to 48 hours” contradicts the approved “up to 24 hours.” “All 40 Dubai stores” is not supported because the store count is not confirmed. The corrected paragraph should also restore “morning and evening.”</div></div></details>
+<details class="hint tip" id="d05-tip"><summary><span>Tip: Check names, numbers, dates, and claims</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Fluent writing is not proof. Before you share a draft, compare every name, number, date, and claim with the source. If Copilot cannot point to evidence, remove it or mark it for review.</div></details>
+<details class="hint fact" id="d05-fact"><summary><span>Did you know? LLMs predict text one piece at a time</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Large language models break text into small units called tokens and learn to predict text based on its context. Prediction makes them fluent, not automatically correct, which is why verification stays your job. <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-are-large-language-models-llms" target="_blank" rel="noopener">Microsoft Azure</a></div></details>
+<details class="step recommendation" id="d05-recommendation"><summary><span><span class="rec-label">Recommended custom instruction</span><strong>Flag what needs checking</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable, nonsensitive preference that is safe to save.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>At the end of any draft, list the facts, numbers, and claims I should verify before sharing it.</pre></div></div></details>
+<div class="section-nav"><a href="#d04">Previous section</a><a href="#prompting">Next section</a></div></div>
+</details>
+<details class="section instr" id="prompting"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Prompting and safety<span>Clear instructions; evidence before action.</span></h2><span class="ipill">Core habits</span></summary><div class="ibody"><p>Copilot is built on large language models (LLMs). An LLM breaks text into small units called tokens and predicts likely text based on context. Grounding gives it the right source; a good prompt tells it what to do with that source. <a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5" target="_blank" rel="noopener">Microsoft prompt guidance</a> · <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-are-large-language-models-llms" target="_blank" rel="noopener">What are LLMs?</a></p>
+<div class="grid g2"><div class="card"><h3>Goal</h3><p>What do I want Copilot to do?</p></div><div class="card"><h3>Context</h3><p>Why do I need it, and who is the audience?</p></div><div class="card"><h3>Source</h3><p>Which information should Copilot use, and nothing else?</p></div><div class="card"><h3>Expectation</h3><p>What format, length, tone, and boundaries should the answer follow?</p></div></div>
+<div class="callout"><strong>Iterate instead of restarting.</strong> Stay in the same chat and ask Copilot to shorten, change the tone, show its evidence, list unknowns, or fix one weak GCSE line.</div>
+<details class="step"><summary><span>Responsible use checklist</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ul class="quicklist"><li>Sign in with your work account so enterprise data protection applies.</li><li>Share only the minimum information the task needs.</li><li>Do not paste personal, customer, or confidential information into an unapproved exercise.</li><li>Check every name, number, date, recipient, and claim against the source.</li><li>Use only approved product claims in anything customer-facing.</li><li>Review, edit, and own the final version. A draft never sends or approves anything.</li><li>Follow ELC policy and your tenant's controls; this guide does not replace them.</li></ul></div></details><div class="section-nav"><div class="section-nav"><a href="#d05">Previous section</a><a href="#memory">Next section</a></div></div></div></details>
+<details class="section instr" id="memory"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Memory and custom instructions<span>Optional, safe personalization.</span></h2><span class="ipill">Optional</span></summary><div class="ibody"><p>Copilot personalization and memory can include saved memories, details from chat history, and custom instructions. These features may be in preview, can be turned off by your organization or by you, and may not be available to everyone. Use them only for stable, nonsensitive preferences.</p>
+<div class="grid g3"><details class="step subcard"><summary><h3>Good memory</h3><span class="status">Stable preference</span></summary><div class="step-body"><p>“I prefer short answers with bullets and a clear next step.”</p></div></details><details class="step subcard"><summary><h3>Good custom instruction</h3><span class="status">Working method</span></summary><div class="step-body"><p>“Write dates as Month Day, Year, and use placeholders instead of guessing missing details.”</p></div></details><details class="step subcard"><summary><h3>Keep in the current chat</h3><span class="status">Task detail</span></summary><div class="step-body"><p>Product details, launch dates, names, recipients, customer information, and anything confidential.</p></div></details></div>
+<p><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Microsoft Learn: personalization and memory</a></p><div class="section-nav"><div class="section-nav"><a href="#prompting">Previous section</a><a href="#tips">Next section</a></div></div></div></details>
+<details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Useful habits and exercise shortcuts.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><details class="step tip-feature" id="clarifying-questions-tip"><summary><span>Ask clarifying questions before Copilot answers</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Add <strong>“Ask any clarifying questions before responding.”</strong> when the answer depends on details you might have left out, such as audience, scope, source, format, or dates.</p><p>This gives Copilot permission to pause, point out what is unclear, and ask for what it needs instead of silently filling gaps. It can reduce assumptions and rework, but it does not replace checking the source or reviewing the final output.</p><div class="promptbox"><button aria-label="Copy clarifying questions instruction" class="copy" type="button">Copy</button><pre>Ask any clarifying questions before responding.</pre></div></div></details><details class="step tip-feature" id="same-chat-tip"><summary><span>Keep refining in the same chat</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p><strong>Follow-ups build on what Copilot already knows from the conversation.</strong> Ask it to shorten, change the tone, or add a table instead of starting over. Start a new chat when you switch to an unrelated topic so old details do not leak into new work.</p><div class="promptbox"><button aria-label="Copy refine follow-up prompt" class="copy" type="button">Copy</button><pre>Keep the same facts, but make this shorter, friendlier, and easier to read on a phone.</pre></div></div></details>    <ol class="tip-index"><li><a href="#clarifying-questions-tip">Ask clarifying questions before Copilot answers.</a></li><li><a href="#same-chat-tip">Keep refining in the same chat.</a></li><li><a href="#d01-tip">Know where Copilot lives.</a></li><li><a href="#d02-tip">Let Copilot ask first.</a></li><li><a href="#d03-tip">Use the email you have open.</a></li><li><a href="#d04-tip">Ideas are not decisions.</a></li><li><a href="#d05-tip">Check names, numbers, dates, and claims.</a></li></ol><div class="section-nav"><div class="section-nav"><a href="#memory">Previous section</a><a href="#wrap-up">Next section</a></div></div></div></details>
+<details class="section instr" id="wrap-up"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Wrap-up and sources<span>Choose one technique and verify the evidence.</span></h2><span class="ipill">Finish</span></summary><div class="ibody"><h3>Before you leave</h3><ol class="quicklist"><li>Open Copilot Chat with your work account once more and pin it where you will find it.</li><li>Pick one real, nonsensitive task this week and write a GCSE prompt for it.</li><li>Check the output against your source before you share it.</li></ol>
+<h3>Official references</h3><ul class="quicklist"><li><a href="https://learn.microsoft.com/en-us/copilot/plan/copilot-overview" target="_blank" rel="noopener">Microsoft Copilot overview</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/plan/microsoft-copilot-requirements" target="_blank" rel="noopener">Microsoft Copilot requirements</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Enterprise data protection</a></li><li><a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5" target="_blank" rel="noopener">Get started writing prompts</a></li><li><a href="https://learn.microsoft.com/en-us/microsoftteams/copilot-teams-transcription" target="_blank" rel="noopener">Copilot in Teams meetings</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Personalization and memory</a></li></ul><div class="section-nav"><div class="section-nav"><a href="#tips">Previous section</a><a href="#about-guide">Next section</a></div></div></div></details>
+<details class="section instr" id="about-guide"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">About this student guide<span>Fictional practice and responsible use.</span></h2><span class="ipill">Student guide</span></summary><div class="ibody"><div class="about-body"><p>This student guide supports ELC Copilot Fundamentals Session 1: Prompt Foundations for APAC and EMEA colleagues. It was prepared on November 10, 2026. It is not an instructor edition, policy statement, or authorization to use a feature or data source.</p><p>All personas, products, emails, transcripts, dates, figures, and claims are fictional. Public product references link to Microsoft Learn, Microsoft Support, Microsoft Azure, or the identified primary source. Product names, availability, licensing, previews, tenant settings, and controls can change.</p><footer class="end">Use permitted sources, verify important output, protect sensitive information, and keep a human accountable for every decision and action.</footer></div><div class="section-nav"><div class="section-nav"><a href="#wrap-up">Previous section</a></div></div></div></details>
+</main></div>
+<div aria-atomic="true" aria-live="polite" class="toast" hidden="" id="guide-status" role="status"></div><script>(() => {
+  'use strict';
+  const root = document.documentElement;
+  const theme = document.getElementById('themebtn');
+  const toast = document.getElementById('guide-status');
+  const topbar = document.querySelector('.topbar');
+  const sections = Array.from(document.querySelectorAll('main > details.section'));
+  const links = Array.from(document.querySelectorAll('nav.toc a'));
+  links.forEach((link, index) => {
+    if (!link.dataset.short) link.dataset.short = String(index + 1).padStart(2, '0');
+  });
+  const searchInput = document.getElementById('guide-search');
+  const searchResults = document.getElementById('search-results');
+  const searchable = Array.from(document.querySelectorAll('details.section, details.step, details.hint'))
+    .filter(node => node.id);
+  function updateSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    searchable.forEach(node => node.classList.remove('search-match'));
+    searchResults.replaceChildren();
+    if (!query) {
+      searchResults.classList.remove('has-results');
+      return;
+    }
+    const matches = searchable.filter(node => node.textContent.toLowerCase().includes(query)).slice(0, 10);
+    if (!matches.length) {
+      const empty = document.createElement('li');
+      empty.className = 'search-empty';
+      empty.textContent = 'No matching prompts or topics.';
+      searchResults.append(empty);
+      searchResults.classList.add('has-results');
+      return;
+    }
+    matches.forEach(node => {
+      const item = document.createElement('li');
+      const result = document.createElement('a');
+      result.href = '#' + node.id;
+      result.textContent = node.querySelector(':scope > summary')?.textContent.trim() || node.id;
+      item.append(result);
+      searchResults.append(item);
+    });
+    searchResults.classList.add('has-results');
+  }
+  searchInput.addEventListener('input', updateSearch);
+  searchResults.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (link) searchInput.value = '';
+  });
+  const themeKey = 'elc-apac-emea-ff9843f413-copilot-student-theme';
+  const seasonKey = 'elc-apac-emea-ff9843f413-copilot-student-season';
+  const navigationKey = 'elc-apac-emea-ff9843f413-copilot-student-navigation';
+  let toastTimer;
+
+  function announce(message) {
+    toast.textContent = message;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 5000);
+  }
+
+  function updateTheme() {
+    const dark = root.dataset.theme === 'dark';
+    theme.textContent = dark ? 'Mode: Dark' : 'Mode: Light';
+    theme.setAttribute('aria-pressed', String(dark));
+    theme.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  updateTheme();
+  if (window.guideThemeStorageUnavailable) {
+    announce('Appearance preferences cannot be loaded or saved in this browser.');
+  }
+  theme.addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark';
+    if (dark) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    updateTheme();
+    try {
+      localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+    } catch (error) {
+      console.warn('Theme preference could not be saved:', error);
+      announce('Theme changed, but this browser cannot save the preference.');
+    }
+  });
+
+
+  const season = document.getElementById('seasonbtn');
+  const seasons = ['autumn', 'winter', 'spring', 'summer'];
+  const seasonLabels = {
+    autumn: 'Autumn · Warm paper and harvest tones',
+    winter: 'Winter · Cool blues and crisp neutrals',
+    spring: 'Spring · Fresh greens and soft new-growth tones',
+    summer: 'Summer · Sunny golds and clear coastal blues'
+  };
+  function updateSeason() {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    const next = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    season.textContent = 'Season: ' + current[0].toUpperCase() + current.slice(1);
+    season.setAttribute('aria-label', 'Seasonal theme: ' + current[0].toUpperCase() + current.slice(1) +
+      '. Activate to switch to ' + next[0].toUpperCase() + next.slice(1) + '.');
+    document.getElementById('season-label').textContent = seasonLabels[current];
+  }
+  updateSeason();
+  season.addEventListener('click', () => {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    root.dataset.season = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    updateSeason();
+    try {
+      localStorage.setItem(seasonKey, root.dataset.season);
+    } catch (error) {
+      console.warn('Season preference could not be saved:', error);
+      announce('Season changed, but this browser cannot save the preference.');
+    }
+  });
+
+  const navigation = document.getElementById('navbtn');
+  const navigationStates = ['full', 'compact', 'hidden'];
+  function updateNavigation() {
+    const current = navigationStates.includes(root.dataset.navigation) ? root.dataset.navigation : 'full';
+    const next = navigationStates[(navigationStates.indexOf(current) + 1) % navigationStates.length];
+    const labels = { full: 'Full', compact: 'Compact', hidden: 'Hidden' };
+    const actions = {
+      full: 'Show compact navigation',
+      compact: 'Hide navigation',
+      hidden: 'Expand navigation'
+    };
+    navigation.textContent = 'Navigation: ' + labels[current];
+    navigation.setAttribute('aria-label', actions[current]);
+    navigation.setAttribute('title', actions[current]);
+    navigation.setAttribute('aria-pressed', String(current !== 'full'));
+    navigation.dataset.nextNavigation = next;
+  }
+  updateNavigation();
+  navigation.addEventListener('click', () => {
+    root.dataset.navigation = navigation.dataset.nextNavigation || 'full';
+    updateNavigation();
+    try {
+      localStorage.setItem(navigationKey, root.dataset.navigation);
+    } catch (error) {
+      console.warn('Navigation preference could not be saved:', error);
+      announce('Navigation changed, but this browser cannot save the preference.');
+    }
+  });
+
+  function updateHeaderHeight() {
+    root.style.setProperty('--cp-header-height', topbar.offsetHeight + 'px');
+  }
+  new ResizeObserver(updateHeaderHeight).observe(topbar);
+  updateHeaderHeight();
+
+  const panels = Array.from(document.querySelectorAll('details'));
+  document.getElementById('expandall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = true; });
+    announce('All sections and steps expanded.');
+  });
+  document.getElementById('collapseall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = false; });
+    announce('All sections and steps collapsed.');
+  });
+
+  function setActive(id) {
+    const target = document.getElementById(id);
+    const section = target && target.closest('details.section');
+    const sectionId = section ? section.id : id;
+    links.forEach(link => {
+      const active = link.getAttribute('href') === '#' + sectionId;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function navigate(id, updateHistory, moveFocus) {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    let node = target;
+    while (node && node !== document.body) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
+    if (updateHistory) {
+      try {
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+      } catch (error) {
+        console.warn('Could not update the section link:', error);
+        announce('The section opened, but its link could not be saved.');
+      }
+    }
+    target.scrollIntoView({ block: 'start' });
+    setActive(id);
+    if (moveFocus) {
+      const focusTarget = target.matches('details') ? target.querySelector(':scope > summary') : target;
+      if (focusTarget && typeof focusTarget.focus === 'function') focusTarget.focus({ preventScroll: true });
+    }
+    return true;
+  }
+
+  function hashId() {
+    if (!location.hash || location.hash === '#') return '';
+    try {
+      return decodeURIComponent(location.hash.slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return '';
+    }
+  }
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    let id;
+    try {
+      id = decodeURIComponent(link.getAttribute('href').slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return;
+    }
+    if (id && document.getElementById(id)) {
+      event.preventDefault();
+      navigate(id, true, true);
+    }
+  });
+  const initialId = hashId();
+  if (initialId) requestAnimationFrame(() => { navigate(initialId, false, false); });
+  window.addEventListener('hashchange', () => {
+    const id = hashId();
+    if (id) navigate(id, false, false);
+  });
+
+  let scrollPending = false;
+  window.addEventListener('scroll', () => {
+    if (scrollPending) return;
+    scrollPending = true;
+    requestAnimationFrame(() => {
+      const stickyOffset = getComputedStyle(topbar).position === 'sticky' ? topbar.offsetHeight : 0;
+      let selected = null;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= stickyOffset + 28) selected = section;
+      });
+      if (selected) setActive(selected.id);
+      scrollPending = false;
+    });
+  }, { passive: true });
+
+  function legacyCopy(value, button) {
+    const area = document.createElement('textarea');
+    area.value = value;
+    area.setAttribute('readonly', '');
+    area.setAttribute('aria-hidden', 'true');
+    area.style.position = 'fixed';
+    area.style.left = '-10000px';
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (error) {
+      console.warn('Clipboard fallback failed:', error);
+    } finally {
+      area.remove();
+      button.focus({ preventScroll: true });
+    }
+    return copied;
+  }
+
+  document.querySelectorAll('.promptbox .copy, .savebox .copy').forEach(button => {
+    button.addEventListener('click', async () => {
+      const text = button.closest('.promptbox, .savebox').querySelector('pre').textContent;
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          console.warn('Clipboard API failed; trying the browser fallback:', error);
+        }
+      }
+      if (!copied) copied = legacyCopy(text, button);
+      if (!copied) {
+        button.textContent = 'Select text to copy';
+        announce('Copy was blocked. Select the text in the box and copy it manually.');
+      } else {
+        button.textContent = 'Copied';
+        button.classList.add('done');
+        announce('Copied to clipboard.');
+      }
+      setTimeout(() => {
+        button.textContent = 'Copy';
+        button.classList.remove('done');
+      }, 2200);
+    });
+  });
+
+  let printState = null;
+  window.addEventListener('beforeprint', () => {
+    if (!printState) printState = panels.map(panel => ({ panel, open: panel.open }));
+    panels.forEach(panel => { panel.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    if (!printState) return;
+    printState.forEach(saved => { saved.panel.open = saved.open; });
+    printState = null;
+  });
+})();
+</script></body></html>

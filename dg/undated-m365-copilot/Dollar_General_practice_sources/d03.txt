@@ -1,0 +1,13 @@
+FICTIONAL TRAINING SCENARIO — not Dollar General operational data
+District Manager: Jordan Reyes (fictional)
+Visit date: Thursday, November 19, 2026
+Store 18472 — Store Manager Casey Morgan: 4 of 7 shelf-label checks matched the checklist; one label was missing at the paper-goods endcap. Cause was not confirmed. Casey will confirm the replacement by Friday, November 20.
+Store 20731 — Store Manager Devon Patel: 6 of 6 shelf-label checks matched the checklist. Devon asked Jordan to arrange a second walk-through the following week; no day or time was selected.
+Jordan’s next district review is Tuesday, November 24, 2026, at 2:00 PM.
+Next Store Manager huddle: Wednesday, December 2, 2026, at 9:00 AM. Invite managers to bring one idea for making visit follow-ups easier to track.
+Outlook audience: draft a separate email to Casey and to Devon. Do not include one store’s details in the other manager’s email.
+Teams audience: all Store Managers in a fictional district channel. Share a general invitation only; do not include store-specific metrics or names.
+Huddle question: ask how managers prefer to keep follow-ups visible. No standard method or policy was provided.
+Walk-through recap: keep a bullet-pointed recap internal to Jordan; include action steps only when supported by the notes, with their stated owners and dates. Do not include this recap in the broad channel post or another manager’s email.
+Draft only. Do not send email, post to Teams, schedule the walk-through, or invent missing details.
+After you receive this source, reply only: "Got it. I'll use this as the source."

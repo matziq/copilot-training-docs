@@ -1,0 +1,26 @@
+FICTIONAL TRAINING SCENARIO: VELVET FROST HOLIDAY CAMPAIGN, DACH
+Brand: Maison Aurel (fictional), Velvet Frost Lip Collection (fictional)
+Prepared by: Lena Hofmann, Media Analytics Manager, DACH (fictional)
+Prepared on: Tuesday, November 10, 2026
+Flight: Monday, October 5, 2026 - Sunday, November 1, 2026 (4 weeks)
+Markets: DE = Germany, AT = Austria, CH = Switzerland. All money in EUR for training simplicity.
+Campaign data (one row per market and channel):
+Market,Channel,Spend_EUR,Impressions,Clicks,Conversions,Revenue_EUR
+DE,Paid Social,48000,6400000,51200,1280,134400
+DE,Paid Search,36000,1200000,60000,1500,157500
+DE,Online Video,42000,5600000,16800,420,46200
+DE,Retail Media,30000,2000000,24000,960,115200
+AT,Paid Social,14000,1750000,15750,350,37100
+AT,Paid Search,11000,380000,19000,470,49350
+AT,Online Video,12000,1500000,4500,110,12100
+AT,Retail Media,8000,520000,6240,250,29500
+CH,Paid Social,18000,1900000,17100,410,47150
+CH,Paid Search,15000,450000,24750,610,70150
+CH,Online Video,16000,1800000,5400,120,14400
+CH,Retail Media,10000,640000,7680,300,37500
+Campaign targets:
+- ROAS target: at least 3.0 (Revenue_EUR divided by Spend_EUR)
+- CPA target: at most EUR 40 (Spend_EUR divided by Conversions)
+KPI definitions: CTR = Clicks / Impressions. CPM = Spend_EUR / Impressions x 1,000. CPA = Spend_EUR / Conversions. ROAS = Revenue_EUR / Spend_EUR.
+Caveats: Revenue is attributed online revenue (last click, 7-day window). Brand-lift study results are not available yet; expected Monday, December 7, 2026.
+After you receive this source, reply only: "Got it. I'll use this as the source."

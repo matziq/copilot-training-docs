@@ -1,0 +1,104 @@
+<!doctype html><html lang="en-US"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow,noarchive"><meta name="color-scheme" content="light dark">
+<title>Inspire Brands | Training menu</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%238b272f'/%3E%3Cpath d='M7 8h18v16H7z' fill='white'/%3E%3Cpath d='M16 8v16' stroke='%238b272f' stroke-width='2'/%3E%3C/svg%3E">
+<style>:root{--brand:#8b272f;--brand-soft:#fff1e8}
+:root{color-scheme:light;--bg:#f6f7fa;--surface:#fff;--ink:#182334;--muted:#4c5b6e;--line:#d3dbe5;--soft:var(--brand-soft)}
+:root[data-theme=dark]{color-scheme:dark;--bg:#101722;--surface:#192331;--ink:#f2f5fa;--muted:#bdc9d8;--line:#455469;--soft:#26384c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}button,input,select{font:inherit}button,select{cursor:pointer}
+button{padding:.65rem 1rem;border:1px solid var(--line);border-radius:.65rem;background:var(--surface);color:var(--ink)}
+button:hover{background:var(--soft)}:focus-visible{outline:3px solid #aa7200;outline-offset:4px}
+.skip{position:absolute;top:-100px;left:1rem;background:var(--surface);padding:1rem;z-index:5}.skip:focus{top:1rem}
+header{background:var(--brand);color:white;padding:2.5rem max(1.3rem,calc((100vw - 1200px)/2))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.identity{letter-spacing:.09em;text-transform:uppercase;font-weight:700;font-size:.85rem}
+header h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.15;margin:1.8rem 0 .8rem;max-width:850px}
+header p{max-width:740px;margin:0}.layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:2rem;max-width:1200px;margin:auto;padding:2rem 1.3rem}
+aside{align-self:start;position:sticky;top:1.3rem}aside details{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1rem}
+summary{cursor:pointer}aside summary{font-weight:700}nav a{display:block;padding:.7rem .3rem;border-bottom:1px solid var(--line);text-decoration:none}
+nav a:hover{text-decoration:underline}main{min-width:0}.tools{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.3rem;margin-bottom:1.3rem}
+.fields{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1rem}label{display:block;font-weight:650}
+input,select{display:block;margin-top:.4rem;width:100%;padding:.7rem;border:1px solid var(--line);border-radius:.5rem;background:var(--bg);color:var(--ink)}
+.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}.count,.note{color:var(--muted);font-size:.92rem}
+.entry{background:var(--surface);border:1px solid var(--line);border-radius:1rem;margin:1rem 0;overflow:hidden}
+.entry>summary{padding:1.3rem;list-style:none}.entry>summary::-webkit-details-marker{display:none}
+.entry>summary:after{content:"+";float:right;font-size:1.4rem}.entry[open]>summary:after{content:"-"}
+.entry h3{display:inline;font-size:1.2rem;line-height:1.4}.date{display:block;font-size:.88rem;font-weight:650;color:var(--muted);margin-bottom:.4rem}
+.entry-body{padding:0 1.3rem 1.3rem;border-top:1px solid var(--line)}.entry-body p{margin:.9rem 0}
+.topics{display:flex;flex-wrap:wrap;gap:.35rem}.topic{font-size:.8rem;background:var(--soft);padding:.15rem .55rem;border-radius:1rem}
+.resources{display:flex;flex-direction:column;align-items:flex-start;gap:.55rem;margin-top:1rem}
+.resources a{padding:.5rem .8rem;border:1px solid var(--line);border-radius:.5rem;font-weight:650;text-underline-offset:3px}
+.empty{padding:2rem;background:var(--surface);border:1px dashed var(--line);border-radius:1rem}
+.privacy{padding:1.2rem 0;color:var(--muted);font-size:.9rem}footer{border-top:1px solid var(--line);padding:1rem 0;color:var(--muted)}
+[hidden]{display:none!important}@media(max-width:760px){.layout{grid-template-columns:1fr;gap:1rem;padding:1rem}aside{position:static}.fields{grid-template-columns:1fr}header{padding:1.5rem}header h1{margin-top:1.3rem}}
+@media(prefers-reduced-motion:no-preference){button,a{transition:background .15s ease}}
+</style></head><body>
+<a class="skip" href="#main">Skip to trainings</a>
+<header><div class="top"><span class="identity">Inspire Brands / Learning library</span><button id="theme" aria-pressed="false" type="button">Use dark mode</button></div>
+<h1>Your customer training menu</h1><p>Skills that travel with you. Find the latest class, revisit earlier sessions, and open the original practice materials.</p></header>
+<div class="layout"><aside><details open><summary>Menu navigation</summary><nav id="menu-nav" aria-label="Training menu"><a href="#find">Find a training</a><a href="#dated">Dated trainings</a><a href="#about">About this menu</a></nav></details></aside>
+<main id="main" tabindex="-1"><section class="tools" id="find" aria-labelledby="find-title"><h2 id="find-title">Find your training</h2>
+<div class="fields"><label for="filter">Filter by subject, date, or topic<input id="filter" type="search" placeholder="Try Excel, skills, or November" aria-describedby="count"></label>
+<label for="date-filter">Training date<select id="date-filter"><option value="all">All dates</option><option value="2026-11-17">November 17, 2026</option></select></label></div>
+<div class="actions"><button data-reset type="button">Reset filters</button><button data-expand="true" type="button">Expand visible entries</button><button data-expand="false" type="button">Collapse visible entries</button></div>
+<p id="count" class="count" role="status" aria-live="polite">1 of 1 training entries shown</p>
+<p id="storage-warning" class="note" role="status" hidden>Browser storage is unavailable. Your theme works for this visit but may not be saved.</p></section>
+<div id="no-results" class="empty" hidden><p>No trainings match your filters.</p><button data-reset type="button">Clear filters</button></div>
+<section id="dated" data-training-section aria-labelledby="dated-title"><h2 id="dated-title">Dated trainings</h2><details class="entry" data-dates="2026-11-17" data-search="skills in chat, powerpoint, word, and excel creating, sharing, and managing skills. inspire&#x27;s first training. skills chat powerpoint word excel november 17, 2026 2026-11-17" open>
+<summary><span class="date">November 17, 2026</span><h3>Skills in Chat, PowerPoint, Word, and Excel</h3></summary>
+<div class="entry-body"><p>Creating, sharing, and managing skills. Inspire&#x27;s first training.</p><div class="topics" aria-label="Topics"><span class="topic">Skills</span><span class="topic">Chat</span><span class="topic">PowerPoint</span><span class="topic">Word</span><span class="topic">Excel</span></div>
+<div class="resources"><a href="2026-11-17-copilot-skills/index.html">Student guide</a></div></div></details></section>
+<section id="about" class="privacy"><h2>About this menu</h2><p>Only Inspire Brands materials are listed here. Companion guides and resources belong to the same entry. Recorded class dates appear newest first; unknown dates appear separately and are never guessed from practice data or file timestamps.</p>
+<p>This menu is unlisted and asks search engines not to index or follow it. It is not private or access-controlled; public guides and raw downloads may still be discoverable. Use only the fictional practice data supplied with the guides.</p></section>
+<footer>Inspire Brands training library</footer></main></div><script>
+(() => {
+  const root = document.documentElement;
+  const theme = document.getElementById('theme');
+  const warning = document.getElementById('storage-warning');
+  const storageKey = 'customer-training-hub-theme';
+  let mode = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  try { const saved = localStorage.getItem(storageKey); if (saved === 'dark' || saved === 'light') mode = saved; }
+  catch (error) { warning.hidden = false; }
+  function applyTheme() { root.dataset.theme = mode; theme.textContent = mode === 'dark' ? 'Use light mode' : 'Use dark mode'; theme.setAttribute('aria-pressed', String(mode === 'dark')); }
+  applyTheme();
+  theme.addEventListener('click', () => {
+    mode = mode === 'dark' ? 'light' : 'dark'; applyTheme();
+    try { localStorage.setItem(storageKey, mode); } catch (error) { warning.hidden = false; }
+  });
+  const filter = document.getElementById('filter');
+  const date = document.getElementById('date-filter');
+  const entries = [...document.querySelectorAll('.entry')];
+  function update() {
+    const words = filter.value.toLocaleLowerCase('en-US').trim().split(/\s+/).filter(Boolean);
+    let visible = 0;
+    for (const entry of entries) {
+      entry.hidden = !words.every(word => entry.dataset.search.includes(word)) ||
+        (date.value !== 'all' && (date.value === 'unknown' ? entry.dataset.dates !== '' : !entry.dataset.dates.split(' ').includes(date.value)));
+      if (!entry.hidden) visible++;
+    }
+    document.getElementById('count').textContent = visible + ' of ' + entries.length + ' training entries shown';
+    document.getElementById('no-results').hidden = visible !== 0 || entries.length === 0;
+    for (const section of document.querySelectorAll('[data-training-section]')) {
+      section.hidden = ![...section.querySelectorAll('.entry')].some(entry => !entry.hidden);
+    }
+  }
+  filter.addEventListener('input', update); date.addEventListener('change', update);
+  for (const reset of document.querySelectorAll('[data-reset]')) reset.addEventListener('click', () => { filter.value = ''; date.value = 'all'; update(); filter.focus(); });
+  for (const button of document.querySelectorAll('[data-expand]')) button.addEventListener('click', () => {
+    for (const entry of entries) if (!entry.hidden) entry.open = button.dataset.expand === 'true';
+  });
+  document.getElementById('menu-nav').addEventListener('keydown', event => {
+    if (!['ArrowDown','ArrowUp','Home','End'].includes(event.key)) return;
+    const links = [...event.currentTarget.querySelectorAll('a')];
+    const index = links.indexOf(document.activeElement);
+    if (index < 0) return;
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? links.length - 1 :
+      (index + (event.key === 'ArrowDown' ? 1 : -1) + links.length) % links.length;
+    links[next].focus();
+  });
+  update();
+})();
+</script></body></html>

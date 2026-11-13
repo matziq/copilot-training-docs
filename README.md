@@ -11,6 +11,37 @@ The former project-site routes under `/copilot-training-docs/` are served using
 GitHub Pages' native project-domain redirect. Keep customer-specific, unlisted
 pages out of public navigation and indexes.
 
+## Unlisted customer training menus
+
+Customer-scoped menus live at `/inspire/`, `/elc/`, `/mcbc/`, `/dg/`, `/lids/`,
+and `/rcg/`. Each contains only that customer's published training packages,
+with companion editions grouped together. Guides and their dependencies live
+in training subfolders, and each guide links back to its own customer menu.
+Recorded class dates sort newest first; undated classes remain explicitly
+undated. Preparation, verification, and fictional scenario dates are not
+class dates.
+
+Older HTML guide URLs redirect to fixed destinations while preserving query
+strings and section hashes. Previously shared raw source and asset URLs remain
+available unchanged. `/elc/` now opens its menu instead of the former duplicate
+Fundamentals guide. The legacy custom-domain path
+`/copilot-training-docs/6f0d9c72a4b1483ba793ab4a1d2e6f85/` is also supported.
+
+All menu, relocated guide, and redirect HTML includes both robots and
+googlebot `noindex,nofollow,noarchive` metadata. Keep customer routes out of
+public navigation and sitemaps. `.nojekyll` disables automatic Jekyll processing;
+there is no sitemap generator. These are public Pages files, not private or
+access-controlled resources: noindex is a request, not a guarantee, and raw
+downloads may still be indexed. Do not add robots Disallow rules that prevent
+crawlers from reading noindex metadata.
+
+Training-subfolder files use `-text` in `.gitattributes` so Git does not change
+the original bytes or line endings of published source files, including PDFs.
+
+Run the focused checks with `python tests\customer_hubs_test.py` (uses an
+existing Python Playwright installation and Microsoft Edge). For link and
+indexing checks without a browser, add `--static-only`.
+
 A plug-and-play HTML/CSS/JS documentation template inspired by modern training course designs — featuring collapsible exercise cards, color-coded numbered steps, copy-able prompt blocks, power-move callouts, and module headers with time estimates.
 
 ## Quick Start

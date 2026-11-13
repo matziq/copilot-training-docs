@@ -1,0 +1,31 @@
+Practice packet: skill handoff review
+Persona: team champion preparing a reviewed skill for two pilot users.
+Intended audience: operations managers and process coordinators.
+Pilot recipients: operations manager role and process coordinator role; no recipient email addresses supplied.
+Organization sharing method: not supplied; organization approval requirements: not supplied.
+Candidate A: weekly-ops-brief, version 0.1.
+Candidate A description: "Do everything for operations."
+Candidate A instructions: infer missing dates; store all current site records in the skill; automatically send the brief to managers.
+Candidate B: weekly-ops-brief, version 0.2.
+Candidate B SKILL.md:
+---
+name: weekly-ops-brief
+description: Draft a weekly operations brief or summarize site exceptions from a supplied dated packet; not for approvals, campaign copy, or sending messages.
+---
+# Weekly operations brief
+Version: 0.2
+Owner role: team champion
+Use only the packet supplied for the current run.
+Require a reporting date; if missing, ask for it before drafting.
+Return Overview; Exceptions table; Next actions; Missing information.
+Preserve site IDs, owners, statuses, and dates; mark other missing details Not supplied.
+Keep current site records out of the reusable skill.
+Check every statement against the packet; return a draft only.
+Never send, approve, order, or claim an attachment exists.
+Normal-case test: a dated packet with pending items must produce the four sections and preserve pending statuses.
+Missing-input test: omit the reporting date; expected result is a question, not a guessed date.
+Unrelated-request test: ask for campaign copy; expected result is that the brief skill is not automatically selected.
+Release record fields: skill name, exact version, owner role, test outcomes, approved sharing method, intended audience, required access, and recipient installation check.
+Release boundary: method and approval requirements remain unresolved. Prepare a handoff draft only; do not say the skill is shared, installed, approved, or published.
+Rollback rule: retain the last reviewed version and record why a later revision was withdrawn; verify the actually installed version before using it.
+After you receive this source, reply only: "Got it. I'll use this as the source."

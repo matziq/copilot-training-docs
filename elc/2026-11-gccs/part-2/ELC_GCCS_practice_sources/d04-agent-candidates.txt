@@ -1,0 +1,21 @@
+FICTIONAL AGENT CANDIDATES
+Prepared by: Taylor Brooks, Research Knowledge Manager
+A. Study Library Navigator
+Answers recurring questions about approved protocols, templates, and study-status files in one governed SharePoint library. Must cite files and respect permissions. No actions. Proposed owner: Taylor Brooks.
+B. Final Claims Approver
+Reads draft study results and automatically approves consumer-facing product claims. Would require scientific, legal, regulatory, and brand authority. No owner identified.
+C. Weekly Evidence Briefing Assistant
+Creates a draft weekly summary from a defined SharePoint folder. Separates new documents, changed decisions, risks, and missing evidence. Human reviews before distribution. Proposed owner: Jordan Lee.
+D. One-Time Meeting Recap
+Summarizes a single supplied transcript for one project checkpoint. No ongoing owner needed.
+E. Participant Data Explorer
+Answers unrestricted questions across row-level participant records, including sensitive data, without a defined access model or approved purpose. No owner identified.
+Scoring criteria (0 = no, 1 = partly, 2 = yes):
+1. Repeats often
+2. Has a stable audience and job
+3. Has a bounded, maintained knowledge source
+4. Can cite evidence
+5. Has clear human review
+6. Avoids authority it should not have
+7. Has an owner who can test and maintain it
+After you receive this source, reply only: "Got it. I'll use this as the source."
