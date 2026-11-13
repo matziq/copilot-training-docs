@@ -1,0 +1,20 @@
+Practice packet: weekly packaging-plan review
+Persona: operations analyst reviewing quantities for a manager.
+Reporting week ending: November 15, 2026; quantities are units.
+Columns: Site, PlannedUnits, ActualUnits.
+R101,100,95
+R102,120,130
+R103,80,80
+R104,100,88
+Calculation: VarianceUnits = ActualUnits minus PlannedUnits.
+Calculation: VariancePct = VarianceUnits divided by PlannedUnits.
+Flag rule: Review if the absolute VariancePct is greater than or equal to 10%; otherwise OK.
+Zero-plan rule: if PlannedUnits is zero, show VariancePct as Not calculable and Flag as Review; do not divide by zero or use a fabricated percentage.
+Total rule: calculate total VariancePct from total actual and total planned, not by averaging site percentages.
+Draft manager claim to verify: "No site crossed the review threshold." Treat this as an unverified claim, not a data row.
+Workbook design if creating a file: Input and Review sheets; preserve raw quantities; use formulas for calculations; display percentages to one decimal place; do not modify the raw inputs.
+Reusable skill name: packaging-variance-review.
+Skill inputs: current table, units, reporting period, threshold, comparison operator, and zero-plan handling.
+Output: site exception table, totals, claim verification, and missing-information note.
+Boundary: descriptive review only; do not order packaging or claim a trend from one reporting week.
+After you receive this source, reply only: "Got it. I'll use this as the source."
