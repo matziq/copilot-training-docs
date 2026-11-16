@@ -1,0 +1,24 @@
+HOW I WRITE THE WEEKLY AURORA STATUS BRIEF
+Persona: Jordan Lee, consumer insights researcher.
+Practice date: Monday, November 16, 2026.
+When: Every Monday morning, for the GCCS study leads.
+Input: the latest Aurora fieldwork snapshot that I paste or attach.
+My steps:
+1. Find the snapshot date.
+2. Pull the enrolled, completed day 14, and withdrawn counts.
+3. Compare enrolled with the approved target sample of 120 from the current approved protocol (v3).
+4. Calculate the percentage enrolled and round to the nearest whole number.
+5. Note the data cleaning status.
+6. List anything missing or unclear instead of guessing.
+Output format: five lines - As of, Enrollment, Completion, Withdrawals, Open items. Under 90 words.
+Rules:
+- Never use the superseded draft target of 90.
+- Never describe results, effects, or claims. This is a status brief only.
+- No participant names or IDs.
+- If the snapshot date or any count is missing, say what is missing and stop.
+- Use US dates, such as November 13, 2026.
+Skill format I need:
+- name: lowercase letters, numbers, and hyphens only; 64 characters or fewer.
+- description: 1,024 characters or fewer; says what the skill does and which requests should trigger it.
+- instructions: steps, rules, output format, and what to do when input is missing.
+After you receive this source, reply only: "Got it. I'll use this as the source."
