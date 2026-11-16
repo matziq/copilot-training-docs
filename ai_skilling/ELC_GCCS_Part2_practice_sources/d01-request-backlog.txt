@@ -1,19 +1,20 @@
 GCCS REQUEST BACKLOG
 Persona: Jordan Lee, consumer insights researcher.
 Practice date: Monday, November 16, 2026.
-Team: GCCS research, Project Aurora (Aurora Skin Comfort Study).
-Definitions the team agreed to use:
-- Prompt: a one-time request in Copilot Chat.
-- Skill: reusable instructions (a SKILL.md file) for one repeatable task. Copilot uses it when you select it or, if you allow it, automatically.
-- Agent: a dedicated assistant with its own instructions, knowledge sources, and starter prompts that a team can share and return to.
+Team: GCCS Research, Project Aurora (Aurora Skin Comfort Study).
+Team personas: Taylor Brooks (knowledge owner), Jordan Lee (Research), Priya Shah (Analytics), Morgan Chen (Operations).
+Definitions:
+- Prompt: a one-time request in Copilot Chat or an app.
+- Skill: reusable instructions for one repeatable task. Select it when needed; automatic use is optional and should be tested.
+- Agent: a dedicated assistant with its own instructions, knowledge sources, and starter prompts, built in Agent Builder.
 - Researcher: a built-in agent for complex, multistep research that returns a source-cited report.
-- Do not automate: the work needs a human decision, approval, or authority.
+- Keep human authority: approvals and decisions stay with responsible people.
 Requests:
 R1. Every Monday, turn the latest fieldwork snapshot into a five-line status brief in the same format.
 R2. Summarize one transcript from the October 30, 2026 protocol checkpoint.
-R3. Give the whole GCCS team one place to ask questions about approved protocols, templates, and data dictionaries in the Aurora approved library.
-R4. Compare published evidence on skin-comfort self-report scales with our internal protocol notes, and give me a cited report before the decision on Wednesday, November 18, 2026.
+R3. Give GCCS researchers one place to ask questions about approved protocols, templates, and data dictionaries.
+R4. Compare published evidence on skin-comfort self-report scales with approved protocol context, and give me a cited report before the decision on November 18, 2026.
 R5. Approve the consumer-facing comfort claim for the Aurora readout.
-R6. Every time anyone drafts a participant-facing message, check it against the plain-language checklist and the reading-level rule.
+R6. Check participant-facing message drafts against the approved plain-language checklist and reading-level rule.
 R7. Rename the columns in one spreadsheet I am cleaning today.
 After you receive this source, reply only: "Got it. I'll use this as the source."

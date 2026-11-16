@@ -1,0 +1,8 @@
+Aurora fieldwork status
+Snapshot date: November 6, 2026
+Enrolled: 84
+Approved target: 120 (Aurora Protocol v3, approved October 20, 2026)
+Completed day 14: 52
+Withdrawn: 4
+Data cleaning: Not started
+Next decision: November 18, 2026

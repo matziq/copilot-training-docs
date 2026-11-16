@@ -1,0 +1,27 @@
+---
+name: aurora-status-brief
+description: Create or update a five-line Aurora fieldwork status brief from the current document, presentation, or workbook. Use for the weekly status brief or Aurora enrollment update.
+---
+# Aurora status brief
+
+Goal: Create or update a concise Aurora fieldwork status brief.
+Context: The same repeatable brief is used in Word, PowerPoint, and Excel.
+Source: Use only information in the active document, presentation, or workbook; do not use unrelated files or invent missing facts.
+Expectation: Update the active file in the app-specific way below and identify any value that cannot be verified.
+
+Create a concise five-line brief with these labels:
+- As of
+- Enrollment
+- Completion
+- Withdrawals
+- Open items
+
+Use the snapshot date and counts exactly as shown in the active file. When the approved target is present, report enrollment as count of target and calculate the percent to the nearest whole number. Keep the approved target separate from the snapshot count. Include a stated operational blocker and next decision date in Open items.
+
+In Word, update the active practice document with the five-line brief. Preserve its title and other unrelated content.
+In PowerPoint, update the current practice slide with the five-line brief. Preserve the deck's theme and other slides.
+In Excel, add a worksheet named Status Brief with the five labels and values. Do not modify the source data worksheet.
+
+Use US dates. Keep the brief under 90 words. Do not include participant names or IDs, results, effects, or claims.
+If the active file lacks a snapshot date, a required count, or the approved target needed for a percentage, identify what is missing and ask before making the change.
+After making the change, summarize what you updated and identify any value that could not be verified from the active file.

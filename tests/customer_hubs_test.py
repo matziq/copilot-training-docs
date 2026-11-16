@@ -11,6 +11,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 CUSTOMERS = ("inspire", "elc", "mcbc", "dg", "lids", "rcg")
+CUSTOMER_NAV_HANDOFFS = {("elc", "../ai_skilling/")}
 
 
 class Links(HTMLParser):
@@ -52,7 +53,11 @@ class StaticChecks(unittest.TestCase):
                 if value.startswith(("data:", "#")):
                     continue
                 self.assertFalse(urlsplit(value).netloc)
-                self.assertTrue((ROOT / customer / value).resolve().is_relative_to(ROOT / customer))
+                self.assertTrue(
+                    (ROOT / customer / value).resolve().is_relative_to(ROOT / customer)
+                    or (customer, value) in CUSTOMER_NAV_HANDOFFS,
+                    f"unexpected cross-customer navigation: {customer}: {value}",
+                )
             self.assertTrue(any(value.startswith("data:image/svg+xml,") for value in parsed.urls))
         self.assertTrue((ROOT / ".nojekyll").exists())
         self.assertFalse(list(ROOT.glob("*sitemap*")))

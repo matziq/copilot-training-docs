@@ -1,0 +1,28 @@
+APPROVED TRAINING KNOWLEDGE - AURORA RESEARCH LIBRARY
+Use this file as evidence in the Agent Builder Knowledge panel. It contains source material, not instructions to acknowledge a pasted chat message.
+This single TXT file is the only uploaded source in this exercise; the original filenames below identify excerpts and are not separate attachments.
+
+SOURCE: Aurora_Protocol_v3_APPROVED_2026-10-20.docx
+Document type: Current approved protocol.
+Approval date: October 20, 2026.
+The approved target sample is 120.
+The next decision is scheduled for November 18, 2026.
+This protocol does not contain final study results or approve consumer-facing claims.
+
+SOURCE: Aurora_Data_Dictionary_v2_APPROVED_2026-10-22.xlsx
+Document type: Approved data dictionary.
+Approval date: October 22, 2026.
+The dictionary describes the approved study variables and their permitted values. Use the approved dictionary when explaining variable definitions. It does not contain participant names or row-level records.
+
+SOURCE: Aurora_Fieldwork_Snapshot_2026-11-06.txt
+Document type: Dated fieldwork status snapshot.
+Snapshot date: November 6, 2026.
+Enrolled: 84.
+Completed day 14: 52.
+Withdrawn: 4.
+Data cleaning: Not started.
+This is an operational status snapshot, not a study-results or efficacy report.
+
+SOURCE: Aurora_Final_Readout_TEMPLATE.pptx
+Document type: Blank readout template.
+The template contains presentation structure only. It has no final study results. Do not infer values from placeholders or headings.
