@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+
+<html data-navigation="full" data-season="autumn" lang="en-US">
+<head><meta charset="utf-8"/><script>(function(){var r=document.documentElement;r.dataset.season='autumn';r.dataset.animationPreference='on';try{if(localStorage.getItem('elc-60ff356d23-copilot-student-animations')==='off'){r.dataset.animationPreference='off';}if(localStorage.getItem('elc-60ff356d23-copilot-student-theme')==='dark'){r.dataset.theme='dark';}var savedSeason=localStorage.getItem('elc-60ff356d23-copilot-student-season');if(['autumn','winter','spring','summer'].includes(savedSeason)){r.dataset.season=savedSeason;}var savedNavigation=localStorage.getItem('elc-60ff356d23-copilot-student-navigation');if(['full','compact','hidden'].includes(savedNavigation)){r.dataset.navigation=savedNavigation;}}catch(error){window.guideThemeStorageUnavailable=true;}r.dataset.animations=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'off':r.dataset.animationPreference;})();</script>
+<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="noindex,nofollow,noarchive" name="robots"/><meta content="noindex,nofollow,noarchive" name="googlebot"/>
+<meta content="light dark" name="color-scheme"/>
+<title>ELC | GCCS Part 2: Agents and Skills in Microsoft 365 Copilot | Student Guide</title>
+<style>
+:root{color-scheme:light;--cp-bg:#f7f4ef;--cp-bg-elevated:#fcfbf8;--cp-surface:#ffffff;
+--cp-surface-soft:#f2f0ec;--cp-border:#e2ddd5;--cp-border-strong:#b9b2a6;
+--cp-text:#1b1c28;--cp-text-muted:#5c5c66;--cp-text-soft:#6f6f78;--cp-accent:#b11f4b;
+--cp-accent-soft:rgba(177,31,75,.08);--cp-navy:#040a2b;--cp-blue:#2e3a72;--cp-peri:#9eafff;
+--cp-gold:#8a6d2f;--cp-code-bg:#0f1430;--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.10);}
+[data-theme="dark"]{color-scheme:dark;--cp-bg:#1a1b22;--cp-bg-elevated:#212230;--cp-surface:#252634;
+--cp-surface-soft:#2c2d3d;--cp-border:#3a3b4e;--cp-border-strong:#565879;--cp-text:#e6e7f0;
+--cp-text-muted:#a5a7bd;--cp-text-soft:#9092a8;--cp-accent:#fd8ea1;--cp-accent-soft:rgba(253,142,161,.14);
+--cp-navy:#0a1038;--cp-blue:#9eafff;--cp-peri:#9eafff;--cp-gold:#d8b46a;--cp-code-bg:#0b0f26;
+--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.4);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cp-bg);color:var(--cp-text);
+font-family:Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6;
+-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--cp-text);line-height:1.2;margin:0;}
+a{color:var(--cp-accent);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px;}
+header.hero{background:var(--cp-navy);color:#fff;padding:48px 0 44px;}
+header.hero .wrap{padding-bottom:0;}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--cp-peri);}
+header.hero h1{color:#fff;font-size:50px;margin:14px 0 6px;}
+header.hero .tag{font-family:Georgia,serif;font-style:italic;font-size:23px;color:#dde3ff;}
+header.hero .meta{margin-top:18px;font-size:13px;color:#aeb5d2;}
+.themebtn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);
+border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+.themebtn:hover{background:rgba(255,255,255,.2);}
+nav.toc{position:sticky;top:0;z-index:50;background:var(--cp-bg-elevated);
+border-bottom:1px solid var(--cp-border);padding:10px 0;}
+nav.toc .wrap{padding-bottom:0;display:flex;gap:8px;flex-wrap:wrap;}
+nav.toc a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--cp-text-muted);
+padding:6px 12px;border-radius:999px;border:1px solid transparent;}
+nav.toc a:hover{color:var(--cp-accent);border-color:var(--cp-border);background:var(--cp-surface);}
+section{margin-top:52px;scroll-margin-top:64px;}
+section > h2{font-size:31px;margin-bottom:6px;}
+.lede{color:var(--cp-text-muted);font-size:15px;margin:0 0 22px;max-width:74ch;}
+.card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+padding:20px 22px;box-shadow:var(--cp-shadow);}
+.grid{display:grid;gap:14px;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.file{display:flex;gap:12px;align-items:flex-start;}
+.file code{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:6px;
+padding:2px 7px;font-size:12.5px;color:var(--cp-blue);}
+.file p{margin:4px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.gcse{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--cp-border);}
+.gcse:last-child{border-bottom:none;}
+.orb{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--cp-blue);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:20px;font-weight:700;}
+.gcse h3{font-size:18px;}
+.gcse .q{color:var(--cp-text-muted);font-size:14px;margin:2px 0 6px;}
+.gcse .ex{font-size:14px;font-style:italic;color:var(--cp-blue);}
+details.demo{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:14px;box-shadow:var(--cp-shadow);overflow:hidden;}
+details.demo[open]{border-color:var(--cp-border-strong);}
+summary{cursor:pointer;padding:18px 22px;display:flex;gap:16px;align-items:center;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+summary:hover{background:var(--cp-surface-soft);}
+.dnum{flex:0 0 auto;min-width:76px;height:42px;padding:0 8px;white-space:nowrap;border-radius:10px;background:var(--cp-navy);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:14px;font-weight:700;}
+.dhead{flex:1 1 auto;min-width:0;}
+.dhead h3{font-size:21px;}
+.dhead p{margin:2px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.pill{flex:0 0 auto;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+background:var(--cp-accent-soft);color:var(--cp-accent);border-radius:999px;padding:5px 11px;}
+.dbody{padding:0 22px 22px;border-top:1px solid var(--cp-border);}
+.dbody code{display:inline-block;background:var(--cp-surface-soft);border:1px solid var(--cp-border);
+border-radius:6px;padding:3px 9px;font-size:12.5px;color:var(--cp-blue);margin:0 8px 6px 0;}
+.label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+color:var(--cp-text-soft);margin:20px 0 8px;}
+.promptbox{position:relative;background:var(--cp-code-bg);border-radius:12px;padding:18px 20px;}
+.promptbox pre{margin:0;white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
+font-size:14px;line-height:1.65;color:var(--cp-code-fg);}
+.promptbox pre::first-line{}
+.promptbox{padding-right:88px;}
+@media print{.promptbox{padding-right:20px;}} .promptbox.has-file{padding-top:54px;padding-right:20px;} .pb-actions{position:absolute;top:12px;right:12px;display:flex;gap:6px;} .pb-actions .copy{position:static;} .openfile{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:600;font-family:inherit;text-decoration:none;line-height:normal;} .openfile:hover{background:rgba(255,255,255,.24);} .openfile:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px;} @media print{.pb-actions{display:none;}.promptbox.has-file{padding-top:18px;}}
+.instr{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:22px;box-shadow:var(--cp-shadow);overflow:hidden;break-inside:avoid;scroll-margin-top:108px;}
+.instr>summary{padding:16px 22px;}
+.ichev{font-size:15px;color:var(--cp-accent);transition:transform .18s ease;flex:0 0 auto;}
+.instr[open] .ichev{transform:rotate(90deg);}
+.ihead{flex:1 1 auto;}
+.ihead h3{font-size:20px;margin:0;letter-spacing:-.01em;}
+.ihead p{margin:2px 0 0;font-size:13px;color:var(--cp-text-muted);}
+.ipill{flex:0 0 auto;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;
+color:var(--cp-accent);background:var(--cp-accent-soft);border-radius:999px;padding:5px 11px;}
+.ibody{padding:0 22px 6px;border-top:1px solid var(--cp-border);}
+.ibody section{padding-top:20px;}
+.ibody h2{font-size:22px;}
+@media print{.instr>summary{display:none;}.ibody{padding:0;border-top:0;}}
+.pnote{margin:14px 0 6px;font-size:13px;line-height:1.55;color:var(--cp-text-muted);border-left:3px solid var(--cp-accent);padding:0 0 0 10px;}
+.pnote span{display:block;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;color:var(--cp-accent);margin-bottom:2px;}
+.pnote+.promptbox{margin-top:0;}
+@media print{}
+.promptbox pre strong{color:#fff;font-weight:700;}
+.copy{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.12);color:#fff;
+border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;
+font-weight:600;cursor:pointer;font-family:inherit;}
+.copy:hover{background:rgba(255,255,255,.24);}
+.copy.done{background:#2e7d62;border-color:#2e7d62;}
+ol.follow{margin:0;padding-left:22px;}
+ol.follow li{margin-bottom:9px;font-size:14.5px;}
+.see{margin-top:14px;background:var(--cp-surface-soft);border-left:3px solid var(--cp-blue);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.see strong{color:var(--cp-blue);}
+.watch{margin-top:14px;background:var(--cp-accent-soft);border-left:3px solid var(--cp-accent);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.watch strong{color:var(--cp-accent);}
+.newcard h3{font-size:18px;margin-bottom:6px;}
+.newcard p{margin:0 0 10px;font-size:14px;color:var(--cp-text-muted);}
+.newcard .status{font-size:11.5px;font-weight:700;color:var(--cp-gold);
+letter-spacing:.04em;text-transform:uppercase;}
+.gcard h3{font-size:17px;margin-bottom:5px;}
+.gcard p{margin:0;font-size:14px;color:var(--cp-text-muted);}
+table.glance{width:100%;border-collapse:collapse;font-size:14px;}
+table.glance th{text-align:left;font-family:Aptos,sans-serif;font-size:11px;letter-spacing:.12em;
+text-transform:uppercase;color:var(--cp-text-soft);padding:0 12px 10px 0;border-bottom:1px solid var(--cp-border);}
+table.glance td{padding:13px 12px 13px 0;border-bottom:1px solid var(--cp-border);vertical-align:top;}
+table.glance tr:last-child td{border-bottom:none;}
+table.glance .n{font-family:Georgia,serif;font-weight:700;color:var(--cp-blue);width:34px;}
+table.glance .t{font-family:Georgia,serif;font-size:16px;color:var(--cp-text);white-space:nowrap;}
+table.glance .s{font-size:12px;color:var(--cp-text-soft);white-space:nowrap;}
+table.glance .o{color:var(--cp-text-muted);}
+.scenario{background:var(--cp-navy);color:#fff;border-radius:14px;padding:26px 28px;}
+.scenario h3{color:#fff;font-size:22px;margin-bottom:10px;}
+.scenario p{color:#dde3ff;font-size:14.5px;margin:0 0 12px;}
+.scenario ul{margin:0;padding-left:20px;color:#c3cbf0;font-size:14px;}
+.scenario li{margin-bottom:6px;}
+.note{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:12px;
+padding:14px 18px;font-size:14px;color:var(--cp-text-muted);margin-top:16px;}
+footer.end{margin-top:70px;padding-top:26px;border-top:1px solid var(--cp-border);
+font-size:13px;color:var(--cp-text-soft);}
+@media(max-width:720px){table.glance .t,table.glance .s{white-space:normal;}}
+@media print{nav.toc,.themebtn,.copy{display:none;}details.demo{break-inside:avoid;}
+details.demo>.dbody{display:block!important;}body{background:#fff;}}
+
+
+:root{--cp-accent:#7a1126;--cp-accent-soft:rgba(122,17,38,.08)}
+[data-theme="dark"]{--cp-accent:#ffb4c0;--cp-accent-soft:rgba(255,180,192,.14)}
+header.hero .wrap{max-width:1420px}
+.layout{max-width:1420px;margin:0 auto;padding:24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:start}
+.sidebar{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;padding:15px;box-shadow:var(--cp-shadow)}
+.sidebar h2{font-size:18px;margin:0 0 8px}
+.sidebar a{display:block;color:var(--cp-text-muted);font-size:13px;font-weight:600;line-height:1.35;padding:6px 8px;border-radius:7px;text-decoration:none}
+.sidebar a:hover,.sidebar a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.sidebar .nav-actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.nav-actions button,.section-nav a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:7px;color:var(--cp-text);cursor:pointer;font:inherit;font-size:12px;font-weight:700;padding:7px 9px;text-decoration:none}
+.guide-tools{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.guide-search{display:flex;gap:8px;align-items:center}
+.guide-search label{font-size:12px;font-weight:700;color:var(--cp-text-muted);white-space:nowrap}
+.guide-search input{flex:1;min-width:0;background:var(--cp-bg);border:1px solid var(--cp-border-strong);border-radius:8px;color:var(--cp-text);font:inherit;font-size:14px;padding:9px 11px}
+.guide-search input:focus-visible{outline:3px solid var(--cp-accent);outline-offset:2px}
+.topic-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.topic-links a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:999px;color:var(--cp-text);font-size:12px;font-weight:700;padding:6px 10px;text-decoration:none}
+.topic-links a:hover,.topic-links a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent);border-color:var(--cp-accent)}
+.search-results{display:none;margin:10px 0 0;padding:0;list-style:none;border-top:1px solid var(--cp-border)}
+.search-results.has-results{display:block}
+.search-results li{margin-top:7px}
+.search-results a{display:block;color:var(--cp-text);font-size:13px;padding:6px 8px;border-radius:7px;text-decoration:none}
+.search-results a:hover,.search-results a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.search-empty{color:var(--cp-text-muted);font-size:13px;margin:10px 0 0}
+.search-match{outline:2px solid var(--cp-accent);outline-offset:3px}
+.content{min-width:0}
+details.section{scroll-margin-top:20px}
+details.section summary h2{font-size:20px;line-height:1.25}
+details.section summary .dhead span,details.section summary .ihead span{display:block;font-family:Aptos,"Segoe UI",sans-serif;font-size:13px;font-weight:400;color:var(--cp-text-muted);margin-top:3px}
+.ibody{padding-bottom:22px}
+.ibody p,.dbody p{font-size:14.5px}
+.ibody a,.dbody a{overflow-wrap:anywhere}
+.dbody .label:first-child{margin-top:20px}
+.promptbox pre{overflow-wrap:anywhere}
+.promptbox .copy:focus-visible,.themebtn:focus-visible,summary:focus-visible,.nav-actions button:focus-visible,.section-nav a:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px}
+.section-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.section-nav a:last-child{margin-left:auto}
+.news-card{padding:16px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface)}
+.news-card h3{font-size:17px;margin:3px 0 7px}
+.news-card p{margin:0 0 8px}
+.news-card .status{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--cp-accent)}
+.duration{font-size:13px;color:var(--cp-text-muted)}
+.callout{border-left:4px solid var(--cp-accent);padding:12px 15px;background:var(--cp-surface-soft);border-radius:8px;margin:15px 0}
+footer.end{margin:28px 0 16px}
+@media(max-width:850px){.layout{grid-template-columns:1fr;padding:16px}.sidebar{position:static;max-height:none}.sidebar-links{display:flex;gap:2px;flex-wrap:wrap}.sidebar a{display:inline-block}header.hero h1{font-size:36px}}
+@media(max-width:500px){.guide-search{display:block}.guide-search label{display:block;margin-bottom:5px}.guide-search input{width:100%}summary{padding:14px;gap:10px}.dbody,.ibody{padding-left:14px;padding-right:14px}.g2,.g3{grid-template-columns:1fr}.pill,.ipill{display:none}.promptbox pre{font-size:13px}.promptbox{padding-right:72px}.copy{padding:6px}}
+@media print{.sidebar,.section-nav{display:none}.layout{display:block;padding:0}details.section>.dbody,details.section>.ibody{display:block!important}details.section{box-shadow:none}}
+</style>
+<style>:root {
+  --cp-bg: #f7f3ec;
+  --cp-bg-elevated: #f7f3ec;
+  --cp-surface: #fff;
+  --cp-surface-soft: #fbf8f2;
+  --cp-border: #e4dccd;
+  --cp-border-strong: #b98f73;
+  --cp-text: #242328;
+  --cp-text-muted: #596069;
+  --cp-text-soft: #596069;
+  --cp-accent: #7a1126;
+  --cp-accent-soft: rgba(122, 17, 38, .08);
+  --cp-navy: #351420;
+  --cp-blue: #284f78;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #b78a54;
+  --cp-code-bg: #fbf8f2;
+  --cp-code-fg: #242328;
+  --cp-shadow: 0 6px 22px rgba(53, 20, 32, .06);
+}
+[data-theme="dark"] {
+  --cp-bg: #181419;
+  --cp-bg-elevated: #181419;
+  --cp-surface: #271f26;
+  --cp-surface-soft: #211a20;
+  --cp-border: #4a3b45;
+  --cp-border-strong: #a58275;
+  --cp-text: #f5edf0;
+  --cp-text-muted: #d3c7cf;
+  --cp-text-soft: #d3c7cf;
+  --cp-accent: #ffbecb;
+  --cp-accent-soft: rgba(255, 190, 203, .12);
+  --cp-navy: #351420;
+  --cp-blue: #bdd9fa;
+  --cp-peri: #f0d7a1;
+  --cp-gold: #d8b27a;
+  --cp-code-bg: #211a20;
+  --cp-code-fg: #f5edf0;
+  --cp-shadow: 0 6px 22px rgba(0, 0, 0, .22);
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", Aptos, Helvetica, Arial, sans-serif; line-height: 1.55; }
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 200; padding: 8px 12px;
+  background: var(--cp-surface); color: var(--cp-text); transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+.topbar {
+  position: sticky; top: 0; z-index: 100; min-height: 64px; display: flex;
+  align-items: center; gap: 16px; padding: 10px 24px; background: var(--cp-navy);
+  color: #fff; border-bottom: 3px solid var(--cp-gold);
+}
+.brand {
+  font-family: Georgia, "Times New Roman", serif; color: var(--cp-peri);
+  font-size: .84rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+}
+.bar-title {
+  flex: 1; margin: 0; font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem; font-weight: 400;
+}
+.top-actions { display: flex; gap: 7px; flex-wrap: wrap; }
+.top-actions button {
+  background: transparent; color: #fff; border: 1px solid var(--cp-gold);
+  border-radius: 4px; padding: 7px 10px; cursor: pointer; font: inherit; font-size: .81rem;
+}
+.top-actions button:hover, .top-actions button:focus-visible {
+  background: var(--cp-gold); color: var(--cp-navy);
+}
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--cp-gold); outline-offset: 3px;
+}
+.layout {
+  display: flex; gap: 0; width: 100%; max-width: none; margin: 0; padding: 0; align-items: flex-start;
+}
+.toc-column {
+  flex: 0 0 250px; width: 250px; position: sticky; top: var(--cp-header-height,64px);
+  align-self: flex-start; height: calc(100vh - var(--cp-header-height,64px));
+  overflow: auto; background: var(--cp-bg);
+}
+.toc-toggle {
+  display: block; width: 34px; height: 30px; margin: 10px 0 0 16px; padding: 0;
+  color: var(--cp-text); background: var(--cp-surface); border: 1px solid var(--cp-border);
+  border-radius: 5px; cursor: pointer; font: inherit; font-size: 0;
+}
+.toc-toggle::before {
+  content: ""; display: inline-block; width: 14px; height: 12px;
+  border: 1px solid currentColor; border-radius: 2px;
+  background: linear-gradient(to right, currentColor 0 3px, transparent 3px 100%);
+  vertical-align: middle;
+}
+.toc-toggle:hover,.toc-toggle:focus-visible { color: var(--cp-accent); border-color: var(--cp-accent); }
+.toc-toggle:focus-visible { outline: 3px solid var(--cp-gold); outline-offset: 3px; }
+nav.toc {
+  position: static; z-index: 10; width: 250px; height: auto; overflow: visible; padding: 10px 20px 20px;
+  background: var(--cp-bg); border: 0;
+}
+nav.toc .wrap { display: block; max-width: none; padding: 0; }
+.toc-title {
+  margin-bottom: 8px; color: var(--cp-text-muted); font-size: .75rem;
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+nav.toc a {
+  display: block; padding: 6px 10px; color: var(--cp-text); border: 0;
+  border-left: 3px solid transparent; border-radius: 0; font-size: .88rem;
+  font-weight: 400; text-decoration: none;
+}
+nav.toc a:hover, nav.toc a.active {
+  border-left-color: var(--cp-gold); background: var(--cp-accent-soft); color: var(--cp-text);
+}
+[data-navigation="compact"] .toc-column { flex-basis: 72px; width: 72px; }
+[data-navigation="compact"] nav.toc { width: 72px; padding: 10px 8px 20px; }
+[data-navigation="compact"] .toc-toggle { margin-left: 19px; }
+[data-navigation="compact"] nav.toc .toc-title {
+  overflow: hidden; font-size: 0; text-align: center;
+}
+[data-navigation="compact"] nav.toc .toc-title::after { content: "Menu"; font-size: .68rem; }
+[data-navigation="compact"] nav.toc a {
+  overflow: hidden; padding: 8px 4px; font-size: 0; text-align: center;
+}
+[data-navigation="compact"] nav.toc a::after {
+  content: attr(data-short); font-size: .74rem; font-weight: 700; letter-spacing: .03em;
+}
+[data-navigation="hidden"] .toc-column { flex-basis: 52px; width: 52px; }
+[data-navigation="hidden"] nav.toc { display: none; }
+[data-navigation="hidden"] .toc-toggle { margin-left: 9px; }
+.content { flex: 1; min-width: 0; padding: 20px 24px 80px; }
+header.hero { border-radius: 8px; padding: 28px; margin-bottom: 20px; }
+header.hero .wrap { max-width: none; padding: 0; }
+header.hero h1 { margin: 8px 0; color: #fff; font-size: clamp(1.7rem, 3vw, 2.1rem); font-weight: 400; }
+header.hero .tag { margin: 3px 0; color: #f4e3e7; font-size: 1.12rem; }
+header.hero .meta { margin: 9px 0 0; color: #f1e2e5; font-size: .9rem; }
+.instr, details.demo {
+  overflow: hidden; margin-bottom: 18px; border: 1px solid var(--cp-border);
+  border-radius: 8px; background: var(--cp-surface); box-shadow: var(--cp-shadow);
+}
+details.section { scroll-margin-top: 88px; }
+.instr > summary, details.demo > summary { padding: 14px 20px; gap: 12px; }
+.instr[open] > summary, details.demo[open] > summary { border-bottom: 1px solid var(--cp-border); }
+details.section summary h2 { font-size: 1.25rem; }
+details.demo summary h2 { font-weight: 400; }
+.dnum { background: var(--cp-navy); border-radius: 6px; }
+.pill, .ipill { color: var(--cp-accent); background: var(--cp-accent-soft); }
+.ibody, .dbody { padding: 16px 22px 22px; border: 0; }
+.ibody p, .dbody p { line-height: 1.65; }
+.step, .hint {
+  margin: 10px 0; overflow: hidden; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-surface); scroll-margin-top: 88px;
+}
+.step > summary, .hint > summary { padding: 11px 14px; gap: 12px; font-size: .95rem; font-weight: 600; }
+.step > summary > span:first-child, .hint > summary > span:first-child { flex: 1; }
+.step[open] > summary, .hint[open] > summary { border-bottom: 1px solid var(--cp-border); }
+.step-body, .hint-body { padding: 12px 14px; }
+.step-body .label:first-child { margin-top: 0; }
+.step-body .promptbox + .pnote { margin-top: 16px; }
+.step-body .note { margin: 0 0 12px; }
+.step-body .see { margin: 0; border-left-color: var(--cp-gold); }
+.hint > summary strong { margin-right: 5px; color: var(--cp-accent); }
+.hint.fact > summary strong { color: var(--cp-blue); }
+.hint.tip,.tip-feature{border:2px solid var(--cp-accent);border-left-width:6px;box-shadow:0 4px 14px color-mix(in srgb,var(--cp-accent) 18%,transparent)}
+.hint.tip>summary,.tip-feature>summary{background:var(--cp-accent-soft);color:var(--cp-text)}
+.hint.tip>summary::before,.tip-feature>summary::before{content:"TIP";flex:0 0 auto;background:var(--cp-accent);border-radius:999px;color:var(--cp-on-accent);font-size:.68rem;font-weight:800;letter-spacing:.08em;padding:4px 7px}
+.hint.tip[open]>.hint-body,.tip-feature[open]>.step-body{background:color-mix(in srgb,var(--cp-accent-soft) 48%,var(--cp-surface))}
+.hint.fact { border-left: 3px solid var(--cp-blue); }
+.hint-body { font-size: .92rem; line-height: 1.6; }
+.step .chev, .hint .chev {
+  color: var(--cp-accent); transform: rotate(-90deg); transition: transform .18s ease;
+}
+.step[open] .chev, .hint[open] .chev { transform: rotate(0); }
+.promptbox {
+  position: relative; padding: 14px 100px 14px 14px; border: 1px solid var(--cp-border);
+  border-radius: 6px; background: var(--cp-code-bg);
+}
+.promptbox pre {
+  color: var(--cp-code-fg); font: inherit; font-size: .91rem; line-height: 1.65;
+  white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal;
+}
+.promptbox.has-file { padding-top: 48px; }
+.promptbox.has-file pre { line-height: 1.45; }
+.promptbox pre strong { color: var(--cp-accent); }
+.copy {
+  top: 8px; right: 8px; padding: 6px 10px; border: 1px solid var(--cp-gold);
+  border-radius: 4px; background: var(--cp-navy); color: #fff;
+}
+.copy:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.copy.done { border-color: #2e7d62; background: #2e7d62; }
+.openfile { padding: 6px 10px; border: 1px solid var(--cp-gold); border-radius: 4px; background: var(--cp-navy); color: #fff; }
+.openfile:hover { background: var(--cp-navy); filter: brightness(1.2); }
+.pb-actions { top: 8px; right: 8px; }
+.tip-index { margin: 0; padding-left: 22px; }
+.tip-index li { margin: 7px 0; }
+.toast {
+  position: fixed; right: 18px; bottom: 18px; z-index: 150; max-width: min(420px, calc(100vw - 36px));
+  padding: 10px 14px; border: 1px solid var(--cp-gold); border-radius: 6px;
+  background: var(--cp-navy); color: #fff; box-shadow: var(--cp-shadow);
+}
+footer.end { margin-top: 28px; padding-bottom: 0; }
+@media (max-width: 900px) {
+  .topbar { position: relative; flex-wrap: wrap; padding: 12px 16px; }
+  .brand { width: 100%; font-size: .78rem; }
+  .bar-title { min-width: 180px; font-size: 1.02rem; }
+  .layout { display: block; }
+  .toc-column,
+  [data-navigation="compact"] .toc-column,
+  [data-navigation="hidden"] .toc-column {
+    position: static; width: auto; height: auto; flex-basis: auto;
+  }
+  .toc-toggle,
+  [data-navigation="compact"] .toc-toggle,
+  [data-navigation="hidden"] .toc-toggle { margin: 8px 12px 0; }
+  nav.toc { position: static; width: auto; height: auto; padding: 10px 12px; overflow: visible; }
+  [data-navigation="compact"] nav.toc { width: auto; padding: 10px 12px; }
+  nav.toc .wrap { display: flex; flex-wrap: nowrap; gap: 3px; overflow-x: auto; padding: 2px 0; }
+  nav.toc a {
+    flex: 0 0 auto; white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent;
+  }
+  [data-navigation="compact"] nav.toc a {
+    padding: 6px 12px; font-size: .88rem; text-align: left;
+  }
+  [data-navigation="compact"] nav.toc a::after { content: none; }
+  nav.toc a:hover, nav.toc a.active { border-left: 0; border-bottom-color: var(--cp-gold); }
+  .toc-title { display: none; }
+  .content { padding: 16px 14px 55px; }
+  header.hero { padding: 22px; }
+  details.section, .step, .hint { scroll-margin-top: 12px; }
+}
+@media (max-width: 500px) {
+  .top-actions { width: 100%; }
+  .top-actions button { flex: 1; }
+  .brand { white-space: normal; }
+  .instr > summary, details.demo > summary { align-items: flex-start; padding: 14px; gap: 10px; }
+  .pill, .ipill { display: block; padding: 4px 7px; font-size: .62rem; }
+  details.demo > summary { flex-wrap: wrap; }
+  details.demo > summary .dhead { flex: 1 1 calc(100% - 86px); min-width: 0; overflow-wrap: anywhere; }
+  details.demo > summary .pill { margin-left: 86px; max-width: calc(100% - 86px); overflow-wrap: anywhere; }
+  .ibody, .dbody { padding-left: 14px; padding-right: 14px; }
+  .promptbox { padding-right: 84px; }
+}
+@media (max-width: 360px) {
+  .instr > summary, details.demo > summary { flex-wrap: wrap; }
+  .instr > summary .ihead {
+    flex: 1 1 calc(100% - 56px); min-width: 0; overflow-wrap: anywhere;
+  }
+  .instr > summary .ipill { margin-left: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+:root[data-animations="off"] { scroll-behavior: auto; }
+:root[data-animations="off"] *, :root[data-animations="off"] *::before,
+:root[data-animations="off"] *::after { animation: none !important; transition: none !important; }
+:root[data-animations="off"] .season-effects { display: none; }
+@media print {
+  :root, [data-theme="dark"] {
+    --cp-bg: #fff; --cp-surface: #fff; --cp-surface-soft: #fff;
+    --cp-text: #000; --cp-text-muted: #333; --cp-code-bg: #fff; --cp-code-fg: #000;
+    --cp-border: #999; --cp-accent: #641526; --cp-shadow: none;
+  }
+  html { scroll-behavior: auto; }
+  .topbar, .toc-column, .copy, .pb-actions, .toast, .skip-link, .section-nav { display: none !important; }
+  .layout { display: block; padding: 0; }
+  .content { padding: 0; }
+  .instr, details.demo, .step, .hint { break-inside: auto; box-shadow: none; }
+  .instr > summary, details.demo > summary { display: flex !important; break-after: avoid; }
+  .instr .ibody, details.demo .dbody { display: block !important; }
+  .promptbox { padding: 12px; break-inside: avoid; }
+}
+</style><style id="student-guide-controls">
+:root[data-season="winter"] {
+  --cp-bg:#eef4f7;--cp-bg-elevated:#eef4f7;--cp-surface:#fff;--cp-surface-soft:#f3f7fa;
+  --cp-border:#cddbe4;--cp-border-strong:#829bab;--cp-text:#20313e;
+  --cp-text-muted:#516271;--cp-text-soft:#516271;--cp-accent:#7a1126;
+  --cp-accent-soft:rgba(122,17,38,.07);--cp-navy:#122d43;--cp-blue:#315977;
+  --cp-peri:#f0d7a1;--cp-gold:#9e7c4a;--cp-code-bg:#f3f7fa;--cp-code-fg:#20313e;
+  --cp-shadow:0 6px 22px rgba(18,45,67,.07);
+}
+:root[data-season="winter"][data-theme="dark"] {
+  --cp-bg:#0f1b27;--cp-bg-elevated:#0f1b27;--cp-surface:#172a3a;--cp-surface-soft:#102232;
+  --cp-border:#375064;--cp-border-strong:#88a6bb;--cp-text:#eef5fa;
+  --cp-text-muted:#c4d4e0;--cp-text-soft:#c4d4e0;--cp-accent:#ffc2ce;
+  --cp-accent-soft:rgba(255,194,206,.12);--cp-navy:#122d43;--cp-blue:#bdddf6;
+  --cp-peri:#f0d7a1;--cp-gold:#d9b880;--cp-code-bg:#102232;--cp-code-fg:#eef5fa;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.22);
+}
+:root[data-season="spring"] {
+  --cp-bg:#f2f7f1;--cp-bg-elevated:#f2f7f1;--cp-surface:#fff;--cp-surface-soft:#edf4eb;
+  --cp-border:#d5e2d1;--cp-border-strong:#91ad8e;--cp-text:#1e3024;
+  --cp-text-muted:#526655;--cp-text-soft:#526655;--cp-accent:#356b45;
+  --cp-accent-soft:rgba(53,107,69,.08);--cp-navy:#173b2a;--cp-blue:#356b45;
+  --cp-peri:#cfe7c8;--cp-gold:#8b9560;--cp-code-bg:#f6faf4;--cp-code-fg:#1e3024;
+  --cp-shadow:0 6px 22px rgba(35,75,43,.07);
+}
+:root[data-season="spring"][data-theme="dark"] {
+  --cp-bg:#141d17;--cp-bg-elevated:#141d17;--cp-surface:#1d2a20;--cp-surface-soft:#18251b;
+  --cp-border:#3b5140;--cp-border-strong:#829b85;--cp-text:#edf5ee;
+  --cp-text-muted:#c0d0c2;--cp-text-soft:#c0d0c2;--cp-accent:#a8d7ad;
+  --cp-accent-soft:rgba(168,215,173,.13);--cp-navy:#173b2a;--cp-blue:#b8e3bc;
+  --cp-peri:#d2e8b6;--cp-gold:#d4c98c;--cp-code-bg:#18251b;--cp-code-fg:#edf5ee;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.24);
+}
+:root[data-season="summer"] {
+  --cp-bg:#fff8e9;--cp-bg-elevated:#fff8e9;--cp-surface:#fff;--cp-surface-soft:#fff2d6;
+  --cp-border:#ead9b5;--cp-border-strong:#c69d60;--cp-text:#292d34;
+  --cp-text-muted:#5d5b55;--cp-text-soft:#5d5b55;--cp-accent:#a9441b;
+  --cp-accent-soft:rgba(169,68,27,.08);--cp-navy:#164a70;--cp-blue:#236b9a;
+  --cp-peri:#ffe2a0;--cp-gold:#a96e16;--cp-code-bg:#fffaf0;--cp-code-fg:#292d34;
+  --cp-shadow:0 6px 22px rgba(110,75,24,.08);
+}
+:root[data-season="summer"][data-theme="dark"] {
+  --cp-bg:#151d25;--cp-bg-elevated:#151d25;--cp-surface:#202b35;--cp-surface-soft:#1a2630;
+  --cp-border:#425461;--cp-border-strong:#92a7b3;--cp-text:#f0f3f5;
+  --cp-text-muted:#c6d0d5;--cp-text-soft:#c6d0d5;--cp-accent:#ffbf78;
+  --cp-accent-soft:rgba(255,191,120,.14);--cp-navy:#164a70;--cp-blue:#a9d8f3;
+  --cp-peri:#ffe2a0;--cp-gold:#e0bb74;--cp-code-bg:#1a2630;--cp-code-fg:#f0f3f5;
+  --cp-shadow:0 6px 22px rgba(0,0,0,.25);
+}
+.topbar{flex-wrap:wrap}
+.brand{flex:0 1 auto}
+.bar-title{flex:1 1 220px;font-size:1.15rem}
+.top-actions{margin-left:auto}
+.top-actions button{white-space:nowrap}
+details.section,.step,.hint{scroll-margin-top:calc(var(--cp-header-height,64px) + 24px)}
+.hero-panel{
+  margin-bottom:18px;border:1px solid var(--cp-navy);border-radius:8px;
+  background:var(--cp-navy);color:#fff;overflow:hidden;
+}
+.hero-panel>summary{padding:24px 28px 18px;gap:18px;align-items:flex-start}
+.hero-panel>summary:hover{background:var(--cp-navy)}
+.hero-panel>summary>div{flex:1;min-width:0}
+.hero-panel h1{color:#fff;font-size:clamp(1.7rem,3vw,2.1rem);font-weight:400;margin:8px 0 0}
+.hero-chevron{color:var(--cp-peri);font-size:1.4rem;transform:rotate(0);transition:transform .18s ease}
+.hero-panel[open] .hero-chevron{transform:rotate(90deg)}
+.hero-body{padding:0 28px 24px}
+.hero-body .tag{font:italic 1.12rem/1.5 Georgia,serif;color:#f4e3e7}
+.hero-body .meta{margin-top:12px;color:#f1e2e5;font-size:.9rem}
+.season-label{margin-top:12px;color:var(--cp-peri);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+.season-effects{position:fixed;inset:0;z-index:90;overflow:hidden;pointer-events:none}
+.season-particle{
+  position:absolute;top:-2rem;left:var(--x);font:var(--size)/1 "Segoe UI Emoji","Apple Color Emoji",sans-serif;
+  animation:season-fall var(--fall-duration) linear var(--fall-delay) both;will-change:transform,opacity;
+}
+.season-effects[data-season="winter"] .season-particle{color:#a5c9e6;text-shadow:0 1px 2px #294d67}
+@keyframes season-fall{
+  0%{opacity:0;transform:translate3d(0,-8vh,0) rotate(0deg)}
+  10%,85%{opacity:.85}
+  100%{opacity:0;transform:translate3d(var(--drift),calc(100vh + 3rem),0) rotate(var(--turn))}
+}
+.season-sun{
+  position:absolute;top:calc(var(--cp-header-height,64px) + 12px);right:3vw;
+  width:clamp(120px,24vw,260px);aspect-ratio:1;border-radius:50%;
+  background:repeating-conic-gradient(rgba(255,195,40,.5) 0deg 8deg,transparent 8deg 25deg);
+  animation:season-sunshine 4.5s ease-out both;
+}
+.season-sun::after{
+  content:"";position:absolute;inset:32%;border-radius:50%;background:#ffcb43;
+  box-shadow:0 0 32px 12px rgba(255,195,40,.4);
+}
+@keyframes season-sunshine{
+  0%{opacity:0;transform:scale(.65) rotate(-15deg)}
+  18%{opacity:.62}
+  70%{opacity:.55}
+  100%{opacity:0;transform:scale(1.12) rotate(18deg)}
+}
+.grid{align-items:start}
+.subcard{margin:0;padding:0;min-width:0;box-shadow:none}
+.subcard>summary{align-items:flex-start}
+.subcard>summary h3{flex:1;min-width:0;margin:0;font:400 1.05rem/1.35 Georgia,serif}
+.subcard .status{color:var(--cp-accent);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.subcard .step-body p{margin:8px 0}
+.recommendation .rec-label{
+  display:block;margin-bottom:4px;color:var(--cp-accent);font-size:.68rem;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+}
+.recommendation .step-body>p{margin:0 0 12px}
+.savebox{
+  position:relative;padding:14px 100px 14px 14px;border:1px solid var(--cp-border);
+  border-radius:6px;background:var(--cp-code-bg);
+}
+.savebox pre{
+  margin:0;color:var(--cp-code-fg);font:inherit;font-size:.91rem;line-height:1.65;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.meme-figure{margin:0}
+.meme-figure img{display:block;max-width:100%;height:auto;border-radius:6px}
+.meme-figure figcaption{margin-top:10px;color:var(--cp-text-muted);font-size:.85rem}
+.history-date{color:var(--cp-accent);font-weight:700}
+.about-body footer.end{margin:0;padding:0;border:0}
+@media(max-width:900px){
+  .brand{flex-basis:100%}
+  details.section,.step,.hint{scroll-margin-top:12px}
+}
+@media(max-width:500px){
+  .top-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-left:0}
+  .top-actions button{width:100%}
+  .hero-panel>summary{padding:20px 20px 16px}
+  .hero-body{padding:0 20px 20px}
+  .savebox{padding-right:84px}
+  .subcard>summary{flex-wrap:nowrap}
+}
+@media(prefers-reduced-motion:reduce){.hero-chevron{transition:none}.season-effects{display:none}}
+@media print{
+  .hero-panel{background:#fff;color:#000;border-color:#999}
+  .hero-panel h1,.hero-panel .eyebrow,.hero-body .tag,.hero-body .meta,.season-label{color:#000}
+  .hero-chevron,.chev,.season-effects{display:none!important}
+  .savebox{padding:12px}
+}
+</style><link rel="icon" href="../images/favicon-ai-skilling.svg" type="image/svg+xml"></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a><header class="topbar"><span class="brand">ELC</span><p class="bar-title">GCCS Part 2: Student Guide</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button><button aria-label="Turn animations off" aria-pressed="true" id="animationbtn" type="button">Animations: On</button></div></header>
+<div class="layout">
+<div class="toc-column"><button aria-label="Collapse navigation" aria-pressed="false" class="toc-toggle" id="navbtn" type="button">Navigation: Full</button><nav aria-label="Guide contents" class="toc"><div class="wrap"><div class="toc-title">Contents</div><a href="#overview">Overview</a><a href="#d01">Demo 01. Prompt, skill, agent, or Researcher?</a><a href="#d02">Demo 02. Draft an agent for Agent Builder</a><a href="#d03">Demo 03. Choose the agent&#x27;s knowledge</a><a href="#d04">Demo 04. Test the agent before you share it</a><a href="#d05">Demo 05. Design your first skill</a><a href="#d06">Demo 06. Test a skill before you trust it</a><a href="#d07">Demo 07. Give the agent the right skills</a><a href="#d08">Demo 08. Share the agent responsibly</a><a href="#prompting">Prompting &amp; safety</a><a href="#memory">Memory</a><a href="#tips">Tips &amp; tricks</a><a href="#wrap-up">Wrap-up</a><a href="#about-guide">About</a></div></nav></div>
+<main class="content" id="main-content" tabindex="-1"><div class="guide-tools" role="search"><div class="guide-search"><label for="guide-search">Find a prompt or topic</label><input autocomplete="off" id="guide-search" placeholder="Search agents, skills, SKILL.md, sharing..." type="search"/></div><div aria-label="Popular topics" class="topic-links"><a href="#d01">Prompt, skill, or agent</a><a href="#d02">Agent Builder</a><a href="#d03">SharePoint knowledge</a><a href="#d04">Test agents</a><a href="#d05">Skills</a><a href="#d06">Test skills</a><a href="#d07">Agent skills</a><a href="#d08">Sharing</a><a href="#tips">Tips</a></div><ul aria-live="polite" class="search-results" id="search-results"></ul></div><details class="section hero-panel" id="overview" open=""><summary><div><div class="eyebrow">The Estée Lauder Companies · Student Guide</div><h1>GCCS: Agents and Skills</h1></div><span aria-hidden="true" class="hero-chevron">▸</span></summary><div class="hero-body"><div class="tag">Part 2 of 2: build and use agents and skills in Microsoft 365 Copilot. Choose the right tool, draft and ground an agent, create and test a skill, and share responsibly.</div><div class="meta">Part 2 of 2 · Monday, November 16, 2026 · Microsoft 365 Copilot Chat, Agent Builder, and skills</div><div class="season-label" id="season-label">Autumn · Warm paper and harvest tones</div><div class="section-nav"><a href="#d01">Next section</a></div></div></details>
+<details class="section demo" id="d01">
+<summary><span class="dnum">Demo 01</span><h2 class="dhead">Prompt, skill, agent, or Researcher?<span>Pick the right tool before you build anything.</span></h2><span class="pill">Copilot Chat</span></summary>
+<div class="dbody"><details class="step" id="d01-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account and select New chat for this demo. Copy the source below, paste it into the chat, and send it. After the acknowledgment, paste the prompt in B into the same chat; then try the follow-ups in C.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I'll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_Part2_practice_sources/d01-request-backlog.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>GCCS REQUEST BACKLOG
+Persona: Jordan Lee, consumer insights researcher.
+Practice date: Monday, November 16, 2026.
+Team: GCCS research, Project Aurora (Aurora Skin Comfort Study).
+Definitions the team agreed to use:
+- Prompt: a one-time request in Copilot Chat.
+- Skill: reusable instructions (a SKILL.md file) for one repeatable task. Copilot uses it when you select it or, if you allow it, automatically.
+- Agent: a dedicated assistant with its own instructions, knowledge sources, and starter prompts that a team can share and return to.
+- Researcher: a built-in agent for complex, multistep research that returns a source-cited report.
+- Do not automate: the work needs a human decision, approval, or authority.
+Requests:
+R1. Every Monday, turn the latest fieldwork snapshot into a five-line status brief in the same format.
+R2. Summarize one transcript from the October 30, 2026 protocol checkpoint.
+R3. Give the whole GCCS team one place to ask questions about approved protocols, templates, and data dictionaries in the Aurora approved library.
+R4. Compare published evidence on skin-comfort self-report scales with our internal protocol notes, and give me a cited report before the decision on Wednesday, November 18, 2026.
+R5. Approve the consumer-facing comfort claim for the Aurora readout.
+R6. Every time anyone drafts a participant-facing message, check it against the plain-language checklist and the reading-level rule.
+R7. Rename the columns in one spreadsheet I am cleaning today.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details><details class="step" id="d01-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Sorts a team&#x27;s requests into one-time prompts, reusable skills, shared agents, Researcher work, and work that must stay with a person. Useful for anyone deciding whether a task is worth building something for.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Classify each request as a prompt, skill, agent, Researcher, or do not automate.
+<strong>Context:</strong> My team wants to stop retyping the same instructions, and I need to know which requests are worth building something for.
+<strong>Source:</strong> Use only the request backlog and definitions I pasted.
+<strong>Expectation:</strong> A table with the request, classification, a one-sentence reason, and how often it repeats (or &quot;Not stated&quot;); then name the one skill and the one agent to build first.</pre></div></div></details><details class="step" id="d01-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Tests the reasoning by asking what breaks if you skip building.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>For each request you classified as a skill or an agent, explain what would go wrong if we kept using a one-time prompt instead.</pre></div><div class="pnote"><span>What this prompt does</span>Keeps human authority visible before anyone automates.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Which request would be risky to turn into a skill or an agent? Explain the risk and what a person must still own.</pre></div></div></details><details class="step" id="d01-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Expected classification:</strong> R1 skill, R2 prompt, R3 agent, R4 Researcher, R5 do not automate, R6 skill, R7 prompt.</li><li><strong>R5</strong> is an approval. Copilot should not suggest that a skill or an agent approves the comfort claim.</li><li><strong>Repeat frequency:</strong> R1 is every Monday and R6 is every time someone drafts a participant-facing message. R2 and R7 are one-time requests. The backlog does not state a frequency for R3 or R4.</li><li><strong>Build first:</strong> R1 is a strong first skill, and R3 is the clear agent candidate.</li><li>R4 should go to Researcher because it needs multistep research and a cited report before Wednesday, November 18, 2026.</li></ul></div></div></details><details class="hint tip" id="d01-tip"><summary><span>E. Tip: A skill teaches a task; an agent plays a role</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Think of a <strong>skill</strong> as a reusable recipe for one job, such as "write the weekly status brief." Think of an <strong>agent</strong> as a dedicated assistant with its own instructions, knowledge, and starter prompts that a team returns to. An agent can also use skills. If a request happens once, a good prompt is enough.</div></details><details class="hint fact" id="d01-fact"><summary><span>F. Did you know? Copilot can choose a skill for you, or you can choose it</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft describes skills as a way to turn a repeatable task into a reusable workflow. Each skill includes a required SKILL.md file. Copilot can use a skill automatically when it's relevant, or you can select it, and you can turn off automatic use for a specific skill. <a href="https://support.microsoft.com/en-us/microsoft-365-copilot/create-edit-skills-copilot" target="_blank" rel="noopener">Microsoft Support: Create and edit skills</a></div></details><details class="step recommendation" id="d01-recommendation"><summary><span><span class="rec-label">G. Recommended custom instruction</span><strong>Choose the right tool</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable, nonsensitive working preference. Save it only if custom instructions are available to you and allowed by your organization.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When I ask for help with a task I repeat, tell me whether a prompt, a skill, or an agent fits best, and why.</pre></div></div></details><div class="section-nav"><a href="#overview">Previous section</a><a href="#d02">Next section</a></div></div>
+</details>
+<details class="section demo" id="d02">
+<summary><span class="dnum">Demo 02</span><h2 class="dhead">Draft an agent for Agent Builder<span>Name, description, instructions, and starter prompts that fit.</span></h2><span class="pill">Agent Builder</span></summary>
+<div class="dbody"><details class="step" id="d02-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account and select New chat for this demo. Copy the source below, paste it into the chat, and send it. After the acknowledgment, paste the prompt in B into the same chat; then try the follow-ups in C. Optional: to see where these fields go, select Agents &amp; Skills, select New agent, and open the Configure tab. Keep this practice agent as a draft; don't select Create.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I'll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_Part2_practice_sources/d02-agent-brief.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>AGENT BRIEF - GCCS RESEARCH LIBRARY GUIDE
+Persona: Taylor Brooks, Research Knowledge Manager and agent owner.
+Practice date: Monday, November 16, 2026.
+Who will use it: GCCS researchers who need approved Project Aurora materials.
+Job: Help authorized users find and understand approved research materials in the Aurora approved library. Cite the file name and date. Say whether a file is a policy, template, protocol, or study result.
+Allowed knowledge: /GCCS-Training/Aurora-Approved-Library/ (approved charters, current approved protocols, data dictionaries, standard templates, quality-review checklists, final approved readouts).
+Not allowed: archive folders, draft protocols, row-level participant data, unreviewed analyst notes, email and chat, personal OneDrive files.
+Must not: approve claims, studies, protocols, or communications; infer participant-level information; treat a template as completed evidence; send, publish, or change content.
+When the library has no answer: say so, and suggest asking Taylor Brooks.
+Tone: plain, professional, and brief. Use US dates, such as November 16, 2026.
+Agent Builder fields and limits:
+- Name: up to 30 characters.
+- Description: up to 1,000 characters. Users see it, and Copilot uses it to decide when the agent fits a task.
+- Instructions: up to 8,000 characters.
+- Starter prompts: example requests that show users what the agent can do.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details><details class="step" id="d02-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Turns an agent brief into ready-to-paste Agent Builder fields that stay within the documented limits. Useful for knowledge owners and champions who will build or maintain an agent.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Draft the Agent Builder configuration for the GCCS Research Library Guide.
+<strong>Context:</strong> I&#x27;m Taylor Brooks, and I&#x27;ll paste your draft into the Configure tab in Agent Builder, so every field must fit its limit.
+<strong>Source:</strong> Use only the agent brief I pasted. Don&#x27;t add sources, permissions, or features it doesn&#x27;t mention.
+<strong>Expectation:</strong> Give me the Name, Description, Instructions (numbered, with a &quot;Do not&quot; section and a &quot;When you can&#x27;t find it&quot; section), and four starter prompts, plus the character count of the name and description.</pre></div></div></details><details class="step" id="d02-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Makes the instructions easier for the agent to follow and for a reviewer to audit.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Rewrite the instructions so each rule is one short line that starts with a verb, and move the &quot;Do not&quot; rules to the top. Keep every rule from the brief.</pre></div><div class="pnote"><span>What this prompt does</span>Adds a realistic first-day question and a request the agent should decline.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Write one starter prompt a new researcher would actually type on their first day, and one request the agent should politely refuse. Explain why it should refuse the second one.</pre></div></div></details><details class="step" id="d02-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Name:</strong> 30 characters or fewer. "GCCS Research Library Guide" is 27 characters.</li><li><strong>Description:</strong> 1,000 characters or fewer, and says the agent helps find and understand approved Aurora research materials with citations.</li><li><strong>Instructions:</strong> cite the file name and date, label policy, template, protocol, or study result, and suggest asking Taylor Brooks when the library has no answer.</li><li><strong>Boundaries:</strong> all six excluded sources and all four "must not" rules appear. Copilot should not add Teams, email, or any source the brief excludes.</li><li>Count the characters yourself. Character counts from a chat reply can be off, and Agent Builder enforces the limits.</li></ul></div></div></details><details class="hint tip" id="d02-tip"><summary><span>E. Tip: Describe first, then check Configure</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">In Agent Builder, you can describe the agent in plain language on the <strong>Describe</strong> tab and let it fill in the configuration, or enter your own fields on the <strong>Configure</strong> tab. Either way, review every field on the <strong>Configure</strong> tab before you select Create.</div></details><details class="hint fact" id="d02-fact"><summary><span>F. Did you know? Agent Builder fields have character limits</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents limits of 30 characters for the agent name, 1,000 for the description, and 8,000 for the instructions. The description helps the model decide when to use the agent, and users see it when they find the agent. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">Microsoft Learn: Build agents with Agent Builder</a></div></details><details class="step recommendation" id="d02-recommendation"><summary><span><span class="rec-label">G. Recommended custom instruction</span><strong>Agent drafts</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A reusable drafting preference with no project details. Save it only if custom instructions are available to you.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When I draft an agent, put the &quot;Do not&quot; rules first, require citations with file names and dates, and include a fallback answer for missing information.</pre></div></div></details><div class="section-nav"><a href="#d01">Previous section</a><a href="#d03">Next section</a></div></div>
+</details>
+<details class="section demo" id="d03">
+<summary><span class="dnum">Demo 03</span><h2 class="dhead">Choose the agent&#x27;s knowledge<span>Ground the agent in approved SharePoint content only.</span></h2><span class="pill">Agent Builder · Knowledge</span></summary>
+<div class="dbody"><details class="step" id="d03-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account and select New chat for this demo. Copy the source below, paste it into the chat, and send it. After the acknowledgment, paste the prompt in B into the same chat; then try the follow-ups in C.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I'll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_Part2_practice_sources/d03-knowledge-candidates.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>KNOWLEDGE CANDIDATES - GCCS RESEARCH LIBRARY GUIDE
+Persona: Taylor Brooks, Research Knowledge Manager and agent owner.
+Practice date: Monday, November 16, 2026.
+Rule from the agent brief: use only approved, current materials that every intended user is already allowed to open.
+Intended users: GCCS Research group (about 80 researchers).
+K1. SharePoint folder /Aurora-Approved-Library/01_Charters/ - Approved study charters. Access: GCCS Research group.
+K2. SharePoint file /Aurora-Approved-Library/02_Protocols/Aurora_Protocol_v3_APPROVED_2026-10-20.docx - Current approved protocol. Target sample: 120. Access: GCCS Research group.
+K3. SharePoint file /Aurora-Study/Archive/Aurora_Protocol_v2_DRAFT_2026-10-04.docx - Superseded draft. Target sample: 90. Access: GCCS Research group.
+K4. SharePoint folder /Aurora-Approved-Library/03_Data_Dictionaries/ - Approved data dictionaries. Access: GCCS Research group.
+K5. SharePoint file /Aurora-Study/03_Fieldwork/Aurora_Participant_Roster_2026-11-13.xlsx - Row-level participant records. Sensitivity label: Highly Confidential. Access: fieldwork team only.
+K6. SharePoint folder /Aurora-Approved-Library/04_Templates/ - Standard research templates. Access: GCCS Research group.
+K7. SharePoint file /Aurora-Study/04_Analysis/Aurora_Preliminary_Notes_2026-11-07.docx - Analyst working notes, not quality checked. Access: Analytics team only.
+K8. Teams chat &quot;Aurora fieldwork huddle&quot; - Informal discussion that includes draft decisions. Access: 12 members.
+K9. SharePoint folder /Aurora-Approved-Library/05_QC_Checklists/ - Quality-review checklists. Access: GCCS Research group.
+K10. Public website about skin-comfort survey methods - Not reviewed by GCCS. Access: public.
+K11. Taylor Brooks&#x27;s personal OneDrive file Library_Ideas.docx - Personal notes. Access: Taylor only.
+Agent Builder knowledge notes:
+- SharePoint: up to 100 files per agent.
+- The agent respects existing permissions and sensitivity labels.
+- The &quot;Only use specified sources&quot; setting makes the agent prioritize the sources you add. It does not block general AI knowledge.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details><details class="step" id="d03-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Decides which SharePoint, Teams, web, and OneDrive sources belong in the agent&#x27;s knowledge, and why. Useful for knowledge owners and anyone who shares research content with a team.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Decide which knowledge sources the GCCS Research Library Guide should include.
+<strong>Context:</strong> About 80 researchers will use this agent, and I don&#x27;t want it to surface drafts, notes, or data they shouldn&#x27;t rely on.
+<strong>Source:</strong> Use only the knowledge candidates and Agent Builder notes I pasted.
+<strong>Expectation:</strong> A table with ID, include or exclude, the rule that applies, and the risk if I got it wrong; then a one-paragraph summary of the final knowledge list.</pre></div></div></details><details class="step" id="d03-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Shows how one wrong source changes a real answer.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>A researcher asks the agent, &quot;What is the target sample for Aurora?&quot; Using only the included sources, what should the answer be? What could go wrong if K3 had been included by mistake?</pre></div><div class="pnote"><span>What this prompt does</span>Turns a setting into a clear instruction for the agent.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Explain in plain language what &quot;Only use specified sources&quot; does and does not do. Then write one instruction line that tells the agent what to say when the approved library doesn&#x27;t have the answer.</pre></div></div></details><details class="step" id="d03-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Include:</strong> K1, K2, K4, K6, and K9. All are approved, current, and open to the GCCS Research group.</li><li><strong>Exclude:</strong> K3 (superseded draft), K5 (row-level participant data, Highly Confidential, fieldwork team only), K7 (unreviewed notes, Analytics only), K8 (informal Teams chat with draft decisions), K10 (public website not reviewed by GCCS), and K11 (personal OneDrive notes).</li><li><strong>Target sample:</strong> 120, citing Aurora_Protocol_v3_APPROVED_2026-10-20.docx. With K3 included, the agent might report the superseded 90.</li><li>"Only use specified sources" prioritizes the sources you add; it does not block general AI knowledge. That's why the fallback instruction still matters.</li></ul></div></div></details><details class="hint tip" id="d03-tip"><summary><span>E. Tip: Permissions aren&#x27;t a quality filter</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">An agent respects each user's existing permissions, so it won't show people files they can't open. It also won't stop showing an old draft that people <em>can</em> open. Add only the sources you want the agent to rely on.</div></details><details class="hint fact" id="d03-fact"><summary><span>F. Did you know? Knowledge sources have limits, and one setting only prioritizes</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Agent Builder supports public websites, SharePoint and OneDrive content, Teams chats and meetings, Outlook email, embedded files, and Copilot connectors, with limits by source type, such as 100 SharePoint files per agent. The <strong>Only use specified sources</strong> setting prioritizes your sources rather than blocking general AI knowledge. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-knowledge" target="_blank" rel="noopener">Microsoft Learn: Add knowledge sources</a></div></details><details class="step recommendation" id="d03-recommendation"><summary><span><span class="rec-label">G. Recommended agent instruction</span><strong>Say when the library is silent</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Add a line like this to an agent&#x27;s instructions, adapted to your own library and owner.</p><div class="savebox"><button aria-label="Copy recommended agent instruction" class="copy" type="button">Copy</button><pre>Answer only from the approved library. If it doesn&#x27;t contain the answer, say &quot;I can&#x27;t find that in the approved library&quot; and suggest asking the library owner.</pre></div></div></details><div class="section-nav"><a href="#d02">Previous section</a><a href="#d04">Next section</a></div></div>
+</details>
+<details class="section demo" id="d04">
+<summary><span class="dnum">Demo 04</span><h2 class="dhead">Test the agent before you share it<span>Grade a Try it log and fix what failed.</span></h2><span class="pill">Agent Builder · Try it</span></summary>
+<div class="dbody"><details class="step" id="d04-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account and select New chat for this demo. Copy the source below, paste it into the chat, and send it. After the acknowledgment, paste the prompt in B into the same chat; then try the follow-ups in C.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I'll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_Part2_practice_sources/d04-try-it-test-log.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>TRY IT TEST LOG - GCCS RESEARCH LIBRARY GUIDE
+Persona: Taylor Brooks, Research Knowledge Manager and agent owner.
+Test date: Monday, November 16, 2026.
+Test 1 - Normal question
+Asked: Where is the current Aurora data dictionary?
+Agent: The current data dictionary is Aurora_Data_Dictionary_v2_APPROVED_2026-10-22.xlsx in 03_Data_Dictionaries, approved October 22, 2026.
+Expected: Cites the approved file and its date.
+Test 2 - Conflicting versions
+Asked: What is the Aurora target sample?
+Agent: The target sample is 90 participants.
+Expected: 120 participants, citing Aurora_Protocol_v3_APPROVED_2026-10-20.docx. No archive content.
+Test 3 - Missing source
+Asked: What did the November 12 steering meeting decide about adding a second study site?
+Agent: The steering meeting approved a second study site in Chicago.
+Expected: Says the approved library does not contain this and suggests asking Taylor Brooks.
+Test 4 - Participant data
+Asked: Which participants withdrew, and why?
+Agent: I can&#x27;t share participant-level information. The approved library contains only aggregate, approved materials. Please contact the fieldwork team through the approved process.
+Expected: Refuses participant-level information and names a safe next step.
+Test 5 - Approval request
+Asked: Can you approve this comfort claim for the readout: &quot;Aurora improves comfort for all users&quot;?
+Agent: Yes, this claim is supported. Approved.
+Expected: Refuses to approve, explains that approval belongs to the claims review process, and notes that approved materials do not support the claim.
+Test 6 - Template versus evidence
+Asked: What were the final Aurora results?
+Agent: According to Aurora_Final_Readout_TEMPLATE.pptx, comfort improved by [X]% over 14 days.
+Expected: Says final results are not available yet and that a template is not evidence.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details><details class="step" id="d04-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Grades an agent&#x27;s test answers against expected results and proposes fixes for each failure. Useful for anyone who builds, owns, or approves an agent for a team.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Grade each test in this Try it log as pass or fail.
+<strong>Context:</strong> I&#x27;m Taylor Brooks, and I won&#x27;t share the agent with the GCCS Research group until every test passes.
+<strong>Source:</strong> Use only the test log I pasted, and compare each agent answer with its expected result.
+<strong>Expectation:</strong> A table with the test number, pass or fail, and the evidence; then the likely cause of each failure and one instruction or knowledge change to fix it.</pre></div></div></details><details class="step" id="d04-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Expands the test set beyond the cases already covered.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Write two new tests for situations this log doesn&#x27;t cover yet, with the exact question to ask and the expected result.</pre></div><div class="pnote"><span>What this prompt does</span>Turns the fixes into a repeatable retest routine.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Turn the fixes into a short retest checklist I can run in the Try it tab after I update the agent.</pre></div></div></details><details class="step" id="d04-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Expected grades:</strong> Tests 1 and 4 pass. Tests 2, 3, 5, and 6 fail.</li><li><strong>Test 2:</strong> 90 comes from the superseded draft. The fix is to remove archive content from knowledge and point to the current approved protocol (120).</li><li><strong>Test 3:</strong> the agent answered without a source. It needs a fallback instruction that says the library doesn't contain this.</li><li><strong>Test 5:</strong> the agent approved a claim. Approval must stay with the claims review process.</li><li><strong>Test 6:</strong> the agent treated a template placeholder ([X]%) as evidence.</li><li>Causes are likely, not proven. Retest after each change.</li></ul></div></div></details><details class="hint tip" id="d04-tip"><summary><span>E. Tip: Retest after every change</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Fixing one instruction can change other answers. Keep your test questions in a list, and rerun the whole set in the <strong>Try it</strong> tab after every change to the instructions or knowledge.</div></details><details class="hint fact" id="d04-fact"><summary><span>F. Did you know? You can test and refine before anyone else sees the agent</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents that you can test an agent on the Try it tab and keep refining its instructions, knowledge, and suggested prompts. After you create it, the agent is private and available only to you until you share it. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">Microsoft Learn: Build agents</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-share-manage-agents" target="_blank" rel="noopener">Share and manage agents</a></div></details><details class="step recommendation" id="d04-recommendation"><summary><span><span class="rec-label">G. Recommended agent instruction</span><strong>Never approve</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A boundary worth adding to any research agent&#x27;s instructions.</p><div class="savebox"><button aria-label="Copy recommended agent instruction" class="copy" type="button">Copy</button><pre>Never approve claims, studies, protocols, or communications. Explain that approval belongs to the responsible reviewer, and point to the approved process.</pre></div></div></details><div class="section-nav"><a href="#d03">Previous section</a><a href="#d05">Next section</a></div></div>
+</details>
+<details class="section demo" id="d05">
+<summary><span class="dnum">Demo 05</span><h2 class="dhead">Design your first skill<span>Turn a weekly routine into a SKILL.md file.</span></h2><span class="pill">Copilot Chat · Skills</span></summary>
+<div class="dbody"><details class="step" id="d05-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account and select New chat for this demo. Copy the source below, paste it into the chat, and send it. After the acknowledgment, paste the prompt in B into the same chat; then try the follow-ups in C. If Copilot offers to create a skill, you can open it in the skill builder to review it. Saving a practice skill is optional. If skills aren't available to you yet, keep the SKILL.md draft; Demo 06 includes a finished version.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I'll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_Part2_practice_sources/d05-status-brief-process.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>HOW I WRITE THE WEEKLY AURORA STATUS BRIEF
+Persona: Jordan Lee, consumer insights researcher.
+Practice date: Monday, November 16, 2026.
+When: Every Monday morning, for the GCCS study leads.
+Input: the latest Aurora fieldwork snapshot that I paste or attach.
+My steps:
+1. Find the snapshot date.
+2. Pull the enrolled, completed day 14, and withdrawn counts.
+3. Compare enrolled with the approved target sample of 120 from the current approved protocol (v3).
+4. Calculate the percentage enrolled and round to the nearest whole number.
+5. Note the data cleaning status.
+6. List anything missing or unclear instead of guessing.
+Output format: five lines - As of, Enrollment, Completion, Withdrawals, Open items. Under 90 words.
+Rules:
+- Never use the superseded draft target of 90.
+- Never describe results, effects, or claims. This is a status brief only.
+- No participant names or IDs.
+- If the snapshot date or any count is missing, say what is missing and stop.
+- Use US dates, such as November 13, 2026.
+Skill format I need:
+- name: lowercase letters, numbers, and hyphens only; 64 characters or fewer.
+- description: 1,024 characters or fewer; says what the skill does and which requests should trigger it.
+- instructions: steps, rules, output format, and what to do when input is missing.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details><details class="step" id="d05-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Turns a routine you repeat every week into a skill with a clear name, description, steps, rules, and output format. Useful for anyone who keeps retyping the same instructions.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Turn my weekly status brief process into a SKILL.md file for Copilot.
+<strong>Context:</strong> I write this brief every Monday, and I want Copilot to follow the same steps and format without my retyping them.
+<strong>Source:</strong> Use only my process notes. Don&#x27;t add steps, data sources, or rules I didn&#x27;t write.
+<strong>Expectation:</strong> One SKILL.md in a code block, with YAML front matter (name and description) and Markdown instructions. Ask any clarifying questions before responding.</pre></div></div></details><details class="step" id="d05-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Improves how reliably Copilot finds the skill when you ask for this job.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Rewrite only the description so it includes phrases I would actually type, like &quot;weekly status brief&quot; and &quot;Aurora fieldwork snapshot,&quot; and stays focused on this one job.</pre></div><div class="pnote"><span>What this prompt does</span>Moves the draft into the skill builder, where you review it before saving.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Create a skill from this SKILL.md so I can review it in the skill builder. I&#x27;ll check the name, description, instructions, and workflow before I save it.</pre></div></div></details><details class="step" id="d05-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Clarifying questions:</strong> if Copilot asks any, answer from the process notes, such as "The audience is the GCCS study leads."</li><li><strong>Name:</strong> lowercase letters, numbers, and hyphens only, such as aurora-status-brief.</li><li><strong>Description:</strong> says what the skill does and which requests should trigger it, in 1,024 characters or fewer.</li><li><strong>Steps and rules:</strong> all six steps in order, the target of 120 from protocol v3, and never the superseded 90.</li><li><strong>Output:</strong> five lines (As of, Enrollment, Completion, Withdrawals, Open items) under 90 words, with no results, claims, participant names, or IDs.</li><li><strong>Missing input:</strong> the skill says what is missing and stops instead of guessing.</li></ul></div></div></details><details class="hint tip" id="d05-tip"><summary><span>E. Tip: One job per skill</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Remember the comic: a skill described as "Use for EVERYTHING" will show up where you don't want it. Keep each skill focused on one job, and write a description that names the requests that should trigger it.</div></details><details class="hint fact" id="d05-fact"><summary><span>F. Did you know? SKILL.md has a simple, standard format</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents that SKILL.md starts with YAML front matter. The name uses 1 to 64 lowercase letters, numbers, and hyphens, and the description can be 1 to 1,024 characters and should identify the requests that activate the skill. Microsoft recommends keeping SKILL.md under 20,000 characters. Copilot Chat supports the open <a href="https://agentskills.io/" target="_blank" rel="noopener">Agent Skills</a> format. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-copilot-chat-skills" target="_blank" rel="noopener">Microsoft Learn: Build skills for Copilot Chat</a></div></details><details class="step recommendation" id="d05-recommendation"><summary><span><span class="rec-label">G. Recommended custom instruction</span><strong>Offer a skill</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable working preference. Save it only if custom instructions are available to you.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When I describe a task I repeat, offer to turn it into a skill, and list the inputs, steps, rules, and output format you would use.</pre></div></div></details><div class="section-nav"><a href="#d04">Previous section</a><a href="#d06">Next section</a></div></div>
+</details>
+<details class="section demo" id="d06">
+<summary><span class="dnum">Demo 06</span><h2 class="dhead">Test a skill before you trust it<span>Run the skill on good and incomplete input.</span></h2><span class="pill">Copilot Chat · Skills</span></summary>
+<div class="dbody"><details class="step" id="d06-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account and select New chat for this demo. Copy the source below, paste it into the chat, and send it. After the acknowledgment, paste the prompt in B into the same chat; then try the follow-ups in C. Copilot follows the SKILL.md text you paste, so you don't need to save a skill for this demo.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I'll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_Part2_practice_sources/d06-skill-test-pack.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>SKILL TEST PACK - AURORA STATUS BRIEF
+Persona: Jordan Lee, consumer insights researcher.
+Practice date: Monday, November 16, 2026.
+=== SKILL.md ===
+---
+name: aurora-status-brief
+description: Write the weekly Aurora study status brief from a pasted Aurora fieldwork snapshot. Use when someone asks for the weekly status brief, an Aurora enrollment update, or a fieldwork snapshot summary.
+---
+# Aurora status brief
+1. Find the snapshot date.
+2. Pull the enrolled, completed day 14, and withdrawn counts.
+3. Compare enrolled with the approved target sample of 120 (Aurora Protocol v3).
+4. Calculate the percentage enrolled, rounded to the nearest whole number.
+5. Note the data cleaning status.
+6. List anything missing or unclear.
+Rules: Never use the superseded target of 90. No results, effects, or claims. No participant names or IDs. If the snapshot date or any count is missing, say what is missing and stop. Use US dates.
+Output: five lines - As of, Enrollment, Completion, Withdrawals, Open items. Under 90 words.
+=== SNAPSHOT A ===
+Aurora fieldwork snapshot, November 13, 2026
+Enrolled: 97
+Completed day 14: 63
+Withdrawn: 5
+Data cleaning: started November 12, 2026; 40% of completed records reviewed
+Note from fieldwork: &quot;Two sites report strong early comfort results.&quot;
+=== SNAPSHOT B ===
+Aurora fieldwork snapshot, November 13, 2026
+Enrolled: 97
+Completed day 14: 63
+Data cleaning: started November 12, 2026
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details><details class="step" id="d06-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Runs a skill&#x27;s instructions on a complete snapshot and an incomplete one, then grades the output against the skill&#x27;s own rules. Useful for anyone about to rely on a skill or share it.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Test the aurora-status-brief skill by running its instructions on Snapshot A and Snapshot B.
+<strong>Context:</strong> I want to know whether this skill is ready before I turn on automatic use, so I&#x27;m checking it against its own rules.
+<strong>Source:</strong> Use only the SKILL.md and the two snapshots in the test pack.
+<strong>Expectation:</strong> Show the output for each snapshot; then a pass or fail table for every rule in the SKILL.md, with the evidence.</pre></div></div></details><details class="step" id="d06-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Builds the test plan you&#x27;ll run after you save a real skill.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Write the test plan I should run after I save this skill: one discovery test, one explicit-use test, one test with automatic use on, one with automatic use off, and one missing or ambiguous input test. Give the exact request I would type for each.</pre></div><div class="pnote"><span>What this prompt does</span>Tightens the description so the skill isn&#x27;t picked for the wrong job.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Suggest one change to the description that would stop this skill from being picked for an unrelated request like &quot;Summarize the Aurora protocol.&quot;</pre></div></div></details><details class="step" id="d06-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Snapshot A:</strong> As of November 13, 2026. Enrollment 97 of 120 (81%). Completion 63. Withdrawals 5. The data cleaning status (started November 12, 2026; 40% of completed records reviewed) appears, most likely under Open items.</li><li><strong>Planted claim:</strong> the output must leave out "strong early comfort results." The skill allows no results, effects, or claims.</li><li><strong>Snapshot B:</strong> the withdrawn count is missing, so the skill should say so and stop, not guess or produce a full brief.</li><li><strong>Never 90:</strong> the superseded target should not appear.</li><li><strong>Format:</strong> five lines, under 90 words, US dates.</li></ul></div></div></details><details class="hint tip" id="d06-tip"><summary><span>E. Tip: Stay in control of automatic use</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">You can select a skill when you want it, or turn on <strong>Let Copilot use this skill automatically</strong>. If a skill appears when you don't want it, open <strong>Agents &amp; Skills</strong>, select the skill, and turn automatic use off.</div></details><details class="hint fact" id="d06-fact"><summary><span>F. Did you know? Microsoft publishes a skill testing checklist</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft recommends confirming that users can find and select the skill, testing explicit use, testing with automatic invocation on and off, and testing missing inputs and ambiguous requests. The response should identify the problem rather than silently return an incomplete result. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-copilot-chat-skills" target="_blank" rel="noopener">Microsoft Learn: Build skills for Copilot Chat</a></div></details><details class="step recommendation" id="d06-recommendation"><summary><span><span class="rec-label">G. Recommended custom instruction</span><strong>Flag missing input</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A stable, nonsensitive preference that works with or without skills.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When an input I give you is missing or unclear, tell me exactly what is missing instead of guessing.</pre></div></div></details><div class="section-nav"><a href="#d05">Previous section</a><a href="#d07">Next section</a></div></div>
+</details>
+<details class="section demo" id="d07">
+<summary><span class="dnum">Demo 07</span><h2 class="dhead">Give the agent the right skills<span>Add, merge, or reject skills for one agent.</span></h2><span class="pill">Agent Builder · Skills</span></summary>
+<div class="dbody"><details class="step" id="d07-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account and select New chat for this demo. Copy the source below, paste it into the chat, and send it. After the acknowledgment, paste the prompt in B into the same chat; then try the follow-ups in C. This demo plans the skill list in chat. In Agent Builder, you add skills to an agent on the Configure tab.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I'll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_Part2_practice_sources/d07-skill-candidates.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>SKILL CANDIDATES - GCCS RESEARCH LIBRARY GUIDE
+Persona: Taylor Brooks, Research Knowledge Manager and agent owner.
+Practice date: Monday, November 16, 2026.
+Agent job: Help authorized users find and understand approved Aurora research materials, with file name and date citations.
+Agent Builder skill limits:
+- Up to 8 skills per agent.
+- Each skill package is a .zip file of up to 50 MB.
+- A skill can&#x27;t be reused across agents.
+- Long procedures can move out of the agent instructions (8,000-character limit) and into skills.
+Candidates:
+S1. cite-library-file - Formats each citation as file name, folder, and approved date.
+S2. protocol-section-finder - Finds and explains a named section of the current approved protocol.
+S3. data-dictionary-lookup - Explains a variable&#x27;s name, type, and allowed values from the approved data dictionary.
+S4. claim-approver - Decides whether consumer-facing claims are approved.
+S5. template-finder - Finds the right standard research template and explains each section.
+S6. qc-checklist-walkthrough - Walks a researcher through the matching quality-review checklist, step by step.
+S7. participant-lookup - Finds a participant&#x27;s records by ID.
+S8. citation-formatter - Formats citations as file name, folder, and approved date.
+S9. aurora-status-brief - Writes the weekly status brief from a pasted fieldwork snapshot. Jordan Lee already uses it as a personal skill.
+S10. helpful-everything - Use for any research request.
+S11. glossary-plain-language - Explains research terms in plain language, with an example from an approved document.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details><details class="step" id="d07-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Chooses which skills fit an agent&#x27;s job, merges duplicates, and rejects skills that need authority or data the agent shouldn&#x27;t have. Useful for agent owners and champions.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Choose which skills to add to the GCCS Research Library Guide.
+<strong>Context:</strong> I&#x27;m Taylor Brooks, the agent&#x27;s owner, and I want each skill to fit the agent&#x27;s job and stay within Agent Builder&#x27;s limits.
+<strong>Source:</strong> Use only the agent job, skill limits, and candidate list I pasted.
+<strong>Expectation:</strong> A table with each skill, add, merge, or reject, and the reason; then the final list with its count, and one sentence on what can move out of the agent instructions.</pre></div></div></details><details class="step" id="d07-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Writes descriptions that help the agent pick the right skill.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>For each skill you added, write a one-sentence description that says what it does and when the agent should use it.</pre></div><div class="pnote"><span>What this prompt does</span>Answers a colleague&#x27;s question with the reasoning from the table.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Jordan asks whether her personal aurora-status-brief skill should be added to this agent. Draft a short reply to Jordan that explains your recommendation.</pre></div></div></details><details class="step" id="d07-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Add:</strong> S1, S2, S3, S5, S6, and S11. <strong>Merge:</strong> S8 duplicates S1.</li><li><strong>Reject:</strong> S4 (approval authority), S7 (participant data), and S10 (too vague to trigger reliably).</li><li><strong>S9:</strong> keep it as Jordan's personal skill. A weekly fieldwork brief isn't this library agent's job, and skills can't be reused across agents.</li><li><strong>Count:</strong> the final list has 6 skills, within the limit of 8.</li></ul></div></div></details><details class="hint tip" id="d07-tip"><summary><span>E. Tip: Move long procedures into skills</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Agent instructions are limited to 8,000 characters. Keep the instructions for the agent's role and boundaries, and move detailed, step-by-step procedures into skills that load only when the task needs them.</div></details><details class="hint fact" id="d07-fact"><summary><span>F. Did you know? An agent can have up to eight skills</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">In Agent Builder, you can add up to eight skills per agent, and each skill package is a .zip file of up to 50 MB. Skills use progressive disclosure: the model loads a skill only when the task requires it. In tenants that use Microsoft Purview Information Barriers, end users can't add skills to agents they create. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-skills" target="_blank" rel="noopener">Microsoft Learn: Add skills in Agent Builder</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/declarative-agent-skills" target="_blank" rel="noopener">Skills in declarative agents</a></div></details><details class="step recommendation" id="d07-recommendation"><summary><span><span class="rec-label">G. Recommended design rule</span><strong>Skills do tasks; people decide</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A design habit for any agent you build or review. Use it in the current chat or save it as a custom instruction.</p><div class="savebox"><button aria-label="Copy recommended design rule" class="copy" type="button">Copy</button><pre>Give each skill one job and a description that says when to use it. Keep approvals and sensitive data out of skills.</pre></div></div></details><div class="section-nav"><a href="#d06">Previous section</a><a href="#d08">Next section</a></div></div>
+</details>
+<details class="section demo" id="d08">
+<summary><span class="dnum">Demo 08</span><h2 class="dhead">Share the agent responsibly<span>Right roles, right audience, and a plan to maintain it.</span></h2><span class="pill">Agent Builder · Share</span></summary>
+<div class="dbody"><details class="step" id="d08-source"><summary><span>A. Paste the practice source</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account and select New chat for this demo. Copy the source below, paste it into the chat, and send it. After the acknowledgment, paste the prompt in B into the same chat; then try the follow-ups in C. This demo plans sharing in chat. Don't share a practice agent during class.</p><div class="label">Paste this first - practice source</div><div class="pnote"><span>Expected acknowledgment</span>After you paste the source, Copilot should reply only: “Got it. I'll use this as the source.”</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open the TXT file version of this practice source" class="openfile" href="ELC_GCCS_Part2_practice_sources/d08-sharing-requests.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy practice data" class="copy" type="button">Copy</button></div><pre>SHARING REQUESTS - GCCS RESEARCH LIBRARY GUIDE
+Persona: Taylor Brooks, Research Knowledge Manager and agent owner.
+Practice date: Monday, November 16, 2026.
+Status: All six Try it tests passed on retest. The agent is private to Taylor until Taylor shares it.
+What the agent does: helps GCCS researchers find and understand approved Aurora research materials, citing the file name and date.
+What it won&#x27;t do: approve claims, studies, protocols, or communications; share participant-level information; or treat a template as results.
+How to report a wrong answer: post in the GCCS Research channel in Teams and tag Taylor Brooks, the agent owner.
+Requests received:
+Q1. Priya Shah (Analytics) wants to help maintain the instructions and knowledge.
+Q2. Morgan Chen (Operations) wants to co-own the agent as a backup when Taylor is out.
+Q3. The GCCS Research security group (about 80 researchers) needs to chat with the agent.
+Q4. Jordan Lee asks to make the GCCS Research group an owner so anyone can fix mistakes.
+Q5. A teammate asks to turn on org-wide sharing so everyone in the company can find the agent in the Agent Store.
+Q6. A researcher can read the agent&#x27;s answer but can&#x27;t open the template file it cites.
+Agent Builder sharing facts:
+- Can edit: owner, with full rights to edit, share, and manage the agent. Can chat: can use the agent only.
+- A group can&#x27;t be an owner. A group can only be a chat user.
+- Org-wide sharing for chat access lets everyone in the tenant find the agent in the Agent Store. Admins can limit or turn off org-wide sharing.
+- Only the files and folders added to the agent can be shared automatically. Access to a full SharePoint site isn&#x27;t automatic.
+- If sharing a file or folder fails, the agent is still shared. The owner asks the file owner or SharePoint site admin to grant access.
+- People can use a shared agent only if they have the license its capabilities require.
+- Maintenance: Taylor reviews the library monthly, on the first business day.
+After you receive this source, reply only: &quot;Got it. I&#x27;ll use this as the source.&quot;</pre></div></div></details><details class="step" id="d08-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Starting prompt - Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Decides who should edit, who should only chat, and what to decline, then sets up ongoing maintenance. Useful for agent owners, managers, and champions.</div><div class="promptbox"><button aria-label="Copy starting prompt" class="copy" type="button">Copy</button><pre><strong>Goal:</strong> Recommend how Taylor should handle each sharing request.
+<strong>Context:</strong> The agent passed its tests, and I want to share it with the right people without giving anyone more access than they need.
+<strong>Source:</strong> Use only the sharing requests and Agent Builder sharing facts I pasted.
+<strong>Expectation:</strong> A table with each request, the recommended role or action, and the reason; then a five-item maintenance checklist with an owner and a trigger for each item.</pre></div></div></details><details class="step" id="d08-followups"><summary><span>C. Follow-ups (2)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Follow-ups - same thread</div><div class="pnote"><span>What this prompt does</span>Drafts the announcement that sets expectations for users.</div><div class="promptbox"><button aria-label="Copy follow-up 1" class="copy" type="button">Copy</button><pre>Write the short Teams post Taylor will share with the GCCS Research channel when the agent is ready: what it does, what it won&#x27;t do, how to report a wrong answer, and who owns it. Keep it under 120 words. Draft only; I&#x27;ll review it before posting.</pre></div><div class="pnote"><span>What this prompt does</span>Turns the class into your own first build.</div><div class="promptbox"><button aria-label="Copy follow-up 2" class="copy" type="button">Copy</button><pre>Now help me plan my own first build. Ask me three questions about a task I repeat, one at a time, and then tell me whether it should be a prompt, a skill, or an agent.</pre></div></div></details><details class="step" id="d08-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li><strong>Q1 and Q2:</strong> Priya Shah and Morgan Chen get Can edit as individual owners.</li><li><strong>Q3:</strong> the GCCS Research security group gets Can chat.</li><li><strong>Q4:</strong> not possible as asked. A group can't be an owner; researchers report mistakes to the owners instead.</li><li><strong>Q5:</strong> don't turn on org-wide sharing. The agent is for GCCS, and admins may restrict it anyway.</li><li><strong>Q6:</strong> the agent is still shared. Taylor asks the file owner or SharePoint site admin to grant access.</li><li><strong>Maintenance:</strong> includes the monthly library review on the first business day, retesting after changes, and a way to report wrong answers.</li></ul></div></div></details><details class="hint tip" id="d08-tip"><summary><span>E. Tip: Share with the smallest group that needs it</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Start with the people who need the agent, gather feedback, and widen access later. Every owner can edit and share the agent, so add owners deliberately.</div></details><details class="hint fact" id="d08-fact"><summary><span>F. Did you know? Agents have two sharing roles</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Microsoft documents two roles: <strong>Can edit</strong> (owner) and <strong>Can chat</strong>. You can't add a group as an owner. Org-wide sharing lets everyone in the tenant find the agent in the Agent Store, and admins can limit it. Users can only add a shared agent if they have the license its capabilities require. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-share-manage-agents" target="_blank" rel="noopener">Microsoft Learn: Share and manage agents</a></div></details><details class="step recommendation" id="d08-recommendation"><summary><span><span class="rec-label">G. Recommended current-chat instruction</span><strong>Plan sharing on purpose</strong></span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use this in the chat where you plan to share an agent.</p><div class="savebox"><button aria-label="Copy recommended current-chat instruction" class="copy" type="button">Copy</button><pre>Before you recommend sharing, list who gets Can edit, who gets Can chat, which files they need access to, and who maintains the agent.</pre></div></div></details><div class="section-nav"><a href="#d07">Previous section</a><a href="#prompting">Next section</a></div></div>
+</details>
+<details class="section instr" id="prompting"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Prompting and safety<span>Clear instructions; evidence before action.</span></h2><span class="ipill">Core habits</span></summary><div class="ibody"><div class="callout"><strong>Where to find agents and skills:</strong> open <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">Microsoft 365 Copilot Chat</a> with your ELC work account. <strong>Agents &amp; Skills</strong> is where you find, create, and manage agents and personal skills. Researcher is a built-in agent for multistep research with cited reports. Exact options depend on tenant settings, rollout, and policy.</div>
+<p>An agent's instructions work like a standing prompt, and a skill is a saved procedure. Both still benefit from the same four parts you used in Part 1. <a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5" target="_blank" rel="noopener">Microsoft prompt guidance</a></p>
+<div class="grid g2"><div class="card"><h3>Goal</h3><p>What job should the prompt, skill, or agent do?</p></div><div class="card"><h3>Context</h3><p>Who uses it, and why?</p></div><div class="card"><h3>Source</h3><p>Which approved information may it use, and what is off limits?</p></div><div class="card"><h3>Expectation</h3><p>What format, boundaries, and fallback answer should it follow?</p></div></div>
+<div class="callout"><strong>Build in this order:</strong> write a good prompt, turn a repeating prompt into a skill, and build an agent only when a team needs a shared assistant with its own knowledge.</div>
+<details class="step"><summary><span>Which license does this guide assume?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Everyone in this GCCS class has a <strong>Microsoft 365 Copilot</strong> license. Microsoft documents that users with this license have access to agents with enhanced capabilities, such as grounding in SharePoint data and Microsoft 365 Copilot connectors. Copilot Chat users without the license can use agents grounded on instructions or the web. Your admin controls what you can create and share, and some options depend on tenant settings and rollout.</p><p><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/prerequisites" target="_blank" rel="noopener">Agent capabilities and licensing</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder" target="_blank" rel="noopener">Agent Builder overview</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-agent-install" target="_blank" rel="noopener">Agent installation</a></p></div></details>
+<details class="step"><summary><span>Responsible use checklist</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ul class="quicklist"><li>Sign in with your work account so enterprise data protection applies.</li><li>In class, use only the practice sources in this guide. Don't create or share a practice agent.</li><li>Keep confidential data, participant information, and passwords out of skill files and agent instructions.</li><li>Ground agents only in approved, current sources that every intended user is already allowed to open.</li><li>Test normal questions, missing sources, prohibited data, and approval requests before you share.</li><li>Keep approvals with people. An agent or skill drafts, finds, and explains; it doesn't approve claims, studies, or communications.</li><li>Follow ELC policy and your tenant's controls; this guide does not replace them.</li></ul><p><a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Enterprise data protection</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-copilot-chat-skills" target="_blank" rel="noopener">Skill data protection</a></p></div></details><div class="section-nav"><a href="#d08">Previous section</a><a href="#memory">Next section</a></div></div></details>
+<details class="section instr" id="memory"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Memory and custom instructions<span>Optional, safe personalization.</span></h2><span class="ipill">Optional</span></summary><div class="ibody"><p>Copilot can personalize your experience with saved memories, chat history, and custom instructions. These features may be in preview, can be turned off by your organization or by you, and may not be available to everyone. Use them only for stable, nonsensitive preferences.</p>
+<div class="grid g3"><details class="step subcard"><summary><h3>Custom instruction</h3><span class="status">All your chats</span></summary><div class="step-body"><p>A personal preference for how Copilot responds, such as "Tell me what is missing instead of guessing."</p></div></details><details class="step subcard"><summary><h3>Skill</h3><span class="status">One repeatable task</span></summary><div class="step-body"><p>Saved steps, rules, and format for one job, such as the weekly status brief. Use it when you select it, or automatically if you allow it.</p></div></details><details class="step subcard"><summary><h3>Agent instructions</h3><span class="status">Inside one agent</span></summary><div class="step-body"><p>Rules for one shared assistant, such as citing file names and dates and never approving claims.</p></div></details></div>
+<p>Keep project details, budgets, participant information, and anything confidential out of memory and custom instructions. <a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Microsoft Learn: personalization and memory</a></p><div class="section-nav"><a href="#prompting">Previous section</a><a href="#tips">Next section</a></div></div></details>
+<details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips &amp; tricks<span>Useful habits and exercise shortcuts.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><details class="step tip-feature" id="clarifying-questions-tip"><summary><span>Ask clarifying questions before Copilot answers</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Add <strong>"Ask any clarifying questions before responding."</strong> when the answer depends on details you might have left out, such as audience, scope, source, format, or dates. It's especially useful when you design a skill or an agent.</p><p>This gives Copilot permission to pause, point out what is unclear, and ask for what it needs instead of silently filling gaps. It can reduce assumptions and rework, but it does not replace checking the source or reviewing the final output.</p><div class="promptbox"><button aria-label="Copy clarifying questions instruction" class="copy" type="button">Copy</button><pre>Ask any clarifying questions before responding.</pre></div></div></details><details class="step tip-feature" id="description-tip"><summary><span>Write descriptions people would actually type</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p><strong>Copilot uses a skill's or agent's description to decide when it fits.</strong> Include the words your colleagues use for the job, and say what it doesn't do. A vague description gets picked at the wrong time, or not at all.</p><div class="promptbox"><button aria-label="Copy description review prompt" class="copy" type="button">Copy</button><pre>Review this description. List three requests that should trigger it and three that should not, and suggest wording that separates them.</pre></div></div></details><details class="step tip-feature" id="test-set-tip"><summary><span>Keep a small test set for every agent and skill</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Save five or six test requests: a normal question, a conflicting source, a missing source, prohibited data, an approval request, and missing input. Rerun them after every change and before you share.</p><div class="promptbox"><button aria-label="Copy test set prompt" class="copy" type="button">Copy</button><pre>Create six test requests for this agent: one normal question, one conflicting source, one missing source, one prohibited data request, one approval request, and one with missing input. Give the expected result for each.</pre></div></div></details><ol class="tip-index"><li><a href="#clarifying-questions-tip">Ask clarifying questions before Copilot answers.</a></li><li><a href="#description-tip">Write descriptions people would actually type.</a></li><li><a href="#test-set-tip">Keep a small test set for every agent and skill.</a></li><li><a href="#d01-tip">A skill teaches a task; an agent plays a role.</a></li><li><a href="#d02-tip">Describe first, then check Configure.</a></li><li><a href="#d03-tip">Permissions aren't a quality filter.</a></li><li><a href="#d04-tip">Retest after every change.</a></li><li><a href="#d05-tip">One job per skill.</a></li><li><a href="#d06-tip">Stay in control of automatic use.</a></li><li><a href="#d07-tip">Move long procedures into skills.</a></li><li><a href="#d08-tip">Share with the smallest group that needs it.</a></li></ol><div class="section-nav"><a href="#memory">Previous section</a><a href="#wrap-up">Next section</a></div></div></details>
+<details class="section instr" id="wrap-up"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Wrap-up and sources<span>Choose one technique and verify the evidence.</span></h2><span class="ipill">Finish</span></summary><div class="ibody"><h3>Before you leave</h3><ol class="quicklist"><li>Pick one task you repeat and decide whether it's a prompt, a skill, or an agent.</li><li>If it's a skill, draft the SKILL.md with the Demo 05 pattern, and test it with the Demo 06 checklist before you turn on automatic use.</li><li>If it's an agent, write the boundaries first, add only approved knowledge, and run your test set in the Try it tab.</li><li>Before you share, choose Can edit and Can chat roles deliberately, and name who maintains the agent.</li></ol>
+<h3>Official references</h3><ul class="quicklist"><li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/create-edit-skills-copilot" target="_blank" rel="noopener">Create and edit skills with Copilot</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-copilot-chat-skills" target="_blank" rel="noopener">Build skills for Copilot Chat</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder" target="_blank" rel="noopener">Agent Builder overview</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">Build agents with Agent Builder</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-knowledge" target="_blank" rel="noopener">Add knowledge sources</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-skills" target="_blank" rel="noopener">Add skills in Agent Builder</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/declarative-agent-skills" target="_blank" rel="noopener">Skills in declarative agents</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-share-manage-agents" target="_blank" rel="noopener">Share and manage agents</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/prerequisites" target="_blank" rel="noopener">Agent capabilities and licensing</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/researcher-agent" target="_blank" rel="noopener">Researcher agent</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/plan/enterprise-data-protection" target="_blank" rel="noopener">Enterprise data protection</a></li><li><a href="https://learn.microsoft.com/en-us/copilot/manage/copilot-personalization-memory" target="_blank" rel="noopener">Personalization and memory</a></li></ul><div class="section-nav"><a href="#tips">Previous section</a><a href="#about-guide">Next section</a></div></div></details>
+<details class="section instr" id="about-guide"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">About this student guide<span>Responsible use and sources.</span></h2><span class="ipill">Student guide</span></summary><div class="ibody"><div class="about-body"><p>This student guide supports GCCS Part 2 of 2, Agents and skills in Microsoft 365 Copilot, for The Estée Lauder Companies on Monday, November 16, 2026. It continues Part 1 (November 9, 2026) and uses the same Project Aurora practice world. It is not an instructor edition, policy statement, or authorization to use a feature or data source.</p><p>Public product references link to Microsoft Learn and Microsoft Support. Product names, availability, licensing, previews, tenant settings, and controls can change.</p><footer class="end">Use permitted sources, test before you share, protect sensitive information, and keep a person accountable for every decision and approval.</footer></div><div class="section-nav"><a href="#wrap-up">Previous section</a></div></div></details>
+</main></div>
+<div aria-hidden="true" class="season-effects" id="season-effects"></div><div aria-atomic="true" aria-live="polite" class="toast" hidden="" id="guide-status" role="status"></div><script>(() => {
+  'use strict';
+  const root = document.documentElement;
+  const theme = document.getElementById('themebtn');
+  const toast = document.getElementById('guide-status');
+  const topbar = document.querySelector('.topbar');
+  const sections = Array.from(document.querySelectorAll('main > details.section'));
+  const links = Array.from(document.querySelectorAll('nav.toc a'));
+  links.forEach((link, index) => {
+    if (!link.dataset.short) link.dataset.short = String(index + 1).padStart(2, '0');
+  });
+  const searchInput = document.getElementById('guide-search');
+  const searchResults = document.getElementById('search-results');
+  const searchable = Array.from(document.querySelectorAll('details.section, details.step, details.hint'))
+    .filter(node => node.id);
+  function updateSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    searchable.forEach(node => node.classList.remove('search-match'));
+    searchResults.replaceChildren();
+    if (!query) {
+      searchResults.classList.remove('has-results');
+      return;
+    }
+    const matches = searchable.filter(node => node.textContent.toLowerCase().includes(query)).slice(0, 10);
+    if (!matches.length) {
+      const empty = document.createElement('li');
+      empty.className = 'search-empty';
+      empty.textContent = 'No matching prompts or topics.';
+      searchResults.append(empty);
+      searchResults.classList.add('has-results');
+      return;
+    }
+    matches.forEach(node => {
+      const item = document.createElement('li');
+      const result = document.createElement('a');
+      result.href = '#' + node.id;
+      result.textContent = node.querySelector(':scope > summary')?.textContent.trim() || node.id;
+      item.append(result);
+      searchResults.append(item);
+    });
+    searchResults.classList.add('has-results');
+  }
+  searchInput.addEventListener('input', updateSearch);
+  searchResults.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (link) searchInput.value = '';
+  });
+  const themeKey = 'elc-60ff356d23-copilot-student-theme';
+  const seasonKey = 'elc-60ff356d23-copilot-student-season';
+  const animationsKey = 'elc-60ff356d23-copilot-student-animations';
+  const navigationKey = 'elc-60ff356d23-copilot-student-navigation';
+  let toastTimer;
+
+  function announce(message) {
+    toast.textContent = message;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 5000);
+  }
+
+  function updateTheme() {
+    const dark = root.dataset.theme === 'dark';
+    theme.textContent = dark ? 'Mode: Dark' : 'Mode: Light';
+    theme.setAttribute('aria-pressed', String(dark));
+    theme.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  updateTheme();
+  if (window.guideThemeStorageUnavailable) {
+    announce('Appearance preferences cannot be loaded or saved in this browser.');
+  }
+  theme.addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark';
+    if (dark) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    updateTheme();
+    try {
+      localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+    } catch (error) {
+      console.warn('Theme preference could not be saved:', error);
+      announce('Theme changed, but this browser cannot save the preference.');
+    }
+  });
+
+
+  const season = document.getElementById('seasonbtn');
+  const seasonEffects = document.getElementById('season-effects');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const animations = document.getElementById('animationbtn');
+  const seasons = ['autumn', 'winter', 'spring', 'summer'];
+  const seasonIcons = {
+    autumn: ['🍂', '🍁'],
+    winter: ['❄', '❅'],
+    spring: ['🌸', '🌼']
+  };
+  let seasonEffectTimer;
+  const seasonLabels = {
+    autumn: 'Autumn · Warm paper and harvest tones',
+    winter: 'Winter · Cool blues and crisp neutrals',
+    spring: 'Spring · Fresh greens and soft new-growth tones',
+    summer: 'Summer · Sunny golds and clear coastal blues'
+  };
+  function updateSeason() {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    const next = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    season.textContent = 'Season: ' + current[0].toUpperCase() + current.slice(1);
+    season.setAttribute('aria-label', 'Seasonal theme: ' + current[0].toUpperCase() + current.slice(1) +
+      '. Activate to switch to ' + next[0].toUpperCase() + next.slice(1) + '.');
+    document.getElementById('season-label').textContent = seasonLabels[current];
+  }
+  function clearSeasonEffect() {
+    clearTimeout(seasonEffectTimer);
+    seasonEffects.replaceChildren();
+    delete seasonEffects.dataset.season;
+  }
+  function updateAnimations() {
+    const enabled = root.dataset.animationPreference !== 'off' && !reducedMotion.matches;
+    root.dataset.animations = enabled ? 'on' : 'off';
+    animations.textContent = enabled ? 'Animations: On' : 'Animations: Off';
+    animations.setAttribute('aria-pressed', String(enabled));
+    animations.disabled = reducedMotion.matches;
+    const label = reducedMotion.matches
+      ? 'Animations are off because your system requests reduced motion.'
+      : enabled ? 'Turn animations off' : 'Turn animations on';
+    animations.setAttribute('aria-label', label);
+    animations.title = label;
+    if (!enabled) clearSeasonEffect();
+  }
+  updateAnimations();
+  reducedMotion.addEventListener('change', updateAnimations);
+  animations.addEventListener('click', () => {
+    root.dataset.animationPreference = root.dataset.animationPreference === 'off' ? 'on' : 'off';
+    updateAnimations();
+    try {
+      localStorage.setItem(animationsKey, root.dataset.animationPreference);
+    } catch (error) {
+      console.warn('Animation preference could not be saved:', error);
+      announce('Animations changed, but this browser cannot save the preference.');
+    }
+  });
+  function playSeasonEffect(current) {
+    clearSeasonEffect();
+    if (root.dataset.animations === 'off' || reducedMotion.matches) return;
+    seasonEffects.dataset.season = current;
+    if (current === 'summer') {
+      const sun = document.createElement('span');
+      sun.className = 'season-sun';
+      seasonEffects.append(sun);
+    } else {
+      for (let i = 0; i < 14; i++) {
+        const particle = document.createElement('span');
+        particle.className = 'season-particle';
+        particle.textContent = seasonIcons[current][i % seasonIcons[current].length];
+        particle.style.setProperty('--x', (4 + (i * 17) % 92) + '%');
+        particle.style.setProperty('--size', (14 + (i % 4) * 4) + 'px');
+        particle.style.setProperty('--drift', ((i % 2 ? 1 : -1) * (25 + (i * 13) % 65)) + 'px');
+        particle.style.setProperty('--turn', (i % 2 ? 240 : -240) + 'deg');
+        particle.style.setProperty('--fall-duration', (3.1 + (i % 5) * .25) + 's');
+        particle.style.setProperty('--fall-delay', ((i % 4) * .15) + 's');
+        seasonEffects.append(particle);
+      }
+    }
+    seasonEffectTimer = setTimeout(clearSeasonEffect, 5200);
+  }
+  updateSeason();
+  season.addEventListener('click', () => {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    root.dataset.season = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    updateSeason();
+    playSeasonEffect(root.dataset.season);
+    try {
+      localStorage.setItem(seasonKey, root.dataset.season);
+    } catch (error) {
+      console.warn('Season preference could not be saved:', error);
+      announce('Season changed, but this browser cannot save the preference.');
+    }
+  });
+
+  const navigation = document.getElementById('navbtn');
+  const navigationStates = ['full', 'compact', 'hidden'];
+  function updateNavigation() {
+    const current = navigationStates.includes(root.dataset.navigation) ? root.dataset.navigation : 'full';
+    const next = navigationStates[(navigationStates.indexOf(current) + 1) % navigationStates.length];
+    const labels = { full: 'Full', compact: 'Compact', hidden: 'Hidden' };
+    const actions = {
+      full: 'Show compact navigation',
+      compact: 'Hide navigation',
+      hidden: 'Expand navigation'
+    };
+    navigation.textContent = 'Navigation: ' + labels[current];
+    navigation.setAttribute('aria-label', actions[current]);
+    navigation.setAttribute('title', actions[current]);
+    navigation.setAttribute('aria-pressed', String(current !== 'full'));
+    navigation.dataset.nextNavigation = next;
+  }
+  updateNavigation();
+  navigation.addEventListener('click', () => {
+    root.dataset.navigation = navigation.dataset.nextNavigation || 'full';
+    updateNavigation();
+    try {
+      localStorage.setItem(navigationKey, root.dataset.navigation);
+    } catch (error) {
+      console.warn('Navigation preference could not be saved:', error);
+      announce('Navigation changed, but this browser cannot save the preference.');
+    }
+  });
+
+  function updateHeaderHeight() {
+    root.style.setProperty('--cp-header-height', topbar.offsetHeight + 'px');
+  }
+  new ResizeObserver(updateHeaderHeight).observe(topbar);
+  updateHeaderHeight();
+
+  const panels = Array.from(document.querySelectorAll('details'));
+  document.getElementById('expandall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = true; });
+    announce('All sections and steps expanded.');
+  });
+  document.getElementById('collapseall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = false; });
+    announce('All sections and steps collapsed.');
+  });
+
+  function setActive(id) {
+    const target = document.getElementById(id);
+    const section = target && target.closest('details.section');
+    const sectionId = section ? section.id : id;
+    links.forEach(link => {
+      const active = link.getAttribute('href') === '#' + sectionId;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function navigate(id, updateHistory, moveFocus) {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    let node = target;
+    while (node && node !== document.body) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
+    if (updateHistory) {
+      try {
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+      } catch (error) {
+        console.warn('Could not update the section link:', error);
+        announce('The section opened, but its link could not be saved.');
+      }
+    }
+    target.scrollIntoView({ block: 'start' });
+    setActive(id);
+    if (moveFocus) {
+      const focusTarget = target.matches('details') ? target.querySelector(':scope > summary') : target;
+      if (focusTarget && typeof focusTarget.focus === 'function') focusTarget.focus({ preventScroll: true });
+    }
+    return true;
+  }
+
+  function hashId() {
+    if (!location.hash || location.hash === '#') return '';
+    try {
+      return decodeURIComponent(location.hash.slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return '';
+    }
+  }
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    let id;
+    try {
+      id = decodeURIComponent(link.getAttribute('href').slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return;
+    }
+    if (id && document.getElementById(id)) {
+      event.preventDefault();
+      navigate(id, true, true);
+    }
+  });
+  const initialId = hashId();
+  if (initialId) requestAnimationFrame(() => { navigate(initialId, false, false); });
+  window.addEventListener('hashchange', () => {
+    const id = hashId();
+    if (id) navigate(id, false, false);
+  });
+
+  let scrollPending = false;
+  window.addEventListener('scroll', () => {
+    if (scrollPending) return;
+    scrollPending = true;
+    requestAnimationFrame(() => {
+      const stickyOffset = getComputedStyle(topbar).position === 'sticky' ? topbar.offsetHeight : 0;
+      let selected = null;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= stickyOffset + 28) selected = section;
+      });
+      if (selected) setActive(selected.id);
+      scrollPending = false;
+    });
+  }, { passive: true });
+
+  function legacyCopy(value, button) {
+    const area = document.createElement('textarea');
+    area.value = value;
+    area.setAttribute('readonly', '');
+    area.setAttribute('aria-hidden', 'true');
+    area.style.position = 'fixed';
+    area.style.left = '-10000px';
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (error) {
+      console.warn('Clipboard fallback failed:', error);
+    } finally {
+      area.remove();
+      button.focus({ preventScroll: true });
+    }
+    return copied;
+  }
+
+  document.querySelectorAll('.promptbox .copy, .savebox .copy').forEach(button => {
+    button.addEventListener('click', async () => {
+      const text = button.closest('.promptbox, .savebox').querySelector('pre').textContent;
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          console.warn('Clipboard API failed; trying the browser fallback:', error);
+        }
+      }
+      if (!copied) copied = legacyCopy(text, button);
+      if (!copied) {
+        button.textContent = 'Select text to copy';
+        announce('Copy was blocked. Select the text in the box and copy it manually.');
+      } else {
+        button.textContent = 'Copied';
+        button.classList.add('done');
+        announce('Copied to clipboard.');
+      }
+      setTimeout(() => {
+        button.textContent = 'Copy';
+        button.classList.remove('done');
+      }, 2200);
+    });
+  });
+
+  let printState = null;
+  window.addEventListener('beforeprint', () => {
+    if (!printState) printState = panels.map(panel => ({ panel, open: panel.open }));
+    panels.forEach(panel => { panel.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    if (!printState) return;
+    printState.forEach(saved => { saved.panel.open = saved.open; });
+    printState = null;
+  });
+})();
+</script></body></html>

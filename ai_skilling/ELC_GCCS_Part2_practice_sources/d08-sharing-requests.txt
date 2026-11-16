@@ -1,0 +1,23 @@
+SHARING REQUESTS - GCCS RESEARCH LIBRARY GUIDE
+Persona: Taylor Brooks, Research Knowledge Manager and agent owner.
+Practice date: Monday, November 16, 2026.
+Status: All six Try it tests passed on retest. The agent is private to Taylor until Taylor shares it.
+What the agent does: helps GCCS researchers find and understand approved Aurora research materials, citing the file name and date.
+What it won't do: approve claims, studies, protocols, or communications; share participant-level information; or treat a template as results.
+How to report a wrong answer: post in the GCCS Research channel in Teams and tag Taylor Brooks, the agent owner.
+Requests received:
+Q1. Priya Shah (Analytics) wants to help maintain the instructions and knowledge.
+Q2. Morgan Chen (Operations) wants to co-own the agent as a backup when Taylor is out.
+Q3. The GCCS Research security group (about 80 researchers) needs to chat with the agent.
+Q4. Jordan Lee asks to make the GCCS Research group an owner so anyone can fix mistakes.
+Q5. A teammate asks to turn on org-wide sharing so everyone in the company can find the agent in the Agent Store.
+Q6. A researcher can read the agent's answer but can't open the template file it cites.
+Agent Builder sharing facts:
+- Can edit: owner, with full rights to edit, share, and manage the agent. Can chat: can use the agent only.
+- A group can't be an owner. A group can only be a chat user.
+- Org-wide sharing for chat access lets everyone in the tenant find the agent in the Agent Store. Admins can limit or turn off org-wide sharing.
+- Only the files and folders added to the agent can be shared automatically. Access to a full SharePoint site isn't automatic.
+- If sharing a file or folder fails, the agent is still shared. The owner asks the file owner or SharePoint site admin to grant access.
+- People can use a shared agent only if they have the license its capabilities require.
+- Maintenance: Taylor reviews the library monthly, on the first business day.
+After you receive this source, reply only: "Got it. I'll use this as the source."

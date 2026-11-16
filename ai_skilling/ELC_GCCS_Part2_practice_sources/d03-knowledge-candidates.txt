@@ -1,0 +1,21 @@
+KNOWLEDGE CANDIDATES - GCCS RESEARCH LIBRARY GUIDE
+Persona: Taylor Brooks, Research Knowledge Manager and agent owner.
+Practice date: Monday, November 16, 2026.
+Rule from the agent brief: use only approved, current materials that every intended user is already allowed to open.
+Intended users: GCCS Research group (about 80 researchers).
+K1. SharePoint folder /Aurora-Approved-Library/01_Charters/ - Approved study charters. Access: GCCS Research group.
+K2. SharePoint file /Aurora-Approved-Library/02_Protocols/Aurora_Protocol_v3_APPROVED_2026-10-20.docx - Current approved protocol. Target sample: 120. Access: GCCS Research group.
+K3. SharePoint file /Aurora-Study/Archive/Aurora_Protocol_v2_DRAFT_2026-10-04.docx - Superseded draft. Target sample: 90. Access: GCCS Research group.
+K4. SharePoint folder /Aurora-Approved-Library/03_Data_Dictionaries/ - Approved data dictionaries. Access: GCCS Research group.
+K5. SharePoint file /Aurora-Study/03_Fieldwork/Aurora_Participant_Roster_2026-11-13.xlsx - Row-level participant records. Sensitivity label: Highly Confidential. Access: fieldwork team only.
+K6. SharePoint folder /Aurora-Approved-Library/04_Templates/ - Standard research templates. Access: GCCS Research group.
+K7. SharePoint file /Aurora-Study/04_Analysis/Aurora_Preliminary_Notes_2026-11-07.docx - Analyst working notes, not quality checked. Access: Analytics team only.
+K8. Teams chat "Aurora fieldwork huddle" - Informal discussion that includes draft decisions. Access: 12 members.
+K9. SharePoint folder /Aurora-Approved-Library/05_QC_Checklists/ - Quality-review checklists. Access: GCCS Research group.
+K10. Public website about skin-comfort survey methods - Not reviewed by GCCS. Access: public.
+K11. Taylor Brooks's personal OneDrive file Library_Ideas.docx - Personal notes. Access: Taylor only.
+Agent Builder knowledge notes:
+- SharePoint: up to 100 files per agent.
+- The agent respects existing permissions and sensitivity labels.
+- The "Only use specified sources" setting makes the agent prioritize the sources you add. It does not block general AI knowledge.
+After you receive this source, reply only: "Got it. I'll use this as the source."
