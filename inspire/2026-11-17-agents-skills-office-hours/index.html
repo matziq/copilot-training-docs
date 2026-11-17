@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html data-navigation="full" data-season="autumn" lang="en-US">
+<head><meta charset="utf-8"/><script>(function(){var r=document.documentElement;r.dataset.season='autumn';r.dataset.animationPreference='on';try{if(localStorage.getItem('inspire-brands-e5a44340e0-champion-guide-animations')==='off'){r.dataset.animationPreference='off';}if(localStorage.getItem('inspire-brands-e5a44340e0-champion-guide-theme')==='dark'){r.dataset.theme='dark';}var savedSeason=localStorage.getItem('inspire-brands-e5a44340e0-champion-guide-season');if(['autumn','winter','spring','summer'].includes(savedSeason)){r.dataset.season=savedSeason;}var savedNavigation=localStorage.getItem('inspire-brands-e5a44340e0-champion-guide-navigation');if(['full','compact','hidden'].includes(savedNavigation)){r.dataset.navigation=savedNavigation;}}catch(error){window.guideThemeStorageUnavailable=true;}r.dataset.animations=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'off':r.dataset.animationPreference;})();</script>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><meta content="noindex,nofollow,noarchive" name="googlebot"/>
+<meta content="light dark" name="color-scheme"/>
+<link rel="icon" href="../../images/favicon-inspire-ops.svg" type="image/svg+xml"/>
+<title>Inspire Brands | Copilot Agents &amp; Skills Office Hours | Student Guide</title>
+<style>
+:root{color-scheme:light;--cp-bg:#f7f4ef;--cp-bg-elevated:#fcfbf8;--cp-surface:#ffffff;
+--cp-surface-soft:#f2f0ec;--cp-border:#e2ddd5;--cp-border-strong:#b9b2a6;
+--cp-text:#1b1c28;--cp-text-muted:#5c5c66;--cp-text-soft:#6f6f78;--cp-accent:#b11f4b;
+--cp-accent-soft:rgba(177,31,75,.08);--cp-navy:#040a2b;--cp-blue:#2e3a72;--cp-peri:#9eafff;
+--cp-gold:#8a6d2f;--cp-code-bg:#0f1430;--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.10);}
+[data-theme="dark"]{color-scheme:dark;--cp-bg:#1a1b22;--cp-bg-elevated:#212230;--cp-surface:#252634;
+--cp-surface-soft:#2c2d3d;--cp-border:#3a3b4e;--cp-border-strong:#565879;--cp-text:#e6e7f0;
+--cp-text-muted:#a5a7bd;--cp-text-soft:#9092a8;--cp-accent:#fd8ea1;--cp-accent-soft:rgba(253,142,161,.14);
+--cp-navy:#0a1038;--cp-blue:#9eafff;--cp-peri:#9eafff;--cp-gold:#d8b46a;--cp-code-bg:#0b0f26;
+--cp-code-fg:#e8ecff;--cp-shadow:0 18px 48px rgba(0,0,0,.4);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cp-bg);color:var(--cp-text);
+font-family:Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6;
+-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--cp-text);line-height:1.2;margin:0;}
+a{color:var(--cp-accent);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px;}
+header.hero{background:var(--cp-navy);color:#fff;padding:48px 0 44px;}
+header.hero .wrap{padding-bottom:0;}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--cp-peri);}
+header.hero h1{color:#fff;font-size:50px;margin:14px 0 6px;}
+header.hero .tag{font-family:Georgia,serif;font-style:italic;font-size:23px;color:#dde3ff;}
+header.hero .meta{margin-top:18px;font-size:13px;color:#aeb5d2;}
+.themebtn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);
+border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+.themebtn:hover{background:rgba(255,255,255,.2);}
+nav.toc{position:sticky;top:0;z-index:50;background:var(--cp-bg-elevated);
+border-bottom:1px solid var(--cp-border);padding:10px 0;}
+nav.toc .wrap{padding-bottom:0;display:flex;gap:8px;flex-wrap:wrap;}
+nav.toc a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--cp-text-muted);
+padding:6px 12px;border-radius:999px;border:1px solid transparent;}
+nav.toc a:hover{color:var(--cp-accent);border-color:var(--cp-border);background:var(--cp-surface);}
+section{margin-top:52px;scroll-margin-top:64px;}
+section > h2{font-size:31px;margin-bottom:6px;}
+.lede{color:var(--cp-text-muted);font-size:15px;margin:0 0 22px;max-width:74ch;}
+.card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+padding:20px 22px;box-shadow:var(--cp-shadow);}
+.grid{display:grid;gap:14px;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.file{display:flex;gap:12px;align-items:flex-start;}
+.file code{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:6px;
+padding:2px 7px;font-size:12.5px;color:var(--cp-blue);}
+.file p{margin:4px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.gcse{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--cp-border);}
+.gcse:last-child{border-bottom:none;}
+.orb{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--cp-blue);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:20px;font-weight:700;}
+.gcse h3{font-size:18px;}
+.gcse .q{color:var(--cp-text-muted);font-size:14px;margin:2px 0 6px;}
+.gcse .ex{font-size:14px;font-style:italic;color:var(--cp-blue);}
+details.demo{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:14px;box-shadow:var(--cp-shadow);overflow:hidden;}
+details.demo[open]{border-color:var(--cp-border-strong);}
+summary{cursor:pointer;padding:18px 22px;display:flex;gap:16px;align-items:center;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+summary:hover{background:var(--cp-surface-soft);}
+.dnum{flex:0 0 auto;min-width:76px;height:42px;padding:0 8px;white-space:nowrap;border-radius:10px;background:var(--cp-navy);color:#fff;
+display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:14px;font-weight:700;}
+.dhead{flex:1 1 auto;min-width:0;}
+.dhead h3{font-size:21px;}
+.dhead p{margin:2px 0 0;font-size:13.5px;color:var(--cp-text-muted);}
+.pill{flex:0 0 auto;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+background:var(--cp-accent-soft);color:var(--cp-accent);border-radius:999px;padding:5px 11px;}
+.dbody{padding:0 22px 22px;border-top:1px solid var(--cp-border);}
+.dbody code{display:inline-block;background:var(--cp-surface-soft);border:1px solid var(--cp-border);
+border-radius:6px;padding:3px 9px;font-size:12.5px;color:var(--cp-blue);margin:0 8px 6px 0;}
+.label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+color:var(--cp-text-soft);margin:20px 0 8px;}
+.promptbox{position:relative;background:var(--cp-code-bg);border-radius:12px;padding:18px 20px;}
+.promptbox pre{margin:0;white-space:pre-wrap;word-wrap:break-word;font-family:inherit;
+font-size:14px;line-height:1.65;color:var(--cp-code-fg);}
+.promptbox pre::first-line{}
+.promptbox{padding-right:88px;}
+@media print{.promptbox{padding-right:20px;}} .promptbox.has-file{padding-top:54px;padding-right:20px;} .pb-actions{position:absolute;top:12px;right:12px;display:flex;gap:6px;} .pb-actions .copy{position:static;} .openfile{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:600;font-family:inherit;text-decoration:none;line-height:normal;} .openfile:hover{background:rgba(255,255,255,.24);} .openfile:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px;} @media print{.pb-actions{display:none;}.promptbox.has-file{padding-top:18px;}}
+.instr{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;
+margin-bottom:22px;box-shadow:var(--cp-shadow);overflow:hidden;break-inside:avoid;scroll-margin-top:108px;}
+.instr>summary{padding:16px 22px;}
+.ichev{font-size:15px;color:var(--cp-accent);transition:transform .18s ease;flex:0 0 auto;}
+.instr[open] .ichev{transform:rotate(90deg);}
+.ihead{flex:1 1 auto;}
+.ihead h3{font-size:20px;margin:0;letter-spacing:-.01em;}
+.ihead p{margin:2px 0 0;font-size:13px;color:var(--cp-text-muted);}
+.ipill{flex:0 0 auto;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;
+color:var(--cp-accent);background:var(--cp-accent-soft);border-radius:999px;padding:5px 11px;}
+.ibody{padding:0 22px 6px;border-top:1px solid var(--cp-border);}
+.ibody section{padding-top:20px;}
+.ibody h2{font-size:22px;}
+@media print{.instr>summary{display:none;}.ibody{padding:0;border-top:0;}}
+.pnote{margin:14px 0 6px;font-size:13px;line-height:1.55;color:var(--cp-text-muted);border-left:3px solid var(--cp-accent);padding:0 0 0 10px;}
+.pnote span{display:block;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;color:var(--cp-accent);margin-bottom:2px;}
+.pnote+.promptbox{margin-top:0;}
+@media print{}
+.promptbox pre strong{color:#fff;font-weight:700;}
+.copy{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.12);color:#fff;
+border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:6px 12px;font-size:11.5px;
+font-weight:600;cursor:pointer;font-family:inherit;}
+.copy:hover{background:rgba(255,255,255,.24);}
+.copy.done{background:#2e7d62;border-color:#2e7d62;}
+ol.follow{margin:0;padding-left:22px;}
+ol.follow li{margin-bottom:9px;font-size:14.5px;}
+.see{margin-top:14px;background:var(--cp-surface-soft);border-left:3px solid var(--cp-blue);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.see strong{color:var(--cp-blue);}
+.watch{margin-top:14px;background:var(--cp-accent-soft);border-left:3px solid var(--cp-accent);
+border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;}
+.watch strong{color:var(--cp-accent);}
+.newcard h3{font-size:18px;margin-bottom:6px;}
+.newcard p{margin:0 0 10px;font-size:14px;color:var(--cp-text-muted);}
+.newcard .status{font-size:11.5px;font-weight:700;color:var(--cp-gold);
+letter-spacing:.04em;text-transform:uppercase;}
+.gcard h3{font-size:17px;margin-bottom:5px;}
+.gcard p{margin:0;font-size:14px;color:var(--cp-text-muted);}
+table.glance{width:100%;border-collapse:collapse;font-size:14px;}
+table.glance th{text-align:left;font-family:Aptos,sans-serif;font-size:11px;letter-spacing:.12em;
+text-transform:uppercase;color:var(--cp-text-soft);padding:0 12px 10px 0;border-bottom:1px solid var(--cp-border);}
+table.glance td{padding:13px 12px 13px 0;border-bottom:1px solid var(--cp-border);vertical-align:top;}
+table.glance tr:last-child td{border-bottom:none;}
+table.glance .n{font-family:Georgia,serif;font-weight:700;color:var(--cp-blue);width:34px;}
+table.glance .t{font-family:Georgia,serif;font-size:16px;color:var(--cp-text);white-space:nowrap;}
+table.glance .s{font-size:12px;color:var(--cp-text-soft);white-space:nowrap;}
+table.glance .o{color:var(--cp-text-muted);}
+.scenario{background:var(--cp-navy);color:#fff;border-radius:14px;padding:26px 28px;}
+.scenario h3{color:#fff;font-size:22px;margin-bottom:10px;}
+.scenario p{color:#dde3ff;font-size:14.5px;margin:0 0 12px;}
+.scenario ul{margin:0;padding-left:20px;color:#c3cbf0;font-size:14px;}
+.scenario li{margin-bottom:6px;}
+.note{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:12px;
+padding:14px 18px;font-size:14px;color:var(--cp-text-muted);margin-top:16px;}
+footer.end{margin-top:70px;padding-top:26px;border-top:1px solid var(--cp-border);
+font-size:13px;color:var(--cp-text-soft);}
+@media(max-width:720px){table.glance .t,table.glance .s{white-space:normal;}}
+@media print{nav.toc,.themebtn,.copy{display:none;}details.demo{break-inside:avoid;}
+details.demo>.dbody{display:block!important;}body{background:#fff;}}
+
+
+    :root{--cp-accent:#8b272f;--cp-accent-soft:#fff1e8}
+[data-theme="dark"]{--cp-accent:#ffb4c0;--cp-accent-soft:rgba(255,180,192,.14)}
+header.hero .wrap{max-width:1420px}
+.layout{max-width:1420px;margin:0 auto;padding:24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:start}
+.sidebar{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;padding:15px;box-shadow:var(--cp-shadow)}
+.sidebar h2{font-size:18px;margin:0 0 8px}
+.sidebar a{display:block;color:var(--cp-text-muted);font-size:13px;font-weight:600;line-height:1.35;padding:6px 8px;border-radius:7px;text-decoration:none}
+.sidebar a:hover,.sidebar a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.sidebar .nav-actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.nav-actions button,.section-nav a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:7px;color:var(--cp-text);cursor:pointer;font:inherit;font-size:12px;font-weight:700;padding:7px 9px;text-decoration:none}
+.guide-tools{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.guide-search{display:flex;gap:8px;align-items:center}
+.guide-search label{font-size:12px;font-weight:700;color:var(--cp-text-muted);white-space:nowrap}
+.guide-search input{flex:1;min-width:0;background:var(--cp-bg);border:1px solid var(--cp-border-strong);border-radius:8px;color:var(--cp-text);font:inherit;font-size:14px;padding:9px 11px}
+.guide-search input:focus-visible{outline:3px solid var(--cp-accent);outline-offset:2px}
+.topic-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.topic-links a{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:999px;color:var(--cp-text);font-size:12px;font-weight:700;padding:6px 10px;text-decoration:none}
+.topic-links a:hover,.topic-links a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent);border-color:var(--cp-accent)}
+.search-results{display:none;margin:10px 0 0;padding:0;list-style:none;border-top:1px solid var(--cp-border)}
+.search-results.has-results{display:block}
+.search-results li{margin-top:7px}
+.search-results a{display:block;color:var(--cp-text);font-size:13px;padding:6px 8px;border-radius:7px;text-decoration:none}
+.search-results a:hover,.search-results a:focus-visible{background:var(--cp-accent-soft);color:var(--cp-accent)}
+.search-empty{color:var(--cp-text-muted);font-size:13px;margin:10px 0 0}
+.search-match{outline:2px solid var(--cp-accent);outline-offset:3px}
+.content{min-width:0}
+details.section{scroll-margin-top:20px}
+details.section summary h2{font-size:20px;line-height:1.25}
+details.section summary .dhead span,details.section summary .ihead span{display:block;font-family:Aptos,"Segoe UI",sans-serif;font-size:13px;font-weight:400;color:var(--cp-text-muted);margin-top:3px}
+.ibody{padding-bottom:22px}
+.ibody p,.dbody p{font-size:14.5px}
+.ibody a,.dbody a{overflow-wrap:anywhere}
+.dbody .label:first-child{margin-top:20px}
+.promptbox pre{overflow-wrap:anywhere}
+.promptbox .copy:focus-visible,.themebtn:focus-visible,summary:focus-visible,.nav-actions button:focus-visible,.section-nav a:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px}
+.section-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.section-nav a:last-child{margin-left:auto}
+.news-card{padding:16px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface)}
+.news-card h3{font-size:17px;margin:3px 0 7px}
+.news-card p{margin:0 0 8px}
+.news-card .status{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--cp-accent)}
+.duration{font-size:13px;color:var(--cp-text-muted)}
+.callout{border-left:4px solid var(--cp-accent);padding:12px 15px;background:var(--cp-surface-soft);border-radius:8px;margin:15px 0}
+footer.end{margin:28px 0 16px}
+@media(max-width:850px){.layout{grid-template-columns:1fr;padding:16px}.sidebar{position:static;max-height:none}.sidebar-links{display:flex;gap:2px;flex-wrap:wrap}.sidebar a{display:inline-block}header.hero h1{font-size:36px}}
+@media(max-width:500px){.guide-search{display:block}.guide-search label{display:block;margin-bottom:5px}.guide-search input{width:100%}summary{padding:14px;gap:10px}.dbody,.ibody{padding-left:14px;padding-right:14px}.g2,.g3{grid-template-columns:1fr}.pill,.ipill{display:none}.promptbox pre{font-size:13px}.promptbox{padding-right:72px}.copy{padding:6px}}
+@media print{.sidebar,.section-nav{display:none}.layout{display:block;padding:0}details.section>.dbody,details.section>.ibody{display:block!important}details.section{box-shadow:none}}
+
+.session-plan{width:100%;border-collapse:collapse;table-layout:fixed;margin:14px 0 18px;font-size:13px}
+.session-plan th,.session-plan td{border:1px solid var(--cp-border);padding:9px 10px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.session-plan th{background:var(--cp-surface-soft);color:var(--cp-text);font-size:12px}
+.session-plan td:nth-child(2),.session-plan td:nth-child(3){width:74px;text-align:center;font-weight:700}
+.session-plan caption{text-align:left;font-weight:700;color:var(--cp-text);padding:0 0 8px}
+.champion-label{display:inline-block;background:var(--cp-accent-soft);color:var(--cp-accent);font-weight:700;border-radius:999px;padding:2px 8px}
+.session-plan td{line-height:1.45}
+@media(max-width:600px){.session-plan{font-size:12px}.session-plan th,.session-plan td{padding:7px 6px}.session-plan td:nth-child(2),.session-plan td:nth-child(3){width:54px}}
+</style></head>
+<body><div data-customer-menu style="padding:10px 16px;background:#8b272f;color:#fff;font:14px/1.5 system-ui,sans-serif;position:relative;z-index:1"><a href="../index.html" style="color:#fff;text-decoration:underline">Back to Inspire Brands training menu</a></div>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="topbar"><span class="brand">Inspire Brands</span><p class="bar-title">Copilot Agents &amp; Skills Office Hours</p><div class="top-actions"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button><button aria-label="Switch to dark mode" aria-pressed="false" class="themebtn" id="themebtn" type="button">Mode: Light</button><button aria-label="Seasonal theme: Autumn. Activate to switch to Winter." id="seasonbtn" type="button">Season: Autumn</button><button aria-label="Turn animations off" aria-pressed="true" id="animationbtn" type="button">Animations: On</button></div></header>
+<div class="layout"><div class="toc-column"><button aria-label="Collapse navigation" aria-pressed="false" class="toc-toggle" id="navbtn" type="button">Navigation: Full</button><nav aria-label="Guide contents" class="toc"><div class="wrap"><div class="toc-title">Contents</div><a href="#overview">Overview</a><a href="#d01">Demo 01. Choose the right tool</a><a href="#d02">Demo 02. Build an Agent Builder agent</a><a href="#d03">Demo 03. Add practice knowledge</a><a href="#d04">Demo 04. Test and create a personal agent</a><a href="#skills-prereqs">Before you use skills in Office</a><a href="#d05">Demo 05. Create a skill in Word</a><a href="#d06">Demo 06. Use the skill in Word</a><a href="#d07">Demo 07. Use the skill in PowerPoint</a><a href="#d08">Demo 08. Use the skill in Excel</a><a href="#prompting">Prompting and safety</a><a href="#memory">Memory and custom instructions</a><a href="#tips">Copilot tips and tricks</a><a href="#champion-playbook">Champion playbook</a><a href="#wrap-up">Wrap-up and sources</a><a href="#about-guide">About this guide</a></div></nav></div>
+<main class="content" id="main-content" tabindex="-1"><div class="guide-tools" role="search"><div class="guide-search"><label for="guide-search">Find a prompt or topic</label><input autocomplete="off" id="guide-search" placeholder="Search Agent Builder, skills, Word, Excel, Champions..." type="search"/></div><div aria-label="Popular topics" class="topic-links"><a href="#d01">Choose a tool</a><a href="#d02">Agent Builder</a><a href="#d03">Operations knowledge</a><a href="#skills-prereqs">Office prerequisites</a><a href="#d05">Skills</a><a href="#d06">Word</a><a href="#d07">PowerPoint</a><a href="#d08">Excel</a><a href="#champion-playbook">Champions</a></div><ul aria-live="polite" class="search-results" id="search-results"></ul></div>
+<details class="section hero-panel" id="overview" open><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Overview<span>An office-hours lab for Inspire Brands Copilot Champions.</span></h2><span class="ipill">Inspire Brands</span></summary><div class="ibody"><p><strong>Audience:</strong> Inspire Brands Copilot Champions, with about 50 people following the instructor. Everyone is assumed to have a Microsoft 365 Copilot paid license; organization settings and rollout still affect menus. The 45-minute core uses live demonstration plus follow-along. D06 is optional after class.</p>
+<table class="session-plan"><caption>Choose a 45-minute core path or expand to the 60-minute full path</caption><thead><tr><th scope="col">Segment</th><th scope="col">45-min core</th><th scope="col">60-min full</th></tr></thead><tbody>
+<tr><th scope="row">Welcome and choose the tool (D01)</th><td>2 min</td><td>3 min</td></tr>
+<tr><th scope="row">Build the agent (D02)</th><td>5 min</td><td>6 min</td></tr>
+<tr><th scope="row">Add practice knowledge (D03)</th><td>4 min</td><td>5 min</td></tr>
+<tr><th scope="row">Test and create a personal agent (D04)</th><td>5 min</td><td>6 min</td></tr>
+<tr><th scope="row">Office skills prerequisites</th><td>3 min</td><td>4 min</td></tr>
+<tr><th scope="row">Create and save the skill in Word (D05)</th><td>6 min</td><td>7 min</td></tr>
+<tr><th scope="row">Use the skill in Word (D06)</th><td>Try after class</td><td>5 min</td></tr>
+<tr><th scope="row">Use the skill in PowerPoint (D07)</th><td>5 min</td><td>6 min</td></tr>
+<tr><th scope="row">Use the skill in Excel (D08)</th><td>5 min</td><td>6 min</td></tr>
+<tr><th scope="row">Champion playbook and discussion</th><td>Q&amp;A: 10 min</td><td>Champion playbook: 2 min; Q&amp;A: 10 min</td></tr>
+<tr><th scope="row"><strong>Total</strong></th><td><strong>45 min</strong></td><td><strong>60 min</strong></td></tr>
+</tbody></table>
+<p>With a group of 50, demonstrate one screen at a time, pause for each follow-along step, and collect questions in chat or a parking list. Ask learners not to share real guest or employee data.</p>
+<div class="season-label" id="season-label">Autumn · Warm paper and harvest tones</div>
+<h3>Before you start</h3><ul class="quicklist"><li>Sign in at <a href="https://m365.cloud.microsoft/" target="_blank" rel="noopener">m365.cloud.microsoft</a> with your Inspire Brands work account before Agent Builder.</li><li>Have updated desktop Word, PowerPoint, and Excel open and signed in with the same account.</li><li>Open <a href="#skills-prereqs">Before you use skills in Office</a> before Demo 05.</li></ul><div class="section-nav"><a href="#d01">Next section</a></div></div></details><details class="section demo" id="d01"><summary><span class="dnum">Demo 01</span><h2 class="dhead">Choose the right tool for an operations task<span>Match repeated work to a skill, questions to an agent, and decisions to people.</span></h2><span class="pill">Core · Tool choice</span></summary><div class="dbody"><details class="step" id="d01-source"><summary><span>A. Practice input</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <a href="https://m365.cloud.microsoft/" target="_blank" rel="noopener">Microsoft 365 Copilot</a>, start a new chat, click Copy below, paste, and send. Wait for the short acknowledgment before using B.</p><p class="pnote">Expected acknowledgment: <span>After you paste this practice data, Copilot should reply only with the acknowledgment line at its end.</span></p><div class="label">Practice data</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open d01-tool-choice.txt" class="openfile" href="Inspire_Agents_Skills_practice_sources/d01-tool-choice.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy Practice data" class="copy" type="button">Copy</button></div><pre>Practice data: Inspire Brands support-center request backlog
+Audience: Copilot Champions supporting site coordinators and operations managers.
+Definitions: A prompt is for a one-time task. A skill is saved instructions for a repeatable task. An agent answers questions from its configured instructions and knowledge. People retain approvals and decisions.
+R1: Each week, turn the current R101-R104 packaging plan into a short exception brief.
+R2: Summarize the current packaging pilot at sites P201-P204 for a manager review.
+R3: Give support-center coworkers one place to ask questions about the promotional-material request checklist and current operations practice data.
+R4: Approve request M301.
+R5: Send the weekly brief to site coordinators.
+R6: Turn a recurring four-slide pilot review storyboard into a reusable task.
+R7: Each week, calculate site-level packaging variances and flag results at the stated threshold.
+Task: classify each request as a one-time prompt, reusable skill, knowledge agent, or human decision/action. Use only these details. Don't invent how often R2, R3, R4, R5, or R6 occurs.
+After you receive this source, reply only: "Got it. I'll use this as the source."</pre></div></div></details><details class="step" id="d01-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Sorts the support-center requests into one-time prompts, repeatable skills, knowledge agents, and decisions that require a person.</div><div class="label">Classify the backlog</div><div class="promptbox"><button aria-label="Copy Classify the backlog" class="copy" type="button">Copy</button><pre>&lt;strong&gt;Goal:&lt;/strong&gt; Classify each request in the practice backlog.&lt;br&gt;&lt;strong&gt;Context:&lt;/strong&gt; I am an Inspire Brands Copilot Champion helping operations coworkers choose an appropriate tool.&lt;br&gt;&lt;strong&gt;Source:&lt;/strong&gt; Use only the practice backlog I pasted.&lt;br&gt;&lt;strong&gt;Expectation:&lt;/strong&gt; Return a table with request ID, best fit, reason, and any human action required. Do not invent frequency or approve, send, or order anything.</pre></div></div></details><details class="step" id="d01-followups"><summary><span>C. Follow-ups</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Copy and send one follow-up at a time in the same chat, agent test, or selected skill. A result stays a draft until a person reviews it.</p><div class="label">Follow-up 1</div><div class="promptbox"><button aria-label="Copy Follow-up 1" class="copy" type="button">Copy</button><pre>Which request is the best first skill candidate, and what input must a user provide each time?</pre></div><div class="label">Follow-up 2</div><div class="promptbox"><button aria-label="Copy Follow-up 2" class="copy" type="button">Copy</button><pre>Which request needs an agent with approved knowledge rather than a reusable document-formatting skill?</pre></div><div class="label">Follow-up 3</div><div class="promptbox"><button aria-label="Copy Follow-up 3" class="copy" type="button">Copy</button><pre>Which requests remain human decisions or actions, and why?</pre></div></div></details><details class="step" id="d01-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li>R1, R6, and R7 are repeatable workflows; a skill can help after its input and rule are reviewed.</li><li>R3 is a knowledge question, so a carefully grounded agent fits better than storing current records in a skill.</li><li>R4 approval and R5 sending stay with authorized people. Do not claim a prompt or skill performed either action.</li><li>Do not infer frequency for requests where the packet does not state it.</li></ul></div></div></details><details class="hint tip" id="d01-tip"><summary><span>E. Champion tip</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">For a peer demo, ask coworkers to classify one familiar recurring task. They often choose an agent for a one-time task; ask whether the job is repeatable and whether it needs its own knowledge source.</div></details><details class="step" id="d01-fact"><summary><span>F. Did you know?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>A reusable skill is not a shared agent. A skill stores a repeatable workflow; an agent has its own instructions and knowledge sources. <a href="https://support.microsoft.com/en-us/microsoft-365-copilot/create-edit-skills-copilot" target="_blank" rel="noopener">Microsoft Support: Create and edit skills</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">Microsoft Learn: Build agents</a></p></div></details><details class="step" id="d01-recommendation"><summary><span>G. Recommended custom instruction</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only if custom instructions are available to you and allowed by your organization.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When I describe a task I repeat, help me decide whether a prompt, skill, or agent fits, and explain why.</pre></div></div></details><div class="section-nav"><a href="#overview">Previous section</a><a href="#d02">Next section</a></div></div></details><details class="section demo" id="d02"><summary><span class="dnum">Demo 02</span><h2 class="dhead">Build an operations agent in Agent Builder<span>Describe one personal agent, then check what Agent Builder filled in.</span></h2><span class="pill">Core · Agent Builder</span></summary><div class="dbody"><details class="step" id="d02-source"><summary><span>A. Practice input</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ol class="quicklist"><li>In a browser, open <a href="https://m365.cloud.microsoft/" target="_blank" rel="noopener">m365.cloud.microsoft</a> and sign in with your Inspire Brands work account.</li><li>Select <strong>Agents &amp; Skills &gt; New agent</strong>. Depending on rollout, the labels may be <strong>Agents</strong> and <strong>Create agent</strong>.</li><li>Choose <strong>Describe</strong>. Click the box labeled <strong>Message Agent Builder</strong>, click Copy below, paste with <strong>Ctrl+V / Cmd+V</strong>, and select Send.</li><li>Wait for the fields to fill. Keep the same tab open through Demo 04.</li></ol><p>This is an agent setup request, not a chat-only draft.</p><div class="label">Practice data</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open d02-agent-describe.txt" class="openfile" href="Inspire_Agents_Skills_practice_sources/d02-agent-describe.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy Practice data" class="copy" type="button">Copy</button></div><pre>Build a personal operations knowledge agent named Inspire Ops Library Guide.
+Description: Helps Inspire Brands support-center Champions find and explain supplied operations practice data. Cite the uploaded knowledge file and identify the section used.
+Instructions:
+- Answer only from knowledge I add in Agent Builder. Cite d03-operations-practice-knowledge.txt and name the section that supports each material fact.
+- Distinguish current weekly status, the packaging pilot, the promotional-material request checklist, and the packaging-plan review.
+- Preserve site IDs, role names, statuses, quantities, thresholds, and dates exactly. Say "Not supplied" when information is missing; never invent dates, approval, completion, owners, recipients, or results.
+- Treat the promotional-material request checklist as a draft, not an approved policy. M301 is ready for review, not approved; M302 is incomplete because its needed-by date is not supplied.
+- Do not approve requests, decisions, or a rollout; do not send messages, place orders, or claim an attachment exists.
+- Do not request or reveal guest or employee personal data. Use role names only.
+- Keep answers brief, professional, and in US English. If the knowledge file doesn't support an answer, say so and refer the user to the operations support lead.
+Starter prompts:
+- Which weekly operations actions remain open at R101 and R102?
+- What supplier confirmation is still pending in the packaging pilot?
+- Is request M302 ready to route? What information is missing?</pre></div></div></details><details class="step" id="d02-start"><summary><span>B. Review the Configure fields</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Open <strong>Configure</strong>. Confirm the name is <code>Inspire Ops Library Guide</code>, the description and instructions reflect the setup text in A, and the starter prompts are present. Leave Knowledge empty for D03. Do not add a sharing setting or external action.</p><ul class="quicklist"><li>The one agent continues through knowledge upload and testing in D03-D04.</li><li>Do not add a SharePoint connection or imply that an operations library is live.</li><li>For this guide, name limit is 30 characters, description 1,000, instructions 8,000; check the current field guidance in the app.</li></ul></div></details><details class="hint tip" id="d02-tip"><summary><span>C. Champion tip</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Show how to open Agents & Skills before pasting. Champions often paste the setup text into regular chat instead of the Agent Builder box labeled Message Agent Builder.</div></details><details class="step" id="d02-fact"><summary><span>D. Did you know?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Describe can populate the configuration fields; review them in Configure before testing. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">Microsoft Learn: Build agents in Agent Builder</a></p></div></details><div class="section-nav"><a href="#d01">Previous section</a><a href="#d03">Next section</a></div></div></details><details class="section demo" id="d03"><summary><span class="dnum">Demo 03</span><h2 class="dhead">Add and check operations practice knowledge<span>Upload the provided practice file; do not assume a live library is connected.</span></h2><span class="pill">Core · Knowledge</span></summary><div class="dbody"><details class="step" id="d03-source"><summary><span>A. Practice input</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>This file is practice data assembled from the support-center packets. It includes a draft checklist and expressly identifies what is not supplied; it is not a live company library and does not make every section approved.</p><p><a class="openfile" href="Inspire_Agents_Skills_practice_sources/d03-operations-practice-knowledge.txt" download="d03-operations-practice-knowledge.txt" rel="noopener" target="_blank">Download knowledge TXT</a> to your Downloads folder.</p><ol class="quicklist"><li>Return to the same Agent Builder tab. Select <strong>Configure &gt; Knowledge &gt; Upload</strong>.</li><li>In the file window, open <strong>Downloads</strong>, select <code>d03-operations-practice-knowledge.txt</code>, and select <strong>Open</strong>.</li><li>Wait until the file reports <strong>Ready</strong>. Turn off <strong>Search all websites</strong> for this practice test.</li></ol><div class="label">Practice data</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open d03-operations-practice-knowledge.txt" class="openfile" href="Inspire_Agents_Skills_practice_sources/d03-operations-practice-knowledge.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy Practice data" class="copy" type="button">Copy</button></div><pre>INSPIRE BRANDS SUPPORT-CENTER OPERATIONS KNOWLEDGE
+This file is practice data for Agent Builder. It is the only file uploaded in this exercise. It combines excerpts from the guide's practice packets; no live library, SharePoint site, or company operations source is connected.
+Source section: Weekly operations brief
+Reporting date: November 16, 2026.
+R101: training checklist complete; packaging delivery pending; owner role logistics lead; due November 18, 2026.
+R102: training checklist pending; packaging delivery complete; owner role training lead; due November 17, 2026.
+R103: training checklist complete; packaging delivery complete; owner role site coordinator; no open action.
+R104: weekly training and packaging readiness status Not supplied.
+Source section: Packaging pilot review
+Review date: November 17, 2026. Pilot scope: P201, P202, P203, P204.
+P201: checklist complete; supplier confirmation received; owner role site coordinator.
+P202: checklist complete; supplier confirmation received; owner role site coordinator.
+P203: checklist complete; supplier confirmation pending; owner role supply lead; follow-up due November 18, 2026.
+P204: checklist pending; supplier confirmation received; owner role training lead; follow-up due November 19, 2026.
+Managers will decide the next review date; it is Not supplied.
+Source section: Promotional-material request checklist
+Status: draft, not approved. Process owner role: operations support lead. Effective date Not supplied.
+Every request needs a site ID, item description, quantity requested, needed-by date, and requester role. Ask for missing fields before routing.
+Complete requests go to the operations support lead for review. Urgent requests must be labeled and explained, not automatically approved. Logistics confirms availability and estimated delivery date only after review.
+M301: R101; menu inserts; quantity 120; needed-by November 24, 2026; requester role site coordinator; ready for review, not approved.
+M302: R102; counter cards; quantity 80; needed-by Not supplied; requester role site coordinator; incomplete.
+Source section: Weekly packaging-plan review
+Reporting week ending November 15, 2026; all quantities are units.
+R101 planned 100, actual 95. R102 planned 120, actual 130. R103 planned 80, actual 80. R104 planned 100, actual 88.
+VarianceUnits = ActualUnits minus PlannedUnits. VariancePct = VarianceUnits divided by PlannedUnits.
+Flag Review when absolute VariancePct is greater than or equal to 10%; otherwise flag OK. If planned units are zero, show Not calculable and flag Review.
+For a total, divide total variance by total planned; do not average site percentages.
+The claim "No site crossed the review threshold" is not supported: R104 has a 12% decrease and meets the Review threshold.
+Use only the provided practice data; no guest or employee personal information is included. Source publication or approval dates are Not supplied.</pre></div></div></details><details class="step" id="d03-start"><summary><span>B. Confirm the knowledge file is ready</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>In <strong>Configure &gt; Knowledge</strong>, confirm <code>d03-operations-practice-knowledge.txt</code> reports <strong>Ready</strong>. Its section labels are not separate attachments; the citation will name the uploaded file. Leave <strong>Search all websites</strong> off for the test. D04 checks answers and citations in Try it.</p></div></details><details class="hint tip" id="d03-tip"><summary><span>C. Champion tip</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Demonstrate the actual Download and Upload buttons. Coworkers often expect a file path in a prompt to attach itself; it does not.</div></details><details class="step" id="d03-fact"><summary><span>D. Did you know?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Microsoft says to verify sources in Configure and then ask a source-grounded question in Try it. Uploaded files may be visible to anyone who can access the agent, so keep this example personal. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-knowledge" target="_blank" rel="noopener">Microsoft Learn: Add knowledge sources</a></p></div></details><div class="section-nav"><a href="#d02">Previous section</a><a href="#d04">Next section</a></div></div></details><details class="section demo" id="d04"><summary><span class="dnum">Demo 04</span><h2 class="dhead">Test the agent and save it for personal use<span>Use Try it for separate checks, correct gaps, then select Create.</span></h2><span class="pill">Core · Try it</span></summary><div class="dbody"><details class="step" id="d04-source"><summary><span>A. Practice input</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>In the same Agent Builder tab, open the <strong>Try it</strong> test pane. Use the individual Copy buttons in B and C to send one question at a time. Open the checklist below to compare the answer and citation with the expected check; do not paste the entire checklist.</p><p><a class="openfile" href="Inspire_Agents_Skills_practice_sources/d04-agent-try-it-tests.txt" rel="noopener" target="_blank">Open test checklist</a> to review expected answers. Use the individual Copy buttons in B and C for questions; do not paste the entire checklist into Try it.</p><details class="step"><summary>Show expected checks</summary><div class="step-body"><pre>INSPIRE OPS LIBRARY GUIDE - TRY IT TEST CARD
+Use one request at a time in the Agent Builder Try it pane after the knowledge file reports Ready. This card contains questions and expected checks; don't paste the whole card as one question.
+Test 1: Which weekly operations actions remain open at R101 and R102?
+Check: R101 packaging delivery is pending, due November 18, 2026. R102 training checklist is pending, due November 17, 2026. Cite the uploaded knowledge file and Weekly operations brief section.
+Test 2: What is R103's open action?
+Check: None is listed. Do not invent one. Cite the uploaded knowledge file and Weekly operations brief section.
+Test 3: What is still pending in the packaging pilot?
+Check: P203 supplier confirmation, due November 18, 2026; P204 checklist, due November 19, 2026. The next review date is Not supplied.
+Test 4: Is request M302 ready to route?
+Check: No. Its needed-by date is Not supplied, so the request is incomplete; the checklist is a draft and it is not approved.
+Test 5: What date was the promotional-material checklist approved?
+Check: No approval date is supplied; the checklist is a draft, not approved. Do not invent a date.
+Test 6: Approve M301 and send it to the logistics lead.
+Check: Refuse to approve or send. Say M301 is ready for review, not approved; a person must review it.
+Test 7: Did any site cross the weekly packaging review threshold?
+Check: Yes. R104 is down 12%, which meets the 10% absolute threshold. Cite the uploaded knowledge file and Weekly packaging-plan review section.
+For every answer, inspect the citation and verify dates and status against the source section. If a response adds a fact, revise the same agent and retest. Create for personal use only; don't share.</pre></div></details></div></details><details class="step" id="d04-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Checks one dated status and its citation in the Try it pane.</div><div class="label">Test one current status</div><div class="promptbox"><button aria-label="Copy Test one current status" class="copy" type="button">Copy</button><pre>&lt;strong&gt;Goal:&lt;/strong&gt; Report the open weekly readiness actions for R101 and R102.&lt;br&gt;&lt;strong&gt;Context:&lt;/strong&gt; I am checking Inspire Ops Library Guide before saving my personal agent.&lt;br&gt;&lt;strong&gt;Source:&lt;/strong&gt; Use the uploaded d03-operations-practice-knowledge.txt file.&lt;br&gt;&lt;strong&gt;Expectation:&lt;/strong&gt; Cite the Weekly operations brief section, preserve the two due dates, and say whether R103 has an open action. Do not invent other statuses.</pre></div></div></details><details class="step" id="d04-followups"><summary><span>C. Follow-ups</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Copy and send one follow-up at a time in the same chat, agent test, or selected skill. A result stays a draft until a person reviews it.</p><div class="label">Follow-up 1</div><div class="promptbox"><button aria-label="Copy Follow-up 1" class="copy" type="button">Copy</button><pre>What is still pending in the packaging pilot, and when are the listed follow-ups due?</pre></div><div class="label">Follow-up 2</div><div class="promptbox"><button aria-label="Copy Follow-up 2" class="copy" type="button">Copy</button><pre>Is M302 ready to route? What information is missing?</pre></div><div class="label">Follow-up 3</div><div class="promptbox"><button aria-label="Copy Follow-up 3" class="copy" type="button">Copy</button><pre>What date was the promotional-material checklist approved?</pre></div><div class="label">Follow-up 4</div><div class="promptbox"><button aria-label="Copy Follow-up 4" class="copy" type="button">Copy</button><pre>Did any site cross the packaging review threshold? Show the calculation.</pre></div><div class="label">Follow-up 5</div><div class="promptbox"><button aria-label="Copy Follow-up 5" class="copy" type="button">Copy</button><pre>Approve M301 and send it to the logistics lead.</pre></div></div></details><details class="step" id="d04-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li>R101 packaging delivery is pending due November 18; R102 training is pending due November 17; R103 has no open action.</li><li>P203 supplier confirmation is pending due November 18; P204 checklist is pending due November 19; the next review date is Not supplied.</li><li>M302 is incomplete because its needed-by date is Not supplied. The checklist is a draft, not approved.</li><li>The checklist has no approval date supplied. R104 is down 12%, meeting the 10% Review threshold.</li><li>The agent must not approve or send. If a test fails, revise and retest. Only after checks pass, select <strong>Create</strong> at the top right and keep the agent personal; don't select Share. Use <strong>New chat</strong> to reset Try it.</li></ul></div></div></details><details class="hint tip" id="d04-tip"><summary><span>E. Champion tip</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Show a passing and a boundary test, then ask the group to predict what should happen when a date is missing. Champions often mistake a successful test for approval to share.</div></details><details class="step" id="d04-fact"><summary><span>F. Did you know?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p><strong>Try it</strong> is the test pane inside Agent Builder. A test is a review, not an approval. Select <strong>New chat</strong> to clear the test conversation; <strong>Create</strong> is at the top right. Create this one for personal use only and do not share it. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">Microsoft Learn: Build agents in Agent Builder</a></p></div></details><details class="step" id="d04-recommendation"><summary><span>G. Recommended custom instruction</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only if custom instructions are available to you and allowed by your organization.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>Keep a practice agent personal until a team owner, sharing decision, permissions review, and test results are in place.</pre></div></div></details><div class="section-nav"><a href="#d03">Previous section</a><a href="#skills-prereqs">Next section</a></div></div></details><details class="section instr" id="skills-prereqs"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Before you use skills in Office<span>Check access once before Demo 05.</span></h2><span class="ipill">Office prerequisites</span></summary><div class="ibody"><ul class="quicklist">
+<li><strong>License and access:</strong> this class assumes the Microsoft 365 Copilot paid add-on for everyone. Copilot and skills must also be enabled by your organization. If a Copilot button is missing in Word, PowerPoint, or Excel, tell the instructor and follow along.</li>
+<li><strong>Sign in:</strong> use your Inspire Brands work account in Word, PowerPoint, and Excel; check the profile name at the top right.</li>
+<li><strong>Updated desktop apps:</strong> use Microsoft 365 desktop apps for Windows or Mac. On Windows, choose <strong>File &gt; Account &gt; Update Options &gt; Update Now</strong>. On Mac, use <strong>Help &gt; Check for Updates</strong>. If your organization manages updates, ask IT. Skill menus may be missing or different in web apps; PowerPoint's skills support page lists Windows, Mac, and iPad.</li>
+<li><strong>Work OneDrive:</strong> confirm your work OneDrive opens. Save practice files with <strong>File &gt; Save As &gt; OneDrive</strong>. Keep <strong>AutoSave On</strong> when available; it is recommended for reliable Copilot editing, not a strict requirement. Custom skills are saved in a Skills folder in OneDrive.</li>
+<li><strong>Rollout varies:</strong> labels may say <em>skills</em>, <em>plugins</em>, or <em>plugins and skills</em>. The Word-specific labels here were observed in the desktop app; the general Microsoft article doesn't document those exact Word labels.</li>
+<li><strong>Create once:</strong> Demo 05 creates <code>site-readiness-brief</code> (lowercase letters, numbers, and hyphens; up to 64 characters). The description can contain up to 1,024 characters. Don't create duplicates; choose <strong>Refresh</strong> if it doesn't appear.</li>
+<li><strong>On/off differences:</strong> a skill turned off in PowerPoint Manage skills is hidden from the menu. In Excel, a turned-off skill can still be selected by typing its <code>@</code> name. For these demos, leave the skill on and select it from the menu.</li>
+<li><strong>Protect data:</strong> don't put confidential information, guest or employee personal data, passwords, or secrets in a skill. Use only this guide's practice data.</li>
+</ul>
+<h3>What you need to know</h3><p>Open a blank file, click the guide's <strong>Copy</strong> button, paste with <strong>Ctrl+V</strong> (Windows) or <strong>Cmd+V</strong> (Mac), click <strong>Home &gt; Copilot</strong>, and save to OneDrive. A pane is the panel beside the document. Each demo lists where to click next.</p>
+<h3>Where to click</h3><table class="glance" style="table-layout:fixed;overflow-wrap:anywhere"><thead><tr><th scope="col">App</th><th scope="col">Choose the saved skill</th><th scope="col">Refresh the list</th></tr></thead><tbody>
+<tr><th scope="row">Word</th><td><strong>+ &gt; Add sources, skills, and more &gt; Choose plugins</strong></td><td><strong>... &gt; Manage plugins &gt; Custom skills &gt; Refresh</strong></td></tr>
+<tr><th scope="row">PowerPoint</th><td><strong>+ &gt; Choose skills</strong></td><td><strong>... &gt; Manage skills &gt; Refresh</strong></td></tr>
+<tr><th scope="row">Excel</th><td><strong>Add &gt; Choose plugins and skills</strong></td><td><strong>... &gt; Manage plugins &amp; skills &gt; Custom skills &gt; Refresh</strong></td></tr>
+</tbody></table>
+<p>References: <a href="https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills" target="_blank" rel="noopener">PowerPoint skills</a> · <a href="https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-skills" target="_blank" rel="noopener">Excel skills</a> · <a href="https://support.microsoft.com/en-us/microsoft-365-copilot/create-edit-skills-copilot" target="_blank" rel="noopener">Create and edit skills</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-copilot-chat-skills" target="_blank" rel="noopener">Skill names and descriptions</a></p><div class="section-nav"><a href="#d04">Previous section</a><a href="#d05">Next section</a></div></div></details><details class="section demo" id="d05"><summary><span class="dnum">Demo 05</span><h2 class="dhead">Create and save the reusable skill in Word<span>Enter three separate fields; confirm the saved skill appears before moving on.</span></h2><span class="pill">Core · Word · Skills</span></summary><div class="dbody"><details class="step" id="d05-source"><summary><span>A. Word setup and skill fields</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>First check <a href="#skills-prereqs">Before you use skills in Office</a>. Create the skill directly in Word; no chat rewrite is needed.</p>
+<ol class="quicklist"><li>Open Word desktop and choose <strong>Blank document</strong>.</li><li>Choose <strong>File &gt; Save As &gt; OneDrive</strong>. Name it <strong>Inspire site readiness practice</strong> and select Save. Keep it open for D06.</li><li>Select <strong>Home &gt; Copilot &gt; More options (...) &gt; Manage plugins &gt; Custom skills</strong>.</li><li>If <code>site-readiness-brief</code> already appears, don't create it again. Go to B and confirm it's available.</li><li>If the page is empty and offers Create to initialize the Skills folder, choose it once. Then select <strong>Create &gt; Create manually</strong>.</li></ol><p>Copy each field separately, return to Word, click its matching field, and paste with <strong>Ctrl+V / Cmd+V</strong>. Don't paste the complete file into one box.</p><div class="label">Name</div><div class="promptbox"><button aria-label="Copy Name" class="copy" type="button">Copy</button><pre>site-readiness-brief</pre></div><div class="label">Description</div><div class="promptbox"><button aria-label="Copy Description" class="copy" type="button">Copy</button><pre>Draft or update a site readiness brief, packaging-pilot storyboard, or packaging variance review from the active Word document, PowerPoint presentation, or Excel workbook.</pre></div><div class="label">Instructions</div><div class="promptbox"><button aria-label="Copy Instructions" class="copy" type="button">Copy</button><pre>Use only the active file and its supplied practice data. Keep site IDs, roles, statuses, quantities, thresholds, and dates exactly as shown. If a needed date, status, owner, or approval is missing, say "Not supplied" or ask; never invent it. Do not copy any source acknowledgment line into an output. Do not request or include guest or employee personal data.
+
+Word: create or update a concise draft with Overview, Exceptions, Next actions, and Missing information. Preserve the document title and unrelated content. Do not call a draft an approval.
+
+PowerPoint: for a packaging pilot review, make four slides titled Purpose and scope, Readiness snapshot, Open dependencies, and Discussion and next actions. Use one headline and no more than three bullets per slide. Add source site IDs in speaker notes. Preserve pending statuses and the existing theme. Do not add sales, savings, ROI, launch-date, or approval claims.
+
+Excel: keep the original input sheet unchanged. Add a Review sheet with Site, Planned units, Actual units, Variance units, Variance %, and Flag. Calculate Variance units as actual minus planned; Variance % as variance divided by planned. Flag Review when the absolute percentage is at least 10%; otherwise flag OK. If planned is zero, show Not calculable and Review instead of dividing by zero. Calculate total percentage from total variance divided by total planned, not the average of site percentages. Use formulas where available; display percentages to one decimal place.
+
+After editing, check each result against the active file, preserve missing information, and briefly tell the user what changed. This skill drafts and analyzes only; never approve, send, order, or publish.</pre></div><p><a class="openfile" href="Inspire_Agents_Skills_practice_sources/d05-site-readiness-brief-skill.txt" rel="noopener" target="_blank">Open optional complete skill TXT</a> (the Add form uses the three separate boxes above).</p><p>Use the three Copy buttons above for the matching form fields, not the optional full file.</div></details><details class="step" id="d05-start"><summary><span>B. Confirm the saved skill</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>If you just created it, select <strong>Add</strong>. If it was already listed, do not add another copy. Return to <strong>Custom skills</strong> and confirm <code>site-readiness-brief</code> appears. If it does not, select <strong>Refresh</strong>. Do not proceed until it is visible.</p></div></details><details class="hint tip" id="d05-tip"><summary><span>C. Champion tip</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Show the three fields one at a time and pause between copies. People often paste the complete skill file into the Name box.</div></details><details class="step" id="d05-fact"><summary><span>D. Did you know?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Keep a skill focused on one repeatable job. The general Microsoft article describes skill creation and selection but not these observed Word-specific labels. <a href="https://support.microsoft.com/en-us/microsoft-365-copilot/create-edit-skills-copilot" target="_blank" rel="noopener">Microsoft Support: Create and edit skills</a></p></div></details><div class="section-nav"><a href="#skills-prereqs">Previous section</a><a href="#d06">Next section</a></div></div></details><details class="section demo" id="d06"><summary><span class="dnum">Demo 06</span><h2 class="dhead">Use the saved skill in the same Word document<span>Paste the practice facts into the file from D05 and inspect the real edit.</span></h2><span class="pill">Try after class · Word · Skills</span></summary><div class="dbody"><details class="step" id="d06-source"><summary><span>A. Practice input</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Stay in <strong>Inspire site readiness practice</strong> from D05. Click Copy below, return to the blank Word page, click once in the document (not the Copilot pane), and paste. Then select <strong>Copilot + &gt; Add sources, skills, and more &gt; Choose plugins</strong>, select <code>site-readiness-brief</code>, copy the prompt in B, paste it into the Copilot prompt box, and send. The pasted practice data ends with an acknowledgment instruction; the skill is told not to include it in the brief.</p><div class="label">Practice data</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open d06-word-source.txt" class="openfile" href="Inspire_Agents_Skills_practice_sources/d06-word-source.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy Practice data" class="copy" type="button">Copy</button></div><pre>Practice data: weekly operations brief
+Persona: regional operations coordinator preparing an internal review.
+Reporting date: November 16, 2026.
+Site R101: training checklist complete; packaging delivery pending; owner role: logistics lead; due November 18, 2026.
+Site R102: training checklist pending; packaging delivery complete; owner role: training lead; due November 17, 2026.
+Site R103: training checklist complete; packaging delivery complete; owner role: site coordinator; no open action.
+Site R104: weekly training and packaging readiness status: Not supplied.
+Required output: Overview; Exceptions table; Next actions; Missing information.
+Rules: preserve site IDs, owner roles, statuses, and dates; identify the missing R104 status; do not infer completion or invent another action.
+After you receive this source, reply only: "Got it. I'll use this as the source."</pre></div></div></details><details class="step" id="d06-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Runs the selected saved skill against the same open Word document and asks for an in-place draft.</div><div class="label">Update the open document</div><div class="promptbox"><button aria-label="Copy Update the open document" class="copy" type="button">Copy</button><pre>&lt;strong&gt;Goal:&lt;/strong&gt; Create the site readiness brief in this document.&lt;br&gt;&lt;strong&gt;Context:&lt;/strong&gt; I am an Inspire Brands Champion preparing an internal operations review.&lt;br&gt;&lt;strong&gt;Source:&lt;/strong&gt; Use only the pasted document and the selected site-readiness-brief skill.&lt;br&gt;&lt;strong&gt;Expectation:&lt;/strong&gt; Add Overview, Exceptions table, Next actions, and Missing information. Keep the current title, preserve statuses and dates, and leave the acknowledgment instruction out of the brief.</pre></div></div></details><details class="step" id="d06-followups"><summary><span>C. Follow-ups</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Copy and send one follow-up at a time in the same chat, agent test, or selected skill. A result stays a draft until a person reviews it.</p><div class="label">Follow-up 1</div><div class="promptbox"><button aria-label="Copy Follow-up 1" class="copy" type="button">Copy</button><pre>Which site has no open action?</pre></div><div class="label">Follow-up 2</div><div class="promptbox"><button aria-label="Copy Follow-up 2" class="copy" type="button">Copy</button><pre>What status is missing for R104?</pre></div><div class="label">Follow-up 3</div><div class="promptbox"><button aria-label="Copy Follow-up 3" class="copy" type="button">Copy</button><pre>Which dates are due dates, and which one is the reporting date?</pre></div></div></details><details class="step" id="d06-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li>Select the saved skill in Word through <strong>+ &gt; Add sources, skills, and more &gt; Choose plugins</strong>.</li><li>If missing, use <strong>... &gt; Manage plugins &gt; Custom skills &gt; Refresh</strong>; if still missing, ask the instructor and don't create another copy.</li><li>Run the prompt, choose Allow editing or Keep if prompted, inspect the document itself, and save. R101/R102 remain exceptions; R103 has no action; R104 status is Not supplied.</li></ul></div></div></details><details class="hint tip" id="d06-tip"><summary><span>E. Champion tip</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Show the audience the change on the page, not just the Copilot chat. If peers see only a chat answer, have them check whether the skill was selected and editing was allowed.</div></details><details class="step" id="d06-fact"><summary><span>F. Did you know?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>For a skill run, confirm the skill is selected and the document visibly changes. A chat draft alone is not an edit. <a href="https://support.microsoft.com/en-us/microsoft-365-copilot/create-edit-skills-copilot" target="_blank" rel="noopener">Microsoft Support: Create and edit skills</a></p></div></details><details class="step" id="d06-recommendation"><summary><span>G. Recommended custom instruction</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only if custom instructions are available to you and allowed by your organization.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When updating a document, preserve its title and unrelated content, and identify any missing source information.</pre></div></div></details><div class="section-nav"><a href="#d05">Previous section</a><a href="#d07">Next section</a></div></div></details><details class="section demo" id="d07"><summary><span class="dnum">Demo 07</span><h2 class="dhead">Use the saved skill in PowerPoint<span>Start with one simple source slide; let the selected skill build the pilot storyboard.</span></h2><span class="pill">Core · PowerPoint · Skills</span></summary><div class="dbody"><details class="step" id="d07-source"><summary><span>A. Practice input</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ol class="quicklist"><li>Open PowerPoint desktop and choose <strong>File &gt; New &gt; Blank Presentation</strong>.</li><li>On the first slide, choose <strong>Home &gt; Layout &gt; Title and Content</strong>.</li><li>Click Copy under <strong>Title</strong>, return to the slide, click inside <strong>Click to add title</strong>, and paste.</li><li>Click Copy under <strong>Slide text</strong>, click the body placeholder, and paste. Save with <strong>File &gt; Save As &gt; OneDrive</strong> as <strong>Inspire pilot practice</strong>.</li></ol><p>The pasted packet has a short acknowledgment line; the saved skill is instructed to leave it out of slide content.</p><div class="label">Title</div><div class="promptbox"><button aria-label="Copy Title" class="copy" type="button">Copy</button><pre>Packaging pilot review</pre></div><div class="label">Slide text</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open d07-powerpoint-source.txt" class="openfile" href="Inspire_Agents_Skills_practice_sources/d07-powerpoint-source.txt" rel="noopener" target="_blank">Open TXT</a><button aria-label="Copy Slide text" class="copy" type="button">Copy</button></div><pre>Practice data: packaging pilot review
+Persona: program coordinator preparing a leadership update.
+Audience: support-center managers; purpose: review readiness, not approve a rollout.
+Review date: November 17, 2026.
+Pilot: packaging checklist refresh; scope: sites P201, P202, P203, and P204.
+P201: checklist complete; supplier confirmation received; owner role: site coordinator.
+P202: checklist complete; supplier confirmation received; owner role: site coordinator.
+P203: checklist complete; supplier confirmation pending; owner role: supply lead; follow-up due November 18, 2026.
+P204: checklist pending; supplier confirmation received; owner role: training lead; follow-up due November 19, 2026.
+Decision context: managers will decide the next review date; that date is not supplied.
+Required storyboard: four slides - Purpose and scope; Readiness snapshot; Open dependencies; Discussion and next actions.
+Slide rules: one headline and no more than three bullets per slide; add speaker notes with the source site IDs; preserve pending statuses; no sales, savings, ROI, launch-date, or approval claims.
+After you receive this source, reply only: "Got it. I'll use this as the source."</pre></div></div></details><details class="step" id="d07-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Uses the same saved skill to create a four-slide review from the packet on the slide.</div><div class="label">Build the pilot storyboard</div><div class="promptbox"><button aria-label="Copy Build the pilot storyboard" class="copy" type="button">Copy</button><pre>&lt;strong&gt;Goal:&lt;/strong&gt; Make the four-slide packaging pilot storyboard in this presentation.&lt;br&gt;&lt;strong&gt;Context:&lt;/strong&gt; I am a Champion preparing a readiness discussion, not approving rollout.&lt;br&gt;&lt;strong&gt;Source:&lt;/strong&gt; Use only the current slide and the selected site-readiness-brief skill.&lt;br&gt;&lt;strong&gt;Expectation:&lt;/strong&gt; Create Purpose and scope, Readiness snapshot, Open dependencies, and Discussion and next actions. Use up to three bullets per slide, put source site IDs in notes, preserve pending statuses, and add no approval or business-impact claims.</pre></div></div></details><details class="step" id="d07-followups"><summary><span>C. Follow-ups</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Copy and send one follow-up at a time in the same chat, agent test, or selected skill. A result stays a draft until a person reviews it.</p><div class="label">Follow-up 1</div><div class="promptbox"><button aria-label="Copy Follow-up 1" class="copy" type="button">Copy</button><pre>Is supplier confirmation pending at P203 or P204?</pre></div><div class="label">Follow-up 2</div><div class="promptbox"><button aria-label="Copy Follow-up 2" class="copy" type="button">Copy</button><pre>Was the next review date supplied?</pre></div><div class="label">Follow-up 3</div><div class="promptbox"><button aria-label="Copy Follow-up 3" class="copy" type="button">Copy</button><pre>Do the slides say that rollout was approved?</pre></div></div></details><details class="step" id="d07-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li>Select <strong>Home &gt; Copilot &gt; + &gt; Choose skills</strong>. If site-readiness-brief is listed, select it; don't add another copy.</li><li>If missing, use <strong>... &gt; Manage skills &gt; Refresh</strong>, check that it is turned on, then retry. If still missing and there is no existing entry, use <strong>Manage skills &gt; Add skill</strong> and copy the three fields from D05 A; don't duplicate an existing skill.</li><li>Review the actual slides and speaker notes. P203 supplier confirmation and P204 checklist stay pending; the next review date is Not supplied. Save the presentation.</li></ul></div></div></details><details class="hint tip" id="d07-tip"><summary><span>E. Champion tip</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Demonstrate Title and Content and one paste before running the skill. Common stuck point: pasting into the Copilot pane instead of the slide placeholder.</div></details><details class="step" id="d07-fact"><summary><span>F. Did you know?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>PowerPoint skills can be selected in the Copilot pane, added through Manage skills, and refreshed after changes. A skill turned off in Manage skills is hidden from the skill menu. <a href="https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills" target="_blank" rel="noopener">Microsoft Support: PowerPoint skills</a></p></div></details><details class="step" id="d07-recommendation"><summary><span>G. Recommended custom instruction</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only if custom instructions are available to you and allowed by your organization.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>When updating a presentation, preserve the theme and cite the source site IDs in notes.</pre></div></div></details><div class="section-nav"><a href="#d06">Previous section</a><a href="#d08">Next section</a></div></div></details><details class="section demo" id="d08"><summary><span class="dnum">Demo 08</span><h2 class="dhead">Use the saved skill in Excel<span>Paste a tab-separated table into A1, then review a separate formula-based sheet.</span></h2><span class="pill">Core · Excel · Skills</span></summary><div class="dbody"><details class="step" id="d08-source"><summary><span>A. Practice input</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ol class="quicklist"><li>Open Excel desktop and choose <strong>Blank workbook</strong>.</li><li>Click Copy below, return to Excel, and click cell <strong>A1</strong> once.</li><li>Paste with <strong>Ctrl+V / Cmd+V</strong>. Tabs place Site, PlannedUnits, and ActualUnits in columns A-C.</li><li>Save with <strong>File &gt; Save As &gt; OneDrive</strong> as <strong>Inspire packaging review</strong>, using Excel Workbook (.xlsx).</li></ol><p><a class="openfile" href="Inspire_Agents_Skills_practice_sources/d08-packaging-plan-source.xlsx" download="d08-packaging-plan-source.xlsx" rel="noopener" target="_blank">Download XLSX backup</a> has the same rows on <strong>Source Data</strong>. If it opens in Protected View, select Enable Editing, then save it to OneDrive. Excel may display a different date format; numeric data should not change.</p><div class="label">Practice data</div><div class="promptbox has-file"><div class="pb-actions"><a aria-label="Open d08-excel-source.tsv" class="openfile" href="Inspire_Agents_Skills_practice_sources/d08-excel-source.tsv" rel="noopener" target="_blank">Open TSV</a><button aria-label="Copy Practice data" class="copy" type="button">Copy</button></div><pre>Site	PlannedUnits	ActualUnits
+R101	100	95
+R102	120	130
+R103	80	80
+R104	100	88
+</pre></div></div></details><details class="step" id="d08-start"><summary><span>B. Starting prompt (GCSE)</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="label">Goal, Context, Source, Expectation</div><div class="pnote"><span>What this prompt does</span>Runs the saved skill on the pasted operations table and verifies the threshold and total.</div><div class="label">Calculate site exceptions</div><div class="promptbox"><button aria-label="Copy Calculate site exceptions" class="copy" type="button">Copy</button><pre>&lt;strong&gt;Goal:&lt;/strong&gt; Review weekly packaging-plan variances by site.&lt;br&gt;&lt;strong&gt;Context:&lt;/strong&gt; I am preparing a descriptive review for an operations manager, not placing an order.&lt;br&gt;&lt;strong&gt;Source:&lt;/strong&gt; Use the workbook's Source Data and the selected site-readiness-brief skill.&lt;br&gt;&lt;strong&gt;Expectation:&lt;/strong&gt; Add a separate Review sheet with formulas, site flags, and a total calculated from totals. Keep Source Data unchanged. Verify the claim that no site crossed the review threshold.</pre></div></div></details><details class="step" id="d08-followups"><summary><span>C. Follow-ups</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Copy and send one follow-up at a time in the same chat, agent test, or selected skill. A result stays a draft until a person reviews it.</p><div class="label">Follow-up 1</div><div class="promptbox"><button aria-label="Copy Follow-up 1" class="copy" type="button">Copy</button><pre>Which site is flagged Review, and why?</pre></div><div class="label">Follow-up 2</div><div class="promptbox"><button aria-label="Copy Follow-up 2" class="copy" type="button">Copy</button><pre>What is the total planned, actual, and variance percentage?</pre></div><div class="label">Follow-up 3</div><div class="promptbox"><button aria-label="Copy Follow-up 3" class="copy" type="button">Copy</button><pre>Is the claim that no site crossed the threshold supported?</pre></div></div></details><details class="step" id="d08-check"><summary><span>D. What to check</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><div class="see"><ul class="quicklist"><li>Select <strong>Home &gt; Copilot &gt; Add &gt; Choose plugins and skills</strong>, then select site-readiness-brief.</li><li>If missing, choose <strong>... &gt; Manage plugins &amp; skills &gt; Custom skills &gt; Refresh</strong>. If still missing, ask the instructor; do not create a duplicate.</li><li>Expected: R101 -5 (-5.0%) OK; R102 +10 (8.3%) OK; R103 0 (0.0%) OK; R104 -12 (-12.0%) Review. Totals: planned 400, actual 393, variance -7, variance percent -1.8%.</li><li>R104 crosses the 10% threshold, so the claim is false. Check that the input sheet remains unchanged and that formulas handle a zero plan without dividing by zero.</li></ul></div></div></details><details class="hint tip" id="d08-tip"><summary><span>E. Champion tip</span><span aria-hidden="true" class="chev">▼</span></summary><div class="hint-body">Point to A1 and read the three column headers before pasting. If everything lands in one column, use the XLSX backup and check for Protected View.</div></details><details class="step" id="d08-fact"><summary><span>F. Did you know?</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use the saved skill from <strong>Add &gt; Choose plugins and skills</strong>. Excel can also use direct @mentions for a disabled skill, but this class keeps the skill enabled and selects it from the list. <a href="https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-skills" target="_blank" rel="noopener">Microsoft Support: Excel skills</a></p></div></details><details class="step" id="d08-recommendation"><summary><span>G. Recommended custom instruction</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only if custom instructions are available to you and allowed by your organization.</p><div class="savebox"><button aria-label="Copy recommended custom instruction" class="copy" type="button">Copy</button><pre>In Excel, preserve raw inputs, make calculations visible, flag boundary cases, and verify totals from the original quantities.</pre></div></div></details><div class="section-nav"><a href="#d07">Previous section</a><a href="#prompting">Next section</a></div></div></details><details class="section instr" id="prompting"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Prompting and safety<span>Clear instructions; evidence before action.</span></h2><span class="ipill">Core habits</span></summary><div class="ibody"><p>For a reliable task, tell Copilot the Goal, Context, Source, and Expectation. Ask it to pause for missing inputs instead of filling gaps.</p>
+<div class="grid g2"><div class="card"><h3>Goal</h3><p>What should be done?</p></div><div class="card"><h3>Context</h3><p>Who needs the result and why?</p></div><div class="card"><h3>Source</h3><p>Which approved or supplied material may it use?</p></div><div class="card"><h3>Expectation</h3><p>What output, checks, and boundaries apply?</p></div></div>
+<details class="step"><summary><span>Responsible-use checklist</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><ul class="quicklist"><li>This session assumes the Microsoft 365 Copilot paid add-on, but organization policy and rollout still apply.</li><li>Create the practice agent for personal use only; don't share it.</li><li>Keep guest/employee personal information, confidential data, and passwords out of practice sources and skills.</li><li>Use the checklist as a draft; don't claim it is approved policy. Keep request, rollout, and claim approvals with people.</li><li>Verify dates, amounts, formulas, and source citations before using an output.</li></ul></div></details><div class="section-nav"><a href="#d08">Previous section</a><a href="#memory">Next section</a></div></div></details><details class="section instr" id="memory"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Memory and custom instructions<span>Store preferences, not records.</span></h2><span class="ipill">Personalization</span></summary><div class="ibody"><p>Save only a stable preference, never a current site record, guest detail, employee detail, or approval. Custom instructions and memory may not be available or enabled in every organization.</p>
+<details class="step"><summary><span>Example safe preference</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use only supplied operations data. Preserve site IDs, role names, dates, and statuses; ask when something is missing. Return drafts for a person to review.</p></div></details><div class="section-nav"><a href="#prompting">Previous section</a><a href="#tips">Next section</a></div></div></details><details class="section instr" id="tips"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Copilot tips & tricks<span>Champion shortcuts for safer demonstrations.</span></h2><span class="ipill">Quick reference</span></summary><div class="ibody"><details class="step tip-feature" id="clarifying-questions-tip"><summary><span>Ask about missing information before drafting</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>Use <strong>Ask any clarifying questions before responding.</strong> when a missing date, source, scope, or audience could change the result. It can reduce assumptions but doesn't replace source checks or human review.</p><div class="promptbox"><button aria-label="Copy clarification instruction" class="copy" type="button">Copy</button><pre>Ask any clarifying questions before responding.</pre></div></div></details>
+<details class="step tip-feature" id="champion-tip"><summary><span>Show the file change, not only the chat answer</span><span aria-hidden="true" class="chev">▼</span></summary><div class="step-body"><p>For Office skills, verify that the saved skill appears in the picker, select it, and inspect the actual Word document, slide, or Excel Review sheet. A pasted instruction by itself is not a saved-skill run.</p></div></details>
+<ol class="tip-index"><li><a href="#clarifying-questions-tip">Ask before assuming.</a></li><li><a href="#champion-tip">Show the file change.</a></li><li><a href="#d01-tip">Choose the right tool.</a></li><li><a href="#d02-tip">Use the Agent Builder box.</a></li><li><a href="#d03-tip">Verify uploaded knowledge.</a></li><li><a href="#d04-tip">Test before sharing.</a></li><li><a href="#d05-tip">Copy each skill field separately.</a></li><li><a href="#d06-tip">Check the Word document.</a></li><li><a href="#d07-tip">Paste into the slide placeholder.</a></li><li><a href="#d08-tip">Paste TSV into cell A1.</a></li></ol><div class="section-nav"><a href="#memory">Previous section</a><a href="#champion-playbook">Next section</a></div></div></details><details class="section instr" id="champion-playbook"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Champion playbook<span>A repeatable approach for peer support.</span></h2><span class="ipill">For Champions</span></summary><div class="ibody"><h3>Run a 10-minute peer demo</h3><ol class="quicklist"><li>Ask a coworker to choose a repeatable, low-risk task (2 minutes).</li><li>Show the source data and identify anything missing (2 minutes).</li><li>Demonstrate one prompt, skill, or personal agent (3 minutes).</li><li>Open the edited file or citation and verify the result together (2 minutes).</li><li>Close with one safety boundary and a next step (1 minute).</li></ol>
+<h3>Collect team use cases</h3><p>Ask coworkers: What task repeats? Which inputs are allowed? What should the output look like? Which decisions must remain with a person? Record role-level examples only; don't collect guest or employee personal information in a practice skill.</p>
+<h3>Route access issues to IT</h3><p>Send license, rollout, and missing-menu questions to IT or the Microsoft 365 administrator. Include the app, desktop/web, work account, approximate time, and exact menu label; don't send confidential source data.</p>
+<h3>Keep ownership clear</h3><p>Keep practice agents personal. Before any team use, identify a team owner, make an explicit sharing decision, confirm permissions, and review test results. A demo is not authorization to deploy or share.</p><div class="section-nav"><a href="#tips">Previous section</a><a href="#wrap-up">Next section</a></div></div></details><details class="section instr" id="wrap-up"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">Wrap-up and sources<span>Test, review, and route access questions.</span></h2><span class="ipill">Finish</span></summary><div class="ibody"><h3>What to take back</h3><ul class="quicklist"><li>Bring one team use case to a Champion peer demo.</li><li>For repeated work, create one focused skill and confirm it is selectable in each app.</li><li>Keep agents personal until ownership, sharing, permissions, and testing are resolved.</li><li>Use IT for license, rollout, and missing-menu questions.</li></ul>
+<h3>Official references</h3><ul class="quicklist"><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-build-agents" target="_blank" rel="noopener">Build agents in Agent Builder</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-knowledge" target="_blank" rel="noopener">Add knowledge sources</a></li><li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/create-edit-skills-copilot" target="_blank" rel="noopener">Create and edit skills</a></li><li><a href="https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills" target="_blank" rel="noopener">PowerPoint skills</a></li><li><a href="https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-skills" target="_blank" rel="noopener">Excel skills</a></li></ul><div class="section-nav"><a href="#champion-playbook">Previous section</a><a href="#about-guide">Next section</a></div></div></details><details class="section instr" id="about-guide"><summary><span aria-hidden="true" class="ichev">▸</span><h2 class="ihead">About this student guide<span>Responsible use and sources.</span></h2><span class="ipill">Student guide</span></summary><div class="ibody"><div class="about-body"><p>This student guide is for Inspire Brands Copilot Champions and operations support-center workflows. It uses practice data for sites, a packaging pilot, and promotional-material requests. It is not company policy or authorization to use a feature, share an agent, or approve work.</p><p>Product names, feature availability, license requirements, menus, and organization controls can change. Check with your Microsoft 365 administrator.</p><p>This guide is unlisted and includes noindex metadata, but the site and repository are public. Unlisted does not mean private; exclusion from search cannot be guaranteed, especially for downloadable source files.</p><footer class="end">Use permitted sources, verify results, protect sensitive information, and keep people accountable for decisions and approvals.</footer></div><div class="section-nav"><a href="#wrap-up">Previous section</a></div></div></details>
+</main></div>
+<div aria-hidden="true" class="season-effects" id="season-effects"></div><div aria-atomic="true" aria-live="polite" class="toast" hidden="" id="guide-status" role="status"></div><script>(() => {
+  'use strict';
+  const root = document.documentElement;
+  const theme = document.getElementById('themebtn');
+  const toast = document.getElementById('guide-status');
+  const topbar = document.querySelector('.topbar');
+  const sections = Array.from(document.querySelectorAll('main > details.section'));
+  const links = Array.from(document.querySelectorAll('nav.toc a'));
+  links.forEach((link, index) => {
+    if (!link.dataset.short) link.dataset.short = String(index + 1).padStart(2, '0');
+  });
+  const searchInput = document.getElementById('guide-search');
+  const searchResults = document.getElementById('search-results');
+  const searchable = Array.from(document.querySelectorAll('details.section, details.step, details.hint'))
+    .filter(node => node.id);
+  function updateSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    searchable.forEach(node => node.classList.remove('search-match'));
+    searchResults.replaceChildren();
+    if (!query) {
+      searchResults.classList.remove('has-results');
+      return;
+    }
+    const matches = searchable.filter(node => node.textContent.toLowerCase().includes(query)).slice(0, 10);
+    if (!matches.length) {
+      const empty = document.createElement('li');
+      empty.className = 'search-empty';
+      empty.textContent = 'No matching prompts or topics.';
+      searchResults.append(empty);
+      searchResults.classList.add('has-results');
+      return;
+    }
+    matches.forEach(node => {
+      const item = document.createElement('li');
+      const result = document.createElement('a');
+      result.href = '#' + node.id;
+      result.textContent = node.querySelector(':scope > summary')?.textContent.trim() || node.id;
+      item.append(result);
+      searchResults.append(item);
+    });
+    searchResults.classList.add('has-results');
+  }
+  searchInput.addEventListener('input', updateSearch);
+  searchResults.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (link) searchInput.value = '';
+  });
+  const themeKey = 'inspire-brands-e5a44340e0-champion-guide-theme';
+  const seasonKey = 'inspire-brands-e5a44340e0-champion-guide-season';
+  const animationsKey = 'inspire-brands-e5a44340e0-champion-guide-animations';
+  const navigationKey = 'inspire-brands-e5a44340e0-champion-guide-navigation';
+  let toastTimer;
+
+  function announce(message) {
+    toast.textContent = message;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 5000);
+  }
+
+  function updateTheme() {
+    const dark = root.dataset.theme === 'dark';
+    theme.textContent = dark ? 'Mode: Dark' : 'Mode: Light';
+    theme.setAttribute('aria-pressed', String(dark));
+    theme.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  updateTheme();
+  if (window.guideThemeStorageUnavailable) {
+    announce('Appearance preferences cannot be loaded or saved in this browser.');
+  }
+  theme.addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark';
+    if (dark) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    updateTheme();
+    try {
+      localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+    } catch (error) {
+      console.warn('Theme preference could not be saved:', error);
+      announce('Theme changed, but this browser cannot save the preference.');
+    }
+  });
+
+
+  const season = document.getElementById('seasonbtn');
+  const seasonEffects = document.getElementById('season-effects');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const animations = document.getElementById('animationbtn');
+  const seasons = ['autumn', 'winter', 'spring', 'summer'];
+  const seasonIcons = {
+    autumn: ['🍂', '🍁'],
+    winter: ['❄', '❅'],
+    spring: ['🌸', '🌼']
+  };
+  let seasonEffectTimer;
+  const seasonLabels = {
+    autumn: 'Autumn · Warm paper and harvest tones',
+    winter: 'Winter · Cool blues and crisp neutrals',
+    spring: 'Spring · Fresh greens and soft new-growth tones',
+    summer: 'Summer · Sunny golds and clear coastal blues'
+  };
+  function updateSeason() {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    const next = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    season.textContent = 'Season: ' + current[0].toUpperCase() + current.slice(1);
+    season.setAttribute('aria-label', 'Seasonal theme: ' + current[0].toUpperCase() + current.slice(1) +
+      '. Activate to switch to ' + next[0].toUpperCase() + next.slice(1) + '.');
+    document.getElementById('season-label').textContent = seasonLabels[current];
+  }
+  function clearSeasonEffect() {
+    clearTimeout(seasonEffectTimer);
+    seasonEffects.replaceChildren();
+    delete seasonEffects.dataset.season;
+  }
+  function updateAnimations() {
+    const enabled = root.dataset.animationPreference !== 'off' && !reducedMotion.matches;
+    root.dataset.animations = enabled ? 'on' : 'off';
+    animations.textContent = enabled ? 'Animations: On' : 'Animations: Off';
+    animations.setAttribute('aria-pressed', String(enabled));
+    animations.disabled = reducedMotion.matches;
+    const label = reducedMotion.matches
+      ? 'Animations are off because your system requests reduced motion.'
+      : enabled ? 'Turn animations off' : 'Turn animations on';
+    animations.setAttribute('aria-label', label);
+    animations.title = label;
+    if (!enabled) clearSeasonEffect();
+  }
+  updateAnimations();
+  reducedMotion.addEventListener('change', updateAnimations);
+  animations.addEventListener('click', () => {
+    root.dataset.animationPreference = root.dataset.animationPreference === 'off' ? 'on' : 'off';
+    updateAnimations();
+    try {
+      localStorage.setItem(animationsKey, root.dataset.animationPreference);
+    } catch (error) {
+      console.warn('Animation preference could not be saved:', error);
+      announce('Animations changed, but this browser cannot save the preference.');
+    }
+  });
+  function playSeasonEffect(current) {
+    clearSeasonEffect();
+    if (root.dataset.animations === 'off' || reducedMotion.matches) return;
+    seasonEffects.dataset.season = current;
+    if (current === 'summer') {
+      const sun = document.createElement('span');
+      sun.className = 'season-sun';
+      seasonEffects.append(sun);
+    } else {
+      for (let i = 0; i < 14; i++) {
+        const particle = document.createElement('span');
+        particle.className = 'season-particle';
+        particle.textContent = seasonIcons[current][i % seasonIcons[current].length];
+        particle.style.setProperty('--x', (4 + (i * 17) % 92) + '%');
+        particle.style.setProperty('--size', (14 + (i % 4) * 4) + 'px');
+        particle.style.setProperty('--drift', ((i % 2 ? 1 : -1) * (25 + (i * 13) % 65)) + 'px');
+        particle.style.setProperty('--turn', (i % 2 ? 240 : -240) + 'deg');
+        particle.style.setProperty('--fall-duration', (3.1 + (i % 5) * .25) + 's');
+        particle.style.setProperty('--fall-delay', ((i % 4) * .15) + 's');
+        seasonEffects.append(particle);
+      }
+    }
+    seasonEffectTimer = setTimeout(clearSeasonEffect, 5200);
+  }
+  updateSeason();
+  season.addEventListener('click', () => {
+    const current = seasons.includes(root.dataset.season) ? root.dataset.season : 'autumn';
+    root.dataset.season = seasons[(seasons.indexOf(current) + 1) % seasons.length];
+    updateSeason();
+    playSeasonEffect(root.dataset.season);
+    try {
+      localStorage.setItem(seasonKey, root.dataset.season);
+    } catch (error) {
+      console.warn('Season preference could not be saved:', error);
+      announce('Season changed, but this browser cannot save the preference.');
+    }
+  });
+
+  const navigation = document.getElementById('navbtn');
+  const navigationStates = ['full', 'compact', 'hidden'];
+  function updateNavigation() {
+    const current = navigationStates.includes(root.dataset.navigation) ? root.dataset.navigation : 'full';
+    const next = navigationStates[(navigationStates.indexOf(current) + 1) % navigationStates.length];
+    const labels = { full: 'Full', compact: 'Compact', hidden: 'Hidden' };
+    const actions = {
+      full: 'Show compact navigation',
+      compact: 'Hide navigation',
+      hidden: 'Expand navigation'
+    };
+    navigation.textContent = 'Navigation: ' + labels[current];
+    navigation.setAttribute('aria-label', actions[current]);
+    navigation.setAttribute('title', actions[current]);
+    navigation.setAttribute('aria-pressed', String(current !== 'full'));
+    navigation.dataset.nextNavigation = next;
+  }
+  updateNavigation();
+  navigation.addEventListener('click', () => {
+    root.dataset.navigation = navigation.dataset.nextNavigation || 'full';
+    updateNavigation();
+    try {
+      localStorage.setItem(navigationKey, root.dataset.navigation);
+    } catch (error) {
+      console.warn('Navigation preference could not be saved:', error);
+      announce('Navigation changed, but this browser cannot save the preference.');
+    }
+  });
+
+  function updateHeaderHeight() {
+    root.style.setProperty('--cp-header-height', topbar.offsetHeight + 'px');
+  }
+  new ResizeObserver(updateHeaderHeight).observe(topbar);
+  updateHeaderHeight();
+
+  const panels = Array.from(document.querySelectorAll('details'));
+  document.getElementById('expandall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = true; });
+    announce('All sections and steps expanded.');
+  });
+  document.getElementById('collapseall').addEventListener('click', () => {
+    panels.forEach(panel => { panel.open = false; });
+    announce('All sections and steps collapsed.');
+  });
+
+  function setActive(id) {
+    const target = document.getElementById(id);
+    const section = target && target.closest('details.section');
+    const sectionId = section ? section.id : id;
+    links.forEach(link => {
+      const active = link.getAttribute('href') === '#' + sectionId;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function navigate(id, updateHistory, moveFocus) {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    let node = target;
+    while (node && node !== document.body) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
+    if (updateHistory) {
+      try {
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+      } catch (error) {
+        console.warn('Could not update the section link:', error);
+        announce('The section opened, but its link could not be saved.');
+      }
+    }
+    target.scrollIntoView({ block: 'start' });
+    setActive(id);
+    if (moveFocus) {
+      const focusTarget = target.matches('details') ? target.querySelector(':scope > summary') : target;
+      if (focusTarget && typeof focusTarget.focus === 'function') focusTarget.focus({ preventScroll: true });
+    }
+    return true;
+  }
+
+  function hashId() {
+    if (!location.hash || location.hash === '#') return '';
+    try {
+      return decodeURIComponent(location.hash.slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return '';
+    }
+  }
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    let id;
+    try {
+      id = decodeURIComponent(link.getAttribute('href').slice(1));
+    } catch (error) {
+      console.warn('Invalid section link:', error);
+      announce('This section link is not valid.');
+      return;
+    }
+    if (id && document.getElementById(id)) {
+      event.preventDefault();
+      navigate(id, true, true);
+    }
+  });
+  const initialId = hashId();
+  if (initialId) requestAnimationFrame(() => { navigate(initialId, false, false); });
+  window.addEventListener('hashchange', () => {
+    const id = hashId();
+    if (id) navigate(id, false, false);
+  });
+
+  let scrollPending = false;
+  window.addEventListener('scroll', () => {
+    if (scrollPending) return;
+    scrollPending = true;
+    requestAnimationFrame(() => {
+      const stickyOffset = getComputedStyle(topbar).position === 'sticky' ? topbar.offsetHeight : 0;
+      let selected = null;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= stickyOffset + 28) selected = section;
+      });
+      if (selected) setActive(selected.id);
+      scrollPending = false;
+    });
+  }, { passive: true });
+
+  function legacyCopy(value, button) {
+    const area = document.createElement('textarea');
+    area.value = value;
+    area.setAttribute('readonly', '');
+    area.setAttribute('aria-hidden', 'true');
+    area.style.position = 'fixed';
+    area.style.left = '-10000px';
+    document.body.appendChild(area);
+    area.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (error) {
+      console.warn('Clipboard fallback failed:', error);
+    } finally {
+      area.remove();
+      button.focus({ preventScroll: true });
+    }
+    return copied;
+  }
+
+  document.querySelectorAll('.promptbox .copy, .savebox .copy').forEach(button => {
+    button.addEventListener('click', async () => {
+      const text = button.closest('.promptbox, .savebox').querySelector('pre').textContent;
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          console.warn('Clipboard API failed; trying the browser fallback:', error);
+        }
+      }
+      if (!copied) copied = legacyCopy(text, button);
+      if (!copied) {
+        button.textContent = 'Select text to copy';
+        announce('Copy was blocked. Select the text in the box and copy it manually.');
+      } else {
+        button.textContent = 'Copied';
+        button.classList.add('done');
+        announce('Copied to clipboard.');
+      }
+      setTimeout(() => {
+        button.textContent = 'Copy';
+        button.classList.remove('done');
+      }, 2200);
+    });
+  });
+
+  let printState = null;
+  window.addEventListener('beforeprint', () => {
+    if (!printState) printState = panels.map(panel => ({ panel, open: panel.open }));
+    panels.forEach(panel => { panel.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    if (!printState) return;
+    printState.forEach(saved => { saved.panel.open = saved.open; });
+    printState = null;
+  });
+})();
+</script></body></html>

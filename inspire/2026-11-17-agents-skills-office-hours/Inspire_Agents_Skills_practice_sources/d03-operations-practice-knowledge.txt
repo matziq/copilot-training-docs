@@ -1,0 +1,29 @@
+INSPIRE BRANDS SUPPORT-CENTER OPERATIONS KNOWLEDGE
+This file is practice data for Agent Builder. It is the only file uploaded in this exercise. It combines excerpts from the guide's practice packets; no live library, SharePoint site, or company operations source is connected.
+Source section: Weekly operations brief
+Reporting date: November 16, 2026.
+R101: training checklist complete; packaging delivery pending; owner role logistics lead; due November 18, 2026.
+R102: training checklist pending; packaging delivery complete; owner role training lead; due November 17, 2026.
+R103: training checklist complete; packaging delivery complete; owner role site coordinator; no open action.
+R104: weekly training and packaging readiness status Not supplied.
+Source section: Packaging pilot review
+Review date: November 17, 2026. Pilot scope: P201, P202, P203, P204.
+P201: checklist complete; supplier confirmation received; owner role site coordinator.
+P202: checklist complete; supplier confirmation received; owner role site coordinator.
+P203: checklist complete; supplier confirmation pending; owner role supply lead; follow-up due November 18, 2026.
+P204: checklist pending; supplier confirmation received; owner role training lead; follow-up due November 19, 2026.
+Managers will decide the next review date; it is Not supplied.
+Source section: Promotional-material request checklist
+Status: draft, not approved. Process owner role: operations support lead. Effective date Not supplied.
+Every request needs a site ID, item description, quantity requested, needed-by date, and requester role. Ask for missing fields before routing.
+Complete requests go to the operations support lead for review. Urgent requests must be labeled and explained, not automatically approved. Logistics confirms availability and estimated delivery date only after review.
+M301: R101; menu inserts; quantity 120; needed-by November 24, 2026; requester role site coordinator; ready for review, not approved.
+M302: R102; counter cards; quantity 80; needed-by Not supplied; requester role site coordinator; incomplete.
+Source section: Weekly packaging-plan review
+Reporting week ending November 15, 2026; all quantities are units.
+R101 planned 100, actual 95. R102 planned 120, actual 130. R103 planned 80, actual 80. R104 planned 100, actual 88.
+VarianceUnits = ActualUnits minus PlannedUnits. VariancePct = VarianceUnits divided by PlannedUnits.
+Flag Review when absolute VariancePct is greater than or equal to 10%; otherwise flag OK. If planned units are zero, show Not calculable and flag Review.
+For a total, divide total variance by total planned; do not average site percentages.
+The claim "No site crossed the review threshold" is not supported: R104 has a 12% decrease and meets the Review threshold.
+Use only the provided practice data; no guest or employee personal information is included. Source publication or approval dates are Not supplied.
