@@ -178,6 +178,28 @@ class InspireAppearanceTests(unittest.TestCase):
         self.assertEqual(self.errors, [])
         print("PASS: keyboard, persistence, effects, reduced motion, search/navigation, actual clipboard and nine files", flush=True)
 
+    def test_starting_prompts_copy_four_plain_text_lines(self):
+        page = self.page
+        page.locator("#expandall").click()
+        copied_demos = []
+        for number in range(1, 9):
+            demo = f"d{number:02}"
+            boxes = page.locator(f"#{demo}-start .promptbox")
+            for box in boxes.all():
+                visible = box.locator("pre").text_content()
+                box.locator(".copy").click()
+                copied = page.evaluate("navigator.clipboard.readText()").replace("\r\n", "\n")
+                self.assertEqual(copied, visible.replace("\r\n", "\n"))
+                self.assertEqual(
+                    [line.split(":", 1)[0] for line in copied.splitlines()],
+                    ["Goal", "Context", "Source", "Expectation"],
+                )
+                self.assertNotRegex(copied, r"</?strong>|<br\s*/?>|&lt;")
+                copied_demos.append(demo)
+        self.assertEqual(copied_demos, ["d01", "d04", "d06", "d07", "d08"])
+        self.assertEqual(self.errors, [])
+        print("PASS: all eight demos inspected; five GCSE starting prompts copied as four readable plain-text lines", flush=True)
+
 
 if __name__ == "__main__":
     unittest.main()
