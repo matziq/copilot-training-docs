@@ -1,5 +1,6 @@
-Channel: District 42 | Store Manager Connection
-Audience: Store Managers in the district
+FICTIONAL TRAINING SCENARIO — not Dollar General operational data
+Channel: District 42 | Store Manager Connection (fictional practice channel)
+Audience: Store Managers in the fictional district
 Purpose: invite managers to share one practical way they keep store-visit follow-ups visible.
 Casey Morgan: “A short handoff note helps me remember what I agreed to check.”
 Devon Patel: “A calendar reminder helps me close the loop.”

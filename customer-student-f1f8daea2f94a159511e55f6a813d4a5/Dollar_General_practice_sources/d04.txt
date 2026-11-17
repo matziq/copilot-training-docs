@@ -1,48 +1,18 @@
-FIVE-STORE ROUND-TRIP PLANNING
-District Manager: Jordan Reyes
-Planning window: 8:00 AM-5:00 PM local Tennessee time
-Start and finish at Store #1, the home store. Visit it from 8:00-8:15 AM before driving.
-Visit each of the other four stores once for 15 minutes. Returning to Store #1 is not a second visit.
-Five visits total 75 minutes. Do not add breaks, ask questions, omit a store, or lengthen visits to fill the day.
-Public store addresses:
+FICTIONAL TRAINING SCENARIO — not Dollar General operational data
+District Manager: Jordan Reyes (fictional)
+Planning window: 8:00 AM–5:00 PM local time
+Home store, start and finish: Store #1, 1514 Highway 31 W, Goodlettsville, TN 37072
+Visit all five stores once, including a 15-minute visit at the home store. Spend 15 minutes at each store (75 minutes total in stores).
+Store stops — public addresses supplied for this route-planning exercise:
 1. 1514 Highway 31 W, Goodlettsville, TN 37072
 2. 2174 Gallatin Pike N, Madison, TN 37115
 3. 601 Gallatin Pike N, Madison, TN 37115
 4. 287 New Shackle Island Rd, Hendersonville, TN 37075
 5. 104 Brittan St, Hendersonville, TN 37075
-Compare these two candidate routes:
-A: 1 -> 2 -> 3 -> 4 -> 5 -> 1
-B: 1 -> 4 -> 5 -> 2 -> 3 -> 1
-Use the complete map snapshot below. No web lookup, map login, or other file is needed.
-Map source: OSRM public road-routing service using OpenStreetMap road data.
-Snapshot checked: November 17, 2026, 11:23 AM MST.
-Addresses were geocoded with the U.S. Census geocoder (1, 4, 5) and ArcGIS World Geocoding (2, 3).
-These are static road-model estimates, not live traffic, opening-hour checks, or guaranteed arrival times.
-Drive minutes are rounded UP to whole minutes; miles are rounded to one decimal. Use these displayed numbers for all arithmetic.
-Direction matters: use the row for the actual from/to order, including the final drive home.
-From -> To | Drive minutes | Miles
-1 -> 2 | 15 | 8.6
-1 -> 3 | 17 | 10.8
-1 -> 4 | 21 | 13.7
-1 -> 5 | 26 | 15.5
-2 -> 1 | 15 | 8.5
-2 -> 3 | 6 | 2.9
-2 -> 4 | 9 | 5.7
-2 -> 5 | 14 | 7.2
-3 -> 1 | 16 | 10.7
-3 -> 2 | 6 | 2.9
-3 -> 4 | 13 | 7.4
-3 -> 5 | 16 | 9.6
-4 -> 1 | 21 | 13.6
-4 -> 2 | 9 | 4.8
-4 -> 3 | 13 | 7.4
-4 -> 5 | 9 | 4.0
-5 -> 1 | 25 | 15.4
-5 -> 2 | 13 | 7.0
-5 -> 3 | 16 | 9.6
-5 -> 4 | 9 | 4.0
-Choose the lower total drive time among A and B. Do not call it globally optimal.
-Show all five drives, five 15-minute visits, arrivals/departures, total driving minutes/miles, 75 minutes in stores, and the final return time.
-If the plan returns early, leave the rest of the 8:00 AM-5:00 PM window unallocated.
-For a real travel day, current directions can be checked with any accessible map source; no particular provider or approval is required.
+Goal: minimize driving and maximize in-store time in a practical day plan.
+Use any map source you can access, such as Google Maps, Bing Maps, or another available directions service. Do not require an approved map source.
+Compare feasible stop orders using the same map source and recommend the route with the least estimated driving time or distance available. Do not claim a route is globally optimized unless the source supports that claim.
+Show the stop order, every drive leg including the return to Store #1, estimated drive time and distance, arrival and departure times, each 15-minute visit, total driving time, 75 minutes in stores, and the estimated return time. Include the map source and when it was checked; label estimates.
+Do not ask clarifying questions or add breaks. Do not invent unavailable route estimates; state plainly when a map source cannot provide them.
+The route and schedule are estimates for the exercise, not guaranteed live travel guidance.
 After you receive this source, reply only: "Got it. I'll use this as the source."
