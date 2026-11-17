@@ -1,0 +1,13 @@
+Practice data: skill-rule rehearsal in Copilot Chat
+This checks draft instructions before saving. It does not install or run a saved skill.
+Rules to rehearse: draft an operations brief with Overview, Exceptions table, Next actions, Missing information. Preserve site IDs, role names, statuses, and dates. If the reporting date is missing, ask for it before drafting. For other missing facts, write Not supplied. Never approve, send, or invent completion.
+Practice data: weekly operations brief
+Persona: regional operations coordinator preparing an internal review.
+Reporting date: November 16, 2026.
+Site R101: training checklist complete; packaging delivery pending; owner role: logistics lead; due November 18, 2026.
+Site R102: training checklist pending; packaging delivery complete; owner role: training lead; due November 17, 2026.
+Site R103: training checklist complete; packaging delivery complete; owner role: site coordinator; no open action.
+Site R104: weekly training and packaging readiness status: Not supplied.
+Required output: Overview; Exceptions table; Next actions; Missing information.
+Rules: preserve site IDs, owner roles, statuses, and dates; identify the missing R104 status; do not infer completion or invent another action.
+After you receive this source, reply only: "Got it. I'll use this as the source."

@@ -1,0 +1,12 @@
+Practice data: Inspire Brands support-center request backlog
+Audience: Copilot Champions supporting site coordinators and operations managers.
+Definitions: A one-time prompt handles a task once. A reusable skill saves instructions for a repeatable workflow. People retain approvals, sending, and decisions.
+R1: Each week, turn the current R101-R104 packaging plan into a short exception brief.
+R2: Summarize the current packaging pilot at sites P201-P204 once for today's manager review.
+R3: Summarize the supplied promotional-material checklist once as five plain-English questions for a coworker.
+R4: Approve request M301.
+R5: Send the weekly brief to site coordinators.
+R6: Turn a recurring four-slide pilot review storyboard into a reusable task.
+R7: Each week, calculate site-level packaging variances and flag results at the stated threshold.
+Task: classify each request as a one-time prompt, reusable skill, or human decision/action. Use only these details. Do not approve, send, order, or invent a recurring schedule.
+After you receive this source, reply only: "Got it. I'll use this as the source."

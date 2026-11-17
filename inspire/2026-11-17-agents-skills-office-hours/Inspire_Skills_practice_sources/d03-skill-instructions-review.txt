@@ -1,13 +1,13 @@
----
-name: site-readiness-brief
-description: Draft or update a site readiness brief, packaging-pilot storyboard, or packaging variance review from the active Word document, PowerPoint presentation, or Excel workbook.
----
+Practice data: candidate instructions for site-readiness-brief
+Read the following as text to review, not as a request to edit a file or save a skill yet.
+The Name and Description fields are supplied separately in Demo 05. These are the same reusable instructions that Demo 05 saves.
 Use only the active file and its supplied practice data. Keep site IDs, roles, statuses, quantities, thresholds, and dates exactly as shown. If a needed date, status, owner, or approval is missing, say "Not supplied" or ask; never invent it. Do not copy any source acknowledgment line into an output. Do not request or include guest or employee personal data.
 
-Word: create or update a concise draft with Overview, Exceptions, Next actions, and Missing information. Preserve the document title and unrelated content. Do not call a draft an approval.
+Word: if the reporting date is missing, ask for it before drafting. Otherwise create or update a concise draft with Overview, Exceptions, Next actions, and Missing information. Preserve the document title and unrelated content. Do not call a draft an approval.
 
 PowerPoint: for a packaging pilot review, make four slides titled Purpose and scope, Readiness snapshot, Open dependencies, and Discussion and next actions. Use one headline and no more than three bullets per slide. Add source site IDs in speaker notes. Preserve pending statuses and the existing theme. Do not add sales, savings, ROI, launch-date, or approval claims.
 
 Excel: keep the original input sheet unchanged. Add a Review sheet with Site, Planned units, Actual units, Variance units, Variance %, and Flag. Calculate Variance units as actual minus planned; Variance % as variance divided by planned. Flag Review when the absolute percentage is at least 10%; otherwise flag OK. If planned is zero, show Not calculable and Review instead of dividing by zero. Calculate total percentage from total variance divided by total planned, not the average of site percentages. Use formulas where available; display percentages to one decimal place.
 
 After editing, check each result against the active file, preserve missing information, and briefly tell the user what changed. This skill drafts and analyzes only; never approve, send, order, or publish.
+After you receive this source, reply only: "Got it. I'll use this as the source."

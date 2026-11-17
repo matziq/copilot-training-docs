@@ -1,0 +1,16 @@
+Practice data: workflow design brief
+Persona: Inspire Brands Copilot Champion helping operations coworkers.
+Repeatable job: prepare a source-checked operations review, using the active file in Word, PowerPoint, or Excel.
+Skill name: site-readiness-brief. Create and save it once in Word in Demo 05, not in this chat exercise.
+Every run needs: the intended app; the current source file; the audience and review purpose; the required output.
+Word input: reporting date, site IDs, checklist and delivery statuses, owner roles, due dates, and explicitly missing facts.
+Word output: Overview, Exceptions table, Next actions, Missing information.
+PowerPoint input: pilot scope, review date, site statuses, dependencies, and supplied follow-up dates.
+PowerPoint output: four slides - Purpose and scope, Readiness snapshot, Open dependencies, Discussion and next actions.
+Excel input: Site, PlannedUnits, ActualUnits. Flag Review when the absolute variance percentage is at least 10%.
+Excel output: a separate formula-based Review sheet; keep the original input sheet unchanged.
+Stable instructions: structure, calculation rules, missing-input behavior, checks, and boundaries.
+Per-run facts: current site records, quantities, dates, and statuses; keep these in the active file, not in the saved skill.
+Boundary: draft and analyze only. Never approve, send messages, place orders, or publish. Use role names; no guest or employee personal data.
+Success: the selected saved skill edits the intended file, and a person verifies its output against the current source.
+After you receive this source, reply only: "Got it. I'll use this as the source."

@@ -167,7 +167,7 @@ class InspireAppearanceTests(unittest.TestCase):
             page.evaluate("navigator.clipboard.readText()").replace("\r\n", "\n"),
             box.locator("pre").text_content().replace("\r\n", "\n"),
         )
-        links = page.locator("a[href*='Inspire_Agents_Skills_practice_sources/']").evaluate_all(
+        links = page.locator("a[href*='Inspire_Skills_practice_sources/']").evaluate_all(
             "elements => [...new Set(elements.map(e => e.href))]"
         )
         self.assertEqual(len(links), 9)
@@ -196,9 +196,34 @@ class InspireAppearanceTests(unittest.TestCase):
                 )
                 self.assertNotRegex(copied, r"</?strong>|<br\s*/?>|&lt;")
                 copied_demos.append(demo)
-        self.assertEqual(copied_demos, ["d01", "d04", "d06", "d07", "d08"])
+        self.assertEqual(copied_demos, ["d01", "d02", "d03", "d04", "d06", "d07", "d08"])
         self.assertEqual(self.errors, [])
-        print("PASS: all eight demos inspected; five GCSE starting prompts copied as four readable plain-text lines", flush=True)
+        print("PASS: all eight demos inspected; seven GCSE starting prompts copied as four readable plain-text lines", flush=True)
+
+    def test_skills_only_content_sources_and_session_plan(self):
+        page = self.page
+        self.assertNotRegex(page.locator("body").text_content(), r"(?i)\bagents?\b|agent builder")
+        self.assertEqual(page.locator("[data-customer-menu]").count(), 0)
+        self.assertEqual(page.locator("details.section.demo").count(), 8)
+        minutes = page.locator(".session-plan tbody tr").evaluate_all(
+            """rows => rows.map(row => [...row.querySelectorAll('td')]
+              .map(cell => parseInt(cell.textContent, 10)))"""
+        )
+        self.assertEqual(minutes[-1], [45, 60])
+        self.assertEqual([sum(row[i] for row in minutes[:-1]) for i in (0, 1)], [45, 60])
+        sources = page.locator(".promptbox.has-file").evaluate_all(
+            """boxes => boxes.map(box => ({
+              url:box.querySelector('a.openfile').href,
+              payload:box.querySelector('pre').textContent
+            }))"""
+        )
+        self.assertEqual(len(sources), 7)
+        for source in sources:
+            response = self.context.request.get(source["url"], timeout=10000)
+            self.assertTrue(response.ok)
+            self.assertEqual(response.text().replace("\r\n", "\n"), source["payload"].replace("\r\n", "\n"))
+            self.assertNotRegex(response.text(), r"(?i)\bagents?\b")
+        print("PASS: skills-only content; eight demos; accurate 45/60-minute paths; seven source/Copy pairs", flush=True)
 
 
 if __name__ == "__main__":

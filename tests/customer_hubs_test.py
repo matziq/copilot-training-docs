@@ -194,7 +194,13 @@ class BrowserChecks(unittest.TestCase):
             for url in guides:
                 response = page.goto(url)
                 self.assertEqual(response.status, 200)
-                self.assertTrue(page.locator("[data-customer-menu] a").count())
+                skills_office_hours = urlsplit(url).path.endswith(
+                    "/inspire/2026-11-17-agents-skills-office-hours/index.html"
+                )
+                if skills_office_hours:
+                    self.assertEqual(page.locator("[data-customer-menu]").count(), 0)
+                else:
+                    self.assertTrue(page.locator("[data-customer-menu] a").count())
                 parsed = Links()
                 parsed.feed(page.content())
                 for value in parsed.urls:
@@ -205,9 +211,10 @@ class BrowserChecks(unittest.TestCase):
                         from urllib.parse import urljoin
                         resource = context.request.get(urljoin(page.url, value))
                         self.assertEqual(resource.status, 200, value)
-                menu = page.locator("[data-customer-menu] a").get_attribute("href")
-                from urllib.parse import urljoin
-                self.assertEqual(urljoin(page.url, menu), f"{self.base}/{customer}/index.html")
+                if not skills_office_hours:
+                    menu = page.locator("[data-customer-menu] a").get_attribute("href")
+                    from urllib.parse import urljoin
+                    self.assertEqual(urljoin(page.url, menu), f"{self.base}/{customer}/index.html")
         context.close()
 
 
