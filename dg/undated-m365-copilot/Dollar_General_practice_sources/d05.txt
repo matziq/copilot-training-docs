@@ -16,7 +16,7 @@ Question I still have: how can I reuse a prompt each week without retyping it?
 Two reuse options to explain:
 1. Keep a prompt library in an organization-approved notes file. Copy a template into a new chat and replace the bracketed details each week.
 2. Keep a blank weekly briefing document with reusable prompt text. Duplicate it each week, fill in that week's details, and paste the relevant prompt and source into a new chat.
-Both options use ordinary copy-and-paste, not a Copilot add-on or saved-memory feature. The chosen notes or document app must be available and approved by my organization.
+Both options use ordinary copy-and-paste, not a saved-memory feature. The chosen notes or document app must be available and approved by my organization.
 Format not yet chosen: a one-page checklist or a table.
 Do not add features, policies, or time savings that are not in these notes.
 After you receive this source, reply only: "Got it. I'll use this as the source."
