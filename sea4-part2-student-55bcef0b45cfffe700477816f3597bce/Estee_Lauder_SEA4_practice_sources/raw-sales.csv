@@ -1,0 +1,10 @@
+RecordID,Period,Market,Channel,Actual,Plan,PriorYear,Units
+R01,September 2026,North,Retail,120,125,110,2400
+R02,September 2026,South,Retail,80,90,85,1600
+R03,September 2026,East,Online,70,65,60,1400
+R04,September 2026,West,Online,50,55,45,1000
+R05,October 2026,North,Retail,130,140,120,2600
+R06,October 2026,South,Retail,75,90,80,1500
+R07,October 2026,East,Online,90,80,75,1800
+R07,October 2026,East,Online,90,80,75,1800
+R08,October 2026,West,Online,65,60,55,1300

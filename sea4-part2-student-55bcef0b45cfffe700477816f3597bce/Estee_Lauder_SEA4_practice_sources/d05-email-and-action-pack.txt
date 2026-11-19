@@ -1,0 +1,20 @@
+WORKFLOW 5 — EMAIL AND ACTION TRACKING PACK
+Organization: Luma Grove Beauty. Role: Alex Morgan.
+Review date: November 6, 2026. All dates below are calendar due dates; no due times are specified.
+E01 — From Maya Chen; To Alex Morgan; Subject: Review October four-slide draft
+Message: "Alex, please review the four-slide draft by November 9, 2026 and reply with corrections." Status: no reply or completion recorded.
+E02 — From Jordan Lee; To Sam Rivera; Cc Alex Morgan; Subject: Training logistics
+Message: "Sam, please confirm the room. Alex, copying you for awareness; no action needed." Status: awaiting Sam.
+E03 — From Priya Shah; To Alex Morgan; Subject: Which review audience?
+Message: "Alex, should the draft target the regional directors or store managers? Please reply so I can tailor it." Status: unanswered; no deadline specified.
+E04 — From Program Updates; To leadership distribution; Subject: Weekly digest
+Message: "For information only. No reply required." Status: informational.
+E05 — From Maya Chen; To Alex Morgan; Subject: Last month's review
+Latest message: "Thanks, Alex. Your comments are incorporated; this is complete." Status: closed.
+E06 — From Alex Morgan; To Sam Rivera; Subject: Stock evidence for review
+Message: "Sam, please send stock by market by November 9, 2026." Status: no reply from Sam recorded; Alex is waiting for evidence, not being asked to reply.
+A01 — Meeting note, November 6: Alex said, "I will review the four-slide draft by November 9, 2026." This is the same task as E01, not a second task.
+Tracking rules: My action/reply = a pending request directly addressed to Alex or Alex's explicit commitment. Waiting on = a response or deliverable requested from someone else. Exclude informational, CC-only/no-action, and completed items from Alex's active action list.
+Keep separate fields for SourceID, Action, Owner, Status, DueDate, Evidence, and NextStep. Unknown due dates stay "not stated." No real mailbox URLs are supplied; use IDs, not invented links.
+Do not flag, create tasks, send messages, or mark anything complete as part of this chat exercise.
+After you receive this source, reply only: "Got it. I'll use this as the source."

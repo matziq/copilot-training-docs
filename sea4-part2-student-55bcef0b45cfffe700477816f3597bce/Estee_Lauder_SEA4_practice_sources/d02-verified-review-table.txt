@@ -1,0 +1,19 @@
+WORKFLOW 2 — VERIFIED REVIEW TABLE
+Organization: Luma Grove Beauty. Role: Alex Morgan, regional director.
+Scope: two monthly periods, four market/channel combinations, net sales in USD thousands.
+This is the deduplicated reference table. Only these eight rows are evidence.
+ID | Period | Market | Channel | Actual | Plan | PriorYear
+R01 | September 2026 | North | Retail | 120 | 125 | 110
+R02 | September 2026 | South | Retail | 80 | 90 | 85
+R03 | September 2026 | East | Online | 70 | 65 | 60
+R04 | September 2026 | West | Online | 50 | 55 | 45
+R05 | October 2026 | North | Retail | 130 | 140 | 120
+R06 | October 2026 | South | Retail | 75 | 90 | 80
+R07 | October 2026 | East | Online | 90 | 80 | 75
+R08 | October 2026 | West | Online | 65 | 60 | 55
+Definitions: variance = Actual - Plan; variance percentage = variance / Plan; YoY = (Actual - PriorYear) / PriorYear. Summary percentages use ratios of sums.
+N1. An online campaign ran in October. There is no attribution or control-group evidence linking the campaign to results.
+N2. Inventory availability, margin, returns, promotional spend, and customer behavior are not supplied.
+N3. No action owner, action deadline, or budget approval is assigned in this source.
+Decision context: explain the October gap and recommend what evidence to collect before changing investment. Recommendations are proposals, not decisions.
+After you receive this source, reply only: "Got it. I'll use this as the source."

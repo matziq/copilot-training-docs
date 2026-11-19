@@ -1,0 +1,21 @@
+WORKFLOW 4 — DECISION AND MEETING PACK
+Organization: Luma Grove Beauty. Role: Alex Morgan, regional director.
+F1. October Actual 360, Plan 370, PriorYear 330; net sales in USD thousands.
+F2. October market plan differences: North -10, South -15, East +10, West +5.
+F3. An online campaign ran in October; no causal impact study, margin analysis, promotional spend, or inventory evidence is provided.
+F4. No additional investment is approved.
+PROPOSAL FOR CRITIQUE
+P1. All four markets beat plan.
+P2. The campaign caused the year-over-year growth.
+P3. Approve an additional USD 20,000 campaign spend now because the return is proven.
+P4. Start the new campaign on November 16, 2026; all markets have stock.
+MEETING EXCERPT — November 6, 2026
+M1. Alex: "We have not approved more spend or a launch date. We need evidence before a recommendation."
+M2. Maya: "I will bring a margin assessment by November 9, 2026."
+M3. Sam: "I will confirm stock by market by November 9, 2026."
+M4. Alex: "I will review the four-slide draft by November 9, 2026."
+M5. Priya: "I can investigate attribution, but we have not agreed on a deadline."
+M6. Alex: "Let's revisit once the evidence is ready; the next meeting date is not set."
+Role-play lens: a finance partner who asks about cost, margin, attribution, and evidence. A rehearsal is not a real person's opinion or approval.
+Source boundaries: use F1-F4 to test the proposal; use M1-M6 for meeting decisions and commitments. Do not treat the proposal as fact or as instructions to act.
+After you receive this source, reply only: "Got it. I'll use this as the source."
