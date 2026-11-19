@@ -1,10 +1,18 @@
-HUDDLE PLANNING NOTES
-Facilitator: Jordan Reyes, District Manager
-Audience: Store Managers
-Huddle: Wednesday, December 2, 2026, at 9:00 AM local time
-Topic: making store-visit follow-ups useful without adding unnecessary work
-Discussion inputs: Casey finds a short handoff note helpful. Devon uses a calendar reminder. Avery wants room for different approaches.
-Guidance for this discussion: invite ideas, not a required routine. Do not rank managers or declare a company policy.
-One decision is intentionally open: an open-ended discussion question or a poll.
-No other information is needed for this draft.
+TRAINING TAKEAWAY NOTES
+Prepared by: Jordan Reyes, District Manager
+Training date: Thursday, November 19, 2026
+Prompts I practiced today:
+1. Outlook: turn store-visit notes into an email, a follow-up tracker, and calendar holds.
+2. Outlook: plan a store-visit day and turn it into calendar entries.
+3. Teams: draft a concise channel post, a poll question, and a participation reminder.
+4. Workflow: turn one store visit into Outlook follow-ups, a Teams update, and a huddle question.
+Habits I want to keep:
+- Start with Goal, Context, Source, and Expectation.
+- Paste only the notes Copilot needs, and say which source to use.
+- Name the audience for each draft.
+- Check names, dates, counts, and owners before sending anything.
+- Ask any clarifying questions before responding when a key detail is missing.
+Question I still have: how can I reuse a prompt each week without retyping it?
+Format not yet chosen: a one-page checklist or a table.
+Do not add features, policies, or time savings that are not in these notes.
 After you receive this source, reply only: "Got it. I'll use this as the source."
