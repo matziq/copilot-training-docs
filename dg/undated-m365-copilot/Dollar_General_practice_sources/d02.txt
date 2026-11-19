@@ -1,6 +1,7 @@
 FIVE-STORE ROUND-TRIP PLANNING
 District Manager: Jordan Reyes
-Planning window: 8:00 AM-5:00 PM local Tennessee time
+Planning window: 8:00 AM-5:00 PM local Central Time at the listed Tennessee stores.
+Visit date: not selected. Use [visit date] in proposed calendar entries; do not invent a date.
 Start and finish at Store #1, the home store. Visit it from 8:00-8:15 AM before driving.
 Visit each of the other four stores once for 15 minutes. Returning to Store #1 is not a second visit.
 Five visits total 75 minutes. Do not add breaks, ask questions, omit a store, or lengthen visits to fill the day.
@@ -43,6 +44,7 @@ From -> To | Drive minutes | Miles
 5 -> 4 | 9 | 4.0
 Choose the lower total drive time among A and B. Do not call it globally optimal.
 Show all five drives, five 15-minute visits, arrivals/departures, total driving minutes/miles, 75 minutes in stores, and the final return time.
-If the plan returns early, leave the rest of the 8:00 AM-5:00 PM window unallocated.
-For a real travel day, current directions can be checked with any accessible map source; no particular provider or approval is required.
+In the initial route plan, leave the time after returning unallocated.
+For the later calendar follow-up only, reserve District responsibilities from the return time to 12:00 PM. Its location is not specified. Leave 12:00-5:00 PM unallocated.
+For a real travel day, check current directions and store availability using your organization's approved tools and procedures.
 After you receive this source, reply only: "Got it. I'll use this as the source."

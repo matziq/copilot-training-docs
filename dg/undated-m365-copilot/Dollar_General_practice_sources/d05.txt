@@ -5,14 +5,18 @@ Prompts I practiced today:
 1. Outlook: turn store-visit notes into an email, a follow-up tracker, and calendar holds.
 2. Outlook: plan a store-visit day and turn it into calendar entries.
 3. Teams: draft a concise channel post, a poll question, and a participation reminder.
-4. Workflow: turn one store visit into Outlook follow-ups, a Teams update, and a huddle question.
+4. Workflow: turn one set of visit notes into Outlook follow-ups, a Teams update, and a huddle question.
 Habits I want to keep:
 - Start with Goal, Context, Source, and Expectation.
 - Paste only the notes Copilot needs, and say which source to use.
 - Name the audience for each draft.
 - Check names, dates, counts, and owners before sending anything.
-- Ask any clarifying questions before responding when a key detail is missing.
+- When a key detail is missing, include: "Ask any clarifying questions before responding."
 Question I still have: how can I reuse a prompt each week without retyping it?
+Two reuse options to explain:
+1. Keep a prompt library in an organization-approved notes file. Copy a template into a new chat and replace the bracketed details each week.
+2. Keep a blank weekly briefing document with reusable prompt text. Duplicate it each week, fill in that week's details, and paste the relevant prompt and source into a new chat.
+Both options use ordinary copy-and-paste, not a Copilot add-on or saved-memory feature. The chosen notes or document app must be available and approved by my organization.
 Format not yet chosen: a one-page checklist or a table.
 Do not add features, policies, or time savings that are not in these notes.
 After you receive this source, reply only: "Got it. I'll use this as the source."
