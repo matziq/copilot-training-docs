@@ -1,5 +1,5 @@
 WORKFLOW 6 — REUSABLE REVIEW WORKFLOW SPECIFICATION
-Organization: Luma Grove Beauty. Role: Alex Morgan, regional director.
+Organization: Luma Grove Beauty learning case. Role: Alex Morgan, regional director.
 Workflow name: monthly-review-check.
 Purpose: produce a checked monthly result, not a spending approval or an email.
 Required inputs for each run: named source, period, currency/unit, Actual, Plan, PriorYear, and reporting scope.
@@ -13,5 +13,5 @@ TEST B — Source B; October 2026; USD thousands; four markets, all included pro
 TEST C — Source C; October 2026; USD thousands; four markets, all included products; Actual 360; Plan 0; PriorYear 330.
 TEST D — Source D; September 2026; USD thousands; four markets, all included products; Actual 320; Plan 335; PriorYear 300.
 Each test is independent. A value from one test must never fill a gap in another.
-No custom skill has been installed or scheduled.
+The workflow description is practice content. No custom skill has been installed or scheduled.
 After you receive this source, reply only: "Got it. I'll use this as the source."

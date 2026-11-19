@@ -1,5 +1,5 @@
 WORKFLOW 2 — VERIFIED REVIEW TABLE
-Organization: Luma Grove Beauty. Role: Alex Morgan, regional director.
+Organization: Luma Grove Beauty learning case. Role: Alex Morgan, regional director.
 Scope: two monthly periods, four market/channel combinations, net sales in USD thousands.
 This is the deduplicated reference table. Only these eight rows are evidence.
 ID | Period | Market | Channel | Actual | Plan | PriorYear

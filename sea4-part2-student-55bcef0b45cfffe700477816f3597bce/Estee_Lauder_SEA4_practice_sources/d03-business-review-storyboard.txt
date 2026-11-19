@@ -1,12 +1,12 @@
 WORKFLOW 3 — BUSINESS-REVIEW STORYBOARD PACK
-Organization: Luma Grove Beauty. Role: Alex Morgan, regional director.
+Organization: Luma Grove Beauty learning case. Role: Alex Morgan, regional director.
 Audience: leadership business review. Reporting period: October 2026.
-Report: Monthly Performance / Sales vs Plan.
+Practice report: Monthly Performance / Sales vs Plan.
 Filters: October 2026; North, South, East, West; Retail and Online; all included products.
 Metric: net sales, USD thousands. Comparison: October plan and same month prior year.
-Snapshot refresh: November 5, 2026, 8:00 a.m. MST.
-Snapshot export: November 5, 2026, 8:10 a.m. MST.
-No live report URL, Business Review template file, or tenant connection is included in this pack.
+Practice snapshot refresh: November 5, 2026, 8:00 a.m. MST.
+Practice snapshot export: November 5, 2026, 8:10 a.m. MST.
+No live report URL, actual ELC Business Review template, or tenant connection is included in this pack.
 V1 chart values: North Actual 130 / Plan 140; South 75 / 90; East 90 / 80; West 65 / 60.
 V2 verified totals: Actual 360; Plan 370; PriorYear 330; September actual 320.
 V3 verified calculations: plan gap -10 (-2.70%); YoY +9.09%; month-over-month +12.50%; retail gap -25, online offset +15.
@@ -17,5 +17,5 @@ Four content destinations: 1 Performance; 2 Market/channel contributions; 3 Deci
 Brand handling: use the organization's approved Business Review template when separately available. Preserve its masters, layouts, fonts, colors, logos, and required footers. These four destinations are content categories, not claimed layout names.
 Static image: preserves the displayed snapshot; does not refresh or become editable chart data.
 Live add-in: requires an authorized report URL, viewer access, an enabled add-in, and applicable Power BI licensing and policy. Do not broaden sharing to make the exercise work.
-Keep output draft-only. Do not describe the snapshot as live.
+Keep output draft-only. Do not describe the practice snapshot as live or as current ELC results.
 After you receive this source, reply only: "Got it. I'll use this as the source."

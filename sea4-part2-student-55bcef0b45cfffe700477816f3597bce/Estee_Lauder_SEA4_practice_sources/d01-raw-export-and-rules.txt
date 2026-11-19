@@ -1,5 +1,5 @@
 WORKFLOW 1 — RAW EXPORT AND CONTROL RULES
-Organization: Luma Grove Beauty. Role: Alex Morgan, regional director.
+Organization: Luma Grove Beauty learning case. Role: Alex Morgan, regional director.
 Purpose: build a repeatable monthly business-review workbook from raw rows.
 Units: Actual, Plan, and PriorYear are net sales in USD thousands; Units is a count.
 PriorYear means the same market/channel and same month one year earlier, not last month.

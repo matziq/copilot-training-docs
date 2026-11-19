@@ -1,5 +1,5 @@
 WORKFLOW 5 — EMAIL AND ACTION TRACKING PACK
-Organization: Luma Grove Beauty. Role: Alex Morgan.
+Organization: Luma Grove Beauty learning case. Role: Alex Morgan.
 Review date: November 6, 2026. All dates below are calendar due dates; no due times are specified.
 E01 — From Maya Chen; To Alex Morgan; Subject: Review October four-slide draft
 Message: "Alex, please review the four-slide draft by November 9, 2026 and reply with corrections." Status: no reply or completion recorded.
