@@ -19,8 +19,13 @@
   <link rel="stylesheet" href="./css/knob.css" />
   <link rel="stylesheet" href="./css/layout.css" />
   <link rel="stylesheet" href="./css/dialog.css" />
+  <style>
+    .games-menu { display: inline-block; margin: calc(.5rem + env(safe-area-inset-top)) 0 0 calc(1rem + env(safe-area-inset-left)); padding: .5rem; color: var(--accent-cyan); }
+    .games-menu:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
+  </style>
 </head>
 <body>
+  <a class="games-menu" href="https://memconfigmgr.org/games/index.html">Games Menu</a>
   <div class="app">
     <header class="app-header">
       <div class="app-header__title">
